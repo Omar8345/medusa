@@ -1,0 +1,201 @@
+import { Card, Prerequisites, Details } from "docs-ui"
+import { Github } from "@medusajs/icons"
+
+export const ogImage = "https://res.cloudinary.com/dza7lstvk/image/upload/v1732200494/Medusa%20Resources/opengraph-image_kstzrn.jpg"
+
+export const metadata = {
+  title: `Implement Express Checkout with Medusa`,
+  openGraph: {
+    images: [
+      {
+        url: ogImage,
+        width: 800,
+        height: 450,
+        type: "image/jpeg"
+      }
+    ],
+  },
+  twitter: {
+    images: [
+      {
+        url: ogImage,
+        width: 800,
+        height: 450,
+        type: "image/jpeg"
+      }
+    ]
+  }
+}
+
+# {metadata.title}
+
+In this guide, you'll learn how to create an express checkout storefront with Medusa.
+
+When you install a Medusa application, you get a fully-fledged commerce server and an admin dashboard to manage the commerce store's data. As for the storefront, you can either install the [Next.js Starter Storefront](../../../nextjs-starter/page.mdx), or create a custom storefront with your preferred tech stack, design, and features. Medusa's [architecture](!docs!/learn/introduction/architecture) is designed to be flexible and customizable, allowing you to build a storefront that fits your needs.
+
+An express checkout storefront is a streamlined shopping experience that focuses on reducing friction during the checkout process, allowing customers to quickly and easily buy products with minimal input.
+
+In this guide, you'll learn how to:
+
+- Install and set up Medusa.
+- Create a custom express checkout storefront with Next.js.
+
+You can follow this guide whether you're new to Medusa or an advanced Medusa developer.
+
+<Card
+  title="Example Repository"
+  text="Find the full code of the guide in this repository."
+  href="https://github.com/medusajs/examples/tree/main/express-checkout"
+  icon={Github}
+/>
+
+---
+
+## Step 1: Install a Medusa Application
+
+<Prerequisites items={[
+  {
+    text: "Node.js v20+",
+    link: "https://nodejs.org/en/download"
+  },
+  {
+    text: "Git CLI tool",
+    link: "https://git-scm.com/downloads"
+  },
+  {
+    text: "PostgreSQL",
+    link: "https://www.postgresql.org/download/"
+  }
+]} />
+
+Start by installing the Medusa application on your machine with the following command:
+
+```bash
+npx create-medusa-app@latest
+```
+
+You'll first be asked for the project's name. Then, when you're asked whether you want to install the Next.js storefront, choose `N` for no. You'll create the storefront in this guide.
+
+Afterwards, the installation process will start, which will install the Medusa application in a directory with your project's name. Once the installation finishes successfully, the Medusa Admin dashboard will open with a form to create a new user. Enter the user's credential and submit the form.
+
+Afterwards, you can login with the new user and explore the dashboard.
+
+<Note title="Ran to Errors?">
+
+Check out the [troubleshooting guides](../../../troubleshooting/create-medusa-app-errors/page.mdx) for help.
+
+</Note>
+
+---
+
+## Step 2: Install Next.js Project
+
+You'll create the express checkout storefront using Next.js. So, to create a Next.js project, run the following command in a directory separate from the Medusa application:
+
+```bash
+npx create-next-app@latest expres-checkout
+```
+
+Answer the installation prompts by choosing the default values:
+
+```bash
+Would you like to use TypeScript? Yes
+Would you like to use ESLint? Yes
+Would you like to use Tailwind CSS? Yes
+Would you like your code inside a `src/` directory? No
+Would you like to use App Router? (recommended) Yes
+Would you like to use Turbopack for `next dev`?  No
+Would you like to customize the import alias (`@/*` by default)? No
+```
+
+After the installation finished, your Next.js project is installed in an `express-checkout` directory.
+
+---
+
+## Step 3: Install Medusa Dependencies
+
+Before you start implementing the express checkout flow, you'll install the dependencies necessary for your storefront development.
+
+### Install Medusa UI
+
+Medusa provides a [UI Library](!ui!) that provides the primitives to build applications based on Medusa's design system. To install the UI library, run the following command in your Next.js project:
+
+```bash npm2yarn
+npm install @medusajs/ui@latest @medusajs/ui-preset@latest @medusajs/icons@latest
+```
+
+You install three packages:
+
+- `@medusajs/ui`: The main UI library.
+- `@medusajs/ui-preset`: The design and style presets for the UI library.
+- `@medusajs/icons`: A collection of Medusa icons you can use in your application.
+
+Next, to use the Medusa's design system in your storefront, change the content of `tailwind.config.ts` to the following:
+
+```ts title="tailwind.config.ts"
+import path from "path";
+import type { Config } from "tailwindcss";
+
+// get the path of the dependency "@medusajs/ui"
+const medusaUI = path.join(
+  path.dirname(require.resolve("@medusajs/ui")),
+  "**/*.{js,jsx,ts,tsx}"
+)
+
+export default {
+  presets: [require("@medusajs/ui-preset")],
+  content: [
+    "./app/**/*.{js,ts,jsx,tsx}", 
+    "./components/**/*.{js,ts,jsx,tsx}",
+    "./providers/**/*.{js,ts,jsx,tsx}",
+    medusaUI
+  ],
+  darkMode: "class",
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+} satisfies Config;
+```
+
+This adds Medusa's UI presets to Tailwind CSS's presets and includes the Medusa UI components in the Tailwind CSS content, ensuring that the styles of the UI components aren't removed by tree-shaking.
+
+### Install Medusa JS SDK
+
+To interact with the Medusa API in your storefront, you'll use the [Medusa JS SDK](../../../js-sdk/page.mdx). Install the SDK by running the following command in your Next.js project:
+
+```bash npm2yarn
+npm install @medusajs/js-sdk@latest @medusajs/types@latest
+```
+
+Aside from the SDK, you also install the `@medusajs/types` package, which provides TypeScript types useful for your development with the SDK.
+
+Next, to use the SDK, you'll export a configured instance and re-use it across your application. So, create the file `lib/sdk.ts` with the following content:
+
+```ts title="lib/sdk.ts"
+import Medusa from "@medusajs/js-sdk"
+
+export let MEDUSA_BACKEND_URL = "http://localhost:9000"
+
+if (process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL) {
+  MEDUSA_BACKEND_URL = process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL
+}
+
+export const sdk = new Medusa({
+  baseUrl: MEDUSA_BACKEND_URL,
+  debug: process.env.NODE_ENV === "development",
+  publishableKey: process.env.NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY,
+})
+```
+
+This file exports a configured instance of the Medusa SDK that you can use to send requests to the Medusa application. To configure the SDK, you use the following environment variables:
+
+- `NEXT_PUBLIC_MEDUSA_BACKEND_URL`: The URL of the Medusa application server. By default, it's set to `http://localhost:9000`.
+- `NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY`: The publishable API key of the Medusa application. You can find this key in the Medusa Admin dashboard under Settings -> Publishable API Keys.
+
+![Find the publishable API key by going to Settings -> Publishable API Key, then clicking the publishable API key to copy its token.](https://res.cloudinary.com/dza7lstvk/image/upload/v1735810830/Medusa%20Resources/Screenshot_2025-01-02_at_11.36.20_AM_gw7i7h.png)
+
+---
+
+## Step 4: Create Providers
+
