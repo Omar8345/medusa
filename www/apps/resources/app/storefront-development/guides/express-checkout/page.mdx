@@ -161,8 +161,8 @@ You install three packages:
 Next, to use Medusa's design system in your storefront, change the content of `tailwind.config.ts` to the following:
 
 ```ts title="tailwind.config.ts"
-import path from "path";
-import type { Config } from "tailwindcss";
+import path from "path"
+import type { Config } from "tailwindcss"
 
 // get the path of the dependency "@medusajs/ui"
 const medusaUI = path.join(
@@ -176,14 +176,14 @@ export default {
     "./app/**/*.{js,ts,jsx,tsx}", 
     "./components/**/*.{js,ts,jsx,tsx}",
     "./providers/**/*.{js,ts,jsx,tsx}",
-    medusaUI
+    medusaUI,
   ],
   darkMode: "class",
   theme: {
     extend: {},
   },
   plugins: [],
-} satisfies Config;
+} satisfies Config
 ```
 
 This adds Medusa's UI presets to Tailwind CSS's presets and includes the Medusa UI components in the Tailwind CSS content, ensuring that the styles of the UI components aren't removed by tree-shaking.
@@ -557,7 +557,7 @@ useEffect(() => {
     // retrieve cart
     sdk.store.cart.retrieve(cartId, {
       fields: 
-        "+items.variant.*,+items.variant.options.*,+items.variant.options.option.*"
+        "+items.variant.*,+items.variant.options.*,+items.variant.options.option.*",
     })
     .then(({ cart: dataCart }) => {
       setCart(dataCart)
@@ -585,7 +585,7 @@ useEffect(() => {
   }
 
   sdk.store.cart.update(cart.id, {
-    region_id: region.id
+    region_id: region.id,
   })
   .then(({ cart: dataCart }) => {
     setCart(dataCart)
@@ -666,7 +666,7 @@ export const cartProviderHighlights7 = [
 ```tsx title="providers/cart.tsx" highlights={cartProviderHighlights7}
 const updateCart = async ({
   updateData,
-  shippingMethodData
+  shippingMethodData,
 }: {
   updateData?: HttpTypes.StoreUpdateCart,
   shippingMethodData?: HttpTypes.StoreAddCartShippingMethods
@@ -741,7 +741,7 @@ return (
     addToCart,
     updateCart,
     refreshCart,
-    updateItemQuantity
+    updateItemQuantity,
   }}>
     {children}
   </CartContext.Provider>
@@ -833,7 +833,7 @@ export const SecondCol = () => {
           }}
           className={clx(
             "text-sm text-ui-fg-subtle",
-            "select",
+            "select"
           )}
         >
           {regions.map((r) => (
@@ -902,7 +902,7 @@ export const robotoMono = Roboto_Mono({
 })
 
 
-export default function Layout ({
+export default function Layout({
   children,
 }: {
   children: React.ReactNode
@@ -911,7 +911,7 @@ export default function Layout ({
     <html className={clx(inter.variable, robotoMono.variable)}>
       <body className="bg-ui-bg-subtle w-full h-full">
         <div className={clx(
-          "flex justify-center items-center min-h-screen w-full",
+          "flex justify-center items-center min-h-screen w-full"
         )}>
           <RegionProvider>
             <CartProvider>
@@ -987,7 +987,7 @@ type RouterProps = {
 }
 
 export const Router = ({
-  handle
+  handle,
 }: RouterProps) => {
   const { cart } = useCart()
   const searchParams = useSearchParams()
@@ -1053,8 +1053,8 @@ type Params = {
   params: Promise<{ handle: string }>
 }
 
-export default async function ExpressCheckoutPage ({
-  params
+export default async function ExpressCheckoutPage({
+  params,
 }: Params) {
   const handle = (await params).handle
 
@@ -1107,7 +1107,7 @@ export const Card = ({
   isActive,
   isDone,
   path,
-  children
+  children,
 }: CardProps) => {
   const router = useRouter()
 
@@ -1342,7 +1342,7 @@ export const productHighlights4 = [
 
 ```tsx title="components/Product/index.tsx" highlights={productHighlights4}
 const price = useMemo(() => {
-  let selectedVariantPrice = selectedVariant || 
+  const selectedVariantPrice = selectedVariant || 
     product?.variants?.sort((a: any, b: any) => {
       return (
         a.calculated_price.calculated_amount -
@@ -1646,7 +1646,7 @@ type AddressProps = {
 
 export const Address = ({
   handle,
-  isActive
+  isActive,
 }: AddressProps) => {
   const { cart, updateCart } = useCart()
   const { region } = useRegion()
@@ -1700,7 +1700,7 @@ const isButtonDisabled = useMemo(() => {
     !phone || !address || !postalCode || !city || !country
 }, [
   firstName, lastName, email, phone, address, 
-  postalCode, city, country, loading
+  postalCode, city, country, loading,
 ])
 
 // TODO implement submit action logic
@@ -1944,7 +1944,7 @@ type ShippingProps = {
 
 export const Shipping = ({
   handle,
-  isActive
+  isActive,
 }: ShippingProps) => {
   const { cart, updateCart } = useCart()
   const [loading, setLoading] = useState(true)
@@ -2047,8 +2047,8 @@ useEffect(() => {
               cart_id: cart.id,
               data: {
                 // pass any custom data useful for price calculation
-              }
-            }
+              },
+            },
           }
         ) as Promise<{ shipping_option: HttpTypes.StoreCartShippingOption }>
       )
@@ -2094,7 +2094,7 @@ Then, replace the `TODO` in the `Shipping` component with the following:
 ```tsx title="components/Shipping/index.tsx"
 const getShippingOptionPrice = useCallback(
   (shippingOption: HttpTypes.StoreCartShippingOption) => {
-    let price = shippingOption.price_type === "flat" ? 
+    const price = shippingOption.price_type === "flat" ? 
       shippingOption.amount : calculatedPrices[shippingOption.id]
 
     return formatPrice(price || 0, cart?.currency_code)
@@ -2138,8 +2138,8 @@ const handleSubmit = () => {
       data: {
         // TODO add any data necessary for
         // fulfillment provider
-      }
-    }
+      },
+    },
   })
   .then(() => {
     setLoading(false)
@@ -2286,7 +2286,7 @@ type PaymentProps = {
 
 export const Payment = ({
   handle,
-  isActive
+  isActive,
 }: PaymentProps) => {
   const { cart, updateItemQuantity, unsetCart } = useCart()
   const [loading, setLoading] = useState(true)
@@ -2668,8 +2668,8 @@ type Params = {
   params: Promise<{ id: string }>
 }
 
-export default async function ConfirmationPage ({
-  params
+export default async function ConfirmationPage({
+  params,
 }: Params) {
   const orderId = (await params).id
 
