@@ -5768,5 +5768,6 @@ export const generatedEditDates = {
   "app/commerce-modules/currency/links-to-other-modules/page.mdx": "2024-12-24T14:47:10.556Z",
   "app/commerce-modules/customer/links-to-other-modules/page.mdx": "2024-12-24T14:48:54.689Z",
   "app/commerce-modules/fulfillment/events/page.mdx": "2024-12-31T09:37:49.253Z",
-  "app/commerce-modules/payment/events/page.mdx": "2024-12-31T09:41:56.582Z"
+  "app/commerce-modules/payment/events/page.mdx": "2024-12-31T09:41:56.582Z",
+  "app/storefront-development/guides/express-checkout/page.mdx": "2025-01-03T13:23:30.571Z"
 }

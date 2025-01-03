@@ -14576,6 +14576,22 @@ export const generatedSidebar = [
         "loaded": true,
         "isPathHref": true,
         "type": "category",
+        "title": "Examples",
+        "children": [
+          {
+            "loaded": true,
+            "isPathHref": true,
+            "type": "link",
+            "path": "/storefront-development/guides/express-checkout",
+            "title": "Express Checkout Storefront",
+            "children": []
+          }
+        ]
+      },
+      {
+        "loaded": true,
+        "isPathHref": true,
+        "type": "category",
         "title": "Regions",
         "children": [
           {
