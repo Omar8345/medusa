@@ -22,7 +22,7 @@ export const GET = async (
   const productType = await refetchProductType(
     req.params.id,
     req.scope,
-    req.remoteQueryConfig.fields
+    req.queryConfig.fields
   )
 
   res.status(200).json({ product_type: productType })
@@ -55,7 +55,7 @@ export const POST = async (
   const productType = await refetchProductType(
     result[0].id,
     req.scope,
-    req.remoteQueryConfig.fields
+    req.queryConfig.fields
   )
 
   res.status(200).json({ product_type: productType })

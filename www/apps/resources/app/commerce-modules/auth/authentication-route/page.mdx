@@ -29,12 +29,18 @@ The steps are:
 ![Diagram showcasing the basic authentication flow between the frontend and the Medusa application](https://res.cloudinary.com/dza7lstvk/image/upload/v1725539370/Medusa%20Resources/basic-auth-routes_pgpjch.jpg)
 
 1. Register the user with the [Register Route](#register-route).
-5. Use the authentication token to create the user with their respective API route.
+2. Use the authentication token to create the user with their respective API route.
     - For example, for customers you would use the [Create Customer API route](!api!/store#customers_postcustomers).
     - For admin users, you accept an invite using the [Accept Invite API route](!api!/admin#invites_postinvitesaccept)
-2. Authenticate the user with the [Auth Route](#auth-route).
+3. Authenticate the user with the [Auth Route](#login-route).
 
-After registration, you only use the [Auth Route](#auth-route) for subsequent authentication.
+After registration, you only use the [Auth Route](#login-route) for subsequent authentication.
+
+<Note>
+
+To handle errors related to existing identities, refer to [this section](#handling-existing-identities).
+
+</Note>
 
 ### 2. Third-Party Service Authenticate Flow
 
@@ -50,7 +56,7 @@ It requires the following steps:
 
 ![Diagram showcasing the authentication flow between the frontend, Medusa application, and third-party service](https://res.cloudinary.com/dza7lstvk/image/upload/v1725528159/Medusa%20Resources/Third_Party_Auth_tvf4ng.jpg)
 
-1. Authenticate the user with the [Auth Route](#auth-route).
+1. Authenticate the user with the [Auth Route](#login-route).
 2. The auth route returns a URL to authenticate with third-party service, such as login with Google. The frontend (such as a storefront), when it receives a `location` property in the response, must redirect to the returned location.
 3. Once the authentication with the third-party service finishes, it redirects back to the frontend with a `code` query parameter. So, make sure your third-party service is configured to redirect to your frontend page after successful authentication.
 4. The frontend sends a request to the [Callback Route](#callback-route) passing the `code` query parameter.
@@ -81,7 +87,7 @@ curl -X POST http://localhost:9000/auth/{actor_type}/{providers}/register
 
 <Note>
 
-This API route is useful for providers like `emailpass` that uses custom logic to authenticate a user. For authentication providers that authenticate with third-party services, such as Google, use the [Auth Route](#auth-route) instead.
+This API route is useful for providers like `emailpass` that uses custom logic to authenticate a user. For authentication providers that authenticate with third-party services, such as Google, use the [Auth Route](#login-route) instead.
 
 </Note>
 
@@ -115,6 +121,35 @@ If the authentication is successful, you'll receive a `token` field in the respo
 
 Use that token in the header of subsequent requests to send authenticated requests.
 
+### Handling Existing Identities
+
+An auth identity with the same email may already exist in Medusa. This can happen if:
+
+- Another actor type is using that email. For example, an admin user is trying to register as a customer.
+- The same email belongs to a record of the same actor type. For example, another customer has the same email.
+
+In these scenarios, the Register Route will return an error instead of a token:
+
+```json
+{
+  "type": "unauthorized",
+  "message": "Identity with email already exists"
+}
+```
+
+To handle these scenarios, you can use the [Login Route](#login-route) to validate that the email and password match the existing identity. If so, you can allow the admin user, for example, to register as a customer.
+
+Otherwise, if the email and password don't match the existing identity, such as when the email belongs to another customer, the [Login Route](#login-route) returns an error:
+
+```json
+{
+  "type": "unauthorized",
+  "message": "Invalid email or password"
+}
+```
+
+You can show that error message to the customer.
+
 ---
 
 ## Login Route
@@ -144,6 +179,12 @@ Its path parameters are:
 This route accepts in the request body the data that the specified authentication provider requires to handle authentication.
 
 For example, the EmailPass provider requires an `email` and `password` fields in the request body.
+
+#### Overriding Callback URL
+
+For the [GitHub](../auth-providers/github/page.mdx) and [Google](../auth-providers/google/page.mdx) providers, you can pass a `callback_url` body parameter that overrides the `callbackUrl` set in the provider's configurations.
+
+This is useful if you want to redirect the user to a different URL after authentication based on their actor type. For example, you can set different `callback_url` for admin users and customers.
 
 ### Response Fields
 

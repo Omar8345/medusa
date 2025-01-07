@@ -84,6 +84,7 @@ export interface OrderSummaryCalculated {
   paid_total: BigNumberInput
   refunded_total: BigNumberInput
   credit_line_total: BigNumberInput
+  accounting_total: BigNumberInput
 }
 
 export interface OrderTransaction {

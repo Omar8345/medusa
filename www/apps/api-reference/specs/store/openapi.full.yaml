@@ -174,7 +174,10 @@ paths:
             schema:
               type: object
               title: input
-              description: The input data necessary for authentication. For example, for email-pass authentication, pass `email` and `password` properties.
+              description: |
+                The input data necessary for authentication. 
+                For example, for email-pass authentication, pass `email` and `password` properties. 
+                For the Google and GitHub authentication providers, you can pass `callback_url` to indicate the URL in the frontend that the customer should be redirected to after completing their authentication. This will override the provider's `callbackUrl` configurations in `medusa-config.ts`.
       x-codeSamples:
         - lang: Shell
           label: EmailPass Provider
@@ -10530,6 +10533,7 @@ components:
         - payment_collections
         - items
         - shipping_methods
+        - status
         - currency_code
         - id
         - version
@@ -10760,6 +10764,10 @@ components:
           type: number
           title: original_shipping_tax_total
           description: The tax total of the order's shipping excluding promotions.
+        status:
+          type: string
+          title: status
+          description: The order's status.
     AdminOrderAddress:
       type: object
       description: An order address.
@@ -11451,6 +11459,7 @@ components:
       required:
         - return_requested_total
         - order_change
+        - status
         - currency_code
         - id
         - version
@@ -12062,6 +12071,10 @@ components:
           $ref: '#/components/schemas/AdminCustomer'
         sales_channel:
           $ref: '#/components/schemas/AdminSalesChannel'
+        status:
+          type: string
+          title: status
+          description: The order's status.
     AdminOrderPreviewResponse:
       type: object
       description: The preview of an order.
@@ -18548,6 +18561,7 @@ components:
         - sales_channel_id
         - email
         - currency_code
+        - status
         - items
         - shipping_methods
         - payment_status
@@ -18769,6 +18783,10 @@ components:
           type: number
           title: original_shipping_tax_total
           description: The tax total of the order's shipping excluding promotions.
+        status:
+          type: string
+          title: status
+          description: The order's status.
     BaseOrderAddress:
       type: object
       description: An order address.
@@ -24729,6 +24747,7 @@ components:
       required:
         - items
         - shipping_methods
+        - status
         - currency_code
         - id
         - region_id
@@ -24953,6 +24972,10 @@ components:
           description: The order's transactions.
           items:
             $ref: '#/components/schemas/BaseOrderTransaction'
+        status:
+          type: string
+          title: status
+          description: The order's status.
     StoreOrderAddress:
       type: object
       description: An order address

@@ -3059,6 +3059,7 @@ export default class OrderModuleService<
       transformPropertiesToBigNumber(trxs)
 
       const op = isRemoved ? MathBN.sub : MathBN.add
+
       for (const trx of trxs) {
         if (MathBN.gt(trx.amount, 0)) {
           summary.totals.paid_total = new BigNumber(

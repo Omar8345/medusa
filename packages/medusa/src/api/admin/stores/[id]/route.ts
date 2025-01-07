@@ -22,7 +22,7 @@ export const GET = async (
   const queryObject = remoteQueryObjectFromString({
     entryPoint: "store",
     variables,
-    fields: req.remoteQueryConfig.fields,
+    fields: req.queryConfig.fields,
   })
 
   const [store] = await remoteQuery(queryObject)
@@ -51,7 +51,7 @@ export const POST = async (
   const store = await refetchStore(
     result[0].id,
     req.scope,
-    req.remoteQueryConfig.fields
+    req.queryConfig.fields
   )
 
   res.status(200).json({ store })

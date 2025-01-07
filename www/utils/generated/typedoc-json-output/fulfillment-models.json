@@ -1,5 +1,5 @@
 {
-	"id": 5174,
+	"id": 5210,
 	"name": "fulfillment-models",
 	"variant": "project",
 	"kind": 1,
@@ -18,7 +18,7 @@
 	},
 	"children": [
 		{
-			"id": 5175,
+			"id": 5211,
 			"name": "FulfillmentAddress",
 			"variant": "declaration",
 			"kind": 32,
@@ -42,14 +42,14 @@
 							{
 								"type": "reflection",
 								"declaration": {
-									"id": 5176,
+									"id": 5212,
 									"name": "__type",
 									"variant": "declaration",
 									"kind": 65536,
 									"flags": {},
 									"children": [
 										{
-											"id": 5177,
+											"id": 5213,
 											"name": "id",
 											"variant": "declaration",
 											"kind": 1024,
@@ -85,7 +85,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 5178,
+											"id": 5214,
 											"name": "company",
 											"variant": "declaration",
 											"kind": 1024,
@@ -112,7 +112,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 5179,
+											"id": 5215,
 											"name": "first_name",
 											"variant": "declaration",
 											"kind": 1024,
@@ -139,7 +139,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 5180,
+											"id": 5216,
 											"name": "last_name",
 											"variant": "declaration",
 											"kind": 1024,
@@ -166,7 +166,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 5181,
+											"id": 5217,
 											"name": "address_1",
 											"variant": "declaration",
 											"kind": 1024,
@@ -193,7 +193,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 5182,
+											"id": 5218,
 											"name": "address_2",
 											"variant": "declaration",
 											"kind": 1024,
@@ -220,7 +220,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 5183,
+											"id": 5219,
 											"name": "city",
 											"variant": "declaration",
 											"kind": 1024,
@@ -247,7 +247,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 5184,
+											"id": 5220,
 											"name": "country_code",
 											"variant": "declaration",
 											"kind": 1024,
@@ -274,7 +274,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 5185,
+											"id": 5221,
 											"name": "province",
 											"variant": "declaration",
 											"kind": 1024,
@@ -301,7 +301,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 5186,
+											"id": 5222,
 											"name": "postal_code",
 											"variant": "declaration",
 											"kind": 1024,
@@ -328,7 +328,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 5187,
+											"id": 5223,
 											"name": "phone",
 											"variant": "declaration",
 											"kind": 1024,
@@ -355,7 +355,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 5188,
+											"id": 5224,
 											"name": "metadata",
 											"variant": "declaration",
 											"kind": 1024,
@@ -386,18 +386,18 @@
 										{
 											"title": "Properties",
 											"children": [
-												5177,
-												5178,
-												5179,
-												5180,
-												5181,
-												5182,
-												5183,
-												5184,
-												5185,
-												5186,
-												5187,
-												5188
+												5213,
+												5214,
+												5215,
+												5216,
+												5217,
+												5218,
+												5219,
+												5220,
+												5221,
+												5222,
+												5223,
+												5224
 											]
 										}
 									]
@@ -418,7 +418,7 @@
 			"defaultValue": "..."
 		},
 		{
-			"id": 5326,
+			"id": 5362,
 			"name": "FulfillmentItem",
 			"variant": "declaration",
 			"kind": 32,
@@ -442,14 +442,14 @@
 							{
 								"type": "reflection",
 								"declaration": {
-									"id": 5327,
+									"id": 5363,
 									"name": "__type",
 									"variant": "declaration",
 									"kind": 65536,
 									"flags": {},
 									"children": [
 										{
-											"id": 5328,
+											"id": 5364,
 											"name": "id",
 											"variant": "declaration",
 											"kind": 1024,
@@ -485,7 +485,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 5329,
+											"id": 5365,
 											"name": "title",
 											"variant": "declaration",
 											"kind": 1024,
@@ -510,7 +510,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 5330,
+											"id": 5366,
 											"name": "sku",
 											"variant": "declaration",
 											"kind": 1024,
@@ -535,7 +535,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 5331,
+											"id": 5367,
 											"name": "barcode",
 											"variant": "declaration",
 											"kind": 1024,
@@ -560,7 +560,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 5332,
+											"id": 5368,
 											"name": "quantity",
 											"variant": "declaration",
 											"kind": 1024,
@@ -585,7 +585,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 5333,
+											"id": 5369,
 											"name": "line_item_id",
 											"variant": "declaration",
 											"kind": 1024,
@@ -612,7 +612,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 5334,
+											"id": 5370,
 											"name": "inventory_item_id",
 											"variant": "declaration",
 											"kind": 1024,
@@ -639,7 +639,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 5335,
+											"id": 5371,
 											"name": "fulfillment",
 											"variant": "declaration",
 											"kind": 1024,
@@ -664,7 +664,7 @@
 												"typeArguments": [
 													{
 														"type": "reference",
-														"target": 5189,
+														"target": 5225,
 														"name": "Fulfillment"
 													}
 												],
@@ -678,14 +678,14 @@
 										{
 											"title": "Properties",
 											"children": [
-												5328,
-												5329,
-												5330,
-												5331,
-												5332,
-												5333,
-												5334,
-												5335
+												5364,
+												5365,
+												5366,
+												5367,
+												5368,
+												5369,
+												5370,
+												5371
 											]
 										}
 									]
@@ -706,7 +706,7 @@
 			"defaultValue": "..."
 		},
 		{
-			"id": 5371,
+			"id": 5407,
 			"name": "FulfillmentLabel",
 			"variant": "declaration",
 			"kind": 32,
@@ -730,14 +730,14 @@
 							{
 								"type": "reflection",
 								"declaration": {
-									"id": 5372,
+									"id": 5408,
 									"name": "__type",
 									"variant": "declaration",
 									"kind": 65536,
 									"flags": {},
 									"children": [
 										{
-											"id": 5373,
+											"id": 5409,
 											"name": "id",
 											"variant": "declaration",
 											"kind": 1024,
@@ -773,7 +773,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 5374,
+											"id": 5410,
 											"name": "tracking_number",
 											"variant": "declaration",
 											"kind": 1024,
@@ -798,7 +798,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 5375,
+											"id": 5411,
 											"name": "tracking_url",
 											"variant": "declaration",
 											"kind": 1024,
@@ -823,7 +823,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 5376,
+											"id": 5412,
 											"name": "label_url",
 											"variant": "declaration",
 											"kind": 1024,
@@ -848,7 +848,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 5377,
+											"id": 5413,
 											"name": "fulfillment",
 											"variant": "declaration",
 											"kind": 1024,
@@ -873,7 +873,7 @@
 												"typeArguments": [
 													{
 														"type": "reference",
-														"target": 5189,
+														"target": 5225,
 														"name": "Fulfillment"
 													}
 												],
@@ -887,11 +887,11 @@
 										{
 											"title": "Properties",
 											"children": [
-												5373,
-												5374,
-												5375,
-												5376,
-												5377
+												5409,
+												5410,
+												5411,
+												5412,
+												5413
 											]
 										}
 									]
@@ -912,7 +912,7 @@
 			"defaultValue": "..."
 		},
 		{
-			"id": 5413,
+			"id": 5449,
 			"name": "FulfillmentProvider",
 			"variant": "declaration",
 			"kind": 32,
@@ -936,14 +936,14 @@
 							{
 								"type": "reflection",
 								"declaration": {
-									"id": 5414,
+									"id": 5450,
 									"name": "__type",
 									"variant": "declaration",
 									"kind": 65536,
 									"flags": {},
 									"children": [
 										{
-											"id": 5415,
+											"id": 5451,
 											"name": "id",
 											"variant": "declaration",
 											"kind": 1024,
@@ -979,7 +979,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 5416,
+											"id": 5452,
 											"name": "is_enabled",
 											"variant": "declaration",
 											"kind": 1024,
@@ -1008,8 +1008,8 @@
 										{
 											"title": "Properties",
 											"children": [
-												5415,
-												5416
+												5451,
+												5452
 											]
 										}
 									]
@@ -1030,7 +1030,7 @@
 			"defaultValue": "..."
 		},
 		{
-			"id": 5417,
+			"id": 5453,
 			"name": "FulfillmentSet",
 			"variant": "declaration",
 			"kind": 32,
@@ -1054,14 +1054,14 @@
 							{
 								"type": "reflection",
 								"declaration": {
-									"id": 5418,
+									"id": 5454,
 									"name": "__type",
 									"variant": "declaration",
 									"kind": 65536,
 									"flags": {},
 									"children": [
 										{
-											"id": 5419,
+											"id": 5455,
 											"name": "id",
 											"variant": "declaration",
 											"kind": 1024,
@@ -1097,7 +1097,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 5420,
+											"id": 5456,
 											"name": "name",
 											"variant": "declaration",
 											"kind": 1024,
@@ -1122,7 +1122,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 5421,
+											"id": 5457,
 											"name": "type",
 											"variant": "declaration",
 											"kind": 1024,
@@ -1147,7 +1147,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 5422,
+											"id": 5458,
 											"name": "service_zones",
 											"variant": "declaration",
 											"kind": 1024,
@@ -1172,7 +1172,7 @@
 												"typeArguments": [
 													{
 														"type": "reference",
-														"target": 5439,
+														"target": 5475,
 														"name": "ServiceZone"
 													}
 												],
@@ -1182,7 +1182,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 5425,
+											"id": 5461,
 											"name": "metadata",
 											"variant": "declaration",
 											"kind": 1024,
@@ -1213,11 +1213,11 @@
 										{
 											"title": "Properties",
 											"children": [
-												5419,
-												5420,
-												5421,
-												5422,
-												5425
+												5455,
+												5456,
+												5457,
+												5458,
+												5461
 											]
 										}
 									]
@@ -1238,7 +1238,7 @@
 			"defaultValue": "..."
 		},
 		{
-			"id": 5189,
+			"id": 5225,
 			"name": "Fulfillment",
 			"variant": "declaration",
 			"kind": 32,
@@ -1262,14 +1262,14 @@
 							{
 								"type": "reflection",
 								"declaration": {
-									"id": 5190,
+									"id": 5226,
 									"name": "__type",
 									"variant": "declaration",
 									"kind": 65536,
 									"flags": {},
 									"children": [
 										{
-											"id": 5191,
+											"id": 5227,
 											"name": "id",
 											"variant": "declaration",
 											"kind": 1024,
@@ -1305,7 +1305,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 5192,
+											"id": 5228,
 											"name": "location_id",
 											"variant": "declaration",
 											"kind": 1024,
@@ -1330,7 +1330,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 5193,
+											"id": 5229,
 											"name": "packed_at",
 											"variant": "declaration",
 											"kind": 1024,
@@ -1357,7 +1357,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 5194,
+											"id": 5230,
 											"name": "shipped_at",
 											"variant": "declaration",
 											"kind": 1024,
@@ -1384,7 +1384,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 5195,
+											"id": 5231,
 											"name": "marked_shipped_by",
 											"variant": "declaration",
 											"kind": 1024,
@@ -1411,7 +1411,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 5196,
+											"id": 5232,
 											"name": "created_by",
 											"variant": "declaration",
 											"kind": 1024,
@@ -1438,7 +1438,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 5197,
+											"id": 5233,
 											"name": "delivered_at",
 											"variant": "declaration",
 											"kind": 1024,
@@ -1465,7 +1465,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 5198,
+											"id": 5234,
 											"name": "canceled_at",
 											"variant": "declaration",
 											"kind": 1024,
@@ -1492,7 +1492,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 5199,
+											"id": 5235,
 											"name": "data",
 											"variant": "declaration",
 											"kind": 1024,
@@ -1519,7 +1519,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 5200,
+											"id": 5236,
 											"name": "requires_shipping",
 											"variant": "declaration",
 											"kind": 1024,
@@ -1544,7 +1544,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 5201,
+											"id": 5237,
 											"name": "items",
 											"variant": "declaration",
 											"kind": 1024,
@@ -1569,7 +1569,7 @@
 												"typeArguments": [
 													{
 														"type": "reference",
-														"target": 5326,
+														"target": 5362,
 														"name": "FulfillmentItem"
 													}
 												],
@@ -1579,7 +1579,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 5215,
+											"id": 5251,
 											"name": "labels",
 											"variant": "declaration",
 											"kind": 1024,
@@ -1604,7 +1604,7 @@
 												"typeArguments": [
 													{
 														"type": "reference",
-														"target": 5371,
+														"target": 5407,
 														"name": "FulfillmentLabel"
 													}
 												],
@@ -1614,7 +1614,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 5226,
+											"id": 5262,
 											"name": "provider",
 											"variant": "declaration",
 											"kind": 1024,
@@ -1641,7 +1641,7 @@
 												"typeArguments": [
 													{
 														"type": "reference",
-														"target": 5413,
+														"target": 5449,
 														"name": "FulfillmentProvider"
 													}
 												],
@@ -1651,7 +1651,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 5237,
+											"id": 5273,
 											"name": "shipping_option",
 											"variant": "declaration",
 											"kind": 1024,
@@ -1678,7 +1678,7 @@
 												"typeArguments": [
 													{
 														"type": "reference",
-														"target": 5454,
+														"target": 5490,
 														"name": "ShippingOption"
 													}
 												],
@@ -1688,7 +1688,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 5294,
+											"id": 5330,
 											"name": "delivery_address",
 											"variant": "declaration",
 											"kind": 1024,
@@ -1715,7 +1715,7 @@
 												"typeArguments": [
 													{
 														"type": "reference",
-														"target": 5175,
+														"target": 5211,
 														"name": "FulfillmentAddress"
 													}
 												],
@@ -1725,7 +1725,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 5325,
+											"id": 5361,
 											"name": "metadata",
 											"variant": "declaration",
 											"kind": 1024,
@@ -1756,22 +1756,22 @@
 										{
 											"title": "Properties",
 											"children": [
-												5191,
-												5192,
-												5193,
-												5194,
-												5195,
-												5196,
-												5197,
-												5198,
-												5199,
-												5200,
-												5201,
-												5215,
-												5226,
+												5227,
+												5228,
+												5229,
+												5230,
+												5231,
+												5232,
+												5233,
+												5234,
+												5235,
+												5236,
 												5237,
-												5294,
-												5325
+												5251,
+												5262,
+												5273,
+												5330,
+												5361
 											]
 										}
 									]
@@ -1792,7 +1792,7 @@
 			"defaultValue": "..."
 		},
 		{
-			"id": 5427,
+			"id": 5463,
 			"name": "GeoZoneSchema",
 			"variant": "declaration",
 			"kind": 2097152,
@@ -1800,14 +1800,14 @@
 			"type": {
 				"type": "reflection",
 				"declaration": {
-					"id": 5428,
+					"id": 5464,
 					"name": "__type",
 					"variant": "declaration",
 					"kind": 65536,
 					"flags": {},
 					"children": [
 						{
-							"id": 5429,
+							"id": 5465,
 							"name": "id",
 							"variant": "declaration",
 							"kind": 1024,
@@ -1834,7 +1834,7 @@
 							}
 						},
 						{
-							"id": 5430,
+							"id": 5466,
 							"name": "type",
 							"variant": "declaration",
 							"kind": 1024,
@@ -1850,7 +1850,7 @@
 							}
 						},
 						{
-							"id": 5431,
+							"id": 5467,
 							"name": "country_code",
 							"variant": "declaration",
 							"kind": 1024,
@@ -1866,7 +1866,7 @@
 							}
 						},
 						{
-							"id": 5432,
+							"id": 5468,
 							"name": "province_code",
 							"variant": "declaration",
 							"kind": 1024,
@@ -1884,7 +1884,7 @@
 							}
 						},
 						{
-							"id": 5433,
+							"id": 5469,
 							"name": "city",
 							"variant": "declaration",
 							"kind": 1024,
@@ -1902,7 +1902,7 @@
 							}
 						},
 						{
-							"id": 5434,
+							"id": 5470,
 							"name": "postal_expression",
 							"variant": "declaration",
 							"kind": 1024,
@@ -1920,7 +1920,7 @@
 							}
 						},
 						{
-							"id": 5435,
+							"id": 5471,
 							"name": "service_zone",
 							"variant": "declaration",
 							"kind": 1024,
@@ -1934,7 +1934,7 @@
 								"typeArguments": [
 									{
 										"type": "reference",
-										"target": 5439,
+										"target": 5475,
 										"name": "ServiceZone"
 									}
 								],
@@ -1943,7 +1943,7 @@
 							}
 						},
 						{
-							"id": 5438,
+							"id": 5474,
 							"name": "metadata",
 							"variant": "declaration",
 							"kind": 1024,
@@ -1965,14 +1965,14 @@
 						{
 							"title": "Properties",
 							"children": [
-								5429,
-								5430,
-								5431,
-								5432,
-								5433,
-								5434,
-								5435,
-								5438
+								5465,
+								5466,
+								5467,
+								5468,
+								5469,
+								5470,
+								5471,
+								5474
 							]
 						}
 					]
@@ -1980,7 +1980,7 @@
 			}
 		},
 		{
-			"id": 5426,
+			"id": 5462,
 			"name": "GeoZone",
 			"variant": "declaration",
 			"kind": 32,
@@ -2003,7 +2003,7 @@
 						"typeArguments": [
 							{
 								"type": "reference",
-								"target": 5427,
+								"target": 5463,
 								"name": "GeoZoneSchema",
 								"package": "@medusajs/fulfillment"
 							}
@@ -2022,7 +2022,7 @@
 			"defaultValue": "..."
 		},
 		{
-			"id": 5440,
+			"id": 5476,
 			"name": "ServiceZoneSchema",
 			"variant": "declaration",
 			"kind": 2097152,
@@ -2030,14 +2030,14 @@
 			"type": {
 				"type": "reflection",
 				"declaration": {
-					"id": 5441,
+					"id": 5477,
 					"name": "__type",
 					"variant": "declaration",
 					"kind": 65536,
 					"flags": {},
 					"children": [
 						{
-							"id": 5442,
+							"id": 5478,
 							"name": "id",
 							"variant": "declaration",
 							"kind": 1024,
@@ -2064,7 +2064,7 @@
 							}
 						},
 						{
-							"id": 5443,
+							"id": 5479,
 							"name": "name",
 							"variant": "declaration",
 							"kind": 1024,
@@ -2080,7 +2080,7 @@
 							}
 						},
 						{
-							"id": 5444,
+							"id": 5480,
 							"name": "fulfillment_set",
 							"variant": "declaration",
 							"kind": 1024,
@@ -2094,7 +2094,7 @@
 								"typeArguments": [
 									{
 										"type": "reference",
-										"target": 5417,
+										"target": 5453,
 										"name": "FulfillmentSet"
 									}
 								],
@@ -2103,7 +2103,7 @@
 							}
 						},
 						{
-							"id": 5447,
+							"id": 5483,
 							"name": "geo_zones",
 							"variant": "declaration",
 							"kind": 1024,
@@ -2117,7 +2117,7 @@
 								"typeArguments": [
 									{
 										"type": "reference",
-										"target": 5426,
+										"target": 5462,
 										"name": "GeoZone"
 									}
 								],
@@ -2126,7 +2126,7 @@
 							}
 						},
 						{
-							"id": 5450,
+							"id": 5486,
 							"name": "shipping_options",
 							"variant": "declaration",
 							"kind": 1024,
@@ -2140,7 +2140,7 @@
 								"typeArguments": [
 									{
 										"type": "reference",
-										"target": 5454,
+										"target": 5490,
 										"name": "ShippingOption"
 									}
 								],
@@ -2149,7 +2149,7 @@
 							}
 						},
 						{
-							"id": 5453,
+							"id": 5489,
 							"name": "metadata",
 							"variant": "declaration",
 							"kind": 1024,
@@ -2171,12 +2171,12 @@
 						{
 							"title": "Properties",
 							"children": [
-								5442,
-								5443,
-								5444,
-								5447,
-								5450,
-								5453
+								5478,
+								5479,
+								5480,
+								5483,
+								5486,
+								5489
 							]
 						}
 					]
@@ -2184,7 +2184,7 @@
 			}
 		},
 		{
-			"id": 5439,
+			"id": 5475,
 			"name": "ServiceZone",
 			"variant": "declaration",
 			"kind": 32,
@@ -2207,7 +2207,7 @@
 						"typeArguments": [
 							{
 								"type": "reference",
-								"target": 5440,
+								"target": 5476,
 								"name": "ServiceZoneSchema",
 								"package": "@medusajs/fulfillment"
 							}
@@ -2226,7 +2226,7 @@
 			"defaultValue": "..."
 		},
 		{
-			"id": 5554,
+			"id": 5590,
 			"name": "ShippingOptionRule",
 			"variant": "declaration",
 			"kind": 32,
@@ -2250,14 +2250,14 @@
 							{
 								"type": "reflection",
 								"declaration": {
-									"id": 5555,
+									"id": 5591,
 									"name": "__type",
 									"variant": "declaration",
 									"kind": 65536,
 									"flags": {},
 									"children": [
 										{
-											"id": 5556,
+											"id": 5592,
 											"name": "id",
 											"variant": "declaration",
 											"kind": 1024,
@@ -2293,7 +2293,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 5557,
+											"id": 5593,
 											"name": "attribute",
 											"variant": "declaration",
 											"kind": 1024,
@@ -2318,7 +2318,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 5558,
+											"id": 5594,
 											"name": "operator",
 											"variant": "declaration",
 											"kind": 1024,
@@ -2358,7 +2358,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 5559,
+											"id": 5595,
 											"name": "value",
 											"variant": "declaration",
 											"kind": 1024,
@@ -2385,7 +2385,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 5560,
+											"id": 5596,
 											"name": "shipping_option",
 											"variant": "declaration",
 											"kind": 1024,
@@ -2410,7 +2410,7 @@
 												"typeArguments": [
 													{
 														"type": "reference",
-														"target": 5454,
+														"target": 5490,
 														"name": "ShippingOption"
 													}
 												],
@@ -2424,11 +2424,11 @@
 										{
 											"title": "Properties",
 											"children": [
-												5556,
-												5557,
-												5558,
-												5559,
-												5560
+												5592,
+												5593,
+												5594,
+												5595,
+												5596
 											]
 										}
 									]
@@ -2449,7 +2449,7 @@
 			"defaultValue": "..."
 		},
 		{
-			"id": 5591,
+			"id": 5627,
 			"name": "ShippingOptionType",
 			"variant": "declaration",
 			"kind": 32,
@@ -2473,14 +2473,14 @@
 							{
 								"type": "reflection",
 								"declaration": {
-									"id": 5592,
+									"id": 5628,
 									"name": "__type",
 									"variant": "declaration",
 									"kind": 65536,
 									"flags": {},
 									"children": [
 										{
-											"id": 5593,
+											"id": 5629,
 											"name": "id",
 											"variant": "declaration",
 											"kind": 1024,
@@ -2516,7 +2516,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 5594,
+											"id": 5630,
 											"name": "label",
 											"variant": "declaration",
 											"kind": 1024,
@@ -2541,7 +2541,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 5595,
+											"id": 5631,
 											"name": "description",
 											"variant": "declaration",
 											"kind": 1024,
@@ -2568,7 +2568,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 5596,
+											"id": 5632,
 											"name": "code",
 											"variant": "declaration",
 											"kind": 1024,
@@ -2593,7 +2593,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 5597,
+											"id": 5633,
 											"name": "shipping_option",
 											"variant": "declaration",
 											"kind": 1024,
@@ -2618,7 +2618,7 @@
 												"typeArguments": [
 													{
 														"type": "reference",
-														"target": 5454,
+														"target": 5490,
 														"name": "ShippingOption"
 													}
 												],
@@ -2632,11 +2632,11 @@
 										{
 											"title": "Properties",
 											"children": [
-												5593,
-												5594,
-												5595,
-												5596,
-												5597
+												5629,
+												5630,
+												5631,
+												5632,
+												5633
 											]
 										}
 									]
@@ -2657,7 +2657,7 @@
 			"defaultValue": "..."
 		},
 		{
-			"id": 5454,
+			"id": 5490,
 			"name": "ShippingOption",
 			"variant": "declaration",
 			"kind": 32,
@@ -2681,14 +2681,14 @@
 							{
 								"type": "reflection",
 								"declaration": {
-									"id": 5455,
+									"id": 5491,
 									"name": "__type",
 									"variant": "declaration",
 									"kind": 65536,
 									"flags": {},
 									"children": [
 										{
-											"id": 5456,
+											"id": 5492,
 											"name": "id",
 											"variant": "declaration",
 											"kind": 1024,
@@ -2724,7 +2724,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 5457,
+											"id": 5493,
 											"name": "name",
 											"variant": "declaration",
 											"kind": 1024,
@@ -2749,7 +2749,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 5458,
+											"id": 5494,
 											"name": "price_type",
 											"variant": "declaration",
 											"kind": 1024,
@@ -2789,7 +2789,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 5459,
+											"id": 5495,
 											"name": "data",
 											"variant": "declaration",
 											"kind": 1024,
@@ -2816,7 +2816,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 5460,
+											"id": 5496,
 											"name": "metadata",
 											"variant": "declaration",
 											"kind": 1024,
@@ -2843,7 +2843,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 5461,
+											"id": 5497,
 											"name": "service_zone",
 											"variant": "declaration",
 											"kind": 1024,
@@ -2868,7 +2868,7 @@
 												"typeArguments": [
 													{
 														"type": "reference",
-														"target": 5439,
+														"target": 5475,
 														"name": "ServiceZone"
 													}
 												],
@@ -2878,7 +2878,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 5464,
+											"id": 5500,
 											"name": "shipping_profile",
 											"variant": "declaration",
 											"kind": 1024,
@@ -2905,7 +2905,7 @@
 												"typeArguments": [
 													{
 														"type": "reference",
-														"target": 5628,
+														"target": 5664,
 														"name": "ShippingProfile"
 													}
 												],
@@ -2915,7 +2915,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 5485,
+											"id": 5521,
 											"name": "provider",
 											"variant": "declaration",
 											"kind": 1024,
@@ -2942,7 +2942,7 @@
 												"typeArguments": [
 													{
 														"type": "reference",
-														"target": 5413,
+														"target": 5449,
 														"name": "FulfillmentProvider"
 													}
 												],
@@ -2952,7 +2952,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 5496,
+											"id": 5532,
 											"name": "type",
 											"variant": "declaration",
 											"kind": 1024,
@@ -2977,7 +2977,7 @@
 												"typeArguments": [
 													{
 														"type": "reference",
-														"target": 5591,
+														"target": 5627,
 														"name": "ShippingOptionType"
 													}
 												],
@@ -2987,7 +2987,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 5507,
+											"id": 5543,
 											"name": "rules",
 											"variant": "declaration",
 											"kind": 1024,
@@ -3012,7 +3012,7 @@
 												"typeArguments": [
 													{
 														"type": "reference",
-														"target": 5554,
+														"target": 5590,
 														"name": "ShippingOptionRule"
 													}
 												],
@@ -3022,7 +3022,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 5518,
+											"id": 5554,
 											"name": "fulfillments",
 											"variant": "declaration",
 											"kind": 1024,
@@ -3047,7 +3047,7 @@
 												"typeArguments": [
 													{
 														"type": "reference",
-														"target": 5189,
+														"target": 5225,
 														"name": "Fulfillment"
 													}
 												],
@@ -3061,17 +3061,17 @@
 										{
 											"title": "Properties",
 											"children": [
-												5456,
-												5457,
-												5458,
-												5459,
-												5460,
-												5461,
-												5464,
-												5485,
+												5492,
+												5493,
+												5494,
+												5495,
 												5496,
-												5507,
-												5518
+												5497,
+												5500,
+												5521,
+												5532,
+												5543,
+												5554
 											]
 										}
 									]
@@ -3092,7 +3092,7 @@
 			"defaultValue": "..."
 		},
 		{
-			"id": 5628,
+			"id": 5664,
 			"name": "ShippingProfile",
 			"variant": "declaration",
 			"kind": 32,
@@ -3116,14 +3116,14 @@
 							{
 								"type": "reflection",
 								"declaration": {
-									"id": 5629,
+									"id": 5665,
 									"name": "__type",
 									"variant": "declaration",
 									"kind": 65536,
 									"flags": {},
 									"children": [
 										{
-											"id": 5630,
+											"id": 5666,
 											"name": "id",
 											"variant": "declaration",
 											"kind": 1024,
@@ -3159,7 +3159,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 5631,
+											"id": 5667,
 											"name": "name",
 											"variant": "declaration",
 											"kind": 1024,
@@ -3184,7 +3184,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 5632,
+											"id": 5668,
 											"name": "type",
 											"variant": "declaration",
 											"kind": 1024,
@@ -3209,7 +3209,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 5633,
+											"id": 5669,
 											"name": "shipping_options",
 											"variant": "declaration",
 											"kind": 1024,
@@ -3234,7 +3234,7 @@
 												"typeArguments": [
 													{
 														"type": "reference",
-														"target": 5454,
+														"target": 5490,
 														"name": "ShippingOption"
 													}
 												],
@@ -3244,7 +3244,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 5664,
+											"id": 5700,
 											"name": "metadata",
 											"variant": "declaration",
 											"kind": 1024,
@@ -3275,11 +3275,11 @@
 										{
 											"title": "Properties",
 											"children": [
-												5630,
-												5631,
-												5632,
-												5633,
-												5664
+												5666,
+												5667,
+												5668,
+												5669,
+												5700
 											]
 										}
 									]
@@ -3304,285 +3304,141 @@
 		{
 			"title": "Type Aliases",
 			"children": [
-				5427,
-				5440
+				5463,
+				5476
 			]
 		},
 		{
 			"title": "Variables",
 			"children": [
-				5175,
-				5326,
-				5371,
-				5413,
-				5417,
-				5189,
-				5426,
-				5439,
-				5554,
-				5591,
-				5454,
-				5628
+				5211,
+				5362,
+				5407,
+				5449,
+				5453,
+				5225,
+				5462,
+				5475,
+				5590,
+				5627,
+				5490,
+				5664
 			]
 		}
 	],
 	"packageName": "@medusajs/fulfillment",
 	"symbolIdMap": {
-		"5174": {
+		"5210": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/index.ts",
 			"qualifiedName": ""
 		},
-		"5175": {
+		"5211": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
 			"qualifiedName": "FulfillmentAddress"
 		},
-		"5176": {
+		"5212": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
 			"qualifiedName": "__object"
 		},
-		"5177": {
+		"5213": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
 			"qualifiedName": "__object.id"
 		},
-		"5178": {
+		"5214": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
 			"qualifiedName": "__object.company"
 		},
-		"5179": {
+		"5215": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
 			"qualifiedName": "__object.first_name"
 		},
-		"5180": {
+		"5216": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
 			"qualifiedName": "__object.last_name"
 		},
-		"5181": {
+		"5217": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
 			"qualifiedName": "__object.address_1"
 		},
-		"5182": {
+		"5218": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
 			"qualifiedName": "__object.address_2"
 		},
-		"5183": {
+		"5219": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
 			"qualifiedName": "__object.city"
 		},
-		"5184": {
+		"5220": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
 			"qualifiedName": "__object.country_code"
 		},
-		"5185": {
+		"5221": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
 			"qualifiedName": "__object.province"
 		},
-		"5186": {
+		"5222": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
 			"qualifiedName": "__object.postal_code"
 		},
-		"5187": {
+		"5223": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
 			"qualifiedName": "__object.phone"
 		},
-		"5188": {
+		"5224": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
 			"qualifiedName": "__object.metadata"
 		},
-		"5189": {
+		"5225": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
 			"qualifiedName": "Fulfillment"
 		},
-		"5190": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__object"
-		},
-		"5191": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__object.id"
-		},
-		"5192": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__object.location_id"
-		},
-		"5193": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__object.packed_at"
-		},
-		"5194": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__object.shipped_at"
-		},
-		"5195": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__object.marked_shipped_by"
-		},
-		"5196": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__object.created_by"
-		},
-		"5197": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__object.delivered_at"
-		},
-		"5198": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__object.canceled_at"
-		},
-		"5199": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__object.data"
-		},
-		"5200": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__object.requires_shipping"
-		},
-		"5201": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__object.items"
-		},
-		"5202": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__function"
-		},
-		"5203": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__function"
-		},
-		"5204": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-item.ts",
-			"qualifiedName": "__object"
-		},
-		"5205": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-item.ts",
-			"qualifiedName": "__object.id"
-		},
-		"5206": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-item.ts",
-			"qualifiedName": "__object.title"
-		},
-		"5207": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-item.ts",
-			"qualifiedName": "__object.sku"
-		},
-		"5208": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-item.ts",
-			"qualifiedName": "__object.barcode"
-		},
-		"5209": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-item.ts",
-			"qualifiedName": "__object.quantity"
-		},
-		"5210": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-item.ts",
-			"qualifiedName": "__object.line_item_id"
-		},
-		"5211": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-item.ts",
-			"qualifiedName": "__object.inventory_item_id"
-		},
-		"5212": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-item.ts",
-			"qualifiedName": "__object.fulfillment"
-		},
-		"5213": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-item.ts",
-			"qualifiedName": "__function"
-		},
-		"5214": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-item.ts",
-			"qualifiedName": "__function"
-		},
-		"5215": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__object.labels"
-		},
-		"5216": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__function"
-		},
-		"5217": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__function"
-		},
-		"5218": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-label.ts",
-			"qualifiedName": "__object"
-		},
-		"5219": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-label.ts",
-			"qualifiedName": "__object.id"
-		},
-		"5220": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-label.ts",
-			"qualifiedName": "__object.tracking_number"
-		},
-		"5221": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-label.ts",
-			"qualifiedName": "__object.tracking_url"
-		},
-		"5222": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-label.ts",
-			"qualifiedName": "__object.label_url"
-		},
-		"5223": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-label.ts",
-			"qualifiedName": "__object.fulfillment"
-		},
-		"5224": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-label.ts",
-			"qualifiedName": "__function"
-		},
-		"5225": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-label.ts",
-			"qualifiedName": "__function"
-		},
 		"5226": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__object.provider"
+			"qualifiedName": "__object"
 		},
 		"5227": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__function"
+			"qualifiedName": "__object.id"
 		},
 		"5228": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__function"
+			"qualifiedName": "__object.location_id"
 		},
 		"5229": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-provider.ts",
-			"qualifiedName": "__object"
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__object.packed_at"
 		},
 		"5230": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-provider.ts",
-			"qualifiedName": "__object.id"
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__object.shipped_at"
 		},
 		"5231": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-provider.ts",
-			"qualifiedName": "__object.is_enabled"
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__object.marked_shipped_by"
 		},
 		"5232": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__function"
+			"qualifiedName": "__object.created_by"
 		},
 		"5233": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__function"
+			"qualifiedName": "__object.delivered_at"
 		},
 		"5234": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-provider.ts",
-			"qualifiedName": "__object"
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__object.canceled_at"
 		},
 		"5235": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-provider.ts",
-			"qualifiedName": "__object.id"
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__object.data"
 		},
 		"5236": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-provider.ts",
-			"qualifiedName": "__object.is_enabled"
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__object.requires_shipping"
 		},
 		"5237": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__object.shipping_option"
+			"qualifiedName": "__object.items"
 		},
 		"5238": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
@@ -3593,116 +3449,116 @@
 			"qualifiedName": "__function"
 		},
 		"5240": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-item.ts",
 			"qualifiedName": "__object"
 		},
 		"5241": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-item.ts",
 			"qualifiedName": "__object.id"
 		},
 		"5242": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__object.name"
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-item.ts",
+			"qualifiedName": "__object.title"
 		},
 		"5243": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__object.price_type"
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-item.ts",
+			"qualifiedName": "__object.sku"
 		},
 		"5244": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__object.data"
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-item.ts",
+			"qualifiedName": "__object.barcode"
 		},
 		"5245": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__object.metadata"
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-item.ts",
+			"qualifiedName": "__object.quantity"
 		},
 		"5246": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__object.service_zone"
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-item.ts",
+			"qualifiedName": "__object.line_item_id"
 		},
 		"5247": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-item.ts",
+			"qualifiedName": "__object.inventory_item_id"
 		},
 		"5248": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-item.ts",
+			"qualifiedName": "__object.fulfillment"
 		},
 		"5249": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__object.shipping_profile"
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-item.ts",
+			"qualifiedName": "__function"
 		},
 		"5250": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-item.ts",
 			"qualifiedName": "__function"
 		},
 		"5251": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__object.labels"
 		},
 		"5252": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
 			"qualifiedName": "__function"
 		},
 		"5253": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
 			"qualifiedName": "__function"
 		},
 		"5254": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__object.provider"
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-label.ts",
+			"qualifiedName": "__object"
 		},
 		"5255": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-label.ts",
+			"qualifiedName": "__object.id"
 		},
 		"5256": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-label.ts",
+			"qualifiedName": "__object.tracking_number"
 		},
 		"5257": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-label.ts",
+			"qualifiedName": "__object.tracking_url"
 		},
 		"5258": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-label.ts",
+			"qualifiedName": "__object.label_url"
 		},
 		"5259": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__object.type"
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-label.ts",
+			"qualifiedName": "__object.fulfillment"
 		},
 		"5260": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-label.ts",
 			"qualifiedName": "__function"
 		},
 		"5261": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-label.ts",
 			"qualifiedName": "__function"
 		},
 		"5262": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__object.rules"
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__object.provider"
 		},
 		"5263": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
 			"qualifiedName": "__function"
 		},
 		"5264": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
 			"qualifiedName": "__function"
 		},
 		"5265": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__object.fulfillments"
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-provider.ts",
+			"qualifiedName": "__object"
 		},
 		"5266": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-provider.ts",
+			"qualifiedName": "__object.id"
 		},
 		"5267": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-provider.ts",
+			"qualifiedName": "__object.is_enabled"
 		},
 		"5268": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
@@ -3713,56 +3569,56 @@
 			"qualifiedName": "__function"
 		},
 		"5270": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-provider.ts",
 			"qualifiedName": "__object"
 		},
 		"5271": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-provider.ts",
 			"qualifiedName": "__object.id"
 		},
 		"5272": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__object.name"
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-provider.ts",
+			"qualifiedName": "__object.is_enabled"
 		},
 		"5273": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__object.price_type"
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__object.shipping_option"
 		},
 		"5274": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__object.data"
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__function"
 		},
 		"5275": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__object.metadata"
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__function"
 		},
 		"5276": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__object.service_zone"
+			"qualifiedName": "__object"
 		},
 		"5277": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__function"
+			"qualifiedName": "__object.id"
 		},
 		"5278": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__function"
+			"qualifiedName": "__object.name"
 		},
 		"5279": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__object.shipping_profile"
+			"qualifiedName": "__object.price_type"
 		},
 		"5280": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__function"
+			"qualifiedName": "__object.data"
 		},
 		"5281": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__function"
+			"qualifiedName": "__object.metadata"
 		},
 		"5282": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__object.provider"
+			"qualifiedName": "__object.service_zone"
 		},
 		"5283": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
@@ -3774,7 +3630,7 @@
 		},
 		"5285": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__object.type"
+			"qualifiedName": "__object.shipping_profile"
 		},
 		"5286": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
@@ -3786,7 +3642,7 @@
 		},
 		"5288": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__object.rules"
+			"qualifiedName": "__function"
 		},
 		"5289": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
@@ -3794,11 +3650,11 @@
 		},
 		"5290": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__function"
+			"qualifiedName": "__object.provider"
 		},
 		"5291": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__object.fulfillments"
+			"qualifiedName": "__function"
 		},
 		"5292": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
@@ -3809,396 +3665,396 @@
 			"qualifiedName": "__function"
 		},
 		"5294": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__object.delivery_address"
-		},
-		"5295": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
 			"qualifiedName": "__function"
 		},
+		"5295": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"qualifiedName": "__object.type"
+		},
 		"5296": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
 			"qualifiedName": "__function"
 		},
 		"5297": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
-			"qualifiedName": "__object"
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"qualifiedName": "__function"
 		},
 		"5298": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
-			"qualifiedName": "__object.id"
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"qualifiedName": "__object.rules"
 		},
 		"5299": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
-			"qualifiedName": "__object.company"
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"qualifiedName": "__function"
 		},
 		"5300": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
-			"qualifiedName": "__object.first_name"
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"qualifiedName": "__function"
 		},
 		"5301": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
-			"qualifiedName": "__object.last_name"
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"qualifiedName": "__object.fulfillments"
 		},
 		"5302": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
-			"qualifiedName": "__object.address_1"
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"qualifiedName": "__function"
 		},
 		"5303": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
-			"qualifiedName": "__object.address_2"
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"qualifiedName": "__function"
 		},
 		"5304": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
-			"qualifiedName": "__object.city"
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__function"
 		},
 		"5305": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
-			"qualifiedName": "__object.country_code"
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__function"
 		},
 		"5306": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
-			"qualifiedName": "__object.province"
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"qualifiedName": "__object"
 		},
 		"5307": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
-			"qualifiedName": "__object.postal_code"
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"qualifiedName": "__object.id"
 		},
 		"5308": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
-			"qualifiedName": "__object.phone"
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"qualifiedName": "__object.name"
 		},
 		"5309": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
-			"qualifiedName": "__object.metadata"
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"qualifiedName": "__object.price_type"
 		},
 		"5310": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__function"
-		},
-		"5311": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__function"
-		},
-		"5312": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
-			"qualifiedName": "__object"
-		},
-		"5313": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
-			"qualifiedName": "__object.id"
-		},
-		"5314": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
-			"qualifiedName": "__object.company"
-		},
-		"5315": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
-			"qualifiedName": "__object.first_name"
-		},
-		"5316": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
-			"qualifiedName": "__object.last_name"
-		},
-		"5317": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
-			"qualifiedName": "__object.address_1"
-		},
-		"5318": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
-			"qualifiedName": "__object.address_2"
-		},
-		"5319": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
-			"qualifiedName": "__object.city"
-		},
-		"5320": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
-			"qualifiedName": "__object.country_code"
-		},
-		"5321": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
-			"qualifiedName": "__object.province"
-		},
-		"5322": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
-			"qualifiedName": "__object.postal_code"
-		},
-		"5323": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
-			"qualifiedName": "__object.phone"
-		},
-		"5324": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
-			"qualifiedName": "__object.metadata"
-		},
-		"5325": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__object.metadata"
-		},
-		"5326": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-item.ts",
-			"qualifiedName": "FulfillmentItem"
-		},
-		"5327": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-item.ts",
-			"qualifiedName": "__object"
-		},
-		"5328": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-item.ts",
-			"qualifiedName": "__object.id"
-		},
-		"5329": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-item.ts",
-			"qualifiedName": "__object.title"
-		},
-		"5330": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-item.ts",
-			"qualifiedName": "__object.sku"
-		},
-		"5331": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-item.ts",
-			"qualifiedName": "__object.barcode"
-		},
-		"5332": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-item.ts",
-			"qualifiedName": "__object.quantity"
-		},
-		"5333": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-item.ts",
-			"qualifiedName": "__object.line_item_id"
-		},
-		"5334": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-item.ts",
-			"qualifiedName": "__object.inventory_item_id"
-		},
-		"5335": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-item.ts",
-			"qualifiedName": "__object.fulfillment"
-		},
-		"5336": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-item.ts",
-			"qualifiedName": "__function"
-		},
-		"5337": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-item.ts",
-			"qualifiedName": "__function"
-		},
-		"5338": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__object"
-		},
-		"5339": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__object.id"
-		},
-		"5340": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__object.location_id"
-		},
-		"5341": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__object.packed_at"
-		},
-		"5342": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__object.shipped_at"
-		},
-		"5343": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__object.marked_shipped_by"
-		},
-		"5344": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__object.created_by"
-		},
-		"5345": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__object.delivered_at"
-		},
-		"5346": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__object.canceled_at"
-		},
-		"5347": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
 			"qualifiedName": "__object.data"
 		},
-		"5348": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__object.requires_shipping"
+		"5311": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"qualifiedName": "__object.metadata"
 		},
-		"5349": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__object.items"
+		"5312": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"qualifiedName": "__object.service_zone"
 		},
-		"5350": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+		"5313": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
 			"qualifiedName": "__function"
 		},
-		"5351": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+		"5314": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
 			"qualifiedName": "__function"
 		},
-		"5352": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__object.labels"
+		"5315": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"qualifiedName": "__object.shipping_profile"
 		},
-		"5353": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+		"5316": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
 			"qualifiedName": "__function"
 		},
-		"5354": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+		"5317": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
 			"qualifiedName": "__function"
 		},
-		"5355": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+		"5318": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
 			"qualifiedName": "__object.provider"
 		},
-		"5356": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+		"5319": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
 			"qualifiedName": "__function"
 		},
-		"5357": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+		"5320": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
 			"qualifiedName": "__function"
 		},
-		"5358": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+		"5321": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"qualifiedName": "__object.type"
+		},
+		"5322": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
 			"qualifiedName": "__function"
 		},
-		"5359": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+		"5323": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
 			"qualifiedName": "__function"
 		},
-		"5360": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__object.shipping_option"
+		"5324": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"qualifiedName": "__object.rules"
 		},
-		"5361": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+		"5325": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
 			"qualifiedName": "__function"
 		},
-		"5362": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+		"5326": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
 			"qualifiedName": "__function"
 		},
-		"5363": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+		"5327": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"qualifiedName": "__object.fulfillments"
+		},
+		"5328": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
 			"qualifiedName": "__function"
 		},
-		"5364": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+		"5329": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
 			"qualifiedName": "__function"
 		},
-		"5365": {
+		"5330": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
 			"qualifiedName": "__object.delivery_address"
 		},
-		"5366": {
+		"5331": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
 			"qualifiedName": "__function"
 		},
-		"5367": {
+		"5332": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
 			"qualifiedName": "__function"
 		},
-		"5368": {
+		"5333": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
+			"qualifiedName": "__object"
+		},
+		"5334": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
+			"qualifiedName": "__object.id"
+		},
+		"5335": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
+			"qualifiedName": "__object.company"
+		},
+		"5336": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
+			"qualifiedName": "__object.first_name"
+		},
+		"5337": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
+			"qualifiedName": "__object.last_name"
+		},
+		"5338": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
+			"qualifiedName": "__object.address_1"
+		},
+		"5339": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
+			"qualifiedName": "__object.address_2"
+		},
+		"5340": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
+			"qualifiedName": "__object.city"
+		},
+		"5341": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
+			"qualifiedName": "__object.country_code"
+		},
+		"5342": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
+			"qualifiedName": "__object.province"
+		},
+		"5343": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
+			"qualifiedName": "__object.postal_code"
+		},
+		"5344": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
+			"qualifiedName": "__object.phone"
+		},
+		"5345": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
+			"qualifiedName": "__object.metadata"
+		},
+		"5346": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
 			"qualifiedName": "__function"
 		},
-		"5369": {
+		"5347": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
 			"qualifiedName": "__function"
 		},
-		"5370": {
+		"5348": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
+			"qualifiedName": "__object"
+		},
+		"5349": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
+			"qualifiedName": "__object.id"
+		},
+		"5350": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
+			"qualifiedName": "__object.company"
+		},
+		"5351": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
+			"qualifiedName": "__object.first_name"
+		},
+		"5352": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
+			"qualifiedName": "__object.last_name"
+		},
+		"5353": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
+			"qualifiedName": "__object.address_1"
+		},
+		"5354": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
+			"qualifiedName": "__object.address_2"
+		},
+		"5355": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
+			"qualifiedName": "__object.city"
+		},
+		"5356": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
+			"qualifiedName": "__object.country_code"
+		},
+		"5357": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
+			"qualifiedName": "__object.province"
+		},
+		"5358": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
+			"qualifiedName": "__object.postal_code"
+		},
+		"5359": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
+			"qualifiedName": "__object.phone"
+		},
+		"5360": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/address.ts",
+			"qualifiedName": "__object.metadata"
+		},
+		"5361": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
 			"qualifiedName": "__object.metadata"
 		},
-		"5371": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-label.ts",
-			"qualifiedName": "FulfillmentLabel"
+		"5362": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-item.ts",
+			"qualifiedName": "FulfillmentItem"
 		},
-		"5372": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-label.ts",
+		"5363": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-item.ts",
 			"qualifiedName": "__object"
 		},
-		"5373": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-label.ts",
+		"5364": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-item.ts",
 			"qualifiedName": "__object.id"
 		},
-		"5374": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-label.ts",
-			"qualifiedName": "__object.tracking_number"
+		"5365": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-item.ts",
+			"qualifiedName": "__object.title"
 		},
-		"5375": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-label.ts",
-			"qualifiedName": "__object.tracking_url"
+		"5366": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-item.ts",
+			"qualifiedName": "__object.sku"
 		},
-		"5376": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-label.ts",
-			"qualifiedName": "__object.label_url"
+		"5367": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-item.ts",
+			"qualifiedName": "__object.barcode"
 		},
-		"5377": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-label.ts",
+		"5368": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-item.ts",
+			"qualifiedName": "__object.quantity"
+		},
+		"5369": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-item.ts",
+			"qualifiedName": "__object.line_item_id"
+		},
+		"5370": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-item.ts",
+			"qualifiedName": "__object.inventory_item_id"
+		},
+		"5371": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-item.ts",
 			"qualifiedName": "__object.fulfillment"
 		},
-		"5378": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-label.ts",
+		"5372": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-item.ts",
 			"qualifiedName": "__function"
 		},
-		"5379": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-label.ts",
+		"5373": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-item.ts",
 			"qualifiedName": "__function"
 		},
-		"5380": {
+		"5374": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
 			"qualifiedName": "__object"
 		},
-		"5381": {
+		"5375": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
 			"qualifiedName": "__object.id"
 		},
-		"5382": {
+		"5376": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
 			"qualifiedName": "__object.location_id"
 		},
-		"5383": {
+		"5377": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
 			"qualifiedName": "__object.packed_at"
 		},
-		"5384": {
+		"5378": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
 			"qualifiedName": "__object.shipped_at"
 		},
-		"5385": {
+		"5379": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
 			"qualifiedName": "__object.marked_shipped_by"
 		},
-		"5386": {
+		"5380": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
 			"qualifiedName": "__object.created_by"
 		},
-		"5387": {
+		"5381": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
 			"qualifiedName": "__object.delivered_at"
 		},
-		"5388": {
+		"5382": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
 			"qualifiedName": "__object.canceled_at"
 		},
-		"5389": {
+		"5383": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
 			"qualifiedName": "__object.data"
 		},
-		"5390": {
+		"5384": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
 			"qualifiedName": "__object.requires_shipping"
 		},
-		"5391": {
+		"5385": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
 			"qualifiedName": "__object.items"
+		},
+		"5386": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__function"
+		},
+		"5387": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__function"
+		},
+		"5388": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__object.labels"
+		},
+		"5389": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__function"
+		},
+		"5390": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__function"
+		},
+		"5391": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__object.provider"
 		},
 		"5392": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
@@ -4210,7 +4066,7 @@
 		},
 		"5394": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__object.labels"
+			"qualifiedName": "__function"
 		},
 		"5395": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
@@ -4218,11 +4074,11 @@
 		},
 		"5396": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__function"
+			"qualifiedName": "__object.shipping_option"
 		},
 		"5397": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__object.provider"
+			"qualifiedName": "__function"
 		},
 		"5398": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
@@ -4238,11 +4094,11 @@
 		},
 		"5401": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__function"
+			"qualifiedName": "__object.delivery_address"
 		},
 		"5402": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__object.shipping_option"
+			"qualifiedName": "__function"
 		},
 		"5403": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
@@ -4258,807 +4114,807 @@
 		},
 		"5406": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__function"
+			"qualifiedName": "__object.metadata"
 		},
 		"5407": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-label.ts",
+			"qualifiedName": "FulfillmentLabel"
+		},
+		"5408": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-label.ts",
+			"qualifiedName": "__object"
+		},
+		"5409": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-label.ts",
+			"qualifiedName": "__object.id"
+		},
+		"5410": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-label.ts",
+			"qualifiedName": "__object.tracking_number"
+		},
+		"5411": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-label.ts",
+			"qualifiedName": "__object.tracking_url"
+		},
+		"5412": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-label.ts",
+			"qualifiedName": "__object.label_url"
+		},
+		"5413": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-label.ts",
+			"qualifiedName": "__object.fulfillment"
+		},
+		"5414": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-label.ts",
+			"qualifiedName": "__function"
+		},
+		"5415": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-label.ts",
+			"qualifiedName": "__function"
+		},
+		"5416": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__object"
+		},
+		"5417": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__object.id"
+		},
+		"5418": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__object.location_id"
+		},
+		"5419": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__object.packed_at"
+		},
+		"5420": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__object.shipped_at"
+		},
+		"5421": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__object.marked_shipped_by"
+		},
+		"5422": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__object.created_by"
+		},
+		"5423": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__object.delivered_at"
+		},
+		"5424": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__object.canceled_at"
+		},
+		"5425": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__object.data"
+		},
+		"5426": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__object.requires_shipping"
+		},
+		"5427": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__object.items"
+		},
+		"5428": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__function"
+		},
+		"5429": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__function"
+		},
+		"5430": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__object.labels"
+		},
+		"5431": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__function"
+		},
+		"5432": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__function"
+		},
+		"5433": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__object.provider"
+		},
+		"5434": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__function"
+		},
+		"5435": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__function"
+		},
+		"5436": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__function"
+		},
+		"5437": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__function"
+		},
+		"5438": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__object.shipping_option"
+		},
+		"5439": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__function"
+		},
+		"5440": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__function"
+		},
+		"5441": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__function"
+		},
+		"5442": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__function"
+		},
+		"5443": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
 			"qualifiedName": "__object.delivery_address"
 		},
-		"5408": {
+		"5444": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
 			"qualifiedName": "__function"
 		},
-		"5409": {
+		"5445": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
 			"qualifiedName": "__function"
 		},
-		"5410": {
+		"5446": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
 			"qualifiedName": "__function"
 		},
-		"5411": {
+		"5447": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
 			"qualifiedName": "__function"
 		},
-		"5412": {
+		"5448": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
 			"qualifiedName": "__object.metadata"
 		},
-		"5413": {
+		"5449": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-provider.ts",
 			"qualifiedName": "FulfillmentProvider"
 		},
-		"5414": {
+		"5450": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-provider.ts",
 			"qualifiedName": "__object"
 		},
-		"5415": {
+		"5451": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-provider.ts",
 			"qualifiedName": "__object.id"
 		},
-		"5416": {
+		"5452": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-provider.ts",
 			"qualifiedName": "__object.is_enabled"
 		},
-		"5417": {
+		"5453": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-set.ts",
 			"qualifiedName": "FulfillmentSet"
 		},
-		"5418": {
+		"5454": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-set.ts",
 			"qualifiedName": "__object"
 		},
-		"5419": {
+		"5455": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-set.ts",
 			"qualifiedName": "__object.id"
 		},
-		"5420": {
+		"5456": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-set.ts",
 			"qualifiedName": "__object.name"
 		},
-		"5421": {
+		"5457": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-set.ts",
 			"qualifiedName": "__object.type"
 		},
-		"5422": {
+		"5458": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-set.ts",
 			"qualifiedName": "__object.service_zones"
 		},
-		"5423": {
+		"5459": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-set.ts",
 			"qualifiedName": "__function"
 		},
-		"5424": {
+		"5460": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-set.ts",
 			"qualifiedName": "__function"
 		},
-		"5425": {
+		"5461": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-set.ts",
 			"qualifiedName": "__object.metadata"
 		},
-		"5426": {
+		"5462": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/geo-zone.ts",
 			"qualifiedName": "GeoZone"
 		},
-		"5427": {
+		"5463": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/geo-zone.ts",
 			"qualifiedName": "GeoZoneSchema"
 		},
-		"5428": {
+		"5464": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/geo-zone.ts",
 			"qualifiedName": "__type"
 		},
-		"5429": {
+		"5465": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/geo-zone.ts",
 			"qualifiedName": "__type.id"
 		},
-		"5430": {
+		"5466": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/geo-zone.ts",
 			"qualifiedName": "__type.type"
 		},
-		"5431": {
+		"5467": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/geo-zone.ts",
 			"qualifiedName": "__type.country_code"
 		},
-		"5432": {
+		"5468": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/geo-zone.ts",
 			"qualifiedName": "__type.province_code"
 		},
-		"5433": {
+		"5469": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/geo-zone.ts",
 			"qualifiedName": "__type.city"
 		},
-		"5434": {
+		"5470": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/geo-zone.ts",
 			"qualifiedName": "__type.postal_expression"
 		},
-		"5435": {
+		"5471": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/geo-zone.ts",
 			"qualifiedName": "__type.service_zone"
 		},
-		"5436": {
+		"5472": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/geo-zone.ts",
 			"qualifiedName": "__type"
 		},
-		"5437": {
+		"5473": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/geo-zone.ts",
 			"qualifiedName": "__type"
 		},
-		"5438": {
+		"5474": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/geo-zone.ts",
 			"qualifiedName": "__type.metadata"
 		},
-		"5439": {
+		"5475": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/service-zone.ts",
 			"qualifiedName": "ServiceZone"
 		},
-		"5440": {
+		"5476": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/service-zone.ts",
 			"qualifiedName": "ServiceZoneSchema"
 		},
-		"5441": {
+		"5477": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/service-zone.ts",
 			"qualifiedName": "__type"
 		},
-		"5442": {
+		"5478": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/service-zone.ts",
 			"qualifiedName": "__type.id"
 		},
-		"5443": {
+		"5479": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/service-zone.ts",
 			"qualifiedName": "__type.name"
 		},
-		"5444": {
+		"5480": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/service-zone.ts",
 			"qualifiedName": "__type.fulfillment_set"
 		},
-		"5445": {
+		"5481": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/service-zone.ts",
 			"qualifiedName": "__type"
 		},
-		"5446": {
+		"5482": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/service-zone.ts",
 			"qualifiedName": "__type"
 		},
-		"5447": {
+		"5483": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/service-zone.ts",
 			"qualifiedName": "__type.geo_zones"
 		},
-		"5448": {
+		"5484": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/service-zone.ts",
 			"qualifiedName": "__type"
 		},
-		"5449": {
+		"5485": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/service-zone.ts",
 			"qualifiedName": "__type"
 		},
-		"5450": {
+		"5486": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/service-zone.ts",
 			"qualifiedName": "__type.shipping_options"
 		},
-		"5451": {
+		"5487": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/service-zone.ts",
 			"qualifiedName": "__type"
 		},
-		"5452": {
+		"5488": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/service-zone.ts",
 			"qualifiedName": "__type"
 		},
-		"5453": {
+		"5489": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/service-zone.ts",
 			"qualifiedName": "__type.metadata"
 		},
-		"5454": {
+		"5490": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
 			"qualifiedName": "ShippingOption"
 		},
-		"5455": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__object"
-		},
-		"5456": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__object.id"
-		},
-		"5457": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__object.name"
-		},
-		"5458": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__object.price_type"
-		},
-		"5459": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__object.data"
-		},
-		"5460": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__object.metadata"
-		},
-		"5461": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__object.service_zone"
-		},
-		"5462": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__function"
-		},
-		"5463": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__function"
-		},
-		"5464": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__object.shipping_profile"
-		},
-		"5465": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__function"
-		},
-		"5466": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__function"
-		},
-		"5467": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-profile.ts",
-			"qualifiedName": "__object"
-		},
-		"5468": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-profile.ts",
-			"qualifiedName": "__object.id"
-		},
-		"5469": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-profile.ts",
-			"qualifiedName": "__object.name"
-		},
-		"5470": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-profile.ts",
-			"qualifiedName": "__object.type"
-		},
-		"5471": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-profile.ts",
-			"qualifiedName": "__object.shipping_options"
-		},
-		"5472": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-profile.ts",
-			"qualifiedName": "__function"
-		},
-		"5473": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-profile.ts",
-			"qualifiedName": "__function"
-		},
-		"5474": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-profile.ts",
-			"qualifiedName": "__object.metadata"
-		},
-		"5475": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__function"
-		},
-		"5476": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__function"
-		},
-		"5477": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-profile.ts",
-			"qualifiedName": "__object"
-		},
-		"5478": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-profile.ts",
-			"qualifiedName": "__object.id"
-		},
-		"5479": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-profile.ts",
-			"qualifiedName": "__object.name"
-		},
-		"5480": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-profile.ts",
-			"qualifiedName": "__object.type"
-		},
-		"5481": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-profile.ts",
-			"qualifiedName": "__object.shipping_options"
-		},
-		"5482": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-profile.ts",
-			"qualifiedName": "__function"
-		},
-		"5483": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-profile.ts",
-			"qualifiedName": "__function"
-		},
-		"5484": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-profile.ts",
-			"qualifiedName": "__object.metadata"
-		},
-		"5485": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__object.provider"
-		},
-		"5486": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__function"
-		},
-		"5487": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__function"
-		},
-		"5488": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-provider.ts",
-			"qualifiedName": "__object"
-		},
-		"5489": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-provider.ts",
-			"qualifiedName": "__object.id"
-		},
-		"5490": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-provider.ts",
-			"qualifiedName": "__object.is_enabled"
-		},
 		"5491": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__function"
+			"qualifiedName": "__object"
 		},
 		"5492": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__function"
-		},
-		"5493": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-provider.ts",
-			"qualifiedName": "__object"
-		},
-		"5494": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-provider.ts",
 			"qualifiedName": "__object.id"
 		},
+		"5493": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"qualifiedName": "__object.name"
+		},
+		"5494": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"qualifiedName": "__object.price_type"
+		},
 		"5495": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-provider.ts",
-			"qualifiedName": "__object.is_enabled"
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"qualifiedName": "__object.data"
 		},
 		"5496": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__object.type"
+			"qualifiedName": "__object.metadata"
 		},
 		"5497": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__function"
+			"qualifiedName": "__object.service_zone"
 		},
 		"5498": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
 			"qualifiedName": "__function"
 		},
 		"5499": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option-type.ts",
-			"qualifiedName": "__object"
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"qualifiedName": "__function"
 		},
 		"5500": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option-type.ts",
-			"qualifiedName": "__object.id"
-		},
-		"5501": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option-type.ts",
-			"qualifiedName": "__object.label"
-		},
-		"5502": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option-type.ts",
-			"qualifiedName": "__object.description"
-		},
-		"5503": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option-type.ts",
-			"qualifiedName": "__object.code"
-		},
-		"5504": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option-type.ts",
-			"qualifiedName": "__object.shipping_option"
-		},
-		"5505": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option-type.ts",
-			"qualifiedName": "__function"
-		},
-		"5506": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option-type.ts",
-			"qualifiedName": "__function"
-		},
-		"5507": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__object.rules"
-		},
-		"5508": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__function"
-		},
-		"5509": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__function"
-		},
-		"5510": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option-rule.ts",
-			"qualifiedName": "__object"
-		},
-		"5511": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option-rule.ts",
-			"qualifiedName": "__object.id"
-		},
-		"5512": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option-rule.ts",
-			"qualifiedName": "__object.attribute"
-		},
-		"5513": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option-rule.ts",
-			"qualifiedName": "__object.operator"
-		},
-		"5514": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option-rule.ts",
-			"qualifiedName": "__object.value"
-		},
-		"5515": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option-rule.ts",
-			"qualifiedName": "__object.shipping_option"
-		},
-		"5516": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option-rule.ts",
-			"qualifiedName": "__function"
-		},
-		"5517": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option-rule.ts",
-			"qualifiedName": "__function"
-		},
-		"5518": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__object.fulfillments"
-		},
-		"5519": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__function"
-		},
-		"5520": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__function"
-		},
-		"5521": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__object"
-		},
-		"5522": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__object.id"
-		},
-		"5523": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__object.location_id"
-		},
-		"5524": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__object.packed_at"
-		},
-		"5525": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__object.shipped_at"
-		},
-		"5526": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__object.marked_shipped_by"
-		},
-		"5527": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__object.created_by"
-		},
-		"5528": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__object.delivered_at"
-		},
-		"5529": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__object.canceled_at"
-		},
-		"5530": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__object.data"
-		},
-		"5531": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__object.requires_shipping"
-		},
-		"5532": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__object.items"
-		},
-		"5533": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__function"
-		},
-		"5534": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__function"
-		},
-		"5535": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__object.labels"
-		},
-		"5536": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__function"
-		},
-		"5537": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__function"
-		},
-		"5538": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__object.provider"
-		},
-		"5539": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__function"
-		},
-		"5540": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__function"
-		},
-		"5541": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__function"
-		},
-		"5542": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__function"
-		},
-		"5543": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__object.shipping_option"
-		},
-		"5544": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__function"
-		},
-		"5545": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__function"
-		},
-		"5546": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__function"
-		},
-		"5547": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__function"
-		},
-		"5548": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__object.delivery_address"
-		},
-		"5549": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__function"
-		},
-		"5550": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__function"
-		},
-		"5551": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__function"
-		},
-		"5552": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__function"
-		},
-		"5553": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
-			"qualifiedName": "__object.metadata"
-		},
-		"5554": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option-rule.ts",
-			"qualifiedName": "ShippingOptionRule"
-		},
-		"5555": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option-rule.ts",
-			"qualifiedName": "__object"
-		},
-		"5556": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option-rule.ts",
-			"qualifiedName": "__object.id"
-		},
-		"5557": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option-rule.ts",
-			"qualifiedName": "__object.attribute"
-		},
-		"5558": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option-rule.ts",
-			"qualifiedName": "__object.operator"
-		},
-		"5559": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option-rule.ts",
-			"qualifiedName": "__object.value"
-		},
-		"5560": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option-rule.ts",
-			"qualifiedName": "__object.shipping_option"
-		},
-		"5561": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option-rule.ts",
-			"qualifiedName": "__function"
-		},
-		"5562": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option-rule.ts",
-			"qualifiedName": "__function"
-		},
-		"5563": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__object"
-		},
-		"5564": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__object.id"
-		},
-		"5565": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__object.name"
-		},
-		"5566": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__object.price_type"
-		},
-		"5567": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__object.data"
-		},
-		"5568": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__object.metadata"
-		},
-		"5569": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__object.service_zone"
-		},
-		"5570": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__function"
-		},
-		"5571": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__function"
-		},
-		"5572": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
 			"qualifiedName": "__object.shipping_profile"
 		},
-		"5573": {
+		"5501": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
 			"qualifiedName": "__function"
 		},
-		"5574": {
+		"5502": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
 			"qualifiedName": "__function"
 		},
-		"5575": {
+		"5503": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-profile.ts",
+			"qualifiedName": "__object"
+		},
+		"5504": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-profile.ts",
+			"qualifiedName": "__object.id"
+		},
+		"5505": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-profile.ts",
+			"qualifiedName": "__object.name"
+		},
+		"5506": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-profile.ts",
+			"qualifiedName": "__object.type"
+		},
+		"5507": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-profile.ts",
+			"qualifiedName": "__object.shipping_options"
+		},
+		"5508": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-profile.ts",
+			"qualifiedName": "__function"
+		},
+		"5509": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-profile.ts",
+			"qualifiedName": "__function"
+		},
+		"5510": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-profile.ts",
+			"qualifiedName": "__object.metadata"
+		},
+		"5511": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
 			"qualifiedName": "__function"
 		},
-		"5576": {
+		"5512": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
 			"qualifiedName": "__function"
 		},
-		"5577": {
+		"5513": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-profile.ts",
+			"qualifiedName": "__object"
+		},
+		"5514": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-profile.ts",
+			"qualifiedName": "__object.id"
+		},
+		"5515": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-profile.ts",
+			"qualifiedName": "__object.name"
+		},
+		"5516": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-profile.ts",
+			"qualifiedName": "__object.type"
+		},
+		"5517": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-profile.ts",
+			"qualifiedName": "__object.shipping_options"
+		},
+		"5518": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-profile.ts",
+			"qualifiedName": "__function"
+		},
+		"5519": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-profile.ts",
+			"qualifiedName": "__function"
+		},
+		"5520": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-profile.ts",
+			"qualifiedName": "__object.metadata"
+		},
+		"5521": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
 			"qualifiedName": "__object.provider"
 		},
-		"5578": {
+		"5522": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
 			"qualifiedName": "__function"
 		},
-		"5579": {
+		"5523": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
 			"qualifiedName": "__function"
 		},
-		"5580": {
+		"5524": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-provider.ts",
+			"qualifiedName": "__object"
+		},
+		"5525": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-provider.ts",
+			"qualifiedName": "__object.id"
+		},
+		"5526": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-provider.ts",
+			"qualifiedName": "__object.is_enabled"
+		},
+		"5527": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
 			"qualifiedName": "__function"
 		},
-		"5581": {
+		"5528": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
 			"qualifiedName": "__function"
 		},
-		"5582": {
+		"5529": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-provider.ts",
+			"qualifiedName": "__object"
+		},
+		"5530": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-provider.ts",
+			"qualifiedName": "__object.id"
+		},
+		"5531": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment-provider.ts",
+			"qualifiedName": "__object.is_enabled"
+		},
+		"5532": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
 			"qualifiedName": "__object.type"
 		},
-		"5583": {
+		"5533": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
 			"qualifiedName": "__function"
 		},
-		"5584": {
+		"5534": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
 			"qualifiedName": "__function"
 		},
-		"5585": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__object.rules"
-		},
-		"5586": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__function"
-		},
-		"5587": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__function"
-		},
-		"5588": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__object.fulfillments"
-		},
-		"5589": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__function"
-		},
-		"5590": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__function"
-		},
-		"5591": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option-type.ts",
-			"qualifiedName": "ShippingOptionType"
-		},
-		"5592": {
+		"5535": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option-type.ts",
 			"qualifiedName": "__object"
 		},
-		"5593": {
+		"5536": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option-type.ts",
 			"qualifiedName": "__object.id"
 		},
-		"5594": {
+		"5537": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option-type.ts",
 			"qualifiedName": "__object.label"
 		},
-		"5595": {
+		"5538": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option-type.ts",
 			"qualifiedName": "__object.description"
 		},
-		"5596": {
+		"5539": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option-type.ts",
 			"qualifiedName": "__object.code"
 		},
-		"5597": {
+		"5540": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option-type.ts",
 			"qualifiedName": "__object.shipping_option"
 		},
-		"5598": {
+		"5541": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option-type.ts",
+			"qualifiedName": "__function"
+		},
+		"5542": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option-type.ts",
+			"qualifiedName": "__function"
+		},
+		"5543": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"qualifiedName": "__object.rules"
+		},
+		"5544": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"qualifiedName": "__function"
+		},
+		"5545": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"qualifiedName": "__function"
+		},
+		"5546": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option-rule.ts",
+			"qualifiedName": "__object"
+		},
+		"5547": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option-rule.ts",
+			"qualifiedName": "__object.id"
+		},
+		"5548": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option-rule.ts",
+			"qualifiedName": "__object.attribute"
+		},
+		"5549": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option-rule.ts",
+			"qualifiedName": "__object.operator"
+		},
+		"5550": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option-rule.ts",
+			"qualifiedName": "__object.value"
+		},
+		"5551": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option-rule.ts",
+			"qualifiedName": "__object.shipping_option"
+		},
+		"5552": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option-rule.ts",
+			"qualifiedName": "__function"
+		},
+		"5553": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option-rule.ts",
+			"qualifiedName": "__function"
+		},
+		"5554": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"qualifiedName": "__object.fulfillments"
+		},
+		"5555": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"qualifiedName": "__function"
+		},
+		"5556": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"qualifiedName": "__function"
+		},
+		"5557": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__object"
+		},
+		"5558": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__object.id"
+		},
+		"5559": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__object.location_id"
+		},
+		"5560": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__object.packed_at"
+		},
+		"5561": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__object.shipped_at"
+		},
+		"5562": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__object.marked_shipped_by"
+		},
+		"5563": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__object.created_by"
+		},
+		"5564": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__object.delivered_at"
+		},
+		"5565": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__object.canceled_at"
+		},
+		"5566": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__object.data"
+		},
+		"5567": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__object.requires_shipping"
+		},
+		"5568": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__object.items"
+		},
+		"5569": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__function"
+		},
+		"5570": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__function"
+		},
+		"5571": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__object.labels"
+		},
+		"5572": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__function"
+		},
+		"5573": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__function"
+		},
+		"5574": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__object.provider"
+		},
+		"5575": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__function"
+		},
+		"5576": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__function"
+		},
+		"5577": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__function"
+		},
+		"5578": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__function"
+		},
+		"5579": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__object.shipping_option"
+		},
+		"5580": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__function"
+		},
+		"5581": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__function"
+		},
+		"5582": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__function"
+		},
+		"5583": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__function"
+		},
+		"5584": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__object.delivery_address"
+		},
+		"5585": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__function"
+		},
+		"5586": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__function"
+		},
+		"5587": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__function"
+		},
+		"5588": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__function"
+		},
+		"5589": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/fulfillment.ts",
+			"qualifiedName": "__object.metadata"
+		},
+		"5590": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option-rule.ts",
+			"qualifiedName": "ShippingOptionRule"
+		},
+		"5591": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option-rule.ts",
+			"qualifiedName": "__object"
+		},
+		"5592": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option-rule.ts",
+			"qualifiedName": "__object.id"
+		},
+		"5593": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option-rule.ts",
+			"qualifiedName": "__object.attribute"
+		},
+		"5594": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option-rule.ts",
+			"qualifiedName": "__object.operator"
+		},
+		"5595": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option-rule.ts",
+			"qualifiedName": "__object.value"
+		},
+		"5596": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option-rule.ts",
+			"qualifiedName": "__object.shipping_option"
+		},
+		"5597": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option-rule.ts",
+			"qualifiedName": "__function"
+		},
+		"5598": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option-rule.ts",
 			"qualifiedName": "__function"
 		},
 		"5599": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option-type.ts",
-			"qualifiedName": "__function"
-		},
-		"5600": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
 			"qualifiedName": "__object"
 		},
-		"5601": {
+		"5600": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
 			"qualifiedName": "__object.id"
 		},
-		"5602": {
+		"5601": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
 			"qualifiedName": "__object.name"
 		},
-		"5603": {
+		"5602": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
 			"qualifiedName": "__object.price_type"
 		},
-		"5604": {
+		"5603": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
 			"qualifiedName": "__object.data"
 		},
-		"5605": {
+		"5604": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
 			"qualifiedName": "__object.metadata"
 		},
-		"5606": {
+		"5605": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
 			"qualifiedName": "__object.service_zone"
+		},
+		"5606": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"qualifiedName": "__function"
 		},
 		"5607": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
@@ -5066,11 +4922,11 @@
 		},
 		"5608": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__function"
+			"qualifiedName": "__object.shipping_profile"
 		},
 		"5609": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__object.shipping_profile"
+			"qualifiedName": "__function"
 		},
 		"5610": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
@@ -5086,11 +4942,11 @@
 		},
 		"5613": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__function"
+			"qualifiedName": "__object.provider"
 		},
 		"5614": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__object.provider"
+			"qualifiedName": "__function"
 		},
 		"5615": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
@@ -5106,11 +4962,11 @@
 		},
 		"5618": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__function"
+			"qualifiedName": "__object.type"
 		},
 		"5619": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__object.type"
+			"qualifiedName": "__function"
 		},
 		"5620": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
@@ -5118,11 +4974,11 @@
 		},
 		"5621": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__function"
+			"qualifiedName": "__object.rules"
 		},
 		"5622": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__object.rules"
+			"qualifiedName": "__function"
 		},
 		"5623": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
@@ -5130,50 +4986,50 @@
 		},
 		"5624": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__function"
+			"qualifiedName": "__object.fulfillments"
 		},
 		"5625": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__object.fulfillments"
+			"qualifiedName": "__function"
 		},
 		"5626": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
 			"qualifiedName": "__function"
 		},
 		"5627": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option-type.ts",
+			"qualifiedName": "ShippingOptionType"
 		},
 		"5628": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-profile.ts",
-			"qualifiedName": "ShippingProfile"
-		},
-		"5629": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-profile.ts",
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option-type.ts",
 			"qualifiedName": "__object"
 		},
-		"5630": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-profile.ts",
+		"5629": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option-type.ts",
 			"qualifiedName": "__object.id"
 		},
+		"5630": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option-type.ts",
+			"qualifiedName": "__object.label"
+		},
 		"5631": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-profile.ts",
-			"qualifiedName": "__object.name"
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option-type.ts",
+			"qualifiedName": "__object.description"
 		},
 		"5632": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-profile.ts",
-			"qualifiedName": "__object.type"
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option-type.ts",
+			"qualifiedName": "__object.code"
 		},
 		"5633": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-profile.ts",
-			"qualifiedName": "__object.shipping_options"
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option-type.ts",
+			"qualifiedName": "__object.shipping_option"
 		},
 		"5634": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-profile.ts",
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option-type.ts",
 			"qualifiedName": "__function"
 		},
 		"5635": {
-			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-profile.ts",
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option-type.ts",
 			"qualifiedName": "__function"
 		},
 		"5636": {
@@ -5290,6 +5146,150 @@
 		},
 		"5664": {
 			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-profile.ts",
+			"qualifiedName": "ShippingProfile"
+		},
+		"5665": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-profile.ts",
+			"qualifiedName": "__object"
+		},
+		"5666": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-profile.ts",
+			"qualifiedName": "__object.id"
+		},
+		"5667": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-profile.ts",
+			"qualifiedName": "__object.name"
+		},
+		"5668": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-profile.ts",
+			"qualifiedName": "__object.type"
+		},
+		"5669": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-profile.ts",
+			"qualifiedName": "__object.shipping_options"
+		},
+		"5670": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-profile.ts",
+			"qualifiedName": "__function"
+		},
+		"5671": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-profile.ts",
+			"qualifiedName": "__function"
+		},
+		"5672": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"qualifiedName": "__object"
+		},
+		"5673": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"qualifiedName": "__object.id"
+		},
+		"5674": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"qualifiedName": "__object.name"
+		},
+		"5675": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"qualifiedName": "__object.price_type"
+		},
+		"5676": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"qualifiedName": "__object.data"
+		},
+		"5677": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"qualifiedName": "__object.metadata"
+		},
+		"5678": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"qualifiedName": "__object.service_zone"
+		},
+		"5679": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"qualifiedName": "__function"
+		},
+		"5680": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"qualifiedName": "__function"
+		},
+		"5681": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"qualifiedName": "__object.shipping_profile"
+		},
+		"5682": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"qualifiedName": "__function"
+		},
+		"5683": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"qualifiedName": "__function"
+		},
+		"5684": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"qualifiedName": "__function"
+		},
+		"5685": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"qualifiedName": "__function"
+		},
+		"5686": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"qualifiedName": "__object.provider"
+		},
+		"5687": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"qualifiedName": "__function"
+		},
+		"5688": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"qualifiedName": "__function"
+		},
+		"5689": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"qualifiedName": "__function"
+		},
+		"5690": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"qualifiedName": "__function"
+		},
+		"5691": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"qualifiedName": "__object.type"
+		},
+		"5692": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"qualifiedName": "__function"
+		},
+		"5693": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"qualifiedName": "__function"
+		},
+		"5694": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"qualifiedName": "__object.rules"
+		},
+		"5695": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"qualifiedName": "__function"
+		},
+		"5696": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"qualifiedName": "__function"
+		},
+		"5697": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"qualifiedName": "__object.fulfillments"
+		},
+		"5698": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"qualifiedName": "__function"
+		},
+		"5699": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-option.ts",
+			"qualifiedName": "__function"
+		},
+		"5700": {
+			"sourceFileName": "../../../../packages/modules/fulfillment/src/models/shipping-profile.ts",
 			"qualifiedName": "__object.metadata"
 		}
 	},
@@ -5298,7 +5298,7 @@
 			"1": "../../../../packages/modules/fulfillment/src/models/index.ts"
 		},
 		"reflections": {
-			"1": 5174
+			"1": 5210
 		}
 	}
 }

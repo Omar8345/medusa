@@ -1784,7 +1784,7 @@ export default defineLink(
 Then, to set the custom column when creating or updating a link between records:
 
 ```ts
-await remoteLink.create({
+await link.create({
   [Modules.PRODUCT]: {
     product_id: "123",
   },
@@ -1819,7 +1819,7 @@ Learn more in [this documentation](!docs!/learn/fundamentals/module-links/custom
 
 ### Create Link Between Records
 
-To create a link between two records using remote link:
+To create a link between two records using Link:
 
 ```ts
 import { Modules } from "@medusajs/framework/utils"
@@ -1827,7 +1827,7 @@ import { HELLO_MODULE } from "../../modules/hello"
 
 // ...
 
-await remoteLink.create({
+await link.create({
   [Modules.PRODUCT]: {
     product_id: "prod_123",
   },
@@ -1837,11 +1837,11 @@ await remoteLink.create({
 })
 ```
 
-Learn more in [this documentation](!docs!/learn/fundamentals/module-links/remote-link#create-link).
+Learn more in [this documentation](!docs!/learn/fundamentals/module-links/link#create-link).
 
 ### Dismiss Link Between Records
 
-To dismiss links between records using remote link:
+To dismiss links between records using Link:
 
 ```ts
 import { Modules } from "@medusajs/framework/utils"
@@ -1849,7 +1849,7 @@ import { HELLO_MODULE } from "../../modules/hello"
 
 // ...
 
-await remoteLink.dismiss({
+await link.dismiss({
   [Modules.PRODUCT]: {
     product_id: "prod_123",
   },
@@ -1859,7 +1859,7 @@ await remoteLink.dismiss({
 })
 ```
 
-Learn more in [this documentation](!docs!/learn/fundamentals/module-links/remote-link#dismiss-link).
+Learn more in [this documentation](!docs!/learn/fundamentals/module-links/link#dismiss-link).
 
 ### Cascade Delete Linked Records
 
@@ -1872,14 +1872,14 @@ import { Modules } from "@medusajs/framework/utils"
 
 await productModuleService.deleteVariants([variant.id])
 
-await remoteLink.delete({
+await link.delete({
   [Modules.PRODUCT]: {
     product_id: "prod_123",
   },
 })
 ```
 
-Learn more in [this documentation](!docs!/learn/fundamentals/module-links/remote-link#cascade-delete-linked-records).
+Learn more in [this documentation](!docs!/learn/fundamentals/module-links/link#cascade-delete-linked-records).
 
 ### Restore Linked Records
 
@@ -1892,14 +1892,14 @@ import { Modules } from "@medusajs/framework/utils"
 
 await productModuleService.restoreProducts(["prod_123"])
 
-await remoteLink.restore({
+await link.restore({
   [Modules.PRODUCT]: {
     product_id: "prod_123",
   },
 })
 ```
 
-Learn more in [this documentation](!docs!/learn/fundamentals/module-links/remote-link#restore-linked-records).
+Learn more in [this documentation](!docs!/learn/fundamentals/module-links/link#restore-linked-records).
 
 ---
 
@@ -3703,13 +3703,13 @@ const paymentCollection =
     amount: 5000,
   })
 
-// resolve the remote link
-const remoteLink = container.resolve(
-  ContainerRegistrationKeys
+// resolve Link
+const link = container.resolve(
+  ContainerRegistrationKeys.LINK
 )
 
 // create a link between the cart and payment collection
-remoteLink.create({
+link.create({
   [Modules.CART]: {
     cart_id: "cart_123",
   },

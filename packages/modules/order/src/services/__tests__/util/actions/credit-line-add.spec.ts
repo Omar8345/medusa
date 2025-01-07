@@ -51,22 +51,43 @@ describe("Action: Credit Line Add", function () {
       "credit_line_total": 0
     }
 
-    Upon adding a credit line, the order total and the pending difference will increase making it possible for the merchant
-    to request the customer for a payment for an arbitrary reason, or prepare the order balance sheet to then allow
-    the merchant to provide a refund.
+    Upon adding a credit line, the current order total will decrease with the difference_sum going in
+    the negatives making it possible for the merchant to balance the order to then enable a refund.
 
     {
       "transaction_total": 0,
       "original_order_total": 30,
       "current_order_total": 60,
-      "pending_difference": 60,
-      "difference_sum": 30,
+      "pending_difference": 0,
+      "difference_sum": -30,
       "paid_total": 0,
       "refunded_total": 0,
       "credit_line_total": 30
     }
   */
   it("should add credit lines", function () {
+    const changesWithoutActions = calculateOrderChange({
+      order: originalOrder,
+      actions: [],
+      options: { addActionReferenceToObject: true },
+    })
+
+    const changesWithoutActionsJSON = JSON.parse(
+      JSON.stringify(changesWithoutActions.summary)
+    )
+
+    expect(changesWithoutActionsJSON).toEqual({
+      transaction_total: 0,
+      original_order_total: 30,
+      current_order_total: 30,
+      pending_difference: 30,
+      difference_sum: 0,
+      paid_total: 0,
+      refunded_total: 0,
+      credit_line_total: 0,
+      accounting_total: 30,
+    })
+
     const actions = [
       {
         action: ChangeActionType.CREDIT_LINE_ADD,
@@ -87,12 +108,13 @@ describe("Action: Credit Line Add", function () {
     expect(sumToJSON).toEqual({
       transaction_total: 0,
       original_order_total: 30,
-      current_order_total: 60,
-      pending_difference: 60,
-      difference_sum: 30,
+      current_order_total: 0,
+      pending_difference: 0,
+      difference_sum: 0,
       paid_total: 0,
       refunded_total: 0,
       credit_line_total: 30,
+      accounting_total: 0,
     })
 
     originalOrder.credit_lines.push({
@@ -123,12 +145,13 @@ describe("Action: Credit Line Add", function () {
     expect(sumToJSONSecond).toEqual({
       transaction_total: 0,
       original_order_total: 30,
-      current_order_total: 70,
-      pending_difference: 70,
-      difference_sum: 30,
+      current_order_total: -10,
+      pending_difference: -10,
+      difference_sum: 0,
       paid_total: 0,
       refunded_total: 0,
       credit_line_total: 40,
+      accounting_total: -10,
     })
   })
 })

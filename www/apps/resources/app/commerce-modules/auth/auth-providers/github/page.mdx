@@ -36,30 +36,33 @@ Learn about the authentication flow in [this guide](../../authentication-route/p
 Add the module to the array of providers passed to the Auth Module:
 
 ```ts title="medusa-config.ts"
-import { Modules } from "@medusajs/framework/utils"
+import { Modules, ContainerRegistrationKeys } from "@medusajs/framework/utils"
 
 // ...
 
-const modules = {
+module.exports = defineConfig({
   // ...
-  [Modules.AUTH]: {
-    resolve: "@medusajs/medusa/auth",
-    options: {
-      providers: [
-        // other providers...
-        {
-          resolve: "@medusajs/medusa/auth-github",
-          id: "github",
-          options: {
-            clientId: process.env.GITHUB_CLIENT_ID,
-            clientSecret: process.env.GITHUB_CLIENT_SECRET,
-            callbackUrl: process.env.GITHUB_CALLBACK_URL,
+  modules: [
+    {
+      resolve: "@medusajs/medusa/auth",
+      dependencies: [Modules.CACHE, ContainerRegistrationKeys.LOGGER],
+      options: {
+        providers: [
+          // other providers...
+          {
+            resolve: "@medusajs/medusa/auth-github",
+            id: "github",
+            options: {
+              clientId: process.env.GITHUB_CLIENT_ID,
+              clientSecret: process.env.GITHUB_CLIENT_SECRET,
+              callbackUrl: process.env.GITHUB_CALLBACK_URL,
+            },
           },
-        },
-      ],
-    },
-  },
-}
+        ],
+      },
+    }
+  ],
+})
 ```
 
 ### Environment Variables
@@ -138,6 +141,14 @@ GITHUB_CALLBACK_URL=<YOUR_GITHUB_CALLBACK_URL>
     </Table.Row>
   </Table.Body>
 </Table>
+
+---
+
+## Override Callback URL During Authentication
+
+In many cases, you may have different callback URL for actor types. For example, you may redirect admin users to a different URL than customers after authentication.
+
+The [Authenticate or Login API Route](../../authentication-route/page.mdx#login-route) can accept a `callback_url` body parameter to override the provider's `callbackUrl` option. Learn more in [this documentation](../../authentication-route/page.mdx#login-route).
 
 ---
 

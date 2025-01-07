@@ -20,7 +20,7 @@ export const GET = async (
   const workflow = getOrderDetailWorkflow(req.scope)
   const { result } = await workflow.run({
     input: {
-      fields: req.remoteQueryConfig.fields,
+      fields: req.queryConfig.fields,
       order_id: req.params.id,
       version: req.validatedQuery.version as number,
     },
@@ -46,7 +46,7 @@ export const POST = async (
   const result = await query.graph({
     entity: "order",
     filters: { id: req.params.id },
-    fields: req.remoteQueryConfig.fields,
+    fields: req.queryConfig.fields,
   })
 
   res.status(200).json({ order: result.data[0] as AdminOrder })

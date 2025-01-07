@@ -30,12 +30,12 @@ A Medusa application is made up of a Node.js server and an admin dashboard. You 
 To create a Medusa application, use the `create-medusa-app` command:
 
 ```bash
-npx create-medusa-app@latest
+npx create-medusa-app@latest my-medusa-store
 ```
 
-When you run the command, you'll be asked for the project's name and whether you want to install the Next.js storefront.
+Where `my-medusa-store` is the name of the project's directory and PostgreSQL database created for the project. When you run the command, you'll be asked whether you want to install the Next.js storefront.
 
-After answering the prompts, the command installs the Medusa application in a directory with your project name, and prepares a PostgreSQL database that the application connects to.
+After answering the prompts, the command installs the Medusa application in a directory with your project name, and sets up a PostgreSQL database that the application connects to.
 
 If you chose to install the storefront with the Medusa application, the storefront is installed in a separate directory named `{project-name}-storefront`.
 

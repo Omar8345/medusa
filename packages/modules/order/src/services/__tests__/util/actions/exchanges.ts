@@ -123,6 +123,7 @@ describe("Order Exchange - Actions", function () {
       paid_total: 0,
       refunded_total: 0,
       credit_line_total: 0,
+      accounting_total: 312.5,
     })
 
     const toJson = JSON.parse(JSON.stringify(changes.order.items))

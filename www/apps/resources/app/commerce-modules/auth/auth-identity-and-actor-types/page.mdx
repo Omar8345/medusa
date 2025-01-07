@@ -8,9 +8,7 @@ In this document, you’ll learn about concepts related to identity and actors i
 
 ## What is an Auth Identity?
 
-The [AuthIdentity data model](/references/auth/models/AuthIdentity) represents a user registered by an [authentication provider](../auth-providers/page.mdx).
-
-When a user is registered using an authentication provider, it creates a record of `AuthIdentity`.
+The [AuthIdentity data model](/references/auth/models/AuthIdentity) represents a user registered by an [authentication provider](../auth-providers/page.mdx). When a user is registered using an authentication provider, the provider creates a record of `AuthIdentity`.
 
 Then, when the user logs-in in the future with the same authentication provider, the associated auth identity is used to validate their credentials.
 
@@ -18,11 +16,7 @@ Then, when the user logs-in in the future with the same authentication provider,
 
 ## Actor Types
 
-An actor type is a type of user that can be authenticated.
-
-The Auth Module doesn't store or manage any user-like models, such as for customers or users.
-
-Instead, the user types are created and managed by other modules. For example, a customer is managed by the Customer Module.
+An actor type is a type of user that can be authenticated. The Auth Module doesn't store or manage any user-like models, such as for customers or users. Instead, the user types are created and managed by other modules. For example, a customer is managed by the [Customer Module](../../customer/page.mdx).
 
 Then, when an auth identity is created for the actor type, the ID of the user is stored in the `app_metadata` property of the auth identity.
 

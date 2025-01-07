@@ -1,14 +1,20 @@
 import {
   CalculatedShippingOptionPrice,
   CalculateShippingOptionPriceDTO,
+  CreateFulfillmentResult,
+  CreateShippingOptionDTO,
+  FulfillmentDTO,
+  FulfillmentItemDTO,
   FulfillmentOption,
+  FulfillmentOrderDTO,
   IFulfillmentProvider,
+  ValidateFulfillmentDataContext,
 } from "@medusajs/types"
 
 /**
  * ### constructor
  *
- * The constructor allows you to access resources from the [module's container](https://docs.medusajs.com/learn/fundamentals/modules/container) 
+ * The constructor allows you to access resources from the [module's container](https://docs.medusajs.com/learn/fundamentals/modules/container)
  * using the first parameter, and the module's options using the second parameter.
  *
  * :::note
@@ -48,7 +54,7 @@ import {
  *
  *     this.logger_ = logger
  *     this.options_ = options
- * 
+ *
  *     // TODO initialize your client
  *   }
  * }
@@ -96,7 +102,7 @@ export class AbstractFulfillmentProviderService
    * This method retrieves a list of fulfillment options that this provider supports. Admin users will then choose from these options when
    * they're creating a shipping option. The chosen fulfillment option's object is then stored within the created shipping option's `data` property.
    * The `data` property is useful to store data relevant for the third-party provider to later process the fulfillment.
-   * 
+   *
    * This method is useful if your third-party provider allows you to retrieve support options, carriers, or services from an API. You can then
    * retrieve those and return then in the method, allowing the admin user to choose from the services provided by the third-party provider.
    *
@@ -112,7 +118,7 @@ export class AbstractFulfillmentProviderService
    *   async getFulfillmentOptions(): Promise<FulfillmentOption[]> {
    *     // assuming you have a client
    *     const services = await this.client.getServices()
-   * 
+   *
    *     return services.map((service) => ({
    *       id: service.service_id,
    *       name: service.name,
@@ -161,7 +167,7 @@ export class AbstractFulfillmentProviderService
   async validateFulfillmentData(
     optionData: Record<string, unknown>,
     data: Record<string, unknown>,
-    context: Record<string, unknown>
+    context: ValidateFulfillmentDataContext
   ): Promise<any> {
     throw Error("validateFulfillmentData must be overridden by the child class")
   }
@@ -190,7 +196,7 @@ export class AbstractFulfillmentProviderService
   /**
    * This method validates whether a shippin option's price can be calculated during checkout. It's executed when the admin user creates a shipping
    * option of type `calculated`. If this method returns `false`, an error is thrown as the shipping option's price can't be calculated.
-   * 
+   *
    * You can perform the checking using the third-party provider if applicable. The `data` parameter will hold the shipping option's `data` property, which
    * includes the data of a fulfillment option returned by {@link getFulfillmentOptions}.
    *
@@ -200,26 +206,26 @@ export class AbstractFulfillmentProviderService
    * @example
    * class MyFulfillmentProviderService extends AbstractFulfillmentProviderService {
    *   // ...
-   *   async canCalculate(data: Record<string, unknown>): Promise<boolean> {
+   *   async canCalculate(data: CreateShippingOptionDTO): Promise<boolean> {
    *     // assuming you have a client
    *     return await this.client.hasRates(data.id)
    *   }
    * }
    */
-  async canCalculate(data: Record<string, unknown>): Promise<boolean> {
+  async canCalculate(data: CreateShippingOptionDTO): Promise<boolean> {
     throw Error("canCalculate must be overridden by the child class")
   }
 
   /**
    * This method calculates the price of a shipping method when it's created or its cart is refreshed.
-   * 
-   * In this method, you can send a request to your third-party provider to retrieve the prices. The first 
-   * parameters holds the `data` property of the shipping method's shipping option, which has fulfillment 
+   *
+   * In this method, you can send a request to your third-party provider to retrieve the prices. The first
+   * parameters holds the `data` property of the shipping method's shipping option, which has fulfillment
    * object data returned by {@link getFulfillmentOptions}.
-   * 
+   *
    * The second parameter holds the `data` property of the shipping method, which has data returned by {@link validateFulfillmentData}.
    * It can also hold custom data passed from the frontend during checkout.
-   * 
+   *
    * So, using both of these data, assuming you're storing in them data related to the third-party service,
    * you can retrieve the calculated price of the shipping method.
    *
@@ -281,7 +287,7 @@ export class AbstractFulfillmentProviderService
    *     items: any,
    *     order: any,
    *     fulfillment: any
-   *   ): Promise<any> {
+   *   ): Promise<CreateFulfillmentResult> {
    *     // assuming the client creates a fulfillment
    *     // in the third-party service
    *     const externalData = await this.client.create(
@@ -299,11 +305,11 @@ export class AbstractFulfillmentProviderService
    * }
    */
   async createFulfillment(
-    data: object,
-    items: object[],
-    order: object | undefined,
-    fulfillment: Record<string, unknown>
-  ): Promise<any> {
+    data: Record<string, unknown>,
+    items: Partial<Omit<FulfillmentItemDTO, "fulfillment">>[],
+    order: Partial<FulfillmentOrderDTO> | undefined,
+    fulfillment: Partial<Omit<FulfillmentDTO, "provider_id" | "data" | "items">>
+  ): Promise<CreateFulfillmentResult> {
     throw Error("createFulfillment must be overridden by the child class")
   }
 
@@ -362,12 +368,12 @@ export class AbstractFulfillmentProviderService
    * purchasing a label for the return fulfillment.
    *
    * @param fulfillment - The fulfillment's details.
-   * @returns An object whose `data` property is stored in the fulfillment's `data` property.
+   * @returns An object containing `data` which is stored in the fulfillment's `data` property and `labels` array which is used to create FulfillmentLabels.
    *
    * @example
    * class MyFulfillmentProviderService extends AbstractFulfillmentProviderService {
    *   // ...
-   *   async createReturnFulfillment(fulfillment: Record<string, unknown>): Promise<any> {
+   *   async createReturnFulfillment(fulfillment: Record<string, unknown>): Promise<CreateFulfillmentResult> {
    *     // assuming the client creates a fulfillment for a return
    *     // in the third-party service
    *     const externalData = await this.client.createReturn(
@@ -385,7 +391,7 @@ export class AbstractFulfillmentProviderService
    */
   async createReturnFulfillment(
     fulfillment: Record<string, unknown>
-  ): Promise<any> {
+  ): Promise<CreateFulfillmentResult> {
     throw Error("createReturn must be overridden by the child class")
   }
 

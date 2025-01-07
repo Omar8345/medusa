@@ -4,6 +4,7 @@ import {
   MedusaError,
   MikroOrmBase,
   PriceListStatus,
+  promiseAll,
 } from "@medusajs/framework/utils"
 
 import {
@@ -60,12 +61,38 @@ export class PricingRepository
       return []
     }
 
-    const flattenedContext = Object.entries(
-      flattenObjectToKeyValuePairs(context)
-    ).filter(
-      ([key, value]) =>
-        (isPresent(value) && !Array.isArray(value)) ||
-        (Array.isArray(value) && value.flat(1).length)
+    // We query the rule tables to get all whitelisted rule attributes
+    // This will help cleanup the query and do a db query on only necessary rule attributes.
+    const priceRuleAttributesQuery = knex("price_rule")
+      .distinct("attribute")
+      .pluck("attribute")
+
+    const priceListRuleAttributesQuery = knex("price_list_rule")
+      .distinct("attribute")
+      .pluck("attribute")
+
+    const [ruleAttributes, priceListRuleAttributes] = await promiseAll([
+      priceRuleAttributesQuery,
+      priceListRuleAttributesQuery,
+    ])
+
+    const allowedRuleAttributes = [
+      ...ruleAttributes,
+      ...priceListRuleAttributes,
+    ]
+
+    const flattenedKeyValuePairs = flattenObjectToKeyValuePairs(context)
+
+    const flattenedContext = Object.entries(flattenedKeyValuePairs).filter(
+      ([key, value]) => {
+        const isValuePresent = !Array.isArray(value) && isPresent(value)
+        const isArrayPresent = Array.isArray(value) && value.flat(1).length
+
+        return (
+          allowedRuleAttributes.includes(key) &&
+          (isValuePresent || isArrayPresent)
+        )
+      }
     )
 
     // Gets all the prices where rules match for each of the contexts

@@ -1,3 +1,4 @@
+import { TransactionState } from "@medusajs/utils"
 import { createStep } from "../create-step"
 import { createWorkflow } from "../create-workflow"
 import { StepResponse } from "../helpers"
@@ -40,6 +41,44 @@ describe("Workflow composer", () => {
       const { result } = await workflow.run({ input: {} })
 
       expect(result).toEqual({ result: "hi from outside" })
+    })
+
+    it("should cancel transaction on failed sub workflow call", async function () {
+      const step1 = createStep("step1", async (_, context) => {
+        return new StepResponse("step1")
+      })
+
+      const step2 = createStep("step2", async (input: string, context) => {
+        return new StepResponse({ result: input })
+      })
+      const step3 = createStep("step3", async (input: string, context) => {
+        throw new Error("I have failed")
+      })
+
+      const subWorkflow = createWorkflow(
+        getNewWorkflowId(),
+        function (input: WorkflowData<string>) {
+          step1()
+          return new WorkflowResponse(step2(input))
+        }
+      )
+
+      const workflow = createWorkflow(getNewWorkflowId(), function () {
+        const subWorkflowRes = subWorkflow.runAsStep({
+          input: "hi from outside",
+        })
+        return new WorkflowResponse(step3(subWorkflowRes.result))
+      })
+
+      const { errors, transaction } = await workflow.run({
+        input: {},
+        throwOnError: false,
+      })
+
+      expect(errors).toHaveLength(1)
+      expect(errors[0].error.message).toEqual("I have failed")
+
+      expect(transaction.getState()).toEqual(TransactionState.REVERTED)
     })
 
     it("should skip step if condition is false", async function () {

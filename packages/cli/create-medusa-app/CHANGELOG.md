@@ -1,5 +1,18 @@
 # Change Log
 
+## 2.2.0
+
+### Patch Changes
+
+- [#10853](https://github.com/medusajs/medusa/pull/10853) [`632600ee11426448076fe2e3f5156998f24b6907`](https://github.com/medusajs/medusa/commit/632600ee11426448076fe2e3f5156998f24b6907) Thanks [@shahednasser](https://github.com/shahednasser)! - fix(create-medusa-app): add default storefront url to auth CORS
+
+- [#10755](https://github.com/medusajs/medusa/pull/10755) [`1e6d56bc18b55d0b8e526116b37123c2079fec09`](https://github.com/medusajs/medusa/commit/1e6d56bc18b55d0b8e526116b37123c2079fec09) Thanks [@shahednasser](https://github.com/shahednasser)! - feat(create-medusa-app): allow passing project name on command line
+
+- [#10812](https://github.com/medusajs/medusa/pull/10812) [`152a94e1e1f245e0dc5594174db41d37e68789d6`](https://github.com/medusajs/medusa/commit/152a94e1e1f245e0dc5594174db41d37e68789d6) Thanks [@shahednasser](https://github.com/shahednasser)! - feat(create-medusa-app): improve by adding depth to clone commands
+
+- Updated dependencies []:
+  - @medusajs/telemetry@2.2.0
+
 ## 2.1.3
 
 ### Patch Changes

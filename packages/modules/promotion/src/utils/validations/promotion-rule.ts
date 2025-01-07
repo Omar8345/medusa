@@ -115,6 +115,10 @@ export function evaluateRuleValueCondition(
     ruleValuesToCheck = [ruleValuesToCheck]
   }
 
+  if (!ruleValuesToCheck.length) {
+    return false
+  }
+
   return ruleValuesToCheck.every((ruleValueToCheck: string) => {
     if (operator === "in" || operator === "eq") {
       return ruleValues.some((ruleValue) => ruleValue === ruleValueToCheck)

@@ -332,8 +332,8 @@ async function MedusaApp_({
     modulesConfig ??
     (
       await dynamicImport(
-        await (modulesConfigPath ??
-          process.cwd() + (modulesConfigFileName ?? "/modules-config"))
+        modulesConfigPath ??
+          process.cwd() + (modulesConfigFileName ?? "/modules-config")
       )
     ).default
 

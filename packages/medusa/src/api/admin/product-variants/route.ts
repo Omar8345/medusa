@@ -11,12 +11,12 @@ export const GET = async (
   req: AuthenticatedMedusaRequest<HttpTypes.AdminProductVariantParams>,
   res: MedusaResponse<HttpTypes.AdminProductVariantListResponse>
 ) => {
-  const withInventoryQuantity = req.remoteQueryConfig.fields.some((field) =>
+  const withInventoryQuantity = req.queryConfig.fields.some((field) =>
     field.includes("inventory_quantity")
   )
 
   if (withInventoryQuantity) {
-    req.remoteQueryConfig.fields = req.remoteQueryConfig.fields.filter(
+    req.queryConfig.fields = req.queryConfig.fields.filter(
       (field) => !field.includes("inventory_quantity")
     )
   }
@@ -25,8 +25,8 @@ export const GET = async (
     "variant",
     { ...req.filterableFields },
     req.scope,
-    remapKeysForVariant(req.remoteQueryConfig.fields ?? []),
-    req.remoteQueryConfig.pagination
+    remapKeysForVariant(req.queryConfig.fields ?? []),
+    req.queryConfig.pagination
   )
 
   if (withInventoryQuantity) {

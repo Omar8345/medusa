@@ -20,9 +20,9 @@ export const GET = async (
       filters: {
         ...req.filterableFields,
       },
-      ...req.remoteQueryConfig.pagination,
+      ...req.queryConfig.pagination,
     },
-    fields: req.remoteQueryConfig.fields,
+    fields: req.queryConfig.fields,
   })
 
   const { rows: return_reasons, metadata } = await remoteQuery(queryObject)
@@ -56,7 +56,7 @@ export const POST = async (
   const queryObject = remoteQueryObjectFromString({
     entryPoint: "return_reason",
     variables,
-    fields: req.remoteQueryConfig.fields,
+    fields: req.queryConfig.fields,
   })
 
   const remoteQuery = req.scope.resolve(ContainerRegistrationKeys.REMOTE_QUERY)

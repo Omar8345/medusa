@@ -45,7 +45,10 @@ import {
   CreateShippingProfileDTO,
   UpsertShippingProfileDTO,
 } from "./mutations/shipping-profile"
-import { CalculatedShippingOptionPrice } from "./provider"
+import {
+  CalculatedShippingOptionPrice,
+  ValidateFulfillmentDataContext,
+} from "./provider"
 
 /**
  * The main service interface for the Fulfillment Module.
@@ -2595,7 +2598,7 @@ export interface IFulfillmentModuleService extends IModuleService {
    * @param {string} providerId - The fulfillment provider's ID.
    * @param {Record<string, unknown>} optionData - The fulfillment option data to validate.
    * @param {Record<string, unknown>} data - The fulfillment data to validate.
-   * @param {Record<string, unknown>} context - The context to validate the fulfillment option data in.
+   * @param {ValidateFulfillmentDataContext} context - The context to validate the fulfillment option data in.
    * @returns {Promise<boolean>} Whether the fulfillment option data is valid with the specified provider.
    *
    * @example
@@ -2615,7 +2618,7 @@ export interface IFulfillmentModuleService extends IModuleService {
     providerId: string,
     optionData: Record<string, unknown>,
     data: Record<string, unknown>,
-    context: Record<string, unknown>
+    context: ValidateFulfillmentDataContext
   ): Promise<Record<string, unknown>>
 
   /**

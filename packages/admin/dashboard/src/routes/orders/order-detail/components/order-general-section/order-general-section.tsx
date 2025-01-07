@@ -1,21 +1,24 @@
 import { XCircle } from "@medusajs/icons"
+import { HttpTypes } from "@medusajs/types"
 import {
   Container,
   Copy,
   Heading,
   StatusBadge,
   Text,
+  toast,
   usePrompt,
 } from "@medusajs/ui"
 import { format } from "date-fns"
 import { useTranslation } from "react-i18next"
+import { isPresent } from "../../../../../../../../core/utils/src/common/is-present"
 import { ActionMenu } from "../../../../../components/common/action-menu"
 import { useCancelOrder } from "../../../../../hooks/api/orders"
 import {
+  getCanceledOrderStatus,
   getOrderFulfillmentStatus,
   getOrderPaymentStatus,
 } from "../../../../../lib/order-helpers"
-import { HttpTypes } from "@medusajs/types"
 
 type OrderGeneralSectionProps = {
   order: HttpTypes.AdminOrder
@@ -41,7 +44,14 @@ export const OrderGeneralSection = ({ order }: OrderGeneralSectionProps) => {
       return
     }
 
-    await cancelOrder()
+    await cancelOrder(undefined, {
+      onSuccess: () => {
+        toast.success(t("orders.orderCanceled"))
+      },
+      onError: (e) => {
+        toast.error(e.message)
+      },
+    })
   }
 
   return (
@@ -60,6 +70,7 @@ export const OrderGeneralSection = ({ order }: OrderGeneralSectionProps) => {
       </div>
       <div className="flex items-center gap-x-4">
         <div className="flex items-center gap-x-1.5">
+          <OrderBadge order={order} />
           <PaymentBadge order={order} />
           <FulfillmentBadge order={order} />
         </div>
@@ -105,6 +116,21 @@ const PaymentBadge = ({ order }: { order: HttpTypes.AdminOrder }) => {
   return (
     <StatusBadge color={color} className="text-nowrap">
       {label}
+    </StatusBadge>
+  )
+}
+
+const OrderBadge = ({ order }: { order: HttpTypes.AdminOrder }) => {
+  const { t } = useTranslation()
+  const orderStatus = getCanceledOrderStatus(t, order.status)
+
+  if (!isPresent(orderStatus)) {
+    return
+  }
+
+  return (
+    <StatusBadge color={orderStatus.color} className="text-nowrap">
+      {orderStatus.label}
     </StatusBadge>
   )
 }

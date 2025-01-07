@@ -90,11 +90,19 @@ function componentChecker({
 
     const attribute = getAttribute(node, attributeName)
 
-    if (
-      !attribute ||
-      typeof attribute.value === "string" ||
-      !attribute.value.data?.estree
-    ) {
+    if (!attribute) {
+      return
+    }
+
+    if (typeof attribute.value === "string") {
+      checkLink({
+        link: attribute.value,
+        ...rest,
+      })
+      return
+    }
+
+    if (!attribute.value.data?.estree) {
       return
     }
 

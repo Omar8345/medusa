@@ -7,6 +7,7 @@
  *   - payment_collections
  *   - items
  *   - shipping_methods
+ *   - status
  *   - currency_code
  *   - id
  *   - version
@@ -237,6 +238,10 @@
  *     type: number
  *     title: original_shipping_tax_total
  *     description: The tax total of the order's shipping excluding promotions.
+ *   status:
+ *     type: string
+ *     title: status
+ *     description: The order's status.
  * 
 */
 

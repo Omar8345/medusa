@@ -483,7 +483,7 @@ class OasKindGenerator extends FunctionKindGenerator {
     oas.parameters = this.updateParameters({
       oldParameters: oas.parameters as OpenAPIV3.ParameterObject[],
       newParameters: newPathParameters,
-      type: "path",
+      types: ["path", "header"],
     })
 
     // retrieve updated query and request schemas
@@ -498,7 +498,7 @@ class OasKindGenerator extends FunctionKindGenerator {
     oas.parameters = this.updateParameters({
       oldParameters: oas.parameters as OpenAPIV3.ParameterObject[],
       newParameters: queryParameters,
-      type: "query",
+      types: ["query"],
     })
 
     if (!oas.parameters.length) {
@@ -1913,7 +1913,7 @@ class OasKindGenerator extends FunctionKindGenerator {
   updateParameters({
     oldParameters,
     newParameters,
-    type,
+    types,
   }: {
     /**
      * The old list of parameters.
@@ -1926,13 +1926,13 @@ class OasKindGenerator extends FunctionKindGenerator {
     /**
      * The type of parameters.
      */
-    type: ParameterType
+    types: ParameterType[]
   }): OpenAPIV3.ParameterObject[] {
     if (!oldParameters) {
       return newParameters || []
     }
     const oppositeParamType = ["path", "query", "header"].filter(
-      (item) => item !== type
+      (item) => !types.includes(item as ParameterType)
     ) as ParameterType[]
     const oppositeParams: OpenAPIV3.ParameterObject[] =
       oldParameters?.filter((param) =>
@@ -1940,7 +1940,9 @@ class OasKindGenerator extends FunctionKindGenerator {
       ) || []
     // check and update/add parameters if necessary
     const existingParams: OpenAPIV3.ParameterObject[] =
-      oldParameters?.filter((param) => param.in === type) || []
+      oldParameters?.filter((param) =>
+        types.includes(param.in as ParameterType)
+      ) || []
     const paramsToRemove = new Set<string>()
 
     existingParams.forEach((parameter) => {
@@ -2405,8 +2407,8 @@ class OasKindGenerator extends FunctionKindGenerator {
     const fnText = node.getText()
 
     return {
-      shouldAddFields: fnText.includes(`req.remoteQueryConfig.fields`),
-      shouldAddPagination: fnText.includes(`req.remoteQueryConfig.pagination`),
+      shouldAddFields: fnText.includes(`req.queryConfig.fields`),
+      shouldAddPagination: fnText.includes(`req.queryConfig.pagination`),
     }
   }
 

@@ -1,4 +1,3 @@
-import mdx from "@next/mdx"
 import {
   brokenLinkCheckerPlugin,
   localLinksRehypePlugin,
@@ -6,7 +5,9 @@ import {
   typeListLinkFixerPlugin,
   workflowDiagramLinkFixerPlugin,
 } from "remark-rehype-plugins"
+
 import bundleAnalyzer from "@next/bundle-analyzer"
+import mdx from "@next/mdx"
 import mdxPluginOptions from "./mdx-options.mjs"
 import path from "node:path"
 

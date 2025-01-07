@@ -271,12 +271,18 @@ import ProductModule from "@medusajs/medusa/product"
 import { defineLink } from "@medusajs/framework/utils"
 
 export default defineLink(
-  DigitalProductModule.linkable.digitalProduct,
+  {
+    linkable: DigitalProductModule.linkable.digitalProduct,
+    deleteCascade: true
+  },
   ProductModule.linkable.productVariant
 )
+
 ```
 
 This defines a link between `DigitalProduct` and the Product Module’s `ProductVariant`. This allows product variants that customers purchase to be digital products.
+
+`deleteCascades` is enabled on the `digitalProduct` so that when a product variant is deleted, its linked digital product is also deleted.
 
 Next, create the file `src/links/digital-product-order.ts` with the following content:
 
@@ -665,7 +671,7 @@ You’ll test out the workflow in the next section.
 
 - [How to Create a Workflow](!docs!/learn/fundamentals/workflows)
 - [What is the Compensation Function](!docs!/learn/fundamentals/workflows/compensation-function)
-- [Learn more about the remote link function](!docs!/learn/fundamentals/module-links/remote-link)
+- [Learn more about Link functions](!docs!/learn/fundamentals/module-links/link)
 
 ---
 
@@ -936,7 +942,7 @@ const DigitalProductsPage = () => {
                 {digitalProduct.name}
               </Table.Cell>
               <Table.Cell>
-                <Link to={`/products/${digitalProduct.product_variant.product_id}`}>
+                <Link to={`/products/${digitalProduct.product_variant?.product_id}`}>
                   View Product
                 </Link>
               </Table.Cell>
@@ -1199,7 +1205,7 @@ return (
             onChange={(e) => changeFiles(
               index,
               {
-                file: e.target.files[0],
+                file: e.target.files?.[0],
               }
             )}
             className="mt-2"
@@ -1279,6 +1285,9 @@ const uploadMediaFiles = async (
   }
 
   mediaWithFiles.forEach((media) => {
+      if (!media.file) {
+        return
+      }
     formData.append("files", media.file)
   })
 
@@ -1319,7 +1328,11 @@ const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
       files: mainFiles,
     } = await uploadMediaFiles(MediaType.MAIN) || {}
 
-    const mediaData = []
+    const mediaData: {
+        type: MediaType
+        file_id: string
+        mime_type: string
+      }[] = []
 
     previewMedias?.forEach((media, index) => {
       mediaData.push({
@@ -1480,7 +1493,208 @@ To use this digital product in later steps (such as to create an order), you mus
 
 ---
 
-## Step 11: Create Digital Product Fulfillment Module Provider
+## Step 11: Handle Product Deletion
+
+When a product is deleted, its product variants are also deleted, meaning that their associated digital products should also be deleted.
+
+In this step, you'll build a flow that deletes the digital products associated with a deleted product's variants. Then, you'll execute this workflow whenever a product is deleted.
+
+The workflow has the following steps:
+
+- `retrieveDigitalProductsToDeleteStep`: Retrieve the digital products associated with a deleted product's variants.
+- `deleteDigitalProductsStep`: Delete the digital products.
+
+### retrieveDigitalProductsToDeleteStep
+
+The first step of the workflow receives the ID of the deleted product as an input and retrieves the digital products associated with its variants.
+
+Create the file `src/workflows/delete-product-digital-products/steps/retrieve-digital-products-to-delete.ts` with the following content:
+
+export const retrieveDigitalProductsHighlights = [
+  ["14", "productVariants", "Retrieve the product variants of the deleted product."],
+  ["17", "withDeleted", "Include deleted product variants in the result."],
+  ["20", "graph", "Retrieve the digital products associated with the product variants."],
+  ["21", "DigitalProductVariantLink.entryPoint", "Pass the link as an entry point."],
+  ["28", "digitalProductIds", "Extract the IDs of the digital products."],
+  ["30", "digitalProductIds", "Return the digital product IDs."],
+]
+
+```ts title="src/workflows/delete-product-digital-products/steps/retrieve-digital-products-to-delete.ts" highlights={retrieveDigitalProductsHighlights}
+import { createStep, StepResponse } from "@medusajs/framework/workflows-sdk"
+import DigitalProductVariantLink from "../../../links/digital-product-variant"
+
+type RetrieveDigitalProductsToDeleteStepInput = {
+  product_id: string
+}
+
+export const retrieveDigitalProductsToDeleteStep = createStep(
+  "retrieve-digital-products-to-delete",
+  async ({ product_id }: RetrieveDigitalProductsToDeleteStepInput, { container }) => {
+    const productService = container.resolve("product")
+    const query = container.resolve("query")
+
+    const productVariants = await productService.listProductVariants({
+      product_id: product_id
+    }, {
+      withDeleted: true
+    })
+
+    const { data } = await query.graph({
+      entity: DigitalProductVariantLink.entryPoint,
+      fields: ["digital_product.*"],
+      filters: {
+        product_variant_id: productVariants.map((v) => v.id)
+      }
+    })
+
+    const digitalProductIds = data.map((d) => d.digital_product.id)
+
+    return new StepResponse(digitalProductIds)
+  }
+)
+```
+
+You create a `retrieveDigitalProductsToDeleteStep` step that retrieves the product variants of the deleted product. Notice that you pass in the second object parameter of `listProductVariants` a `withDeleted` property that ensures deleted variants are included in the result.
+
+Then, you use Query to retrieve the digital products associated with the product variants. Links created with `defineLink` have an `entryPoint` property that you can use with Query to retrieve data from the pivot table of the link between the data models.
+
+Finally, you return the IDs of the digital products to delete.
+
+## deleteDigitalProductsSteps
+
+Next, you'll implement the step that deletes those digital products.
+
+Create the file `src/workflows/delete-product-digital-products/steps/delete-digital-products.ts` with the following content:
+
+export const deleteDigitalProductsHighlights = [
+  ["15", "softDeleteDigitalProducts", "Soft delete the digital products."],
+  ["27", "restoreDigitalProducts", "Restore the digital products if an error occurs."]
+]
+
+```ts title="src/workflows/delete-product-digital-products/steps/delete-digital-products.ts"
+import { createStep, StepResponse } from "@medusajs/framework/workflows-sdk"
+import { DIGITAL_PRODUCT_MODULE } from "../../../modules/digital-product"
+import DigitalProductModuleService from "../../../modules/digital-product/service"
+
+type DeleteDigitalProductsStep = {
+  ids: string[]
+}
+
+export const deleteDigitalProductsSteps = createStep(
+  "delete-digital-products",
+  async ({ ids }: DeleteDigitalProductsStep, { container }) => {
+    const digitalProductService: DigitalProductModuleService = 
+      container.resolve(DIGITAL_PRODUCT_MODULE)
+
+    await digitalProductService.softDeleteDigitalProducts(ids)
+
+    return new StepResponse({}, ids)
+  },
+  async (ids, { container }) => {
+    if (!ids) {
+      return
+    }
+
+    const digitalProductService: DigitalProductModuleService = 
+      container.resolve(DIGITAL_PRODUCT_MODULE)
+
+    await digitalProductService.restoreDigitalProducts(ids)
+  }
+)
+```
+
+In the `deleteDigitalProductsSteps`, you soft delete the digital products by the ID passed as a parameter. In the compensation function, you restore the digital products if an error occurs.
+
+### Create deleteProductDigitalProductsWorkflow
+
+You can now create the workflow that executes those steps.
+
+Create the file `src/workflows/delete-product-digital-products/index.ts` with the following content:
+
+```ts title="src/workflows/delete-product-digital-products/index.ts"
+import { createWorkflow, WorkflowResponse } from "@medusajs/framework/workflows-sdk";
+import { deleteDigitalProductsSteps } from "./steps/delete-digital-products";
+import { retrieveDigitalProductsToDeleteStep } from "./steps/retrieve-digital-products-to-delete";
+
+type DeleteProductDigitalProductsInput = {
+  id: string
+}
+
+export const deleteProductDigitalProductsWorkflow = createWorkflow(
+  "delete-product-digital-products",
+  (input: DeleteProductDigitalProductsInput) => {
+    const digitalProductsToDelete = retrieveDigitalProductsToDeleteStep({
+      product_id: input.id
+    })
+
+    deleteDigitalProductsSteps({
+      ids: digitalProductsToDelete
+    })
+
+    return new WorkflowResponse({})
+  }
+)
+```
+
+The `deleteProductDigitalProductsWorkflow` receives the ID of the deleted product as an input. In the workflow, you:
+
+- Run the `retrieveDigitalProductsToDeleteStep` to retrieve the digital products associated with the deleted product.
+- Run the `deleteDigitalProductsSteps` to delete the digital products.
+
+### Execute Workflow on Product Deletion
+
+When a product is deleted, Medusa emits a `product.deleted` event. You can handle this event with a subscriber. A subscriber is an asynchronous function that, when an event is emitted, is executed. You can implement in subscribers features that aren't essential to the original flow that emitted the event.
+
+<Note>
+
+Learn more about subscribers in [this documentation](!docs!/learn/fundamentals/events-and-subscribers).
+
+</Note>
+
+So, you'll listen to the `product.deleted` event in a subscriber, and execute the workflow whenever the product is deleted.
+
+Create the file `src/subscribers/handle-product-deleted.ts` with the following content:
+
+```ts title="src/subscribers/handle-product-deleted.ts"
+import { SubscriberArgs, SubscriberConfig } from "@medusajs/framework";
+import { 
+  deleteProductDigitalProductsWorkflow
+} from "../workflows/delete-product-digital-products";
+
+export default async function handleProductDeleted({
+  event: { data },
+  container,
+}: SubscriberArgs<{ id: string }>) {
+  await deleteProductDigitalProductsWorkflow(container)
+    .run({
+      input: data,
+    })
+}
+
+export const config: SubscriberConfig = {
+  event: "product.deleted",
+}
+```
+
+A subscriber file must export:
+
+- An asynchronous function that's executed whenever the specified event is emitted.
+- A configuration object that specifies the event the subscriber listens to, which is in this case `product.deleted`.
+
+The subscriber function receives as a parameter an object having the following properties:
+
+- `event`: An object containing the data payload of the emitted event.
+- `container`: Instance of the [Medusa Container](!docs!/learn/fundamentals/medusa-container).
+
+In the subscriber, you execute the workflow by invoking it, passing the Medusa container as an input, then executing its `run` method. You pass the product's ID, which is received through the event's data payload, as an input to the workflow.
+
+### Test it Out
+
+To test this out, start the Medusa application and, from the Medusa Admin dashboard, delete a product that has digital products. You can confirm that the digital product was deleted by checking the Digital Products page.
+
+---
+
+## Step 12: Create Digital Product Fulfillment Module Provider
 
 In this step, you'll create a fulfillment module provider for digital products. It doesn't have any real fulfillment functionality as digital products aren't physically fulfilled.
 
@@ -1597,7 +1811,7 @@ This is necessary to use the fulfillment provider's shipping option during check
 
 ---
 
-## Step 12: Customize Cart Completion
+## Step 13: Customize Cart Completion
 
 In this step, you’ll customize the cart completion flow to not only create a Medusa order, but also create a digital product order.
 
@@ -1880,7 +2094,7 @@ In a later step, you’ll add an API route to allow customers to view and downlo
 
 ---
 
-## Step 13: Fulfill Digital Order Workflow
+## Step 14: Fulfill Digital Order Workflow
 
 In this step, you'll create a workflow that fulfills a digital order by sending a notification to the customer. Later, you'll execute this workflow in a subscriber that listens to the `digital_product_order.created` event.
 
@@ -2091,9 +2305,7 @@ module.exports = defineConfig({
 
 ---
 
-## Step 14: Handle the Digital Product Order Event
-
-A subscriber is an asynchronous function that, when an event is emitted, is executed. You can implement in subscribers features that aren't essential to the original flow that emitted the event.
+## Step 15: Handle the Digital Product Order Event
 
 In this step, you'll create a subscriber that listens to the `digital_product_order.created` event and executes the workflow from the above step.
 
@@ -2134,7 +2346,7 @@ To test out the subscriber, place an order with digital products. This triggers 
 
 ---
 
-## Step 15: Create Store API Routes
+## Step 16: Create Store API Routes
 
 In this step, you’ll create three store API routes:
 
@@ -2363,7 +2575,7 @@ You’ll test out these API routes in the next step.
 
 ---
 
-## Step 16: Customize Next.js Starter
+## Step 17: Customize Next.js Starter
 
 In this section, you’ll customize the [Next.js Starter storefront](../../../../nextjs-starter/page.mdx) to:
 
@@ -2378,7 +2590,10 @@ If you haven't installed the Next.js Starter storefront in the first step, refer
 In `src/types/global.ts`, add the following types that you’ll use in your customizations:
 
 ```ts title="src/types/global.ts"
-import { BaseProductVariant } from "@medusajs/framework/types/http/product/common"
+import { 
+  // other imports...
+  StoreProductVariant
+} from "@medusajs/types"
 
 // ...
 
@@ -2393,9 +2608,14 @@ export type DigitalProductMedia = {
   fileId: string
   type: "preview" | "main"
   mimeType: string
+  digitalProduct?: DigitalProduct[]
 }
 
-export type VariantWithDigitalProduct = BaseProductVariant & {
+export type DigitalProductPreview = DigitalProductMedia & {
+  url: string
+}
+
+export type VariantWithDigitalProduct = StoreProductVariant & {
   digital_product?: DigitalProduct
 }
 
@@ -2403,71 +2623,84 @@ export type VariantWithDigitalProduct = BaseProductVariant & {
 
 ### Retrieve Digital Products with Variants
 
-To retrieve the digital products details when retrieving a product and its variants, in the `src/lib/data/products.ts` file, change the `getProductsById` and `getProductByHandle` functions to pass the digital products in the `fields` property passed to the `sdk.store.product.list` method:
+To retrieve the digital products details when retrieving a product and its variants, in the `src/lib/data/products.ts` file, change the `listProducts` function to pass the digital products in the `fields` property passed to the `sdk.store.product.list` method:
 
 export const fieldHighlights = [
-  ["12"], ["27"]
+  ["24"]
 ]
 
 ```ts title="src/lib/data/products.ts" highlights={fieldHighlights}
-export const getProductsById = cache(async function ({
-  ids,
+export const listProducts = async ({
+  pageParam = 1,
+  queryParams,
+  countryCode,
   regionId,
 }: {
-  ids: string[]
-  regionId: string
-}) {
-  return sdk.store.product
-    .list(
+  pageParam?: number
+  queryParams?: HttpTypes.FindParams & HttpTypes.StoreProductParams
+  countryCode?: string
+  regionId?: string
+}): Promise<{
+  response: { products: HttpTypes.StoreProduct[]; count: number }
+  nextPage: number | null
+  queryParams?: HttpTypes.FindParams & HttpTypes.StoreProductParams
+}> => {
+  // ...
+  return sdk.client
+    .fetch<{ products: HttpTypes.StoreProduct[]; count: number }>(
+      `/store/products`,
       {
         // ...
-        fields: "*variants.calculated_price,*variants.digital_product",
+        query: {
+          // ...
+          fields: "*variants.calculated_price,+variants.inventory_quantity,+metadata,+tags,*variants.calculated_price,*variants.digital_product",
+        }
       }
-      // ...
     )
     // ...
-})
-
-export const getProductByHandle = cache(async function (
-  handle: string,
-  regionId: string
-) {
-  return sdk.store.product
-    .list(
-      {
-        // ...
-        fields: "*variants.calculated_price,*variants.digital_product",
-      }
-      // ...
-    )
-    // ...
-})
+}
 ```
 
 When a customer views a product’s details page, digital products linked to variants are also retrieved.
 
 ### Get Digital Product Preview Links
 
-To retrieve the links of a digital product’s preview media, add in `src/lib/data/products.ts` the following function:
+To retrieve the links of a digital product’s preview media, first, add the following import at the top of `src/lib/data/products.ts`:
 
 ```ts title="src/lib/data/products.ts"
-export const getDigitalProductPreview = cache(async function ({
+import { DigitalProductPreview } from "../../types/global"
+```
+
+Then, add the following function at the end of the file:
+
+```ts title="src/lib/data/products.ts"
+export const getDigitalProductPreview = async function ({
   id,
 }: {
   id: string
 }) {
-  const { previews } = await fetch(
-    `${process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL}/store/digital-products/${id}/preview`, {
-    credentials: "include",
-    headers: {
-      "x-publishable-api-key": process.env.NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY,
-    },
-  }).then((res) => res.json())
+  const headers = {
+    ...(await getAuthHeaders()),
+  }
+
+  const next = {
+    ...(await getCacheOptions("products")),
+  }
+  const { previews } = await sdk.client.fetch<{
+    previews: DigitalProductPreview[]
+  }>(
+    `/store/digital-products/${id}/preview`, 
+    {
+      headers,
+      next,
+      cache: "force-cache"
+    }
+  )
 
   // for simplicity, return only the first preview url
   // instead you can show all the preview media to the customer
   return previews.length ? previews[0].url : ""
-})
+}
 ```
 
 This function uses the API route you created in the previous section to get the preview links and return the first preview link.
@@ -2564,17 +2797,25 @@ Start by creating the file `src/lib/data/digital-products.ts` with the following
 "use server"
 
 import { DigitalProduct } from "../../types/global"
-import { getAuthHeaders } from "./cookies"
+import { sdk } from "../config"
+import { getAuthHeaders, getCacheOptions } from "./cookies"
 
 export const getCustomerDigitalProducts = async () => {
-  const { digital_products } = await fetch(
-    `${process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL}/store/customers/me/digital-products`, {
-    credentials: "include",
-    headers: {
-      ...getAuthHeaders(),
-      "x-publishable-api-key": process.env.NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY,
-    },
-  }).then((res) => res.json())
+  const headers = {
+    ...(await getAuthHeaders()),
+  }
+
+  const next = {
+    ...(await getCacheOptions("products")),
+  }
+  const { digital_products } = await sdk.client.fetch<{
+    digital_products: DigitalProduct[]
+  }>(`/store/customers/me/digital-products`, {
+    
+    headers,
+    next,
+    cache: "force-cache",
+  })
 
   return digital_products as DigitalProduct[]
 }
@@ -2589,7 +2830,6 @@ Then, create the file `src/modules/account/components/digital-products-list/inde
 
 import { Table } from "@medusajs/ui"
 import { DigitalProduct } from "../../../../types/global"
-import { getDigitalMediaDownloadLink } from "../../../../lib/data/digital-products"
 
 type Props = {
   digitalProducts: DigitalProduct[]
@@ -2635,9 +2875,7 @@ export const DigitalProductsList = ({
 }
 ```
 
-This adds a `DigitalProductsList` component that receives a list of digital products and shows them in a table.
-
-Each digital product’s media has a download link. You’ll implement its functionality afterwards.
+This adds a `DigitalProductsList` component that receives a list of digital products and shows them in a table. Each digital product’s media has a download link. You’ll implement its functionality afterwards.
 
 Next, create the file `src/app/[countryCode]/(main)/account/@dashboard/digital-products/page.tsx` with the following content:
 
@@ -2690,26 +2928,44 @@ const AccountNav = ({
     
   return (
     <div>
-      {/* Add before log out */}
-      <li>
-        <LocalizedClientLink
-          href="/account/digital-products"
-          className="flex items-center justify-between py-4 border-b border-gray-200 px-8"
-          data-testid="digital-products-link"
-        >
-          <div className="flex items-center gap-x-2">
-            <Photo />
-            <span>Digital Products</span>
-          </div>
-          <ChevronDown className="transform -rotate-90" />
-        </LocalizedClientLink>
-      </li>
+      <div className="small:hidden">
+        {/* ... */}
+        {/* Add before log out */}
+        <li>
+          <LocalizedClientLink
+            href="/account/digital-products"
+            className="flex items-center justify-between py-4 border-b border-gray-200 px-8"
+            data-testid="digital-products-link"
+          >
+            <div className="flex items-center gap-x-2">
+              <Photo />
+              <span>Digital Products</span>
+            </div>
+            <ChevronDown className="transform -rotate-90" />
+          </LocalizedClientLink>
+        </li>
+        {/* ... */}
+      </div>
+      <div className="hidden small:block">
+        {/* ... */}
+        {/* Add before log out */}
+        <li>
+          <AccountNavLink
+            href="/account/digital-products"
+            route={route!}
+            data-testid="digital-products-link"
+          >
+            Digital Products
+          </AccountNavLink>
+        </li>
+        {/* ... */}
+      </div>
     </div>
   )
 }
 ```
 
-You add a link to the new route before the log out tab.
+You add a link to the new route before the log out tab both for small and large devices.
 
 ### Test Purchased Digital Products Page
 
@@ -2723,17 +2979,21 @@ To add a download link for the purchased digital products’ medias, first, add 
 
 ```ts title="src/lib/data/digital-products.ts"
 export const getDigitalMediaDownloadLink = async (mediaId: string) => {
-  const { url } = await fetch(
-    `${process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL}/store/customers/me/digital-products/${
-      mediaId
-    }/download`, {
-    credentials: "include",
+  const headers = {
+    ...(await getAuthHeaders()),
+  }
+
+  const next = {
+    ...(await getCacheOptions("products")),
+  }
+  const { url } = await sdk.client.fetch<{
+    url: string
+  }>(`/store/customers/me/digital-products/${mediaId}/download`, {
     method: "POST",
-    headers: {
-      ...getAuthHeaders(),
-      "x-publishable-api-key": process.env.NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY,
-    },
-  }).then((res) => res.json())
+    headers,
+    next,
+    cache: "force-cache",
+  })
 
   return url
 }
@@ -2741,7 +3001,13 @@ export const getDigitalMediaDownloadLink = async (mediaId: string) => {
 
 In this function, you send a request to the download API route you created earlier to retrieve the download URL of a purchased digital product media.
 
-Then, in `src/modules/account/components/digital-products-list/index.tsx`, add a `handleDownload` function in the `DigitalProductsList` component:
+Then, in `src/modules/account/components/digital-products-list/index.tsx`, import the `getDigitalMediaDownloadLink` at the top of the file:
+
+```tsx title="src/modules/account/components/digital-products-list/index.tsx"
+import { getDigitalMediaDownloadLink } from "../../../../lib/data/digital-products"
+```
+
+And add a `handleDownload` function in the `DigitalProductsList` component:
 
 ```tsx title="src/modules/account/components/digital-products-list/index.tsx"
 const handleDownload = async (
@@ -2769,12 +3035,6 @@ Finally, add an `onClick` handler to the digital product medias’ link in the r
 ### Test Download Purchased Digital Product Media
 
 To test the latest changes out, open the purchased digital products page and click on the Download link of any media in the table. The media’s download link will open in a new page.
-
-<Note>
-
-The local file module provider doesn't support private uploads, so the download link won't actually be useful. Instead, use the [S3 module provider](../../../../architectural-modules/file/s3/page.mdx) in production.
-
-</Note>
 
 ---
 

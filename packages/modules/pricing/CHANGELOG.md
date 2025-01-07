@@ -1,5 +1,11 @@
 # @medusajs/pricing
 
+## 2.2.0
+
+### Patch Changes
+
+- [#10771](https://github.com/medusajs/medusa/pull/10771) [`6d989bc8cdcb2a0c8e33742e2b4c9f52b37beb57`](https://github.com/medusajs/medusa/commit/6d989bc8cdcb2a0c8e33742e2b4c9f52b37beb57) Thanks [@riqwan](https://github.com/riqwan)! - fix(pricing): pricing context calculations only takes into account existing rule attributes
+
 ## 2.1.3
 
 ## 2.1.2

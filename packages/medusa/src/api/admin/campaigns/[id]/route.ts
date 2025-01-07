@@ -19,7 +19,7 @@ export const GET = async (
   const campaign = await refetchCampaign(
     req.params.id,
     req.scope,
-    req.remoteQueryConfig.fields
+    req.queryConfig.fields
   )
 
   if (!campaign) {
@@ -62,7 +62,7 @@ export const POST = async (
   const campaign = await refetchCampaign(
     req.params.id,
     req.scope,
-    req.remoteQueryConfig.fields
+    req.queryConfig.fields
   )
   res.status(200).json({ campaign })
 }

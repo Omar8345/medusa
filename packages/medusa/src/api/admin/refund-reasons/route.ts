@@ -21,8 +21,8 @@ export const GET = async (
     "refund_reasons",
     req.filterableFields,
     req.scope,
-    req.remoteQueryConfig.fields,
-    req.remoteQueryConfig.pagination
+    req.queryConfig.fields,
+    req.queryConfig.pagination
   )
 
   res.json({
@@ -47,7 +47,7 @@ export const POST = async (
     "refund_reason",
     refundReason.id,
     req.scope,
-    req.remoteQueryConfig.fields
+    req.queryConfig.fields
   )
 
   res.status(200).json({ refund_reason })

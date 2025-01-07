@@ -41,7 +41,10 @@ export class ManualFulfillmentService extends AbstractFulfillmentProviderService
 
   async createFulfillment() {
     // No data is being sent anywhere
-    return {}
+    return {
+      data: {},
+      labels: [],
+    }
   }
 
   async cancelFulfillment() {
@@ -49,6 +52,6 @@ export class ManualFulfillmentService extends AbstractFulfillmentProviderService
   }
 
   async createReturnFulfillment() {
-    return {}
+    return { data: {}, labels: [] }
   }
 }

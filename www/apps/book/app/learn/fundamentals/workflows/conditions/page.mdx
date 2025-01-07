@@ -109,7 +109,7 @@ const workflow = createWorkflow(
     const notIsActiveResult = when(
       input,
       (input) => {
-        return input.is_active
+        return !input.is_active
       }
     ).then(() => {
       return notIsActiveStep()

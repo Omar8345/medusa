@@ -10,7 +10,7 @@ import { RequestWithContext } from "../../../store/products/helpers"
 
 export function setTaxContext() {
   return async (req: AuthenticatedMedusaRequest, _, next: NextFunction) => {
-    const withCalculatedPrice = req.remoteQueryConfig.fields.some((field) =>
+    const withCalculatedPrice = req.queryConfig.fields.some((field) =>
       field.startsWith("variants.calculated_price")
     )
     if (!withCalculatedPrice) {

@@ -15,8 +15,8 @@ export const GET = async (
     "price_preference",
     req.filterableFields,
     req.scope,
-    req.remoteQueryConfig.fields,
-    req.remoteQueryConfig.pagination
+    req.queryConfig.fields,
+    req.queryConfig.pagination
   )
   res.json({
     price_preferences: price_preferences,
@@ -39,7 +39,7 @@ export const POST = async (
     "price_preference",
     result[0].id,
     req.scope,
-    req.remoteQueryConfig.fields
+    req.queryConfig.fields
   )
 
   res.status(200).json({ price_preference })

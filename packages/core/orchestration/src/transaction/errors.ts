@@ -68,3 +68,19 @@ export class TransactionTimeoutError extends BaseStepErrror {
     super("TransactionTimeoutError", message, stepResponse)
   }
 }
+
+export class NonSerializableCheckPointError extends Error {
+  static isNonSerializableCheckPointError(
+    error: Error
+  ): error is NonSerializableCheckPointError {
+    return (
+      error instanceof NonSerializableCheckPointError ||
+      error?.name === "NonSerializableCheckPointError"
+    )
+  }
+
+  constructor(message?: string) {
+    super(message)
+    this.name = "NonSerializableCheckPointError"
+  }
+}

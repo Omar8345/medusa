@@ -20,7 +20,7 @@ export const POST = async (
 
   const { data } = await query.graph({
     entity: "shipping_option",
-    fields: req.remoteQueryConfig.fields,
+    fields: req.queryConfig.fields,
     filters: { id: req.params.id },
   })
 

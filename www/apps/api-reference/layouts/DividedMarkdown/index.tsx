@@ -12,8 +12,8 @@ const DividedMarkdownLayout = ({
   const childArr = React.isValidElement(children)
     ? [children]
     : Array.isArray(children)
-    ? children
-    : []
+      ? children
+      : []
 
   if (!childArr.length) {
     return <></>

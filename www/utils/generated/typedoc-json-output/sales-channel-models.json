@@ -1,12 +1,12 @@
 {
-	"id": 14876,
+	"id": 14915,
 	"name": "sales-channel-models",
 	"variant": "project",
 	"kind": 1,
 	"flags": {},
 	"children": [
 		{
-			"id": 14877,
+			"id": 14916,
 			"name": "SalesChannel",
 			"variant": "declaration",
 			"kind": 32,
@@ -30,14 +30,14 @@
 							{
 								"type": "reflection",
 								"declaration": {
-									"id": 14878,
+									"id": 14917,
 									"name": "__type",
 									"variant": "declaration",
 									"kind": 65536,
 									"flags": {},
 									"children": [
 										{
-											"id": 14879,
+											"id": 14918,
 											"name": "id",
 											"variant": "declaration",
 											"kind": 1024,
@@ -73,7 +73,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 14880,
+											"id": 14919,
 											"name": "name",
 											"variant": "declaration",
 											"kind": 1024,
@@ -98,7 +98,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 14881,
+											"id": 14920,
 											"name": "description",
 											"variant": "declaration",
 											"kind": 1024,
@@ -125,7 +125,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 14882,
+											"id": 14921,
 											"name": "is_disabled",
 											"variant": "declaration",
 											"kind": 1024,
@@ -150,7 +150,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 14883,
+											"id": 14922,
 											"name": "metadata",
 											"variant": "declaration",
 											"kind": 1024,
@@ -181,11 +181,11 @@
 										{
 											"title": "Properties",
 											"children": [
-												14879,
-												14880,
-												14881,
-												14882,
-												14883
+												14918,
+												14919,
+												14920,
+												14921,
+												14922
 											]
 										}
 									]
@@ -210,41 +210,41 @@
 		{
 			"title": "Variables",
 			"children": [
-				14877
+				14916
 			]
 		}
 	],
 	"packageName": "@medusajs/sales-channel",
 	"symbolIdMap": {
-		"14876": {
+		"14915": {
 			"sourceFileName": "../../../../packages/modules/sales-channel/src/models/index.ts",
 			"qualifiedName": ""
 		},
-		"14877": {
+		"14916": {
 			"sourceFileName": "../../../../packages/modules/sales-channel/src/models/sales-channel.ts",
 			"qualifiedName": "SalesChannel"
 		},
-		"14878": {
+		"14917": {
 			"sourceFileName": "../../../../packages/modules/sales-channel/src/models/sales-channel.ts",
 			"qualifiedName": "__object"
 		},
-		"14879": {
+		"14918": {
 			"sourceFileName": "../../../../packages/modules/sales-channel/src/models/sales-channel.ts",
 			"qualifiedName": "__object.id"
 		},
-		"14880": {
+		"14919": {
 			"sourceFileName": "../../../../packages/modules/sales-channel/src/models/sales-channel.ts",
 			"qualifiedName": "__object.name"
 		},
-		"14881": {
+		"14920": {
 			"sourceFileName": "../../../../packages/modules/sales-channel/src/models/sales-channel.ts",
 			"qualifiedName": "__object.description"
 		},
-		"14882": {
+		"14921": {
 			"sourceFileName": "../../../../packages/modules/sales-channel/src/models/sales-channel.ts",
 			"qualifiedName": "__object.is_disabled"
 		},
-		"14883": {
+		"14922": {
 			"sourceFileName": "../../../../packages/modules/sales-channel/src/models/sales-channel.ts",
 			"qualifiedName": "__object.metadata"
 		}
@@ -254,7 +254,7 @@
 			"1": "../../../../packages/modules/sales-channel/src/models/index.ts"
 		},
 		"reflections": {
-			"1": 14876
+			"1": 14915
 		}
 	}
 }

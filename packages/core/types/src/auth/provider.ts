@@ -20,6 +20,9 @@ export interface AuthIdentityProviderService {
       user_metadata?: Record<string, unknown>
     }
   ) => Promise<AuthIdentityDTO>
+  // These methods are used for OAuth providers to store and retrieve state
+  setState: (key: string, value: Record<string, unknown>) => Promise<void>
+  getState: (key: string) => Promise<Record<string, unknown> | null>
 }
 
 /**

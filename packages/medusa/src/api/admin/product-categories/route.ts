@@ -14,8 +14,8 @@ export const GET = async (
     "product_category",
     req.filterableFields,
     req.scope,
-    req.remoteQueryConfig.fields,
-    req.remoteQueryConfig.pagination
+    req.queryConfig.fields,
+    req.queryConfig.pagination
   )
 
   res.json({
@@ -38,7 +38,7 @@ export const POST = async (
     "product_category",
     { id: result[0].id, ...req.filterableFields },
     req.scope,
-    req.remoteQueryConfig.fields
+    req.queryConfig.fields
   )
 
   res.status(200).json({ product_category: category })

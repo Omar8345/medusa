@@ -443,7 +443,7 @@ export type QueryConfig<TEntity> = {
   defaultLimit?: number
   /**
    * If the route that will use that configuration is supposed to return a list of entities. This
-   * will change the configuration that will be created on req.listConfig and req.remoteQueryConfig (among
+   * will change the configuration that will be created on req.listConfig and req.queryConfig (among
    * other things it will include pagination and sorting)
    */
   isList?: boolean

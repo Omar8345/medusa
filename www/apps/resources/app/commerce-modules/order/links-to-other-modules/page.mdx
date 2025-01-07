@@ -124,19 +124,19 @@ const { data: orders } = useQueryGraphStep({
   </CodeTab>
 </CodeTabs>
 
-### Manage with Remote Link
+### Manage with Link
 
-To manage the cart of an order, use [Remote Link](!docs!/learn/fundamentals/module-links/remote-link):
+To manage the cart of an order, use [Link](!docs!/learn/fundamentals/module-links/link):
 
 <CodeTabs group="relation-link">
-  <CodeTab label="remoteLink.create" value="method">
+  <CodeTab label="link.create" value="method">
 
 ```ts
 import { Modules } from "@medusajs/framework/utils"
 
 // ...
 
-await remoteLink.create({
+await link.create({
   [Modules.ORDER]: {
     order_id: "order_123",
   },
@@ -225,19 +225,19 @@ const { data: orders } = useQueryGraphStep({
   </CodeTab>
 </CodeTabs>
 
-### Manage with Remote Link
+### Manage with Link
 
-To manage the fulfillments of an order, use [Remote Link](!docs!/learn/fundamentals/module-links/remote-link):
+To manage the fulfillments of an order, use [Link](!docs!/learn/fundamentals/module-links/link):
 
 <CodeTabs group="relation-link">
-  <CodeTab label="remoteLink.create" value="method">
+  <CodeTab label="link.create" value="method">
 
 ```ts
 import { Modules } from "@medusajs/framework/utils"
 
 // ...
 
-await remoteLink.create({
+await link.create({
   [Modules.ORDER]: {
     order_id: "order_123",
   },
@@ -318,19 +318,19 @@ const { data: orders } = useQueryGraphStep({
   </CodeTab>
 </CodeTabs>
 
-### Manage with Remote Link
+### Manage with Link
 
-To manage the payment collections of an order, use [Remote Link](!docs!/learn/fundamentals/module-links/remote-link):
+To manage the payment collections of an order, use [Link](!docs!/learn/fundamentals/module-links/link):
 
 <CodeTabs group="relation-link">
-  <CodeTab label="remoteLink.create" value="method">
+  <CodeTab label="link.create" value="method">
 
 ```ts
 import { Modules } from "@medusajs/framework/utils"
 
 // ...
 
-await remoteLink.create({
+await link.create({
   [Modules.ORDER]: {
     order_id: "order_123",
   },
@@ -463,19 +463,19 @@ const { data: orders } = useQueryGraphStep({
   </CodeTab>
 </CodeTabs>
 
-### Manage with Remote Link
+### Manage with Link
 
-To manage the promotion of an order, use [Remote Link](!docs!/learn/fundamentals/module-links/remote-link):
+To manage the promotion of an order, use [Link](!docs!/learn/fundamentals/module-links/link):
 
 <CodeTabs group="relation-link">
-  <CodeTab label="remoteLink.create" value="method">
+  <CodeTab label="link.create" value="method">
 
 ```ts
 import { Modules } from "@medusajs/framework/utils"
 
 // ...
 
-await remoteLink.create({
+await link.create({
   [Modules.ORDER]: {
     order_id: "order_123",
   },

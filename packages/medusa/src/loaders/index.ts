@@ -1,5 +1,6 @@
 import {
   ConfigModule,
+  LoadedModule,
   MedusaContainer,
   PluginDetails,
 } from "@medusajs/framework/types"
@@ -136,6 +137,7 @@ export default async ({
 }: Options): Promise<{
   container: MedusaContainer
   app: Express
+  modules: Record<string, LoadedModule | LoadedModule[]>
   shutdown: () => Promise<void>
   gqlSchema?: GraphQLSchema
 }> => {
@@ -154,6 +156,7 @@ export default async ({
     onApplicationStart,
     onApplicationShutdown,
     onApplicationPrepareShutdown,
+    modules,
     gqlSchema,
   } = await new MedusaAppLoader().load()
 
@@ -192,6 +195,7 @@ export default async ({
     container,
     app: expressApp,
     shutdown,
+    modules,
     gqlSchema,
   }
 }

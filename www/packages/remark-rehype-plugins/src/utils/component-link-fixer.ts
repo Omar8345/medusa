@@ -77,6 +77,7 @@ export function componentLinkFixer(
       ""
     )
     const appsPath = basePath || path.join(file.cwd, "app")
+    const linkFn = checkLinksType === "md" ? matchMdLinks : matchValueLink
     visit(tree as UnistTree, "mdxJsxFlowElement", (node: UnistNodeWithData) => {
       if (node.name !== componentName) {
         return
@@ -84,11 +85,7 @@ export function componentLinkFixer(
 
       const attribute = getAttribute(node, attributeName)
 
-      if (
-        !attribute ||
-        typeof attribute.value === "string" ||
-        !attribute.value.data?.estree
-      ) {
+      if (!attribute) {
         return
       }
 
@@ -97,13 +94,22 @@ export function componentLinkFixer(
         appsPath,
       }
 
+      if (typeof attribute.value === "string") {
+        attribute.value =
+          linkFn(attribute.value, linkOptions) || attribute.value
+        return
+      }
+
+      if (!attribute.value.data?.estree) {
+        return
+      }
+
       const itemJsVar = estreeToJs(attribute.value.data.estree)
 
       if (!itemJsVar) {
         return
       }
 
-      const linkFn = checkLinksType === "md" ? matchMdLinks : matchValueLink
       performActionOnLiteral(itemJsVar, (item) => {
         item.original.value = linkFn(item.original.value as string, linkOptions)
         item.original.raw = JSON.stringify(item.original.value)

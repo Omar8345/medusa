@@ -20,7 +20,7 @@ export const POST = async (
     "order",
     orderId,
     req.scope,
-    req.remoteQueryConfig.fields
+    req.queryConfig.fields
   )
 
   res.status(200).json({ order })

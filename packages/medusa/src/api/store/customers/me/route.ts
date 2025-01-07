@@ -17,11 +17,7 @@ export const GET = async (
   res: MedusaResponse<HttpTypes.StoreCustomerResponse>
 ) => {
   const id = req.auth_context.actor_id
-  const customer = await refetchCustomer(
-    id,
-    req.scope,
-    req.remoteQueryConfig.fields
-  )
+  const customer = await refetchCustomer(id, req.scope, req.queryConfig.fields)
 
   if (!customer) {
     throw new MedusaError(
@@ -48,7 +44,7 @@ export const POST = async (
   const customer = await refetchCustomer(
     customerId,
     req.scope,
-    req.remoteQueryConfig.fields
+    req.queryConfig.fields
   )
   res.status(200).json({ customer })
 }

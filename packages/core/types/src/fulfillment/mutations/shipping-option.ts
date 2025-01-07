@@ -1,7 +1,6 @@
 import { CreateShippingOptionTypeDTO } from "./shipping-option-type"
-import { ShippingOptionPriceType } from "../common"
+import { CartPropsForFulfillment, ShippingOptionPriceType } from "../common"
 import { CreateShippingOptionRuleDTO } from "./shipping-option-rule"
-import { CartDTO } from "../../cart"
 import { StockLocationDTO } from "../../stock-location"
 
 /**
@@ -148,13 +147,17 @@ export interface CalculateShippingOptionPriceDTO {
   /**
    * The calculation context needed for the associated fulfillment provider to calculate the price of a shipping option.
    */
-  context: CartDTO & { 
+  context: CartPropsForFulfillment & {
     /**
      * The location that the items will be shipped from.
      */
     from_location?: StockLocationDTO
-  } & Record<
-      string,
-      unknown
-    >
+    [k: string]: unknown
+  }
 }
+
+/**
+ * The calculation context needed for the associated fulfillment provider to calculate the price of a shipping option.
+ */
+export type CalculateShippingOptionPriceContext =
+  CalculateShippingOptionPriceDTO["context"]

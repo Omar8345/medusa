@@ -21,9 +21,9 @@ export const GET = async (
     entryPoint: "campaign",
     variables: {
       filters: req.filterableFields,
-      ...req.remoteQueryConfig.pagination,
+      ...req.queryConfig.pagination,
     },
-    fields: req.remoteQueryConfig.fields,
+    fields: req.queryConfig.fields,
   })
 
   const { rows: campaigns, metadata } = await remoteQuery(query)
@@ -54,7 +54,7 @@ export const POST = async (
   const campaign = await refetchCampaign(
     result[0].id,
     req.scope,
-    req.remoteQueryConfig.fields
+    req.queryConfig.fields
   )
 
   res.status(200).json({ campaign })

@@ -39,7 +39,7 @@ export const POST = async (
         ...req.filterableFields,
       },
     },
-    fields: req.remoteQueryConfig.fields,
+    fields: req.queryConfig.fields,
   })
 
   const [orderReturn] = await remoteQuery(queryObject)
@@ -75,7 +75,7 @@ export const DELETE = async (
         ...req.filterableFields,
       },
     },
-    fields: req.remoteQueryConfig.fields,
+    fields: req.queryConfig.fields,
   })
   const [orderReturn] = await remoteQuery(queryObject)
 

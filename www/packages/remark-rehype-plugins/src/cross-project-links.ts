@@ -65,11 +65,16 @@ function componentFixer(
 
     const attribute = getAttribute(node, attributeName)
 
-    if (
-      !attribute ||
-      typeof attribute.value === "string" ||
-      !attribute.value.data?.estree
-    ) {
+    if (!attribute) {
+      return
+    }
+
+    if (typeof attribute.value === "string") {
+      attribute.value = matchAndFixLinks(attribute.value, options)
+      return
+    }
+
+    if (!attribute.value.data?.estree) {
       return
     }
 

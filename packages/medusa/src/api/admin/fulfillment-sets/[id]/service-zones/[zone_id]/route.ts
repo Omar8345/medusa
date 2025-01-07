@@ -33,7 +33,7 @@ export const GET = async (
       variables: {
         id: req.params.zone_id,
       },
-      fields: req.remoteQueryConfig.fields,
+      fields: req.queryConfig.fields,
     })
   )
 
@@ -85,7 +85,7 @@ export const POST = async (
       variables: {
         id: req.params.id,
       },
-      fields: req.remoteQueryConfig.fields,
+      fields: req.queryConfig.fields,
     })
   )
 

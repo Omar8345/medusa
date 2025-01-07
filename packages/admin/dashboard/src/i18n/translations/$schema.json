@@ -3783,6 +3783,9 @@
         "cancelWarning": {
           "type": "string"
         },
+        "orderCanceled": {
+          "type": "string"
+        },
         "onDateFromSalesChannel": {
           "type": "string"
         },
@@ -3795,6 +3798,42 @@
           },
           "required": [
             "noRecordsMessage"
+          ],
+          "additionalProperties": false
+        },
+        "status": {
+          "type": "object",
+          "properties": {
+            "not_paid": {
+              "type": "string"
+            },
+            "pending": {
+              "type": "string"
+            },
+            "completed": {
+              "type": "string"
+            },
+            "draft": {
+              "type": "string"
+            },
+            "archived": {
+              "type": "string"
+            },
+            "canceled": {
+              "type": "string"
+            },
+            "requires_action": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "not_paid",
+            "pending",
+            "completed",
+            "draft",
+            "archived",
+            "canceled",
+            "requires_action"
           ],
           "additionalProperties": false
         },
@@ -5500,8 +5539,10 @@
         "exchange",
         "return",
         "cancelWarning",
+        "orderCanceled",
         "onDateFromSalesChannel",
         "list",
+        "status",
         "summary",
         "transfer",
         "payment",

@@ -52,7 +52,7 @@ export const DELETE = async (
   const inventoryItem = await refetchInventoryItem(
     id,
     req.scope,
-    req.remoteQueryConfig.fields
+    req.queryConfig.fields
   )
 
   res.status(200).json({
@@ -77,7 +77,7 @@ export const POST = async (
   const inventoryItem = await refetchInventoryItem(
     id,
     req.scope,
-    req.remoteQueryConfig.fields
+    req.queryConfig.fields
   )
 
   res.status(200).json({

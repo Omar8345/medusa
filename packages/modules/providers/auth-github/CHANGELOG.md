@@ -1,5 +1,11 @@
 # @medusajs/auth-github
 
+## 2.2.0
+
+### Minor Changes
+
+- [`4f897661eb7a855a881d460c565c2da6459367eb`](https://github.com/medusajs/medusa/commit/4f897661eb7a855a881d460c565c2da6459367eb) Thanks [@olivermrbl](https://github.com/olivermrbl)! - feat: Custom callback to oauth providers
+
 ## 2.1.3
 
 ## 2.1.2

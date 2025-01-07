@@ -18,7 +18,6 @@ import { Link } from "react-router-dom"
 import { ActionMenu } from "../../../../../components/common/action-menu/index.ts"
 import { DataTable } from "../../../../../components/table/data-table/index.ts"
 import {
-  customerGroupsQueryKeys,
   useCustomerGroups,
   useRemoveCustomersFromGroup,
 } from "../../../../../hooks/api/customer-groups.tsx"
@@ -26,8 +25,6 @@ import { useCustomerGroupTableColumns } from "../../../../../hooks/table/columns
 import { useCustomerGroupTableFilters } from "../../../../../hooks/table/filters/use-customer-group-table-filters.tsx"
 import { useCustomerGroupTableQuery } from "../../../../../hooks/table/query/use-customer-group-table-query.tsx"
 import { useDataTable } from "../../../../../hooks/use-data-table.tsx"
-import { sdk } from "../../../../../lib/client/index.ts"
-import { queryClient } from "../../../../../lib/query-client.ts"
 import { useBatchCustomerCustomerGroups } from "../../../../../hooks/api"
 
 type CustomerGroupSectionProps = {

@@ -228,6 +228,15 @@
       "schema": "public",
       "indexes": [
         {
+          "columnNames": [
+            "address_id"
+          ],
+          "composite": false,
+          "keyName": "stock_location_address_id_unique",
+          "primary": false,
+          "unique": true
+        },
+        {
           "keyName": "IDX_stock_location_address_id",
           "columnNames": [],
           "composite": false,

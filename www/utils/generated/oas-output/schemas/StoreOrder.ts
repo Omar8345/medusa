@@ -6,6 +6,7 @@
  * required:
  *   - items
  *   - shipping_methods
+ *   - status
  *   - currency_code
  *   - id
  *   - region_id
@@ -230,6 +231,10 @@
  *     description: The order's transactions.
  *     items:
  *       $ref: "#/components/schemas/BaseOrderTransaction"
+ *   status:
+ *     type: string
+ *     title: status
+ *     description: The order's status.
  * 
 */
 

@@ -26,7 +26,7 @@ export const POST = async (
   const result = await query.graph({
     entity: "order",
     filters: { id: orderId },
-    fields: req.remoteQueryConfig.fields,
+    fields: req.queryConfig.fields,
   })
 
   res.status(200).json({ order: result.data[0] as AdminOrder })

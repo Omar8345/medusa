@@ -613,6 +613,15 @@ medusaIntegrationTestRunner({
               })
             )
 
+            await api.post(
+              `/store/carts/${cart.id}/line-items`,
+              {
+                variant_id: product.variants[0].id,
+                quantity: 100,
+              },
+              storeHeaders
+            )
+
             let cartAfterExpensiveShipping = (
               await api.post(
                 `/store/carts/${cart.id}/shipping-methods`,
@@ -631,7 +640,7 @@ medusaIntegrationTestRunner({
                   }),
                 ]),
                 payment_collection: expect.objectContaining({
-                  amount: 6398,
+                  amount: 156398,
                 }),
               })
             )

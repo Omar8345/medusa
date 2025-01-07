@@ -25,7 +25,7 @@ export const GET = async (
     variables: {
       filters: { id: req.params.address_id, customer_id: req.params.id },
     },
-    fields: req.remoteQueryConfig.fields,
+    fields: req.queryConfig.fields,
   })
 
   const [address] = await remoteQuery(queryObject)
@@ -53,7 +53,7 @@ export const POST = async (
   const customer = await refetchCustomer(
     req.params.id,
     req.scope,
-    req.remoteQueryConfig.fields
+    req.queryConfig.fields
   )
 
   res.status(200).json({ customer })
@@ -73,7 +73,7 @@ export const DELETE = async (
   const customer = await refetchCustomer(
     req.params.id,
     req.scope,
-    req.remoteQueryConfig.fields
+    req.queryConfig.fields
   )
 
   res.status(200).json({

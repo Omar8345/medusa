@@ -64,19 +64,19 @@ const { data: priceSets } = useQueryGraphStep({
   </CodeTab>
 </CodeTabs>
 
-### Manage with Remote Link
+### Manage with Link
 
-To manage the price set of a shipping option, use [Remote Link](!docs!/learn/fundamentals/module-links/remote-link):
+To manage the price set of a shipping option, use [Link](!docs!/learn/fundamentals/module-links/link):
 
 <CodeTabs group="relation-link">
-  <CodeTab label="remoteLink.create" value="method">
+  <CodeTab label="link.create" value="method">
 
 ```ts
 import { Modules } from "@medusajs/framework/utils"
 
 // ...
 
-await remoteLink.create({
+await link.create({
   [Modules.FULFILLMENT]: {
     shipping_option_id: "so_123",
   },
@@ -161,19 +161,19 @@ const { data: priceSets } = useQueryGraphStep({
   </CodeTab>
 </CodeTabs>
 
-### Manage with Remote Link
+### Manage with Link
 
-To manage the price set of a variant, use [Remote Link](!docs!/learn/fundamentals/module-links/remote-link):
+To manage the price set of a variant, use [Link](!docs!/learn/fundamentals/module-links/link):
 
 <CodeTabs group="relation-link">
-  <CodeTab label="remoteLink.create" value="method">
+  <CodeTab label="link.create" value="method">
 
 ```ts
 import { Modules } from "@medusajs/framework/utils"
 
 // ...
 
-await remoteLink.create({
+await link.create({
   [Modules.PRODUCT]: {
     variant_id: "variant_123",
   },

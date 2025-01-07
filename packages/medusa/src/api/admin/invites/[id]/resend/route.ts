@@ -18,7 +18,7 @@ export const POST = async (
   const invite = await refetchInvite(
     result[0].id,
     req.scope,
-    req.remoteQueryConfig.fields
+    req.queryConfig.fields
   )
 
   res.status(200).json({ invite })

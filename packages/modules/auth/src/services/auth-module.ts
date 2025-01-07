@@ -5,6 +5,7 @@ import {
   AuthTypes,
   Context,
   DAL,
+  ICacheService,
   InferEntityType,
   InternalModuleDeclaration,
   Logger,
@@ -27,6 +28,7 @@ type InjectedDependencies = {
   providerIdentityService: ModulesSdkTypes.IMedusaInternalService<any>
   authProviderService: AuthProviderService
   logger?: Logger
+  cache?: ICacheService
 }
 export default class AuthModuleService
   extends MedusaService<{
@@ -43,13 +45,14 @@ export default class AuthModuleService
     InferEntityType<typeof ProviderIdentity>
   >
   protected readonly authProviderService_: AuthProviderService
-
+  protected readonly cache_: ICacheService | undefined
   constructor(
     {
       authIdentityService,
       providerIdentityService,
       authProviderService,
       baseRepository,
+      cache,
     }: InjectedDependencies,
     protected readonly moduleDeclaration: InternalModuleDeclaration
   ) {
@@ -60,6 +63,7 @@ export default class AuthModuleService
     this.authIdentityService_ = authIdentityService
     this.authProviderService_ = authProviderService
     this.providerIdentityService_ = providerIdentityService
+    this.cache_ = cache
   }
 
   __joinerConfig(): ModuleJoinerConfig {
@@ -371,6 +375,27 @@ export default class AuthModuleService
         ]
 
         return serializedResponse
+      },
+      setState: async (key: string, value: Record<string, unknown>) => {
+        if (!this.cache_) {
+          throw new MedusaError(
+            MedusaError.Types.INVALID_ARGUMENT,
+            "Cache module dependency is required when using OAuth providers that require state"
+          )
+        }
+
+        // 20 minutes. Can be made configurable if necessary, but this is a good default.
+        this.cache_.set(key, value, 1200)
+      },
+      getState: async (key: string) => {
+        if (!this.cache_) {
+          throw new MedusaError(
+            MedusaError.Types.INVALID_ARGUMENT,
+            "Cache module dependency is required when using OAuth providers that require state"
+          )
+        }
+
+        return await this.cache_.get(key)
       },
     }
   }

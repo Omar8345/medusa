@@ -22,7 +22,7 @@ export const GET = async (
   const queryObject = remoteQueryObjectFromString({
     entryPoint: "workflow_execution",
     variables,
-    fields: req.remoteQueryConfig.fields,
+    fields: req.queryConfig.fields,
   })
 
   const [workflowExecution] = await remoteQuery(queryObject)

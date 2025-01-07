@@ -6,6 +6,7 @@
  * required:
  *   - return_requested_total
  *   - order_change
+ *   - status
  *   - currency_code
  *   - id
  *   - version
@@ -617,6 +618,10 @@
  *     $ref: "#/components/schemas/AdminCustomer"
  *   sales_channel:
  *     $ref: "#/components/schemas/AdminSalesChannel"
+ *   status:
+ *     type: string
+ *     title: status
+ *     description: The order's status.
  * 
 */
 

@@ -19,7 +19,7 @@ export const POST = async (
     "payment_collection",
     result[0].id,
     req.scope,
-    req.remoteQueryConfig.fields
+    req.queryConfig.fields
   )
 
   res.status(200).json({ payment_collection: paymentCollection })

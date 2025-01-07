@@ -1,12 +1,12 @@
 {
-	"id": 16871,
+	"id": 16930,
 	"name": "user-models",
 	"variant": "project",
 	"kind": 1,
 	"flags": {},
 	"children": [
 		{
-			"id": 16880,
+			"id": 16939,
 			"name": "Invite",
 			"variant": "declaration",
 			"kind": 32,
@@ -30,14 +30,14 @@
 							{
 								"type": "reflection",
 								"declaration": {
-									"id": 16881,
+									"id": 16940,
 									"name": "__type",
 									"variant": "declaration",
 									"kind": 65536,
 									"flags": {},
 									"children": [
 										{
-											"id": 16882,
+											"id": 16941,
 											"name": "id",
 											"variant": "declaration",
 											"kind": 1024,
@@ -73,7 +73,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 16883,
+											"id": 16942,
 											"name": "email",
 											"variant": "declaration",
 											"kind": 1024,
@@ -98,7 +98,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 16884,
+											"id": 16943,
 											"name": "accepted",
 											"variant": "declaration",
 											"kind": 1024,
@@ -123,7 +123,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 16885,
+											"id": 16944,
 											"name": "token",
 											"variant": "declaration",
 											"kind": 1024,
@@ -148,7 +148,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 16886,
+											"id": 16945,
 											"name": "expires_at",
 											"variant": "declaration",
 											"kind": 1024,
@@ -173,7 +173,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 16887,
+											"id": 16946,
 											"name": "metadata",
 											"variant": "declaration",
 											"kind": 1024,
@@ -204,12 +204,12 @@
 										{
 											"title": "Properties",
 											"children": [
-												16882,
-												16883,
-												16884,
-												16885,
-												16886,
-												16887
+												16941,
+												16942,
+												16943,
+												16944,
+												16945,
+												16946
 											]
 										}
 									]
@@ -230,7 +230,7 @@
 			"defaultValue": "..."
 		},
 		{
-			"id": 16872,
+			"id": 16931,
 			"name": "User",
 			"variant": "declaration",
 			"kind": 32,
@@ -254,14 +254,14 @@
 							{
 								"type": "reflection",
 								"declaration": {
-									"id": 16873,
+									"id": 16932,
 									"name": "__type",
 									"variant": "declaration",
 									"kind": 65536,
 									"flags": {},
 									"children": [
 										{
-											"id": 16874,
+											"id": 16933,
 											"name": "id",
 											"variant": "declaration",
 											"kind": 1024,
@@ -297,7 +297,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 16875,
+											"id": 16934,
 											"name": "first_name",
 											"variant": "declaration",
 											"kind": 1024,
@@ -324,7 +324,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 16876,
+											"id": 16935,
 											"name": "last_name",
 											"variant": "declaration",
 											"kind": 1024,
@@ -351,7 +351,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 16877,
+											"id": 16936,
 											"name": "email",
 											"variant": "declaration",
 											"kind": 1024,
@@ -376,7 +376,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 16878,
+											"id": 16937,
 											"name": "avatar_url",
 											"variant": "declaration",
 											"kind": 1024,
@@ -403,7 +403,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 16879,
+											"id": 16938,
 											"name": "metadata",
 											"variant": "declaration",
 											"kind": 1024,
@@ -434,12 +434,12 @@
 										{
 											"title": "Properties",
 											"children": [
-												16874,
-												16875,
-												16876,
-												16877,
-												16878,
-												16879
+												16933,
+												16934,
+												16935,
+												16936,
+												16937,
+												16938
 											]
 										}
 									]
@@ -464,78 +464,78 @@
 		{
 			"title": "Variables",
 			"children": [
-				16880,
-				16872
+				16939,
+				16931
 			]
 		}
 	],
 	"packageName": "@medusajs/user",
 	"symbolIdMap": {
-		"16871": {
+		"16930": {
 			"sourceFileName": "../../../../packages/modules/user/src/models/index.ts",
 			"qualifiedName": ""
 		},
-		"16872": {
+		"16931": {
 			"sourceFileName": "../../../../packages/modules/user/src/models/user.ts",
 			"qualifiedName": "User"
 		},
-		"16873": {
+		"16932": {
 			"sourceFileName": "../../../../packages/modules/user/src/models/user.ts",
 			"qualifiedName": "__object"
 		},
-		"16874": {
+		"16933": {
 			"sourceFileName": "../../../../packages/modules/user/src/models/user.ts",
 			"qualifiedName": "__object.id"
 		},
-		"16875": {
+		"16934": {
 			"sourceFileName": "../../../../packages/modules/user/src/models/user.ts",
 			"qualifiedName": "__object.first_name"
 		},
-		"16876": {
+		"16935": {
 			"sourceFileName": "../../../../packages/modules/user/src/models/user.ts",
 			"qualifiedName": "__object.last_name"
 		},
-		"16877": {
+		"16936": {
 			"sourceFileName": "../../../../packages/modules/user/src/models/user.ts",
 			"qualifiedName": "__object.email"
 		},
-		"16878": {
+		"16937": {
 			"sourceFileName": "../../../../packages/modules/user/src/models/user.ts",
 			"qualifiedName": "__object.avatar_url"
 		},
-		"16879": {
+		"16938": {
 			"sourceFileName": "../../../../packages/modules/user/src/models/user.ts",
 			"qualifiedName": "__object.metadata"
 		},
-		"16880": {
+		"16939": {
 			"sourceFileName": "../../../../packages/modules/user/src/models/invite.ts",
 			"qualifiedName": "Invite"
 		},
-		"16881": {
+		"16940": {
 			"sourceFileName": "../../../../packages/modules/user/src/models/invite.ts",
 			"qualifiedName": "__object"
 		},
-		"16882": {
+		"16941": {
 			"sourceFileName": "../../../../packages/modules/user/src/models/invite.ts",
 			"qualifiedName": "__object.id"
 		},
-		"16883": {
+		"16942": {
 			"sourceFileName": "../../../../packages/modules/user/src/models/invite.ts",
 			"qualifiedName": "__object.email"
 		},
-		"16884": {
+		"16943": {
 			"sourceFileName": "../../../../packages/modules/user/src/models/invite.ts",
 			"qualifiedName": "__object.accepted"
 		},
-		"16885": {
+		"16944": {
 			"sourceFileName": "../../../../packages/modules/user/src/models/invite.ts",
 			"qualifiedName": "__object.token"
 		},
-		"16886": {
+		"16945": {
 			"sourceFileName": "../../../../packages/modules/user/src/models/invite.ts",
 			"qualifiedName": "__object.expires_at"
 		},
-		"16887": {
+		"16946": {
 			"sourceFileName": "../../../../packages/modules/user/src/models/invite.ts",
 			"qualifiedName": "__object.metadata"
 		}
@@ -545,7 +545,7 @@
 			"1": "../../../../packages/modules/user/src/models/index.ts"
 		},
 		"reflections": {
-			"1": 16871
+			"1": 16930
 		}
 	}
 }

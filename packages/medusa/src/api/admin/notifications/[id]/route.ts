@@ -14,7 +14,7 @@ export const GET = async (
     "notification",
     req.params.id,
     req.scope,
-    req.remoteQueryConfig.fields
+    req.queryConfig.fields
   )
   res.status(200).json({ notification })
 }

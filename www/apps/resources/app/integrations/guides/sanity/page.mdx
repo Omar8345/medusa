@@ -1204,14 +1204,19 @@ import { client } from "../../../../../sanity/lib/client"
 
 // ...
 
-export default async function ProductPage({ params }: Props) {
+export default async function ProductPage(props: Props) {
+  const params = await props.params
   const region = await getRegion(params.countryCode)
 
   if (!region) {
     notFound()
   }
 
-  const pricedProduct = await getProductByHandle(params.handle, region.id)
+  const pricedProduct = await listProducts({
+    countryCode: params.countryCode,
+    queryParams: { handle: params.handle },
+  }).then(({ response }) => response.products[0])
+
   if (!pricedProduct) {
     notFound()
   }
@@ -1224,7 +1229,6 @@ export default async function ProductPage({ params }: Props) {
       product={pricedProduct}
       region={region}
       countryCode={params.countryCode}
-      sanity={sanity}
     />
   )
 }

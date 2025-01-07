@@ -17,7 +17,7 @@ export const GET = async (
   const queryObject = remoteQueryObjectFromString({
     entryPoint: "currency",
     variables,
-    fields: req.remoteQueryConfig.fields,
+    fields: req.queryConfig.fields,
   })
 
   const [currency] = await remoteQuery(queryObject)

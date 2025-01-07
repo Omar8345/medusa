@@ -14,7 +14,7 @@ export const GET = async (
     "order_claim",
     req.params.id,
     req.scope,
-    req.remoteQueryConfig.fields
+    req.queryConfig.fields
   )
 
   if (!claim) {

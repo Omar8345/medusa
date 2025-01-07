@@ -49,12 +49,12 @@ import {
 
 // ...
 
-// resolve the remote link
-const remoteLink = container.resolve(
-  ContainerRegistrationKeys
+// resolve Link
+const link = container.resolve(
+  ContainerRegistrationKeys.LINK
 )
 
-remoteLink.create({
+link.create({
   [Modules.CART]: {
     cart_id: "cart_123",
   },
@@ -66,7 +66,7 @@ remoteLink.create({
 
 <Note title="Tip">
 
-Learn more about the remote link in [this documentation](!docs!/learn/fundamentals/module-links/remote-link).
+Learn more about Link in [this documentation](!docs!/learn/fundamentals/module-links/link).
 
 </Note>
 

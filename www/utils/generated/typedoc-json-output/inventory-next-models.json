@@ -1,12 +1,12 @@
 {
-	"id": 6253,
+	"id": 6289,
 	"name": "inventory-next-models",
 	"variant": "project",
 	"kind": 1,
 	"flags": {},
 	"children": [
 		{
-			"id": 6254,
+			"id": 6290,
 			"name": "InventoryItem",
 			"variant": "declaration",
 			"kind": 32,
@@ -30,14 +30,14 @@
 							{
 								"type": "reflection",
 								"declaration": {
-									"id": 6255,
+									"id": 6291,
 									"name": "__type",
 									"variant": "declaration",
 									"kind": 65536,
 									"flags": {},
 									"children": [
 										{
-											"id": 6256,
+											"id": 6292,
 											"name": "id",
 											"variant": "declaration",
 											"kind": 1024,
@@ -73,7 +73,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 6257,
+											"id": 6293,
 											"name": "sku",
 											"variant": "declaration",
 											"kind": 1024,
@@ -100,7 +100,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 6258,
+											"id": 6294,
 											"name": "origin_country",
 											"variant": "declaration",
 											"kind": 1024,
@@ -127,7 +127,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 6259,
+											"id": 6295,
 											"name": "hs_code",
 											"variant": "declaration",
 											"kind": 1024,
@@ -154,7 +154,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 6260,
+											"id": 6296,
 											"name": "mid_code",
 											"variant": "declaration",
 											"kind": 1024,
@@ -181,7 +181,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 6261,
+											"id": 6297,
 											"name": "material",
 											"variant": "declaration",
 											"kind": 1024,
@@ -208,7 +208,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 6262,
+											"id": 6298,
 											"name": "weight",
 											"variant": "declaration",
 											"kind": 1024,
@@ -235,7 +235,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 6263,
+											"id": 6299,
 											"name": "length",
 											"variant": "declaration",
 											"kind": 1024,
@@ -262,7 +262,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 6264,
+											"id": 6300,
 											"name": "height",
 											"variant": "declaration",
 											"kind": 1024,
@@ -289,7 +289,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 6265,
+											"id": 6301,
 											"name": "width",
 											"variant": "declaration",
 											"kind": 1024,
@@ -316,7 +316,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 6266,
+											"id": 6302,
 											"name": "requires_shipping",
 											"variant": "declaration",
 											"kind": 1024,
@@ -341,7 +341,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 6267,
+											"id": 6303,
 											"name": "description",
 											"variant": "declaration",
 											"kind": 1024,
@@ -368,7 +368,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 6268,
+											"id": 6304,
 											"name": "title",
 											"variant": "declaration",
 											"kind": 1024,
@@ -395,7 +395,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 6269,
+											"id": 6305,
 											"name": "thumbnail",
 											"variant": "declaration",
 											"kind": 1024,
@@ -422,7 +422,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 6270,
+											"id": 6306,
 											"name": "metadata",
 											"variant": "declaration",
 											"kind": 1024,
@@ -449,7 +449,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 6271,
+											"id": 6307,
 											"name": "location_levels",
 											"variant": "declaration",
 											"kind": 1024,
@@ -474,7 +474,7 @@
 												"typeArguments": [
 													{
 														"type": "reference",
-														"target": 6304,
+														"target": 6340,
 														"name": "InventoryLevel"
 													}
 												],
@@ -484,7 +484,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 6285,
+											"id": 6321,
 											"name": "reservation_items",
 											"variant": "declaration",
 											"kind": 1024,
@@ -509,7 +509,7 @@
 												"typeArguments": [
 													{
 														"type": "reference",
-														"target": 6340,
+														"target": 6376,
 														"name": "ReservationItem"
 													}
 												],
@@ -519,7 +519,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 6302,
+											"id": 6338,
 											"name": "reserved_quantity",
 											"variant": "declaration",
 											"kind": 1024,
@@ -568,7 +568,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 6303,
+											"id": 6339,
 											"name": "stocked_quantity",
 											"variant": "declaration",
 											"kind": 1024,
@@ -621,25 +621,25 @@
 										{
 											"title": "Properties",
 											"children": [
-												6256,
-												6257,
-												6258,
-												6259,
-												6260,
-												6261,
-												6262,
-												6263,
-												6264,
-												6265,
-												6266,
-												6267,
-												6268,
-												6269,
-												6270,
-												6271,
-												6285,
+												6292,
+												6293,
+												6294,
+												6295,
+												6296,
+												6297,
+												6298,
+												6299,
+												6300,
+												6301,
 												6302,
-												6303
+												6303,
+												6304,
+												6305,
+												6306,
+												6307,
+												6321,
+												6338,
+												6339
 											]
 										}
 									]
@@ -660,7 +660,7 @@
 			"defaultValue": "..."
 		},
 		{
-			"id": 6304,
+			"id": 6340,
 			"name": "InventoryLevel",
 			"variant": "declaration",
 			"kind": 32,
@@ -684,14 +684,14 @@
 							{
 								"type": "reflection",
 								"declaration": {
-									"id": 6305,
+									"id": 6341,
 									"name": "__type",
 									"variant": "declaration",
 									"kind": 65536,
 									"flags": {},
 									"children": [
 										{
-											"id": 6306,
+											"id": 6342,
 											"name": "id",
 											"variant": "declaration",
 											"kind": 1024,
@@ -727,7 +727,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 6307,
+											"id": 6343,
 											"name": "location_id",
 											"variant": "declaration",
 											"kind": 1024,
@@ -752,7 +752,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 6308,
+											"id": 6344,
 											"name": "stocked_quantity",
 											"variant": "declaration",
 											"kind": 1024,
@@ -777,7 +777,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 6309,
+											"id": 6345,
 											"name": "reserved_quantity",
 											"variant": "declaration",
 											"kind": 1024,
@@ -802,7 +802,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 6310,
+											"id": 6346,
 											"name": "incoming_quantity",
 											"variant": "declaration",
 											"kind": 1024,
@@ -827,7 +827,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 6311,
+											"id": 6347,
 											"name": "metadata",
 											"variant": "declaration",
 											"kind": 1024,
@@ -854,7 +854,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 6312,
+											"id": 6348,
 											"name": "inventory_item",
 											"variant": "declaration",
 											"kind": 1024,
@@ -879,7 +879,7 @@
 												"typeArguments": [
 													{
 														"type": "reference",
-														"target": 6254,
+														"target": 6290,
 														"name": "InventoryItem"
 													}
 												],
@@ -889,7 +889,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 6339,
+											"id": 6375,
 											"name": "available_quantity",
 											"variant": "declaration",
 											"kind": 1024,
@@ -942,14 +942,14 @@
 										{
 											"title": "Properties",
 											"children": [
-												6306,
-												6307,
-												6308,
-												6309,
-												6310,
-												6311,
-												6312,
-												6339
+												6342,
+												6343,
+												6344,
+												6345,
+												6346,
+												6347,
+												6348,
+												6375
 											]
 										}
 									]
@@ -970,7 +970,7 @@
 			"defaultValue": "..."
 		},
 		{
-			"id": 6340,
+			"id": 6376,
 			"name": "ReservationItem",
 			"variant": "declaration",
 			"kind": 32,
@@ -994,14 +994,14 @@
 							{
 								"type": "reflection",
 								"declaration": {
-									"id": 6341,
+									"id": 6377,
 									"name": "__type",
 									"variant": "declaration",
 									"kind": 65536,
 									"flags": {},
 									"children": [
 										{
-											"id": 6342,
+											"id": 6378,
 											"name": "id",
 											"variant": "declaration",
 											"kind": 1024,
@@ -1037,7 +1037,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 6343,
+											"id": 6379,
 											"name": "line_item_id",
 											"variant": "declaration",
 											"kind": 1024,
@@ -1064,7 +1064,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 6344,
+											"id": 6380,
 											"name": "allow_backorder",
 											"variant": "declaration",
 											"kind": 1024,
@@ -1089,7 +1089,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 6345,
+											"id": 6381,
 											"name": "location_id",
 											"variant": "declaration",
 											"kind": 1024,
@@ -1114,7 +1114,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 6346,
+											"id": 6382,
 											"name": "quantity",
 											"variant": "declaration",
 											"kind": 1024,
@@ -1139,7 +1139,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 6347,
+											"id": 6383,
 											"name": "raw_quantity",
 											"variant": "declaration",
 											"kind": 1024,
@@ -1164,7 +1164,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 6348,
+											"id": 6384,
 											"name": "external_id",
 											"variant": "declaration",
 											"kind": 1024,
@@ -1191,7 +1191,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 6349,
+											"id": 6385,
 											"name": "description",
 											"variant": "declaration",
 											"kind": 1024,
@@ -1218,7 +1218,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 6350,
+											"id": 6386,
 											"name": "created_by",
 											"variant": "declaration",
 											"kind": 1024,
@@ -1245,7 +1245,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 6351,
+											"id": 6387,
 											"name": "metadata",
 											"variant": "declaration",
 											"kind": 1024,
@@ -1272,7 +1272,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 6352,
+											"id": 6388,
 											"name": "inventory_item",
 											"variant": "declaration",
 											"kind": 1024,
@@ -1297,7 +1297,7 @@
 												"typeArguments": [
 													{
 														"type": "reference",
-														"target": 6254,
+														"target": 6290,
 														"name": "InventoryItem"
 													}
 												],
@@ -1311,17 +1311,17 @@
 										{
 											"title": "Properties",
 											"children": [
-												6342,
-												6343,
-												6344,
-												6345,
-												6346,
-												6347,
-												6348,
-												6349,
-												6350,
-												6351,
-												6352
+												6378,
+												6379,
+												6380,
+												6381,
+												6382,
+												6383,
+												6384,
+												6385,
+												6386,
+												6387,
+												6388
 											]
 										}
 									]
@@ -1346,489 +1346,345 @@
 		{
 			"title": "Variables",
 			"children": [
-				6254,
-				6304,
-				6340
+				6290,
+				6340,
+				6376
 			]
 		}
 	],
 	"packageName": "@medusajs/inventory",
 	"symbolIdMap": {
-		"6253": {
+		"6289": {
 			"sourceFileName": "../../../../packages/modules/inventory/src/models/index.ts",
 			"qualifiedName": ""
 		},
-		"6254": {
+		"6290": {
 			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
 			"qualifiedName": "InventoryItem"
 		},
-		"6255": {
+		"6291": {
 			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
 			"qualifiedName": "__object"
 		},
-		"6256": {
+		"6292": {
 			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
 			"qualifiedName": "__object.id"
 		},
-		"6257": {
+		"6293": {
 			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
 			"qualifiedName": "__object.sku"
 		},
-		"6258": {
+		"6294": {
 			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
 			"qualifiedName": "__object.origin_country"
 		},
-		"6259": {
+		"6295": {
 			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
 			"qualifiedName": "__object.hs_code"
 		},
-		"6260": {
+		"6296": {
 			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
 			"qualifiedName": "__object.mid_code"
 		},
-		"6261": {
+		"6297": {
 			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
 			"qualifiedName": "__object.material"
 		},
-		"6262": {
+		"6298": {
 			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
 			"qualifiedName": "__object.weight"
 		},
-		"6263": {
+		"6299": {
 			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
 			"qualifiedName": "__object.length"
 		},
-		"6264": {
+		"6300": {
 			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
 			"qualifiedName": "__object.height"
 		},
-		"6265": {
+		"6301": {
 			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
 			"qualifiedName": "__object.width"
-		},
-		"6266": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
-			"qualifiedName": "__object.requires_shipping"
-		},
-		"6267": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
-			"qualifiedName": "__object.description"
-		},
-		"6268": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
-			"qualifiedName": "__object.title"
-		},
-		"6269": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
-			"qualifiedName": "__object.thumbnail"
-		},
-		"6270": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
-			"qualifiedName": "__object.metadata"
-		},
-		"6271": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
-			"qualifiedName": "__object.location_levels"
-		},
-		"6272": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
-			"qualifiedName": "__function"
-		},
-		"6273": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
-			"qualifiedName": "__function"
-		},
-		"6274": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-level.ts",
-			"qualifiedName": "__object"
-		},
-		"6275": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-level.ts",
-			"qualifiedName": "__object.id"
-		},
-		"6276": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-level.ts",
-			"qualifiedName": "__object.location_id"
-		},
-		"6277": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-level.ts",
-			"qualifiedName": "__object.stocked_quantity"
-		},
-		"6278": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-level.ts",
-			"qualifiedName": "__object.reserved_quantity"
-		},
-		"6279": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-level.ts",
-			"qualifiedName": "__object.incoming_quantity"
-		},
-		"6280": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-level.ts",
-			"qualifiedName": "__object.metadata"
-		},
-		"6281": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-level.ts",
-			"qualifiedName": "__object.inventory_item"
-		},
-		"6282": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-level.ts",
-			"qualifiedName": "__function"
-		},
-		"6283": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-level.ts",
-			"qualifiedName": "__function"
-		},
-		"6284": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-level.ts",
-			"qualifiedName": "__object.available_quantity"
-		},
-		"6285": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
-			"qualifiedName": "__object.reservation_items"
-		},
-		"6286": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
-			"qualifiedName": "__function"
-		},
-		"6287": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
-			"qualifiedName": "__function"
-		},
-		"6288": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/reservation-item.ts",
-			"qualifiedName": "__object"
-		},
-		"6289": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/reservation-item.ts",
-			"qualifiedName": "__object.id"
-		},
-		"6290": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/reservation-item.ts",
-			"qualifiedName": "__object.line_item_id"
-		},
-		"6291": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/reservation-item.ts",
-			"qualifiedName": "__object.allow_backorder"
-		},
-		"6292": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/reservation-item.ts",
-			"qualifiedName": "__object.location_id"
-		},
-		"6293": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/reservation-item.ts",
-			"qualifiedName": "__object.quantity"
-		},
-		"6294": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/reservation-item.ts",
-			"qualifiedName": "__object.raw_quantity"
-		},
-		"6295": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/reservation-item.ts",
-			"qualifiedName": "__object.external_id"
-		},
-		"6296": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/reservation-item.ts",
-			"qualifiedName": "__object.description"
-		},
-		"6297": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/reservation-item.ts",
-			"qualifiedName": "__object.created_by"
-		},
-		"6298": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/reservation-item.ts",
-			"qualifiedName": "__object.metadata"
-		},
-		"6299": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/reservation-item.ts",
-			"qualifiedName": "__object.inventory_item"
-		},
-		"6300": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/reservation-item.ts",
-			"qualifiedName": "__function"
-		},
-		"6301": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/reservation-item.ts",
-			"qualifiedName": "__function"
 		},
 		"6302": {
 			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
-			"qualifiedName": "__object.reserved_quantity"
+			"qualifiedName": "__object.requires_shipping"
 		},
 		"6303": {
 			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
-			"qualifiedName": "__object.stocked_quantity"
+			"qualifiedName": "__object.description"
 		},
 		"6304": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-level.ts",
-			"qualifiedName": "InventoryLevel"
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
+			"qualifiedName": "__object.title"
 		},
 		"6305": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-level.ts",
-			"qualifiedName": "__object"
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
+			"qualifiedName": "__object.thumbnail"
 		},
 		"6306": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-level.ts",
-			"qualifiedName": "__object.id"
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
+			"qualifiedName": "__object.metadata"
 		},
 		"6307": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-level.ts",
-			"qualifiedName": "__object.location_id"
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
+			"qualifiedName": "__object.location_levels"
 		},
 		"6308": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-level.ts",
-			"qualifiedName": "__object.stocked_quantity"
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
+			"qualifiedName": "__function"
 		},
 		"6309": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-level.ts",
-			"qualifiedName": "__object.reserved_quantity"
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
+			"qualifiedName": "__function"
 		},
 		"6310": {
 			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-level.ts",
-			"qualifiedName": "__object.incoming_quantity"
+			"qualifiedName": "__object"
 		},
 		"6311": {
 			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-level.ts",
-			"qualifiedName": "__object.metadata"
+			"qualifiedName": "__object.id"
 		},
 		"6312": {
 			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-level.ts",
-			"qualifiedName": "__object.inventory_item"
+			"qualifiedName": "__object.location_id"
 		},
 		"6313": {
 			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-level.ts",
-			"qualifiedName": "__function"
+			"qualifiedName": "__object.stocked_quantity"
 		},
 		"6314": {
 			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-level.ts",
-			"qualifiedName": "__function"
-		},
-		"6315": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
-			"qualifiedName": "__object"
-		},
-		"6316": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
-			"qualifiedName": "__object.id"
-		},
-		"6317": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
-			"qualifiedName": "__object.sku"
-		},
-		"6318": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
-			"qualifiedName": "__object.origin_country"
-		},
-		"6319": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
-			"qualifiedName": "__object.hs_code"
-		},
-		"6320": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
-			"qualifiedName": "__object.mid_code"
-		},
-		"6321": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
-			"qualifiedName": "__object.material"
-		},
-		"6322": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
-			"qualifiedName": "__object.weight"
-		},
-		"6323": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
-			"qualifiedName": "__object.length"
-		},
-		"6324": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
-			"qualifiedName": "__object.height"
-		},
-		"6325": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
-			"qualifiedName": "__object.width"
-		},
-		"6326": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
-			"qualifiedName": "__object.requires_shipping"
-		},
-		"6327": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
-			"qualifiedName": "__object.description"
-		},
-		"6328": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
-			"qualifiedName": "__object.title"
-		},
-		"6329": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
-			"qualifiedName": "__object.thumbnail"
-		},
-		"6330": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
-			"qualifiedName": "__object.metadata"
-		},
-		"6331": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
-			"qualifiedName": "__object.location_levels"
-		},
-		"6332": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
-			"qualifiedName": "__function"
-		},
-		"6333": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
-			"qualifiedName": "__function"
-		},
-		"6334": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
-			"qualifiedName": "__object.reservation_items"
-		},
-		"6335": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
-			"qualifiedName": "__function"
-		},
-		"6336": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
-			"qualifiedName": "__function"
-		},
-		"6337": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
 			"qualifiedName": "__object.reserved_quantity"
 		},
-		"6338": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
-			"qualifiedName": "__object.stocked_quantity"
+		"6315": {
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-level.ts",
+			"qualifiedName": "__object.incoming_quantity"
 		},
-		"6339": {
+		"6316": {
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-level.ts",
+			"qualifiedName": "__object.metadata"
+		},
+		"6317": {
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-level.ts",
+			"qualifiedName": "__object.inventory_item"
+		},
+		"6318": {
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-level.ts",
+			"qualifiedName": "__function"
+		},
+		"6319": {
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-level.ts",
+			"qualifiedName": "__function"
+		},
+		"6320": {
 			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-level.ts",
 			"qualifiedName": "__object.available_quantity"
 		},
-		"6340": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/reservation-item.ts",
-			"qualifiedName": "ReservationItem"
+		"6321": {
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
+			"qualifiedName": "__object.reservation_items"
 		},
-		"6341": {
+		"6322": {
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
+			"qualifiedName": "__function"
+		},
+		"6323": {
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
+			"qualifiedName": "__function"
+		},
+		"6324": {
 			"sourceFileName": "../../../../packages/modules/inventory/src/models/reservation-item.ts",
 			"qualifiedName": "__object"
 		},
-		"6342": {
+		"6325": {
 			"sourceFileName": "../../../../packages/modules/inventory/src/models/reservation-item.ts",
 			"qualifiedName": "__object.id"
 		},
-		"6343": {
+		"6326": {
 			"sourceFileName": "../../../../packages/modules/inventory/src/models/reservation-item.ts",
 			"qualifiedName": "__object.line_item_id"
 		},
-		"6344": {
+		"6327": {
 			"sourceFileName": "../../../../packages/modules/inventory/src/models/reservation-item.ts",
 			"qualifiedName": "__object.allow_backorder"
 		},
-		"6345": {
+		"6328": {
 			"sourceFileName": "../../../../packages/modules/inventory/src/models/reservation-item.ts",
 			"qualifiedName": "__object.location_id"
 		},
-		"6346": {
+		"6329": {
 			"sourceFileName": "../../../../packages/modules/inventory/src/models/reservation-item.ts",
 			"qualifiedName": "__object.quantity"
 		},
-		"6347": {
+		"6330": {
 			"sourceFileName": "../../../../packages/modules/inventory/src/models/reservation-item.ts",
 			"qualifiedName": "__object.raw_quantity"
 		},
-		"6348": {
+		"6331": {
 			"sourceFileName": "../../../../packages/modules/inventory/src/models/reservation-item.ts",
 			"qualifiedName": "__object.external_id"
 		},
-		"6349": {
+		"6332": {
 			"sourceFileName": "../../../../packages/modules/inventory/src/models/reservation-item.ts",
 			"qualifiedName": "__object.description"
 		},
-		"6350": {
+		"6333": {
 			"sourceFileName": "../../../../packages/modules/inventory/src/models/reservation-item.ts",
 			"qualifiedName": "__object.created_by"
 		},
-		"6351": {
+		"6334": {
 			"sourceFileName": "../../../../packages/modules/inventory/src/models/reservation-item.ts",
 			"qualifiedName": "__object.metadata"
 		},
-		"6352": {
+		"6335": {
 			"sourceFileName": "../../../../packages/modules/inventory/src/models/reservation-item.ts",
 			"qualifiedName": "__object.inventory_item"
 		},
-		"6353": {
+		"6336": {
 			"sourceFileName": "../../../../packages/modules/inventory/src/models/reservation-item.ts",
 			"qualifiedName": "__function"
 		},
-		"6354": {
+		"6337": {
 			"sourceFileName": "../../../../packages/modules/inventory/src/models/reservation-item.ts",
 			"qualifiedName": "__function"
 		},
-		"6355": {
+		"6338": {
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
+			"qualifiedName": "__object.reserved_quantity"
+		},
+		"6339": {
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
+			"qualifiedName": "__object.stocked_quantity"
+		},
+		"6340": {
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-level.ts",
+			"qualifiedName": "InventoryLevel"
+		},
+		"6341": {
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-level.ts",
+			"qualifiedName": "__object"
+		},
+		"6342": {
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-level.ts",
+			"qualifiedName": "__object.id"
+		},
+		"6343": {
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-level.ts",
+			"qualifiedName": "__object.location_id"
+		},
+		"6344": {
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-level.ts",
+			"qualifiedName": "__object.stocked_quantity"
+		},
+		"6345": {
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-level.ts",
+			"qualifiedName": "__object.reserved_quantity"
+		},
+		"6346": {
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-level.ts",
+			"qualifiedName": "__object.incoming_quantity"
+		},
+		"6347": {
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-level.ts",
+			"qualifiedName": "__object.metadata"
+		},
+		"6348": {
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-level.ts",
+			"qualifiedName": "__object.inventory_item"
+		},
+		"6349": {
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-level.ts",
+			"qualifiedName": "__function"
+		},
+		"6350": {
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-level.ts",
+			"qualifiedName": "__function"
+		},
+		"6351": {
 			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
 			"qualifiedName": "__object"
 		},
-		"6356": {
+		"6352": {
 			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
 			"qualifiedName": "__object.id"
 		},
-		"6357": {
+		"6353": {
 			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
 			"qualifiedName": "__object.sku"
 		},
-		"6358": {
+		"6354": {
 			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
 			"qualifiedName": "__object.origin_country"
 		},
-		"6359": {
+		"6355": {
 			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
 			"qualifiedName": "__object.hs_code"
 		},
-		"6360": {
+		"6356": {
 			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
 			"qualifiedName": "__object.mid_code"
 		},
-		"6361": {
+		"6357": {
 			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
 			"qualifiedName": "__object.material"
 		},
-		"6362": {
+		"6358": {
 			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
 			"qualifiedName": "__object.weight"
 		},
-		"6363": {
+		"6359": {
 			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
 			"qualifiedName": "__object.length"
 		},
-		"6364": {
+		"6360": {
 			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
 			"qualifiedName": "__object.height"
 		},
-		"6365": {
+		"6361": {
 			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
 			"qualifiedName": "__object.width"
 		},
-		"6366": {
+		"6362": {
 			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
 			"qualifiedName": "__object.requires_shipping"
 		},
-		"6367": {
+		"6363": {
 			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
 			"qualifiedName": "__object.description"
 		},
-		"6368": {
+		"6364": {
 			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
 			"qualifiedName": "__object.title"
 		},
-		"6369": {
+		"6365": {
 			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
 			"qualifiedName": "__object.thumbnail"
 		},
-		"6370": {
+		"6366": {
 			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
 			"qualifiedName": "__object.metadata"
 		},
-		"6371": {
+		"6367": {
 			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
 			"qualifiedName": "__object.location_levels"
+		},
+		"6368": {
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
+			"qualifiedName": "__function"
+		},
+		"6369": {
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
+			"qualifiedName": "__function"
+		},
+		"6370": {
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
+			"qualifiedName": "__object.reservation_items"
+		},
+		"6371": {
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
+			"qualifiedName": "__function"
 		},
 		"6372": {
 			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
@@ -1836,25 +1692,169 @@
 		},
 		"6373": {
 			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
-			"qualifiedName": "__function"
+			"qualifiedName": "__object.reserved_quantity"
 		},
 		"6374": {
 			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
-			"qualifiedName": "__object.reservation_items"
+			"qualifiedName": "__object.stocked_quantity"
 		},
 		"6375": {
-			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-level.ts",
+			"qualifiedName": "__object.available_quantity"
 		},
 		"6376": {
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/reservation-item.ts",
+			"qualifiedName": "ReservationItem"
+		},
+		"6377": {
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/reservation-item.ts",
+			"qualifiedName": "__object"
+		},
+		"6378": {
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/reservation-item.ts",
+			"qualifiedName": "__object.id"
+		},
+		"6379": {
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/reservation-item.ts",
+			"qualifiedName": "__object.line_item_id"
+		},
+		"6380": {
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/reservation-item.ts",
+			"qualifiedName": "__object.allow_backorder"
+		},
+		"6381": {
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/reservation-item.ts",
+			"qualifiedName": "__object.location_id"
+		},
+		"6382": {
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/reservation-item.ts",
+			"qualifiedName": "__object.quantity"
+		},
+		"6383": {
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/reservation-item.ts",
+			"qualifiedName": "__object.raw_quantity"
+		},
+		"6384": {
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/reservation-item.ts",
+			"qualifiedName": "__object.external_id"
+		},
+		"6385": {
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/reservation-item.ts",
+			"qualifiedName": "__object.description"
+		},
+		"6386": {
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/reservation-item.ts",
+			"qualifiedName": "__object.created_by"
+		},
+		"6387": {
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/reservation-item.ts",
+			"qualifiedName": "__object.metadata"
+		},
+		"6388": {
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/reservation-item.ts",
+			"qualifiedName": "__object.inventory_item"
+		},
+		"6389": {
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/reservation-item.ts",
+			"qualifiedName": "__function"
+		},
+		"6390": {
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/reservation-item.ts",
+			"qualifiedName": "__function"
+		},
+		"6391": {
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
+			"qualifiedName": "__object"
+		},
+		"6392": {
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
+			"qualifiedName": "__object.id"
+		},
+		"6393": {
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
+			"qualifiedName": "__object.sku"
+		},
+		"6394": {
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
+			"qualifiedName": "__object.origin_country"
+		},
+		"6395": {
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
+			"qualifiedName": "__object.hs_code"
+		},
+		"6396": {
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
+			"qualifiedName": "__object.mid_code"
+		},
+		"6397": {
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
+			"qualifiedName": "__object.material"
+		},
+		"6398": {
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
+			"qualifiedName": "__object.weight"
+		},
+		"6399": {
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
+			"qualifiedName": "__object.length"
+		},
+		"6400": {
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
+			"qualifiedName": "__object.height"
+		},
+		"6401": {
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
+			"qualifiedName": "__object.width"
+		},
+		"6402": {
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
+			"qualifiedName": "__object.requires_shipping"
+		},
+		"6403": {
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
+			"qualifiedName": "__object.description"
+		},
+		"6404": {
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
+			"qualifiedName": "__object.title"
+		},
+		"6405": {
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
+			"qualifiedName": "__object.thumbnail"
+		},
+		"6406": {
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
+			"qualifiedName": "__object.metadata"
+		},
+		"6407": {
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
+			"qualifiedName": "__object.location_levels"
+		},
+		"6408": {
 			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
 			"qualifiedName": "__function"
 		},
-		"6377": {
+		"6409": {
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
+			"qualifiedName": "__function"
+		},
+		"6410": {
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
+			"qualifiedName": "__object.reservation_items"
+		},
+		"6411": {
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
+			"qualifiedName": "__function"
+		},
+		"6412": {
+			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
+			"qualifiedName": "__function"
+		},
+		"6413": {
 			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
 			"qualifiedName": "__object.reserved_quantity"
 		},
-		"6378": {
+		"6414": {
 			"sourceFileName": "../../../../packages/modules/inventory/src/models/inventory-item.ts",
 			"qualifiedName": "__object.stocked_quantity"
 		}
@@ -1864,7 +1864,7 @@
 			"1": "../../../../packages/modules/inventory/src/models/index.ts"
 		},
 		"reflections": {
-			"1": 6253
+			"1": 6289
 		}
 	}
 }

@@ -1,5 +1,11 @@
 # @medusajs/stock-location
 
+## 2.2.0
+
+### Patch Changes
+
+- [#10832](https://github.com/medusajs/medusa/pull/10832) [`99a06102a246c119f69d1873f3cdeee9ff1241a0`](https://github.com/medusajs/medusa/commit/99a06102a246c119f69d1873f3cdeee9ff1241a0) Thanks [@riqwan](https://github.com/riqwan)! - fix(stock-location,core-flows,types): update existing address when updating stock location address
+
 ## 2.1.3
 
 ## 2.1.2

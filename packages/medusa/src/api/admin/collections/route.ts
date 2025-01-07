@@ -22,9 +22,9 @@ export const GET = async (
     entryPoint: "product_collection",
     variables: {
       filters: req.filterableFields,
-      ...req.remoteQueryConfig.pagination,
+      ...req.queryConfig.pagination,
     },
-    fields: req.remoteQueryConfig.fields,
+    fields: req.queryConfig.fields,
   })
 
   const { rows: collections, metadata } = await remoteQuery(query)
@@ -54,7 +54,7 @@ export const POST = async (
   const collection = await refetchCollection(
     result[0].id,
     req.scope,
-    req.remoteQueryConfig.fields
+    req.queryConfig.fields
   )
 
   res.status(200).json({ collection })

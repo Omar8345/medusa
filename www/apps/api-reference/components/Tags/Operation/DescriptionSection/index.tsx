@@ -8,7 +8,7 @@ import dynamic from "next/dynamic"
 import TagsOperationDescriptionSectionParameters from "./Parameters"
 import MDXContentClient from "@/components/MDXContent/Client"
 import { useArea } from "../../../../providers/area"
-import { Feedback, Badge, Link, FeatureFlagNotice } from "docs-ui"
+import { Feedback, Badge, Link, FeatureFlagNotice, H2 } from "docs-ui"
 import { usePathname } from "next/navigation"
 import { TagsOperationDescriptionSectionWorkflowBadgeProps } from "./WorkflowBadge"
 
@@ -43,7 +43,7 @@ const TagsOperationDescriptionSection = ({
 
   return (
     <>
-      <h2>
+      <H2>
         {operation.summary}
         {operation.deprecated && (
           <Badge variant="orange" className="ml-0.5">
@@ -57,7 +57,7 @@ const TagsOperationDescriptionSection = ({
             badgeClassName="ml-0.5"
           />
         )}
-      </h2>
+      </H2>
       <div className="my-1">
         <MDXContentClient content={operation.description} />
       </div>

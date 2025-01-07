@@ -81,18 +81,18 @@ The column's configurations object accepts the following properties:
 
 ## Set Custom Column when Creating Link
 
-The object you pass to the remote link's `create` method accepts a `data` property. Its value is an object whose keys are custom column names, and values are the value of the custom column for this link.
+The object you pass to Link's `create` method accepts a `data` property. Its value is an object whose keys are custom column names, and values are the value of the custom column for this link.
 
 For example:
 
 <Note>
 
-Learn more about the remote link, how to resolve it, and its methods in [this chapter](../remote-link/page.mdx).
+Learn more about Link, how to resolve it, and its methods in [this chapter](../link/page.mdx).
 
 </Note>
 
 ```ts
-await remoteLink.create({
+await link.create({
   [Modules.PRODUCT]: {
     product_id: "123",
   },
@@ -145,14 +145,14 @@ In the `fields` array you pass `metadata`, which is the custom column to retriev
 
 ## Update Custom Column's Value
 
-The remote link's `create` method updates a link's data if the link between the specified records already exists.
+Link's `create` method updates a link's data if the link between the specified records already exists.
 
 So, to update the value of a custom column in a created link, use the `create` method again passing it a new value for the custom column.
 
 For example:
 
 ```ts
-await remoteLink.create({
+await link.create({
   [Modules.PRODUCT]: {
     product_id: "123",
   },

@@ -20,7 +20,7 @@ export const GET = async (
   const queryObject = remoteQueryObjectFromString({
     entryPoint: "file",
     variables,
-    fields: req.remoteQueryConfig.fields,
+    fields: req.queryConfig.fields,
   })
 
   const [file] = await remoteQuery(queryObject)

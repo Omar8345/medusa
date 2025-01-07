@@ -20,11 +20,7 @@ export const POST = async (
     },
   })
 
-  const payment = await refetchPayment(
-    id,
-    req.scope,
-    req.remoteQueryConfig.fields
-  )
+  const payment = await refetchPayment(id, req.scope, req.queryConfig.fields)
 
   res.status(200).json({ payment })
 }

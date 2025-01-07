@@ -1,5 +1,6 @@
 import {
   DistributedTransactionType,
+  TransactionStep,
   TransactionStepTimeoutError,
   TransactionTimeoutError,
   WorkflowManager,
@@ -466,6 +467,44 @@ moduleIntegrationTestRunner<IWorkflowEngineService>({
             workflowId: "wf-when",
             subscriber: (event) => {
               if (event.eventType === "onFinish") {
+                done()
+              }
+            },
+          })
+
+          failTrap(done)
+        })
+
+        it("should cancel an async sub workflow when compensating", (done) => {
+          const workflowId = "workflow_async_background_fail"
+
+          void workflowOrcModule.run(workflowId, {
+            input: {
+              callSubFlow: true,
+            },
+            transactionId: "trx_123_compensate_async_sub_workflow",
+            throwOnError: false,
+            logOnError: false,
+          })
+
+          let onCompensateStepSuccess: { step: TransactionStep } | null = null
+
+          void workflowOrcModule.subscribe({
+            workflowId,
+            subscriber: (event) => {
+              if (event.eventType === "onCompensateStepSuccess") {
+                onCompensateStepSuccess = event
+              }
+              if (event.eventType === "onFinish") {
+                expect(onCompensateStepSuccess).toBeDefined()
+                expect(onCompensateStepSuccess!.step.id).toEqual(
+                  "_root.nested_sub_flow_async_fail-as-step" // The workflow as step
+                )
+                expect(onCompensateStepSuccess!.step.compensate).toEqual({
+                  state: "reverted",
+                  status: "ok",
+                })
+
                 done()
               }
             },

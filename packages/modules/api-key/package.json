@@ -1,6 +1,6 @@
 {
   "name": "@medusajs/api-key",
-  "version": "2.1.3",
+  "version": "2.2.0",
   "description": "Medusa API Key module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -36,8 +36,8 @@
     "orm:cache:clear": " MIKRO_ORM_CLI=./mikro-orm.config.dev.ts medusa-mikro-orm cache:clear"
   },
   "devDependencies": {
-    "@medusajs/framework": "^2.1.3",
-    "@medusajs/test-utils": "^2.1.3",
+    "@medusajs/framework": "^2.2.0",
+    "@medusajs/test-utils": "^2.2.0",
     "@mikro-orm/cli": "5.9.7",
     "@swc/core": "^1.7.28",
     "@swc/jest": "^0.2.36",

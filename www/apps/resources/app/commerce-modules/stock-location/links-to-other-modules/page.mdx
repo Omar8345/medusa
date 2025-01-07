@@ -82,19 +82,19 @@ const { data: stockLocations } = useQueryGraphStep({
   </CodeTab>
 </CodeTabs>
 
-### Manage with Remote Link
+### Manage with Link
 
-To manage the stock location of a fulfillment set, use [Remote Link](!docs!/learn/fundamentals/module-links/remote-link):
+To manage the stock location of a fulfillment set, use [Link](!docs!/learn/fundamentals/module-links/link):
 
 <CodeTabs group="relation-link">
-  <CodeTab label="remoteLink.create" value="method">
+  <CodeTab label="link.create" value="method">
 
 ```ts
 import { Modules } from "@medusajs/framework/utils"
 
 // ...
 
-await remoteLink.create({
+await link.create({
   [Modules.STOCK_LOCATION]: {
     stock_location_id: "sloc_123",
   },
@@ -220,19 +220,19 @@ const { data: stockLocations } = useQueryGraphStep({
   </CodeTab>
 </CodeTabs>
 
-### Manage with Remote Link
+### Manage with Link
 
-To manage the stock locations of a sales channel, use [Remote Link](!docs!/learn/fundamentals/module-links/remote-link):
+To manage the stock locations of a sales channel, use [Link](!docs!/learn/fundamentals/module-links/link):
 
 <CodeTabs group="relation-link">
-  <CodeTab label="remoteLink.create" value="method">
+  <CodeTab label="link.create" value="method">
 
 ```ts
 import { Modules } from "@medusajs/framework/utils"
 
 // ...
 
-await remoteLink.create({
+await link.create({
   [Modules.SALES_CHANNEL]: {
     sales_channel_id: "sc_123",
   },

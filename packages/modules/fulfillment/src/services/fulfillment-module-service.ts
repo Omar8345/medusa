@@ -17,6 +17,7 @@ import {
   SoftDeleteReturn,
   UpdateFulfillmentSetDTO,
   UpdateServiceZoneDTO,
+  ValidateFulfillmentDataContext,
 } from "@medusajs/framework/types"
 import {
   arrayDifference,
@@ -650,7 +651,7 @@ export default class FulfillmentModuleService
           fulfillmentData || {},
           items.map((i) => i),
           order,
-          fulfillmentRest
+          fulfillmentRest as unknown as Partial<FulfillmentDTO>
         )
       await this.fulfillmentService_.update(
         {
@@ -710,11 +711,22 @@ export default class FulfillmentModuleService
       sharedContext
     )
 
+    const shippingOption = await this.shippingOptionService_.retrieve(
+      fulfillment.shipping_option_id!,
+      {
+        select: ["id", "name", "data", "metadata"],
+      },
+      sharedContext
+    )
+
     try {
       const providerResult =
         await this.fulfillmentProviderService_.createReturn(
           fulfillment.provider_id!, // TODO: should we add a runtime check on provider_id being provided?,
-          fulfillment as Record<any, any>
+          {
+            ...fulfillment,
+            shipping_option: shippingOption,
+          } as Record<any, any>
         )
       await this.fulfillmentService_.update(
         {
@@ -2002,7 +2014,7 @@ export default class FulfillmentModuleService
     providerId: string,
     optionData: Record<string, unknown>,
     data: Record<string, unknown>,
-    context: Record<string, unknown>
+    context: ValidateFulfillmentDataContext
   ): Promise<Record<string, unknown>> {
     return await this.fulfillmentProviderService_.validateFulfillmentData(
       providerId,
@@ -2012,6 +2024,7 @@ export default class FulfillmentModuleService
     )
   }
 
+  // TODO: seems not to be used, what is the purpose of this method?
   async validateFulfillmentOption(
     providerId: string,
     data: Record<string, unknown>
@@ -2058,10 +2071,7 @@ export default class FulfillmentModuleService
     }
 
     const promises = shippingOptionsData.map((option) =>
-      this.fulfillmentProviderService_.canCalculate(
-        option.provider_id,
-        option as unknown as Record<string, unknown>
-      )
+      this.fulfillmentProviderService_.canCalculate(option.provider_id, option)
     )
 
     return await promiseAll(promises)

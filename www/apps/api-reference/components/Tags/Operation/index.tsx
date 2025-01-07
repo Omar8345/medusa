@@ -18,9 +18,9 @@ import TagsOperationDescriptionSection from "./DescriptionSection"
 import DividedLayout from "@/layouts/Divided"
 import { useLoading } from "@/providers/loading"
 import { useRouter } from "next/navigation"
-import SectionDivider from "../../Section/Divider"
 import checkElementInViewport from "../../../utils/check-element-in-viewport"
 import DividedLoading from "../../DividedLoading"
+import SectionContainer from "../../Section/Container"
 
 const TagOperationCodeSection = dynamic<TagOperationCodeSectionProps>(
   async () => import("./CodeSection")
@@ -116,7 +116,7 @@ const TagOperation = ({
         }
       }}
     >
-      <div
+      <SectionContainer
         ref={nodeRef}
         className={clsx("relative min-h-screen w-full pb-7", className)}
       >
@@ -144,8 +144,7 @@ const TagOperation = ({
             />
           </div>
         )}
-        <SectionDivider className="-left-[16px] lg:!-left-1/4" />
-      </div>
+      </SectionContainer>
     </InView>
   )
 }

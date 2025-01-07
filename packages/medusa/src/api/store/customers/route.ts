@@ -30,7 +30,7 @@ export const POST = async (
   const customer = await refetchCustomer(
     result.id,
     req.scope,
-    req.remoteQueryConfig.fields
+    req.queryConfig.fields
   )
 
   res.status(200).json({ customer })

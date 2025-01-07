@@ -16,7 +16,7 @@ export const GET = async (
     variables: {
       filters: { id: req.params.id },
     },
-    fields: req.remoteQueryConfig.fields,
+    fields: req.queryConfig.fields,
   })
 
   const [region] = await remoteQuery(queryObject)

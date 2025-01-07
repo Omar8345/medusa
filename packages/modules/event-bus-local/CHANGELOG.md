@@ -1,5 +1,7 @@
 # @medusajs/event-bus-local
 
+## 2.2.0
+
 ## 2.1.3
 
 ## 2.1.2

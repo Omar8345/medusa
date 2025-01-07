@@ -1,5 +1,11 @@
 # @medusajs/order
 
+## 2.2.0
+
+### Patch Changes
+
+- [#10667](https://github.com/medusajs/medusa/pull/10667) [`47594192b79fbc798cfaf21821b60673745d1374`](https://github.com/medusajs/medusa/commit/47594192b79fbc798cfaf21821b60673745d1374) Thanks [@riqwan](https://github.com/riqwan)! - feat(dashboard,core-flows,types,utils,medusa,order): Order cancelations will refund payments
+
 ## 2.1.3
 
 ## 2.1.2

@@ -1,5 +1,11 @@
 # @medusajs/promotion
 
+## 2.2.0
+
+### Patch Changes
+
+- [#10795](https://github.com/medusajs/medusa/pull/10795) [`f7ffa3540f6e293507a1a96c0993b784a58ea507`](https://github.com/medusajs/medusa/commit/f7ffa3540f6e293507a1a96c0993b784a58ea507) Thanks [@riqwan](https://github.com/riqwan)! - fix(promotion): don't evaluate rule condition if conditions to evaluate is empty
+
 ## 2.1.3
 
 ## 2.1.2

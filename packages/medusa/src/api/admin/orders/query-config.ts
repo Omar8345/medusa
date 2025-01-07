@@ -46,6 +46,7 @@ export const defaultAdminRetrieveOrderFields = [
   "*payment_collections",
   "*payment_collections.payments",
   "*payment_collections.payments.refunds",
+  "*payment_collections.payments.captures",
 ]
 
 export const defaultAdminRetrieveOrderChangesFields = [

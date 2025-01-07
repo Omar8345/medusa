@@ -108,6 +108,11 @@ const redirects = async () => {
       destination: "/resources/nextjs-starter",
       permanent: true,
     },
+    {
+      source: "/learn/fundamentals/module-links/remote-link",
+      destination: "/learn/fundamentals/module-links/link",
+      permanent: true,
+    },
   ]
 }
 

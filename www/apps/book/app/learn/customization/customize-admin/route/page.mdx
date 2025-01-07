@@ -25,7 +25,7 @@ Replace or create the `GET` API route at `src/api/admin/brands/route.ts` with th
 
 export const apiRouteHighlights = [
   ["15", "metadata", "Pagination details, such as the total count or how many items were skipped."],
-  ["18", "remoteQueryConfig", "Query configurations parsed from the request."],
+  ["18", "queryConfig", "Query configurations parsed from the request."],
 ]
 
 ```ts title="src/api/admin/brands/route.ts" highlights={apiRouteHighlights}
@@ -46,7 +46,7 @@ export const GET = async (
     metadata: { count, take, skip },
   } = await query.graph({
     entity: "brand",
-    ...req.remoteQueryConfig,
+    ...req.queryConfig,
   })
 
   res.json({ 
@@ -58,7 +58,7 @@ export const GET = async (
 }
 ```
 
-In the API route, you use Query's `graph` method to retrieve the brands. In the method's object parameter, you spread the `remoteQueryConfig` property of the request object. This property holds configurations for pagination and retrieved fields.
+In the API route, you use Query's `graph` method to retrieve the brands. In the method's object parameter, you spread the `queryConfig` property of the request object. This property holds configurations for pagination and retrieved fields.
 
 The query configurations are combined from default configurations, which you'll add next, and the request's query parameters:
 

@@ -72,11 +72,10 @@ export const generatedEditDates = {
   "app/learn/fundamentals/admin/constraints/page.mdx": "2024-10-21T13:30:21.366Z",
   "app/learn/debugging-and-testing/testing-tools/modules-tests/module-example/page.mdx": "2024-12-09T15:52:22.185Z",
   "app/learn/debugging-and-testing/testing-tools/modules-tests/page.mdx": "2024-12-09T15:52:57.091Z",
-  "app/learn/fundamentals/module-links/custom-columns/page.mdx": "2024-11-20T14:32:09.764Z",
+  "app/learn/fundamentals/module-links/custom-columns/page.mdx": "2025-01-06T11:19:13.178Z",
   "app/learn/fundamentals/module-links/directions/page.mdx": "2024-12-12T15:31:31.555Z",
   "app/learn/fundamentals/module-links/page.mdx": "2024-12-09T14:39:26.668Z",
   "app/learn/fundamentals/module-links/query/page.mdx": "2024-12-09T15:54:44.798Z",
-  "app/learn/fundamentals/module-links/remote-link/page.mdx": "2024-10-28T04:22:21.328Z",
   "app/learn/fundamentals/modules/db-operations/page.mdx": "2024-12-09T14:40:50.581Z",
   "app/learn/fundamentals/modules/multiple-services/page.mdx": "2024-10-21T13:30:21.370Z",
   "app/learn/fundamentals/modules/page.mdx": "2024-12-09T15:55:25.858Z",
@@ -86,7 +85,7 @@ export const generatedEditDates = {
   "app/learn/customization/custom-features/api-route/page.mdx": "2024-12-09T10:39:30.046Z",
   "app/learn/customization/custom-features/module/page.mdx": "2024-12-09T14:36:02.100Z",
   "app/learn/customization/custom-features/workflow/page.mdx": "2024-12-09T14:36:29.482Z",
-  "app/learn/customization/extend-features/extend-create-product/page.mdx": "2024-12-23T15:42:23.863Z",
+  "app/learn/customization/extend-features/extend-create-product/page.mdx": "2025-01-06T11:18:58.250Z",
   "app/learn/customization/custom-features/page.mdx": "2024-12-09T10:46:28.593Z",
   "app/learn/customization/customize-admin/page.mdx": "2024-12-09T11:02:38.801Z",
   "app/learn/customization/customize-admin/route/page.mdx": "2024-12-24T15:08:46.095Z",
@@ -107,6 +106,7 @@ export const generatedEditDates = {
   "app/learn/build/page.mdx": "2024-12-09T11:05:17.383Z",
   "app/learn/deployment/general/page.mdx": "2024-11-25T14:33:50.439Z",
   "app/learn/fundamentals/workflows/multiple-step-usage/page.mdx": "2024-11-25T16:19:32.169Z",
-  "app/learn/installation/page.mdx": "2024-12-12T15:22:29.182Z",
-  "app/learn/fundamentals/data-models/check-constraints/page.mdx": "2024-12-06T14:34:50.384Z"
+  "app/learn/installation/page.mdx": "2025-01-06T09:12:48.690Z",
+  "app/learn/fundamentals/data-models/check-constraints/page.mdx": "2024-12-06T14:34:50.384Z",
+  "app/learn/fundamentals/module-links/link/page.mdx": "2025-01-06T09:27:25.604Z"
 }

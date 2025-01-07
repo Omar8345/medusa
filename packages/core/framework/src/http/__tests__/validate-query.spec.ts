@@ -107,7 +107,7 @@ describe("validateAndTransformQuery", () => {
         ],
         order: transformedOrder,
       })
-      expect(mockRequest.remoteQueryConfig).toEqual({
+      expect(mockRequest.queryConfig).toEqual({
         fields: [
           "id",
           "created_at",
@@ -387,7 +387,7 @@ describe("validateAndTransformQuery", () => {
         ],
       })
     )
-    expect(mockRequest.remoteQueryConfig).toEqual(
+    expect(mockRequest.queryConfig).toEqual(
       expect.objectContaining({
         fields: [
           "id",
@@ -447,7 +447,7 @@ describe("validateAndTransformQuery", () => {
         relations: ["store"],
       })
     )
-    expect(mockRequest.remoteQueryConfig).toEqual(
+    expect(mockRequest.queryConfig).toEqual(
       expect.objectContaining({
         fields: ["store.name", "id"],
       })

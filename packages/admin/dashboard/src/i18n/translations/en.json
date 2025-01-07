@@ -912,9 +912,19 @@
     "exchange": "Exchange",
     "return": "Return",
     "cancelWarning": "You are about to cancel the order {{id}}. This action cannot be undone.",
+    "orderCanceled": "Order canceled successfully",
     "onDateFromSalesChannel": "{{date}} from {{salesChannel}}",
     "list": {
       "noRecordsMessage": "Your orders will show up here."
+    },
+    "status": {
+      "not_paid": "Not paid",
+      "pending": "Pending",
+      "completed": "Completed",
+      "draft": "Draft",
+      "archived": "Archived",
+      "canceled": "Canceled",
+      "requires_action": "Requires action"
     },
     "summary": {
       "requestReturn": "Request return",

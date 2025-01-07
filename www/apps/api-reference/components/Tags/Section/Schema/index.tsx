@@ -124,32 +124,34 @@ const TagSectionSchema = ({ schema, tagName }: TagSectionSchemaProps) => {
         root={root}
         threshold={0.1}
       >
-        <DividedLayout
-          mainContent={
-            <SectionContainer ref={paramsRef}>
-              <h2>{formattedName} Object</h2>
-              <h4 className="border-medusa-border-base border-b py-1.5 mt-2">
-                Fields
-              </h4>
-              <TagOperationParameters schemaObject={schema} topLevel={true} />
-            </SectionContainer>
-          }
-          codeContent={
-            <SectionContainer noDivider>
-              {examples.length && (
-                <CodeBlock
-                  source={examples[0].content}
-                  lang="json"
-                  title={`The ${formattedName} Object`}
-                  className={clsx("overflow-auto")}
-                  style={{
-                    maxHeight: "100vh",
-                  }}
-                />
-              )}
-            </SectionContainer>
-          }
-        />
+        <SectionContainer ref={paramsRef}>
+          <DividedLayout
+            mainContent={
+              <div>
+                <h2>{formattedName} Object</h2>
+                <h4 className="border-medusa-border-base border-b py-1.5 mt-2">
+                  Fields
+                </h4>
+                <TagOperationParameters schemaObject={schema} topLevel={true} />
+              </div>
+            }
+            codeContent={
+              <>
+                {examples.length && (
+                  <CodeBlock
+                    source={examples[0].content}
+                    lang="json"
+                    title={`The ${formattedName} Object`}
+                    className={clsx("overflow-auto")}
+                    style={{
+                      maxHeight: "100vh",
+                    }}
+                  />
+                )}
+              </>
+            }
+          />
+        </SectionContainer>
       </InView>
     </Suspense>
   )

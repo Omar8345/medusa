@@ -127,6 +127,18 @@ export type OrderSummaryDTO = {
    * @ignore
    */
   raw_pending_difference: BigNumberRawValue
+
+  /**
+   * The sum difference of all actions
+   */
+  difference_sum: BigNumberValue
+
+  /**
+   * The raw sum difference of all actions
+   *
+   * @ignore
+   */
+  raw_difference_sum: BigNumberRawValue
 }
 
 /**

@@ -33,7 +33,7 @@ export const POST = async (
   const inventoryItem = await refetchInventoryItem(
     id,
     req.scope,
-    req.remoteQueryConfig.fields
+    req.queryConfig.fields
   )
   res.status(200).json({ inventory_item: inventoryItem })
 }
@@ -50,9 +50,9 @@ export const GET = async (
     entryPoint: "inventory_levels",
     variables: {
       filters: { ...req.filterableFields, inventory_item_id: id },
-      ...req.remoteQueryConfig.pagination,
+      ...req.queryConfig.pagination,
     },
-    fields: req.remoteQueryConfig.fields,
+    fields: req.queryConfig.fields,
   })
 
   const { rows: inventory_levels, metadata } = await remoteQuery(query)

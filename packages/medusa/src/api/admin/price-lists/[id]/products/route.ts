@@ -39,11 +39,7 @@ export const POST = async (
     },
   })
 
-  const priceList = await fetchPriceList(
-    id,
-    req.scope,
-    req.remoteQueryConfig.fields
-  )
+  const priceList = await fetchPriceList(id, req.scope, req.queryConfig.fields)
 
   res.status(200).json({ price_list: priceList })
 }

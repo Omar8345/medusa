@@ -11,7 +11,9 @@ OrderChangeProcessing.registerActionType(ChangeActionType.CREDIT_LINE_ADD, {
       existing = {
         id: action.reference_id!,
         order_id: currentOrder.id,
-        amount: action.amount as number,
+        amount: action.amount!,
+        reference: action.reference,
+        reference_id: action.reference_id,
       }
 
       creditLines.push(existing)

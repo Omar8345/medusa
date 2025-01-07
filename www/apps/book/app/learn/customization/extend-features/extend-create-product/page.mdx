@@ -93,25 +93,25 @@ In the step, if a brand ID is passed in `additional_data`, you resolve the Brand
 
 ### Link Brand to Product
 
-Next, you want to create a link between the created products and the brand. To do so, you use Remote Link, which is a class from the Modules SDK that provides methods to manage linked records.
+Next, you want to create a link between the created products and the brand. To do so, you use Link, which is a class from the Modules SDK that provides methods to manage linked records.
 
 <Note>
 
-Learn more about the remote link in [this chapter](../../../fundamentals/module-links/remote-link/page.mdx).
+Learn more about Link in [this chapter](../../../fundamentals/module-links/link/page.mdx).
 
 </Note>
 
-To use the remote link in the `productCreated` hook, replace the `TODO` with the following:
+To use Link in the `productCreated` hook, replace the `TODO` with the following:
 
 export const hook2Highlights = [
-  ["1", `"remoteLink"`, "Resolve the remote link from the container."]
+  ["1", `"link"`, "Resolve Link from the container."]
   ["4", "links", "Define an array to store the links in."],
   ["7", "push", "Add a link to be created."],
   ["17", "create", "Create the links."]
 ]
 
 ```ts title="src/workflows/hooks/created-product.ts" highlights={hook2Highlights}
-const remoteLink = container.resolve("remoteLink")
+const link = container.resolve("link")
 const logger = container.resolve("logger")
 
 const links: LinkDefinition[] = []
@@ -127,14 +127,14 @@ for (const product of products) {
   })
 }
 
-await remoteLink.create(links)
+await link.create(links)
 
 logger.info("Linked brand to products")
 
 return new StepResponse(links, links)
 ```
 
-You resolve the remote link from the container. Then you loop over the created products to assemble an array of links to be created. After that, you pass the array of links to remote link's `create` method, which will link the product and brand records.
+You resolve Link from the container. Then you loop over the created products to assemble an array of links to be created. After that, you pass the array of links to Link's `create` method, which will link the product and brand records.
 
 Each property in the link object is the name of a module, and its value is an object having a `{model_name}_id` property, where `{model_name}` is the snake-case name of the module's data model. Its value is the ID of the record to be linked. The link object's properties must be set in the same order as the link configurations passed to `defineLink`.
 
@@ -156,14 +156,14 @@ createProductsWorkflow.hooks.productsCreated(
       return
     }
 
-    const remoteLink = container.resolve("remoteLink")
+    const link = container.resolve("link")
 
-    await remoteLink.dismiss(links)
+    await link.dismiss(links)
   })
 )
 ```
 
-In the compensation function, if the `links` parameter isn't empty, you resolve remote link from the container and use its `dismiss` method. This method removes a link between two records. It accepts the same parameter as the `create` method.
+In the compensation function, if the `links` parameter isn't empty, you resolve Link from the container and use its `dismiss` method. This method removes a link between two records. It accepts the same parameter as the `create` method.
 
 ---
 

@@ -22,9 +22,7 @@ export const GET = async (
       ...req.filterableFields,
       order_id: id,
     },
-    fields: deduplicate(
-      req.remoteQueryConfig.fields.concat(["item_id", "version"])
-    ),
+    fields: deduplicate(req.queryConfig.fields.concat(["item_id", "version"])),
   })
 
   const data = result.data

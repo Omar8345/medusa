@@ -161,19 +161,19 @@ const { data: regions } = useQueryGraphStep({
   </CodeTab>
 </CodeTabs>
 
-### Manage with Remote Link
+### Manage with Link
 
-To manage the payment providers in a region, use [Remote Link](!docs!/learn/fundamentals/module-links/remote-link):
+To manage the payment providers in a region, use [Link](!docs!/learn/fundamentals/module-links/link):
 
 <CodeTabs group="relation-link">
-  <CodeTab label="remoteLink.create" value="method">
+  <CodeTab label="link.create" value="method">
 
 ```ts
 import { Modules } from "@medusajs/framework/utils"
 
 // ...
 
-await remoteLink.create({
+await link.create({
   [Modules.REGION]: {
     region_id: "reg_123",
   },

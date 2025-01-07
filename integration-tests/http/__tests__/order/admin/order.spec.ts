@@ -343,6 +343,199 @@ medusaIntegrationTestRunner({
       })
     })
 
+    describe("POST /orders/:id/cancel", () => {
+      beforeEach(async () => {
+        seeder = await createOrderSeeder({
+          api,
+          container: getContainer(),
+        })
+        order = seeder.order
+
+        order = (await api.get(`/admin/orders/${order.id}`, adminHeaders)).data
+          .order
+      })
+
+      it("should successfully cancel an order and its authorized but not captured payments", async () => {
+        const response = await api.post(
+          `/admin/orders/${order.id}/cancel`,
+          {},
+          adminHeaders
+        )
+
+        expect(response.status).toBe(200)
+        expect(response.data.order).toEqual(
+          expect.objectContaining({
+            id: order.id,
+            status: "canceled",
+
+            summary: expect.objectContaining({
+              credit_line_total: 106,
+              current_order_total: 0,
+              accounting_total: 0,
+            }),
+
+            payment_collections: [
+              expect.objectContaining({
+                status: "canceled",
+                captured_amount: 0,
+                refunded_amount: 0,
+                amount: 106,
+                payments: [
+                  expect.objectContaining({
+                    canceled_at: expect.any(String),
+                    refunds: [],
+                    captures: [],
+                  }),
+                ],
+              }),
+            ],
+          })
+        )
+      })
+
+      it("should successfully cancel an order with a captured payment", async () => {
+        const payment = order.payment_collections[0].payments[0]
+
+        const paymentResponse = await api.post(
+          `/admin/payments/${payment.id}/capture`,
+          undefined,
+          adminHeaders
+        )
+
+        expect(paymentResponse.data.payment).toEqual(
+          expect.objectContaining({
+            id: payment.id,
+            captured_at: expect.any(String),
+            captures: [
+              expect.objectContaining({
+                id: expect.any(String),
+                amount: 106,
+              }),
+            ],
+            refunds: [],
+            amount: 106,
+          })
+        )
+
+        const response = await api.post(
+          `/admin/orders/${order.id}/cancel`,
+          {},
+          adminHeaders
+        )
+
+        expect(response.status).toBe(200)
+        expect(response.data.order).toEqual(
+          expect.objectContaining({
+            id: order.id,
+            status: "canceled",
+
+            summary: expect.objectContaining({
+              credit_line_total: 106,
+              current_order_total: 0,
+              accounting_total: 0,
+            }),
+
+            payment_collections: [
+              expect.objectContaining({
+                status: "canceled",
+                captured_amount: 106,
+                refunded_amount: 106,
+                amount: 106,
+                payments: [
+                  expect.objectContaining({
+                    // canceled_at: expect.any(String),
+                    refunds: [
+                      expect.objectContaining({
+                        id: expect.any(String),
+                        amount: 106,
+                      }),
+                    ],
+                    captures: [
+                      expect.objectContaining({
+                        id: expect.any(String),
+                        amount: 106,
+                      }),
+                    ],
+                  }),
+                ],
+              }),
+            ],
+          })
+        )
+      })
+
+      it("should successfully cancel an order with a partially captured payment", async () => {
+        const payment = order.payment_collections[0].payments[0]
+
+        const paymentResponse = await api.post(
+          `/admin/payments/${payment.id}/capture`,
+          { amount: 50 },
+          adminHeaders
+        )
+
+        expect(paymentResponse.data.payment).toEqual(
+          expect.objectContaining({
+            id: payment.id,
+            captured_at: null,
+            captures: [
+              expect.objectContaining({
+                id: expect.any(String),
+                amount: 50,
+              }),
+            ],
+            refunds: [],
+            amount: 106,
+          })
+        )
+
+        const response = await api.post(
+          `/admin/orders/${order.id}/cancel`,
+          {},
+          adminHeaders
+        )
+
+        expect(response.status).toBe(200)
+        expect(response.data.order).toEqual(
+          expect.objectContaining({
+            id: order.id,
+            status: "canceled",
+
+            summary: expect.objectContaining({
+              credit_line_total: 106,
+              current_order_total: 0,
+              accounting_total: 0,
+            }),
+
+            payment_collections: [
+              expect.objectContaining({
+                status: "canceled",
+                captured_amount: 50,
+                refunded_amount: 50,
+                amount: 106,
+                payments: [
+                  expect.objectContaining({
+                    // canceled_at: expect.any(String),
+                    refunds: [
+                      expect.objectContaining({
+                        id: expect.any(String),
+                        amount: 50,
+                      }),
+                    ],
+                    captures: [
+                      expect.objectContaining({
+                        id: expect.any(String),
+                        amount: 50,
+                      }),
+                    ],
+                  }),
+                ],
+              }),
+            ],
+          })
+        )
+      })
+    })
+
     describe("POST /orders/:id/fulfillments", () => {
       beforeEach(async () => {
         const stockChannelOverride = (

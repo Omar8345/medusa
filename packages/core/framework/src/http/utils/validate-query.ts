@@ -90,7 +90,8 @@ export function validateAndTransformQuery<TEntity extends BaseEntity>(
 
       req.validatedQuery = validated
       req.filterableFields = getFilterableFields(req.validatedQuery)
-      req.remoteQueryConfig = cnf.remoteQueryConfig as any
+      req.queryConfig = cnf.remoteQueryConfig as any
+      req.remoteQueryConfig = req.queryConfig
       req.listConfig = (cnf as any).listConfig
       req.retrieveConfig = (cnf as any).retrieveConfig
 

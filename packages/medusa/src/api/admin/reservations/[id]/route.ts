@@ -23,7 +23,7 @@ export const GET = async (
   const reservation = await refetchReservation(
     id,
     req.scope,
-    req.remoteQueryConfig.fields
+    req.queryConfig.fields
   )
 
   if (!reservation) {
@@ -50,7 +50,7 @@ export const POST = async (
   const reservation = await refetchReservation(
     id,
     req.scope,
-    req.remoteQueryConfig.fields
+    req.queryConfig.fields
   )
   res.status(200).json({ reservation })
 }

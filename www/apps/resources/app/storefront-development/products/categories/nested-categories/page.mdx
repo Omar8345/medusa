@@ -58,12 +58,11 @@ export const fetchHighlights = [
   <CodeTab label="React" value="react">
 
 export const highlights = [
-  ["12", "{ params: { id } }: Params", "This is based on Next.js which passes the path parameters as a prop."],
-  ["24", `"category_children.id,category_children.name"`, "Select the fields of category children"],
-  ["25", "parent_category_id", "Since each category will have its children, you only retrieve categories that don't have a parent."]
+  ["22", `fields`, "Select the fields of category children"],
+  ["23", "parent_category_id", "Since each category will have its children, you only retrieve categories that don't have a parent."],
   ["26"], ["27"], ["28"], 
   ["29"], ["30"], ["31"], ["32"], ["33"], ["34"], ["35"], ["36"], ["37"], ["38"],
-  ["54", "", "Show the nested categories."],
+  ["52", "", "Show the nested categories."],
 ]
 
   ```tsx highlights={highlights}
@@ -72,13 +71,11 @@ export const highlights = [
   import { useEffect, useState } from "react"
   import { HttpTypes } from "@medusajs/types"
 
-  type Params = {
-    params: {
-      id: string
-    }
+  type Props = {
+    id: string
   }
 
-  export default function Category({ params: { id } }: Params) {
+  export default function Category({ id }: Props) {
     const [loading, setLoading] = useState(true)
     const [category, setCategory] = useState<
       HttpTypes.StoreProductCategory | undefined

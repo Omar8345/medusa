@@ -1,5 +1,5 @@
 {
-	"id": 12458,
+	"id": 12497,
 	"name": "product-models",
 	"variant": "project",
 	"kind": 1,
@@ -18,7 +18,7 @@
 	},
 	"children": [
 		{
-			"id": 12614,
+			"id": 12653,
 			"name": "ProductCategory",
 			"variant": "declaration",
 			"kind": 32,
@@ -42,14 +42,14 @@
 							{
 								"type": "reflection",
 								"declaration": {
-									"id": 12615,
+									"id": 12654,
 									"name": "__type",
 									"variant": "declaration",
 									"kind": 65536,
 									"flags": {},
 									"children": [
 										{
-											"id": 12616,
+											"id": 12655,
 											"name": "id",
 											"variant": "declaration",
 											"kind": 1024,
@@ -85,7 +85,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 12617,
+											"id": 12656,
 											"name": "name",
 											"variant": "declaration",
 											"kind": 1024,
@@ -110,7 +110,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 12618,
+											"id": 12657,
 											"name": "description",
 											"variant": "declaration",
 											"kind": 1024,
@@ -135,7 +135,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 12619,
+											"id": 12658,
 											"name": "handle",
 											"variant": "declaration",
 											"kind": 1024,
@@ -160,7 +160,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 12620,
+											"id": 12659,
 											"name": "mpath",
 											"variant": "declaration",
 											"kind": 1024,
@@ -185,7 +185,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 12621,
+											"id": 12660,
 											"name": "is_active",
 											"variant": "declaration",
 											"kind": 1024,
@@ -210,7 +210,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 12622,
+											"id": 12661,
 											"name": "is_internal",
 											"variant": "declaration",
 											"kind": 1024,
@@ -235,7 +235,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 12623,
+											"id": 12662,
 											"name": "rank",
 											"variant": "declaration",
 											"kind": 1024,
@@ -260,7 +260,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 12624,
+											"id": 12663,
 											"name": "metadata",
 											"variant": "declaration",
 											"kind": 1024,
@@ -287,7 +287,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 12625,
+											"id": 12664,
 											"name": "parent_category",
 											"variant": "declaration",
 											"kind": 1024,
@@ -314,7 +314,7 @@
 												"typeArguments": [
 													{
 														"type": "reference",
-														"target": 12614,
+														"target": 12653,
 														"name": "ProductCategory"
 													}
 												],
@@ -324,7 +324,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 12630,
+											"id": 12669,
 											"name": "category_children",
 											"variant": "declaration",
 											"kind": 1024,
@@ -349,7 +349,7 @@
 												"typeArguments": [
 													{
 														"type": "reference",
-														"target": 12614,
+														"target": 12653,
 														"name": "ProductCategory"
 													}
 												],
@@ -359,7 +359,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 12633,
+											"id": 12672,
 											"name": "products",
 											"variant": "declaration",
 											"kind": 1024,
@@ -384,7 +384,7 @@
 												"typeArguments": [
 													{
 														"type": "reference",
-														"target": 12459,
+														"target": 12498,
 														"name": "Product"
 													}
 												],
@@ -398,18 +398,18 @@
 										{
 											"title": "Properties",
 											"children": [
-												12616,
-												12617,
-												12618,
-												12619,
-												12620,
-												12621,
-												12622,
-												12623,
-												12624,
-												12625,
-												12630,
-												12633
+												12655,
+												12656,
+												12657,
+												12658,
+												12659,
+												12660,
+												12661,
+												12662,
+												12663,
+												12664,
+												12669,
+												12672
 											]
 										}
 									]
@@ -430,7 +430,7 @@
 			"defaultValue": "..."
 		},
 		{
-			"id": 12681,
+			"id": 12720,
 			"name": "ProductCollection",
 			"variant": "declaration",
 			"kind": 32,
@@ -454,14 +454,14 @@
 							{
 								"type": "reflection",
 								"declaration": {
-									"id": 12682,
+									"id": 12721,
 									"name": "__type",
 									"variant": "declaration",
 									"kind": 65536,
 									"flags": {},
 									"children": [
 										{
-											"id": 12683,
+											"id": 12722,
 											"name": "id",
 											"variant": "declaration",
 											"kind": 1024,
@@ -497,7 +497,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 12684,
+											"id": 12723,
 											"name": "title",
 											"variant": "declaration",
 											"kind": 1024,
@@ -522,7 +522,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 12685,
+											"id": 12724,
 											"name": "handle",
 											"variant": "declaration",
 											"kind": 1024,
@@ -547,7 +547,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 12686,
+											"id": 12725,
 											"name": "metadata",
 											"variant": "declaration",
 											"kind": 1024,
@@ -574,7 +574,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 12687,
+											"id": 12726,
 											"name": "products",
 											"variant": "declaration",
 											"kind": 1024,
@@ -599,7 +599,7 @@
 												"typeArguments": [
 													{
 														"type": "reference",
-														"target": 12459,
+														"target": 12498,
 														"name": "Product"
 													}
 												],
@@ -613,11 +613,11 @@
 										{
 											"title": "Properties",
 											"children": [
-												12683,
-												12684,
-												12685,
-												12686,
-												12687
+												12722,
+												12723,
+												12724,
+												12725,
+												12726
 											]
 										}
 									]
@@ -638,7 +638,7 @@
 			"defaultValue": "..."
 		},
 		{
-			"id": 12735,
+			"id": 12774,
 			"name": "ProductImage",
 			"variant": "declaration",
 			"kind": 32,
@@ -662,14 +662,14 @@
 							{
 								"type": "reflection",
 								"declaration": {
-									"id": 12736,
+									"id": 12775,
 									"name": "__type",
 									"variant": "declaration",
 									"kind": 65536,
 									"flags": {},
 									"children": [
 										{
-											"id": 12737,
+											"id": 12776,
 											"name": "id",
 											"variant": "declaration",
 											"kind": 1024,
@@ -705,7 +705,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 12738,
+											"id": 12777,
 											"name": "url",
 											"variant": "declaration",
 											"kind": 1024,
@@ -730,7 +730,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 12739,
+											"id": 12778,
 											"name": "metadata",
 											"variant": "declaration",
 											"kind": 1024,
@@ -757,7 +757,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 12740,
+											"id": 12779,
 											"name": "rank",
 											"variant": "declaration",
 											"kind": 1024,
@@ -782,7 +782,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 12741,
+											"id": 12780,
 											"name": "product",
 											"variant": "declaration",
 											"kind": 1024,
@@ -807,7 +807,7 @@
 												"typeArguments": [
 													{
 														"type": "reference",
-														"target": 12459,
+														"target": 12498,
 														"name": "Product"
 													}
 												],
@@ -821,11 +821,11 @@
 										{
 											"title": "Properties",
 											"children": [
-												12737,
-												12738,
-												12739,
-												12740,
-												12741
+												12776,
+												12777,
+												12778,
+												12779,
+												12780
 											]
 										}
 									]
@@ -838,14 +838,14 @@
 					{
 						"type": "reflection",
 						"declaration": {
-							"id": 12789,
+							"id": 12828,
 							"name": "__type",
 							"variant": "declaration",
 							"kind": 65536,
 							"flags": {},
 							"children": [
 								{
-									"id": 12790,
+									"id": 12829,
 									"name": "tableName",
 									"variant": "declaration",
 									"kind": 1024,
@@ -859,7 +859,7 @@
 									"defaultValue": "\"image\""
 								},
 								{
-									"id": 12791,
+									"id": 12830,
 									"name": "name",
 									"variant": "declaration",
 									"kind": 1024,
@@ -877,8 +877,8 @@
 								{
 									"title": "Properties",
 									"children": [
-										12790,
-										12791
+										12829,
+										12830
 									]
 								}
 							]
@@ -891,7 +891,7 @@
 			"defaultValue": "..."
 		},
 		{
-			"id": 12860,
+			"id": 12899,
 			"name": "ProductOptionValue",
 			"variant": "declaration",
 			"kind": 32,
@@ -915,14 +915,14 @@
 							{
 								"type": "reflection",
 								"declaration": {
-									"id": 12861,
+									"id": 12900,
 									"name": "__type",
 									"variant": "declaration",
 									"kind": 65536,
 									"flags": {},
 									"children": [
 										{
-											"id": 12862,
+											"id": 12901,
 											"name": "id",
 											"variant": "declaration",
 											"kind": 1024,
@@ -958,7 +958,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 12863,
+											"id": 12902,
 											"name": "value",
 											"variant": "declaration",
 											"kind": 1024,
@@ -983,7 +983,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 12864,
+											"id": 12903,
 											"name": "metadata",
 											"variant": "declaration",
 											"kind": 1024,
@@ -1010,7 +1010,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 12865,
+											"id": 12904,
 											"name": "option",
 											"variant": "declaration",
 											"kind": 1024,
@@ -1037,7 +1037,7 @@
 												"typeArguments": [
 													{
 														"type": "reference",
-														"target": 12792,
+														"target": 12831,
 														"name": "ProductOption"
 													}
 												],
@@ -1047,7 +1047,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 12890,
+											"id": 12929,
 											"name": "variants",
 											"variant": "declaration",
 											"kind": 1024,
@@ -1072,7 +1072,7 @@
 												"typeArguments": [
 													{
 														"type": "reference",
-														"target": 13029,
+														"target": 13068,
 														"name": "ProductVariant"
 													}
 												],
@@ -1086,11 +1086,11 @@
 										{
 											"title": "Properties",
 											"children": [
-												12862,
-												12863,
-												12864,
-												12865,
-												12890
+												12901,
+												12902,
+												12903,
+												12904,
+												12929
 											]
 										}
 									]
@@ -1111,7 +1111,7 @@
 			"defaultValue": "..."
 		},
 		{
-			"id": 12792,
+			"id": 12831,
 			"name": "ProductOption",
 			"variant": "declaration",
 			"kind": 32,
@@ -1135,14 +1135,14 @@
 							{
 								"type": "reflection",
 								"declaration": {
-									"id": 12793,
+									"id": 12832,
 									"name": "__type",
 									"variant": "declaration",
 									"kind": 65536,
 									"flags": {},
 									"children": [
 										{
-											"id": 12794,
+											"id": 12833,
 											"name": "id",
 											"variant": "declaration",
 											"kind": 1024,
@@ -1178,7 +1178,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 12795,
+											"id": 12834,
 											"name": "title",
 											"variant": "declaration",
 											"kind": 1024,
@@ -1203,7 +1203,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 12796,
+											"id": 12835,
 											"name": "metadata",
 											"variant": "declaration",
 											"kind": 1024,
@@ -1230,7 +1230,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 12797,
+											"id": 12836,
 											"name": "product",
 											"variant": "declaration",
 											"kind": 1024,
@@ -1255,7 +1255,7 @@
 												"typeArguments": [
 													{
 														"type": "reference",
-														"target": 12459,
+														"target": 12498,
 														"name": "Product"
 													}
 												],
@@ -1265,7 +1265,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 12845,
+											"id": 12884,
 											"name": "values",
 											"variant": "declaration",
 											"kind": 1024,
@@ -1290,7 +1290,7 @@
 												"typeArguments": [
 													{
 														"type": "reference",
-														"target": 12860,
+														"target": 12899,
 														"name": "ProductOptionValue"
 													}
 												],
@@ -1304,11 +1304,11 @@
 										{
 											"title": "Properties",
 											"children": [
-												12794,
-												12795,
-												12796,
-												12797,
-												12845
+												12833,
+												12834,
+												12835,
+												12836,
+												12884
 											]
 										}
 									]
@@ -1329,7 +1329,7 @@
 			"defaultValue": "..."
 		},
 		{
-			"id": 12920,
+			"id": 12959,
 			"name": "ProductTag",
 			"variant": "declaration",
 			"kind": 32,
@@ -1353,14 +1353,14 @@
 							{
 								"type": "reflection",
 								"declaration": {
-									"id": 12921,
+									"id": 12960,
 									"name": "__type",
 									"variant": "declaration",
 									"kind": 65536,
 									"flags": {},
 									"children": [
 										{
-											"id": 12922,
+											"id": 12961,
 											"name": "id",
 											"variant": "declaration",
 											"kind": 1024,
@@ -1396,7 +1396,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 12923,
+											"id": 12962,
 											"name": "value",
 											"variant": "declaration",
 											"kind": 1024,
@@ -1421,7 +1421,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 12924,
+											"id": 12963,
 											"name": "metadata",
 											"variant": "declaration",
 											"kind": 1024,
@@ -1448,7 +1448,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 12925,
+											"id": 12964,
 											"name": "products",
 											"variant": "declaration",
 											"kind": 1024,
@@ -1473,7 +1473,7 @@
 												"typeArguments": [
 													{
 														"type": "reference",
-														"target": 12459,
+														"target": 12498,
 														"name": "Product"
 													}
 												],
@@ -1487,10 +1487,10 @@
 										{
 											"title": "Properties",
 											"children": [
-												12922,
-												12923,
-												12924,
-												12925
+												12961,
+												12962,
+												12963,
+												12964
 											]
 										}
 									]
@@ -1503,14 +1503,14 @@
 					{
 						"type": "reflection",
 						"declaration": {
-							"id": 12973,
+							"id": 13012,
 							"name": "__type",
 							"variant": "declaration",
 							"kind": 65536,
 							"flags": {},
 							"children": [
 								{
-									"id": 12974,
+									"id": 13013,
 									"name": "tableName",
 									"variant": "declaration",
 									"kind": 1024,
@@ -1524,7 +1524,7 @@
 									"defaultValue": "\"product_tag\""
 								},
 								{
-									"id": 12975,
+									"id": 13014,
 									"name": "name",
 									"variant": "declaration",
 									"kind": 1024,
@@ -1542,8 +1542,8 @@
 								{
 									"title": "Properties",
 									"children": [
-										12974,
-										12975
+										13013,
+										13014
 									]
 								}
 							]
@@ -1556,7 +1556,7 @@
 			"defaultValue": "..."
 		},
 		{
-			"id": 12976,
+			"id": 13015,
 			"name": "ProductType",
 			"variant": "declaration",
 			"kind": 32,
@@ -1580,14 +1580,14 @@
 							{
 								"type": "reflection",
 								"declaration": {
-									"id": 12977,
+									"id": 13016,
 									"name": "__type",
 									"variant": "declaration",
 									"kind": 65536,
 									"flags": {},
 									"children": [
 										{
-											"id": 12978,
+											"id": 13017,
 											"name": "id",
 											"variant": "declaration",
 											"kind": 1024,
@@ -1623,7 +1623,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 12979,
+											"id": 13018,
 											"name": "value",
 											"variant": "declaration",
 											"kind": 1024,
@@ -1648,7 +1648,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 12980,
+											"id": 13019,
 											"name": "metadata",
 											"variant": "declaration",
 											"kind": 1024,
@@ -1675,7 +1675,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 12981,
+											"id": 13020,
 											"name": "product",
 											"variant": "declaration",
 											"kind": 1024,
@@ -1700,7 +1700,7 @@
 												"typeArguments": [
 													{
 														"type": "reference",
-														"target": 12459,
+														"target": 12498,
 														"name": "Product"
 													}
 												],
@@ -1714,10 +1714,10 @@
 										{
 											"title": "Properties",
 											"children": [
-												12978,
-												12979,
-												12980,
-												12981
+												13017,
+												13018,
+												13019,
+												13020
 											]
 										}
 									]
@@ -1738,7 +1738,7 @@
 			"defaultValue": "..."
 		},
 		{
-			"id": 13029,
+			"id": 13068,
 			"name": "ProductVariant",
 			"variant": "declaration",
 			"kind": 32,
@@ -1762,14 +1762,14 @@
 							{
 								"type": "reflection",
 								"declaration": {
-									"id": 13030,
+									"id": 13069,
 									"name": "__type",
 									"variant": "declaration",
 									"kind": 65536,
 									"flags": {},
 									"children": [
 										{
-											"id": 13031,
+											"id": 13070,
 											"name": "id",
 											"variant": "declaration",
 											"kind": 1024,
@@ -1805,7 +1805,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 13032,
+											"id": 13071,
 											"name": "title",
 											"variant": "declaration",
 											"kind": 1024,
@@ -1830,7 +1830,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 13033,
+											"id": 13072,
 											"name": "sku",
 											"variant": "declaration",
 											"kind": 1024,
@@ -1857,7 +1857,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 13034,
+											"id": 13073,
 											"name": "barcode",
 											"variant": "declaration",
 											"kind": 1024,
@@ -1884,7 +1884,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 13035,
+											"id": 13074,
 											"name": "ean",
 											"variant": "declaration",
 											"kind": 1024,
@@ -1911,7 +1911,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 13036,
+											"id": 13075,
 											"name": "upc",
 											"variant": "declaration",
 											"kind": 1024,
@@ -1938,7 +1938,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 13037,
+											"id": 13076,
 											"name": "allow_backorder",
 											"variant": "declaration",
 											"kind": 1024,
@@ -1963,7 +1963,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 13038,
+											"id": 13077,
 											"name": "manage_inventory",
 											"variant": "declaration",
 											"kind": 1024,
@@ -1988,7 +1988,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 13039,
+											"id": 13078,
 											"name": "hs_code",
 											"variant": "declaration",
 											"kind": 1024,
@@ -2015,7 +2015,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 13040,
+											"id": 13079,
 											"name": "origin_country",
 											"variant": "declaration",
 											"kind": 1024,
@@ -2042,7 +2042,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 13041,
+											"id": 13080,
 											"name": "mid_code",
 											"variant": "declaration",
 											"kind": 1024,
@@ -2069,7 +2069,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 13042,
+											"id": 13081,
 											"name": "material",
 											"variant": "declaration",
 											"kind": 1024,
@@ -2096,7 +2096,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 13043,
+											"id": 13082,
 											"name": "weight",
 											"variant": "declaration",
 											"kind": 1024,
@@ -2123,7 +2123,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 13044,
+											"id": 13083,
 											"name": "length",
 											"variant": "declaration",
 											"kind": 1024,
@@ -2150,7 +2150,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 13045,
+											"id": 13084,
 											"name": "height",
 											"variant": "declaration",
 											"kind": 1024,
@@ -2177,7 +2177,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 13046,
+											"id": 13085,
 											"name": "width",
 											"variant": "declaration",
 											"kind": 1024,
@@ -2204,7 +2204,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 13047,
+											"id": 13086,
 											"name": "metadata",
 											"variant": "declaration",
 											"kind": 1024,
@@ -2231,7 +2231,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 13048,
+											"id": 13087,
 											"name": "variant_rank",
 											"variant": "declaration",
 											"kind": 1024,
@@ -2258,7 +2258,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 13049,
+											"id": 13088,
 											"name": "product",
 											"variant": "declaration",
 											"kind": 1024,
@@ -2285,7 +2285,7 @@
 												"typeArguments": [
 													{
 														"type": "reference",
-														"target": 12459,
+														"target": 12498,
 														"name": "Product"
 													}
 												],
@@ -2295,7 +2295,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 13140,
+											"id": 13179,
 											"name": "options",
 											"variant": "declaration",
 											"kind": 1024,
@@ -2320,7 +2320,7 @@
 												"typeArguments": [
 													{
 														"type": "reference",
-														"target": 12860,
+														"target": 12899,
 														"name": "ProductOptionValue"
 													}
 												],
@@ -2334,26 +2334,26 @@
 										{
 											"title": "Properties",
 											"children": [
-												13031,
-												13032,
-												13033,
-												13034,
-												13035,
-												13036,
-												13037,
-												13038,
-												13039,
-												13040,
-												13041,
-												13042,
-												13043,
-												13044,
-												13045,
-												13046,
-												13047,
-												13048,
-												13049,
-												13140
+												13070,
+												13071,
+												13072,
+												13073,
+												13074,
+												13075,
+												13076,
+												13077,
+												13078,
+												13079,
+												13080,
+												13081,
+												13082,
+												13083,
+												13084,
+												13085,
+												13086,
+												13087,
+												13088,
+												13179
 											]
 										}
 									]
@@ -2374,7 +2374,7 @@
 			"defaultValue": "..."
 		},
 		{
-			"id": 12459,
+			"id": 12498,
 			"name": "Product",
 			"variant": "declaration",
 			"kind": 32,
@@ -2398,14 +2398,14 @@
 							{
 								"type": "reflection",
 								"declaration": {
-									"id": 12460,
+									"id": 12499,
 									"name": "__type",
 									"variant": "declaration",
 									"kind": 65536,
 									"flags": {},
 									"children": [
 										{
-											"id": 12461,
+											"id": 12500,
 											"name": "id",
 											"variant": "declaration",
 											"kind": 1024,
@@ -2441,7 +2441,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 12462,
+											"id": 12501,
 											"name": "title",
 											"variant": "declaration",
 											"kind": 1024,
@@ -2466,7 +2466,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 12463,
+											"id": 12502,
 											"name": "handle",
 											"variant": "declaration",
 											"kind": 1024,
@@ -2491,7 +2491,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 12464,
+											"id": 12503,
 											"name": "subtitle",
 											"variant": "declaration",
 											"kind": 1024,
@@ -2518,7 +2518,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 12465,
+											"id": 12504,
 											"name": "description",
 											"variant": "declaration",
 											"kind": 1024,
@@ -2545,7 +2545,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 12466,
+											"id": 12505,
 											"name": "is_giftcard",
 											"variant": "declaration",
 											"kind": 1024,
@@ -2570,7 +2570,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 12467,
+											"id": 12506,
 											"name": "status",
 											"variant": "declaration",
 											"kind": 1024,
@@ -2610,7 +2610,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 12468,
+											"id": 12507,
 											"name": "thumbnail",
 											"variant": "declaration",
 											"kind": 1024,
@@ -2637,7 +2637,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 12469,
+											"id": 12508,
 											"name": "weight",
 											"variant": "declaration",
 											"kind": 1024,
@@ -2664,7 +2664,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 12470,
+											"id": 12509,
 											"name": "length",
 											"variant": "declaration",
 											"kind": 1024,
@@ -2691,7 +2691,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 12471,
+											"id": 12510,
 											"name": "height",
 											"variant": "declaration",
 											"kind": 1024,
@@ -2718,7 +2718,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 12472,
+											"id": 12511,
 											"name": "width",
 											"variant": "declaration",
 											"kind": 1024,
@@ -2745,7 +2745,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 12473,
+											"id": 12512,
 											"name": "origin_country",
 											"variant": "declaration",
 											"kind": 1024,
@@ -2772,7 +2772,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 12474,
+											"id": 12513,
 											"name": "hs_code",
 											"variant": "declaration",
 											"kind": 1024,
@@ -2799,7 +2799,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 12475,
+											"id": 12514,
 											"name": "mid_code",
 											"variant": "declaration",
 											"kind": 1024,
@@ -2826,7 +2826,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 12476,
+											"id": 12515,
 											"name": "material",
 											"variant": "declaration",
 											"kind": 1024,
@@ -2853,7 +2853,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 12477,
+											"id": 12516,
 											"name": "discountable",
 											"variant": "declaration",
 											"kind": 1024,
@@ -2878,7 +2878,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 12478,
+											"id": 12517,
 											"name": "external_id",
 											"variant": "declaration",
 											"kind": 1024,
@@ -2905,7 +2905,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 12479,
+											"id": 12518,
 											"name": "metadata",
 											"variant": "declaration",
 											"kind": 1024,
@@ -2932,7 +2932,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 12480,
+											"id": 12519,
 											"name": "variants",
 											"variant": "declaration",
 											"kind": 1024,
@@ -2957,7 +2957,7 @@
 												"typeArguments": [
 													{
 														"type": "reference",
-														"target": 13029,
+														"target": 13068,
 														"name": "ProductVariant"
 													}
 												],
@@ -2967,7 +2967,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 12510,
+											"id": 12549,
 											"name": "type",
 											"variant": "declaration",
 											"kind": 1024,
@@ -2994,7 +2994,7 @@
 												"typeArguments": [
 													{
 														"type": "reference",
-														"target": 12976,
+														"target": 13015,
 														"name": "ProductType"
 													}
 												],
@@ -3004,7 +3004,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 12529,
+											"id": 12568,
 											"name": "tags",
 											"variant": "declaration",
 											"kind": 1024,
@@ -3029,7 +3029,7 @@
 												"typeArguments": [
 													{
 														"type": "reference",
-														"target": 12920,
+														"target": 12959,
 														"name": "ProductTag"
 													}
 												],
@@ -3039,7 +3039,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 12542,
+											"id": 12581,
 											"name": "options",
 											"variant": "declaration",
 											"kind": 1024,
@@ -3064,7 +3064,7 @@
 												"typeArguments": [
 													{
 														"type": "reference",
-														"target": 12792,
+														"target": 12831,
 														"name": "ProductOption"
 													}
 												],
@@ -3074,7 +3074,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 12555,
+											"id": 12594,
 											"name": "images",
 											"variant": "declaration",
 											"kind": 1024,
@@ -3099,7 +3099,7 @@
 												"typeArguments": [
 													{
 														"type": "reference",
-														"target": 12735,
+														"target": 12774,
 														"name": "ProductImage"
 													}
 												],
@@ -3109,7 +3109,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 12569,
+											"id": 12608,
 											"name": "collection",
 											"variant": "declaration",
 											"kind": 1024,
@@ -3136,7 +3136,7 @@
 												"typeArguments": [
 													{
 														"type": "reference",
-														"target": 12681,
+														"target": 12720,
 														"name": "ProductCollection"
 													}
 												],
@@ -3146,7 +3146,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 12590,
+											"id": 12629,
 											"name": "categories",
 											"variant": "declaration",
 											"kind": 1024,
@@ -3171,7 +3171,7 @@
 												"typeArguments": [
 													{
 														"type": "reference",
-														"target": 12614,
+														"target": 12653,
 														"name": "ProductCategory"
 													}
 												],
@@ -3185,32 +3185,32 @@
 										{
 											"title": "Properties",
 											"children": [
-												12461,
-												12462,
-												12463,
-												12464,
-												12465,
-												12466,
-												12467,
-												12468,
-												12469,
-												12470,
-												12471,
-												12472,
-												12473,
-												12474,
-												12475,
-												12476,
-												12477,
-												12478,
-												12479,
-												12480,
+												12500,
+												12501,
+												12502,
+												12503,
+												12504,
+												12505,
+												12506,
+												12507,
+												12508,
+												12509,
 												12510,
-												12529,
-												12542,
-												12555,
-												12569,
-												12590
+												12511,
+												12512,
+												12513,
+												12514,
+												12515,
+												12516,
+												12517,
+												12518,
+												12519,
+												12549,
+												12568,
+												12581,
+												12594,
+												12608,
+												12629
 											]
 										}
 									]
@@ -3235,267 +3235,111 @@
 		{
 			"title": "Variables",
 			"children": [
-				12614,
-				12681,
-				12735,
-				12860,
-				12792,
-				12920,
-				12976,
-				13029,
-				12459
+				12653,
+				12720,
+				12774,
+				12899,
+				12831,
+				12959,
+				13015,
+				13068,
+				12498
 			]
 		}
 	],
 	"packageName": "@medusajs/product",
 	"symbolIdMap": {
-		"12458": {
+		"12497": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/index.ts",
 			"qualifiedName": ""
 		},
-		"12459": {
+		"12498": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "Product"
 		},
-		"12460": {
+		"12499": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object"
 		},
-		"12461": {
+		"12500": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.id"
 		},
-		"12462": {
+		"12501": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.title"
 		},
-		"12463": {
+		"12502": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.handle"
 		},
-		"12464": {
+		"12503": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.subtitle"
 		},
-		"12465": {
+		"12504": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.description"
 		},
-		"12466": {
+		"12505": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.is_giftcard"
 		},
-		"12467": {
+		"12506": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.status"
 		},
-		"12468": {
+		"12507": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.thumbnail"
 		},
-		"12469": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.weight"
-		},
-		"12470": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.length"
-		},
-		"12471": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.height"
-		},
-		"12472": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.width"
-		},
-		"12473": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.origin_country"
-		},
-		"12474": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.hs_code"
-		},
-		"12475": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.mid_code"
-		},
-		"12476": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.material"
-		},
-		"12477": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.discountable"
-		},
-		"12478": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.external_id"
-		},
-		"12479": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.metadata"
-		},
-		"12480": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.variants"
-		},
-		"12481": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
-		},
-		"12482": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
-		},
-		"12483": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__object"
-		},
-		"12484": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__object.id"
-		},
-		"12485": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__object.title"
-		},
-		"12486": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__object.sku"
-		},
-		"12487": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__object.barcode"
-		},
-		"12488": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__object.ean"
-		},
-		"12489": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__object.upc"
-		},
-		"12490": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__object.allow_backorder"
-		},
-		"12491": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__object.manage_inventory"
-		},
-		"12492": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__object.hs_code"
-		},
-		"12493": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__object.origin_country"
-		},
-		"12494": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__object.mid_code"
-		},
-		"12495": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__object.material"
-		},
-		"12496": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__object.weight"
-		},
-		"12497": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__object.length"
-		},
-		"12498": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__object.height"
-		},
-		"12499": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__object.width"
-		},
-		"12500": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__object.metadata"
-		},
-		"12501": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__object.variant_rank"
-		},
-		"12502": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__object.product"
-		},
-		"12503": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__function"
-		},
-		"12504": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__function"
-		},
-		"12505": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__function"
-		},
-		"12506": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__function"
-		},
-		"12507": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__object.options"
-		},
 		"12508": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.weight"
 		},
 		"12509": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.length"
 		},
 		"12510": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.type"
+			"qualifiedName": "__object.height"
 		},
 		"12511": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"qualifiedName": "__object.width"
 		},
 		"12512": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"qualifiedName": "__object.origin_country"
 		},
 		"12513": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-type.ts",
-			"qualifiedName": "__object"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.hs_code"
 		},
 		"12514": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-type.ts",
-			"qualifiedName": "__object.id"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.mid_code"
 		},
 		"12515": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-type.ts",
-			"qualifiedName": "__object.value"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.material"
 		},
 		"12516": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-type.ts",
-			"qualifiedName": "__object.metadata"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.discountable"
 		},
 		"12517": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-type.ts",
-			"qualifiedName": "__object.product"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.external_id"
 		},
 		"12518": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-type.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.metadata"
 		},
 		"12519": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-type.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.variants"
 		},
 		"12520": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
@@ -3506,760 +3350,760 @@
 			"qualifiedName": "__function"
 		},
 		"12522": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-type.ts",
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
 			"qualifiedName": "__object"
 		},
 		"12523": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-type.ts",
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
 			"qualifiedName": "__object.id"
 		},
 		"12524": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-type.ts",
-			"qualifiedName": "__object.value"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"qualifiedName": "__object.title"
 		},
 		"12525": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-type.ts",
-			"qualifiedName": "__object.metadata"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"qualifiedName": "__object.sku"
 		},
 		"12526": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-type.ts",
-			"qualifiedName": "__object.product"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"qualifiedName": "__object.barcode"
 		},
 		"12527": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-type.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"qualifiedName": "__object.ean"
 		},
 		"12528": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-type.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"qualifiedName": "__object.upc"
 		},
 		"12529": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.tags"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"qualifiedName": "__object.allow_backorder"
 		},
 		"12530": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"qualifiedName": "__object.manage_inventory"
 		},
 		"12531": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"qualifiedName": "__object.hs_code"
 		},
 		"12532": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-tag.ts",
-			"qualifiedName": "__object"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"qualifiedName": "__object.origin_country"
 		},
 		"12533": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-tag.ts",
-			"qualifiedName": "__object.id"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"qualifiedName": "__object.mid_code"
 		},
 		"12534": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-tag.ts",
-			"qualifiedName": "__object.value"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"qualifiedName": "__object.material"
 		},
 		"12535": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-tag.ts",
-			"qualifiedName": "__object.metadata"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"qualifiedName": "__object.weight"
 		},
 		"12536": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-tag.ts",
-			"qualifiedName": "__object.products"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"qualifiedName": "__object.length"
 		},
 		"12537": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-tag.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"qualifiedName": "__object.height"
 		},
 		"12538": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-tag.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"qualifiedName": "__object.width"
 		},
 		"12539": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-tag.ts",
-			"qualifiedName": "__object"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"qualifiedName": "__object.metadata"
 		},
 		"12540": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-tag.ts",
-			"qualifiedName": "__object.tableName"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"qualifiedName": "__object.variant_rank"
 		},
 		"12541": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-tag.ts",
-			"qualifiedName": "__object.name"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"qualifiedName": "__object.product"
 		},
 		"12542": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.options"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"qualifiedName": "__function"
 		},
 		"12543": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
 			"qualifiedName": "__function"
 		},
 		"12544": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
 			"qualifiedName": "__function"
 		},
 		"12545": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
-			"qualifiedName": "__object"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"qualifiedName": "__function"
 		},
 		"12546": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
-			"qualifiedName": "__object.id"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"qualifiedName": "__object.options"
 		},
 		"12547": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
-			"qualifiedName": "__object.title"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"qualifiedName": "__function"
 		},
 		"12548": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
-			"qualifiedName": "__object.metadata"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"qualifiedName": "__function"
 		},
 		"12549": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
-			"qualifiedName": "__object.product"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.type"
 		},
 		"12550": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__function"
 		},
 		"12551": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__function"
 		},
 		"12552": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
-			"qualifiedName": "__object.values"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-type.ts",
+			"qualifiedName": "__object"
 		},
 		"12553": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-type.ts",
+			"qualifiedName": "__object.id"
 		},
 		"12554": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-type.ts",
+			"qualifiedName": "__object.value"
 		},
 		"12555": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.images"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-type.ts",
+			"qualifiedName": "__object.metadata"
 		},
 		"12556": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-type.ts",
+			"qualifiedName": "__object.product"
 		},
 		"12557": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-type.ts",
 			"qualifiedName": "__function"
 		},
 		"12558": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-image.ts",
-			"qualifiedName": "__object"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-type.ts",
+			"qualifiedName": "__function"
 		},
 		"12559": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-image.ts",
-			"qualifiedName": "__object.id"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
 		},
 		"12560": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-image.ts",
-			"qualifiedName": "__object.url"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
 		},
 		"12561": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-image.ts",
-			"qualifiedName": "__object.metadata"
-		},
-		"12562": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-image.ts",
-			"qualifiedName": "__object.rank"
-		},
-		"12563": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-image.ts",
-			"qualifiedName": "__object.product"
-		},
-		"12564": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-image.ts",
-			"qualifiedName": "__function"
-		},
-		"12565": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-image.ts",
-			"qualifiedName": "__function"
-		},
-		"12566": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-image.ts",
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-type.ts",
 			"qualifiedName": "__object"
 		},
+		"12562": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-type.ts",
+			"qualifiedName": "__object.id"
+		},
+		"12563": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-type.ts",
+			"qualifiedName": "__object.value"
+		},
+		"12564": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-type.ts",
+			"qualifiedName": "__object.metadata"
+		},
+		"12565": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-type.ts",
+			"qualifiedName": "__object.product"
+		},
+		"12566": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-type.ts",
+			"qualifiedName": "__function"
+		},
 		"12567": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-image.ts",
-			"qualifiedName": "__object.tableName"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-type.ts",
+			"qualifiedName": "__function"
 		},
 		"12568": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-image.ts",
-			"qualifiedName": "__object.name"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.tags"
 		},
 		"12569": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.collection"
+			"qualifiedName": "__function"
 		},
 		"12570": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__function"
 		},
 		"12571": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
-		},
-		"12572": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-collection.ts",
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-tag.ts",
 			"qualifiedName": "__object"
 		},
-		"12573": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-collection.ts",
+		"12572": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-tag.ts",
 			"qualifiedName": "__object.id"
 		},
+		"12573": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-tag.ts",
+			"qualifiedName": "__object.value"
+		},
 		"12574": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-collection.ts",
-			"qualifiedName": "__object.title"
-		},
-		"12575": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-collection.ts",
-			"qualifiedName": "__object.handle"
-		},
-		"12576": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-collection.ts",
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-tag.ts",
 			"qualifiedName": "__object.metadata"
 		},
-		"12577": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-collection.ts",
+		"12575": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-tag.ts",
 			"qualifiedName": "__object.products"
 		},
-		"12578": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-collection.ts",
+		"12576": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-tag.ts",
 			"qualifiedName": "__function"
+		},
+		"12577": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-tag.ts",
+			"qualifiedName": "__function"
+		},
+		"12578": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-tag.ts",
+			"qualifiedName": "__object"
 		},
 		"12579": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-collection.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-tag.ts",
+			"qualifiedName": "__object.tableName"
 		},
 		"12580": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-tag.ts",
+			"qualifiedName": "__object.name"
 		},
 		"12581": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"qualifiedName": "__object.options"
 		},
 		"12582": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-collection.ts",
-			"qualifiedName": "__object"
-		},
-		"12583": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-collection.ts",
-			"qualifiedName": "__object.id"
-		},
-		"12584": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-collection.ts",
-			"qualifiedName": "__object.title"
-		},
-		"12585": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-collection.ts",
-			"qualifiedName": "__object.handle"
-		},
-		"12586": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-collection.ts",
-			"qualifiedName": "__object.metadata"
-		},
-		"12587": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-collection.ts",
-			"qualifiedName": "__object.products"
-		},
-		"12588": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-collection.ts",
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__function"
 		},
+		"12583": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"12584": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
+			"qualifiedName": "__object"
+		},
+		"12585": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
+			"qualifiedName": "__object.id"
+		},
+		"12586": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
+			"qualifiedName": "__object.title"
+		},
+		"12587": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
+			"qualifiedName": "__object.metadata"
+		},
+		"12588": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
+			"qualifiedName": "__object.product"
+		},
 		"12589": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-collection.ts",
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
 			"qualifiedName": "__function"
 		},
 		"12590": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.categories"
-		},
-		"12591": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
 			"qualifiedName": "__function"
 		},
+		"12591": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
+			"qualifiedName": "__object.values"
+		},
 		"12592": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
 			"qualifiedName": "__function"
 		},
 		"12593": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
-			"qualifiedName": "__object"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
+			"qualifiedName": "__function"
 		},
 		"12594": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
-			"qualifiedName": "__object.id"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.images"
 		},
 		"12595": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
-			"qualifiedName": "__object.name"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
 		},
 		"12596": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
-			"qualifiedName": "__object.description"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
 		},
 		"12597": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
-			"qualifiedName": "__object.handle"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-image.ts",
+			"qualifiedName": "__object"
 		},
 		"12598": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
-			"qualifiedName": "__object.mpath"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-image.ts",
+			"qualifiedName": "__object.id"
 		},
 		"12599": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
-			"qualifiedName": "__object.is_active"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-image.ts",
+			"qualifiedName": "__object.url"
 		},
 		"12600": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
-			"qualifiedName": "__object.is_internal"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-image.ts",
+			"qualifiedName": "__object.metadata"
 		},
 		"12601": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-image.ts",
 			"qualifiedName": "__object.rank"
 		},
 		"12602": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
-			"qualifiedName": "__object.metadata"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-image.ts",
+			"qualifiedName": "__object.product"
 		},
 		"12603": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
-			"qualifiedName": "__object.parent_category"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-image.ts",
+			"qualifiedName": "__function"
 		},
 		"12604": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-image.ts",
 			"qualifiedName": "__function"
 		},
 		"12605": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-image.ts",
+			"qualifiedName": "__object"
 		},
 		"12606": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-image.ts",
+			"qualifiedName": "__object.tableName"
 		},
 		"12607": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-image.ts",
+			"qualifiedName": "__object.name"
 		},
 		"12608": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
-			"qualifiedName": "__object.category_children"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.collection"
 		},
 		"12609": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__function"
 		},
 		"12610": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__function"
 		},
 		"12611": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
-			"qualifiedName": "__object.products"
-		},
-		"12612": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
-			"qualifiedName": "__function"
-		},
-		"12613": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
-			"qualifiedName": "__function"
-		},
-		"12614": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
-			"qualifiedName": "ProductCategory"
-		},
-		"12615": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-collection.ts",
 			"qualifiedName": "__object"
 		},
-		"12616": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
+		"12612": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-collection.ts",
 			"qualifiedName": "__object.id"
 		},
-		"12617": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
-			"qualifiedName": "__object.name"
+		"12613": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-collection.ts",
+			"qualifiedName": "__object.title"
 		},
-		"12618": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
-			"qualifiedName": "__object.description"
-		},
-		"12619": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
+		"12614": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-collection.ts",
 			"qualifiedName": "__object.handle"
 		},
-		"12620": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
-			"qualifiedName": "__object.mpath"
-		},
-		"12621": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
-			"qualifiedName": "__object.is_active"
-		},
-		"12622": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
-			"qualifiedName": "__object.is_internal"
-		},
-		"12623": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
-			"qualifiedName": "__object.rank"
-		},
-		"12624": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
+		"12615": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-collection.ts",
 			"qualifiedName": "__object.metadata"
 		},
-		"12625": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
-			"qualifiedName": "__object.parent_category"
+		"12616": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-collection.ts",
+			"qualifiedName": "__object.products"
 		},
-		"12626": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
+		"12617": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-collection.ts",
 			"qualifiedName": "__function"
 		},
+		"12618": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-collection.ts",
+			"qualifiedName": "__function"
+		},
+		"12619": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"12620": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"12621": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-collection.ts",
+			"qualifiedName": "__object"
+		},
+		"12622": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-collection.ts",
+			"qualifiedName": "__object.id"
+		},
+		"12623": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-collection.ts",
+			"qualifiedName": "__object.title"
+		},
+		"12624": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-collection.ts",
+			"qualifiedName": "__object.handle"
+		},
+		"12625": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-collection.ts",
+			"qualifiedName": "__object.metadata"
+		},
+		"12626": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-collection.ts",
+			"qualifiedName": "__object.products"
+		},
 		"12627": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-collection.ts",
 			"qualifiedName": "__function"
 		},
 		"12628": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-collection.ts",
 			"qualifiedName": "__function"
 		},
 		"12629": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.categories"
 		},
 		"12630": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
-			"qualifiedName": "__object.category_children"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
 		},
 		"12631": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__function"
 		},
 		"12632": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
-			"qualifiedName": "__function"
+			"qualifiedName": "__object"
 		},
 		"12633": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
-			"qualifiedName": "__object.products"
+			"qualifiedName": "__object.id"
 		},
 		"12634": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
-			"qualifiedName": "__function"
+			"qualifiedName": "__object.name"
 		},
 		"12635": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
-			"qualifiedName": "__function"
-		},
-		"12636": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object"
-		},
-		"12637": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.id"
-		},
-		"12638": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.title"
-		},
-		"12639": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.handle"
-		},
-		"12640": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.subtitle"
-		},
-		"12641": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.description"
 		},
-		"12642": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.is_giftcard"
+		"12636": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
+			"qualifiedName": "__object.handle"
 		},
-		"12643": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.status"
+		"12637": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
+			"qualifiedName": "__object.mpath"
 		},
-		"12644": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.thumbnail"
+		"12638": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
+			"qualifiedName": "__object.is_active"
 		},
-		"12645": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.weight"
+		"12639": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
+			"qualifiedName": "__object.is_internal"
 		},
-		"12646": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.length"
+		"12640": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
+			"qualifiedName": "__object.rank"
 		},
-		"12647": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.height"
-		},
-		"12648": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.width"
-		},
-		"12649": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.origin_country"
-		},
-		"12650": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.hs_code"
-		},
-		"12651": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.mid_code"
-		},
-		"12652": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.material"
-		},
-		"12653": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.discountable"
-		},
-		"12654": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.external_id"
-		},
-		"12655": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+		"12641": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
 			"qualifiedName": "__object.metadata"
 		},
+		"12642": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
+			"qualifiedName": "__object.parent_category"
+		},
+		"12643": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
+			"qualifiedName": "__function"
+		},
+		"12644": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
+			"qualifiedName": "__function"
+		},
+		"12645": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
+			"qualifiedName": "__function"
+		},
+		"12646": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
+			"qualifiedName": "__function"
+		},
+		"12647": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
+			"qualifiedName": "__object.category_children"
+		},
+		"12648": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
+			"qualifiedName": "__function"
+		},
+		"12649": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
+			"qualifiedName": "__function"
+		},
+		"12650": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
+			"qualifiedName": "__object.products"
+		},
+		"12651": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
+			"qualifiedName": "__function"
+		},
+		"12652": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
+			"qualifiedName": "__function"
+		},
+		"12653": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
+			"qualifiedName": "ProductCategory"
+		},
+		"12654": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
+			"qualifiedName": "__object"
+		},
+		"12655": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
+			"qualifiedName": "__object.id"
+		},
 		"12656": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.variants"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
+			"qualifiedName": "__object.name"
 		},
 		"12657": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
+			"qualifiedName": "__object.description"
 		},
 		"12658": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
+			"qualifiedName": "__object.handle"
 		},
 		"12659": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.type"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
+			"qualifiedName": "__object.mpath"
 		},
 		"12660": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
+			"qualifiedName": "__object.is_active"
 		},
 		"12661": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
+			"qualifiedName": "__object.is_internal"
 		},
 		"12662": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
+			"qualifiedName": "__object.rank"
 		},
 		"12663": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
+			"qualifiedName": "__object.metadata"
 		},
 		"12664": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.tags"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
+			"qualifiedName": "__object.parent_category"
 		},
 		"12665": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
 			"qualifiedName": "__function"
 		},
 		"12666": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
 			"qualifiedName": "__function"
 		},
 		"12667": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.options"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
+			"qualifiedName": "__function"
 		},
 		"12668": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
 			"qualifiedName": "__function"
 		},
 		"12669": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
+			"qualifiedName": "__object.category_children"
 		},
 		"12670": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.images"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
+			"qualifiedName": "__function"
 		},
 		"12671": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
 			"qualifiedName": "__function"
 		},
 		"12672": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
+			"qualifiedName": "__object.products"
 		},
 		"12673": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.collection"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
+			"qualifiedName": "__function"
 		},
 		"12674": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-category.ts",
 			"qualifiedName": "__function"
 		},
 		"12675": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"qualifiedName": "__object"
 		},
 		"12676": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"qualifiedName": "__object.id"
 		},
 		"12677": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"qualifiedName": "__object.title"
 		},
 		"12678": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.categories"
+			"qualifiedName": "__object.handle"
 		},
 		"12679": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"qualifiedName": "__object.subtitle"
 		},
 		"12680": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
-		},
-		"12681": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-collection.ts",
-			"qualifiedName": "ProductCollection"
-		},
-		"12682": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-collection.ts",
-			"qualifiedName": "__object"
-		},
-		"12683": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-collection.ts",
-			"qualifiedName": "__object.id"
-		},
-		"12684": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-collection.ts",
-			"qualifiedName": "__object.title"
-		},
-		"12685": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-collection.ts",
-			"qualifiedName": "__object.handle"
-		},
-		"12686": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-collection.ts",
-			"qualifiedName": "__object.metadata"
-		},
-		"12687": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-collection.ts",
-			"qualifiedName": "__object.products"
-		},
-		"12688": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-collection.ts",
-			"qualifiedName": "__function"
-		},
-		"12689": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-collection.ts",
-			"qualifiedName": "__function"
-		},
-		"12690": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object"
-		},
-		"12691": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.id"
-		},
-		"12692": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.title"
-		},
-		"12693": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.handle"
-		},
-		"12694": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.subtitle"
-		},
-		"12695": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.description"
 		},
-		"12696": {
+		"12681": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.is_giftcard"
 		},
-		"12697": {
+		"12682": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.status"
 		},
-		"12698": {
+		"12683": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.thumbnail"
 		},
-		"12699": {
+		"12684": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.weight"
 		},
-		"12700": {
+		"12685": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.length"
 		},
-		"12701": {
+		"12686": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.height"
 		},
-		"12702": {
+		"12687": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.width"
 		},
-		"12703": {
+		"12688": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.origin_country"
 		},
-		"12704": {
+		"12689": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.hs_code"
 		},
-		"12705": {
+		"12690": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.mid_code"
 		},
-		"12706": {
+		"12691": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.material"
 		},
-		"12707": {
+		"12692": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.discountable"
 		},
-		"12708": {
+		"12693": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.external_id"
 		},
-		"12709": {
+		"12694": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.metadata"
 		},
-		"12710": {
+		"12695": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.variants"
+		},
+		"12696": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"12697": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"12698": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.type"
+		},
+		"12699": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"12700": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"12701": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"12702": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"12703": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.tags"
+		},
+		"12704": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"12705": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"12706": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.options"
+		},
+		"12707": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"12708": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"12709": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.images"
+		},
+		"12710": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
 		},
 		"12711": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
@@ -4267,11 +4111,11 @@
 		},
 		"12712": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"qualifiedName": "__object.collection"
 		},
 		"12713": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.type"
+			"qualifiedName": "__function"
 		},
 		"12714": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
@@ -4287,195 +4131,195 @@
 		},
 		"12717": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"qualifiedName": "__object.categories"
 		},
 		"12718": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.tags"
+			"qualifiedName": "__function"
 		},
 		"12719": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__function"
 		},
 		"12720": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-collection.ts",
+			"qualifiedName": "ProductCollection"
 		},
 		"12721": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.options"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-collection.ts",
+			"qualifiedName": "__object"
 		},
 		"12722": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-collection.ts",
+			"qualifiedName": "__object.id"
 		},
 		"12723": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-collection.ts",
+			"qualifiedName": "__object.title"
 		},
 		"12724": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.images"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-collection.ts",
+			"qualifiedName": "__object.handle"
 		},
 		"12725": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-collection.ts",
+			"qualifiedName": "__object.metadata"
 		},
 		"12726": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-collection.ts",
+			"qualifiedName": "__object.products"
 		},
 		"12727": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.collection"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-collection.ts",
+			"qualifiedName": "__function"
 		},
 		"12728": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-collection.ts",
 			"qualifiedName": "__function"
 		},
 		"12729": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"qualifiedName": "__object"
 		},
 		"12730": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"qualifiedName": "__object.id"
 		},
 		"12731": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"qualifiedName": "__object.title"
 		},
 		"12732": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.categories"
+			"qualifiedName": "__object.handle"
 		},
 		"12733": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"qualifiedName": "__object.subtitle"
 		},
 		"12734": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
-		},
-		"12735": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-image.ts",
-			"qualifiedName": "ProductImage"
-		},
-		"12736": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-image.ts",
-			"qualifiedName": "__object"
-		},
-		"12737": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-image.ts",
-			"qualifiedName": "__object.id"
-		},
-		"12738": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-image.ts",
-			"qualifiedName": "__object.url"
-		},
-		"12739": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-image.ts",
-			"qualifiedName": "__object.metadata"
-		},
-		"12740": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-image.ts",
-			"qualifiedName": "__object.rank"
-		},
-		"12741": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-image.ts",
-			"qualifiedName": "__object.product"
-		},
-		"12742": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-image.ts",
-			"qualifiedName": "__function"
-		},
-		"12743": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-image.ts",
-			"qualifiedName": "__function"
-		},
-		"12744": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object"
-		},
-		"12745": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.id"
-		},
-		"12746": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.title"
-		},
-		"12747": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.handle"
-		},
-		"12748": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.subtitle"
-		},
-		"12749": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.description"
 		},
-		"12750": {
+		"12735": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.is_giftcard"
 		},
-		"12751": {
+		"12736": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.status"
 		},
-		"12752": {
+		"12737": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.thumbnail"
 		},
-		"12753": {
+		"12738": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.weight"
 		},
-		"12754": {
+		"12739": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.length"
 		},
-		"12755": {
+		"12740": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.height"
 		},
-		"12756": {
+		"12741": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.width"
 		},
-		"12757": {
+		"12742": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.origin_country"
 		},
-		"12758": {
+		"12743": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.hs_code"
 		},
-		"12759": {
+		"12744": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.mid_code"
 		},
-		"12760": {
+		"12745": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.material"
 		},
-		"12761": {
+		"12746": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.discountable"
 		},
-		"12762": {
+		"12747": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.external_id"
 		},
-		"12763": {
+		"12748": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.metadata"
 		},
-		"12764": {
+		"12749": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.variants"
+		},
+		"12750": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"12751": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"12752": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.type"
+		},
+		"12753": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"12754": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"12755": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"12756": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"12757": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.tags"
+		},
+		"12758": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"12759": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"12760": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.options"
+		},
+		"12761": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"12762": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"12763": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.images"
+		},
+		"12764": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
 		},
 		"12765": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
@@ -4483,11 +4327,11 @@
 		},
 		"12766": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"qualifiedName": "__object.collection"
 		},
 		"12767": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.type"
+			"qualifiedName": "__function"
 		},
 		"12768": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
@@ -4503,203 +4347,203 @@
 		},
 		"12771": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"qualifiedName": "__object.categories"
 		},
 		"12772": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.tags"
+			"qualifiedName": "__function"
 		},
 		"12773": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__function"
 		},
 		"12774": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-image.ts",
+			"qualifiedName": "ProductImage"
 		},
 		"12775": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.options"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-image.ts",
+			"qualifiedName": "__object"
 		},
 		"12776": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-image.ts",
+			"qualifiedName": "__object.id"
 		},
 		"12777": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-image.ts",
+			"qualifiedName": "__object.url"
 		},
 		"12778": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.images"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-image.ts",
+			"qualifiedName": "__object.metadata"
 		},
 		"12779": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-image.ts",
+			"qualifiedName": "__object.rank"
 		},
 		"12780": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-image.ts",
+			"qualifiedName": "__object.product"
 		},
 		"12781": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.collection"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-image.ts",
+			"qualifiedName": "__function"
 		},
 		"12782": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-image.ts",
 			"qualifiedName": "__function"
 		},
 		"12783": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"qualifiedName": "__object"
 		},
 		"12784": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"qualifiedName": "__object.id"
 		},
 		"12785": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"qualifiedName": "__object.title"
 		},
 		"12786": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.categories"
+			"qualifiedName": "__object.handle"
 		},
 		"12787": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"qualifiedName": "__object.subtitle"
 		},
 		"12788": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
-		},
-		"12789": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-image.ts",
-			"qualifiedName": "__object"
-		},
-		"12790": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-image.ts",
-			"qualifiedName": "__object.tableName"
-		},
-		"12791": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-image.ts",
-			"qualifiedName": "__object.name"
-		},
-		"12792": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
-			"qualifiedName": "ProductOption"
-		},
-		"12793": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
-			"qualifiedName": "__object"
-		},
-		"12794": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
-			"qualifiedName": "__object.id"
-		},
-		"12795": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
-			"qualifiedName": "__object.title"
-		},
-		"12796": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
-			"qualifiedName": "__object.metadata"
-		},
-		"12797": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
-			"qualifiedName": "__object.product"
-		},
-		"12798": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
-			"qualifiedName": "__function"
-		},
-		"12799": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
-			"qualifiedName": "__function"
-		},
-		"12800": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object"
-		},
-		"12801": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.id"
-		},
-		"12802": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.title"
-		},
-		"12803": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.handle"
-		},
-		"12804": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.subtitle"
-		},
-		"12805": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.description"
 		},
-		"12806": {
+		"12789": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.is_giftcard"
 		},
-		"12807": {
+		"12790": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.status"
 		},
-		"12808": {
+		"12791": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.thumbnail"
 		},
-		"12809": {
+		"12792": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.weight"
 		},
-		"12810": {
+		"12793": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.length"
 		},
-		"12811": {
+		"12794": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.height"
 		},
-		"12812": {
+		"12795": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.width"
 		},
-		"12813": {
+		"12796": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.origin_country"
 		},
-		"12814": {
+		"12797": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.hs_code"
 		},
-		"12815": {
+		"12798": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.mid_code"
 		},
-		"12816": {
+		"12799": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.material"
 		},
-		"12817": {
+		"12800": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.discountable"
 		},
-		"12818": {
+		"12801": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.external_id"
 		},
-		"12819": {
+		"12802": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.metadata"
 		},
-		"12820": {
+		"12803": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.variants"
+		},
+		"12804": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"12805": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"12806": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.type"
+		},
+		"12807": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"12808": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"12809": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"12810": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"12811": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.tags"
+		},
+		"12812": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"12813": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"12814": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.options"
+		},
+		"12815": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"12816": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"12817": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.images"
+		},
+		"12818": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"12819": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"12820": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.collection"
 		},
 		"12821": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
@@ -4711,7 +4555,7 @@
 		},
 		"12823": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.type"
+			"qualifiedName": "__function"
 		},
 		"12824": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
@@ -4719,7 +4563,7 @@
 		},
 		"12825": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"qualifiedName": "__object.categories"
 		},
 		"12826": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
@@ -4730,232 +4574,232 @@
 			"qualifiedName": "__function"
 		},
 		"12828": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.tags"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-image.ts",
+			"qualifiedName": "__object"
 		},
 		"12829": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-image.ts",
+			"qualifiedName": "__object.tableName"
 		},
 		"12830": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-image.ts",
+			"qualifiedName": "__object.name"
 		},
 		"12831": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.options"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
+			"qualifiedName": "ProductOption"
 		},
 		"12832": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
+			"qualifiedName": "__object"
 		},
 		"12833": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
+			"qualifiedName": "__object.id"
 		},
 		"12834": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.images"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
+			"qualifiedName": "__object.title"
 		},
 		"12835": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
+			"qualifiedName": "__object.metadata"
 		},
 		"12836": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
+			"qualifiedName": "__object.product"
 		},
 		"12837": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.collection"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
+			"qualifiedName": "__function"
 		},
 		"12838": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
 			"qualifiedName": "__function"
 		},
 		"12839": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"qualifiedName": "__object"
 		},
 		"12840": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"qualifiedName": "__object.id"
 		},
 		"12841": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"qualifiedName": "__object.title"
 		},
 		"12842": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.categories"
+			"qualifiedName": "__object.handle"
 		},
 		"12843": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"qualifiedName": "__object.subtitle"
 		},
 		"12844": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"qualifiedName": "__object.description"
 		},
 		"12845": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
-			"qualifiedName": "__object.values"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.is_giftcard"
 		},
 		"12846": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.status"
 		},
 		"12847": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.thumbnail"
 		},
 		"12848": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-option-value.ts",
-			"qualifiedName": "__object"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.weight"
 		},
 		"12849": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-option-value.ts",
-			"qualifiedName": "__object.id"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.length"
 		},
 		"12850": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-option-value.ts",
-			"qualifiedName": "__object.value"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.height"
 		},
 		"12851": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-option-value.ts",
-			"qualifiedName": "__object.metadata"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.width"
 		},
 		"12852": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-option-value.ts",
-			"qualifiedName": "__object.option"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.origin_country"
 		},
 		"12853": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-option-value.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.hs_code"
 		},
 		"12854": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-option-value.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.mid_code"
 		},
 		"12855": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-option-value.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.material"
 		},
 		"12856": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-option-value.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.discountable"
 		},
 		"12857": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-option-value.ts",
-			"qualifiedName": "__object.variants"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.external_id"
 		},
 		"12858": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-option-value.ts",
-			"qualifiedName": "__function"
-		},
-		"12859": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-option-value.ts",
-			"qualifiedName": "__function"
-		},
-		"12860": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-option-value.ts",
-			"qualifiedName": "ProductOptionValue"
-		},
-		"12861": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-option-value.ts",
-			"qualifiedName": "__object"
-		},
-		"12862": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-option-value.ts",
-			"qualifiedName": "__object.id"
-		},
-		"12863": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-option-value.ts",
-			"qualifiedName": "__object.value"
-		},
-		"12864": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-option-value.ts",
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.metadata"
 		},
+		"12859": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.variants"
+		},
+		"12860": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"12861": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"12862": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.type"
+		},
+		"12863": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"12864": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
 		"12865": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-option-value.ts",
-			"qualifiedName": "__object.option"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
 		},
 		"12866": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-option-value.ts",
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__function"
 		},
 		"12867": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-option-value.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.tags"
 		},
 		"12868": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
-			"qualifiedName": "__object"
-		},
-		"12869": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
-			"qualifiedName": "__object.id"
-		},
-		"12870": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
-			"qualifiedName": "__object.title"
-		},
-		"12871": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
-			"qualifiedName": "__object.metadata"
-		},
-		"12872": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
-			"qualifiedName": "__object.product"
-		},
-		"12873": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__function"
 		},
+		"12869": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"12870": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.options"
+		},
+		"12871": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"12872": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"12873": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.images"
+		},
 		"12874": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__function"
 		},
 		"12875": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
-			"qualifiedName": "__object.values"
-		},
-		"12876": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__function"
 		},
+		"12876": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.collection"
+		},
 		"12877": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__function"
 		},
 		"12878": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-option-value.ts",
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__function"
 		},
 		"12879": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-option-value.ts",
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__function"
 		},
 		"12880": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
-			"qualifiedName": "__object"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
 		},
 		"12881": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
-			"qualifiedName": "__object.id"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.categories"
 		},
 		"12882": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
-			"qualifiedName": "__object.title"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
 		},
 		"12883": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
-			"qualifiedName": "__object.metadata"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
 		},
 		"12884": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
-			"qualifiedName": "__object.product"
+			"qualifiedName": "__object.values"
 		},
 		"12885": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
@@ -4966,476 +4810,476 @@
 			"qualifiedName": "__function"
 		},
 		"12887": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
-			"qualifiedName": "__object.values"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-option-value.ts",
+			"qualifiedName": "__object"
 		},
 		"12888": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-option-value.ts",
+			"qualifiedName": "__object.id"
 		},
 		"12889": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-option-value.ts",
+			"qualifiedName": "__object.value"
 		},
 		"12890": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product-option-value.ts",
-			"qualifiedName": "__object.variants"
+			"qualifiedName": "__object.metadata"
 		},
 		"12891": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product-option-value.ts",
-			"qualifiedName": "__function"
+			"qualifiedName": "__object.option"
 		},
 		"12892": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product-option-value.ts",
 			"qualifiedName": "__function"
 		},
 		"12893": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__object"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-option-value.ts",
+			"qualifiedName": "__function"
 		},
 		"12894": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__object.id"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-option-value.ts",
+			"qualifiedName": "__function"
 		},
 		"12895": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__object.title"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-option-value.ts",
+			"qualifiedName": "__function"
 		},
 		"12896": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__object.sku"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-option-value.ts",
+			"qualifiedName": "__object.variants"
 		},
 		"12897": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__object.barcode"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-option-value.ts",
+			"qualifiedName": "__function"
 		},
 		"12898": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__object.ean"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-option-value.ts",
+			"qualifiedName": "__function"
 		},
 		"12899": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__object.upc"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-option-value.ts",
+			"qualifiedName": "ProductOptionValue"
 		},
 		"12900": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__object.allow_backorder"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-option-value.ts",
+			"qualifiedName": "__object"
 		},
 		"12901": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__object.manage_inventory"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-option-value.ts",
+			"qualifiedName": "__object.id"
 		},
 		"12902": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__object.hs_code"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-option-value.ts",
+			"qualifiedName": "__object.value"
 		},
 		"12903": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__object.origin_country"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-option-value.ts",
+			"qualifiedName": "__object.metadata"
 		},
 		"12904": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__object.mid_code"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-option-value.ts",
+			"qualifiedName": "__object.option"
 		},
 		"12905": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__object.material"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-option-value.ts",
+			"qualifiedName": "__function"
 		},
 		"12906": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__object.weight"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-option-value.ts",
+			"qualifiedName": "__function"
 		},
 		"12907": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__object.length"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
+			"qualifiedName": "__object"
 		},
 		"12908": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__object.height"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
+			"qualifiedName": "__object.id"
 		},
 		"12909": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__object.width"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
+			"qualifiedName": "__object.title"
 		},
 		"12910": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
 			"qualifiedName": "__object.metadata"
 		},
 		"12911": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__object.variant_rank"
-		},
-		"12912": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
 			"qualifiedName": "__object.product"
 		},
+		"12912": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
+			"qualifiedName": "__function"
+		},
 		"12913": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
 			"qualifiedName": "__function"
 		},
 		"12914": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
+			"qualifiedName": "__object.values"
 		},
 		"12915": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
 			"qualifiedName": "__function"
 		},
 		"12916": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
 			"qualifiedName": "__function"
 		},
 		"12917": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__object.options"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-option-value.ts",
+			"qualifiedName": "__function"
 		},
 		"12918": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-option-value.ts",
 			"qualifiedName": "__function"
 		},
 		"12919": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__function"
-		},
-		"12920": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-tag.ts",
-			"qualifiedName": "ProductTag"
-		},
-		"12921": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-tag.ts",
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
 			"qualifiedName": "__object"
 		},
-		"12922": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-tag.ts",
+		"12920": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
 			"qualifiedName": "__object.id"
 		},
-		"12923": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-tag.ts",
-			"qualifiedName": "__object.value"
+		"12921": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
+			"qualifiedName": "__object.title"
 		},
-		"12924": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-tag.ts",
+		"12922": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
 			"qualifiedName": "__object.metadata"
 		},
-		"12925": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-tag.ts",
-			"qualifiedName": "__object.products"
+		"12923": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
+			"qualifiedName": "__object.product"
 		},
-		"12926": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-tag.ts",
+		"12924": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
 			"qualifiedName": "__function"
 		},
+		"12925": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
+			"qualifiedName": "__function"
+		},
+		"12926": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
+			"qualifiedName": "__object.values"
+		},
 		"12927": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-tag.ts",
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
 			"qualifiedName": "__function"
 		},
 		"12928": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-option.ts",
+			"qualifiedName": "__function"
 		},
 		"12929": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.id"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-option-value.ts",
+			"qualifiedName": "__object.variants"
 		},
 		"12930": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.title"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-option-value.ts",
+			"qualifiedName": "__function"
 		},
 		"12931": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.handle"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-option-value.ts",
+			"qualifiedName": "__function"
 		},
 		"12932": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.subtitle"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"qualifiedName": "__object"
 		},
 		"12933": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.description"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"qualifiedName": "__object.id"
 		},
 		"12934": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.is_giftcard"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"qualifiedName": "__object.title"
 		},
 		"12935": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.status"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"qualifiedName": "__object.sku"
 		},
 		"12936": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.thumbnail"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"qualifiedName": "__object.barcode"
 		},
 		"12937": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.weight"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"qualifiedName": "__object.ean"
 		},
 		"12938": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.length"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"qualifiedName": "__object.upc"
 		},
 		"12939": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.height"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"qualifiedName": "__object.allow_backorder"
 		},
 		"12940": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.width"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"qualifiedName": "__object.manage_inventory"
 		},
 		"12941": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.origin_country"
-		},
-		"12942": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
 			"qualifiedName": "__object.hs_code"
 		},
+		"12942": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"qualifiedName": "__object.origin_country"
+		},
 		"12943": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
 			"qualifiedName": "__object.mid_code"
 		},
 		"12944": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
 			"qualifiedName": "__object.material"
 		},
 		"12945": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.discountable"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"qualifiedName": "__object.weight"
 		},
 		"12946": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.external_id"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"qualifiedName": "__object.length"
 		},
 		"12947": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.metadata"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"qualifiedName": "__object.height"
 		},
 		"12948": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.variants"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"qualifiedName": "__object.width"
 		},
 		"12949": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"qualifiedName": "__object.metadata"
 		},
 		"12950": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"qualifiedName": "__object.variant_rank"
 		},
 		"12951": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.type"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"qualifiedName": "__object.product"
 		},
 		"12952": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
 			"qualifiedName": "__function"
 		},
 		"12953": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
 			"qualifiedName": "__function"
 		},
 		"12954": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
 			"qualifiedName": "__function"
 		},
 		"12955": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
 			"qualifiedName": "__function"
 		},
 		"12956": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.tags"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"qualifiedName": "__object.options"
 		},
 		"12957": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
 			"qualifiedName": "__function"
 		},
 		"12958": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
 			"qualifiedName": "__function"
 		},
 		"12959": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.options"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-tag.ts",
+			"qualifiedName": "ProductTag"
 		},
 		"12960": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-tag.ts",
+			"qualifiedName": "__object"
 		},
 		"12961": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-tag.ts",
+			"qualifiedName": "__object.id"
 		},
 		"12962": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.images"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-tag.ts",
+			"qualifiedName": "__object.value"
 		},
 		"12963": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-tag.ts",
+			"qualifiedName": "__object.metadata"
 		},
 		"12964": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-tag.ts",
+			"qualifiedName": "__object.products"
 		},
 		"12965": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.collection"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-tag.ts",
+			"qualifiedName": "__function"
 		},
 		"12966": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-tag.ts",
 			"qualifiedName": "__function"
 		},
 		"12967": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"qualifiedName": "__object"
 		},
 		"12968": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"qualifiedName": "__object.id"
 		},
 		"12969": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"qualifiedName": "__object.title"
 		},
 		"12970": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.categories"
+			"qualifiedName": "__object.handle"
 		},
 		"12971": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"qualifiedName": "__object.subtitle"
 		},
 		"12972": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
-		},
-		"12973": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-tag.ts",
-			"qualifiedName": "__object"
-		},
-		"12974": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-tag.ts",
-			"qualifiedName": "__object.tableName"
-		},
-		"12975": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-tag.ts",
-			"qualifiedName": "__object.name"
-		},
-		"12976": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-type.ts",
-			"qualifiedName": "ProductType"
-		},
-		"12977": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-type.ts",
-			"qualifiedName": "__object"
-		},
-		"12978": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-type.ts",
-			"qualifiedName": "__object.id"
-		},
-		"12979": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-type.ts",
-			"qualifiedName": "__object.value"
-		},
-		"12980": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-type.ts",
-			"qualifiedName": "__object.metadata"
-		},
-		"12981": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-type.ts",
-			"qualifiedName": "__object.product"
-		},
-		"12982": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-type.ts",
-			"qualifiedName": "__function"
-		},
-		"12983": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-type.ts",
-			"qualifiedName": "__function"
-		},
-		"12984": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object"
-		},
-		"12985": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.id"
-		},
-		"12986": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.title"
-		},
-		"12987": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.handle"
-		},
-		"12988": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.subtitle"
-		},
-		"12989": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.description"
 		},
-		"12990": {
+		"12973": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.is_giftcard"
 		},
-		"12991": {
+		"12974": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.status"
 		},
-		"12992": {
+		"12975": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.thumbnail"
 		},
-		"12993": {
+		"12976": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.weight"
 		},
-		"12994": {
+		"12977": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.length"
 		},
-		"12995": {
+		"12978": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.height"
 		},
-		"12996": {
+		"12979": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.width"
 		},
-		"12997": {
+		"12980": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.origin_country"
 		},
-		"12998": {
+		"12981": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.hs_code"
 		},
-		"12999": {
+		"12982": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.mid_code"
 		},
-		"13000": {
+		"12983": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.material"
 		},
-		"13001": {
+		"12984": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.discountable"
 		},
-		"13002": {
+		"12985": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.external_id"
 		},
-		"13003": {
+		"12986": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.metadata"
 		},
-		"13004": {
+		"12987": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.variants"
+		},
+		"12988": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"12989": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"12990": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.type"
+		},
+		"12991": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"12992": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"12993": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"12994": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"12995": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.tags"
+		},
+		"12996": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"12997": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"12998": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.options"
+		},
+		"12999": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"13000": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"13001": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.images"
+		},
+		"13002": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"13003": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"13004": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.collection"
 		},
 		"13005": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
@@ -5447,7 +5291,7 @@
 		},
 		"13007": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.type"
+			"qualifiedName": "__function"
 		},
 		"13008": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
@@ -5455,7 +5299,7 @@
 		},
 		"13009": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"qualifiedName": "__object.categories"
 		},
 		"13010": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
@@ -5466,436 +5310,436 @@
 			"qualifiedName": "__function"
 		},
 		"13012": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.tags"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-tag.ts",
+			"qualifiedName": "__object"
 		},
 		"13013": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-tag.ts",
+			"qualifiedName": "__object.tableName"
 		},
 		"13014": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-tag.ts",
+			"qualifiedName": "__object.name"
 		},
 		"13015": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.options"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-type.ts",
+			"qualifiedName": "ProductType"
 		},
 		"13016": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-type.ts",
+			"qualifiedName": "__object"
 		},
 		"13017": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-type.ts",
+			"qualifiedName": "__object.id"
 		},
 		"13018": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.images"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-type.ts",
+			"qualifiedName": "__object.value"
 		},
 		"13019": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-type.ts",
+			"qualifiedName": "__object.metadata"
 		},
 		"13020": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-type.ts",
+			"qualifiedName": "__object.product"
 		},
 		"13021": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.collection"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-type.ts",
+			"qualifiedName": "__function"
 		},
 		"13022": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-type.ts",
 			"qualifiedName": "__function"
 		},
 		"13023": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"qualifiedName": "__object"
 		},
 		"13024": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"qualifiedName": "__object.id"
 		},
 		"13025": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"qualifiedName": "__object.title"
 		},
 		"13026": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.categories"
+			"qualifiedName": "__object.handle"
 		},
 		"13027": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"qualifiedName": "__object.subtitle"
 		},
 		"13028": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
-		},
-		"13029": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "ProductVariant"
-		},
-		"13030": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__object"
-		},
-		"13031": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__object.id"
-		},
-		"13032": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__object.title"
-		},
-		"13033": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__object.sku"
-		},
-		"13034": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__object.barcode"
-		},
-		"13035": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__object.ean"
-		},
-		"13036": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__object.upc"
-		},
-		"13037": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__object.allow_backorder"
-		},
-		"13038": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__object.manage_inventory"
-		},
-		"13039": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__object.hs_code"
-		},
-		"13040": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__object.origin_country"
-		},
-		"13041": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__object.mid_code"
-		},
-		"13042": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__object.material"
-		},
-		"13043": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__object.weight"
-		},
-		"13044": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__object.length"
-		},
-		"13045": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__object.height"
-		},
-		"13046": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__object.width"
-		},
-		"13047": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__object.metadata"
-		},
-		"13048": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__object.variant_rank"
-		},
-		"13049": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__object.product"
-		},
-		"13050": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__function"
-		},
-		"13051": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__function"
-		},
-		"13052": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object"
-		},
-		"13053": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.id"
-		},
-		"13054": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.title"
-		},
-		"13055": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.handle"
-		},
-		"13056": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.subtitle"
-		},
-		"13057": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.description"
 		},
-		"13058": {
+		"13029": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.is_giftcard"
 		},
-		"13059": {
+		"13030": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.status"
 		},
-		"13060": {
+		"13031": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.thumbnail"
 		},
-		"13061": {
+		"13032": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.weight"
 		},
-		"13062": {
+		"13033": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.length"
 		},
-		"13063": {
+		"13034": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.height"
 		},
-		"13064": {
+		"13035": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.width"
 		},
-		"13065": {
+		"13036": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.origin_country"
 		},
-		"13066": {
+		"13037": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.hs_code"
 		},
-		"13067": {
+		"13038": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.mid_code"
 		},
-		"13068": {
+		"13039": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.material"
 		},
-		"13069": {
+		"13040": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.discountable"
 		},
-		"13070": {
+		"13041": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.external_id"
 		},
-		"13071": {
+		"13042": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.metadata"
 		},
-		"13072": {
+		"13043": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.variants"
 		},
-		"13073": {
+		"13044": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__function"
 		},
-		"13074": {
+		"13045": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__function"
 		},
-		"13075": {
+		"13046": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.type"
 		},
-		"13076": {
+		"13047": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__function"
 		},
-		"13077": {
+		"13048": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__function"
 		},
-		"13078": {
+		"13049": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__function"
 		},
-		"13079": {
+		"13050": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__function"
 		},
-		"13080": {
+		"13051": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.tags"
 		},
-		"13081": {
+		"13052": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__function"
 		},
-		"13082": {
+		"13053": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__function"
 		},
-		"13083": {
+		"13054": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.options"
 		},
-		"13084": {
+		"13055": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__function"
 		},
-		"13085": {
+		"13056": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__function"
 		},
-		"13086": {
+		"13057": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.images"
 		},
-		"13087": {
+		"13058": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__function"
 		},
-		"13088": {
+		"13059": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__function"
 		},
-		"13089": {
+		"13060": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.collection"
 		},
-		"13090": {
+		"13061": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"13062": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"13063": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"13064": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"13065": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.categories"
+		},
+		"13066": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"13067": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"13068": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"qualifiedName": "ProductVariant"
+		},
+		"13069": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"qualifiedName": "__object"
+		},
+		"13070": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"qualifiedName": "__object.id"
+		},
+		"13071": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"qualifiedName": "__object.title"
+		},
+		"13072": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"qualifiedName": "__object.sku"
+		},
+		"13073": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"qualifiedName": "__object.barcode"
+		},
+		"13074": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"qualifiedName": "__object.ean"
+		},
+		"13075": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"qualifiedName": "__object.upc"
+		},
+		"13076": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"qualifiedName": "__object.allow_backorder"
+		},
+		"13077": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"qualifiedName": "__object.manage_inventory"
+		},
+		"13078": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"qualifiedName": "__object.hs_code"
+		},
+		"13079": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"qualifiedName": "__object.origin_country"
+		},
+		"13080": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"qualifiedName": "__object.mid_code"
+		},
+		"13081": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"qualifiedName": "__object.material"
+		},
+		"13082": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"qualifiedName": "__object.weight"
+		},
+		"13083": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"qualifiedName": "__object.length"
+		},
+		"13084": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"qualifiedName": "__object.height"
+		},
+		"13085": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"qualifiedName": "__object.width"
+		},
+		"13086": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"qualifiedName": "__object.metadata"
+		},
+		"13087": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"qualifiedName": "__object.variant_rank"
+		},
+		"13088": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"qualifiedName": "__object.product"
+		},
+		"13089": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"qualifiedName": "__function"
+		},
+		"13090": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
 			"qualifiedName": "__function"
 		},
 		"13091": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"qualifiedName": "__object"
 		},
 		"13092": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"qualifiedName": "__object.id"
 		},
 		"13093": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"qualifiedName": "__object.title"
 		},
 		"13094": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.categories"
+			"qualifiedName": "__object.handle"
 		},
 		"13095": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"qualifiedName": "__object.subtitle"
 		},
 		"13096": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
-		},
-		"13097": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__function"
-		},
-		"13098": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
-			"qualifiedName": "__function"
-		},
-		"13099": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object"
-		},
-		"13100": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.id"
-		},
-		"13101": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.title"
-		},
-		"13102": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.handle"
-		},
-		"13103": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.subtitle"
-		},
-		"13104": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.description"
 		},
-		"13105": {
+		"13097": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.is_giftcard"
 		},
-		"13106": {
+		"13098": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.status"
 		},
-		"13107": {
+		"13099": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.thumbnail"
 		},
-		"13108": {
+		"13100": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.weight"
 		},
-		"13109": {
+		"13101": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.length"
 		},
-		"13110": {
+		"13102": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.height"
 		},
-		"13111": {
+		"13103": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.width"
 		},
-		"13112": {
+		"13104": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.origin_country"
 		},
-		"13113": {
+		"13105": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.hs_code"
 		},
-		"13114": {
+		"13106": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.mid_code"
 		},
-		"13115": {
+		"13107": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.material"
 		},
-		"13116": {
+		"13108": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.discountable"
 		},
-		"13117": {
+		"13109": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.external_id"
 		},
-		"13118": {
+		"13110": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.metadata"
 		},
-		"13119": {
+		"13111": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__object.variants"
+		},
+		"13112": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"13113": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"13114": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.type"
+		},
+		"13115": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"13116": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"13117": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"13118": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"13119": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.tags"
 		},
 		"13120": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
@@ -5907,7 +5751,7 @@
 		},
 		"13122": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.type"
+			"qualifiedName": "__object.options"
 		},
 		"13123": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
@@ -5919,7 +5763,7 @@
 		},
 		"13125": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.tags"
+			"qualifiedName": "__object.images"
 		},
 		"13126": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
@@ -5931,7 +5775,7 @@
 		},
 		"13128": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.options"
+			"qualifiedName": "__object.collection"
 		},
 		"13129": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
@@ -5943,7 +5787,7 @@
 		},
 		"13131": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.images"
+			"qualifiedName": "__function"
 		},
 		"13132": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
@@ -5951,89 +5795,245 @@
 		},
 		"13133": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"qualifiedName": "__object.categories"
 		},
 		"13134": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.collection"
+			"qualifiedName": "__function"
 		},
 		"13135": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
 			"qualifiedName": "__function"
 		},
 		"13136": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
 			"qualifiedName": "__function"
 		},
 		"13137": {
-			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__object.categories"
+			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
+			"qualifiedName": "__function"
 		},
 		"13138": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"qualifiedName": "__object"
 		},
 		"13139": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
-			"qualifiedName": "__function"
+			"qualifiedName": "__object.id"
 		},
 		"13140": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.title"
+		},
+		"13141": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.handle"
+		},
+		"13142": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.subtitle"
+		},
+		"13143": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.description"
+		},
+		"13144": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.is_giftcard"
+		},
+		"13145": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.status"
+		},
+		"13146": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.thumbnail"
+		},
+		"13147": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.weight"
+		},
+		"13148": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.length"
+		},
+		"13149": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.height"
+		},
+		"13150": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.width"
+		},
+		"13151": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.origin_country"
+		},
+		"13152": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.hs_code"
+		},
+		"13153": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.mid_code"
+		},
+		"13154": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.material"
+		},
+		"13155": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.discountable"
+		},
+		"13156": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.external_id"
+		},
+		"13157": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.metadata"
+		},
+		"13158": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.variants"
+		},
+		"13159": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"13160": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"13161": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.type"
+		},
+		"13162": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"13163": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"13164": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.tags"
+		},
+		"13165": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"13166": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"13167": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.options"
+		},
+		"13168": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"13169": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"13170": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.images"
+		},
+		"13171": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"13172": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"13173": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.collection"
+		},
+		"13174": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"13175": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"13176": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__object.categories"
+		},
+		"13177": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"13178": {
+			"sourceFileName": "../../../../packages/modules/product/src/models/product.ts",
+			"qualifiedName": "__function"
+		},
+		"13179": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
 			"qualifiedName": "__object.options"
 		},
-		"13141": {
+		"13180": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
 			"qualifiedName": "__function"
 		},
-		"13142": {
+		"13181": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product-variant.ts",
 			"qualifiedName": "__function"
 		},
-		"13143": {
+		"13182": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product-option-value.ts",
 			"qualifiedName": "__object"
 		},
-		"13144": {
+		"13183": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product-option-value.ts",
 			"qualifiedName": "__object.id"
 		},
-		"13145": {
+		"13184": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product-option-value.ts",
 			"qualifiedName": "__object.value"
 		},
-		"13146": {
+		"13185": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product-option-value.ts",
 			"qualifiedName": "__object.metadata"
 		},
-		"13147": {
+		"13186": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product-option-value.ts",
 			"qualifiedName": "__object.option"
 		},
-		"13148": {
+		"13187": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product-option-value.ts",
 			"qualifiedName": "__function"
 		},
-		"13149": {
+		"13188": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product-option-value.ts",
 			"qualifiedName": "__function"
 		},
-		"13150": {
+		"13189": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product-option-value.ts",
 			"qualifiedName": "__function"
 		},
-		"13151": {
+		"13190": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product-option-value.ts",
 			"qualifiedName": "__function"
 		},
-		"13152": {
+		"13191": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product-option-value.ts",
 			"qualifiedName": "__object.variants"
 		},
-		"13153": {
+		"13192": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product-option-value.ts",
 			"qualifiedName": "__function"
 		},
-		"13154": {
+		"13193": {
 			"sourceFileName": "../../../../packages/modules/product/src/models/product-option-value.ts",
 			"qualifiedName": "__function"
 		}
@@ -6043,7 +6043,7 @@
 			"1": "../../../../packages/modules/product/src/models/index.ts"
 		},
 		"reflections": {
-			"1": 12458
+			"1": 12497
 		}
 	}
 }
