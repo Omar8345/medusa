@@ -1498,14 +1498,14 @@ export interface IProductModuleService extends IModuleService {
   ): Promise<ProductOptionValueDTO[]>
 
   /**
-   * This method is used to create a product option.
+   * This method is used to create a product option value.
    *
-   * @param {CreateProductOptionValueDTO} data - The product option to be created.
+   * @param {CreateProductOptionValueDTO} data - The product option value to be created.
    * @param {Context} sharedContext - A context used to share resources, such as transaction manager, between the application and the module.
-   * @returns {Promise<ProductOptionValueDTO>} The created product option.
+   * @returns {Promise<ProductOptionValueDTO>} The created product option value.
    *
    * @example
-   * const option = await productModuleService.createProductOptionValues({
+   * const optionValue = await productModuleService.createProductOptionValues({
    *   value: "Blue",
    *   option_id: "opt_123",
    * })
@@ -1517,48 +1517,46 @@ export interface IProductModuleService extends IModuleService {
   ): Promise<ProductOptionValueDTO>
 
   /**
-   * This method is used to update a option.
+   * This method is used to update an option value.
    *
-   * @param {string} id - The ID of the option to be updated.
-   * @param {UpdateProductOptionValueDTO} data - The attributes of the option to be updated
+   * @param {UpdateProductOptionValueDTO} data - The option value data to be updated
    * @param {Context} sharedContext - A context used to share resources, such as transaction manager, between the application and the module.
-   * @returns {Promise<ProductOptionValueDTO>} The updated option.
+   * @returns {Promise<ProductOptionValueDTO>} The updated options values.
    *
    * @example
-   * const option = await productModuleService.updateProductOptionValues(
-   *   "optval_123",
+   * const updatedOptionValue = await productModuleService.updateProductOptionValues(
    *   {
+   *     id: "optval_test1",
    *     value: "Green",
    *   }
    * )
    */
   updateProductOptionValues(
-    id: string,
     data: UpdateProductOptionValueDTO,
     sharedContext?: Context
   ): Promise<ProductOptionValueDTO>
 
   /**
-   * This method is used to update a list of options matching the specified filters.
+   * This method is used to update a list of option values
    *
-   * @param {FilterableProductOptionValueProps} selector - The filters specifying which options to update.
-   * @param {UpdateProductOptionValueDTO} data - The attributes to be updated on the selected options
+   * @param {UpdateProductOptionValueDTO} data - An array of option value data to be updated
    * @param {Context} sharedContext - A context used to share resources, such as transaction manager, between the application and the module.
-   * @returns {Promise<ProductOptionValueDTO[]>} The updated options.
+   * @returns {Promise<ProductOptionValueDTO[]>} The updated options values.
    *
    * @example
-   * const options = await productModuleService.updateProductOptionValues(
+   * const updatedOptionValues = await productModuleService.updateProductOptionValues(
    *   {
+   *     id: "optval_test1",
    *     value: "Green",
    *   },
    *   {
+   *     id: "optval_test2",
    *     value: ["Red"],
    *   }
    * )
    */
   updateProductOptionValues(
-    selector: FilterableProductOptionValueProps,
-    data: UpdateProductOptionValueDTO,
+    data: UpdateProductOptionValueDTO[],
     sharedContext?: Context
   ): Promise<ProductOptionValueDTO[]>
 

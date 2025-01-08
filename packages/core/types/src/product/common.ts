@@ -1228,6 +1228,11 @@ export interface UpdateProductOptionDTO {
 
 export interface UpdateProductOptionValueDTO {
   /**
+   * The ID of the product option value.
+   */
+  id: string
+
+  /**
    * The value of the product option value.
    */
   value?: string

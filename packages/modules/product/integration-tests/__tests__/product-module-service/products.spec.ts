@@ -12,10 +12,10 @@ import {
   ProductStatus,
 } from "@medusajs/framework/utils"
 import {
-  ProductImage,
   Product,
   ProductCategory,
   ProductCollection,
+  ProductImage,
   ProductType,
 } from "@models"
 
@@ -1312,12 +1312,15 @@ moduleIntegrationTestRunner<IProductModuleService>({
             relations: ["images"],
           })
 
-          const retrievedProductAgain = await service.retrieveProduct(product.id, {
-            relations: ["images"],
-          })
+          const retrievedProductAgain = await service.retrieveProduct(
+            product.id,
+            {
+              relations: ["images"],
+            }
+          )
 
           expect(retrievedProduct.images).toEqual(retrievedProductAgain.images)
-          
+
           expect(retrievedProduct.images).toEqual(
             Array.from({ length: 1000 }, (_, i) =>
               expect.objectContaining({
@@ -1332,7 +1335,9 @@ moduleIntegrationTestRunner<IProductModuleService>({
           // Explicitly verify sequential order
           retrievedProduct.images.forEach((img, idx) => {
             if (idx > 0) {
-              expect(img.rank).toBeGreaterThan(retrievedProduct.images[idx - 1].rank)
+              expect(img.rank).toBeGreaterThan(
+                retrievedProduct.images[idx - 1].rank
+              )
             }
           })
         })
@@ -1382,6 +1387,39 @@ moduleIntegrationTestRunner<IProductModuleService>({
               rank: 2,
             }),
           ])
+        })
+      })
+
+      describe("updateProductOptionValues", function () {
+        it("should update product option value", async () => {
+          const data = buildProductAndRelationsData({
+            images: [],
+            tags: [],
+          })
+
+          const [createdProduct] = await service.createProducts([data])
+
+          const [product] = await service.listProducts(
+            { id: createdProduct.id },
+            {
+              relations: ["variants.options.id"],
+            }
+          )
+
+          const optionValueId = product.variants[0].options[0].id
+
+          const productOptionValue = await service.updateProductOptionValues({
+            id: optionValueId,
+            metadata: { rank: 0 },
+            value: "test update",
+          })
+
+          expect(productOptionValue).toEqual(
+            expect.objectContaining({
+              metadata: { rank: 0 },
+              value: "test update",
+            })
+          )
         })
       })
     })
