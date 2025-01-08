@@ -3,7 +3,7 @@
 import { Text } from "@medusajs/ui"
 import clsx from "clsx"
 import Link from "next/link"
-import React from "react"
+import React, { useMemo } from "react"
 import { WorkflowStepUi } from "types"
 import { InlineCode, MarkdownContent, Tooltip } from "../../.."
 import { Bolt, InformationCircle } from "@medusajs/icons"
@@ -14,6 +14,10 @@ export type WorkflowDiagramNodeProps = {
 
 export const WorkflowDiagramStepNode = ({ step }: WorkflowDiagramNodeProps) => {
   const stepId = step.name.split(".").pop()
+
+  const description = useMemo(() => {
+    return step.description?.replaceAll(/:::[a-z]*/g, "") || ""
+  }, [step.description])
 
   return (
     <Tooltip
@@ -27,12 +31,12 @@ export const WorkflowDiagramStepNode = ({ step }: WorkflowDiagramNodeProps) => {
               satisfied.
             </span>
           )}
-          {step.description && (
+          {description && (
             <MarkdownContent
               allowedElements={["a", "strong", "code"]}
               unwrapDisallowed={true}
             >
-              {step.description}
+              {description}
             </MarkdownContent>
           )}
         </>

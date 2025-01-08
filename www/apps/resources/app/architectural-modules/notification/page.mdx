@@ -1,4 +1,4 @@
-import { ChildDocs } from "docs-ui"
+import { CardList } from "docs-ui"
 
 export const metadata = {
   title: `Notification Module Providers`,
@@ -18,7 +18,26 @@ By default, Medusa uses the Local Notification Module which only simulates sendi
 
 Medusa provides other Notification Modules that actually send notifications, such as the SendGrid Notification Module Provider.
 
-<ChildDocs type="item" hideItems={["Guides"]} onlyTopLevel={true} />
+<CardList
+  items={[
+    {
+      title: "Local",
+      href: "/architectural-modules/notification/local",
+      badge: {
+        variant: "neutral",
+        children: "For Development"
+      }
+    },
+    {
+      title: "SendGrid",
+      href: "/architectural-modules/notification/sendgrid",
+      badge: {
+        variant: "green",
+        children: "For Production"
+      }
+    }
+  ]}
+/>
 
 ---
 

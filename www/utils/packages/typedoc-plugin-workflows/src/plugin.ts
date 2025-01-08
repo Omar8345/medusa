@@ -227,6 +227,7 @@ class WorkflowsPlugin {
       ...resources,
       "workflow",
     ])
+
     this.updateWorkflowsTagsMap(workflowId, uniqueResources)
   }
 
@@ -379,10 +380,16 @@ class WorkflowsPlugin {
       .expression as ts.CallExpression
     const thenInitializer = initializer
 
+    const validArgumentsLength =
+      whenInitializer.arguments.length === 2 ||
+      whenInitializer.arguments.length === 3
+
+    const conditionIndex = whenInitializer.arguments.length - 1
+
     if (
-      whenInitializer.arguments.length < 2 ||
-      (!ts.isFunctionExpression(whenInitializer.arguments[1]) &&
-        !ts.isArrowFunction(whenInitializer.arguments[1])) ||
+      !validArgumentsLength ||
+      (!ts.isFunctionExpression(whenInitializer.arguments[conditionIndex]) &&
+        !ts.isArrowFunction(whenInitializer.arguments[conditionIndex])) ||
       thenInitializer.arguments.length < 1 ||
       (!ts.isFunctionExpression(thenInitializer.arguments[0]) &&
         !ts.isArrowFunction(thenInitializer.arguments[0]))
@@ -392,7 +399,8 @@ class WorkflowsPlugin {
       }
     }
 
-    const whenCondition = whenInitializer.arguments[1].body.getText()
+    const whenCondition =
+      whenInitializer.arguments[conditionIndex].body.getText()
 
     const thenStatements = (thenInitializer.arguments[0].body as ts.Block)
       .statements

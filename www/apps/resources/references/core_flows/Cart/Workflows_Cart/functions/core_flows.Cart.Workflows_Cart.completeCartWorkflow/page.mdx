@@ -3,6 +3,15 @@ slug: /references/medusa-workflows/completeCartWorkflow
 sidebar_label: completeCartWorkflow
 tags:
   - query
+  - remote query
+  - logger
+  - payment
+  - order
+  - link
+  - cart
+  - inventory
+  - locking
+  - event bus
   - workflow
 ---
 
@@ -16,7 +25,7 @@ This workflow completes a cart.
 
 ## Steps
 
-<WorkflowDiagram workflow={{"name":"completeCartWorkflow","steps":[{"type":"step","name":"useQueryGraphStep","description":"This step fetches data across modules using the Query.\n\nLearn more in the [Query documentation](https://docs.medusajs.com/learn/fundamentals/module-links/query).\n\n","link":"../../../../Common/Steps_Common/functions/core_flows.Common.Steps_Common.useQueryGraphStep/page.mdx","depth":1}]}} />
+<WorkflowDiagram workflow={{"name":"completeCartWorkflow","steps":[{"type":"step","name":"useQueryGraphStep","description":"This step fetches data across modules using the Query.\n\nLearn more in the [Query documentation](https://docs.medusajs.com/learn/fundamentals/module-links/query).\n\n","link":"../../../../Common/Steps_Common/functions/core_flows.Common.Steps_Common.useQueryGraphStep/page.mdx","depth":1},{"type":"when","condition":"{\n      return !orderId\n    }","depth":"2","steps":[{"type":"step","name":"useRemoteQueryStep","description":"This step fetches data across modules using the remote query.\n\nLearn more in the [Remote Query documentation](https://docs.medusajs.com/learn/fundamentals/module-links/query).\n\n:::note\n\nThis step is deprecated. Use [useQueryGraphStep](../../../../Common/Steps_Common/functions/core_flows.Common.Steps_Common.useQueryGraphStep/page.mdx) instead.\n\n:::\n\n","link":"../../../../Common/Steps_Common/functions/core_flows.Common.Steps_Common.useRemoteQueryStep/page.mdx","depth":2},{"type":"step","name":"validateCartPaymentsStep","description":"This step validates a cart's payment sessions. Their status must\nbe `pending` or `requires_more`.\n\n","link":"../../../Steps_Cart/functions/core_flows.Cart.Steps_Cart.validateCartPaymentsStep/page.mdx","depth":2},{"type":"step","name":"authorizePaymentSessionStep","description":"This step authorizes a payment session.\n\n","link":"../../../../Payment/Steps_Payment/functions/core_flows.Payment.Steps_Payment.authorizePaymentSessionStep/page.mdx","depth":2},{"type":"step","name":"createOrdersStep","description":"This step creates one or more orders.\n\n","link":"../../../../Order/Steps_Order/functions/core_flows.Order.Steps_Order.createOrdersStep/page.mdx","depth":2},{"type":"step","name":"createRemoteLinkStep","description":"This step creates remote links between two records of linked data models.\n\nLearn more in the [Remote Link documentation.](https://docs.medusajs.com/learn/fundamentals/module-links/remote-link#create-link).\n\n","link":"../../../../Common/Steps_Common/functions/core_flows.Common.Steps_Common.createRemoteLinkStep/page.mdx","depth":2},{"type":"step","name":"updateCartsStep","description":"This step updates a cart.\n\n","link":"../../../Steps_Cart/functions/core_flows.Cart.Steps_Cart.updateCartsStep/page.mdx","depth":2},{"type":"step","name":"reserveInventoryStep","description":"This step reserves the quantity of line items from the associated\nvariant's inventory.\n\n","link":"../../../Steps_Cart/functions/core_flows.Cart.Steps_Cart.reserveInventoryStep/page.mdx","depth":2},{"type":"step","name":"emitEventStep","description":"Emit an event.\n\n","link":"../../../../Common/Steps_Common/functions/core_flows.Common.Steps_Common.emitEventStep/page.mdx","depth":2}]}]}} />
 
 ## Input
 

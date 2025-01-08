@@ -198,8 +198,8 @@ export const sidebar = numberSidebarItems(
             },
             {
               type: "link",
-              path: "/learn/fundamentals/module-links/remote-link",
-              title: "Remote Link",
+              path: "/learn/fundamentals/module-links/link",
+              title: "Link",
             },
             {
               type: "link",

@@ -1,10 +1,18 @@
+import { CodeTabs, CodeTab } from "docs-ui"
+
 export const metadata = {
   title: `Accept Payment Flow`,
 }
 
 # {metadata.title}
 
-In this document, you’ll learn how to implement an accept-payment flow using the Payment Module's main service.
+In this document, you’ll learn how to implement an accept-payment flow using workflows or the Payment Module's main service.
+
+<Note>
+
+It's highly recommended to use Medusa's workflows to implement this flow. Use the Payment Module's main service for more complex cases.
+
+</Note>
 
 <Note title="Tip">
 
@@ -24,6 +32,25 @@ A payment collection holds all details related to a resource’s payment operati
 
 For example:
 
+<CodeTabs group="workflow-service">
+  <CodeTab label="Using Workflow" value="workflow">
+
+```ts
+import { createPaymentCollectionForCartWorkflow } from "@medusajs/medusa/core-flows";
+
+// ...
+
+await createPaymentCollectionForCartWorkflow(req.scope)
+  .run({
+    input: {
+      cart_id: "cart_123"
+    }
+  })
+```
+
+  </CodeTab>
+  <CodeTab label="Using Service" value="service">
+
 ```ts
 const paymentCollection =
   await paymentModuleService.createPaymentCollections({
@@ -33,42 +60,8 @@ const paymentCollection =
   })
 ```
 
-<Note title="Tip">
-
-Learn more about the `createPaymentCollections` method in [this reference](/references/payment/createPaymentCollections).
-
-</Note>
-
-Then, create a link between the payment collection and the resource it's storing payment details for, such as a cart in the Cart Module:
-
-```ts
-import { 
-  ContainerRegistrationKeys,
-  Modules,
-} from "@medusajs/framework/utils"
-
-// ...
-
-// resolve Link
-const link = container.resolve(
-  ContainerRegistrationKeys.LINK
-)
-
-link.create({
-  [Modules.CART]: {
-    cart_id: "cart_123",
-  },
-  [Modules.PAYMENT]: {
-    payment_collection_id: paymentCollection.id,
-  },
-})
-```
-
-<Note title="Tip">
-
-Learn more about Link in [this documentation](!docs!/learn/fundamentals/module-links/link).
-
-</Note>
+  </CodeTab>
+</CodeTabs>
 
 ---
 
@@ -79,6 +72,26 @@ The payment collection has one or more payment sessions, each being a payment am
 So, after creating the payment collection, create at least one payment session for a provider.
 
 For example:
+
+<CodeTabs group="workflow-service">
+  <CodeTab label="Using Workflow" value="workflow">
+
+```ts
+import { createPaymentSessionsWorkflow } from "@medusajs/medusa/core-flows";
+
+// ...
+
+const { result: paymentSesion } = await createPaymentSessionsWorkflow(req.scope)
+  .run({
+    input: {
+      payment_collection_id: "paycol_123",
+      provider_id: "stripe",
+    }
+  })
+```
+
+  </CodeTab>
+  <CodeTab label="Using Service" value="service">
 
 ```ts
 const paymentSession =
@@ -96,11 +109,8 @@ const paymentSession =
   )
 ```
 
-<Note>
-
-Learn more about the `createPaymentSession` method in [this reference](/references/payment/createPaymentSession).
-
-</Note>
+  </CodeTab>
+</CodeTabs>
 
 ---
 
@@ -110,23 +120,42 @@ Once the customer chooses a payment session, start the authorization process. Th
 
 For example:
 
+<CodeTabs group="workflow-service">
+  <CodeTab label="Using Step" value="workflow">
+
 ```ts
-const payment =
-  await paymentModuleService.authorizePaymentSession(
-    paymentSession.id,
-    {}
-  )
+import { authorizePaymentSessionStep } from "@medusajs/medusa/core-flows";
+
+// ...
+
+authorizePaymentSessionStep({
+  id: "payses_123",
+  context: {}
+})
 ```
+
+  </CodeTab>
+  <CodeTab label="Using Service" value="service">
+
+```ts
+const payment = authorizePaymentSessionStep({
+  id: "payses_123",
+  context: {}
+})
+```
+
+  </CodeTab>
+</CodeTabs>
 
 When the payment authorization is successful, a payment is created and returned.
 
+### Handling Additional Action
+
 <Note>
 
-Learn more about the `authorizePaymentSession` method in [this reference](/references/payment/authorizePaymentSession).
+If you used the `authorizePaymentSessionStep`, you don't need to implement this logic as it's implemented in the step.
 
 </Note>
-
-### Handling Additional Action
 
 If the payment authorization isn’t successful, whether because it requires additional action or for another reason, the method updates the payment session with the new status and throws an error.
 
@@ -162,7 +191,10 @@ try {
 
 The payment flow is complete once the payment session is authorized and the payment is created.
 
-You can then use the payment to capture the amount using the [capturePayment method](/references/payment/capturePayment). You can also refund captured amounts using the [refundPayment method](/references/payment/refundPayment).
+You can then:
+
+- Capture the payment either using the [capturePaymentWorkflow](/references/medusa-workflows/capturePaymentWorkflow) or [capturePayment method](/references/payment/capturePayment). 
+- Refund captured amounts using the [refundPaymentWorkflow](/references/medusa-workflows/refundPaymentWorkflow) or [refundPayment method](/references/payment/refundPayment).
 
 <Note>
 

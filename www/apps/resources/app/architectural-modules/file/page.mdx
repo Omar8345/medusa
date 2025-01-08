@@ -1,4 +1,4 @@
-import { ChildDocs } from "docs-ui"
+import { CardList } from "docs-ui"
 
 export const metadata = {
   title: `File Module Providers`,
@@ -14,7 +14,26 @@ By default, Medusa uses the Local File Module. This module uploads files to the 
 
 This is useful for development. However, for production, it’s highly recommended to use other File Modules, such as the S3 Module.
 
-<ChildDocs type="item" hideItems={["Guides"]} onlyTopLevel={true} />
+<CardList
+  items={[
+    {
+      title: "Local",
+      href: "/architectural-modules/file/local",
+      badge: {
+        variant: "neutral",
+        children: "For Development"
+      }
+    },
+    {
+      title: "AWS S3 (and Compatible APIs)",
+      href: "/architectural-modules/file/s3",
+      badge: {
+        variant: "green",
+        children: "For Production"
+      }
+    }
+  ]}
+/>
 
 ---
 
