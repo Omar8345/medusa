@@ -495,11 +495,16 @@ export class QueryBuilder {
     for (const aliasPath in orderBy) {
       const path = aliasPath.split(".")
       const field = path.pop()
+
+      const pgType = this.getPostgresCastType(path, [field])
+
       const attr = path.join(".")
       const alias = aliasMapping[attr]
       const direction = orderBy[aliasPath]
 
-      queryBuilder.orderByRaw(`${alias}.data->>'${field}' ${direction}`)
+      queryBuilder.orderByRaw(
+        `${alias}.data->>'${field}'::${pgType} ${direction}`
+      )
     }
 
     let sql = `WITH data AS (${queryBuilder.toQuery()})
