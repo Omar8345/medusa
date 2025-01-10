@@ -65,8 +65,7 @@ export default async ({ app, container, plugins }: Options) => {
     }).load()
   } catch (err) {
     throw Error(
-      "An error occurred while registering API Routes. See error in logs for more details.",
-      { cause: err }
+      `An error occurred while registering API Routes. Error: ${err.message}`
     )
   }
 
