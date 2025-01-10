@@ -21,7 +21,7 @@ export const GET = async (
   const shippingProfile = await refetchShippingProfile(
     req.params.id,
     req.scope,
-    req.remoteQueryConfig.fields
+    req.queryConfig.fields
   )
 
   res.status(200).json({ shipping_profile: shippingProfile })
@@ -64,7 +64,7 @@ export const POST = async (
   const shippingProfile = await refetchShippingProfile(
     req.params.id,
     req.scope,
-    req.remoteQueryConfig.fields
+    req.queryConfig.fields
   )
 
   res.status(200).json({

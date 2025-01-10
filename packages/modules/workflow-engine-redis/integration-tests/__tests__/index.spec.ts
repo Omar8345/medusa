@@ -1,10 +1,13 @@
 import {
+  DistributedTransactionType,
+  TransactionStep,
   TransactionStepTimeoutError,
   TransactionTimeoutError,
   WorkflowManager,
 } from "@medusajs/framework/orchestration"
 import {
   IWorkflowEngineService,
+  Logger,
   MedusaContainer,
   RemoteQueryFunction,
 } from "@medusajs/framework/types"
@@ -18,12 +21,25 @@ import {
 import { moduleIntegrationTestRunner } from "@medusajs/test-utils"
 import { asValue } from "awilix"
 import { setTimeout } from "timers/promises"
+import { setTimeout as setTimeoutSync } from "timers"
 import { WorkflowsModuleService } from "../../src/services"
 import "../__fixtures__"
 import { createScheduled } from "../__fixtures__/workflow_scheduled"
 import { TestDatabase } from "../utils"
 
 jest.setTimeout(999900000)
+
+const failTrap = (done) => {
+  setTimeoutSync(() => {
+    // REF:https://stackoverflow.com/questions/78028715/jest-async-test-with-event-emitter-isnt-ending
+    console.warn(
+      "Jest is breaking the event emit with its debouncer. This allows to continue the test by managing the timeout of the test manually."
+    )
+    done()
+  }, 5000)
+}
+
+// REF:https://stackoverflow.com/questions/78028715/jest-async-test-with-event-emitter-isnt-ending
 
 moduleIntegrationTestRunner<IWorkflowEngineService>({
   moduleName: Modules.WORKFLOW_ENGINE,
@@ -86,6 +102,20 @@ moduleIntegrationTestRunner<IWorkflowEngineService>({
               serviceName: "workflows",
               field: "workflowExecution",
             },
+            transaction_id: {
+              entity: "WorkflowExecution",
+              field: "workflowExecution",
+              linkable: "workflow_execution_transaction_id",
+              primaryKey: "transaction_id",
+              serviceName: "workflows",
+            },
+            workflow_id: {
+              entity: "WorkflowExecution",
+              field: "workflowExecution",
+              linkable: "workflow_execution_workflow_id",
+              primaryKey: "workflow_id",
+              serviceName: "workflows",
+            },
           },
         })
       })
@@ -99,10 +129,9 @@ moduleIntegrationTestRunner<IWorkflowEngineService>({
             throwOnError: true,
           })
 
-          let executionsList = await query({
-            workflow_executions: {
-              fields: ["workflow_id", "transaction_id", "state"],
-            },
+          let { data: executionsList } = await query.graph({
+            entity: "workflow_executions",
+            fields: ["workflow_id", "transaction_id", "state"],
           })
 
           expect(executionsList).toHaveLength(1)
@@ -117,11 +146,10 @@ moduleIntegrationTestRunner<IWorkflowEngineService>({
             stepResponse: { uhuuuu: "yeaah!" },
           })
 
-          executionsList = await query({
-            workflow_executions: {
-              fields: ["id"],
-            },
-          })
+          ;({ data: executionsList } = await query.graph({
+            entity: "workflow_executions",
+            fields: ["id"],
+          }))
 
           expect(executionsList).toHaveLength(0)
           expect(result).toEqual({
@@ -140,10 +168,9 @@ moduleIntegrationTestRunner<IWorkflowEngineService>({
             transactionId: "transaction_1",
           })
 
-          let executionsList = await query({
-            workflow_executions: {
-              fields: ["id"],
-            },
+          let { data: executionsList } = await query.graph({
+            entity: "workflow_executions",
+            fields: ["id"],
           })
 
           expect(executionsList).toHaveLength(1)
@@ -157,12 +184,10 @@ moduleIntegrationTestRunner<IWorkflowEngineService>({
             },
             stepResponse: { uhuuuu: "yeaah!" },
           })
-
-          executionsList = await query({
-            workflow_executions: {
-              fields: ["id"],
-            },
-          })
+          ;({ data: executionsList } = await query.graph({
+            entity: "workflow_executions",
+            fields: ["id"],
+          }))
 
           expect(executionsList).toHaveLength(1)
         })
@@ -175,10 +200,9 @@ moduleIntegrationTestRunner<IWorkflowEngineService>({
             transactionId: "transaction_1",
           })
 
-          let executionsList = await query({
-            workflow_executions: {
-              fields: ["id"],
-            },
+          let { data: executionsList } = await query.graph({
+            entity: "workflow_executions",
+            fields: ["id"],
           })
 
           expect(executionsList).toHaveLength(1)
@@ -192,12 +216,10 @@ moduleIntegrationTestRunner<IWorkflowEngineService>({
             },
             stepResponse: { uhuuuu: "yeaah!" },
           })
-
-          executionsList = await query({
-            workflow_executions: {
-              fields: ["id", "state"],
-            },
-          })
+          ;({ data: executionsList } = await query.graph({
+            entity: "workflow_executions",
+            fields: ["id", "state"],
+          }))
 
           expect(executionsList).toHaveLength(1)
           expect(executionsList[0].state).toEqual("reverted")
@@ -224,10 +246,9 @@ moduleIntegrationTestRunner<IWorkflowEngineService>({
             },
           })
 
-          let executionsList = await query({
-            workflow_executions: {
-              fields: ["id"],
-            },
+          let { data: executionsList } = await query.graph({
+            entity: "workflow_executions",
+            fields: ["id"],
           })
 
           expect(executionsList).toHaveLength(1)
@@ -247,12 +268,10 @@ moduleIntegrationTestRunner<IWorkflowEngineService>({
             })
 
           expect(setStepError).toEqual({ uhuuuu: "yeaah!" })
-
-          executionsList = await query({
-            workflow_executions: {
-              fields: ["id", "state", "context"],
-            },
-          })
+          ;({ data: executionsList } = await query.graph({
+            entity: "workflow_executions",
+            fields: ["id", "state", "context"],
+          }))
 
           expect(executionsList).toHaveLength(1)
           expect(executionsList[0].state).toEqual("failed")
@@ -260,7 +279,7 @@ moduleIntegrationTestRunner<IWorkflowEngineService>({
         })
 
         it("should revert the entire transaction when a step timeout expires", async () => {
-          const { transaction, result, errors } = await workflowOrcModule.run(
+          const { transaction, result, errors } = (await workflowOrcModule.run(
             "workflow_step_timeout",
             {
               input: {
@@ -269,9 +288,13 @@ moduleIntegrationTestRunner<IWorkflowEngineService>({
               throwOnError: false,
               logOnError: true,
             }
-          )
+          )) as Awaited<{
+            transaction: DistributedTransactionType
+            result: any
+            errors: any
+          }>
 
-          expect(transaction.flow.state).toEqual("reverted")
+          expect(transaction.getFlow().state).toEqual("reverted")
           expect(result).toEqual({
             myInput: "123",
           })
@@ -281,16 +304,20 @@ moduleIntegrationTestRunner<IWorkflowEngineService>({
         })
 
         it("should revert the entire transaction when the transaction timeout expires", async () => {
-          const { transaction, result, errors } = await workflowOrcModule.run(
+          const { transaction, result, errors } = (await workflowOrcModule.run(
             "workflow_transaction_timeout",
             {
               input: {},
               transactionId: "trx",
               throwOnError: false,
             }
-          )
+          )) as Awaited<{
+            transaction: DistributedTransactionType
+            result: any
+            errors: any
+          }>
 
-          expect(transaction.flow.state).toEqual("reverted")
+          expect(transaction.getFlow().state).toEqual("reverted")
           expect(result).toEqual({ executed: true })
           expect(errors).toHaveLength(1)
           expect(errors[0].action).toEqual("step_1")
@@ -310,7 +337,7 @@ moduleIntegrationTestRunner<IWorkflowEngineService>({
 
           await setTimeout(200)
 
-          const { transaction, result, errors } = await workflowOrcModule.run(
+          const { transaction, result, errors } = (await workflowOrcModule.run(
             "workflow_step_timeout_async",
             {
               input: {
@@ -319,9 +346,13 @@ moduleIntegrationTestRunner<IWorkflowEngineService>({
               transactionId: "transaction_1",
               throwOnError: false,
             }
-          )
+          )) as Awaited<{
+            transaction: DistributedTransactionType
+            result: any
+            errors: any
+          }>
 
-          expect(transaction.flow.state).toEqual("reverted")
+          expect(transaction.getFlow().state).toEqual("reverted")
           expect(result).toEqual(undefined)
           expect(errors).toHaveLength(1)
           expect(errors[0].action).toEqual("step_1_async")
@@ -341,16 +372,20 @@ moduleIntegrationTestRunner<IWorkflowEngineService>({
 
           await setTimeout(200)
 
-          const { transaction, result, errors } = await workflowOrcModule.run(
+          const { transaction, result, errors } = (await workflowOrcModule.run(
             "workflow_transaction_timeout_async",
             {
               input: {},
               transactionId: "transaction_1",
               throwOnError: false,
             }
-          )
+          )) as Awaited<{
+            transaction: DistributedTransactionType
+            result: any
+            errors: any
+          }>
 
-          expect(transaction.flow.state).toEqual("reverted")
+          expect(transaction.getFlow().state).toEqual("reverted")
           expect(result).toEqual(undefined)
           expect(errors).toHaveLength(1)
           expect(errors[0].action).toEqual("step_1")
@@ -359,9 +394,9 @@ moduleIntegrationTestRunner<IWorkflowEngineService>({
           ).toBe(true)
         })
 
-        it.skip("should complete an async workflow that returns a StepResponse", (done) => {
+        it("should complete an async workflow that returns a StepResponse", (done) => {
           const transactionId = "transaction_1"
-          void workflowOrcModule
+          workflowOrcModule
             .run("workflow_async_background", {
               input: {
                 myInput: "123",
@@ -369,7 +404,7 @@ moduleIntegrationTestRunner<IWorkflowEngineService>({
               transactionId,
               throwOnError: true,
             })
-            .then(({ transaction, result }) => {
+            .then(({ transaction, result }: any) => {
               expect(transaction.flow.state).toEqual(
                 TransactionStepState.INVOKING
               )
@@ -385,14 +420,14 @@ moduleIntegrationTestRunner<IWorkflowEngineService>({
               }
             },
           })
+
+          failTrap(done)
         })
 
-        it.skip("should subscribe to a async workflow and receive the response when it finishes", (done) => {
+        it("should subscribe to a async workflow and receive the response when it finishes", (done) => {
           const transactionId = "trx_123"
 
-          const onFinish = jest.fn(() => {
-            done()
-          })
+          const onFinish = jest.fn()
 
           void workflowOrcModule.run("workflow_async_background", {
             input: {
@@ -408,11 +443,74 @@ moduleIntegrationTestRunner<IWorkflowEngineService>({
             subscriber: (event) => {
               if (event.eventType === "onFinish") {
                 onFinish()
+                done()
               }
             },
           })
 
           expect(onFinish).toHaveBeenCalledTimes(0)
+
+          failTrap(done)
+        })
+
+        it("should not skip step if condition is true", function (done) {
+          void workflowOrcModule.run("wf-when", {
+            input: {
+              callSubFlow: true,
+            },
+            transactionId: "trx_123_when",
+            throwOnError: true,
+            logOnError: true,
+          })
+
+          void workflowOrcModule.subscribe({
+            workflowId: "wf-when",
+            subscriber: (event) => {
+              if (event.eventType === "onFinish") {
+                done()
+              }
+            },
+          })
+
+          failTrap(done)
+        })
+
+        it("should cancel an async sub workflow when compensating", (done) => {
+          const workflowId = "workflow_async_background_fail"
+
+          void workflowOrcModule.run(workflowId, {
+            input: {
+              callSubFlow: true,
+            },
+            transactionId: "trx_123_compensate_async_sub_workflow",
+            throwOnError: false,
+            logOnError: false,
+          })
+
+          let onCompensateStepSuccess: { step: TransactionStep } | null = null
+
+          void workflowOrcModule.subscribe({
+            workflowId,
+            subscriber: (event) => {
+              if (event.eventType === "onCompensateStepSuccess") {
+                onCompensateStepSuccess = event
+              }
+              if (event.eventType === "onFinish") {
+                expect(onCompensateStepSuccess).toBeDefined()
+                expect(onCompensateStepSuccess!.step.id).toEqual(
+                  "_root.nested_sub_flow_async_fail-as-step" // The workflow as step
+                )
+                expect(onCompensateStepSuccess!.step.compensate).toEqual({
+                  state: "reverted",
+                  status: "ok",
+                })
+
+                done()
+              }
+            },
+          })
+
+          failTrap(done)
         })
       })
 

@@ -545,6 +545,11 @@ export const ExampleRegistry: Record<string, ExampleType> = {
     component: React.lazy(async () => import("@/examples/button-loading")),
     file: "src/examples/button-loading.tsx",
   },
+  "select-item-aligned": {
+    name: "select-item-aligned",
+    component: React.lazy(async () => import("@/examples/select-item-aligned")),
+    file: "src/examples/select-item-aligned.tsx",
+  },
   "select-small": {
     name: "select-small",
     component: React.lazy(async () => import("@/examples/select-small")),

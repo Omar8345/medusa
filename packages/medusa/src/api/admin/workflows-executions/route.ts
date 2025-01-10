@@ -18,9 +18,9 @@ export const GET = async (
     entryPoint: "workflow_execution",
     variables: {
       filters: req.filterableFields,
-      ...req.remoteQueryConfig.pagination,
+      ...req.queryConfig.pagination,
     },
-    fields: req.remoteQueryConfig.fields,
+    fields: req.queryConfig.fields,
   })
 
   const { rows: workflowExecutions, metadata } = await remoteQuery(queryObject)

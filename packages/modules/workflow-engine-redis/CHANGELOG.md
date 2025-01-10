@@ -1,5 +1,19 @@
 # @medusajs/workflow-engine-redis
 
+## 2.2.0
+
+## 2.1.3
+
+## 2.1.2
+
+## 2.1.1
+
+### Patch Changes
+
+- [#10459](https://github.com/medusajs/medusa/pull/10459) [`90ae187e097c42a224c701f31cbc2924ea6ee86b`](https://github.com/medusajs/medusa/commit/90ae187e097c42a224c701f31cbc2924ea6ee86b) Thanks [@carlos-r-l-rodrigues](https://github.com/carlos-r-l-rodrigues)! - fix: when/then step name
+
+- [#10477](https://github.com/medusajs/medusa/pull/10477) [`0a077d48e14976bafcf19705fc48e66756362fd6`](https://github.com/medusajs/medusa/commit/0a077d48e14976bafcf19705fc48e66756362fd6) Thanks [@adrien2p](https://github.com/adrien2p)! - chore(workflow-engine): Migrate to DML
+
 ## 2.1.0
 
 ## 2.0.7

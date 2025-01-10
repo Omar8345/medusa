@@ -37,6 +37,12 @@ class SchemaFactory {
     BigNumberValue: {
       type: "number",
     },
+    difference_due: {
+      type: "number",
+    },
+    refund_amount: {
+      type: "number",
+    },
     File: {
       type: "object",
       description: "A File to upload.",

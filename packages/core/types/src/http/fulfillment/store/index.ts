@@ -1,4 +1,5 @@
 import { ShippingOptionPriceType } from "../../../fulfillment"
+import { StoreCalculatedPrice, StorePrice } from "../../pricing/store/entities"
 
 // TODO: The way the cart shipping options are listed now differs from most other endpoints as it is fetched in a workflow.
 // We should consider refactoring this to be more consistent with other endpoints.
@@ -13,7 +14,7 @@ export interface StoreCartShippingOption {
   name: string
   /**
    * The type of the shipping option's price. `flat` means the price
-   * is fixed, whereas `calculated` means the price is calculated by the 
+   * is fixed, whereas `calculated` means the price is calculated by the
    * associated fulfillment provider.
    */
   price_type: ShippingOptionPriceType
@@ -31,7 +32,7 @@ export interface StoreCartShippingOption {
   provider_id: string
   /**
    * The data useful for the fulfillment provider when handling the shipment and fulfillment.
-   * 
+   *
    * Learn more in [this documentation](https://docs.medusajs.com/resources/commerce-modules/fulfillment/shipping-option#data-property).
    */
   data: Record<string, unknown> | null
@@ -73,4 +74,14 @@ export interface StoreCartShippingOption {
    * The shipping option's amount.
    */
   amount: number
+
+  /**
+   * All the prices for this shipping option
+   */
+  prices: StorePrice[]
+
+  /**
+   * Calculated price for the shipping option
+   */
+  calculated_price: StoreCalculatedPrice
 }

@@ -7,22 +7,21 @@ export const metadata = {
 
 # {metadata.title}
 
-This document provides an example of implementing the marketplace recipe.
+In this guide, you'll learn how to build a marketplace with Medusa.
+
+When you install a Medusa application, you get a fully-fledged commerce platform with support for customizations. While Medusa doesn't provide marketeplace functionalities natively, it provides features that you can extend and a framework to support all your customization needs to build a marketplace.
+
+In this guide, you'll customize Medusa to build a marketplace with the following features:
+
+1. Manage multiple vendors, each having vendor admins.
+2. Allow vendor admins to manage the vendor’s products and orders.
+3. Split orders placed by customers into multiple orders for each vendor.
 
 <Note>
 
-You can implement the marketplace as you see fit for your use case. This is only an example of one way to implement it.
+This guide provides an example of an approach to implement digital products. You're free to choose a different approach using Medusa's framework.
 
 </Note>
-
-## Features
-
-By following this example, you’ll have a marketplace with the following features:
-
-1. Multiple vendors, each having vendor admins.
-2. Vendor admins manage the vendor’s products and orders.
-3. On order creation, the order is split into multiple orders for each vendor.
-4. All other commerce features that Medusa provides.
 
 <CardList items={[
   {
@@ -41,14 +40,50 @@ By following this example, you’ll have a marketplace with the following featur
 
 ---
 
+## Step 1: Install a Medusa Application
+
 <Prerequisites items={[
   {
-    text: "A new Medusa application installed.",
-    link: "!docs!#get-started"
+    text: "Node.js v20+",
+    link: "https://nodejs.org/en/download"
   },
+  {
+    text: "Git CLI tool",
+    link: "https://git-scm.com/downloads"
+  },
+  {
+    text: "PostgreSQL",
+    link: "https://www.postgresql.org/download/"
+  }
 ]} />
 
-## Step 1: Create Marketplace Module
+Start by installing the Medusa application on your machine with the following command:
+
+```bash
+npx create-medusa-app@latest
+```
+
+You'll first be asked for the project's name. You can also optionally choose to install the [Next.js starter storefront](../../../../nextjs-starter/page.mdx).
+
+Afterwards, the installation process will start, which will install the Medusa application in a directory with your project's name. If you chose to install the Next.js starter, it'll be installed in a separate directory with the `{project-name}-storefront` name.
+
+<Note title="Why is the storefront installed separately?">
+
+The Medusa application is composed of a headless Node.js server and an admin dashboard. The storefront is installed or custom-built separately and connects to the Medusa application through its REST endpoints, called [API routes](!docs!/learn/fundamentals/api-routes). Learn more about Medusa's architecture in [this documentation](!docs!/learn/introduction/architecture).
+
+</Note>
+
+Once the installation finishes successfully, the Medusa Admin dashboard will open with a form to create a new user. Enter the user's credential and submit the form. Afterwards, you can login with the new user and explore the dashboard.
+
+<Note title="Ran to Errors?">
+
+Check out the [troubleshooting guides](../../../../troubleshooting/create-medusa-app-errors/page.mdx) for help.
+
+</Note>
+
+---
+
+## Step 2: Create Marketplace Module
 
 Medusa creates commerce features in modules. For example, product features and data models are created in the Product Module.
 
@@ -120,7 +155,7 @@ class MarketplaceModuleService extends MedusaService({
 export default MarketplaceModuleService
 ```
 
-The service extends the [service factory](!docs!/learn/advanced-development/modules/service-factory), which provides basic data-management features.
+The service extends the [service factory](!docs!/learn/fundamentals/modules/service-factory), which provides basic data-management features.
 
 ### Create Module Definition
 
@@ -154,12 +189,12 @@ module.exports = defineConfig({
 
 ### Further Reads
 
-- [How to Create a Module](!docs!/learn/basics/modules)
-- [How to Create Data Models](!docs!/learn/basics/modules#1-create-data-model)
+- [How to Create a Module](!docs!/learn/fundamentals/modules)
+- [How to Create Data Models](!docs!/learn/fundamentals/modules#1-create-data-model)
 
 ---
 
-## Step 2: Define Links to Product and Order Data Models
+## Step 3: Define Links to Product and Order Data Models
 
 Modules are isolated in Medusa, making them reusable, replaceable, and integrable in your application without side effects.
 
@@ -213,11 +248,11 @@ This adds a list link between the `Vendor` and `Order` data models, indicating t
 
 ### Further Read
 
-- [How to Define Module Links](!docs!/learn/advanced-development/module-links)
+- [How to Define Module Links](!docs!/learn/fundamentals/module-links)
 
 ---
 
-## Step 3: Run Migrations and Sync Links
+## Step 4: Run Migrations and Sync Links
 
 To create tables for the marketplace data models in the database, start by generating the migrations for the Marketplace Module with the following command:
 
@@ -235,7 +270,7 @@ npx medusa db:migrate
 
 ---
 
-## Step 4: Create Vendor Admin Workflow
+## Step 5: Create Vendor Admin Workflow
 
 To implement and expose a feature that manipulates data, you create a workflow that uses services to implement the functionality, then create an API route that executes that workflow.
 
@@ -298,7 +333,7 @@ Then, create the workflow at `src/workflows/marketplace/create-vendor-admin/inde
 
 export const vendorAdminWorkflowHighlights = [
   ["23", "createVendorAdminStep", "Create the vendor admin."],
-  ["27", "setAuthAppMetadataStep", "Step is imported from `@medusajs/medusa/core-flows`."]
+  ["27", "setAuthAppMetadataStep", "Step is from Medusa's core workflows"]
 ]
 
 ```ts title="src/workflows/marketplace/create-vendor-admin/index.ts" highlights={vendorAdminWorkflowHighlights}
@@ -350,14 +385,14 @@ You return the created vendor admin.
 
 ### Further Read
 
-- [How to Create a Workflow](!docs!/learn/basics/workflows)
+- [How to Create a Workflow](!docs!/learn/fundamentals/workflows)
 - [What is an Actor Type](../../../../commerce-modules/auth/auth-identity-and-actor-types/page.mdx)
 - [How to Create an Actor Type](../../../../commerce-modules/auth/create-actor-type/page.mdx)
-- [What is a Compensation Function](!docs!/learn/advanced-development/workflows/compensation-function)
+- [What is a Compensation Function](!docs!/learn/fundamentals/workflows/compensation-function)
 
 ---
 
-## Step 5: Create Vendor API Route
+## Step 6: Create Vendor API Route
 
 To expose custom commerce features to frontend applications, such as the Medusa Admin dashboard or a storefront, you expose an endpoint by creating an API route.
 
@@ -468,7 +503,7 @@ Next, create the file `src/api/middlewares.ts` with the following content:
 import { 
   defineMiddlewares,
   authenticate,
-} from "@medusajs/medusa"
+} from "@medusajs/framework/http"
 
 export default defineMiddlewares({
   routes: [
@@ -527,7 +562,7 @@ This route is available because you created the `vendor` actor type previously.
 
 <Note>
 
-Don't include a trailing slash at the end of the URL. Learn more [here](!docs!/learn/advanced-development/api-routes/middlewares).
+Don't include a trailing slash at the end of the URL. Learn more [here](!docs!/learn/fundamentals/api-routes/middlewares).
 
 </Note>
 
@@ -563,13 +598,13 @@ Use this token in the header of later requests that require authentication.
 
 ### Further Reads
 
-- [How to Create an API route](!docs!/learn/basics/api-routes)
-- [How to Create a Middleware](!docs!/learn/advanced-development/api-routes/middlewares)
+- [How to Create an API route](!docs!/learn/fundamentals/api-routes)
+- [How to Create a Middleware](!docs!/learn/fundamentals/api-routes/middlewares)
 - [Learn more about the /auth route](../../../../commerce-modules/auth/authentication-route/page.mdx)
 
 ---
 
-## Step 6: Add Product API Routes
+## Step 7: Add Product API Routes
 
 In this section, you’ll add two API routes: one to retrieve the vendor’s products and one to create a product.
 
@@ -647,7 +682,7 @@ export const POST = async (
   req: AuthenticatedMedusaRequest<RequestType>,
   res: MedusaResponse
 ) => {
-  const remoteLink = req.scope.resolve("remoteLink")
+  const link = req.scope.resolve("link")
   const marketplaceModuleService: MarketplaceModuleService = 
     req.scope.resolve(MARKETPLACE_MODULE)
   const productModuleService: IProductModuleService = req.scope
@@ -690,7 +725,7 @@ const { result } = await createProductsWorkflow(req.scope)
   })
 
 // link product to vendor
-await remoteLink.create({
+await link.create({
   [MARKETPLACE_MODULE]: {
     vendor_id: vendorAdmin.vendor.id,
   },
@@ -723,10 +758,8 @@ Finally, in `src/api/middlewares.ts`, apply a middleware on the create products 
 import { 
   defineMiddlewares,
   authenticate,
-} from "@medusajs/medusa"
-import { 
   validateAndTransformBody,
-} from "@medusajs/framework/utils"
+} from "@medusajs/framework/http"
 import { 
   AdminCreateProduct,
 } from "@medusajs/medusa/api/admin/products/validators"
@@ -792,12 +825,12 @@ curl 'http://localhost:9000/vendors/products' \
 
 ### Further Reads
 
-- [How to use Query](!docs!/learn/advanced-development/module-links/query)
-- [How to use the Remote Link](!docs!/learn/advanced-development/module-links/remote-link)
+- [How to use Query](!docs!/learn/fundamentals/module-links/query)
+- [How to use Link](!docs!/learn/fundamentals/module-links/link)
 
 ---
 
-## Step 7: Create Vendor Order Workflow
+## Step 8: Create Vendor Order Workflow
 
 In this step, you’ll create a workflow that’s executed when the customer places an order. It has the following steps:
 
@@ -896,7 +929,7 @@ import {
 import { Modules, promiseAll } from "@medusajs/framework/utils"
 import { 
   cancelOrderWorkflow,
-  createOrderWorkflow
+  createOrderWorkflow,
 } from "@medusajs/medusa/core-flows"
 import MarketplaceModuleService from "../../../../modules/marketplace/service"
 import { MARKETPLACE_MODULE } from "../../../../modules/marketplace"
@@ -1012,9 +1045,9 @@ try {
   await promiseAll(
     vendorIds.map(async (vendorId) => {
       const items = vendorsItems[vendorId]
-      const vendor = vendors.find(v => v.id === vendorId)!
+      const vendor = vendors.find((v) => v.id === vendorId)!
 
-      const {result: childOrder} = await createOrderWorkflow(
+      const { result: childOrder } = await createOrderWorkflow(
         container
       )
       .run({
@@ -1027,11 +1060,11 @@ try {
       
       linkDefs.push({
         [MARKETPLACE_MODULE]: {
-          vendor_id: vendor.id
+          vendor_id: vendor.id,
         },
         [Modules.ORDER]: {
-          order_id: childOrder.id
-        }
+          order_id: childOrder.id,
+        },
       })
     })
   )
@@ -1039,7 +1072,7 @@ try {
   return StepResponse.permanentFailure(
     `An error occured while creating vendor orders: ${e}`,
     {
-      created_orders: createdOrders
+      created_orders: createdOrders,
     }
   )
 }
@@ -1047,7 +1080,7 @@ try {
 
 In this snippet, you create multiple child orders for each vendor and link the orders to the vendors.
 
-You use the `promiseAll` utility imported from `@medusajs/framework/utils` that loops over an array of promises and ensures that all transactions within these promises are rolled back in case an error occurs. You also wrap `promiseAll` in a try-catch block, and in the catch block you invoke and return `StepResponse.permanentFailure` which indicates that the step has failed but still invokes the compensation function that you'll implement in a bit. The first parameter of `permanentFailure` is the error message, and the second is the data to pass to the compensation function.
+You use `promiseAll` from the Workflows SDK that loops over an array of promises and ensures that all transactions within these promises are rolled back in case an error occurs. You also wrap `promiseAll` in a try-catch block, and in the catch block you invoke and return `StepResponse.permanentFailure` which indicates that the step has failed but still invokes the compensation function that you'll implement in a bit. The first parameter of `permanentFailure` is the error message, and the second is the data to pass to the compensation function.
 
 If an error occurs, the created orders in the `createdOrders` array are canceled using Medusa's `cancelOrderWorkflow` from the `@medusajs/medusa/core-flows` package.
 
@@ -1176,7 +1209,7 @@ const createVendorOrdersWorkflow = createWorkflow(
     })
 
     const { vendorsItems } = groupVendorItemsStep({
-      cart: carts[0]
+      cart: carts[0],
     })
     
     const order = getOrderDetailWorkflow.runAsStep({
@@ -1267,7 +1300,7 @@ To test this out, it’s recommended to install the [Next.js Starter storefront]
 
 ---
 
-## Step 8: Retrieve Vendor Orders API Route
+## Step 9: Retrieve Vendor Orders API Route
 
 In this step, you’ll create an API route that retrieves a vendor’s orders.
 
@@ -1392,7 +1425,7 @@ For example, you can link sales channels to vendors or other settings.
 
 <Note>
 
-[Learn more about module links](!docs!/learn/advanced-development/module-links).
+[Learn more about module links](!docs!/learn/fundamentals/module-links).
 
 </Note>
 
@@ -1404,6 +1437,6 @@ You can also create a custom storefront. Check out the [Storefront Development](
 
 ### Admin Development
 
-The Medusa Admin is extendable, allowing you to add widgets to existing pages or create new pages. Learn more about it in [this documentation](!docs!/learn/advanced-development/admin).
+The Medusa Admin is extendable, allowing you to add widgets to existing pages or create new pages. Learn more about it in [this documentation](!docs!/learn/fundamentals/admin).
 
 If your use case requires bigger customizations to the admin, such as showing different products and orders based on the logged-in vendor, use the [admin API routes](!api!/admin) to build a custom admin.

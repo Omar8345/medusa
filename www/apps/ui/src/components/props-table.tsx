@@ -45,7 +45,10 @@ const Row = ({
   propData: { tsType: tsType, defaultValue, description },
 }: RowProps) => {
   const normalizeRaw = (str: string): string => {
-    return str.replace("\\|", "|")
+    return str
+      .replace("\\|", "|")
+      .replaceAll("&#60;", "<")
+      .replaceAll("&#62;", ">")
   }
   const getTypeRaw = useCallback((type: PropSpecType): string => {
     let raw = "raw" in type ? type.raw || type.name : type.name
@@ -74,9 +77,11 @@ const Row = ({
   }, [])
   const getTypeTooltipContent = useCallback(
     (type: PropSpecType): string | undefined => {
-      if (type?.name === "signature" && "type" in type) {
-        return getTypeRaw(type)
-      } else if (type?.name === "Array" && type.raw) {
+      if (
+        (type?.name === "signature" && "type" in type) ||
+        (type?.name === "Array" && type.raw) ||
+        ("raw" in type && type.raw)
+      ) {
         return getTypeRaw(type)
       }
 
@@ -106,6 +111,11 @@ const Row = ({
           typeNodes.push({
             text: element.value,
             canBeCopied: true,
+          })
+        } else if ("raw" in element) {
+          typeNodes.push({
+            text: getTypeText(element),
+            tooltipContent: getTypeTooltipContent(element),
           })
         } else {
           typeNodes.push({

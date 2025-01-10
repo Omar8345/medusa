@@ -8,6 +8,14 @@
  *   url: https://docs.medusajs.com/v2/resources/storefront-development/products/price
  *   description: "Storefront guide: How to retrieve a product variants' prices."
  * parameters:
+ *   - name: x-publishable-api-key
+ *     in: header
+ *     description: Publishable API Key created in the Medusa Admin.
+ *     required: true
+ *     schema:
+ *       type: string
+ *       externalDocs:
+ *         url: https://docs.medusajs.com/api/store#publishable-api-key
  *   - name: fields
  *     in: query
  *     description: Comma-separated fields that should be included in the returned data. if a field is prefixed with `+` it will be added to the default fields, using `-` will remove it from the default
@@ -680,14 +688,6 @@
  *             type: string
  *             title: category_id
  *             description: A product category's ID.
- *   - name: currency_code
- *     in: query
- *     description: The currency code to retrieve prices in.
- *     required: false
- *     schema:
- *       type: string
- *       title: currency_code
- *       description: The currency code to retrieve prices in.
  *   - name: variants
  *     in: query
  *     description: Filter the products' variants.
@@ -712,6 +712,22 @@
  *               type: string
  *               title: value
  *               description: Filter by a value of the option.
+ *   - name: country_code
+ *     in: query
+ *     description: The product's country code.
+ *     required: false
+ *     schema:
+ *       type: string
+ *       title: country_code
+ *       description: The product's country code.
+ *   - name: cart_id
+ *     in: query
+ *     description: The product's cart id.
+ *     required: false
+ *     schema:
+ *       type: string
+ *       title: cart_id
+ *       description: The product's cart id.
  * x-codeSamples:
  *   - lang: Shell
  *     label: cURL

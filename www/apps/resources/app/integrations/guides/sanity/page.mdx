@@ -82,7 +82,7 @@ Afterwards, the installation process will start, which will install the Medusa a
 
 <Note title="Why is the storefront installed separately?">
 
-The Medusa application is composed of a headless Node.js server and an admin dashboard. The storefront is installed or custom-built separately and connects to the Medusa application through its REST endpoints, called [API routes](!docs!/learn/basics/api-routes). Learn more about Medusa's architecture in [this documentation](!docs!/learn/advanced-development/architecture/overview).
+The Medusa application is composed of a headless Node.js server and an admin dashboard. The storefront is installed or custom-built separately and connects to the Medusa application through its REST endpoints, called [API routes](!docs!/learn/fundamentals/api-routes). Learn more about Medusa's architecture in [this documentation](!docs!/learn/introduction/architecture).
 
 </Note>
 
@@ -138,7 +138,7 @@ In this step, you'll create a Sanity Module that provides the interface to conne
 
 <Note>
 
-Learn more about modules in [this documentation](!docs!/learn/basics/modules).
+Learn more about modules in [this documentation](!docs!/learn/fundamentals/modules).
 
 </Note>
 
@@ -150,11 +150,11 @@ A module is created under the `src/modules` directory of your Medusa application
 
 You define a module's functionalities in a service. A service is a TypeScript or JavaScript class that the module exports. In the service's methods, you can connect to the database, which is useful if your module defines tables in the database, or connect to a third-party service.
 
-Medusa registers the module's service in the [Medusa container](!docs!/learn/basics/medusa-container), allowing you to easily resolve the service from other customizations and use its methods.
+Medusa registers the module's service in the [Medusa container](!docs!/learn/fundamentals/medusa-container), allowing you to easily resolve the service from other customizations and use its methods.
 
 <Note title="What is the Medusa Container?">
 
-The Medusa application registers resources, such as a module's service or the [logging tool](!docs!/learn/debugging-and-testing/logging), in the Medusa container so that you can resolve them from other customizations, as you'll see in later sections. Learn more about it in [this documentation](!docs!/learn/basics/medusa-container).
+The Medusa application registers resources, such as a module's service or the [logging tool](!docs!/learn/debugging-and-testing/logging), in the Medusa container so that you can resolve them from other customizations, as you'll see in later sections. Learn more about it in [this documentation](!docs!/learn/fundamentals/medusa-container).
 
 </Note>
 
@@ -258,7 +258,7 @@ class SanityModuleService {
 
 The service's constructor accepts two parameters:
 
-1. Resources to resolve from the Module's container. A module has a different container than the Medusa application, which you can learn more about it in [this documentation](!docs!/learn/advanced-development/modules/container).
+1. Resources to resolve from the Module's container. A module has a different container than the Medusa application, which you can learn more about it in [this documentation](!docs!/learn/fundamentals/modules/container).
 2. The options passed to the module.
 
 In the constructor, you create a Sanity client using the `createClient` function imported from `@sanity/client`. You pass it the options that the module receives.
@@ -511,7 +511,7 @@ export default Module(SANITY_MODULE, {
 
 In the file, you export the `SANITY_MODULE` which is the Module's name. You'll use it later when you resolve the module from the Medusa container.
 
-You also export the module definition using the `Module` utility function, which accepts as a first parameter the module's name, and as a second parameter an object having a `service` property, indicating the module's service.
+You also export the module definition using `Module` from the Modueles SDK, which accepts as a first parameter the module's name, and as a second parameter an object having a `service` property, indicating the module's service.
 
 ### Add Module to Configurations
 
@@ -603,7 +603,7 @@ In the next steps, you'll create a link between the Product and Sanity modules t
 
 Since a product has a document in Sanity, you want to build an association between the [Product](../../../commerce-modules/product/page.mdx) and Sanity modules so that when you retrieve a product, you also retrieve its associated Sanity document.
 
-However, modules are [isolated](!docs!/learn/advanced-development/modules/isolation) to ensure they're re-usable and don't have side effects when integrated into the Medusa application. So, to build associations between modules, you define [module links](!docs!/learn/advanced-development/module-links).
+However, modules are [isolated](!docs!/learn/fundamentals/modules/isolation) to ensure they're re-usable and don't have side effects when integrated into the Medusa application. So, to build associations between modules, you define [module links](!docs!/learn/fundamentals/module-links).
 
 A Module Link associates two modules' data models while maintaining module isolation. A data model can be a table in the database or a virtual model from an external systems.
 
@@ -634,7 +634,7 @@ defineLink(
 )
 ```
 
-You define a link using the `defineLink` utility. It accepts three parameters:
+You define a link using `defineLink` from the Modules SDK. It accepts three parameters:
 
 1. The first data model part of the link. In this case, it's the Product Module's `product` data model. A module has a special `linkable` property that contain link configurations for its data models.
 2. The second data model part of the link. Since the Sanity Module doesn't have a Medusa data model, you specify the configurations in a `linkable` object that has the following properties:
@@ -657,7 +657,7 @@ Within a workflow's steps, you resolve modules to use their service's functional
 
 <Note>
 
-Learn more about workflows in [this documentation](!docs!/learn/basics/workflows)
+Learn more about workflows in [this documentation](!docs!/learn/fundamentals/workflows)
 
 </Note>
 
@@ -695,17 +695,17 @@ export const syncStep = createStep(
     const sanityModule: SanityModuleService = container.resolve(SANITY_MODULE)
     const query = container.resolve(ContainerRegistrationKeys.QUERY)
 
-    let total = 0;
+    const total = 0
     const upsertMap: {
       before: any
       after: any
     }[] = []
 
-    const batchSize = 200;
-    let hasMore = true;
-    let offset = 0;
-    let filters = input.product_ids ? {
-      id: input.product_ids
+    const batchSize = 200
+    const hasMore = true
+    const offset = 0
+    const filters = input.product_ids ? {
+      id: input.product_ids,
     } : {}
 
     while (hasMore) {
@@ -743,7 +743,7 @@ You define the `syncStep` using the `createStep` function, which accepts two par
 
 The step function accepts the step's input as a first parameter, and an object of options as a second. The object of options has a `container` property, which is an instance of the Medusa container that you can use to resolve resources.
 
-In the step, you resolve from the Medusa container Sanity Module's service and [Query](!docs!/learn/advanced-development/module-links/query), which is a tool that allows you to retrieve data across modules and links.
+In the step, you resolve from the Medusa container Sanity Module's service and [Query](!docs!/learn/fundamentals/module-links/query), which is a tool that allows you to retrieve data across modules and links.
 
 You use Query's `graph` method to retrieve products, filtering them by their IDs and applying pagination configurations. The `graph` method accepts a `fields` property in its object parameter, which indicates the product data model's fields and relations to retrieve.
 
@@ -772,16 +772,16 @@ while (hasMore) {
         const after = await sanityModule.upsertSyncDocument(
           "product", 
           prod as ProductDTO
-        );
+        )
 
         upsertMap.push({
           // @ts-ignore
           before: prod.sanity_product,
-          after
+          after,
         })
 
         return after
-      }),
+      })
     )
   } catch (e) {
     return StepResponse.permanentFailure(
@@ -805,7 +805,7 @@ You also wrap the `promiseAll` function within a try-catch block. In the catch b
 Finally, after the `while` loop and at the end of the step, add the following return statement:
 
 ```ts title="src/workflows/sanity-sync-products/steps/sync.ts"
-return new StepResponse({ total }, upsertMap);
+return new StepResponse({ total }, upsertMap)
 ```
 
 If no errors occur, the step returns an instance of `StepResponse`, which must be returned by any step. It accepts as a first parameter the data to return to the workflow that executed this step.
@@ -816,7 +816,7 @@ If no errors occur, the step returns an instance of `StepResponse`, which must b
 
 <Note title="Tip">
 
-Learn more about compensation functions in [this documentation](!docs!/learn/advanced-development/workflows/compensation-function).
+Learn more about compensation functions in [this documentation](!docs!/learn/fundamentals/workflows/compensation-function).
 
 </Note>
 
@@ -887,7 +887,7 @@ export const sanitySyncProductsWorkflow = createWorkflow(
 )
 ```
 
-You create a workflow using the `createWorkflow` function imported from `@medusajs/framework/workflows-sdk`. It accepts an object of options as a first parameter, where the `name` property is required and indicates the workflow's unique name.
+You create a workflow using the `createWorkflow` from the Workflows SDK. It accepts an object of options as a first parameter, where the `name` property is required and indicates the workflow's unique name.
 
 The `retentionTime` property indicates how long should the workflow's progress be saved in the database. This is useful if you later want to track whether the workflow is successfully executing.
 
@@ -895,7 +895,7 @@ The `retentionTime` property indicates how long should the workflow's progress b
 
 <Note title="Tip">
 
-A workflow's constructor function has some constraints in implementation. Learn more about them in [this documentation](!docs!/learn/advanced-development/workflows/constructor-constraints).
+A workflow's constructor function has some constraints in implementation. Learn more about them in [this documentation](!docs!/learn/fundamentals/workflows/constructor-constraints).
 
 </Note>
 
@@ -915,7 +915,7 @@ Subscribers are useful when you want to perform an action that isn't an integral
 
 <Note>
 
-Learn more about events and subscribers in [this documentation](!docs!/learn/basics/events-and-subscribers). You can also find the list of emitted events in [this reference](../../../events-reference/page.mdx).
+Learn more about events and subscribers in [this documentation](!docs!/learn/fundamentals/events-and-subscribers). You can also find the list of emitted events in [this reference](../../../events-reference/page.mdx).
 
 </Note>
 
@@ -1204,14 +1204,19 @@ import { client } from "../../../../../sanity/lib/client"
 
 // ...
 
-export default async function ProductPage({ params }: Props) {
+export default async function ProductPage(props: Props) {
+  const params = await props.params
   const region = await getRegion(params.countryCode)
 
   if (!region) {
     notFound()
   }
 
-  const pricedProduct = await getProductByHandle(params.handle, region.id)
+  const pricedProduct = await listProducts({
+    countryCode: params.countryCode,
+    queryParams: { handle: params.handle },
+  }).then(({ response }) => response.products[0])
+
   if (!pricedProduct) {
     notFound()
   }
@@ -1224,7 +1229,6 @@ export default async function ProductPage({ params }: Props) {
       product={pricedProduct}
       region={region}
       countryCode={params.countryCode}
-      sanity={sanity}
     />
   )
 }
@@ -1316,7 +1320,7 @@ You can now manage the product's content in Sanity, add more fields, and customi
 
 There are cases where you need to trigger the syncing of products manually, such as when an error occurs or you have products from before creating this integration.
 
-The Medusa Admin dashboard is customizable, allowing you to either inject components, called [widgets](!docs!/learn/advanced-development/admin/widgets), into existing pages, or adding new pages, called [UI routes](!docs!/learn/advanced-development/admin/ui-routes). In these customizations, you can send requests to the Medusa application to perform custom operations.
+The Medusa Admin dashboard is customizable, allowing you to either inject components, called [widgets](!docs!/learn/fundamentals/admin/widgets), into existing pages, or adding new pages, called [UI routes](!docs!/learn/fundamentals/admin/ui-routes). In these customizations, you can send requests to the Medusa application to perform custom operations.
 
 In this step, you'll add a widget to the product's details page. In that page, you'll show whether a product is synced with Sanity, and allow the admin user to trigger syncing it manually.
 
@@ -1326,7 +1330,7 @@ Before you do that, however, you need two new API routes in your Medusa applicat
 
 <Note title="What is an API Route?">
 
-An API route is a REST API endpoint that exposes commerce features to the admin dashboard or other frontend clients. Learn more about API routes in [this documentation](!docs!/learn/basics/api-routes).
+An API route is a REST API endpoint that exposes commerce features to the admin dashboard or other frontend clients. Learn more about API routes in [this documentation](!docs!/learn/fundamentals/api-routes).
 
 </Note>
 
@@ -1395,7 +1399,7 @@ You'll test out this route in a later section.
 
 <Note title="Tip">
 
-Since the API route is added under the `/admin` prefix, only authenticated admin users can access it. Learn more about protected routes in [this documentation](!docs!/learn/advanced-development/api-routes/protected-routes).
+Since the API route is added under the `/admin` prefix, only authenticated admin users can access it. Learn more about protected routes in [this documentation](!docs!/learn/fundamentals/api-routes/protected-routes).
 
 </Note>
 
@@ -1638,7 +1642,7 @@ export const config = defineWidgetConfig({
 export default ProductWidget
 ```
 
-The file exports a `ProductWidget` component and a `config` object created with the `defineWidgetConfig` utility function. In the `config` object, you specify the zone to inject the widget into in the `zone` property.
+The file exports a `ProductWidget` component and a `config` object created with `defineWidgetConfig` from the Admin Extension SDK. In the `config` object, you specify the zone to inject the widget into in the `zone` property.
 
 <Note title="Tip">
 
@@ -1654,7 +1658,7 @@ To render a widget that matches the rest of the admin dashboard's design, you us
 
 <Note>
 
-Learn more about widgets in [this documentation](/learn/advanced-development/admin/widgets).
+Learn more about widgets in [this documentation](/learn/fundamentals/admin/widgets).
 
 </Note>
 
@@ -1676,7 +1680,7 @@ Earlier in this guide when introducing workflows, you learned that you can track
 
 Medusa has a [workflow engine](../../../architectural-modules/workflow-engine/page.mdx) that manages workflow executions, roll-backs, and other functionalities under the hood.
 
-The workflow engine is an [architectural module](!docs!/learn/advanced-development/architecture/architectural-modules), which can be replaced with a [Redis Workflow Engine](../../../architectural-modules/workflow-engine/redis/page.mdx), or a custom one of your choice, allowing you to take ownership of your application's tooling.
+The workflow engine is an [architectural module](!docs!/learn/fundamentals/modules/architectural-modules), which can be replaced with a [Redis Workflow Engine](../../../architectural-modules/workflow-engine/redis/page.mdx), or a custom one of your choice, allowing you to take ownership of your application's tooling.
 
 In your customizations, you can resolve the workflow engine from the container and manage executions of a workflow, such as retrieve them and check their progress.
 
@@ -1910,7 +1914,7 @@ export default SanityRoute
 
 The file's path relative to the `src/admin/routes` directory indicates its path in the admin dashboard. So, this adds a new route at the path `http://localhost:9000/app/sanity`.
 
-The file must export the UI route's component. Also, to add an item in the sidebar for the UI route, you export a configuration object, created with the `defineRouteConfig` utility function. The function accepts the following properties:
+The file must export the UI route's component. Also, to add an item in the sidebar for the UI route, you export a configuration object, created with `defineRouteConfig` from the Admin Extension SDK. The function accepts the following properties:
 
 - `label`: The sidebar item's label.
 - `icon`: The icon to the show in the sidebar.
@@ -1921,7 +1925,7 @@ To display components that match the design of the Medusa Admin, you use compone
 
 <Note>
 
-Learn more about UI routes in [this documentation](!docs!/learn/advanced-development/admin/ui-routes).
+Learn more about UI routes in [this documentation](!docs!/learn/fundamentals/admin/ui-routes).
 
 </Note>
 

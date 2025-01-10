@@ -21,9 +21,7 @@ export const POST = async (
     remoteQueryObjectFromString({
       entryPoint: "cart_payment_collection",
       variables: { filters: { cart_id } },
-      fields: req.remoteQueryConfig.fields.map(
-        (f) => `payment_collection.${f}`
-      ),
+      fields: req.queryConfig.fields.map((f) => `payment_collection.${f}`),
     })
   )
   let paymentCollection = cartCollectionRelation?.payment_collection
@@ -37,9 +35,7 @@ export const POST = async (
       remoteQueryObjectFromString({
         entryPoint: "cart_payment_collection",
         variables: { filters: { cart_id } },
-        fields: req.remoteQueryConfig.fields.map(
-          (f) => `payment_collection.${f}`
-        ),
+        fields: req.queryConfig.fields.map((f) => `payment_collection.${f}`),
       })
     )
     paymentCollection = cartCollectionRelation?.payment_collection

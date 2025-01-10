@@ -1,11 +1,15 @@
 ---
 slug: /references/medusa-workflows/deleteUsersWorkflow
 sidebar_label: deleteUsersWorkflow
+tags:
+  - user
+  - event bus
+  - workflow
 ---
 
 import { TypeList, WorkflowDiagram } from "docs-ui"
 
-# deleteUsersWorkflow - Medusa Workflows API Reference
+# deleteUsersWorkflow - Medusa Core Workflows Reference
 
 This documentation provides a reference to the `deleteUsersWorkflow`. It belongs to the `@medusajs/medusa/core-flows` package.
 
@@ -13,8 +17,8 @@ This workflow deletes one or more users.
 
 ## Steps
 
-<WorkflowDiagram workflow={{"name":"deleteUsersWorkflow","steps":[{"type":"step","name":"deleteUsersStep","description":"This step deletes one or more stores.","link":"../../../../core_flows.Steps_User/page.mdx#deleteusersstep","depth":1},{"type":"step","name":"emitEventStep","description":"Emit an event.\n\n","link":"../../../../core_flows.Steps_Common/page.mdx#emiteventstep","depth":2}]}} />
+<WorkflowDiagram workflow={{"name":"deleteUsersWorkflow","steps":[{"type":"step","name":"deleteUsersStep","description":"This step deletes one or more stores.\n\n","link":"../../../Steps_User/functions/core_flows.User.Steps_User.deleteUsersStep/page.mdx","depth":1},{"type":"step","name":"emitEventStep","description":"Emit an event.\n\n","link":"../../../../Common/Steps_Common/functions/core_flows.Common.Steps_Common.emitEventStep/page.mdx","depth":2}]}} />
 
 ## Input
 
-<TypeList types={[{"name":"DeleteUserWorkflowInput","type":"[DeleteUserWorkflowInput](../../../../../types/WorkflowTypes/UserWorkflow/interfaces/types.WorkflowTypes.UserWorkflow.DeleteUserWorkflowInput/page.mdx)","optional":false,"defaultValue":"","description":"","expandable":false,"children":[{"name":"ids","type":"`string`[]","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]}]}]} expandUrl="https://docs.medusajs.com/v2/advanced-development/data-models/manage-relationships#retrieve-records-of-relation" sectionTitle="deleteUsersWorkflow"/>
+<TypeList types={[{"name":"DeleteUserWorkflowInput","type":"[DeleteUserWorkflowInput](../../../../../types/WorkflowTypes/UserWorkflow/interfaces/types.WorkflowTypes.UserWorkflow.DeleteUserWorkflowInput/page.mdx)","optional":false,"defaultValue":"","description":"","expandable":false,"children":[{"name":"ids","type":"`string`[]","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]}]}]} expandUrl="https://docs.medusajs.com/learn/fundamentals/data-models/manage-relationships#retrieve-records-of-relation" sectionTitle="deleteUsersWorkflow"/>

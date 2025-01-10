@@ -7,5 +7,8 @@
   "exclude": [
     "../../../../packages/design-system/ui/dist", 
     "../../../../packages/design-system/ui/node_modules"
-  ]
+  ],
+  "compilerOptions": {
+    "jsx": "react-jsx"
+  }
 }

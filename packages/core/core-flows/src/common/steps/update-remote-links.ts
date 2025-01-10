@@ -1,4 +1,4 @@
-import { RemoteLink } from "@medusajs/framework/modules-sdk"
+import { Link } from "@medusajs/framework/modules-sdk"
 import { LinkDefinition } from "@medusajs/framework/types"
 import {
   ContainerRegistrationKeys,
@@ -14,9 +14,7 @@ export const updateRemoteLinksStep = createStep(
       return new StepResponse([], [])
     }
 
-    const link = container.resolve<RemoteLink>(
-      ContainerRegistrationKeys.REMOTE_LINK
-    )
+    const link = container.resolve<Link>(ContainerRegistrationKeys.LINK)
 
     // Fetch all existing links and throw an error if any weren't found
     const dataBeforeUpdate = (await link.list(data, {
@@ -43,9 +41,7 @@ export const updateRemoteLinksStep = createStep(
       return
     }
 
-    const link = container.resolve<RemoteLink>(
-      ContainerRegistrationKeys.REMOTE_LINK
-    )
+    const link = container.resolve<Link>(ContainerRegistrationKeys.LINK)
 
     await link.create(dataBeforeUpdate)
   }

@@ -12,8 +12,15 @@ import {
 import { isObject, isString, toCamelCase, upperCaseFirst } from "../common"
 import { transformIndexWhere } from "./helpers/entity-builder/build-indexes"
 import { BelongsTo } from "./relations/belongs-to"
+import {
+  DMLSchemaDefaults,
+  DMLSchemaWithBigNumber,
+} from "./helpers/entity-builder"
 
 const IsDmlEntity = Symbol.for("isDmlEntity")
+
+export type DMLEntitySchemaBuilder<Schema extends DMLSchema> =
+  DMLSchemaWithBigNumber<Schema> & DMLSchemaDefaults & Schema
 
 function extractNameAndTableName<const Config extends IDmlEntityConfig>(
   nameOrConfig: Config
@@ -71,7 +78,7 @@ export class DmlEntity<
   schema: Schema
 
   readonly #tableName: string
-  #cascades: EntityCascades<string[]> = {}
+  #cascades: EntityCascades<string[], string[]> = {}
   #indexes: EntityIndex<Schema>[] = []
   #checks: CheckConstraint<Schema>[] = []
 
@@ -100,7 +107,7 @@ export class DmlEntity<
     name: InferDmlEntityNameFromConfig<TConfig>
     tableName: string
     schema: DMLSchema
-    cascades: EntityCascades<string[]>
+    cascades: EntityCascades<string[], string[]>
     indexes: EntityIndex<Schema>[]
     checks: CheckConstraint<Schema>[]
   } {
@@ -139,7 +146,8 @@ export class DmlEntity<
    */
   cascades(
     options: EntityCascades<
-      ExtractEntityRelations<Schema, "hasOne" | "hasOneWithFK" | "hasMany">
+      ExtractEntityRelations<Schema, "hasOne" | "hasOneWithFK" | "hasMany">,
+      ExtractEntityRelations<Schema, "manyToMany">
     >
   ) {
     const childToParentCascades = options.delete?.filter((relationship) => {

@@ -45,7 +45,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <BareboneLayout htmlClassName={clsx(inter.variable, robotoMono.variable)}>
+    <BareboneLayout
+      htmlClassName={clsx(inter.variable, robotoMono.variable)}
+      gaId={process.env.NEXT_PUBLIC_GA_ID}
+    >
       {children}
     </BareboneLayout>
   )

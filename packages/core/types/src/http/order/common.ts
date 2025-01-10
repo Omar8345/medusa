@@ -774,6 +774,10 @@ export interface BaseOrder {
    */
   display_id?: number
   /**
+   * The order's status.
+   */
+  status: string
+  /**
    * The order's shipping address.
    */
   shipping_address?: BaseOrderAddress | null

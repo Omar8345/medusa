@@ -95,10 +95,6 @@ export async function expressLoader({ app }: { app: Express }): Promise<{
   // Currently we don't allow configuration of static files, but this can be revisited as needed.
   app.use("/static", express.static(path.join(baseDir, "static")))
 
-  app.get("/health", (req, res) => {
-    res.status(200).send("OK")
-  })
-
   const shutdown = async () => {
     redisClient?.disconnect()
   }

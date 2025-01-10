@@ -1,4 +1,5 @@
 import { FormattingOptionsType } from "types"
+import baseSectionsOptions from "../base-section-options.js"
 
 const paymentProviderOptions: FormattingOptionsType = {
   "^payment_provider": {
@@ -12,11 +13,14 @@ const paymentProviderOptions: FormattingOptionsType = {
     reflectionTitle: {
       fullReplacement: "How to Create a Payment Provider",
     },
-    reflectionGroups: {
-      Properties: false,
-    },
     shouldIncrementAfterStartSections: true,
     expandMembers: true,
+    expandProperties: true,
+    sections: {
+      ...baseSectionsOptions,
+      member_declaration_title: false,
+      reflection_typeParameters: false,
+    },
     startSections: [
       `## 1. Create Module Directory
 
@@ -64,10 +68,6 @@ This exports the module's definition, indicating that the \`MyPaymentProviderSer
 To use your Payment Module Provider, add it to the \`providers\` array of the Payment Module in \`medusa-config.ts\`:
 
 \`\`\`ts title="medusa-config.ts"
-import { Modules } from "@medusajs/framework/utils"
-
-// ...
-
 module.exports = defineConfig({
   // ...
   modules: [
@@ -98,7 +98,7 @@ Then, go through checkout to place an order. Your payment provider is used to au
 `,
       `## Useful Guides
 
-- [Storefront Guide: how to implement UI for your payment provider during checkout](https://docs.medusajs.com/v2/resources/storefront-development/checkout/payment)
+- [Storefront Guide: how to implement UI for your payment provider during checkout](https://docs.medusajs.com/resources/storefront-development/checkout/payment)
 `,
     ],
   },

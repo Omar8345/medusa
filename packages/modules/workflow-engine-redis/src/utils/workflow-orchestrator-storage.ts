@@ -94,7 +94,10 @@ export class RedisDistributedTransactionStorage
           )
         }
       },
-      { connection: this.redisWorkerConnection }
+      {
+        connection:
+          this.redisWorkerConnection /*, runRetryDelay: 100000 for tests */,
+      }
     )
   }
 

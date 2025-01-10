@@ -725,6 +725,8 @@ paths:
     $ref: paths/admin_exchanges_{id}_request.yaml
   /admin/fulfillment-providers:
     $ref: paths/admin_fulfillment-providers.yaml
+  /admin/fulfillment-providers/{id}/options:
+    $ref: paths/admin_fulfillment-providers_{id}_options.yaml
   /admin/fulfillment-sets/{id}:
     $ref: paths/admin_fulfillment-sets_{id}.yaml
   /admin/fulfillment-sets/{id}/service-zones:
@@ -1026,10 +1028,9 @@ paths:
 components:
   securitySchemes:
     api_token:
-      type: apiKey
+      type: http
       x-displayName: API Token
-      in: header
-      name: x-medusa-access-token
+      scheme: bearer
     jwt_token:
       type: http
       x-displayName: JWT Token

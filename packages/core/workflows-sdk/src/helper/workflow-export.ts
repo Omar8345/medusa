@@ -529,8 +529,6 @@ function attachOnFinishReleaseEvents(
         )
     }
 
-    await onFinish?.(args)
-
     const eventBusService = (
       flow.container as MedusaContainer
     ).resolve<IEventBusModuleService>(Modules.EVENT_BUS, {
@@ -538,6 +536,7 @@ function attachOnFinishReleaseEvents(
     })
 
     if (!eventBusService || !flowEventGroupId) {
+      await onFinish?.(args)
       return
     }
 
@@ -553,14 +552,19 @@ function attachOnFinishReleaseEvents(
         })
     }
 
-    await eventBusService.releaseGroupedEvents(flowEventGroupId).catch((e) => {
-      logger.error(
-        `Failed to release grouped events for eventGroupId: ${flowEventGroupId}`,
-        e
-      )
+    await eventBusService
+      .releaseGroupedEvents(flowEventGroupId)
+      .then(async () => {
+        await onFinish?.(args)
+      })
+      .catch((e) => {
+        logger.error(
+          `Failed to release grouped events for eventGroupId: ${flowEventGroupId}`,
+          e
+        )
 
-      return flow.cancel(transaction)
-    })
+        return flow.cancel(transaction)
+      })
   }
 
   events.onFinish = wrappedOnFinish

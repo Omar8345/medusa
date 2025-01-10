@@ -24,11 +24,7 @@ export const POST = async (
     },
   })
 
-  const customer = await refetchCustomer(
-    id,
-    req.scope,
-    req.remoteQueryConfig.fields
-  )
+  const customer = await refetchCustomer(id, req.scope, req.queryConfig.fields)
 
   res.status(200).json({ customer: customer })
 }

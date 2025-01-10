@@ -1,5 +1,7 @@
 {
-  "namespaces": ["public"],
+  "namespaces": [
+    "public"
+  ],
   "name": "public",
   "tables": [
     {
@@ -97,8 +99,16 @@
       "schema": "public",
       "indexes": [
         {
+          "keyName": "IDX_promotion_campaign_deleted_at",
+          "columnNames": [],
+          "composite": false,
+          "primary": false,
+          "unique": false,
+          "expression": "CREATE INDEX IF NOT EXISTS \"IDX_promotion_campaign_deleted_at\" ON \"promotion_campaign\" (deleted_at) WHERE deleted_at IS NULL"
+        },
+        {
           "keyName": "IDX_promotion_campaign_campaign_identifier_unique",
-          "columnNames": ["campaign_identifier"],
+          "columnNames": [],
           "composite": false,
           "primary": false,
           "unique": false,
@@ -106,7 +116,9 @@
         },
         {
           "keyName": "promotion_campaign_pkey",
-          "columnNames": ["id"],
+          "columnNames": [
+            "id"
+          ],
           "composite": false,
           "primary": true,
           "unique": true
@@ -133,17 +145,11 @@
           "autoincrement": false,
           "primary": false,
           "nullable": false,
-          "enumItems": ["spend", "usage"],
+          "enumItems": [
+            "spend",
+            "usage"
+          ],
           "mappedType": "enum"
-        },
-        "campaign_id": {
-          "name": "campaign_id",
-          "type": "text",
-          "unsigned": false,
-          "autoincrement": false,
-          "primary": false,
-          "nullable": false,
-          "mappedType": "text"
         },
         "currency_code": {
           "name": "currency_code",
@@ -163,15 +169,6 @@
           "nullable": true,
           "mappedType": "decimal"
         },
-        "raw_limit": {
-          "name": "raw_limit",
-          "type": "jsonb",
-          "unsigned": false,
-          "autoincrement": false,
-          "primary": false,
-          "nullable": true,
-          "mappedType": "json"
-        },
         "used": {
           "name": "used",
           "type": "numeric",
@@ -181,6 +178,24 @@
           "nullable": false,
           "default": "0",
           "mappedType": "decimal"
+        },
+        "campaign_id": {
+          "name": "campaign_id",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "text"
+        },
+        "raw_limit": {
+          "name": "raw_limit",
+          "type": "jsonb",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "json"
         },
         "raw_used": {
           "name": "raw_used",
@@ -228,22 +243,43 @@
       "schema": "public",
       "indexes": [
         {
-          "columnNames": ["type"],
-          "composite": false,
-          "keyName": "IDX_campaign_budget_type",
-          "primary": false,
-          "unique": false
-        },
-        {
-          "columnNames": ["campaign_id"],
+          "columnNames": [
+            "campaign_id"
+          ],
           "composite": false,
           "keyName": "promotion_campaign_budget_campaign_id_unique",
           "primary": false,
           "unique": true
         },
         {
+          "keyName": "IDX_campaign_budget_type",
+          "columnNames": [],
+          "composite": false,
+          "primary": false,
+          "unique": false,
+          "expression": "CREATE INDEX IF NOT EXISTS \"IDX_campaign_budget_type\" ON \"promotion_campaign_budget\" (type) WHERE deleted_at IS NULL"
+        },
+        {
+          "keyName": "IDX_promotion_campaign_budget_campaign_id",
+          "columnNames": [],
+          "composite": false,
+          "primary": false,
+          "unique": false,
+          "expression": "CREATE INDEX IF NOT EXISTS \"IDX_promotion_campaign_budget_campaign_id\" ON \"promotion_campaign_budget\" (campaign_id) WHERE deleted_at IS NULL"
+        },
+        {
+          "keyName": "IDX_promotion_campaign_budget_deleted_at",
+          "columnNames": [],
+          "composite": false,
+          "primary": false,
+          "unique": false,
+          "expression": "CREATE INDEX IF NOT EXISTS \"IDX_promotion_campaign_budget_deleted_at\" ON \"promotion_campaign_budget\" (deleted_at) WHERE deleted_at IS NULL"
+        },
+        {
           "keyName": "promotion_campaign_budget_pkey",
-          "columnNames": ["id"],
+          "columnNames": [
+            "id"
+          ],
           "composite": false,
           "primary": true,
           "unique": true
@@ -253,10 +289,15 @@
       "foreignKeys": {
         "promotion_campaign_budget_campaign_id_foreign": {
           "constraintName": "promotion_campaign_budget_campaign_id_foreign",
-          "columnNames": ["campaign_id"],
+          "columnNames": [
+            "campaign_id"
+          ],
           "localTableName": "public.promotion_campaign_budget",
-          "referencedColumnNames": ["id"],
+          "referencedColumnNames": [
+            "id"
+          ],
           "referencedTableName": "public.promotion_campaign",
+          "deleteRule": "cascade",
           "updateRule": "cascade"
         }
       }
@@ -281,15 +322,6 @@
           "nullable": false,
           "mappedType": "text"
         },
-        "campaign_id": {
-          "name": "campaign_id",
-          "type": "text",
-          "unsigned": false,
-          "autoincrement": false,
-          "primary": false,
-          "nullable": true,
-          "mappedType": "text"
-        },
         "is_automatic": {
           "name": "is_automatic",
           "type": "boolean",
@@ -307,8 +339,20 @@
           "autoincrement": false,
           "primary": false,
           "nullable": false,
-          "enumItems": ["standard", "buyget"],
+          "enumItems": [
+            "standard",
+            "buyget"
+          ],
           "mappedType": "enum"
+        },
+        "campaign_id": {
+          "name": "campaign_id",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "text"
         },
         "created_at": {
           "name": "created_at",
@@ -347,29 +391,50 @@
       "schema": "public",
       "indexes": [
         {
-          "columnNames": ["code"],
-          "composite": false,
-          "keyName": "IDX_promotion_code",
-          "primary": false,
-          "unique": false
-        },
-        {
-          "columnNames": ["type"],
-          "composite": false,
-          "keyName": "IDX_promotion_type",
-          "primary": false,
-          "unique": false
-        },
-        {
           "keyName": "IDX_promotion_code_unique",
-          "columnNames": ["code"],
+          "columnNames": [],
           "composite": false,
           "primary": false,
-          "unique": true
+          "unique": false,
+          "expression": "CREATE UNIQUE INDEX IF NOT EXISTS \"IDX_promotion_code_unique\" ON \"promotion\" (code) WHERE deleted_at IS NULL"
+        },
+        {
+          "keyName": "IDX_promotion_code",
+          "columnNames": [],
+          "composite": false,
+          "primary": false,
+          "unique": false,
+          "expression": "CREATE INDEX IF NOT EXISTS \"IDX_promotion_code\" ON \"promotion\" (code) WHERE deleted_at IS NULL"
+        },
+        {
+          "keyName": "IDX_promotion_type",
+          "columnNames": [],
+          "composite": false,
+          "primary": false,
+          "unique": false,
+          "expression": "CREATE INDEX IF NOT EXISTS \"IDX_promotion_type\" ON \"promotion\" (type) WHERE deleted_at IS NULL"
+        },
+        {
+          "keyName": "IDX_promotion_campaign_id",
+          "columnNames": [],
+          "composite": false,
+          "primary": false,
+          "unique": false,
+          "expression": "CREATE INDEX IF NOT EXISTS \"IDX_promotion_campaign_id\" ON \"promotion\" (campaign_id) WHERE deleted_at IS NULL"
+        },
+        {
+          "keyName": "IDX_promotion_deleted_at",
+          "columnNames": [],
+          "composite": false,
+          "primary": false,
+          "unique": false,
+          "expression": "CREATE INDEX IF NOT EXISTS \"IDX_promotion_deleted_at\" ON \"promotion\" (deleted_at) WHERE deleted_at IS NULL"
         },
         {
           "keyName": "promotion_pkey",
-          "columnNames": ["id"],
+          "columnNames": [
+            "id"
+          ],
           "composite": false,
           "primary": true,
           "unique": true
@@ -379,9 +444,13 @@
       "foreignKeys": {
         "promotion_campaign_id_foreign": {
           "constraintName": "promotion_campaign_id_foreign",
-          "columnNames": ["campaign_id"],
+          "columnNames": [
+            "campaign_id"
+          ],
           "localTableName": "public.promotion",
-          "referencedColumnNames": ["id"],
+          "referencedColumnNames": [
+            "id"
+          ],
           "referencedTableName": "public.promotion_campaign",
           "deleteRule": "set null",
           "updateRule": "cascade"
@@ -405,17 +474,8 @@
           "unsigned": false,
           "autoincrement": false,
           "primary": false,
-          "nullable": false,
+          "nullable": true,
           "mappedType": "decimal"
-        },
-        "raw_value": {
-          "name": "raw_value",
-          "type": "jsonb",
-          "unsigned": false,
-          "autoincrement": false,
-          "primary": false,
-          "nullable": false,
-          "mappedType": "json"
         },
         "currency_code": {
           "name": "currency_code",
@@ -428,30 +488,30 @@
         },
         "max_quantity": {
           "name": "max_quantity",
-          "type": "numeric",
+          "type": "integer",
           "unsigned": false,
           "autoincrement": false,
           "primary": false,
           "nullable": true,
-          "mappedType": "decimal"
+          "mappedType": "integer"
         },
         "apply_to_quantity": {
           "name": "apply_to_quantity",
-          "type": "numeric",
+          "type": "integer",
           "unsigned": false,
           "autoincrement": false,
           "primary": false,
           "nullable": true,
-          "mappedType": "decimal"
+          "mappedType": "integer"
         },
         "buy_rules_min_quantity": {
           "name": "buy_rules_min_quantity",
-          "type": "numeric",
+          "type": "integer",
           "unsigned": false,
           "autoincrement": false,
           "primary": false,
           "nullable": true,
-          "mappedType": "decimal"
+          "mappedType": "integer"
         },
         "type": {
           "name": "type",
@@ -460,7 +520,10 @@
           "autoincrement": false,
           "primary": false,
           "nullable": false,
-          "enumItems": ["fixed", "percentage"],
+          "enumItems": [
+            "fixed",
+            "percentage"
+          ],
           "mappedType": "enum"
         },
         "target_type": {
@@ -470,7 +533,11 @@
           "autoincrement": false,
           "primary": false,
           "nullable": false,
-          "enumItems": ["order", "shipping_methods", "items"],
+          "enumItems": [
+            "order",
+            "shipping_methods",
+            "items"
+          ],
           "mappedType": "enum"
         },
         "allocation": {
@@ -480,7 +547,10 @@
           "autoincrement": false,
           "primary": false,
           "nullable": true,
-          "enumItems": ["each", "across"],
+          "enumItems": [
+            "each",
+            "across"
+          ],
           "mappedType": "enum"
         },
         "promotion_id": {
@@ -491,6 +561,15 @@
           "primary": false,
           "nullable": false,
           "mappedType": "text"
+        },
+        "raw_value": {
+          "name": "raw_value",
+          "type": "jsonb",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "json"
         },
         "created_at": {
           "name": "created_at",
@@ -529,36 +608,57 @@
       "schema": "public",
       "indexes": [
         {
-          "columnNames": ["type"],
-          "composite": false,
-          "keyName": "IDX_application_method_type",
-          "primary": false,
-          "unique": false
-        },
-        {
-          "columnNames": ["target_type"],
-          "composite": false,
-          "keyName": "IDX_application_method_target_type",
-          "primary": false,
-          "unique": false
-        },
-        {
-          "columnNames": ["allocation"],
-          "composite": false,
-          "keyName": "IDX_application_method_allocation",
-          "primary": false,
-          "unique": false
-        },
-        {
-          "columnNames": ["promotion_id"],
+          "columnNames": [
+            "promotion_id"
+          ],
           "composite": false,
           "keyName": "promotion_application_method_promotion_id_unique",
           "primary": false,
           "unique": true
         },
         {
+          "keyName": "IDX_application_method_type",
+          "columnNames": [],
+          "composite": false,
+          "primary": false,
+          "unique": false,
+          "expression": "CREATE INDEX IF NOT EXISTS \"IDX_application_method_type\" ON \"promotion_application_method\" (type) WHERE deleted_at IS NULL"
+        },
+        {
+          "keyName": "IDX_application_method_target_type",
+          "columnNames": [],
+          "composite": false,
+          "primary": false,
+          "unique": false,
+          "expression": "CREATE INDEX IF NOT EXISTS \"IDX_application_method_target_type\" ON \"promotion_application_method\" (target_type) WHERE deleted_at IS NULL"
+        },
+        {
+          "keyName": "IDX_application_method_allocation",
+          "columnNames": [],
+          "composite": false,
+          "primary": false,
+          "unique": false,
+          "expression": "CREATE INDEX IF NOT EXISTS \"IDX_application_method_allocation\" ON \"promotion_application_method\" (allocation) WHERE deleted_at IS NULL"
+        },
+        {
+          "keyName": "IDX_promotion_application_method_promotion_id",
+          "columnNames": [],
+          "composite": false,
+          "primary": false,
+          "unique": false,
+          "expression": "CREATE INDEX IF NOT EXISTS \"IDX_promotion_application_method_promotion_id\" ON \"promotion_application_method\" (promotion_id) WHERE deleted_at IS NULL"
+        },
+        {
+          "keyName": "IDX_promotion_application_method_deleted_at",
+          "columnNames": [],
+          "composite": false,
+          "primary": false,
+          "unique": false,
+          "expression": "CREATE INDEX IF NOT EXISTS \"IDX_promotion_application_method_deleted_at\" ON \"promotion_application_method\" (deleted_at) WHERE deleted_at IS NULL"
+        },
+        {
           "keyName": "IDX_promotion_application_method_currency_code",
-          "columnNames": ["currency_code"],
+          "columnNames": [],
           "composite": false,
           "primary": false,
           "unique": false,
@@ -566,7 +666,9 @@
         },
         {
           "keyName": "promotion_application_method_pkey",
-          "columnNames": ["id"],
+          "columnNames": [
+            "id"
+          ],
           "composite": false,
           "primary": true,
           "unique": true
@@ -576,9 +678,13 @@
       "foreignKeys": {
         "promotion_application_method_promotion_id_foreign": {
           "constraintName": "promotion_application_method_promotion_id_foreign",
-          "columnNames": ["promotion_id"],
+          "columnNames": [
+            "promotion_id"
+          ],
           "localTableName": "public.promotion_application_method",
-          "referencedColumnNames": ["id"],
+          "referencedColumnNames": [
+            "id"
+          ],
           "referencedTableName": "public.promotion",
           "deleteRule": "cascade",
           "updateRule": "cascade"
@@ -621,7 +727,15 @@
           "autoincrement": false,
           "primary": false,
           "nullable": false,
-          "enumItems": ["gte", "lte", "gt", "lt", "eq", "ne", "in"],
+          "enumItems": [
+            "gte",
+            "lte",
+            "gt",
+            "lt",
+            "eq",
+            "ne",
+            "in"
+          ],
           "mappedType": "enum"
         },
         "created_at": {
@@ -661,22 +775,34 @@
       "schema": "public",
       "indexes": [
         {
-          "columnNames": ["attribute"],
-          "composite": false,
           "keyName": "IDX_promotion_rule_attribute",
+          "columnNames": [],
+          "composite": false,
           "primary": false,
-          "unique": false
+          "unique": false,
+          "expression": "CREATE INDEX IF NOT EXISTS \"IDX_promotion_rule_attribute\" ON \"promotion_rule\" (attribute) WHERE deleted_at IS NULL"
         },
         {
-          "columnNames": ["operator"],
-          "composite": false,
           "keyName": "IDX_promotion_rule_operator",
+          "columnNames": [],
+          "composite": false,
           "primary": false,
-          "unique": false
+          "unique": false,
+          "expression": "CREATE INDEX IF NOT EXISTS \"IDX_promotion_rule_operator\" ON \"promotion_rule\" (operator) WHERE deleted_at IS NULL"
+        },
+        {
+          "keyName": "IDX_promotion_rule_deleted_at",
+          "columnNames": [],
+          "composite": false,
+          "primary": false,
+          "unique": false,
+          "expression": "CREATE INDEX IF NOT EXISTS \"IDX_promotion_rule_deleted_at\" ON \"promotion_rule\" (deleted_at) WHERE deleted_at IS NULL"
         },
         {
           "keyName": "promotion_rule_pkey",
-          "columnNames": ["id"],
+          "columnNames": [
+            "id"
+          ],
           "composite": false,
           "primary": true,
           "unique": true
@@ -711,7 +837,10 @@
       "indexes": [
         {
           "keyName": "promotion_promotion_rule_pkey",
-          "columnNames": ["promotion_id", "promotion_rule_id"],
+          "columnNames": [
+            "promotion_id",
+            "promotion_rule_id"
+          ],
           "composite": true,
           "primary": true,
           "unique": true
@@ -721,18 +850,26 @@
       "foreignKeys": {
         "promotion_promotion_rule_promotion_id_foreign": {
           "constraintName": "promotion_promotion_rule_promotion_id_foreign",
-          "columnNames": ["promotion_id"],
+          "columnNames": [
+            "promotion_id"
+          ],
           "localTableName": "public.promotion_promotion_rule",
-          "referencedColumnNames": ["id"],
+          "referencedColumnNames": [
+            "id"
+          ],
           "referencedTableName": "public.promotion",
           "deleteRule": "cascade",
           "updateRule": "cascade"
         },
         "promotion_promotion_rule_promotion_rule_id_foreign": {
           "constraintName": "promotion_promotion_rule_promotion_rule_id_foreign",
-          "columnNames": ["promotion_rule_id"],
+          "columnNames": [
+            "promotion_rule_id"
+          ],
           "localTableName": "public.promotion_promotion_rule",
-          "referencedColumnNames": ["id"],
+          "referencedColumnNames": [
+            "id"
+          ],
           "referencedTableName": "public.promotion_rule",
           "deleteRule": "cascade",
           "updateRule": "cascade"
@@ -765,7 +902,10 @@
       "indexes": [
         {
           "keyName": "application_method_target_rules_pkey",
-          "columnNames": ["application_method_id", "promotion_rule_id"],
+          "columnNames": [
+            "application_method_id",
+            "promotion_rule_id"
+          ],
           "composite": true,
           "primary": true,
           "unique": true
@@ -775,18 +915,26 @@
       "foreignKeys": {
         "application_method_target_rules_application_method_id_foreign": {
           "constraintName": "application_method_target_rules_application_method_id_foreign",
-          "columnNames": ["application_method_id"],
+          "columnNames": [
+            "application_method_id"
+          ],
           "localTableName": "public.application_method_target_rules",
-          "referencedColumnNames": ["id"],
+          "referencedColumnNames": [
+            "id"
+          ],
           "referencedTableName": "public.promotion_application_method",
           "deleteRule": "cascade",
           "updateRule": "cascade"
         },
         "application_method_target_rules_promotion_rule_id_foreign": {
           "constraintName": "application_method_target_rules_promotion_rule_id_foreign",
-          "columnNames": ["promotion_rule_id"],
+          "columnNames": [
+            "promotion_rule_id"
+          ],
           "localTableName": "public.application_method_target_rules",
-          "referencedColumnNames": ["id"],
+          "referencedColumnNames": [
+            "id"
+          ],
           "referencedTableName": "public.promotion_rule",
           "deleteRule": "cascade",
           "updateRule": "cascade"
@@ -819,7 +967,10 @@
       "indexes": [
         {
           "keyName": "application_method_buy_rules_pkey",
-          "columnNames": ["application_method_id", "promotion_rule_id"],
+          "columnNames": [
+            "application_method_id",
+            "promotion_rule_id"
+          ],
           "composite": true,
           "primary": true,
           "unique": true
@@ -829,18 +980,26 @@
       "foreignKeys": {
         "application_method_buy_rules_application_method_id_foreign": {
           "constraintName": "application_method_buy_rules_application_method_id_foreign",
-          "columnNames": ["application_method_id"],
+          "columnNames": [
+            "application_method_id"
+          ],
           "localTableName": "public.application_method_buy_rules",
-          "referencedColumnNames": ["id"],
+          "referencedColumnNames": [
+            "id"
+          ],
           "referencedTableName": "public.promotion_application_method",
           "deleteRule": "cascade",
           "updateRule": "cascade"
         },
         "application_method_buy_rules_promotion_rule_id_foreign": {
           "constraintName": "application_method_buy_rules_promotion_rule_id_foreign",
-          "columnNames": ["promotion_rule_id"],
+          "columnNames": [
+            "promotion_rule_id"
+          ],
           "localTableName": "public.application_method_buy_rules",
-          "referencedColumnNames": ["id"],
+          "referencedColumnNames": [
+            "id"
+          ],
           "referencedTableName": "public.promotion_rule",
           "deleteRule": "cascade",
           "updateRule": "cascade"
@@ -858,8 +1017,8 @@
           "nullable": false,
           "mappedType": "text"
         },
-        "promotion_rule_id": {
-          "name": "promotion_rule_id",
+        "value": {
+          "name": "value",
           "type": "text",
           "unsigned": false,
           "autoincrement": false,
@@ -867,8 +1026,8 @@
           "nullable": false,
           "mappedType": "text"
         },
-        "value": {
-          "name": "value",
+        "promotion_rule_id": {
+          "name": "promotion_rule_id",
           "type": "text",
           "unsigned": false,
           "autoincrement": false,
@@ -913,15 +1072,26 @@
       "schema": "public",
       "indexes": [
         {
-          "columnNames": ["promotion_rule_id"],
+          "keyName": "IDX_promotion_rule_value_promotion_rule_id",
+          "columnNames": [],
           "composite": false,
-          "keyName": "IDX_promotion_rule_promotion_rule_value_id",
           "primary": false,
-          "unique": false
+          "unique": false,
+          "expression": "CREATE INDEX IF NOT EXISTS \"IDX_promotion_rule_value_promotion_rule_id\" ON \"promotion_rule_value\" (promotion_rule_id) WHERE deleted_at IS NULL"
+        },
+        {
+          "keyName": "IDX_promotion_rule_value_deleted_at",
+          "columnNames": [],
+          "composite": false,
+          "primary": false,
+          "unique": false,
+          "expression": "CREATE INDEX IF NOT EXISTS \"IDX_promotion_rule_value_deleted_at\" ON \"promotion_rule_value\" (deleted_at) WHERE deleted_at IS NULL"
         },
         {
           "keyName": "promotion_rule_value_pkey",
-          "columnNames": ["id"],
+          "columnNames": [
+            "id"
+          ],
           "composite": false,
           "primary": true,
           "unique": true
@@ -931,9 +1101,13 @@
       "foreignKeys": {
         "promotion_rule_value_promotion_rule_id_foreign": {
           "constraintName": "promotion_rule_value_promotion_rule_id_foreign",
-          "columnNames": ["promotion_rule_id"],
+          "columnNames": [
+            "promotion_rule_id"
+          ],
           "localTableName": "public.promotion_rule_value",
-          "referencedColumnNames": ["id"],
+          "referencedColumnNames": [
+            "id"
+          ],
           "referencedTableName": "public.promotion_rule",
           "deleteRule": "cascade",
           "updateRule": "cascade"

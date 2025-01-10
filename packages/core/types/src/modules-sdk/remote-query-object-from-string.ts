@@ -11,9 +11,11 @@ export type RemoteQueryObjectConfig<TEntry extends string> = {
     RemoteQueryEntryPoints[TEntry & keyof RemoteQueryEntryPoints]
   > extends never
     ? string[]
-    : ObjectToRemoteQueryFields<
-        RemoteQueryEntryPoints[TEntry & keyof RemoteQueryEntryPoints]
-      >[]
+    :
+        | ObjectToRemoteQueryFields<
+            RemoteQueryEntryPoints[TEntry & keyof RemoteQueryEntryPoints]
+          >[]
+        | string[]
 }
 
 export type RemoteQueryObjectFromStringResult<
@@ -36,9 +38,11 @@ export type RemoteQueryInput<TEntry extends string> = {
     RemoteQueryEntryPoints[TEntry & keyof RemoteQueryEntryPoints]
   > extends never
     ? string[]
-    : ObjectToRemoteQueryFields<
-        RemoteQueryEntryPoints[TEntry & keyof RemoteQueryEntryPoints]
-      >[]
+    :
+        | ObjectToRemoteQueryFields<
+            RemoteQueryEntryPoints[TEntry & keyof RemoteQueryEntryPoints]
+          >[]
+        | string[]
   /**
    * Pagination configurations for the returned list of items.
    */

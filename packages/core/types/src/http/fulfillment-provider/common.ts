@@ -8,3 +8,14 @@ export interface BaseFulfillmentProvider {
    */
   is_enabled: boolean
 }
+
+export interface BaseFulfillmentProviderOption {
+  /**
+   * The fulfillment provider option's ID.
+   */
+  id: string
+  /**
+   * Whether the fulfillment provider option can be used for returns.
+   */
+  is_return: boolean
+}

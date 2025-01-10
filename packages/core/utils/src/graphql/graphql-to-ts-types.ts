@@ -1,7 +1,7 @@
 import { codegen } from "@graphql-codegen/core"
-import { type GraphQLSchema, parse, printSchema } from "graphql"
 import * as typescriptPlugin from "@graphql-codegen/typescript"
 import { ModuleJoinerConfig } from "@medusajs/types"
+import { type GraphQLSchema, parse, printSchema } from "graphql"
 import { FileSystem } from "../common"
 
 function buildEntryPointsTypeMap({
@@ -13,15 +13,15 @@ function buildEntryPointsTypeMap({
 }): { entryPoint: string; entityType: any }[] {
   // build map entry point to there type to be merged and used by the remote query
 
-  return joinerConfigs
-    .flatMap((config) => {
-      const aliases = Array.isArray(config.alias)
-        ? config.alias
-        : config.alias
-        ? [config.alias]
-        : []
+  return joinerConfigs.flatMap((config) => {
+    const aliases = Array.isArray(config.alias)
+      ? config.alias
+      : config.alias
+      ? [config.alias]
+      : []
 
-      return aliases.flatMap((alias) => {
+    return aliases
+      .flatMap((alias) => {
         const names = Array.isArray(alias.name) ? alias.name : [alias.name]
         const entity = alias?.["entity"]
         return names.map((aliasItem) => {
@@ -35,8 +35,8 @@ function buildEntryPointsTypeMap({
           }
         })
       })
-    })
-    .filter(Boolean)
+      .filter(Boolean)
+  })
 }
 
 async function generateTypes({
@@ -110,6 +110,9 @@ export async function gqlSchemaToTypes({
           input: "Record<string, unknown>",
           output: "Record<string, unknown>",
         },
+      },
+      avoidOptionals: {
+        field: true, // Avoid optional fields in types
       },
     },
     filename: "",

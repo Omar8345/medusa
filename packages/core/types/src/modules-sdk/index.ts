@@ -93,6 +93,7 @@ export type ModuleDefinition = {
   key: string
   defaultPackage: string | false
   label: string
+  resolvePath?: string
   isRequired?: boolean
   isQueryable?: boolean // If the module is queryable via Remote Joiner
   dependencies?: string[]

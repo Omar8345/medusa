@@ -9,6 +9,7 @@ import { CardLayoutMini } from "./Layout/Mini"
 export type CardProps = {
   type?: "default" | "large" | "filler" | "mini"
   icon?: React.FC<IconProps>
+  rightIcon?: React.FC<IconProps>
   image?: string
   themeImage?: {
     light: string

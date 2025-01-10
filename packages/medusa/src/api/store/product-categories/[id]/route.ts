@@ -15,7 +15,7 @@ export const GET = async (
     "product_category",
     { id: req.params.id, ...req.filterableFields },
     req.scope,
-    req.remoteQueryConfig.fields
+    req.queryConfig.fields
   )
 
   if (!category) {

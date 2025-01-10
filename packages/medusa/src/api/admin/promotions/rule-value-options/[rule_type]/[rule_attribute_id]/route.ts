@@ -54,7 +54,7 @@ export const GET = async (
       entryPoint: queryConfig.entryPoint,
       variables: {
         filters: filterableFields,
-        ...req.remoteQueryConfig.pagination,
+        ...req.queryConfig.pagination,
       },
       fields: [queryConfig.labelAttr, queryConfig.valueAttr],
     })

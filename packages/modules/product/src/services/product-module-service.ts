@@ -27,6 +27,7 @@ import {
   EmitEvents,
   InjectManager,
   InjectTransactionManager,
+  isDefined,
   isPresent,
   isString,
   isValidHandle,
@@ -228,8 +229,7 @@ export default class ProductModuleService
     return {
       ...config,
       order: {
-        id: "ASC",
-        ...config?.order,
+        ...(config?.order ?? { id: "ASC" }),
         ...(hasImagesRelation
           ? {
               images: {
@@ -1057,6 +1057,7 @@ export default class ProductModuleService
     if (forCreate.length) {
       created = await this.createCollections_(forCreate, sharedContext)
     }
+
     if (forUpdate.length) {
       updated = await this.updateCollections_(forUpdate, sharedContext)
     }
@@ -1174,8 +1175,11 @@ export default class ProductModuleService
 
         if (!!productsToUpdate?.length) {
           const productIds = productsToUpdate.map((p) => p.id)
+
           dissociateSelector["id"] = { $nin: productIds }
           associateSelector["id"] = { $in: productIds }
+        } else if (!isDefined(productsToUpdate)) {
+          return []
         }
 
         const result: Record<string, any>[] = [
@@ -1205,7 +1209,10 @@ export default class ProductModuleService
       }
     )
 
-    await this.productService_.update(updateSelectorAndData, sharedContext)
+    if (updateSelectorAndData.length) {
+      await this.productService_.update(updateSelectorAndData, sharedContext)
+    }
+
     return collections
   }
 
@@ -1889,12 +1896,11 @@ export default class ProductModuleService
     collection: ProductTypes.CreateProductCollectionDTO | UpdateCollectionInput
   ): ProductTypes.CreateProductCollectionDTO | UpdateCollectionInput {
     const collectionData = { ...collection }
-    if (collectionData.product_ids?.length) {
+    if (Array.isArray(collectionData.product_ids)) {
       ;(collectionData as any).products = collectionData.product_ids.map(
-        (pid) => ({
-          id: pid,
-        })
+        (pid) => ({ id: pid })
       )
+
       delete collectionData.product_ids
     }
 

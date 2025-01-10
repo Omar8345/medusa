@@ -3,10 +3,12 @@ import en from "./en.json"
 import es from "./es.json"
 import fr from "./fr.json"
 import it from "./it.json"
+import ja from "./ja.json"
 import pl from "./pl.json"
 import ptBR from "./ptBR.json"
 import th from "./th.json"
 import tr from "./tr.json"
+import uk from "./uk.json"
 
 export default {
   de: {
@@ -24,6 +26,9 @@ export default {
   it: {
     translation: it,
   },
+  ja: {
+    translation: ja,
+  },
   pl: {
     translation: pl,
   },
@@ -35,5 +40,8 @@ export default {
   },
   tr: {
     translation: tr,
+  },
+  uk: {
+    translation: uk,
   },
 }

@@ -38,7 +38,6 @@ import {
 import { AdminReservation } from "@medusajs/types/src/http"
 import { AdminPaymentCollection } from "../../../../../../../../core/types/dist/http/payment/admin/entities"
 import { ActionMenu } from "../../../../../components/common/action-menu"
-import { ButtonMenu } from "../../../../../components/common/button-menu/button-menu"
 import { Thumbnail } from "../../../../../components/common/thumbnail"
 import { useClaims } from "../../../../../hooks/api/claims"
 import { useExchanges } from "../../../../../hooks/api/exchanges"
@@ -193,7 +192,7 @@ export const OrderSummarySection = ({ order }: OrderSummarySectionProps) => {
                 {t("orders.returns.receive.action")}
               </Button>
             ) : (
-              <ButtonMenu
+              <ActionMenu
                 groups={[
                   {
                     actions: receivableReturns.map((r) => {
@@ -225,7 +224,7 @@ export const OrderSummarySection = ({ order }: OrderSummarySectionProps) => {
                 <Button variant="secondary" size="small">
                   {t("orders.returns.receive.action")}
                 </Button>
-              </ButtonMenu>
+              </ActionMenu>
             ))}
 
           {showAllocateButton && (

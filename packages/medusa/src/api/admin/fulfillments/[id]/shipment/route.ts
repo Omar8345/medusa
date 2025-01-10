@@ -24,7 +24,7 @@ export const POST = async (
   const fulfillment = await refetchFulfillment(
     id,
     req.scope,
-    req.remoteQueryConfig.fields
+    req.queryConfig.fields
   )
 
   res.status(200).json({ fulfillment })

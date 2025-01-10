@@ -23,7 +23,7 @@ export const associateFulfillmentSetsWithLocationStep = createStep(
       return new StepResponse([], [])
     }
 
-    const remoteLink = container.resolve(ContainerRegistrationKeys.REMOTE_LINK)
+    const remoteLink = container.resolve(ContainerRegistrationKeys.LINK)
 
     const links = data.input
       .map((link) => {
@@ -49,7 +49,7 @@ export const associateFulfillmentSetsWithLocationStep = createStep(
       return
     }
 
-    const remoteLink = container.resolve(ContainerRegistrationKeys.REMOTE_LINK)
+    const remoteLink = container.resolve(ContainerRegistrationKeys.LINK)
 
     await remoteLink.dismiss(links)
   }

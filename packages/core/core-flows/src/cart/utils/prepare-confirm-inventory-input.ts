@@ -67,7 +67,7 @@ export const prepareConfirmInventoryInput = (data: {
         hasSalesChannelStockLocation = true
       }
 
-      if (stock_locations) {
+      if (stock_locations && sales_channels?.id === salesChannelId) {
         stockLocationIds.add(stock_locations.id)
       }
 

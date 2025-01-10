@@ -1,4 +1,4 @@
-import { Parameter } from "../types"
+import { Parameter } from "../types.js"
 
 type FormatParameterComponentProps = {
   parameterComponent: string | undefined

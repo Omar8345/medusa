@@ -1,11 +1,16 @@
 ---
 slug: /references/medusa-workflows/importProductsWorkflow
 sidebar_label: importProductsWorkflow
+tags:
+  - region
+  - product
+  - sales channel
+  - workflow
 ---
 
 import { TypeList, WorkflowDiagram } from "docs-ui"
 
-# importProductsWorkflow - Medusa Workflows API Reference
+# importProductsWorkflow - Medusa Core Workflows Reference
 
 This documentation provides a reference to the `importProductsWorkflow`. It belongs to the `@medusajs/medusa/core-flows` package.
 
@@ -13,12 +18,12 @@ This workflow imports products from a CSV file.
 
 ## Steps
 
-<WorkflowDiagram workflow={{"name":"importProductsWorkflow","steps":[{"type":"step","name":"parseProductCsvStep","description":"This step parses a CSV file holding products to import.","link":"../../../../core_flows.Steps_Product/page.mdx#parseproductcsvstep","depth":1},{"type":"step","name":"groupProductsForBatchStep","description":"This step groups products to be created and updated.","link":"../../../../core_flows.Steps_Product/page.mdx#groupproductsforbatchstep","depth":2},{"type":"step","name":"waitConfirmationProductImportStep","description":"This step waits until a product import is confirmed.","link":"../../../../core_flows.Steps_Product/page.mdx#waitconfirmationproductimportstep","depth":3}]}} />
+<WorkflowDiagram workflow={{"name":"importProductsWorkflow","steps":[{"type":"step","name":"parseProductCsvStep","description":"This step parses a CSV file holding products to import.\n\n","link":"../../../Steps_Product/functions/core_flows.Product.Steps_Product.parseProductCsvStep/page.mdx","depth":1},{"type":"step","name":"groupProductsForBatchStep","description":"This step groups products to be created and updated.\n\n","link":"../../../Steps_Product/functions/core_flows.Product.Steps_Product.groupProductsForBatchStep/page.mdx","depth":2},{"type":"step","name":"waitConfirmationProductImportStep","description":"This step waits until a product import is confirmed.\n\n","link":"../../../Steps_Product/functions/core_flows.Product.Steps_Product.waitConfirmationProductImportStep/page.mdx","depth":3}]}} />
 
 ## Input
 
-<TypeList types={[{"name":"ImportProductsDTO","type":"[ImportProductsDTO](../../../../../types/WorkflowTypes/ProductWorkflow/interfaces/types.WorkflowTypes.ProductWorkflow.ImportProductsDTO/page.mdx)","optional":false,"defaultValue":"","description":"","expandable":false,"children":[{"name":"fileContent","type":"`string`","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]},{"name":"filename","type":"`string`","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]}]}]} expandUrl="https://docs.medusajs.com/v2/advanced-development/data-models/manage-relationships#retrieve-records-of-relation" sectionTitle="importProductsWorkflow"/>
+<TypeList types={[{"name":"ImportProductsDTO","type":"[ImportProductsDTO](../../../../../types/WorkflowTypes/ProductWorkflow/interfaces/types.WorkflowTypes.ProductWorkflow.ImportProductsDTO/page.mdx)","optional":false,"defaultValue":"","description":"","expandable":false,"children":[{"name":"fileContent","type":"`string`","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]},{"name":"filename","type":"`string`","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]}]}]} expandUrl="https://docs.medusajs.com/learn/fundamentals/data-models/manage-relationships#retrieve-records-of-relation" sectionTitle="importProductsWorkflow"/>
 
 ## Output
 
-<TypeList types={[{"name":"ImportProductsSummary","type":"[ImportProductsSummary](../../../../../types/WorkflowTypes/ProductWorkflow/interfaces/types.WorkflowTypes.ProductWorkflow.ImportProductsSummary/page.mdx)","optional":false,"defaultValue":"","description":"","expandable":false,"children":[{"name":"toCreate","type":"`number`","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]},{"name":"toUpdate","type":"`number`","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]}]}]} expandUrl="https://docs.medusajs.com/v2/advanced-development/data-models/manage-relationships#retrieve-records-of-relation" sectionTitle="importProductsWorkflow"/>
+<TypeList types={[{"name":"ImportProductsSummary","type":"[ImportProductsSummary](../../../../../types/WorkflowTypes/ProductWorkflow/interfaces/types.WorkflowTypes.ProductWorkflow.ImportProductsSummary/page.mdx)","optional":false,"defaultValue":"","description":"","expandable":false,"children":[{"name":"toCreate","type":"`number`","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]},{"name":"toUpdate","type":"`number`","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]}]}]} expandUrl="https://docs.medusajs.com/learn/fundamentals/data-models/manage-relationships#retrieve-records-of-relation" sectionTitle="importProductsWorkflow"/>

@@ -24,11 +24,11 @@ const HomepageLinksSection = () => {
       title: "Admin Development",
       links: [
         {
-          href: "/learn/basics/admin-customizations",
+          href: "/learn/fundamentals/admin/widgets",
           text: "Build a UI Widget",
         },
         {
-          href: "/learn/advanced-development/admin/ui-routes",
+          href: "/learn/fundamentals/admin/ui-routes",
           text: "Add a UI Route",
         },
         {

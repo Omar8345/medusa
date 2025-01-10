@@ -11,7 +11,7 @@ const ShippingMethodTaxLine = model
       id: model.id({ prefix: "casmtxl" }).primaryKey(),
       description: model.text().nullable(),
       code: model.text(),
-      rate: model.number(),
+      rate: model.float(),
       provider_id: model.text().nullable(),
       tax_rate_id: model.text().nullable(),
       metadata: model.json().nullable(),

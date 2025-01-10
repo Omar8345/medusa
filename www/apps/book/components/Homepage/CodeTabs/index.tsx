@@ -24,7 +24,7 @@ const HomepageCodeTabs = () => {
           "Expose custom features with REST API routes, then consume them from your client applications.",
         link: {
           title: "API Routes",
-          link: "/learn/basics/api-routes",
+          link: "/learn/fundamentals/api-routes",
         },
       },
       code: {
@@ -50,7 +50,7 @@ const HomepageCodeTabs = () => {
           [
             "5",
             `query`,
-            "Query utility to retrieve data from a graph of\nall data models and their relations.",
+            "use Query that retrieves data from a graph of\nall data models and their relations.",
           ],
           ["8", `"company"`, "Retrieve records of the `company` data model"],
           ["13", "res.json", "Return a JSON response"],
@@ -64,7 +64,7 @@ const HomepageCodeTabs = () => {
           "Build flows as a series of steps, with retry mechanisms and tracking of each steps' status.",
         link: {
           title: "Workflows",
-          link: "/learn/basics/workflows",
+          link: "/learn/fundamentals/workflows",
         },
       },
       code: {
@@ -105,7 +105,7 @@ const HomepageCodeTabs = () => {
           "Create data models that represent tables in the database using Medusa's Data Model Language.",
         link: {
           title: "DML",
-          link: "/learn/basics/modules#1-create-data-model",
+          link: "/learn/fundamentals/modules#1-create-data-model",
         },
       },
       code: {
@@ -141,7 +141,7 @@ const HomepageCodeTabs = () => {
           "Build custom modules with commerce or architectural features and use them in API routes or workflows.",
         link: {
           title: "Modules",
-          link: "/learn/basics/modules",
+          link: "/learn/fundamentals/modules",
         },
       },
       code: {
@@ -193,7 +193,7 @@ export async function POST(
           "Add custom properties to Medusa's data models using module links to build custom use cases.",
         link: {
           title: "Module Links",
-          link: "/learn/advanced-development/module-links",
+          link: "/learn/fundamentals/module-links",
         },
       },
       code: {
@@ -223,7 +223,7 @@ export default defineLink(
           "Handle events emitted by the Medusa application to perform custom actions.",
         link: {
           title: "Subscribers",
-          link: "/learn/basics/events-and-subscribers",
+          link: "/learn/fundamentals/events-and-subscribers",
         },
       },
       code: {
@@ -271,8 +271,8 @@ export const config: SubscriberConfig = {
         content:
           "Inject widgets into predefined zones in the Medusa Admin, or add new pages.",
         link: {
-          title: "Admin Customizations",
-          link: "/learn/basics/admin-customizations",
+          title: "Admin Widgets",
+          link: "/learn/fundamentals/admin/widgets",
         },
       },
       code: {

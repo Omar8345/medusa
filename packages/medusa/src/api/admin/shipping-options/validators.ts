@@ -86,7 +86,7 @@ export const AdminCreateShippingOptionTypeObject = z
 
 const AdminPriceRules = z.array(
   z.object({
-    attribute: z.literal("total"),
+    attribute: z.literal("item_total"),
     operator: z.nativeEnum(PricingRuleOperator),
     value: z.number(),
   })

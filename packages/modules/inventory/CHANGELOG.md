@@ -1,5 +1,17 @@
 # @medusajs/inventory-next
 
+## 2.2.0
+
+## 2.1.3
+
+## 2.1.2
+
+### Patch Changes
+
+- [#10569](https://github.com/medusajs/medusa/pull/10569) [`729eb5da7b6daf9781b8bdcbc2fab344e942d444`](https://github.com/medusajs/medusa/commit/729eb5da7b6daf9781b8bdcbc2fab344e942d444) Thanks [@carlos-r-l-rodrigues](https://github.com/carlos-r-l-rodrigues)! - chore: Inventory DML
+
+## 2.1.1
+
 ## 2.1.0
 
 ## 2.0.7

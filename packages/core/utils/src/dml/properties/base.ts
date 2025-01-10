@@ -1,4 +1,5 @@
 import { PropertyMetadata, PropertyType } from "@medusajs/types"
+import { ComputedProperty } from "./computed"
 import { NullableModifier } from "./nullable"
 
 /**
@@ -46,6 +47,27 @@ export abstract class BaseProperty<T> implements PropertyType<T> {
    */
   nullable() {
     return new NullableModifier<T, this>(this)
+  }
+
+  /**
+   * This method indicated that the property is a computed property.
+   * Computed properties are not stored in the database but are
+   * computed on the fly.
+   *
+   * @example
+   * import { model } from "@medusajs/framework/utils"
+   *
+   * const MyCustom = model.define("my_custom", {
+   *  calculated_price: model.bigNumber().computed(),
+   *  // ...
+   * })
+   *
+   * export default MyCustom
+   *
+   * @customNamespace Property Configuration Methods
+   */
+  computed() {
+    return new ComputedProperty<T | null, this>(this)
   }
 
   /**
@@ -132,6 +154,7 @@ export abstract class BaseProperty<T> implements PropertyType<T> {
       fieldName,
       dataType: this.dataType,
       nullable: false,
+      computed: false,
       defaultValue: this.#defaultValue,
       indexes: this.#indexes,
       relationships: this.#relationships,

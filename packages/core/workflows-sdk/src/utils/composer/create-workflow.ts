@@ -10,7 +10,7 @@ import {
   OrchestrationUtils,
 } from "@medusajs/utils"
 import { ulid } from "ulid"
-import { exportWorkflow } from "../../helper"
+import { exportWorkflow, WorkflowResult } from "../../helper"
 import { createStep } from "./create-step"
 import { proxify } from "./helpers/proxy"
 import { StepResponse } from "./helpers/step-response"
@@ -42,7 +42,7 @@ global[OrchestrationUtils.SymbolMedusaWorkflowComposerContext] = null
  *   createWorkflow,
  *   WorkflowResponse
  * } from "@medusajs/framework/workflows-sdk"
- * import { MedusaRequest, MedusaResponse } from "@medusajs/medusa"
+ * import { MedusaRequest, MedusaResponse } from "@medusajs/framework/http"
  * import {
  *   createProductStep,
  *   getProductStep,
@@ -194,26 +194,36 @@ export function createWorkflow<TData, TResult, THooks extends any[]>(
           input: stepInput as any,
           container,
           context: {
-            transactionId: ulid(),
             ...sharedContext,
+            transactionId:
+              step.__step__ + "-" + (stepContext.transactionId ?? ulid()),
             parentStepIdempotencyKey: stepContext.idempotencyKey,
           },
         })
 
-        const { result, transaction: flowTransaction } = transaction
+        const { result } = transaction
 
-        if (!context.isAsync || flowTransaction.hasFinished()) {
-          return new StepResponse(result, transaction)
-        }
-
-        return
+        return new StepResponse(
+          result,
+          context.isAsync ? stepContext.transactionId : transaction
+        )
       },
-      async (transaction, { container }) => {
+      async (transaction, stepContext) => {
         if (!transaction) {
           return
         }
 
-        await workflow(container).cancel(transaction)
+        const { container, ...sharedContext } = stepContext
+
+        await workflow(container).cancel({
+          transaction: (transaction as WorkflowResult<any>).transaction,
+          transactionId: isString(transaction) ? transaction : undefined,
+          container,
+          context: {
+            ...sharedContext,
+            parentStepIdempotencyKey: stepContext.idempotencyKey,
+          },
+        })
       }
     )(input) as ReturnType<StepFunction<TData, TResult>>
 

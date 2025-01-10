@@ -4,6 +4,7 @@ import create from "./commands/create.js"
 
 program
   .description("Create a new Medusa project")
+  .argument("[project-name]", "Name of the project to create.")
   .option("--repo-url <url>", "URL of repository to use to setup project.")
   .option("--seed", "Seed the created database with demo data.")
   .option(
@@ -41,4 +42,4 @@ program
   )
   .parse()
 
-void create(program.opts())
+void create(program.args, program.opts())

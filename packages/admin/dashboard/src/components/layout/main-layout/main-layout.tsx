@@ -284,6 +284,19 @@ const Searchbar = () => {
 const CoreRouteSection = () => {
   const coreRoutes = useCoreRoutes()
 
+  const { getMenu } = useDashboardExtension()
+
+  const menuItems = getMenu("coreExtensions")
+
+  menuItems.forEach((item) => {
+    if (item.nested) {
+      const route = coreRoutes.find((route) => route.to === item.nested)
+      if (route) {
+        route.items?.push(item)
+      }
+    }
+  })
+
   return (
     <nav className="flex flex-col gap-y-1 py-3">
       <Searchbar />
@@ -298,7 +311,7 @@ const ExtensionRouteSection = () => {
   const { t } = useTranslation()
   const { getMenu } = useDashboardExtension()
 
-  const menuItems = getMenu("coreExtensions")
+  const menuItems = getMenu("coreExtensions").filter((item) => !item.nested)
 
   if (!menuItems.length) {
     return null

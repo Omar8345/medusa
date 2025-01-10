@@ -18,6 +18,7 @@ type OrderChangeType =
   | "edit"
   | "transfer"
   | "update_order"
+  | "credit_line"
 
 /** ADDRESS START */
 /**

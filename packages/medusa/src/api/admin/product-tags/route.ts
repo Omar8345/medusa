@@ -16,8 +16,8 @@ export const GET = async (
     "product_tag",
     req.filterableFields,
     req.scope,
-    req.remoteQueryConfig.fields,
-    req.remoteQueryConfig.pagination
+    req.queryConfig.fields,
+    req.queryConfig.pagination
   )
 
   res.json({
@@ -42,7 +42,7 @@ export const POST = async (
     "product_tag",
     result[0].id,
     req.scope,
-    req.remoteQueryConfig.fields
+    req.queryConfig.fields
   )
 
   res.status(200).json({ product_tag: productTag })

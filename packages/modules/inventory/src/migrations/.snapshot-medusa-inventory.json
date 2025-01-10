@@ -1,5 +1,7 @@
 {
-  "namespaces": ["public"],
+  "namespaces": [
+    "public"
+  ],
   "name": "public",
   "tables": [
     {
@@ -12,38 +14,6 @@
           "primary": false,
           "nullable": false,
           "mappedType": "text"
-        },
-        "created_at": {
-          "name": "created_at",
-          "type": "timestamptz",
-          "unsigned": false,
-          "autoincrement": false,
-          "primary": false,
-          "nullable": false,
-          "length": 6,
-          "default": "now()",
-          "mappedType": "datetime"
-        },
-        "updated_at": {
-          "name": "updated_at",
-          "type": "timestamptz",
-          "unsigned": false,
-          "autoincrement": false,
-          "primary": false,
-          "nullable": false,
-          "length": 6,
-          "default": "now()",
-          "mappedType": "datetime"
-        },
-        "deleted_at": {
-          "name": "deleted_at",
-          "type": "timestamptz",
-          "unsigned": false,
-          "autoincrement": false,
-          "primary": false,
-          "nullable": true,
-          "length": 6,
-          "mappedType": "datetime"
         },
         "sku": {
           "name": "sku",
@@ -92,7 +62,7 @@
         },
         "weight": {
           "name": "weight",
-          "type": "int",
+          "type": "integer",
           "unsigned": false,
           "autoincrement": false,
           "primary": false,
@@ -101,7 +71,7 @@
         },
         "length": {
           "name": "length",
-          "type": "int",
+          "type": "integer",
           "unsigned": false,
           "autoincrement": false,
           "primary": false,
@@ -110,7 +80,7 @@
         },
         "height": {
           "name": "height",
-          "type": "int",
+          "type": "integer",
           "unsigned": false,
           "autoincrement": false,
           "primary": false,
@@ -119,7 +89,7 @@
         },
         "width": {
           "name": "width",
-          "type": "int",
+          "type": "integer",
           "unsigned": false,
           "autoincrement": false,
           "primary": false,
@@ -171,6 +141,38 @@
           "primary": false,
           "nullable": true,
           "mappedType": "json"
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamptz",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 6,
+          "default": "now()",
+          "mappedType": "datetime"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamptz",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 6,
+          "default": "now()",
+          "mappedType": "datetime"
+        },
+        "deleted_at": {
+          "name": "deleted_at",
+          "type": "timestamptz",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "length": 6,
+          "mappedType": "datetime"
         }
       },
       "name": "inventory_item",
@@ -178,23 +180,33 @@
       "indexes": [
         {
           "keyName": "IDX_inventory_item_deleted_at",
-          "columnNames": ["deleted_at"],
+          "columnNames": [],
+          "composite": false,
+          "primary": false,
+          "unique": false,
+          "expression": "CREATE INDEX IF NOT EXISTS \"IDX_inventory_item_deleted_at\" ON \"inventory_item\" (deleted_at) WHERE deleted_at IS NULL"
+        },
+        {
+          "keyName": "IDX_inventory_item_deleted_at",
+          "columnNames": [],
           "composite": false,
           "primary": false,
           "unique": false,
           "expression": "CREATE INDEX IF NOT EXISTS \"IDX_inventory_item_deleted_at\" ON \"inventory_item\" (deleted_at) WHERE deleted_at IS NOT NULL"
         },
         {
-          "keyName": "IDX_inventory_item_sku_unique",
-          "columnNames": ["sku"],
+          "keyName": "IDX_inventory_item_sku",
+          "columnNames": [],
           "composite": false,
           "primary": false,
           "unique": false,
-          "expression": "CREATE UNIQUE INDEX IF NOT EXISTS \"IDX_inventory_item_sku_unique\" ON \"inventory_item\" (sku)"
+          "expression": "CREATE UNIQUE INDEX IF NOT EXISTS \"IDX_inventory_item_sku\" ON \"inventory_item\" (sku) WHERE deleted_at IS NULL"
         },
         {
           "keyName": "inventory_item_pkey",
-          "columnNames": ["id"],
+          "columnNames": [
+            "id"
+          ],
           "composite": false,
           "primary": true,
           "unique": true
@@ -214,6 +226,90 @@
           "nullable": false,
           "mappedType": "text"
         },
+        "location_id": {
+          "name": "location_id",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "text"
+        },
+        "stocked_quantity": {
+          "name": "stocked_quantity",
+          "type": "numeric",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "default": "0",
+          "mappedType": "decimal"
+        },
+        "reserved_quantity": {
+          "name": "reserved_quantity",
+          "type": "numeric",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "default": "0",
+          "mappedType": "decimal"
+        },
+        "incoming_quantity": {
+          "name": "incoming_quantity",
+          "type": "numeric",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "default": "0",
+          "mappedType": "decimal"
+        },
+        "metadata": {
+          "name": "metadata",
+          "type": "jsonb",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "json"
+        },
+        "inventory_item_id": {
+          "name": "inventory_item_id",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "text"
+        },
+        "raw_stocked_quantity": {
+          "name": "raw_stocked_quantity",
+          "type": "jsonb",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "json"
+        },
+        "raw_reserved_quantity": {
+          "name": "raw_reserved_quantity",
+          "type": "jsonb",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "json"
+        },
+        "raw_incoming_quantity": {
+          "name": "raw_incoming_quantity",
+          "type": "jsonb",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "json"
+        },
         "created_at": {
           "name": "created_at",
           "type": "timestamptz",
@@ -245,91 +341,26 @@
           "nullable": true,
           "length": 6,
           "mappedType": "datetime"
-        },
-        "inventory_item_id": {
-          "name": "inventory_item_id",
-          "type": "text",
-          "unsigned": false,
-          "autoincrement": false,
-          "primary": false,
-          "nullable": false,
-          "mappedType": "text"
-        },
-        "location_id": {
-          "name": "location_id",
-          "type": "text",
-          "unsigned": false,
-          "autoincrement": false,
-          "primary": false,
-          "nullable": false,
-          "mappedType": "text"
-        },
-        "stocked_quantity": {
-          "name": "stocked_quantity",
-          "type": "int",
-          "unsigned": false,
-          "autoincrement": false,
-          "primary": false,
-          "nullable": false,
-          "default": "0",
-          "mappedType": "integer"
-        },
-        "reserved_quantity": {
-          "name": "reserved_quantity",
-          "type": "int",
-          "unsigned": false,
-          "autoincrement": false,
-          "primary": false,
-          "nullable": false,
-          "default": "0",
-          "mappedType": "integer"
-        },
-        "incoming_quantity": {
-          "name": "incoming_quantity",
-          "type": "int",
-          "unsigned": false,
-          "autoincrement": false,
-          "primary": false,
-          "nullable": false,
-          "default": "0",
-          "mappedType": "integer"
-        },
-        "metadata": {
-          "name": "metadata",
-          "type": "jsonb",
-          "unsigned": false,
-          "autoincrement": false,
-          "primary": false,
-          "nullable": true,
-          "mappedType": "json"
         }
       },
       "name": "inventory_level",
       "schema": "public",
       "indexes": [
         {
-          "keyName": "IDX_inventory_level_deleted_at",
-          "columnNames": ["deleted_at"],
-          "composite": false,
-          "primary": false,
-          "unique": false,
-          "expression": "CREATE INDEX IF NOT EXISTS \"IDX_inventory_level_deleted_at\" ON \"inventory_level\" (deleted_at) WHERE deleted_at IS NOT NULL"
-        },
-        {
           "keyName": "IDX_inventory_level_inventory_item_id",
-          "columnNames": ["inventory_item_id"],
+          "columnNames": [],
           "composite": false,
           "primary": false,
           "unique": false,
-          "expression": "CREATE INDEX IF NOT EXISTS \"IDX_inventory_level_inventory_item_id\" ON \"inventory_level\" (inventory_item_id)"
+          "expression": "CREATE INDEX IF NOT EXISTS \"IDX_inventory_level_inventory_item_id\" ON \"inventory_level\" (inventory_item_id) WHERE deleted_at IS NULL"
         },
         {
-          "keyName": "IDX_inventory_level_location_id",
-          "columnNames": ["location_id"],
+          "keyName": "IDX_inventory_level_deleted_at",
+          "columnNames": [],
           "composite": false,
           "primary": false,
           "unique": false,
-          "expression": "CREATE INDEX IF NOT EXISTS \"IDX_inventory_level_location_id\" ON \"inventory_level\" (location_id)"
+          "expression": "CREATE INDEX IF NOT EXISTS \"IDX_inventory_level_deleted_at\" ON \"inventory_level\" (deleted_at) WHERE deleted_at IS NULL"
         },
         {
           "keyName": "IDX_inventory_level_location_id",
@@ -337,11 +368,21 @@
           "composite": false,
           "primary": false,
           "unique": false,
-          "expression": "CREATE INDEX IF NOT EXISTS \"IDX_inventory_level_location_id\" ON \"inventory_level\" (location_id)"
+          "expression": "CREATE INDEX IF NOT EXISTS \"IDX_inventory_level_location_id\" ON \"inventory_level\" (location_id) WHERE deleted_at IS NULL"
+        },
+        {
+          "keyName": "IDX_inventory_level_location_id_inventory_item_id",
+          "columnNames": [],
+          "composite": false,
+          "primary": false,
+          "unique": false,
+          "expression": "CREATE UNIQUE INDEX IF NOT EXISTS \"IDX_inventory_level_location_id_inventory_item_id\" ON \"inventory_level\" (inventory_item_id, location_id) WHERE deleted_at IS NULL"
         },
         {
           "keyName": "inventory_level_pkey",
-          "columnNames": ["id"],
+          "columnNames": [
+            "id"
+          ],
           "composite": false,
           "primary": true,
           "unique": true
@@ -351,9 +392,13 @@
       "foreignKeys": {
         "inventory_level_inventory_item_id_foreign": {
           "constraintName": "inventory_level_inventory_item_id_foreign",
-          "columnNames": ["inventory_item_id"],
+          "columnNames": [
+            "inventory_item_id"
+          ],
           "localTableName": "public.inventory_level",
-          "referencedColumnNames": ["id"],
+          "referencedColumnNames": [
+            "id"
+          ],
           "referencedTableName": "public.inventory_item",
           "deleteRule": "cascade",
           "updateRule": "cascade"
@@ -371,38 +416,6 @@
           "nullable": false,
           "mappedType": "text"
         },
-        "created_at": {
-          "name": "created_at",
-          "type": "timestamptz",
-          "unsigned": false,
-          "autoincrement": false,
-          "primary": false,
-          "nullable": false,
-          "length": 6,
-          "default": "now()",
-          "mappedType": "datetime"
-        },
-        "updated_at": {
-          "name": "updated_at",
-          "type": "timestamptz",
-          "unsigned": false,
-          "autoincrement": false,
-          "primary": false,
-          "nullable": false,
-          "length": 6,
-          "default": "now()",
-          "mappedType": "datetime"
-        },
-        "deleted_at": {
-          "name": "deleted_at",
-          "type": "timestamptz",
-          "unsigned": false,
-          "autoincrement": false,
-          "primary": false,
-          "nullable": true,
-          "length": 6,
-          "mappedType": "datetime"
-        },
         "line_item_id": {
           "name": "line_item_id",
           "type": "text",
@@ -411,6 +424,16 @@
           "primary": false,
           "nullable": true,
           "mappedType": "text"
+        },
+        "allow_backorder": {
+          "name": "allow_backorder",
+          "type": "boolean",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "default": "false",
+          "mappedType": "boolean"
         },
         "location_id": {
           "name": "location_id",
@@ -423,12 +446,21 @@
         },
         "quantity": {
           "name": "quantity",
-          "type": "integer",
+          "type": "numeric",
           "unsigned": false,
           "autoincrement": false,
           "primary": false,
           "nullable": false,
-          "mappedType": "integer"
+          "mappedType": "decimal"
+        },
+        "raw_quantity": {
+          "name": "raw_quantity",
+          "type": "jsonb",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "json"
         },
         "external_id": {
           "name": "external_id",
@@ -474,46 +506,80 @@
           "primary": false,
           "nullable": false,
           "mappedType": "text"
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamptz",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 6,
+          "default": "now()",
+          "mappedType": "datetime"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamptz",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 6,
+          "default": "now()",
+          "mappedType": "datetime"
+        },
+        "deleted_at": {
+          "name": "deleted_at",
+          "type": "timestamptz",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "length": 6,
+          "mappedType": "datetime"
         }
       },
       "name": "reservation_item",
       "schema": "public",
       "indexes": [
         {
-          "keyName": "IDX_reservation_item_deleted_at",
-          "columnNames": ["deleted_at"],
+          "keyName": "IDX_reservation_item_inventory_item_id",
+          "columnNames": [],
           "composite": false,
           "primary": false,
           "unique": false,
-          "expression": "CREATE INDEX IF NOT EXISTS \"IDX_reservation_item_deleted_at\" ON \"reservation_item\" (deleted_at) WHERE deleted_at IS NOT NULL"
+          "expression": "CREATE INDEX IF NOT EXISTS \"IDX_reservation_item_inventory_item_id\" ON \"reservation_item\" (inventory_item_id) WHERE deleted_at IS NULL"
+        },
+        {
+          "keyName": "IDX_reservation_item_deleted_at",
+          "columnNames": [],
+          "composite": false,
+          "primary": false,
+          "unique": false,
+          "expression": "CREATE INDEX IF NOT EXISTS \"IDX_reservation_item_deleted_at\" ON \"reservation_item\" (deleted_at) WHERE deleted_at IS NULL"
         },
         {
           "keyName": "IDX_reservation_item_line_item_id",
-          "columnNames": ["line_item_id"],
+          "columnNames": [],
           "composite": false,
           "primary": false,
           "unique": false,
-          "expression": "CREATE INDEX IF NOT EXISTS \"IDX_reservation_item_line_item_id\" ON \"reservation_item\" (line_item_id)"
+          "expression": "CREATE INDEX IF NOT EXISTS \"IDX_reservation_item_line_item_id\" ON \"reservation_item\" (line_item_id) WHERE deleted_at IS NULL"
         },
         {
           "keyName": "IDX_reservation_item_location_id",
-          "columnNames": ["location_id"],
+          "columnNames": [],
           "composite": false,
           "primary": false,
           "unique": false,
-          "expression": "CREATE INDEX IF NOT EXISTS \"IDX_reservation_item_location_id\" ON \"reservation_item\" (location_id)"
-        },
-        {
-          "keyName": "IDX_reservation_item_inventory_item_id",
-          "columnNames": ["inventory_item_id"],
-          "composite": false,
-          "primary": false,
-          "unique": false,
-          "expression": "CREATE INDEX IF NOT EXISTS \"IDX_reservation_item_inventory_item_id\" ON \"reservation_item\" (inventory_item_id)"
+          "expression": "CREATE INDEX IF NOT EXISTS \"IDX_reservation_item_location_id\" ON \"reservation_item\" (location_id) WHERE deleted_at IS NULL"
         },
         {
           "keyName": "reservation_item_pkey",
-          "columnNames": ["id"],
+          "columnNames": [
+            "id"
+          ],
           "composite": false,
           "primary": true,
           "unique": true
@@ -523,9 +589,13 @@
       "foreignKeys": {
         "reservation_item_inventory_item_id_foreign": {
           "constraintName": "reservation_item_inventory_item_id_foreign",
-          "columnNames": ["inventory_item_id"],
+          "columnNames": [
+            "inventory_item_id"
+          ],
           "localTableName": "public.reservation_item",
-          "referencedColumnNames": ["id"],
+          "referencedColumnNames": [
+            "id"
+          ],
           "referencedTableName": "public.inventory_item",
           "deleteRule": "cascade",
           "updateRule": "cascade"

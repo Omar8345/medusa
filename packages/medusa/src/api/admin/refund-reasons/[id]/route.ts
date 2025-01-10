@@ -18,7 +18,7 @@ export const GET = async (
     "refund_reason",
     req.params.id,
     req.scope,
-    req.remoteQueryConfig.fields
+    req.queryConfig.fields
   )
 
   res.json({ refund_reason })
@@ -43,7 +43,7 @@ export const POST = async (
     "refund_reason",
     req.params.id,
     req.scope,
-    req.remoteQueryConfig.fields
+    req.queryConfig.fields
   )
 
   res.json({ refund_reason })

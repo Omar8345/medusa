@@ -34,7 +34,7 @@ export const POST = async (
   const queryObject = remoteQueryObjectFromString({
     entryPoint: "order",
     variables,
-    fields: req.remoteQueryConfig.fields,
+    fields: req.queryConfig.fields,
   })
 
   const [order] = await remoteQuery(queryObject)

@@ -1,11 +1,14 @@
 ---
 slug: /references/medusa-workflows/deleteOrderChangeWorkflow
 sidebar_label: deleteOrderChangeWorkflow
+tags:
+  - order
+  - workflow
 ---
 
 import { TypeList, WorkflowDiagram } from "docs-ui"
 
-# deleteOrderChangeWorkflow - Medusa Workflows API Reference
+# deleteOrderChangeWorkflow - Medusa Core Workflows Reference
 
 This documentation provides a reference to the `deleteOrderChangeWorkflow`. It belongs to the `@medusajs/medusa/core-flows` package.
 
@@ -13,8 +16,8 @@ This workflow deletes one or more order changes.
 
 ## Steps
 
-<WorkflowDiagram workflow={{"name":"deleteOrderChangeWorkflow","steps":[{"type":"step","name":"deleteOrderChangesStep","description":"This step deletes order changes.","link":"../../../../core_flows.Steps_Order/page.mdx#deleteorderchangesstep","depth":1}]}} />
+<WorkflowDiagram workflow={{"name":"deleteOrderChangeWorkflow","steps":[{"type":"step","name":"deleteOrderChangesStep","description":"This step deletes order changes.\n\n","link":"../../../Steps_Order/functions/core_flows.Order.Steps_Order.deleteOrderChangesStep/page.mdx","depth":1}]}} />
 
 ## Input
 
-<TypeList types={[{"name":"ids","type":"`string`[]","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]}]} expandUrl="https://docs.medusajs.com/v2/advanced-development/data-models/manage-relationships#retrieve-records-of-relation" sectionTitle="deleteOrderChangeWorkflow"/>
+<TypeList types={[{"name":"ids","type":"`string`[]","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]}]} expandUrl="https://docs.medusajs.com/learn/fundamentals/data-models/manage-relationships#retrieve-records-of-relation" sectionTitle="deleteOrderChangeWorkflow"/>

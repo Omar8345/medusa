@@ -51,7 +51,7 @@ const coreFlowsOptions: FormattingOptionsType = {
     reflectionTitle: {
       kind: false,
       typeParameters: false,
-      suffix: "- Medusa Workflows API Reference",
+      suffix: "- Medusa Core Workflows Reference",
     },
   },
   "^core_flows/.*/Steps_.*/functions/.*/page\\.mdx": {
@@ -64,7 +64,7 @@ const coreFlowsOptions: FormattingOptionsType = {
     reflectionTitle: {
       kind: false,
       typeParameters: false,
-      suffix: "- Medusa Workflows API Reference",
+      suffix: "- Medusa Core Workflows Reference",
     },
   },
 }

@@ -1,6 +1,6 @@
 import { Application, ParameterType } from "typedoc"
-import { MarkdownThemeOptionsReader } from "./options-reader"
-import { MarkdownTheme } from "./theme"
+import { MarkdownThemeOptionsReader } from "./options-reader.js"
+import { MarkdownTheme } from "./theme.js"
 
 export function load(app: Application) {
   app.renderer.defineTheme("markdown", MarkdownTheme)

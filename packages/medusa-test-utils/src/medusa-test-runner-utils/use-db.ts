@@ -61,7 +61,7 @@ async function loadCustomLinks(directory: string, container: MedusaContainer) {
   const configModule = container.resolve(
     ContainerRegistrationKeys.CONFIG_MODULE
   )
-  const plugins = getResolvedPlugins(directory, configModule, true) || []
+  const plugins = await getResolvedPlugins(directory, configModule, true)
   const linksSourcePaths = plugins.map((plugin) =>
     join(plugin.resolve, "links")
   )

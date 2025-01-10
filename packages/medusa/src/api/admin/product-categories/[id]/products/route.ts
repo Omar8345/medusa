@@ -23,7 +23,7 @@ export const POST = async (
     "product_category",
     id,
     req.scope,
-    req.remoteQueryConfig.fields
+    req.queryConfig.fields
   )
 
   res.status(200).json({ product_category: category })

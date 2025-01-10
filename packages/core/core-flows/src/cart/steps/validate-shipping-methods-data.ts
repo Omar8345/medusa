@@ -1,16 +1,17 @@
 import { Modules, promiseAll } from "@medusajs/framework/utils"
-import { IFulfillmentModuleService } from "@medusajs/types"
+import {
+  IFulfillmentModuleService,
+  ValidateFulfillmentDataContext,
+} from "@medusajs/types"
 import { createStep, StepResponse } from "@medusajs/workflows-sdk"
 
-export interface ValidateShippingMethodsDataInput {
-  context: Record<string, unknown>
-  options_to_validate: {
-    id: string
-    provider_id: string
-    option_data: Record<string, unknown>
-    method_data: Record<string, unknown>
-  }[]
-}
+export type ValidateShippingMethodsDataInput = {
+  id: string
+  provider_id: string
+  option_data: Record<string, unknown>
+  method_data: Record<string, unknown>
+  context: ValidateFulfillmentDataContext
+}[]
 
 export const validateAndReturnShippingMethodsDataStepId =
   "validate-and-return-shipping-methods-data"
@@ -20,9 +21,9 @@ export const validateAndReturnShippingMethodsDataStepId =
 export const validateAndReturnShippingMethodsDataStep = createStep(
   validateAndReturnShippingMethodsDataStepId,
   async (data: ValidateShippingMethodsDataInput, { container }) => {
-    const { options_to_validate = [] } = data
+    const optionsToValidate = data ?? []
 
-    if (!options_to_validate.length) {
+    if (!optionsToValidate.length) {
       return new StepResponse(void 0)
     }
 
@@ -31,12 +32,12 @@ export const validateAndReturnShippingMethodsDataStep = createStep(
     )
 
     const validatedData = await promiseAll(
-      options_to_validate.map(async (option) => {
+      optionsToValidate.map(async (option) => {
         const validated = await fulfillmentModule.validateFulfillmentData(
           option.provider_id,
           option.option_data,
           option.method_data,
-          data.context
+          option.context as ValidateFulfillmentDataContext
         )
 
         return {

@@ -16,7 +16,7 @@ export const attachInventoryItemToVariants = createStep(
     }[],
     { container }
   ) => {
-    const remoteLink = container.resolve(ContainerRegistrationKeys.REMOTE_LINK)
+    const remoteLink = container.resolve(ContainerRegistrationKeys.LINK)
 
     const linkDefinitions = input
       .filter(({ tag }) => !!tag)
@@ -38,7 +38,7 @@ export const attachInventoryItemToVariants = createStep(
       return
     }
 
-    const remoteLink = container.resolve(ContainerRegistrationKeys.REMOTE_LINK)
+    const remoteLink = container.resolve(ContainerRegistrationKeys.LINK)
 
     await remoteLink.dismiss(linkDefinitions)
   }

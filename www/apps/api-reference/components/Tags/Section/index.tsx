@@ -4,6 +4,7 @@ import getSectionId from "@/utils/get-section-id"
 import { InView } from "react-intersection-observer"
 import { useEffect, useMemo, useState } from "react"
 import {
+  H2,
   isElmWindow,
   swrFetcher,
   useIsBrowser,
@@ -135,43 +136,44 @@ const TagSectionComponent = ({ tag }: TagSectionProps) => {
         }
       }}
     >
-      <DividedLayout
-        mainContent={
-          <SectionContainer noDivider={true}>
-            <h2>{tag.name}</h2>
-            {tag.description && (
-              <Section>
-                <MDXContentClient
-                  content={tag.description}
-                  scope={{
-                    addToSidebar: false,
-                  }}
-                />
-              </Section>
-            )}
-            {tag.externalDocs && (
-              <p className="mt-1">
-                <span className="text-medium-plus">Related guide:</span>{" "}
-                <Link href={tag.externalDocs.url} target="_blank">
-                  {tag.externalDocs.description || "Read More"}
-                </Link>
-              </p>
-            )}
-            <Feedback
-              event="survey_api-ref"
-              extraData={{
-                area,
-                section: tag.name,
-              }}
-              pathName={pathname}
-              vertical
-              question="Was this section helpful?"
-            />
-            <SectionDivider className="-left-[16px] lg:!-left-[30%]" />
-          </SectionContainer>
-        }
-        codeContent={<></>}
-      />
+      <SectionContainer>
+        <DividedLayout
+          mainContent={
+            <div>
+              <H2>{tag.name}</H2>
+              {tag.description && (
+                <Section>
+                  <MDXContentClient
+                    content={tag.description}
+                    scope={{
+                      addToSidebar: false,
+                    }}
+                  />
+                </Section>
+              )}
+              {tag.externalDocs && (
+                <p className="mt-1">
+                  <span className="text-medium-plus">Related guide:</span>{" "}
+                  <Link href={tag.externalDocs.url} target="_blank">
+                    {tag.externalDocs.description || "Read More"}
+                  </Link>
+                </p>
+              )}
+              <Feedback
+                event="survey_api-ref"
+                extraData={{
+                  area,
+                  section: tag.name,
+                }}
+                pathName={pathname}
+                vertical
+                question="Was this section helpful?"
+              />
+            </div>
+          }
+          codeContent={<></>}
+        />
+      </SectionContainer>
       {schemaData && (
         <TagSectionSchema schema={schemaData.schema} tagName={tag.name} />
       )}

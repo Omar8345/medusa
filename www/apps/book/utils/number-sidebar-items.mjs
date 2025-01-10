@@ -16,6 +16,7 @@ export default function numberSidebarItems(sidebarItems, numbering = [1]) {
   sidebarItems.forEach((item, index) => {
     if (item.type === "separator") {
       ;(parentItem?.children || numberedItems).push(item)
+      return
     }
 
     // append current number to the item's title
@@ -27,13 +28,17 @@ export default function numberSidebarItems(sidebarItems, numbering = [1]) {
 
     if (isTopItems) {
       // Add chapter category
-      numberedItems.push({
-        type: "category",
-        title: item.chapterTitle,
-        children: [],
-        loaded: true,
-        initialOpen: false,
-      })
+      numberedItems.push(
+        item.type === "category"
+          ? item
+          : {
+              type: "category",
+              title: item.chapterTitle,
+              children: [],
+              loaded: true,
+              initialOpen: false,
+            }
+      )
 
       parentItem = numberedItems[numberedItems.length - 1]
     }
@@ -42,19 +47,12 @@ export default function numberSidebarItems(sidebarItems, numbering = [1]) {
       item.children = numberSidebarItems(item.children, [...numbering, 1])
     }
 
-    ;(parentItem?.children || numberedItems).push(item)
+    if (item.type !== "category" || !isTopItems) {
+      ;(parentItem?.children || numberedItems).push(item)
+    }
 
     numbering[numbering.length - 1]++
   })
 
   return numberedItems
-}
-
-function padNumber(number) {
-  number = number.toString()
-  if (number.length < 2) {
-    number = `0` + number
-  }
-
-  return number
 }

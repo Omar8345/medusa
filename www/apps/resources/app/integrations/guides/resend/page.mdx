@@ -81,7 +81,7 @@ Afterwards, the installation process will start, which will install the Medusa a
 
 <Note title="Why is the storefront installed separately?">
 
-The Medusa application is composed of a headless Node.js server and an admin dashboard. The storefront is installed or custom-built separately and connects to the Medusa application through its REST endpoints, called [API routes](!docs!/learn/basics/api-routes). Learn more about Medusa's architecture in [this documentation](!docs!/learn/advanced-development/architecture/overview).
+The Medusa application is composed of a headless Node.js server and an admin dashboard. The storefront is installed or custom-built separately and connects to the Medusa application through its REST endpoints, called [API routes](!docs!/learn/fundamentals/api-routes). Learn more about Medusa's architecture in [this documentation](!docs!/learn/introduction/architecture).
 
 </Note>
 
@@ -154,7 +154,7 @@ Medusa's Notification Module delegates sending notifications to other modules, c
 
 <Note>
 
-Learn more about modules in [this documentation](!docs!/learn/basics/modules).
+Learn more about modules in [this documentation](!docs!/learn/fundamentals/modules).
 
 </Note>
 
@@ -182,14 +182,14 @@ export const serviceHighlights1 = [
 
 ```ts title="src/modules/resend/service.ts" highlights={serviceHighlights1}
 import { 
-  AbstractNotificationProviderService
+  AbstractNotificationProviderService,
 } from "@medusajs/framework/utils"
 import { 
-  Logger
-} from "@medusajs/framework/types";
+  Logger,
+} from "@medusajs/framework/types"
 import { 
-  Resend
-} from "resend";
+  Resend,
+} from "resend"
 
 type ResendOptions = {
   api_key: string
@@ -248,7 +248,7 @@ class ResendNotificationProviderService extends AbstractNotificationProviderServ
 
 A module's service accepts two parameters:
 
-1. Dependencies resolved from the [Module's container](!docs!/learn/advanced-development/modules/container), which is the module's local registry that the Medusa application adds framework tools to. In this service, you resolve the [Logger utility](!docs!/learn/debugging-and-testing/logging) from the module's container.
+1. Dependencies resolved from the [Module's container](!docs!/learn/fundamentals/modules/container), which is the module's local registry that the Medusa application adds framework tools to. In this service, you resolve the [Logger utility](!docs!/learn/debugging-and-testing/logging) from the module's container.
 2. The module's options that are passed to the module in Medusa's configuration as you'll see in a later section.
 
 Using the API key passed in the module's options, you initialize the Resend client. You also set the `options` and `logger` properties.
@@ -263,7 +263,7 @@ So, add to the `ResendNotificationProviderService` the `validateOptions` method:
 // other imports...
 import { 
   // other imports...
-  MedusaError
+  MedusaError,
 } from "@medusajs/framework/utils"
 
 // ...
@@ -287,7 +287,7 @@ class ResendNotificationProviderService extends AbstractNotificationProviderServ
 }
 ```
 
-In the `validateOptions` method, you throw an error if the `api_key` or `from` options aren't passed to the module. To throw errors, you use Medusa's `MedusaError` utility imported from `@medusajs/framework/utils`. This ensures errors follow Medusa's conventions and are displayed similar to Medusa's errors.
+In the `validateOptions` method, you throw an error if the `api_key` or `from` options aren't passed to the module. To throw errors, you use `MedusaError` from the Modules SDK. This ensures errors follow Medusa's conventions and are displayed similar to Medusa's errors.
 
 #### Implement Template Methods
 
@@ -397,7 +397,7 @@ class ResendNotificationProviderService extends AbstractNotificationProviderServ
       from: this.options.from,
       to: [notification.to],
       subject: this.getTemplateSubject(notification.template as Templates),
-      html: ""
+      html: "",
     }
 
     if (typeof template === "string") {
@@ -440,7 +440,7 @@ Create the file `src/modules/resend/index.ts` with the following content:
 ```ts title="src/modules/resend/index.ts"
 import { 
   ModuleProvider, 
-  Modules
+  Modules,
 } from "@medusajs/framework/utils"
 import ResendNotificationProviderService from "./service"
 
@@ -449,7 +449,7 @@ export default ModuleProvider(Modules.NOTIFICATION, {
 })
 ```
 
-You export the module provider's definition using the `ModuleProvider` utility function. It accepts as a first parameter the name of the module that this provider belongs to, which is the Notification Module. It also accepts as a second parameter an object having a `service` property indicating the provider's service.
+You export the module provider's definition using `ModuleProvider` from the Modules SDK. It accepts as a first parameter the name of the module that this provider belongs to, which is the Notification Module. It also accepts as a second parameter an object having a `service` property indicating the provider's service.
 
 ### Add Module to Configurations
 
@@ -562,7 +562,7 @@ function OrderPlacedEmailComponent({ order }: OrderPlacedEmailProps) {
       <Heading>Thank you for your order</Heading>
       {order.email}'s Items
       <Container>
-        {order.items.map(item => {
+        {order.items.map((item) => {
           return (
             <Section
               key={item.id}
@@ -606,10 +606,10 @@ Next, update the `templates` variable in `src/modules/resend/service.ts` to assi
 
 ```ts title="src/modules/resend/service.ts"
 // other imports...
-import { orderPlacedEmail } from "./emails/order-placed";
+import { orderPlacedEmail } from "./emails/order-placed"
 
 const templates: {[key in Templates]?: (props: unknown) => React.ReactNode} = {
-  [Templates.ORDER_PLACED]: orderPlacedEmail
+  [Templates.ORDER_PLACED]: orderPlacedEmail,
 }
 ```
 
@@ -627,7 +627,7 @@ Instead, you'll create a subscriber that listens to the `order.placed` event and
 
 <Note>
 
-Learn more about Medusa's event system in [this documentation](!docs!/learn/basics/events-and-subscribers).
+Learn more about Medusa's event system in [this documentation](!docs!/learn/fundamentals/events-and-subscribers).
 
 </Note>
 
@@ -639,7 +639,7 @@ A workflow is a series of queries and actions, called steps, that complete a tas
 
 <Note>
 
-Learn more about workflows in [this documentation](!docs!/learn/basics/workflows)
+Learn more about workflows in [this documentation](!docs!/learn/fundamentals/workflows)
 
 </Note>
 
@@ -669,7 +669,7 @@ You define the `sendNotificationStep` using the `createStep` function that accep
 - A string indicating the step's unique name.
 - The step's function definition as a second parameter. It accepts the step's input as a first parameter, and an object of options as a second.
 
-The `container` property in the second parameter is an instance of the [Medusa container](!docs!/learn/basics/medusa-container), which is a registry of framework and commerce tools, such a module's service, that you can resolve to utilize their functionalities.
+The `container` property in the second parameter is an instance of the [Medusa container](!docs!/learn/fundamentals/medusa-container), which is a registry of framework and commerce tools, such a module's service, that you can resolve to utilize their functionalities.
 
 <Note title="Tip">
 
@@ -696,10 +696,10 @@ export const workflowHighlights = [
 ```ts title="src/workflows/send-order-confirmation.ts" highlights={workflowHighlights}
 import { 
   createWorkflow, 
-  WorkflowResponse
-} from "@medusajs/framework/workflows-sdk";
-import { useQueryGraphStep } from "@medusajs/medusa/core-flows";
-import { sendNotificationStep } from "./steps/send-notification";
+  WorkflowResponse,
+} from "@medusajs/framework/workflows-sdk"
+import { useQueryGraphStep } from "@medusajs/medusa/core-flows"
+import { sendNotificationStep } from "./steps/send-notification"
 
 type WorkflowInput = {
   id: string
@@ -719,8 +719,8 @@ export const sendOrderConfirmationWorkflow = createWorkflow(
         "items.*",
       ],
       filters: {
-        id
-      }
+        id,
+      },
     })
     
     const notification = sendNotificationStep([{
@@ -728,8 +728,8 @@ export const sendOrderConfirmationWorkflow = createWorkflow(
       channel: "email",
       template: "order-placed",
       data: {
-        order: orders[0]
-      }
+        order: orders[0],
+      },
     }])
 
     return new WorkflowResponse(notification)
@@ -737,11 +737,11 @@ export const sendOrderConfirmationWorkflow = createWorkflow(
 )
 ```
 
-You create a workflow using the `createWorkflow` function imported from `@medusajs/framework/workflows-sdk`. It accepts the workflow's unique name as a first parameter.
+You create a workflow using `createWorkflow` from the Workflows SDK. It accepts the workflow's unique name as a first parameter.
 
 It accepts as a second parameter a constructor function, which is the workflow's implementation. The workflow has the following steps:
 
-1. `useQueryGraphStep`, which is a step implemented by Medusa that uses [Query](!docs!/learn/advanced-development/module-links/query), a tool that allows you to retrieve data across modules. You use it to retrieve the order's details.
+1. `useQueryGraphStep`, which is a step implemented by Medusa that uses [Query](!docs!/learn/fundamentals/module-links/query), a tool that allows you to retrieve data across modules. You use it to retrieve the order's details.
 2. `sendNotificationStep` which is the step you implemented. You pass it an array with one object, which is the notification's details having following properties:
     - `to`: The address to send the email to. You pass the customer's email that is stored in the order.
     - `channel`: The channel to send the notification through, which is `email`. Since you specified `email` in the Resend Module Provider's `channel` option, the Notification Module will delegate the sending to the Resend Module Provider's service.
@@ -750,7 +750,7 @@ It accepts as a second parameter a constructor function, which is the workflow's
 
 <Note title="Tip">
 
-A workflow's constructor function has some constraints in implementation. Learn more about them in [this documentation](!docs!/learn/advanced-development/workflows/constructor-constraints).
+A workflow's constructor function has some constraints in implementation. Learn more about them in [this documentation](!docs!/learn/fundamentals/workflows/constructor-constraints).
 
 </Note>
 
@@ -787,8 +787,8 @@ export default async function orderPlacedHandler({
   await sendOrderConfirmationWorkflow(container)
     .run({
       input: {
-        id: data.id
-      }
+        id: data.id,
+      },
     })
 }
 
@@ -802,7 +802,7 @@ A subscriber file exports:
 - An asynchronous function that's executed whenever the associated event is emitted, which is the `order.placed` event.
 - A configuration object with an `event` property indicating the event the subscriber is listening to.
 
-The subscriber function accepts the event's details as a first paramter which has a `data` property that holds the data payload of the event. For example, Medusa emits the `order.placed` event with the order's ID in the data payload. The function also accepts as a second parameter the [Medusa container](!docs!/learn/basics/medusa-container).
+The subscriber function accepts the event's details as a first paramter which has a `data` property that holds the data payload of the event. For example, Medusa emits the `order.placed` event with the order's ID in the data payload. The function also accepts as a second parameter the [Medusa container](!docs!/learn/fundamentals/medusa-container).
 
 In the function, you execute the `sendOrderConfirmationWorkflow` by invoking it, passing it the `container`, then using its `run` method. The `run` method accepts an object having an `input` property, which is the input to pass to the workflow. You pass the ID of the placed order as received in the event's data payload.
 

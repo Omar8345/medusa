@@ -85,7 +85,7 @@ export const PromotionGeneralSection = ({
     [PromotionStatus.EXPIRED]: ["red", t("statuses.expired")],
   }[getPromotionStatus(promotion)] as [
     "grey" | "orange" | "green" | "red",
-    string,
+    string
   ]
 
   const displayValue = getDisplayValue(promotion)
@@ -141,7 +141,11 @@ export const PromotionGeneralSection = ({
           {t("fields.code")}
         </Text>
 
-        <Copy content={promotion.code!} asChild>
+        <Copy
+          content={promotion.code!}
+          className="text-ui-tag-neutral-text"
+          asChild
+        >
           <Badge
             size="2xsmall"
             rounded="full"

@@ -16,11 +16,19 @@ import {
   normalizePath,
 } from "../utils"
 import { getRoute } from "./helpers"
+import { NESTED_ROUTE_POSITIONS } from "@medusajs/admin-shared"
+
+type RouteConfig = {
+  label: boolean
+  icon: boolean
+  nested?: string
+}
 
 type MenuItem = {
   icon?: string
   label: string
   path: string
+  nested?: string
 }
 
 type MenuItemResult = {
@@ -32,13 +40,10 @@ export async function generateMenuItems(sources: Set<string>) {
   const files = await getFilesFromSources(sources)
   const results = await getMenuItemResults(files)
 
-  const imports = results.map((result) => result.import).flat()
+  const imports = results.map((result) => result.import)
   const code = generateCode(results)
 
-  return {
-    imports,
-    code,
-  }
+  return { imports, code }
 }
 
 function generateCode(results: MenuItemResult[]): string {
@@ -53,10 +58,12 @@ function generateCode(results: MenuItemResult[]): string {
 }
 
 function formatMenuItem(route: MenuItem): string {
+  const { label, icon, path, nested } = route
   return `{
-    label: ${route.label},
-    icon: ${route.icon ? route.icon : "undefined"},
-    path: "${route.path}",
+    label: ${label},
+    icon: ${icon || "undefined"},
+    path: "${path}",
+    nested: ${nested ? `"${nested}"` : "undefined"}
   }`
 }
 
@@ -107,25 +114,21 @@ function generateImport(file: string, index: number): string {
 }
 
 function generateMenuItem(
-  config: { label: boolean; icon: boolean },
+  config: RouteConfig,
   file: string,
   index: number
 ): MenuItem {
   const configName = generateRouteConfigName(index)
-  const routePath = getRoute(file)
-
   return {
     label: `${configName}.label`,
     icon: config.icon ? `${configName}.icon` : undefined,
-    path: routePath,
+    path: getRoute(file),
+    nested: config.nested,
   }
 }
 
-async function getRouteConfig(
-  file: string
-): Promise<{ label: boolean; icon: boolean } | null> {
+async function getRouteConfig(file: string): Promise<RouteConfig | null> {
   const code = await fs.readFile(file, "utf-8")
-
   let ast: ParseResult<File> | null = null
 
   try {
@@ -138,32 +141,50 @@ async function getRouteConfig(
     return null
   }
 
-  let config: { label: boolean; icon: boolean } | null = null
+  let config: RouteConfig | null = null
 
   try {
     traverse(ast, {
       ExportNamedDeclaration(path) {
         const properties = getConfigObjectProperties(path)
-
         if (!properties) {
           return
         }
 
-        const hasLabel = properties.some(
-          (prop) =>
-            isObjectProperty(prop) && isIdentifier(prop.key, { name: "label" })
-        )
+        const hasProperty = (name: string) =>
+          properties.some(
+            (prop) => isObjectProperty(prop) && isIdentifier(prop.key, { name })
+          )
 
+        const hasLabel = hasProperty("label")
         if (!hasLabel) {
           return
         }
 
-        const hasIcon = properties.some(
+        const nested = properties.find(
           (prop) =>
-            isObjectProperty(prop) && isIdentifier(prop.key, { name: "icon" })
+            isObjectProperty(prop) && isIdentifier(prop.key, { name: "nested" })
         )
 
-        config = { label: hasLabel, icon: hasIcon }
+        const nestedValue = nested ? (nested as any).value.value : undefined
+
+        if (nestedValue && !NESTED_ROUTE_POSITIONS.includes(nestedValue)) {
+          logger.error(
+            `Invalid nested route position: "${nestedValue}". Allowed values are: ${NESTED_ROUTE_POSITIONS.join(
+              ", "
+            )}`,
+            {
+              file,
+            }
+          )
+          return
+        }
+
+        config = {
+          label: hasLabel,
+          icon: hasProperty("icon"),
+          nested: nestedValue,
+        }
       },
     })
   } catch (e) {

@@ -71,6 +71,7 @@ describe("Order Return - Actions", function () {
         order_id: "1",
       },
     ],
+    credit_lines: [],
     total: 270,
   }
 

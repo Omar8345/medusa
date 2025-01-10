@@ -8,6 +8,14 @@
  *   url: https://docs.medusajs.com/v2/resources/storefront-development/products/categories/list
  *   description: "Storefront guide: How to retrieve a list of product categories."
  * parameters:
+ *   - name: x-publishable-api-key
+ *     in: header
+ *     description: Publishable API Key created in the Medusa Admin.
+ *     required: true
+ *     schema:
+ *       type: string
+ *       externalDocs:
+ *         url: https://docs.medusajs.com/api/store#publishable-api-key
  *   - name: fields
  *     in: query
  *     description: Comma-separated fields that should be included in the returned data. if a field is prefixed with `+` it will be added to the default fields, using `-` will remove it from the default

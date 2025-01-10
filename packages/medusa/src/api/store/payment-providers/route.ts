@@ -28,9 +28,9 @@ export const GET = async (
       filters: {
         region_id: req.filterableFields.region_id,
       },
-      ...req.remoteQueryConfig.pagination,
+      ...req.queryConfig.pagination,
     },
-    fields: req.remoteQueryConfig.fields.map((f) => `payment_provider.${f}`),
+    fields: req.queryConfig.fields.map((f) => `payment_provider.${f}`),
   })
 
   const { rows: regionPaymentProvidersRelation, metadata } = await remoteQuery(

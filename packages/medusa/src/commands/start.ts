@@ -12,12 +12,14 @@ import {
   gqlSchemaToTypes,
   GracefulShutdownServer,
   isPresent,
+  generateContainerTypes,
 } from "@medusajs/framework/utils"
 import { logger } from "@medusajs/framework/logger"
 
 import loaders from "../loaders"
 import { MedusaModule } from "@medusajs/framework/modules-sdk"
 import { MedusaContainer } from "@medusajs/framework/types"
+import { parse } from "url"
 
 const EVERY_SIXTH_HOUR = "0 */6 * * *"
 const CRON_SCHEDULE = EVERY_SIXTH_HOUR
@@ -87,6 +89,44 @@ function displayAdminUrl({
   logger.info(`Admin URL → http://${host || "localhost"}:${port}${adminPath}`)
 }
 
+type ExpressStack = {
+  name: string
+  match: (url: string) => boolean
+  route: { path: string }
+  handle: { stack: ExpressStack[] }
+}
+
+/**
+ * Retrieve the route path from the express stack based on the input url
+ * @param stack - The express stack
+ * @param url - The input url
+ * @returns The route path
+ */
+function findExpressRoutePath({
+  stack,
+  url,
+}: {
+  stack: ExpressStack[]
+  url: string
+}): string | void {
+  const stackToProcess = [...stack]
+
+  while (stackToProcess.length > 0) {
+    const layer = stackToProcess.pop()!
+
+    if (layer.name === "bound dispatch" && layer.match(url)) {
+      return layer.route.path
+    }
+
+    // Add nested stack items to be processed if they exist
+    if (layer.handle?.stack?.length) {
+      stackToProcess.push(...layer.handle.stack)
+    }
+  }
+
+  return undefined
+}
+
 async function start(args: {
   directory: string
   host?: string
@@ -103,15 +143,21 @@ async function start(args: {
     const app = express()
 
     const http_ = http.createServer(async (req, res) => {
+      const stack = app._router.stack
       await new Promise((resolve) => {
         res.on("finish", resolve)
         if (traceRequestHandler) {
+          const expressHandlerPath = findExpressRoutePath({
+            stack,
+            url: parse(req.url!, false).pathname!,
+          })
           void traceRequestHandler(
             async () => {
               app(req, res)
             },
             req,
-            res
+            res,
+            expressHandlerPath
           )
         } else {
           app(req, res)
@@ -120,24 +166,44 @@ async function start(args: {
     })
 
     try {
-      const { shutdown, gqlSchema, container } = await loaders({
+      const { shutdown, gqlSchema, container, modules } = await loaders({
         directory,
         expressApp: app,
       })
 
-      if (gqlSchema && generateTypes) {
-        const outputDirGeneratedTypes = path.join(directory, ".medusa/types")
-        await gqlSchemaToTypes({
-          outputDir: outputDirGeneratedTypes,
-          filename: "remote-query-entry-points",
-          interfaceName: "RemoteQueryEntryPoints",
-          schema: gqlSchema,
-          joinerConfigs: MedusaModule.getAllJoinerConfigs(),
+      if (generateTypes) {
+        const typesDirectory = path.join(directory, ".medusa/types")
+
+        /**
+         * Cleanup existing types directory before creating new artifacts
+         */
+        await new FileSystem(typesDirectory).cleanup({ recursive: true })
+
+        await generateContainerTypes(modules, {
+          outputDir: typesDirectory,
+          interfaceName: "ModuleImplementations",
         })
-        logger.info("Generated modules types")
+        logger.debug("Generated container types")
+
+        if (gqlSchema) {
+          await gqlSchemaToTypes({
+            outputDir: typesDirectory,
+            filename: "query-entry-points",
+            interfaceName: "RemoteQueryEntryPoints",
+            schema: gqlSchema,
+            joinerConfigs: MedusaModule.getAllJoinerConfigs(),
+          })
+          logger.debug("Generated modules types")
+        }
       }
 
       const serverActivity = logger.activity(`Creating server`)
+
+      // Register a health check endpoint. Ideally this also checks the readiness of the service, rather than just returning a static response.
+      app.get("/health", (_, res) => {
+        res.status(200).send("OK")
+      })
+
       const server = GracefulShutdownServer.create(
         http_.listen(port, host).on("listening", () => {
           logger.success(

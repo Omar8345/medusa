@@ -24,10 +24,12 @@
   ],
   "scripts": {
     "build": "yarn clean && tsc",
-    "clean": "rimraf dist"
+    "clean": "rimraf dist",
+    "watch": "tsc --watch"
   },
   "dependencies": {
-    "remark-rehype-plugins": "*"
+    "docs-utils": "*",
+    "tags": "*"
   },
   "devDependencies": {
     "@types/node": "^20.11.20",
@@ -35,6 +37,9 @@
     "tsconfig": "*",
     "types": "*",
     "typescript": "^5.3.3"
+  },
+  "peerDependencies": {
+    "docs-utils": "*"
   },
   "engines": {
     "node": ">=18.17.0"

@@ -18,7 +18,7 @@ export const GET = async (
   const customer = await refetchCustomer(
     req.params.id,
     req.scope,
-    req.remoteQueryConfig.fields
+    req.queryConfig.fields
   )
 
   if (!customer) {
@@ -58,7 +58,7 @@ export const POST = async (
   const customer = await refetchCustomer(
     req.params.id,
     req.scope,
-    req.remoteQueryConfig.fields
+    req.queryConfig.fields
   )
   res.status(200).json({ customer })
 }

@@ -1,4 +1,4 @@
-import { RemoteLink } from "@medusajs/framework/modules-sdk"
+import { Link } from "@medusajs/framework/modules-sdk"
 import { RemoteQueryFunction } from "@medusajs/framework/types"
 import { createStep, StepResponse } from "@medusajs/framework/workflows-sdk"
 import {
@@ -70,9 +70,7 @@ export const setShippingOptionsPriceSetsStep = createStep(
       return
     }
 
-    const remoteLink = container.resolve<RemoteLink>(
-      ContainerRegistrationKeys.REMOTE_LINK
-    )
+    const remoteLink = container.resolve<Link>(ContainerRegistrationKeys.LINK)
     const remoteQuery = container.resolve<RemoteQueryFunction>(
       ContainerRegistrationKeys.REMOTE_QUERY
     )
@@ -152,9 +150,7 @@ export const setShippingOptionsPriceSetsStep = createStep(
       return
     }
 
-    const remoteLink = container.resolve<RemoteLink>(
-      ContainerRegistrationKeys.REMOTE_LINK
-    )
+    const remoteLink = container.resolve<Link>(ContainerRegistrationKeys.LINK)
 
     const promises: Promise<unknown[]>[] = []
 

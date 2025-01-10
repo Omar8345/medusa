@@ -16,8 +16,8 @@ moduleIntegrationTestRunner<IStockLocationService>({
         }).linkable
 
         expect(Object.keys(linkable)).toEqual([
-          "stockLocationAddress",
           "stockLocation",
+          "stockLocationAddress",
         ])
 
         Object.keys(linkable).forEach((key) => {

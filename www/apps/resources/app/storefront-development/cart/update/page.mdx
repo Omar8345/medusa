@@ -1,3 +1,9 @@
+---
+tags:
+  - cart
+  - storefront
+---
+
 import { CodeTabs, CodeTab } from "docs-ui"
 
 export const metadata = {
@@ -70,7 +76,7 @@ fetch(`http://localhost:9000/store/carts/${cartId}/customer`, {
   method: "POST",
   headers: {
     "Content-Type": "application/json",
-    
+    "x-publishable-api-key": process.env.NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY || "temp",
   },
 })
 .then((res) => res.json())

@@ -107,15 +107,30 @@ export const CodeTabs = ({
         return
       }
 
-      const codeBlockProps = codeBlock.props as CodeBlockProps
+      let codeBlockProps = codeBlock.props as CodeBlockProps
+
+      const commonProps = {
+        badgeLabel: undefined,
+        hasTabs: true,
+        className: clsx("!my-0", codeBlockProps.className),
+      }
+
+      if (
+        typeof codeBlock.type !== "string" &&
+        (("name" in codeBlock.type && codeBlock.type.name === "CodeBlock") ||
+          "source" in codeBlockProps)
+      ) {
+        codeBlockProps = {
+          ...codeBlockProps,
+          ...commonProps,
+        }
+      }
 
       const modifiedProps: CodeBlockProps = {
         ...(getCodeBlockProps(codeBlock) || {
           source: "",
         }),
-        badgeLabel: undefined,
-        hasTabs: true,
-        className: clsx("!my-0", codeBlockProps.className),
+        ...commonProps,
       }
 
       tempTabs.push({

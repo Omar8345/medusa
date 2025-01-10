@@ -4,6 +4,7 @@ x-schemaName: StoreOrder
 required:
   - items
   - shipping_methods
+  - status
   - currency_code
   - id
   - region_id
@@ -228,3 +229,7 @@ properties:
     description: The order's transactions.
     items:
       $ref: ./BaseOrderTransaction.yaml
+  status:
+    type: string
+    title: status
+    description: The order's status.

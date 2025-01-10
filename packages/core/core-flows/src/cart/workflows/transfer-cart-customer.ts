@@ -6,6 +6,7 @@ import {
 } from "@medusajs/framework/workflows-sdk"
 import { useQueryGraphStep } from "../../common"
 import { updateCartsStep } from "../steps"
+import { refreshCartItemsWorkflow } from "./refresh-cart-items"
 
 export const transferCartCustomerWorkflowId = "transfer-cart-customer"
 /**
@@ -65,6 +66,10 @@ export const transferCartCustomerWorkflow = createWorkflow(
         )
 
         updateCartsStep(cartInput)
+
+        refreshCartItemsWorkflow.runAsStep({
+          input: { cart_id: input.id },
+        })
       }
     )
   }

@@ -1,135 +1,36 @@
-import { DALUtils, isDefined, MathBN } from "@medusajs/framework/utils"
-import {
-  BeforeCreate,
-  Entity,
-  Filter,
-  ManyToOne,
-  OnInit,
-  OnLoad,
-  PrimaryKey,
-  Property,
-  Rel,
-} from "@mikro-orm/core"
+import { model } from "@medusajs/framework/utils"
+import InventoryItem from "./inventory-item"
 
-import { BigNumberRawValue } from "@medusajs/framework/types"
-import {
-  BigNumber,
-  createPsqlIndexStatementHelper,
-  generateEntityId,
-  MikroOrmBigNumberProperty,
-} from "@medusajs/framework/utils"
-import { InventoryItem } from "./inventory-item"
-
-const InventoryLevelDeletedAtIndex = createPsqlIndexStatementHelper({
-  tableName: "inventory_level",
-  columns: "deleted_at",
-  where: "deleted_at IS NOT NULL",
-})
-
-const InventoryLevelInventoryItemIdIndex = createPsqlIndexStatementHelper({
-  tableName: "inventory_level",
-  columns: "inventory_item_id",
-  where: "deleted_at IS NULL",
-})
-
-const InventoryLevelLocationIdIndex = createPsqlIndexStatementHelper({
-  tableName: "inventory_level",
-  columns: "location_id",
-  where: "deleted_at IS NULL",
-})
-
-const InventoryLevelLocationIdInventoryItemIdIndex =
-  createPsqlIndexStatementHelper({
-    tableName: "inventory_level",
-    columns: ["inventory_item_id", "location_id"],
-    unique: true,
-    where: "deleted_at IS NULL",
+const InventoryLevel = model
+  .define("InventoryLevel", {
+    id: model.id({ prefix: "ilev" }).primaryKey(),
+    location_id: model.text(),
+    stocked_quantity: model.bigNumber().default(0),
+    reserved_quantity: model.bigNumber().default(0),
+    incoming_quantity: model.bigNumber().default(0),
+    metadata: model.json().nullable(),
+    inventory_item: model.belongsTo(() => InventoryItem, {
+      mappedBy: "location_levels",
+    }),
+    available_quantity: model.bigNumber().computed(),
   })
+  .indexes([
+    {
+      name: "IDX_inventory_level_inventory_item_id",
+      on: ["inventory_item_id"],
+      where: "deleted_at IS NULL",
+    },
+    {
+      name: "IDX_inventory_level_location_id",
+      on: ["location_id"],
+      where: "deleted_at IS NULL",
+    },
+    {
+      name: "IDX_inventory_level_location_id_inventory_item_id",
+      on: ["inventory_item_id", "location_id"],
+      unique: true,
+      where: "deleted_at IS NULL",
+    },
+  ])
 
-@Entity()
-@InventoryLevelLocationIdInventoryItemIdIndex.MikroORMIndex()
-@Filter(DALUtils.mikroOrmSoftDeletableFilterOptions)
-export class InventoryLevel {
-  @PrimaryKey({ columnType: "text" })
-  id: string
-
-  @Property({
-    onCreate: () => new Date(),
-    columnType: "timestamptz",
-    defaultRaw: "now()",
-  })
-  created_at: Date
-
-  @Property({
-    onCreate: () => new Date(),
-    onUpdate: () => new Date(),
-    columnType: "timestamptz",
-    defaultRaw: "now()",
-  })
-  updated_at: Date
-
-  @InventoryLevelDeletedAtIndex.MikroORMIndex()
-  @Property({ columnType: "timestamptz", nullable: true })
-  deleted_at: Date | null = null
-
-  @ManyToOne(() => InventoryItem, {
-    fieldName: "inventory_item_id",
-    type: "text",
-    mapToPk: true,
-    onDelete: "cascade",
-  })
-  @InventoryLevelInventoryItemIdIndex.MikroORMIndex()
-  inventory_item_id: string
-
-  @InventoryLevelLocationIdIndex.MikroORMIndex()
-  @Property({ type: "text" })
-  location_id: string
-
-  @MikroOrmBigNumberProperty()
-  stocked_quantity: BigNumber | number = 0
-
-  @Property({ columnType: "jsonb" })
-  raw_stocked_quantity: BigNumberRawValue
-
-  @MikroOrmBigNumberProperty()
-  reserved_quantity: BigNumber | number = 0
-
-  @Property({ columnType: "jsonb" })
-  raw_reserved_quantity: BigNumberRawValue
-
-  @MikroOrmBigNumberProperty()
-  incoming_quantity: BigNumber | number = 0
-
-  @Property({ columnType: "jsonb" })
-  raw_incoming_quantity: BigNumberRawValue
-
-  @Property({ columnType: "jsonb", nullable: true })
-  metadata: Record<string, unknown> | null
-
-  @ManyToOne(() => InventoryItem, {
-    persist: false,
-  })
-  inventory_item: Rel<InventoryItem>
-
-  available_quantity: BigNumber | number | null = null
-
-  @BeforeCreate()
-  beforeCreate(): void {
-    this.id = generateEntityId(this.id, "ilev")
-    this.inventory_item_id ??= this.inventory_item?.id
-  }
-
-  @OnInit()
-  onInit(): void {
-    this.id = generateEntityId(this.id, "ilev")
-  }
-
-  @OnLoad()
-  onLoad(): void {
-    if (isDefined(this.stocked_quantity) && isDefined(this.reserved_quantity)) {
-      this.available_quantity = new BigNumber(
-        MathBN.sub(this.raw_stocked_quantity, this.raw_reserved_quantity)
-      )
-    }
-  }
-}
+export default InventoryLevel

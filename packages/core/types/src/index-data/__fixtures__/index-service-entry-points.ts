@@ -28,23 +28,23 @@ export type Scalars = {
 }
 
 export type Product = {
-  __typename?: "Product"
-  id?: Maybe<Scalars["String"]["output"]>
-  title?: Maybe<Scalars["String"]["output"]>
-  variants?: Maybe<Array<Maybe<ProductVariant>>>
+  __typename: "Product"
+  id: Maybe<Scalars["String"]["output"]>
+  title: Maybe<Scalars["String"]["output"]>
+  variants: Maybe<Array<Maybe<ProductVariant>>>
 }
 
 export type ProductVariant = {
-  __typename?: "ProductVariant"
-  id?: Maybe<Scalars["String"]["output"]>
-  product_id?: Maybe<Scalars["String"]["output"]>
-  sku?: Maybe<Scalars["String"]["output"]>
-  prices?: Maybe<Array<Maybe<Price>>>
+  __typename: "ProductVariant"
+  id: Maybe<Scalars["String"]["output"]>
+  product_id: Maybe<Scalars["String"]["output"]>
+  sku: Maybe<Scalars["String"]["output"]>
+  prices: Maybe<Array<Maybe<Price>>>
 }
 
 export type Price = {
-  __typename?: "Price"
-  amount?: Maybe<Scalars["Int"]["output"]>
+  __typename: "Price"
+  amount: Maybe<Scalars["Int"]["output"]>
 }
 
 export interface FixtureEntryPoints {

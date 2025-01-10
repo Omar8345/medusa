@@ -4,7 +4,7 @@ import { PaymentCollectionDTO } from "../payment"
 import { ProductDTO } from "../product"
 import { RegionDTO } from "../region"
 import { BigNumberInput } from "../totals"
-import { CartDTO, CartLineItemDTO } from "./common"
+import { CartDTO } from "./common"
 import {
   CreateAddressDTO,
   UpdateAddressDTO,
@@ -13,7 +13,7 @@ import {
 
 export interface CreateCartCreateLineItemDTO {
   quantity: BigNumberInput
-  variant_id: string
+  variant_id?: string
   title?: string
 
   subtitle?: string
@@ -44,8 +44,8 @@ export interface CreateCartCreateLineItemDTO {
 }
 
 export interface UpdateLineItemInCartWorkflowInputDTO {
-  cart: CartDTO
-  item: CartLineItemDTO
+  cart_id: string
+  item_id: string
   update: Partial<UpdateLineItemDTO>
 }
 
@@ -80,8 +80,8 @@ export interface CreateCartWorkflowInputDTO {
 }
 
 export interface AddToCartWorkflowInputDTO {
+  cart_id: string
   items: CreateCartCreateLineItemDTO[]
-  cart: CartWorkflowDTO
 }
 
 export interface UpdateCartWorkflowInputDTO {

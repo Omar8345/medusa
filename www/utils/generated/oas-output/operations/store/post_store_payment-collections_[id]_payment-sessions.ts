@@ -16,6 +16,14 @@
  *     required: true
  *     schema:
  *       type: string
+ *   - name: x-publishable-api-key
+ *     in: header
+ *     description: Publishable API Key created in the Medusa Admin.
+ *     required: true
+ *     schema:
+ *       type: string
+ *       externalDocs:
+ *         url: https://docs.medusajs.com/api/store#publishable-api-key
  *   - name: fields
  *     in: query
  *     description: Comma-separated fields that should be included in the returned data. if a field is prefixed with `+` it will be added to the default fields, using `-` will remove it from the default
@@ -38,8 +46,8 @@
  *     label: cURL
  *     source: |-
  *       curl -X POST '{backend_url}/store/payment-collections/{id}/payment-sessions' \
- *       -H 'Content-Type: application/json' \ \
- *       -H 'x-publishable-api-key: {your_publishable_api_key}'
+ *       -H 'Content-Type: application/json' \
+ *       -H 'x-publishable-api-key: {your_publishable_api_key}' \
  *       --data-raw '{
  *         "provider_id": "{value}"
  *       }'

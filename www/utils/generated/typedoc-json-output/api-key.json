@@ -2902,14 +2902,6 @@
 								"type": "union",
 								"types": [
 									{
-										"type": "literal",
-										"value": "ASC"
-									},
-									{
-										"type": "literal",
-										"value": "DESC"
-									},
-									{
 										"type": "intersection",
 										"types": [
 											{
@@ -2933,6 +2925,14 @@
 										"target": 212,
 										"name": "FindConfigOrder",
 										"package": "@medusajs/types"
+									},
+									{
+										"type": "literal",
+										"value": "ASC"
+									},
+									{
+										"type": "literal",
+										"value": "DESC"
 									}
 								]
 							}
@@ -4860,8 +4860,14 @@
 												}
 											],
 											"type": {
-												"type": "inferred",
-												"name": "V"
+												"type": "reference",
+												"target": {
+													"sourceFileName": "../../../../packages/core/types/src/dal/utils.ts",
+													"qualifiedName": "V"
+												},
+												"name": "V",
+												"package": "@medusajs/types",
+												"refersToTypeParameter": true
 											}
 										}
 									]
@@ -7170,19 +7176,19 @@
 										"type": "union",
 										"types": [
 											{
-												"type": "array",
-												"elementType": {
-													"type": "intrinsic",
-													"name": "string"
-												}
-											},
-											{
 												"type": "intrinsic",
 												"name": "string"
 											},
 											{
 												"type": "intrinsic",
 												"name": "number"
+											},
+											{
+												"type": "array",
+												"elementType": {
+													"type": "intrinsic",
+													"name": "string"
+												}
 											}
 										]
 									}
@@ -8681,7 +8687,7 @@
 			"qualifiedName": "__type.__index"
 		},
 		"216": {
-			"sourceFileName": "../../../../packages/core/types/src/common/common.ts",
+			"sourceFileName": "",
 			"qualifiedName": "__type"
 		},
 		"217": {

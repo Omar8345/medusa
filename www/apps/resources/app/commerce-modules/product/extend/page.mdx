@@ -28,7 +28,7 @@ Consider you have a Hello Module defined in the `/src/modules/hello` directory.
 
 <Note title="Tip">
 
-If you don't have a module, follow [this guide](!docs!/basics/modules) to create one.
+If you don't have a module, follow [this guide](!docs!/learn/fundamentals/modules) to create one.
 
 </Note>
 
@@ -49,7 +49,7 @@ This creates a `Custom` data model that has the `id` and `custom_name` propertie
 
 <Note title="Tip">
 
-Learn more about data models in [this guide](!docs!/data-models).
+Learn more about data models in [this guide](!docs!/learn/fundamentals/modules#1-create-data-model).
 
 </Note>
 
@@ -61,7 +61,7 @@ Next, you'll define a module link between the `Custom` and `Product` data model.
 
 <Note title="Tip">
 
-Learn more about module links in [this guide](!docs!/module-links).
+Learn more about module links in [this guide](!docs!/learn/fundamentals/module-links).
 
 </Note>
 
@@ -88,7 +88,7 @@ This defines a link between the `Product` and `Custom` data models. Using this l
   items={[
     {
       text: "Module must be registered in medusa-config.js",
-      link: "!docs!/basics/modules#4-add-module-to-configurations"
+      link: "!docs!/learn/fundamentals/modules#4-add-module-to-configurations"
     }
   ]}
 />
@@ -121,7 +121,7 @@ To do that, you'll consume the [productsCreated](/references/medusa-workflows/cr
 
 <Note title="Tip">
 
-Learn more about workflow hooks in [this guide](!docs!/advanced-development/workflows/workflow-hooks).
+Learn more about workflow hooks in [this guide](!docs!/learn/fundamentals/workflows/workflow-hooks).
 
 </Note>
 
@@ -134,7 +134,7 @@ To pass the `custom_name` in the `additional_data` parameter, you must add a val
 Create the file `src/api/middlewares.ts` with the following content:
 
 ```ts title="src/api/middlewares.ts"
-import { defineMiddlewares } from "@medusajs/medusa"
+import { defineMiddlewares } from "@medusajs/framework/http"
 import { z } from "zod"
 
 export default defineMiddlewares({
@@ -150,13 +150,13 @@ export default defineMiddlewares({
 })
 ```
 
-The `additional_data` parameter validation is customized using the `defineMiddlewares` utility function. In the routes middleware configuration object, the `additionalDataValidator` property accepts [Zod](https://zod.dev/) validaiton rules.
+The `additional_data` parameter validation is customized using `defineMiddlewares`. In the routes middleware configuration object, the `additionalDataValidator` property accepts [Zod](https://zod.dev/) validaiton rules.
 
 In the snippet above, you add a validation rule indicating that `custom_name` is a string that can be passed in the `additional_data` object.
 
 <Note title="Tip">
 
-Learn more about additional data validation in [this guide](!docs!/advanced-development/api-routes/additional-data).
+Learn more about additional data validation in [this guide](!docs!/learn/fundamentals/api-routes/additional-data).
 
 </Note>
 
@@ -208,7 +208,7 @@ In the compensation function that undoes the step's actions in case of an error,
 
 <Note title="Tip">
 
-Learn more about compensation functions in [this guide](!docs!/advanced-development/workflows/compensation-function).
+Learn more about compensation functions in [this guide](!docs!/learn/fundamentals/workflows/compensation-function).
 
 </Note>
 
@@ -266,9 +266,9 @@ The workflow accepts as an input the created product and the `additional_data` p
 
 In the workflow, you:
 
-1. Use the `transform` utility to get the value of `custom_name` based on whether it's set in `additional_data`. Learn more about why you can't use conditional operators in a workflow without using `transform` in [this guide](!docs!/advanced-development/workflows/conditions#why-if-conditions-arent-allowed-in-workflows).
+1. Use `transform` to get the value of `custom_name` based on whether it's set in `additional_data`. Learn more about why you can't use conditional operators in a workflow without using `transform` in [this guide](!docs!/learn/fundamentals/workflows/conditions#why-if-conditions-arent-allowed-in-workflows).
 2. Create the `Custom` record using the `createCustomStep`.
-3. Use the `when-then` utility to link the product to the `Custom` record if it was created. Learn more about why you can't use if-then conditions in a workflow without using `when-then` in [this guide](!docs!/advanced-development/workflows/conditions#why-if-conditions-arent-allowed-in-workflows).
+3. Use `when-then` to link the product to the `Custom` record if it was created. Learn more about why you can't use if-then conditions in a workflow without using `when-then` in [this guide](!docs!/learn/fundamentals/workflows/conditions#why-if-conditions-arent-allowed-in-workflows).
 
 You'll next execute the workflow in the hook handler.
 
@@ -373,7 +373,7 @@ Among the returned `product` object, you'll find a `custom` property which holds
 
 ### Retrieve using Query
 
-You can also retrieve the `Custom` record linked to a product in your code using [Query](!docs!/advanced-development/module-links/query).
+You can also retrieve the `Custom` record linked to a product in your code using [Query](!docs!/learn/fundamentals/module-links/query).
 
 For example:
 
@@ -387,7 +387,7 @@ const { data: [product] } = await query.graph({
 })
 ```
 
-Learn more about how to use Query in [this guide](!docs!/advanced-development/module-links/query).
+Learn more about how to use Query in [this guide](!docs!/learn/fundamentals/module-links/query).
 
 ---
 
@@ -402,7 +402,7 @@ The `updateProductsWorkflow` is executed by the [Update Product API route](!api!
 To allow passing `custom_name` in the `additional_data` parameter of the update product route, add in `src/api/middlewares.ts` a new route middleware configuration object:
 
 ```ts title="src/api/middlewares.ts"
-import { defineMiddlewares } from "@medusajs/medusa"
+import { defineMiddlewares } from "@medusajs/framework/http"
 import { z } from "zod"
 
 export default defineMiddlewares({
@@ -547,12 +547,14 @@ In the workflow, you retrieve the product's linked `Custom` record using Query.
 Next, replace the `TODO` with the following:
 
 ```ts title="src/workflows/update-custom-from-product/index.ts"
-const created = when({
-  input,
-  products,
-}, (data) => 
-  !data.products[0].custom && 
-  data.input.additional_data?.custom_name?.length > 0
+const created = when(
+  "create-product-custom-link",
+  {
+    input,
+    products,
+  }, (data) => 
+    !data.products[0].custom && 
+    data.input.additional_data?.custom_name?.length > 0
 )
 .then(() => {
   const custom = createCustomStep({
@@ -574,21 +576,23 @@ const created = when({
 // TODO update, or delete Custom record
 ```
 
-Using the `when-then` utility, you check if the product doesn't have a linked `Custom` record and the `custom_name` property is set. If so, you create a `Custom` record and link it to the product.
+Using `when-then`, you check if the product doesn't have a linked `Custom` record and the `custom_name` property is set. If so, you create a `Custom` record and link it to the product.
 
 To create the `Custom` record, you use the `createCustomStep` you created in an earlier section.
 
 Next, replace the new `TODO` with the following:
 
 ```ts title="src/workflows/update-custom-from-product/index.ts"
-const deleted = when({
-  input,
-  products,
-}, (data) => 
-  data.products[0].custom && (
-    data.input.additional_data?.custom_name === null || 
-    data.input.additional_data?.custom_name.length === 0
-  )
+const deleted = when(
+  "delete-product-custom-link",
+  {
+    input,
+    products,
+  }, (data) => 
+    data.products[0].custom && (
+      data.input.additional_data?.custom_name === null || 
+      data.input.additional_data?.custom_name.length === 0
+    )
 )
 .then(() => {
   deleteCustomStep({
@@ -607,7 +611,7 @@ const deleted = when({
 // TODO delete Custom record
 ```
 
-Using the `when-then` utility, you check if the product has a linked `Custom` record and `custom_name` is `null` or an empty string. If so, you delete the linked `Custom` record and dismiss its links.
+Using `when-then`, you check if the product has a linked `Custom` record and `custom_name` is `null` or an empty string. If so, you delete the linked `Custom` record and dismiss its links.
 
 Finally, replace the new `TODO` with the following:
 
@@ -617,12 +621,10 @@ const updated = when({
   products,
 }, (data) => data.products[0].custom && data.input.additional_data?.custom_name?.length > 0)
 .then(() => {
-  const custom = updateCustomStep({
+  return updateCustomStep({
     id: products[0].custom.id,
     custom_name: input.additional_data.custom_name,
   })
-
-  return custom
 })
 
 return new WorkflowResponse({
@@ -632,7 +634,7 @@ return new WorkflowResponse({
 })
 ```
 
-Using the `when-then` utility, you check if the product has a linked `Custom` record and `custom_name` is passed in the `additional_data`. If so, you update the linked `Custom` record.
+Using `when-then`, you check if the product has a linked `Custom` record and `custom_name` is passed in the `additional_data`. If so, you update the linked `Custom` record.
 
 You return in the workflow response the created, updated, and deleted `Custom` record.
 

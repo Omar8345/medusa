@@ -4,13 +4,16 @@ import {
   DAL,
   FilterableStockLocationProps,
   IEventBusService,
+  InferEntityType,
   InternalModuleDeclaration,
   IStockLocationService,
   ModuleJoinerConfig,
   ModulesSdkTypes,
   StockLocationAddressInput,
   StockLocationTypes,
+  UpdateStockLocationAddressInput,
   UpdateStockLocationInput,
+  UpsertStockLocationAddressInput,
   UpsertStockLocationInput,
 } from "@medusajs/framework/types"
 import {
@@ -44,8 +47,12 @@ export default class StockLocationModuleService
 {
   protected readonly eventBusModuleService_: IEventBusService
   protected baseRepository_: DAL.RepositoryService
-  protected readonly stockLocationService_: ModulesSdkTypes.IMedusaInternalService<StockLocation>
-  protected readonly stockLocationAddressService_: ModulesSdkTypes.IMedusaInternalService<StockLocationAddress>
+  protected readonly stockLocationService_: ModulesSdkTypes.IMedusaInternalService<
+    InferEntityType<typeof StockLocation>
+  >
+  protected readonly stockLocationAddressService_: ModulesSdkTypes.IMedusaInternalService<
+    InferEntityType<typeof StockLocationAddress>
+  >
 
   constructor(
     {
@@ -102,7 +109,7 @@ export default class StockLocationModuleService
   async createStockLocations_(
     data: CreateStockLocationInput[],
     @MedusaContext() context: Context = {}
-  ): Promise<StockLocation[]> {
+  ): Promise<InferEntityType<typeof StockLocation>[]> {
     return await this.stockLocationService_.create(data, context)
   }
 
@@ -144,7 +151,10 @@ export default class StockLocationModuleService
       (location) => !location.id
     ) as CreateStockLocationInput[]
 
-    const operations: Promise<StockLocation[] | StockLocation>[] = []
+    const operations: Promise<
+      | InferEntityType<typeof StockLocation>[]
+      | InferEntityType<typeof StockLocation>
+    >[] = []
 
     if (toCreate.length) {
       operations.push(this.createStockLocations_(toCreate, context))
@@ -207,7 +217,10 @@ export default class StockLocationModuleService
       | UpdateStockLocationInput
       | { data: any; selector: FilterableStockLocationProps },
     @MedusaContext() context: Context = {}
-  ): Promise<StockLocation[] | StockLocation> {
+  ): Promise<
+    | InferEntityType<typeof StockLocation>[]
+    | InferEntityType<typeof StockLocation>
+  > {
     return await this.stockLocationService_.update(data, context)
   }
 
@@ -246,5 +259,63 @@ export default class StockLocationModuleService
     @MedusaContext() context: Context
   ) {
     return await this.stockLocationAddressService_.update(input, context)
+  }
+
+  async upsertStockLocationAddresses(
+    data: UpsertStockLocationAddressInput,
+    context?: Context
+  ): Promise<StockLocationTypes.StockLocationAddressDTO>
+  async upsertStockLocationAddresses(
+    data: UpsertStockLocationAddressInput[],
+    context?: Context
+  ): Promise<StockLocationTypes.StockLocationAddressDTO[]>
+
+  @InjectManager()
+  async upsertStockLocationAddresses(
+    data: UpsertStockLocationAddressInput | UpsertStockLocationAddressInput[],
+    @MedusaContext() context: Context = {}
+  ): Promise<
+    | StockLocationTypes.StockLocationAddressDTO
+    | StockLocationTypes.StockLocationAddressDTO[]
+  > {
+    const input = Array.isArray(data) ? data : [data]
+
+    const result = await this.upsertStockLocationAddresses_(input, context)
+
+    return await this.baseRepository_.serialize<
+      | StockLocationTypes.StockLocationAddressDTO[]
+      | StockLocationTypes.StockLocationAddressDTO
+    >(Array.isArray(data) ? result : result[0])
+  }
+
+  @InjectTransactionManager()
+  async upsertStockLocationAddresses_(
+    input: UpsertStockLocationAddressInput[],
+    @MedusaContext() context: Context = {}
+  ) {
+    const toUpdate = input.filter(
+      (location): location is UpdateStockLocationAddressInput => !!location.id
+    ) as UpdateStockLocationAddressInput[]
+    const toCreate = input.filter(
+      (location) => !location.id
+    ) as StockLocationAddressInput[]
+
+    const operations: Promise<
+      | InferEntityType<typeof StockLocationAddress>[]
+      | InferEntityType<typeof StockLocationAddress>
+    >[] = []
+
+    if (toCreate.length) {
+      operations.push(
+        this.stockLocationAddressService_.create(toCreate, context)
+      )
+    }
+    if (toUpdate.length) {
+      operations.push(
+        this.stockLocationAddressService_.update(toUpdate, context)
+      )
+    }
+
+    return (await promiseAll(operations)).flat()
   }
 }

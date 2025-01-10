@@ -28,6 +28,7 @@ const jsSdkOptions: FormattingOptionsType = {
     frontmatterData: {
       slug: "/references/js-sdk/store/{{alias}}",
       sidebar_label: "{{alias}}",
+      tags: ["js sdk", "storefront"],
     },
     reflectionTitle: {
       kind: false,
@@ -56,6 +57,7 @@ const jsSdkOptions: FormattingOptionsType = {
     frontmatterData: {
       slug: "/references/js-sdk/admin/{{alias}}",
       sidebar_label: "{{alias}}",
+      tags: ["js sdk", "admin"],
     },
     reflectionTitle: {
       kind: false,
@@ -74,6 +76,7 @@ const jsSdkOptions: FormattingOptionsType = {
   "^js_sdk/auth/classes/.*Auth": {
     frontmatterData: {
       slug: "/references/js-sdk/auth",
+      tags: ["js sdk"],
     },
     reflectionDescription:
       "The `sdk.auth` class provides methods to send requests to manage a user or customer's authentication",
@@ -85,6 +88,7 @@ const jsSdkOptions: FormattingOptionsType = {
     frontmatterData: {
       slug: "/references/js-sdk/auth/{{alias}}",
       sidebar_label: "{{alias}}",
+      tags: ["js sdk"],
     },
     reflectionTitle: {
       kind: false,

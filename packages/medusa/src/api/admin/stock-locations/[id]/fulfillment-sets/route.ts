@@ -24,7 +24,7 @@ export const POST = async (
   const stockLocation = await refetchStockLocation(
     req.params.id,
     req.scope,
-    req.remoteQueryConfig.fields
+    req.queryConfig.fields
   )
 
   res.status(200).json({ stock_location: stockLocation })

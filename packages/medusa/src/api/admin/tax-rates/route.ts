@@ -26,7 +26,7 @@ export const POST = async (
   const taxRate = await refetchTaxRate(
     result[0].id,
     req.scope,
-    req.remoteQueryConfig.fields
+    req.queryConfig.fields
   )
   res.status(200).json({ tax_rate: taxRate })
 }
@@ -41,9 +41,9 @@ export const GET = async (
       entryPoint: "tax_rate",
       variables: {
         filters: req.filterableFields,
-        ...req.remoteQueryConfig.pagination,
+        ...req.queryConfig.pagination,
       },
-      fields: req.remoteQueryConfig.fields,
+      fields: req.queryConfig.fields,
     })
   )
 

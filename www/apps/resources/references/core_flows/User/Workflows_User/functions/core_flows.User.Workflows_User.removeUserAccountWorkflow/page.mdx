@@ -1,11 +1,17 @@
 ---
 slug: /references/medusa-workflows/removeUserAccountWorkflow
 sidebar_label: removeUserAccountWorkflow
+tags:
+  - remote query
+  - auth
+  - workflow
+  - user
+  - event bus
 ---
 
 import { TypeList, WorkflowDiagram } from "docs-ui"
 
-# removeUserAccountWorkflow - Medusa Workflows API Reference
+# removeUserAccountWorkflow - Medusa Core Workflows Reference
 
 This documentation provides a reference to the `removeUserAccountWorkflow`. It belongs to the `@medusajs/medusa/core-flows` package.
 
@@ -13,12 +19,12 @@ This workflow deletes a user and remove the association in the auth identity.
 
 ## Steps
 
-<WorkflowDiagram workflow={{"name":"removeUserAccountWorkflow","steps":[{"type":"workflow","name":"deleteUsersWorkflow","description":"This workflow deletes one or more users.","link":"../../../../core_flows.Workflows_User/page.mdx#deleteusersworkflow","depth":1},{"type":"step","name":"useRemoteQueryStep","description":"This step fetches data across modules using the remote query.\n\nLearn more in the [Remote Query documentation](https://docs.medusajs.com/advanced-development/modules/remote-query).\n\n","link":"../../../../core_flows.Steps_Common/page.mdx#useremotequerystep","depth":2},{"type":"when","condition":"{\n      return !!authIdentity\n    }","depth":"3","steps":[{"type":"step","name":"setAuthAppMetadataStep","description":"This step sets the `app_metadata` property of an auth identity.","link":"../../../../core_flows.Steps_Auth/page.mdx#setauthappmetadatastep","depth":3}]}]}} />
+<WorkflowDiagram workflow={{"name":"removeUserAccountWorkflow","steps":[{"type":"workflow","name":"deleteUsersWorkflow","description":"This workflow deletes one or more users.\n\n","link":"../core_flows.User.Workflows_User.deleteUsersWorkflow/page.mdx","depth":1},{"type":"step","name":"useRemoteQueryStep","description":"This step fetches data across modules using the remote query.\n\nLearn more in the [Remote Query documentation](https://docs.medusajs.com/learn/fundamentals/module-links/query).\n\n:::note\n\nThis step is deprecated. Use [useQueryGraphStep](../../../../Common/Steps_Common/functions/core_flows.Common.Steps_Common.useQueryGraphStep/page.mdx) instead.\n\n:::\n\n","link":"../../../../Common/Steps_Common/functions/core_flows.Common.Steps_Common.useRemoteQueryStep/page.mdx","depth":2},{"type":"when","condition":"{\n      return !!authIdentity\n    }","depth":"3","steps":[{"type":"step","name":"setAuthAppMetadataStep","description":"This step sets the `app_metadata` property of an auth identity.\n\n","link":"../../../../Auth/Steps_Auth/functions/core_flows.Auth.Steps_Auth.setAuthAppMetadataStep/page.mdx","depth":3}]}]}} />
 
 ## Input
 
-<TypeList types={[{"name":"RemoveUserAccountWorkflowInput","type":"[RemoveUserAccountWorkflowInput](../../../../types/core_flows.RemoveUserAccountWorkflowInput/page.mdx)","optional":false,"defaultValue":"","description":"","expandable":false,"children":[{"name":"userId","type":"`string`","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]}]}]} expandUrl="https://docs.medusajs.com/v2/advanced-development/data-models/manage-relationships#retrieve-records-of-relation" sectionTitle="removeUserAccountWorkflow"/>
+<TypeList types={[{"name":"RemoveUserAccountWorkflowInput","type":"[RemoveUserAccountWorkflowInput](../../../../types/core_flows.RemoveUserAccountWorkflowInput/page.mdx)","optional":false,"defaultValue":"","description":"","expandable":false,"children":[{"name":"userId","type":"`string`","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]}]}]} expandUrl="https://docs.medusajs.com/learn/fundamentals/data-models/manage-relationships#retrieve-records-of-relation" sectionTitle="removeUserAccountWorkflow"/>
 
 ## Output
 
-<TypeList types={[{"name":"string","type":"`string`","optional":false,"defaultValue":"","description":"","expandable":false,"children":[{"name":"string","type":"`string`","optional":false,"defaultValue":"","description":"","expandable":false,"children":[]}]}]} expandUrl="https://docs.medusajs.com/v2/advanced-development/data-models/manage-relationships#retrieve-records-of-relation" sectionTitle="removeUserAccountWorkflow"/>
+<TypeList types={[{"name":"string","type":"`string`","optional":false,"defaultValue":"","description":"","expandable":false,"children":[{"name":"string","type":"`string`","optional":false,"defaultValue":"","description":"","expandable":false,"children":[]}]}]} expandUrl="https://docs.medusajs.com/learn/fundamentals/data-models/manage-relationships#retrieve-records-of-relation" sectionTitle="removeUserAccountWorkflow"/>

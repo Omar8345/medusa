@@ -60,10 +60,9 @@ export async function installNextjsStarter({
   }
 
   try {
-    // TODO change back to use create-next-app once Next.js v2 changes land on the main branch
     await execute(
       [
-        `git clone ${NEXTJS_REPO} -b ${NEXTJS_BRANCH} ${nextjsDirectory}`,
+        `git clone ${NEXTJS_REPO} -b ${NEXTJS_BRANCH} ${nextjsDirectory} --depth 1`,
         {
           signal: abortController?.signal,
           env: process.env,

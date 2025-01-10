@@ -29,7 +29,7 @@ export const GET = async (
     variables: {
       filters: { $or: [{ id: idOrCode }, { code: idOrCode }] },
     },
-    fields: req.remoteQueryConfig.fields,
+    fields: req.queryConfig.fields,
   })
 
   const [promotion] = await remoteQuery(queryObject)
@@ -63,7 +63,7 @@ export const POST = async (
   const promotion = await refetchPromotion(
     req.params.id,
     req.scope,
-    req.remoteQueryConfig.fields
+    req.queryConfig.fields
   )
 
   res.status(200).json({ promotion })

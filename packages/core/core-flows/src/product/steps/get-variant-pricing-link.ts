@@ -21,7 +21,7 @@ export const getVariantPricingLinkStep = createStep(
       return new StepResponse([])
     }
 
-    const remoteLink = container.resolve(ContainerRegistrationKeys.REMOTE_LINK)
+    const remoteLink = container.resolve(ContainerRegistrationKeys.LINK)
 
     const linkService = remoteLink.getLinkModule(
       Modules.PRODUCT,

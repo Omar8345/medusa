@@ -1,5 +1,17 @@
 # @medusajs/api-key
 
+## 2.2.0
+
+## 2.1.3
+
+## 2.1.2
+
+## 2.1.1
+
+### Patch Changes
+
+- [#10450](https://github.com/medusajs/medusa/pull/10450) [`70d77ea22fb73021bc1f4da0780a2235f1e86fb7`](https://github.com/medusajs/medusa/commit/70d77ea22fb73021bc1f4da0780a2235f1e86fb7) Thanks [@thetutlage](https://github.com/thetutlage)! - refactor: migrate api key module to DML
+
 ## 2.1.0
 
 ## 2.0.7

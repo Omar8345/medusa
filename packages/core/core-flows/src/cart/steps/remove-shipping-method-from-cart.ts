@@ -16,6 +16,10 @@ export const removeShippingMethodFromCartStep = createStep(
   async (data: RemoveShippingMethodFromCartStepInput, { container }) => {
     const cartService = container.resolve<ICartModuleService>(Modules.CART)
 
+    if (!data?.shipping_method_ids?.length) {
+      return new StepResponse(null, [])
+    }
+
     const methods = await cartService.softDeleteShippingMethods(
       data.shipping_method_ids
     )
@@ -23,7 +27,7 @@ export const removeShippingMethodFromCartStep = createStep(
     return new StepResponse(methods, data.shipping_method_ids)
   },
   async (ids, { container }) => {
-    if (!ids) {
+    if (!ids?.length) {
       return
     }
 

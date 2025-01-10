@@ -174,7 +174,10 @@ paths:
             schema:
               type: object
               title: input
-              description: The input data necessary for authentication. For example, for email-pass authentication, pass `email` and `password` properties.
+              description: |
+                The input data necessary for authentication. 
+                For example, for email-pass authentication, pass `email` and `password` properties. 
+                For the Google and GitHub authentication providers, you can pass `callback_url` to indicate the URL in the frontend that the customer should be redirected to after completing their authentication. This will override the provider's `callbackUrl` configurations in `medusa-config.ts`.
       x-codeSamples:
         - lang: Shell
           label: EmailPass Provider
@@ -568,6 +571,14 @@ paths:
       description: Create a cart.
       x-authenticated: false
       parameters:
+        - name: x-publishable-api-key
+          in: header
+          description: Publishable API Key created in the Medusa Admin.
+          required: true
+          schema:
+            type: string
+            externalDocs:
+              url: https://docs.medusajs.com/api/store#publishable-api-key
         - name: fields
           in: query
           description: Comma-separated fields that should be included in the returned data. if a field is prefixed with `+` it will be added to the default fields, using `-` will remove it from the default fields. without prefix it will replace the entire default fields.
@@ -632,6 +643,14 @@ paths:
           required: true
           schema:
             type: string
+        - name: x-publishable-api-key
+          in: header
+          description: Publishable API Key created in the Medusa Admin.
+          required: true
+          schema:
+            type: string
+            externalDocs:
+              url: https://docs.medusajs.com/api/store#publishable-api-key
         - name: fields
           in: query
           description: Comma-separated fields that should be included in the returned data. if a field is prefixed with `+` it will be added to the default fields, using `-` will remove it from the default fields. without prefix it will replace the entire default fields.
@@ -681,6 +700,14 @@ paths:
           required: true
           schema:
             type: string
+        - name: x-publishable-api-key
+          in: header
+          description: Publishable API Key created in the Medusa Admin.
+          required: true
+          schema:
+            type: string
+            externalDocs:
+              url: https://docs.medusajs.com/api/store#publishable-api-key
         - name: fields
           in: query
           description: Comma-separated fields that should be included in the returned data. if a field is prefixed with `+` it will be added to the default fields, using `-` will remove it from the default fields. without prefix it will replace the entire default fields.
@@ -754,6 +781,14 @@ paths:
           required: true
           schema:
             type: string
+        - name: x-publishable-api-key
+          in: header
+          description: Publishable API Key created in the Medusa Admin.
+          required: true
+          schema:
+            type: string
+            externalDocs:
+              url: https://docs.medusajs.com/api/store#publishable-api-key
         - name: fields
           in: query
           description: Comma-separated fields that should be included in the returned data. if a field is prefixed with `+` it will be added to the default fields, using `-` will remove it from the default fields. without prefix it will replace the entire default fields.
@@ -857,6 +892,14 @@ paths:
           required: true
           schema:
             type: string
+        - name: x-publishable-api-key
+          in: header
+          description: Publishable API Key created in the Medusa Admin.
+          required: true
+          schema:
+            type: string
+            externalDocs:
+              url: https://docs.medusajs.com/api/store#publishable-api-key
         - name: fields
           in: query
           description: |-
@@ -915,6 +958,14 @@ paths:
           required: true
           schema:
             type: string
+        - name: x-publishable-api-key
+          in: header
+          description: Publishable API Key created in the Medusa Admin.
+          required: true
+          schema:
+            type: string
+            externalDocs:
+              url: https://docs.medusajs.com/api/store#publishable-api-key
         - name: fields
           in: query
           description: Comma-separated fields that should be included in the returned data. if a field is prefixed with `+` it will be added to the default fields, using `-` will remove it from the default fields. without prefix it will replace the entire default fields.
@@ -935,8 +986,8 @@ paths:
           label: cURL
           source: |-
             curl -X POST '{backend_url}/store/carts/{id}/line-items' \
-            -H 'Content-Type: application/json' \ \
-            -H 'x-publishable-api-key: {your_publishable_api_key}'
+            -H 'Content-Type: application/json' \
+            -H 'x-publishable-api-key: {your_publishable_api_key}' \
             --data-raw '{
               "variant_id": "{value}",
               "quantity": 3360689747918848,
@@ -987,6 +1038,14 @@ paths:
           required: true
           schema:
             type: string
+        - name: x-publishable-api-key
+          in: header
+          description: Publishable API Key created in the Medusa Admin.
+          required: true
+          schema:
+            type: string
+            externalDocs:
+              url: https://docs.medusajs.com/api/store#publishable-api-key
         - name: fields
           in: query
           description: Comma-separated fields that should be included in the returned data. if a field is prefixed with `+` it will be added to the default fields, using `-` will remove it from the default fields. without prefix it will replace the entire default fields.
@@ -1007,8 +1066,8 @@ paths:
           label: cURL
           source: |-
             curl -X POST '{backend_url}/store/carts/{id}/line-items/{line_id}' \
-            -H 'Content-Type: application/json' \ \
-            -H 'x-publishable-api-key: {your_publishable_api_key}'
+            -H 'Content-Type: application/json' \
+            -H 'x-publishable-api-key: {your_publishable_api_key}' \
             --data-raw '{
               "quantity": 8980402259623936,
               "metadata": {}
@@ -1057,6 +1116,14 @@ paths:
           required: true
           schema:
             type: string
+        - name: x-publishable-api-key
+          in: header
+          description: Publishable API Key created in the Medusa Admin.
+          required: true
+          schema:
+            type: string
+            externalDocs:
+              url: https://docs.medusajs.com/api/store#publishable-api-key
         - name: fields
           in: query
           description: Comma-separated fields that should be included in the returned data. if a field is prefixed with `+` it will be added to the default fields, using `-` will remove it from the default fields. without prefix it will replace the entire default fields.
@@ -1136,6 +1203,14 @@ paths:
           required: true
           schema:
             type: string
+        - name: x-publishable-api-key
+          in: header
+          description: Publishable API Key created in the Medusa Admin.
+          required: true
+          schema:
+            type: string
+            externalDocs:
+              url: https://docs.medusajs.com/api/store#publishable-api-key
         - name: fields
           in: query
           description: Comma-separated fields that should be included in the returned data. if a field is prefixed with `+` it will be added to the default fields, using `-` will remove it from the default fields. without prefix it will replace the entire default fields.
@@ -1167,8 +1242,8 @@ paths:
           label: cURL
           source: |-
             curl -X POST '{backend_url}/store/carts/{id}/promotions' \
-            -H 'Content-Type: application/json' \ \
-            -H 'x-publishable-api-key: {your_publishable_api_key}'
+            -H 'Content-Type: application/json' \
+            -H 'x-publishable-api-key: {your_publishable_api_key}' \
             --data-raw '{
               "promo_codes": [
                 "{value}"
@@ -1208,6 +1283,14 @@ paths:
           required: true
           schema:
             type: string
+        - name: x-publishable-api-key
+          in: header
+          description: Publishable API Key created in the Medusa Admin.
+          required: true
+          schema:
+            type: string
+            externalDocs:
+              url: https://docs.medusajs.com/api/store#publishable-api-key
         - name: fields
           in: query
           description: Comma-separated fields that should be included in the returned data. if a field is prefixed with `+` it will be added to the default fields, using `-` will remove it from the default fields. without prefix it will replace the entire default fields.
@@ -1269,6 +1352,14 @@ paths:
           required: true
           schema:
             type: string
+        - name: x-publishable-api-key
+          in: header
+          description: Publishable API Key created in the Medusa Admin.
+          required: true
+          schema:
+            type: string
+            externalDocs:
+              url: https://docs.medusajs.com/api/store#publishable-api-key
         - name: fields
           in: query
           description: Comma-separated fields that should be included in the returned data. if a field is prefixed with `+` it will be added to the default fields, using `-` will remove it from the default fields. without prefix it will replace the entire default fields.
@@ -1303,8 +1394,8 @@ paths:
           label: cURL
           source: |-
             curl -X POST '{backend_url}/store/carts/{id}/shipping-methods' \
-            -H 'Content-Type: application/json' \ \
-            -H 'x-publishable-api-key: {your_publishable_api_key}'
+            -H 'Content-Type: application/json' \
+            -H 'x-publishable-api-key: {your_publishable_api_key}' \
             --data-raw '{
               "option_id": "{value}"
             }'
@@ -1344,6 +1435,14 @@ paths:
           required: true
           schema:
             type: string
+        - name: x-publishable-api-key
+          in: header
+          description: Publishable API Key created in the Medusa Admin.
+          required: true
+          schema:
+            type: string
+            externalDocs:
+              url: https://docs.medusajs.com/api/store#publishable-api-key
         - name: fields
           in: query
           description: Comma-separated fields that should be included in the returned data. if a field is prefixed with `+` it will be added to the default fields, using `-` will remove it from the default fields. without prefix it will replace the entire default fields.
@@ -1392,6 +1491,14 @@ paths:
         url: https://docs.medusajs.com/v2/resources/storefront-development/products/collections/list
         description: 'Storefront guide: How to retrieve a list of collections.'
       parameters:
+        - name: x-publishable-api-key
+          in: header
+          description: Publishable API Key created in the Medusa Admin.
+          required: true
+          schema:
+            type: string
+            externalDocs:
+              url: https://docs.medusajs.com/api/store#publishable-api-key
         - name: fields
           in: query
           description: Comma-separated fields that should be included in the returned data. if a field is prefixed with `+` it will be added to the default fields, using `-` will remove it from the default fields. without prefix it will replace the entire default fields.
@@ -2020,6 +2127,14 @@ paths:
           required: true
           schema:
             type: string
+        - name: x-publishable-api-key
+          in: header
+          description: Publishable API Key created in the Medusa Admin.
+          required: true
+          schema:
+            type: string
+            externalDocs:
+              url: https://docs.medusajs.com/api/store#publishable-api-key
         - name: fields
           in: query
           description: Comma-separated fields that should be included in the returned data. if a field is prefixed with `+` it will be added to the default fields, using `-` will remove it from the default fields. without prefix it will replace the entire default fields.
@@ -2064,6 +2179,14 @@ paths:
       description: Retrieve a list of currencies. The currencies can be filtered by fields such as `code`. The currencies can also be sorted or paginated.
       x-authenticated: false
       parameters:
+        - name: x-publishable-api-key
+          in: header
+          description: Publishable API Key created in the Medusa Admin.
+          required: true
+          schema:
+            type: string
+            externalDocs:
+              url: https://docs.medusajs.com/api/store#publishable-api-key
         - name: fields
           in: query
           description: Comma-separated fields that should be included in the returned data. if a field is prefixed with `+` it will be added to the default fields, using `-` will remove it from the default fields. without prefix it will replace the entire default fields.
@@ -2184,6 +2307,14 @@ paths:
           required: true
           schema:
             type: string
+        - name: x-publishable-api-key
+          in: header
+          description: Publishable API Key created in the Medusa Admin.
+          required: true
+          schema:
+            type: string
+            externalDocs:
+              url: https://docs.medusajs.com/api/store#publishable-api-key
         - name: fields
           in: query
           description: Comma-separated fields that should be included in the returned data. if a field is prefixed with `+` it will be added to the default fields, using `-` will remove it from the default fields. without prefix it will replace the entire default fields.
@@ -2231,6 +2362,14 @@ paths:
         description: 'Storefront guide: How to register a customer.'
       x-authenticated: true
       parameters:
+        - name: x-publishable-api-key
+          in: header
+          description: Publishable API Key created in the Medusa Admin.
+          required: true
+          schema:
+            type: string
+            externalDocs:
+              url: https://docs.medusajs.com/api/store#publishable-api-key
         - name: fields
           in: query
           description: Comma-separated fields that should be included in the returned data. if a field is prefixed with `+` it will be added to the default fields, using `-` will remove it from the default fields. without prefix it will replace the entire default fields.
@@ -2252,8 +2391,8 @@ paths:
           source: |-
             curl -X POST '{backend_url}/store/customers' \
             -H 'Authorization: Bearer {token}' \
-            -H 'Content-Type: application/json' \ \
-            -H 'x-publishable-api-key: {your_publishable_api_key}'
+            -H 'Content-Type: application/json' \
+            -H 'x-publishable-api-key: {your_publishable_api_key}' \
             --data-raw '{
               "email": "Monserrate.Leannon88@yahoo.com",
               "company_name": "{value}",
@@ -2297,6 +2436,14 @@ paths:
         url: https://docs.medusajs.com/v2/resources/storefront-development/customers/retrieve
         description: 'Storefront guide: How to retrieve the logged-in customer.'
       parameters:
+        - name: x-publishable-api-key
+          in: header
+          description: Publishable API Key created in the Medusa Admin.
+          required: true
+          schema:
+            type: string
+            externalDocs:
+              url: https://docs.medusajs.com/api/store#publishable-api-key
         - name: fields
           in: query
           description: Comma-separated fields that should be included in the returned data. if a field is prefixed with `+` it will be added to the default fields, using `-` will remove it from the default fields. without prefix it will replace the entire default fields.
@@ -2347,6 +2494,14 @@ paths:
         description: 'Storefront guide: How to edit a customer''s profile.'
       x-authenticated: true
       parameters:
+        - name: x-publishable-api-key
+          in: header
+          description: Publishable API Key created in the Medusa Admin.
+          required: true
+          schema:
+            type: string
+            externalDocs:
+              url: https://docs.medusajs.com/api/store#publishable-api-key
         - name: fields
           in: query
           description: Comma-separated fields that should be included in the returned data. if a field is prefixed with `+` it will be added to the default fields, using `-` will remove it from the default fields. without prefix it will replace the entire default fields.
@@ -2371,8 +2526,8 @@ paths:
           source: |-
             curl -X POST '{backend_url}/store/customers/me' \
             -H 'Authorization: Bearer {access_token}' \
-            -H 'Content-Type: application/json' \ \
-            -H 'x-publishable-api-key: {your_publishable_api_key}'
+            -H 'Content-Type: application/json' \
+            -H 'x-publishable-api-key: {your_publishable_api_key}' \
             --data-raw '{
               "company_name": "{value}",
               "first_name": "{value}",
@@ -2412,6 +2567,14 @@ paths:
         url: https://docs.medusajs.com/v2/resources/storefront-development/customers/addresses#list-customer-addresses
         description: 'Storefront guide: How to retrieve the logged-in customer''s addresses.'
       parameters:
+        - name: x-publishable-api-key
+          in: header
+          description: Publishable API Key created in the Medusa Admin.
+          required: true
+          schema:
+            type: string
+            externalDocs:
+              url: https://docs.medusajs.com/api/store#publishable-api-key
         - name: fields
           in: query
           description: Comma-separated fields that should be included in the returned data. if a field is prefixed with `+` it will be added to the default fields, using `-` will remove it from the default fields. without prefix it will replace the entire default fields.
@@ -2544,6 +2707,14 @@ paths:
         description: 'Storefront guide: How to create an address for the logged-in customer.'
       x-authenticated: true
       parameters:
+        - name: x-publishable-api-key
+          in: header
+          description: Publishable API Key created in the Medusa Admin.
+          required: true
+          schema:
+            type: string
+            externalDocs:
+              url: https://docs.medusajs.com/api/store#publishable-api-key
         - name: fields
           in: query
           description: Comma-separated fields that should be included in the returned data. if a field is prefixed with `+` it will be added to the default fields, using `-` will remove it from the default fields. without prefix it will replace the entire default fields.
@@ -2625,8 +2796,8 @@ paths:
           source: |-
             curl -X POST '{backend_url}/store/customers/me/addresses' \
             -H 'Authorization: Bearer {access_token}' \
-            -H 'Content-Type: application/json' \ \
-            -H 'x-publishable-api-key: {your_publishable_api_key}'
+            -H 'Content-Type: application/json' \
+            -H 'x-publishable-api-key: {your_publishable_api_key}' \
             --data-raw '{
               "metadata": {},
               "first_name": "{value}",
@@ -2677,6 +2848,14 @@ paths:
           required: true
           schema:
             type: string
+        - name: x-publishable-api-key
+          in: header
+          description: Publishable API Key created in the Medusa Admin.
+          required: true
+          schema:
+            type: string
+            externalDocs:
+              url: https://docs.medusajs.com/api/store#publishable-api-key
         - name: fields
           in: query
           description: Comma-separated fields that should be included in the returned data. if a field is prefixed with `+` it will be added to the default fields, using `-` will remove it from the default fields. without prefix it will replace the entire default fields.
@@ -2734,6 +2913,14 @@ paths:
           required: true
           schema:
             type: string
+        - name: x-publishable-api-key
+          in: header
+          description: Publishable API Key created in the Medusa Admin.
+          required: true
+          schema:
+            type: string
+            externalDocs:
+              url: https://docs.medusajs.com/api/store#publishable-api-key
         - name: fields
           in: query
           description: Comma-separated fields that should be included in the returned data. if a field is prefixed with `+` it will be added to the default fields, using `-` will remove it from the default fields. without prefix it will replace the entire default fields.
@@ -2815,8 +3002,8 @@ paths:
           source: |-
             curl -X POST '{backend_url}/store/customers/me/addresses/{address_id}' \
             -H 'Authorization: Bearer {access_token}' \
-            -H 'Content-Type: application/json' \ \
-            -H 'x-publishable-api-key: {your_publishable_api_key}'
+            -H 'Content-Type: application/json' \
+            -H 'x-publishable-api-key: {your_publishable_api_key}' \
             --data-raw '{
               "first_name": "{value}",
             }'
@@ -2858,6 +3045,14 @@ paths:
           required: true
           schema:
             type: string
+        - name: x-publishable-api-key
+          in: header
+          description: Publishable API Key created in the Medusa Admin.
+          required: true
+          schema:
+            type: string
+            externalDocs:
+              url: https://docs.medusajs.com/api/store#publishable-api-key
         - name: fields
           in: query
           description: Comma-separated fields that should be included in the returned data. if a field is prefixed with `+` it will be added to the default fields, using `-` will remove it from the default fields. without prefix it will replace the entire default fields.
@@ -2875,8 +3070,8 @@ paths:
         - lang: Shell
           label: cURL
           source: |-
-            curl -X DELETE '{backend_url}/store/customers/me/addresses/{address_id}' \ \
-            -H 'x-publishable-api-key: {your_publishable_api_key}'
+            curl -X DELETE '{backend_url}/store/customers/me/addresses/{address_id}' \
+            -H 'x-publishable-api-key: {your_publishable_api_key}' \
             -H 'Authorization: Bearer {access_token}'
       tags:
         - Customers
@@ -2935,6 +3130,14 @@ paths:
       description: Retrieve the orders of the logged-in customer. The orders can be filtered by fields such as `id`. The orders can also be sorted or paginated.
       x-authenticated: true
       parameters:
+        - name: x-publishable-api-key
+          in: header
+          description: Publishable API Key created in the Medusa Admin.
+          required: true
+          schema:
+            type: string
+            externalDocs:
+              url: https://docs.medusajs.com/api/store#publishable-api-key
         - name: fields
           in: query
           description: Comma-separated fields that should be included in the returned data. if a field is prefixed with `+` it will be added to the default fields, using `-` will remove it from the default fields. without prefix it will replace the entire default fields.
@@ -3113,6 +3316,14 @@ paths:
           required: true
           schema:
             type: string
+        - name: x-publishable-api-key
+          in: header
+          description: Publishable API Key created in the Medusa Admin.
+          required: true
+          schema:
+            type: string
+            externalDocs:
+              url: https://docs.medusajs.com/api/store#publishable-api-key
         - name: fields
           in: query
           description: Comma-separated fields that should be included in the returned data. if a field is prefixed with `+` it will be added to the default fields, using `-` will remove it from the default fields. without prefix it will replace the entire default fields.
@@ -3165,6 +3376,14 @@ paths:
           required: true
           schema:
             type: string
+        - name: x-publishable-api-key
+          in: header
+          description: Publishable API Key created in the Medusa Admin.
+          required: true
+          schema:
+            type: string
+            externalDocs:
+              url: https://docs.medusajs.com/api/store#publishable-api-key
         - name: fields
           in: query
           description: |-
@@ -3229,6 +3448,14 @@ paths:
           required: true
           schema:
             type: string
+        - name: x-publishable-api-key
+          in: header
+          description: Publishable API Key created in the Medusa Admin.
+          required: true
+          schema:
+            type: string
+            externalDocs:
+              url: https://docs.medusajs.com/api/store#publishable-api-key
         - name: fields
           in: query
           description: |-
@@ -3287,6 +3514,14 @@ paths:
           required: true
           schema:
             type: string
+        - name: x-publishable-api-key
+          in: header
+          description: Publishable API Key created in the Medusa Admin.
+          required: true
+          schema:
+            type: string
+            externalDocs:
+              url: https://docs.medusajs.com/api/store#publishable-api-key
         - name: fields
           in: query
           description: |-
@@ -3351,6 +3586,14 @@ paths:
           required: true
           schema:
             type: string
+        - name: x-publishable-api-key
+          in: header
+          description: Publishable API Key created in the Medusa Admin.
+          required: true
+          schema:
+            type: string
+            externalDocs:
+              url: https://docs.medusajs.com/api/store#publishable-api-key
         - name: fields
           in: query
           description: |-
@@ -3410,6 +3653,14 @@ paths:
         description: 'Storefront guide: How to implement payment during checkout.'
       x-authenticated: false
       parameters:
+        - name: x-publishable-api-key
+          in: header
+          description: Publishable API Key created in the Medusa Admin.
+          required: true
+          schema:
+            type: string
+            externalDocs:
+              url: https://docs.medusajs.com/api/store#publishable-api-key
         - name: fields
           in: query
           description: Comma-separated fields that should be included in the returned data. if a field is prefixed with `+` it will be added to the default fields, using `-` will remove it from the default fields. without prefix it will replace the entire default fields.
@@ -3430,8 +3681,8 @@ paths:
           label: cURL
           source: |-
             curl -X POST '{backend_url}/store/payment-collections' \
-            -H 'Content-Type: application/json' \ \
-            -H 'x-publishable-api-key: {your_publishable_api_key}'
+            -H 'Content-Type: application/json' \
+            -H 'x-publishable-api-key: {your_publishable_api_key}' \
             --data-raw '{
               "cart_id": "{value}"
             }'
@@ -3474,6 +3725,14 @@ paths:
           required: true
           schema:
             type: string
+        - name: x-publishable-api-key
+          in: header
+          description: Publishable API Key created in the Medusa Admin.
+          required: true
+          schema:
+            type: string
+            externalDocs:
+              url: https://docs.medusajs.com/api/store#publishable-api-key
         - name: fields
           in: query
           description: Comma-separated fields that should be included in the returned data. if a field is prefixed with `+` it will be added to the default fields, using `-` will remove it from the default fields. without prefix it will replace the entire default fields.
@@ -3494,8 +3753,8 @@ paths:
           label: cURL
           source: |-
             curl -X POST '{backend_url}/store/payment-collections/{id}/payment-sessions' \
-            -H 'Content-Type: application/json' \ \
-            -H 'x-publishable-api-key: {your_publishable_api_key}'
+            -H 'Content-Type: application/json' \
+            -H 'x-publishable-api-key: {your_publishable_api_key}' \
             --data-raw '{
               "provider_id": "{value}"
             }'
@@ -3531,6 +3790,14 @@ paths:
         url: https://docs.medusajs.com/v2/resources/storefront-development/checkout/payment
         description: 'Storefront guide: How to implement payment during checkout.'
       parameters:
+        - name: x-publishable-api-key
+          in: header
+          description: Publishable API Key created in the Medusa Admin.
+          required: true
+          schema:
+            type: string
+            externalDocs:
+              url: https://docs.medusajs.com/api/store#publishable-api-key
         - name: fields
           in: query
           description: Comma-separated fields that should be included in the returned data. if a field is prefixed with `+` it will be added to the default fields, using `-` will remove it from the default fields. without prefix it will replace the entire default fields.
@@ -3643,6 +3910,14 @@ paths:
         url: https://docs.medusajs.com/v2/resources/storefront-development/products/categories/list
         description: 'Storefront guide: How to retrieve a list of product categories.'
       parameters:
+        - name: x-publishable-api-key
+          in: header
+          description: Publishable API Key created in the Medusa Admin.
+          required: true
+          schema:
+            type: string
+            externalDocs:
+              url: https://docs.medusajs.com/api/store#publishable-api-key
         - name: fields
           in: query
           description: Comma-separated fields that should be included in the returned data. if a field is prefixed with `+` it will be added to the default fields, using `-` will remove it from the default fields. without prefix it will replace the entire default fields.
@@ -4298,6 +4573,14 @@ paths:
           required: true
           schema:
             type: string
+        - name: x-publishable-api-key
+          in: header
+          description: Publishable API Key created in the Medusa Admin.
+          required: true
+          schema:
+            type: string
+            externalDocs:
+              url: https://docs.medusajs.com/api/store#publishable-api-key
         - name: fields
           in: query
           description: Comma-separated fields that should be included in the returned data. if a field is prefixed with `+` it will be added to the default fields, using `-` will remove it from the default fields. without prefix it will replace the entire default fields.
@@ -4361,6 +4644,14 @@ paths:
         url: https://docs.medusajs.com/v2/resources/storefront-development/products/price
         description: 'Storefront guide: How to retrieve a product variants'' prices.'
       parameters:
+        - name: x-publishable-api-key
+          in: header
+          description: Publishable API Key created in the Medusa Admin.
+          required: true
+          schema:
+            type: string
+            externalDocs:
+              url: https://docs.medusajs.com/api/store#publishable-api-key
         - name: fields
           in: query
           description: Comma-separated fields that should be included in the returned data. if a field is prefixed with `+` it will be added to the default fields, using `-` will remove it from the default fields. without prefix it will replace the entire default fields.
@@ -5031,14 +5322,6 @@ paths:
                   type: string
                   title: category_id
                   description: A product category's ID.
-        - name: currency_code
-          in: query
-          description: The currency code to retrieve prices in.
-          required: false
-          schema:
-            type: string
-            title: currency_code
-            description: The currency code to retrieve prices in.
         - name: variants
           in: query
           description: Filter the products' variants.
@@ -5063,6 +5346,22 @@ paths:
                     type: string
                     title: value
                     description: Filter by a value of the option.
+        - name: country_code
+          in: query
+          description: The product's country code.
+          required: false
+          schema:
+            type: string
+            title: country_code
+            description: The product's country code.
+        - name: cart_id
+          in: query
+          description: The product's cart id.
+          required: false
+          schema:
+            type: string
+            title: cart_id
+            description: The product's cart id.
       x-codeSamples:
         - lang: Shell
           label: cURL
@@ -5135,6 +5434,14 @@ paths:
           required: true
           schema:
             type: string
+        - name: x-publishable-api-key
+          in: header
+          description: Publishable API Key created in the Medusa Admin.
+          required: true
+          schema:
+            type: string
+            externalDocs:
+              url: https://docs.medusajs.com/api/store#publishable-api-key
         - name: fields
           in: query
           description: Comma-separated fields that should be included in the returned data. if a field is prefixed with `+` it will be added to the default fields, using `-` will remove it from the default fields. without prefix it will replace the entire default fields.
@@ -5180,6 +5487,36 @@ paths:
             type: string
             title: cart_id
             description: The ID of the customer's cart. If set, the cart's region and shipping address's country code and province are used instead of the `region_id`, `country_code`, and `province` properties.
+        - name: limit
+          in: query
+          description: Limit the number of items returned in the list.
+          required: false
+          schema:
+            type: number
+            title: limit
+            description: Limit the number of items returned in the list.
+            externalDocs:
+              url: '#pagination'
+        - name: offset
+          in: query
+          description: The number of items to skip when retrieving a list.
+          required: false
+          schema:
+            type: number
+            title: offset
+            description: The number of items to skip when retrieving a list.
+            externalDocs:
+              url: '#pagination'
+        - name: order
+          in: query
+          description: The field to sort the data by. By default, the sort order is ascending. To change the order to descending, prefix the field name with `-`.
+          required: false
+          schema:
+            type: string
+            title: order
+            description: The field to sort the data by. By default, the sort order is ascending. To change the order to descending, prefix the field name with `-`.
+            externalDocs:
+              url: '#pagination'
       x-codeSamples:
         - lang: Shell
           label: cURL
@@ -5217,6 +5554,14 @@ paths:
         url: https://docs.medusajs.com/v2/resources/storefront-development/regions/list
         description: 'Storefront guide: How to retrieve a list of regions.'
       parameters:
+        - name: x-publishable-api-key
+          in: header
+          description: Publishable API Key created in the Medusa Admin.
+          required: true
+          schema:
+            type: string
+            externalDocs:
+              url: https://docs.medusajs.com/api/store#publishable-api-key
         - name: fields
           in: query
           description: Comma-separated fields that should be included in the returned data. if a field is prefixed with `+` it will be added to the default fields, using `-` will remove it from the default fields. without prefix it will replace the entire default fields.
@@ -5394,6 +5739,14 @@ paths:
           required: true
           schema:
             type: string
+        - name: x-publishable-api-key
+          in: header
+          description: Publishable API Key created in the Medusa Admin.
+          required: true
+          schema:
+            type: string
+            externalDocs:
+              url: https://docs.medusajs.com/api/store#publishable-api-key
         - name: fields
           in: query
           description: Comma-separated fields that should be included in the returned data. if a field is prefixed with `+` it will be added to the default fields, using `-` will remove it from the default fields. without prefix it will replace the entire default fields.
@@ -5451,8 +5804,8 @@ paths:
           label: cURL
           source: |-
             curl -X POST '{backend_url}/store/return' \
-            -H 'Content-Type: application/json' \ \
-            -H 'x-publishable-api-key: {your_publishable_api_key}'
+            -H 'Content-Type: application/json' \
+            -H 'x-publishable-api-key: {your_publishable_api_key}' \
             --data-raw '{
               "order_id": "{value}",
               "items": [
@@ -5492,6 +5845,15 @@ paths:
         '500':
           $ref: '#/components/responses/500_error'
       x-workflow: createAndCompleteReturnOrderWorkflow
+      parameters:
+        - name: x-publishable-api-key
+          in: header
+          description: Publishable API Key created in the Medusa Admin.
+          required: true
+          schema:
+            type: string
+            externalDocs:
+              url: https://docs.medusajs.com/api/store#publishable-api-key
   /store/return-reasons:
     get:
       operationId: GetReturnReasons
@@ -5499,6 +5861,14 @@ paths:
       description: Retrieve a list of return reasons. The return reasons can be sorted or paginated.
       x-authenticated: false
       parameters:
+        - name: x-publishable-api-key
+          in: header
+          description: Publishable API Key created in the Medusa Admin.
+          required: true
+          schema:
+            type: string
+            externalDocs:
+              url: https://docs.medusajs.com/api/store#publishable-api-key
         - name: fields
           in: query
           description: Comma-separated fields that should be included in the returned data. if a field is prefixed with `+` it will be added to the default fields, using `-` will remove it from the default fields. without prefix it will replace the entire default fields.
@@ -5606,6 +5976,14 @@ paths:
           required: true
           schema:
             type: string
+        - name: x-publishable-api-key
+          in: header
+          description: Publishable API Key created in the Medusa Admin.
+          required: true
+          schema:
+            type: string
+            externalDocs:
+              url: https://docs.medusajs.com/api/store#publishable-api-key
         - name: fields
           in: query
           description: Comma-separated fields that should be included in the returned data. if a field is prefixed with `+` it will be added to the default fields, using `-` will remove it from the default fields. without prefix it will replace the entire default fields.
@@ -5656,6 +6034,14 @@ paths:
         description: 'Storefront guide: How to implement shipping during checkout.'
       x-authenticated: false
       parameters:
+        - name: x-publishable-api-key
+          in: header
+          description: Publishable API Key created in the Medusa Admin.
+          required: true
+          schema:
+            type: string
+            externalDocs:
+              url: https://docs.medusajs.com/api/store#publishable-api-key
         - name: fields
           in: query
           description: Comma-separated fields that should be included in the returned data. if a field is prefixed with `+` it will be added to the default fields, using `-` will remove it from the default fields. without prefix it will replace the entire default fields.
@@ -5758,6 +6144,90 @@ paths:
         '500':
           $ref: '#/components/responses/500_error'
       x-workflow: listShippingOptionsForCartWorkflow
+  /store/shipping-options/{id}/calculate:
+    post:
+      operationId: PostShippingOptionsIdCalculate
+      summary: Calculate Shipping Option Price
+      description: Calculate the price of a shipping option in a cart.
+      x-authenticated: false
+      parameters:
+        - name: id
+          in: path
+          description: The shipping option's ID.
+          required: true
+          schema:
+            type: string
+        - name: x-publishable-api-key
+          in: header
+          description: Publishable API Key created in the Medusa Admin.
+          required: true
+          schema:
+            type: string
+            externalDocs:
+              url: https://docs.medusajs.com/api/store#publishable-api-key
+        - name: fields
+          in: query
+          description: |-
+            Comma-separated fields that should be included in the returned data.
+            if a field is prefixed with `+` it will be added to the default fields, using `-` will remove it from the default fields.
+            without prefix it will replace the entire default fields.
+          required: false
+          schema:
+            type: string
+            title: fields
+            description: Comma-separated fields that should be included in the returned data. If a field is prefixed with `+` it will be added to the default fields, using `-` will remove it from the default fields. Without prefix it will replace the entire default fields.
+            externalDocs:
+              url: '#select-fields-and-relations'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              description: The calculation's details.
+              required:
+                - cart_id
+              properties:
+                cart_id:
+                  type: string
+                  title: cart_id
+                  description: The ID of the cart the shipping option is used in.
+                data:
+                  type: object
+                  description: Custom data that's useful for the fulfillment provider to calculate the price.
+                  externalDocs:
+                    url: https://docs.medusajs.com/resources/commerce-modules/fulfillment/shipping-option#data-property
+      x-codeSamples:
+        - lang: Shell
+          label: cURL
+          source: |-
+            curl -X POST '{backend_url}/store/shipping-options/{id}/calculate' \
+            -H 'x-publishable-api-key: {your_publishable_api_key}' \
+            -H 'Content-Type: application/json' \
+            --data-raw '{
+              "cart_id": "{value}"
+            }'
+      tags:
+        - Shipping Options
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StoreShippingOptionResponse'
+        '400':
+          $ref: '#/components/responses/400_error'
+        '401':
+          $ref: '#/components/responses/unauthorized'
+        '404':
+          $ref: '#/components/responses/not_found_error'
+        '409':
+          $ref: '#/components/responses/invalid_state_error'
+        '422':
+          $ref: '#/components/responses/invalid_request_error'
+        '500':
+          $ref: '#/components/responses/500_error'
+      x-workflow: calculateShippingOptionsPricesWorkflow
 components:
   schemas:
     AdminApiKey:
@@ -5851,7 +6321,7 @@ components:
         - id
       properties:
         promotion:
-          $ref: '#/components/schemas/AdminPromotion'
+          type: object
         target_rules:
           type: array
           description: The application method's target rules.
@@ -9508,6 +9978,49 @@ components:
           description: The list of fulfillment providers.
           items:
             $ref: '#/components/schemas/AdminFulfillmentProvider'
+    AdminFulfillmentProviderOption:
+      type: object
+      description: The fulfillment option's details.
+      x-schemaName: AdminFulfillmentProviderOption
+      required:
+        - id
+        - is_return
+      properties:
+        id:
+          type: string
+          title: id
+          description: The fulfillment option's ID.
+        is_return:
+          type: boolean
+          title: is_return
+          description: Whether the fulfillment option is used for returns.
+    AdminFulfillmentProviderOptionsListResponse:
+      type: object
+      description: The paginated list of fulfillment options.
+      x-schemaName: AdminFulfillmentProviderOptionsListResponse
+      required:
+        - limit
+        - offset
+        - count
+        - fulfillment_options
+      properties:
+        limit:
+          type: number
+          title: limit
+          description: The maximum number of items returned.
+        offset:
+          type: number
+          title: offset
+          description: The number of items skipped before retrieving the returned items.
+        count:
+          type: number
+          title: count
+          description: The total number of items.
+        fulfillment_options:
+          type: array
+          description: The list of fulfillment options.
+          items:
+            $ref: '#/components/schemas/AdminFulfillmentProviderOption'
     AdminFulfillmentResponse:
       type: object
       description: A fulfillment's details.
@@ -9849,6 +10362,9 @@ components:
         - email
         - accepted
         - token
+        - expires_at
+        - created_at
+        - updated_at
       properties:
         id:
           type: string
@@ -10017,6 +10533,7 @@ components:
         - payment_collections
         - items
         - shipping_methods
+        - status
         - currency_code
         - id
         - version
@@ -10247,6 +10764,10 @@ components:
           type: number
           title: original_shipping_tax_total
           description: The tax total of the order's shipping excluding promotions.
+        status:
+          type: string
+          title: status
+          description: The order's status.
     AdminOrderAddress:
       type: object
       description: An order address.
@@ -10938,6 +11459,7 @@ components:
       required:
         - return_requested_total
         - order_change
+        - status
         - currency_code
         - id
         - version
@@ -11549,6 +12071,10 @@ components:
           $ref: '#/components/schemas/AdminCustomer'
         sales_channel:
           $ref: '#/components/schemas/AdminSalesChannel'
+        status:
+          type: string
+          title: status
+          description: The order's status.
     AdminOrderPreviewResponse:
       type: object
       description: The preview of an order.
@@ -14141,7 +14667,7 @@ components:
         - deleted_at
       properties:
         application_method:
-          type: object
+          $ref: '#/components/schemas/AdminApplicationMethod'
         rules:
           type: array
           description: The promotion's rules.
@@ -15141,15 +15667,66 @@ components:
       required:
         - id
         - value
+        - operator
+        - attribute
+        - price_id
+        - priority
+        - created_at
+        - updated_at
+        - deleted_at
       properties:
         id:
           type: string
           title: id
           description: The price rule's ID.
         value:
-          type: string
-          title: value
+          oneOf:
+            - type: string
+              title: value
+              description: The price rule's value.
+            - type: number
+              title: value
+              description: The price rule's value.
           description: The price rule's value.
+        operator:
+          type: string
+          description: The price rule's operator.
+          enum:
+            - gt
+            - lt
+            - eq
+            - ne
+            - in
+            - lte
+            - gte
+            - nin
+        attribute:
+          type: string
+          title: attribute
+          description: The price rule's attribute.
+        price_id:
+          type: string
+          title: price_id
+          description: The ID of the price this rule applies to.
+        priority:
+          type: number
+          title: priority
+          description: The price rule's priority.
+        created_at:
+          type: string
+          format: date-time
+          title: created_at
+          description: The date the price rule was created.
+        updated_at:
+          type: string
+          format: date-time
+          title: updated_at
+          description: The date the price rule was updated.
+        deleted_at:
+          type: string
+          format: date-time
+          title: deleted_at
+          description: The date the price rule was deleted.
     AdminShippingOptionResponse:
       type: object
       description: The shipping option's details.
@@ -15188,18 +15765,8 @@ components:
           description: The shipping option rule's operator.
           example: eq
         value:
-          oneOf:
-            - type: string
-              title: value
-              description: The rule's value.
-              example: '"true"'
-            - type: array
-              description: The rule's values.
-              items:
-                type: string
-                title: value
-                description: A rule's value
-                example: '"true"'
+          type: string
+          title: value
         shipping_option_id:
           type: string
           title: shipping_option_id
@@ -17994,6 +18561,7 @@ components:
         - sales_channel_id
         - email
         - currency_code
+        - status
         - items
         - shipping_methods
         - payment_status
@@ -18215,6 +18783,10 @@ components:
           type: number
           title: original_shipping_tax_total
           description: The tax total of the order's shipping excluding promotions.
+        status:
+          type: string
+          title: status
+          description: The order's status.
     BaseOrderAddress:
       type: object
       description: An order address.
@@ -21058,6 +21630,11 @@ components:
           type: number
           title: display_id
           description: The order's display ID.
+        credit_lines:
+          type: array
+          description: The order's credit lines, useful to add additional payment amounts for an order.
+          items:
+            $ref: '#/components/schemas/OrderCreditLine'
     OrderAddress:
       type: object
       description: The address's details.
@@ -21410,19 +21987,8 @@ components:
           title: no_notification
           description: Whether the customer should be notified about changes in the claim.
         refund_amount:
-          oneOf:
-            - type: string
-              title: refund_amount
-              description: The claim's refund amount.
-            - type: number
-              title: refund_amount
-              description: The claim's refund amount.
-            - type: string
-              title: refund_amount
-              description: The claim's refund amount.
-            - type: number
-              title: refund_amount
-              description: The claim's refund amount.
+          type: number
+          title: refund_amount
           description: The amount to be refunded.
         display_id:
           type: number
@@ -21494,6 +22060,51 @@ components:
           title: canceled_at
           description: The date the claim was canceled.
           format: date-time
+    OrderCreditLine:
+      type: object
+      description: The credit line's details.
+      x-schemaName: OrderCreditLine
+      required:
+        - id
+        - order_id
+        - order
+        - reference
+        - reference_id
+        - metadata
+        - created_at
+        - updated_at
+      properties:
+        id:
+          type: string
+          title: id
+          description: The credit line's ID.
+        order_id:
+          type: string
+          title: order_id
+          description: The ID of the associated order.
+        order:
+          type: object
+        reference:
+          type: string
+          title: reference
+          description: The table that this credit line references. For example, `payment_collection`.
+        reference_id:
+          type: string
+          title: reference_id
+          description: The ID of the record in the referenced table. For example, `paycol_123`.
+        metadata:
+          type: object
+          description: The credit line's metadata, can hold custom key-value pairs.
+        created_at:
+          type: string
+          format: date-time
+          title: created_at
+          description: The date the credit line was created.
+        updated_at:
+          type: string
+          format: date-time
+          title: updated_at
+          description: The date the credit line was updated.
     OrderExchange:
       type: object
       description: The order change's exchange.
@@ -22533,6 +23144,120 @@ components:
         metadata:
           type: object
           description: The item's metadata, can hold custom key-value pairs.
+    StoreCalculatedPrice:
+      type: object
+      description: The shipping option's calculated price.
+      x-schemaName: StoreCalculatedPrice
+      required:
+        - id
+        - calculated_amount
+        - original_amount
+        - currency_code
+      properties:
+        id:
+          type: string
+          title: id
+          description: The ID of the price set from which the price was selected.
+        is_calculated_price_price_list:
+          type: boolean
+          title: is_calculated_price_price_list
+          description: Whether the calculated price belongs to a price list.
+        is_calculated_price_tax_inclusive:
+          type: boolean
+          title: is_calculated_price_tax_inclusive
+          description: Whether the calculated price is tax inclusive.
+          externalDocs:
+            url: https://docs.medusajs.com/resources/commerce-modules/pricing/tax-inclusive-pricing
+        calculated_amount:
+          type: number
+          title: calculated_amount
+          description: The amount of the calculated price, or `null` if there isn't a calculated price. This is the amount shown to the customer.
+        calculated_amount_with_tax:
+          type: number
+          title: calculated_amount_with_tax
+          description: The `calculated_amount` with taxes applied.
+        calculated_amount_without_tax:
+          type: number
+          title: calculated_amount_without_tax
+          description: The `calculated_amount` without taxes applied.
+        is_original_price_price_list:
+          type: boolean
+          title: is_original_price_price_list
+          description: Whether the original price belongs to a price list.
+        is_original_price_tax_inclusive:
+          type: boolean
+          title: is_original_price_tax_inclusive
+          description: Whether the original price is tax inclusive.
+          externalDocs:
+            url: https://docs.medusajs.com/resources/commerce-modules/pricing/tax-inclusive-pricing
+        original_amount:
+          type: number
+          title: original_amount
+          description: The amount of the original price, or `null` if there isn't an original price. This amount is useful to compare with the `calculated_amount`, such as to check for discounted value.
+        currency_code:
+          type: string
+          title: currency_code
+          description: The currency code of the calculated price, or `null` if there isn't a calculated price.
+        calculated_price:
+          type: object
+          description: The calculated price's details.
+          required:
+            - id
+            - price_list_id
+            - price_list_type
+            - min_quantity
+            - max_quantity
+          properties:
+            id:
+              type: string
+              title: id
+              description: The ID of the price.
+            price_list_id:
+              type: string
+              title: price_list_id
+              description: The ID of the associated price list.
+            price_list_type:
+              type: string
+              title: price_list_type
+              description: The price list's type. For example, `sale` or `override`.
+            min_quantity:
+              type: number
+              title: min_quantity
+              description: The minimum quantity required in the cart for the price to apply.
+            max_quantity:
+              type: number
+              title: max_quantity
+              description: The maximum quantity required in the cart for the price to apply.
+        original_price:
+          type: object
+          description: The origin price's details.
+          required:
+            - id
+            - price_list_id
+            - price_list_type
+            - min_quantity
+            - max_quantity
+          properties:
+            id:
+              type: string
+              title: id
+              description: The ID of the price.
+            price_list_id:
+              type: string
+              title: price_list_id
+              description: The ID of the associated price list.
+            price_list_type:
+              type: string
+              title: price_list_type
+              description: The price list's type. For example, `sale` or `override`.
+            min_quantity:
+              type: number
+              title: min_quantity
+              description: The minimum quantity required in the cart for the price to apply.
+            max_quantity:
+              type: number
+              title: max_quantity
+              description: The maximum quantity required in the cart for the price to apply.
     StoreCart:
       type: object
       description: The cart's details.
@@ -23389,6 +24114,8 @@ components:
         - type
         - provider
         - amount
+        - prices
+        - calculated_price
       properties:
         id:
           type: string
@@ -23465,6 +24192,13 @@ components:
           description: The shipping option's data, useful for the provider handling fulfillment.
           externalDocs:
             url: https://docs.medusajs.com/v2/resources/commerce-modules/fulfillment/shipping-option#data-property
+        prices:
+          type: array
+          description: The shipping option's prices.
+          items:
+            $ref: '#/components/schemas/StorePrice'
+        calculated_price:
+          $ref: '#/components/schemas/StoreCalculatedPrice'
     StoreCollection:
       type: object
       description: The collection's details.
@@ -24013,6 +24747,7 @@ components:
       required:
         - items
         - shipping_methods
+        - status
         - currency_code
         - id
         - region_id
@@ -24237,6 +24972,10 @@ components:
           description: The order's transactions.
           items:
             $ref: '#/components/schemas/BaseOrderTransaction'
+        status:
+          type: string
+          title: status
+          description: The order's status.
     StoreOrderAddress:
       type: object
       description: An order address
@@ -30287,6 +31026,74 @@ components:
         - provider_id
         - data
         - status
+    StorePrice:
+      type: object
+      description: The price's details.
+      x-schemaName: StorePrice
+      required:
+        - id
+        - currency_code
+        - amount
+        - min_quantity
+        - max_quantity
+      properties:
+        id:
+          type: string
+          title: id
+          description: The price's ID.
+        currency_code:
+          type: string
+          title: currency_code
+          description: The price's ISO 2 currency code.
+          example: usd
+        amount:
+          type: number
+          title: amount
+          description: The price's amount.
+        min_quantity:
+          type: number
+          title: min_quantity
+          description: The minimum quantity required in the cart for the price to apply.
+        max_quantity:
+          type: number
+          title: max_quantity
+          description: The maximum quantity required in the cart for the price to apply.
+        price_rules:
+          type: array
+          description: The price's rules.
+          items:
+            $ref: '#/components/schemas/StorePriceRule'
+    StorePriceRule:
+      type: object
+      description: The price rule's details.
+      x-schemaName: StorePriceRule
+      required:
+        - id
+        - attribute
+        - operator
+        - value
+      properties:
+        id:
+          type: string
+          title: id
+          description: The price rule's ID.
+        attribute:
+          type: string
+          title: attribute
+          description: The price rule's attribute.
+        operator:
+          type: string
+          description: The price rule's operator.
+          enum:
+            - gt
+            - lt
+            - eq
+            - lte
+            - gte
+        value:
+          type: string
+          title: value
+          description: The price rule's value.
     StoreProduct:
       type: object
       description: The product's details.
@@ -31202,6 +32009,15 @@ components:
           description: The shipping option's shipping options.
           items:
             $ref: '#/components/schemas/StoreCartShippingOption'
+    StoreShippingOptionResponse:
+      type: object
+      description: The shipping option's details.
+      x-schemaName: StoreShippingOptionResponse
+      required:
+        - shipping_option
+      properties:
+        shipping_option:
+          $ref: '#/components/schemas/StoreCartShippingOption'
     StoreShippingOptionType:
       type: object
       description: The shipping option type's details.

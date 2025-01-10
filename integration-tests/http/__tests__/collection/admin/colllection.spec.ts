@@ -1,7 +1,7 @@
 import { medusaIntegrationTestRunner } from "@medusajs/test-utils"
 import {
-  createAdminUser,
   adminHeaders,
+  createAdminUser,
 } from "../../../../helpers/create-admin-user"
 
 jest.setTimeout(30000)
@@ -216,9 +216,7 @@ medusaIntegrationTestRunner({
       it("adds products to collection", async () => {
         const response = await api.post(
           `/admin/collections/${baseCollection.id}/products?fields=*products`,
-          {
-            add: [baseProduct.id, baseProduct1.id],
-          },
+          { add: [baseProduct.id, baseProduct1.id] },
           adminHeaders
         )
 
@@ -228,6 +226,54 @@ medusaIntegrationTestRunner({
             id: baseCollection.id,
             created_at: expect.any(String),
             updated_at: expect.any(String),
+            products: expect.arrayContaining([
+              expect.objectContaining({
+                collection_id: baseCollection.id,
+                title: "test-product",
+              }),
+              expect.objectContaining({
+                collection_id: baseCollection.id,
+                title: "test-product1",
+              }),
+            ]),
+          })
+        )
+      })
+
+      it("should not remove products from collection when updating collection", async () => {
+        const addProductsResponse = await api.post(
+          `/admin/collections/${baseCollection.id}/products?fields=*products`,
+          { add: [baseProduct.id, baseProduct1.id] },
+          adminHeaders
+        )
+
+        expect(addProductsResponse.status).toEqual(200)
+        expect(addProductsResponse.data.collection).toEqual(
+          expect.objectContaining({
+            id: baseCollection.id,
+            products: expect.arrayContaining([
+              expect.objectContaining({
+                collection_id: baseCollection.id,
+                title: "test-product",
+              }),
+              expect.objectContaining({
+                collection_id: baseCollection.id,
+                title: "test-product1",
+              }),
+            ]),
+          })
+        )
+
+        const updateCollectionResponse = await api.post(
+          `/admin/collections/${baseCollection.id}?fields=*products`,
+          { title: "test collection update" },
+          adminHeaders
+        )
+
+        expect(updateCollectionResponse.status).toEqual(200)
+        expect(updateCollectionResponse.data.collection).toEqual(
+          expect.objectContaining({
+            title: "test collection update",
             products: expect.arrayContaining([
               expect.objectContaining({
                 collection_id: baseCollection.id,

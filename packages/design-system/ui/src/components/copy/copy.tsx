@@ -90,7 +90,7 @@ const Copy = React.forwardRef<HTMLButtonElement, CopyProps>(
           aria-label="Copy code snippet"
           type="button"
           className={clx(
-            "text-ui-contrast-fg-secondary h-fit w-fit",
+            "h-fit w-fit",
             className
           )}
           onClick={copyToClipboard}
@@ -100,14 +100,14 @@ const Copy = React.forwardRef<HTMLButtonElement, CopyProps>(
             children
           ) : done ? (
             isDefault ? (
-              <CheckCircleSolid />
+              <CheckCircleSolid className="text-ui-fg-subtle" />
             ) : (
-              <CheckCircleMiniSolid />
+              <CheckCircleMiniSolid className="text-ui-fg-subtle" />
             )
           ) : isDefault ? (
-            <SquareTwoStack />
+            <SquareTwoStack className="text-ui-fg-subtle" />
           ) : (
-            <SquareTwoStackMini />
+            <SquareTwoStackMini className="text-ui-fg-subtle" />
           )}
         </Component>
       </Tooltip>

@@ -14,10 +14,13 @@ export function LocationServiceZoneShippingOptionPricing() {
     })
   }
 
-  const { shipping_option: shippingOption, isError, error } =
-    useShippingOption(so_id, {
-      fields: "*prices,*prices.price_rules",
-    })
+  const {
+    shipping_option: shippingOption,
+    isError,
+    error,
+  } = useShippingOption(so_id, {
+    fields: "*prices,*prices.price_rules",
+  })
 
   if (isError) {
     throw error

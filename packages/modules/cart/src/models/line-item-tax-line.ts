@@ -11,7 +11,7 @@ const LineItemTaxLine = model
       id: model.id({ prefix: "calitxl" }).primaryKey(),
       description: model.text().nullable(),
       code: model.text(),
-      rate: model.number(),
+      rate: model.float(),
       provider_id: model.text().nullable(),
       metadata: model.json().nullable(),
       tax_rate_id: model.text().nullable(),

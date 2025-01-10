@@ -30,7 +30,7 @@ export const POST = async (
   const stockLocation = await refetchStockLocation(
     id,
     req.scope,
-    req.remoteQueryConfig.fields
+    req.queryConfig.fields
   )
 
   res.status(200).json({
@@ -47,7 +47,7 @@ export const GET = async (
   const stockLocation = await refetchStockLocation(
     id,
     req.scope,
-    req.remoteQueryConfig.fields
+    req.queryConfig.fields
   )
 
   if (!stockLocation) {

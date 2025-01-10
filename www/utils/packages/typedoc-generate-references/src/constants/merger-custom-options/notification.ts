@@ -1,9 +1,10 @@
 import { FormattingOptionsType } from "types"
+import baseSectionsOptions from "../base-section-options.js"
 
 const notificationOptions: FormattingOptionsType = {
   "^notification/.*AbstractNotificationProviderService": {
     reflectionGroups: {
-      Properties: false,
+      Constructors: false,
     },
     reflectionDescription: `In this document, you’ll learn how to create a notification provider module and the methods you must implement in it.`,
     frontmatterData: {
@@ -14,6 +15,12 @@ const notificationOptions: FormattingOptionsType = {
     },
     shouldIncrementAfterStartSections: true,
     expandMembers: true,
+    expandProperties: true,
+    sections: {
+      ...baseSectionsOptions,
+      member_declaration_title: false,
+      reflection_typeParameters: false,
+    },
     startSections: [
       `## 1. Create Module Directory
 
@@ -65,10 +72,6 @@ The Notification Module accepts one provider per channel.
 </Note>
 
 \`\`\`ts title="medusa-config.ts"
-import { Modules } from "@medusajs/framework/utils"
-
-// ...
-
 module.exports = defineConfig({
   // ...
   modules: [
@@ -76,6 +79,15 @@ module.exports = defineConfig({
       resolve: "@medusajs/medusa/notification",
       options: {
         providers: [
+          // default provider
+          {
+            resolve: "@medusajs/medusa/notification-local",
+            id: "local",
+            options: {
+              name: "Local Notification Provider",
+              channels: ["feed"],
+            },
+          },
           {
             resolve: "./src/modules/my-notification",
             id: "my-notification",

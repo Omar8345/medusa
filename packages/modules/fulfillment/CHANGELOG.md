@@ -1,5 +1,25 @@
 # @medusajs/fulfillment
 
+## 2.2.0
+
+### Patch Changes
+
+- [#10700](https://github.com/medusajs/medusa/pull/10700) [`3a0c69fbe0acd5fac907a86393a8ccf86d9837af`](https://github.com/medusajs/medusa/commit/3a0c69fbe0acd5fac907a86393a8ccf86d9837af) Thanks [@shahednasser](https://github.com/shahednasser)! - fix(fulfillment): export schema types
+
+## 2.1.3
+
+### Patch Changes
+
+- [#10617](https://github.com/medusajs/medusa/pull/10617) [`100da64242838739816351ed259461f2d7c258e3`](https://github.com/medusajs/medusa/commit/100da64242838739816351ed259461f2d7c258e3) Thanks [@adrien2p](https://github.com/adrien2p)! - chore: fulfillment module DML
+
+## 2.1.2
+
+### Patch Changes
+
+- [#10602](https://github.com/medusajs/medusa/pull/10602) [`90ad2566fdde2215447100d10c3fe9b17ce826b5`](https://github.com/medusajs/medusa/commit/90ad2566fdde2215447100d10c3fe9b17ce826b5) Thanks [@riqwan](https://github.com/riqwan)! - feat(types,fulfillment): ability to delete a canceled fulfillment
+
+## 2.1.1
+
 ## 2.1.0
 
 ## 2.0.7

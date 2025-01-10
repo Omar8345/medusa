@@ -1105,7 +1105,7 @@ medusaIntegrationTestRunner({
                     variant_id: product.variants[0].id,
                   },
                 ],
-                rules: { customer_group_id: [customerGroup.id] },
+                rules: { "customer.groups.id": [customerGroup.id] },
               },
               adminHeaders
             )
@@ -1172,6 +1172,89 @@ medusaIntegrationTestRunner({
           expect(response.data.products).toEqual(expectation)
         })
 
+        it("should list products with prices with a default price when the price list price is higher and the price list is of type SALE", async () => {
+          const priceList = (
+            await api.post(
+              `/admin/price-lists`,
+              {
+                title: "test price list",
+                description: "test",
+                status: PriceListStatus.ACTIVE,
+                type: PriceListType.SALE,
+                prices: [
+                  {
+                    amount: 3500,
+                    currency_code: "usd",
+                    variant_id: product.variants[0].id,
+                  },
+                ],
+                rules: { "customer.groups.id": [customerGroup.id] },
+              },
+              adminHeaders
+            )
+          ).data.price_list
+
+          let response = await api.get(
+            `/store/products?fields=*variants.calculated_price&region_id=${region.id}`,
+            storeHeadersWithCustomer
+          )
+
+          const expectation = expect.arrayContaining([
+            expect.objectContaining({
+              id: product.id,
+              variants: [
+                expect.objectContaining({
+                  calculated_price: {
+                    id: expect.any(String),
+                    is_calculated_price_price_list: false,
+                    is_calculated_price_tax_inclusive: false,
+                    calculated_amount: 3000,
+                    raw_calculated_amount: {
+                      value: "3000",
+                      precision: 20,
+                    },
+                    is_original_price_price_list: false,
+                    is_original_price_tax_inclusive: false,
+                    original_amount: 3000,
+                    raw_original_amount: {
+                      value: "3000",
+                      precision: 20,
+                    },
+                    currency_code: "usd",
+                    calculated_price: {
+                      id: expect.any(String),
+                      price_list_id: null,
+                      price_list_type: null,
+                      min_quantity: null,
+                      max_quantity: null,
+                    },
+                    original_price: {
+                      id: expect.any(String),
+                      price_list_id: null,
+                      price_list_type: null,
+                      min_quantity: null,
+                      max_quantity: null,
+                    },
+                  },
+                }),
+              ],
+            }),
+          ])
+
+          expect(response.status).toEqual(200)
+          expect(response.data.count).toEqual(3)
+          expect(response.data.products).toEqual(expectation)
+
+          // with only region_id
+          response = await api.get(
+            `/store/products?region_id=${region.id}`,
+            storeHeadersWithCustomer
+          )
+
+          expect(response.status).toEqual(200)
+          expect(response.data.products).toEqual(expectation)
+        })
+
         it("should list products with prices with a override price list price", async () => {
           const priceList = (
             await api.post(
@@ -1188,7 +1271,7 @@ medusaIntegrationTestRunner({
                     variant_id: product.variants[0].id,
                   },
                 ],
-                rules: { customer_group_id: [customerGroup.id] },
+                rules: { "customer.groups.id": [customerGroup.id] },
               },
               adminHeaders
             )
@@ -1218,6 +1301,89 @@ medusaIntegrationTestRunner({
                     original_amount: 350,
                     raw_original_amount: {
                       value: "350",
+                      precision: 20,
+                    },
+                    currency_code: "usd",
+                    calculated_price: {
+                      id: expect.any(String),
+                      price_list_id: priceList.id,
+                      price_list_type: "override",
+                      min_quantity: null,
+                      max_quantity: null,
+                    },
+                    original_price: {
+                      id: expect.any(String),
+                      price_list_id: priceList.id,
+                      price_list_type: "override",
+                      min_quantity: null,
+                      max_quantity: null,
+                    },
+                  },
+                }),
+              ],
+            }),
+          ])
+
+          expect(response.status).toEqual(200)
+          expect(response.data.count).toEqual(3)
+          expect(response.data.products).toEqual(expectation)
+
+          // with only region_id
+          response = await api.get(
+            `/store/products?region_id=${region.id}`,
+            storeHeadersWithCustomer
+          )
+
+          expect(response.status).toEqual(200)
+          expect(response.data.products).toEqual(expectation)
+        })
+
+        it("should list products with prices with a override price list price even if the price list price is higher than the default price", async () => {
+          const priceList = (
+            await api.post(
+              `/admin/price-lists`,
+              {
+                title: "test price list",
+                description: "test",
+                status: PriceListStatus.ACTIVE,
+                type: PriceListType.OVERRIDE,
+                prices: [
+                  {
+                    amount: 35000,
+                    currency_code: "usd",
+                    variant_id: product.variants[0].id,
+                  },
+                ],
+                rules: { "customer.groups.id": [customerGroup.id] },
+              },
+              adminHeaders
+            )
+          ).data.price_list
+
+          let response = await api.get(
+            `/store/products?fields=*variants.calculated_price&region_id=${region.id}`,
+            storeHeadersWithCustomer
+          )
+
+          const expectation = expect.arrayContaining([
+            expect.objectContaining({
+              id: product.id,
+              variants: [
+                expect.objectContaining({
+                  calculated_price: {
+                    id: expect.any(String),
+                    is_calculated_price_price_list: true,
+                    is_calculated_price_tax_inclusive: false,
+                    calculated_amount: 35000,
+                    raw_calculated_amount: {
+                      value: "35000",
+                      precision: 20,
+                    },
+                    is_original_price_price_list: true,
+                    is_original_price_tax_inclusive: false,
+                    original_amount: 35000,
+                    raw_original_amount: {
+                      value: "35000",
                       precision: 20,
                     },
                     currency_code: "usd",
@@ -1327,6 +1493,150 @@ medusaIntegrationTestRunner({
             { add: [salesChannel1.id] },
             adminHeaders
           )
+        })
+
+        it("should handle inventory items and location levels correctly", async () => {
+          const container = getContainer()
+          const channelService = container.resolve("sales_channel")
+          const locationService = container.resolve("stock_location")
+          const inventoryService = container.resolve("inventory")
+          const productService = container.resolve("product")
+          const pubKeyService = container.resolve("api_key")
+          const linkService = container.resolve("remoteLink")
+
+          const [channelOne, channelTwo] =
+            await channelService.createSalesChannels([
+              { name: "Sales Channel 1" },
+              { name: "Sales Channel 2" },
+            ])
+
+          const product = await productService.createProducts({
+            status: "published",
+            title: "my prod",
+            options: [{ title: "color", values: ["green", "blue"] }],
+            variants: [
+              { title: "variant one", options: { color: "green" } },
+              { title: "variant two", options: { color: "blue" } },
+            ],
+          })
+
+          const [variantOne, variantTwo] = product.variants
+
+          const [itemOne, itemTwo, itemThree] =
+            await inventoryService.createInventoryItems([
+              { sku: "sku-one" },
+              { sku: "sku-two" },
+              { sku: "sku-three" },
+            ])
+
+          const [locationOne, locationTwo] =
+            await locationService.createStockLocations([
+              { name: "Location One" },
+              { name: "Location Two" },
+            ])
+
+          await inventoryService.createInventoryLevels([
+            {
+              location_id: locationOne.id,
+              inventory_item_id: itemOne.id,
+              stocked_quantity: 23,
+            },
+            {
+              location_id: locationOne.id,
+              inventory_item_id: itemTwo.id,
+              stocked_quantity: 10,
+            },
+            {
+              location_id: locationTwo.id,
+              inventory_item_id: itemThree.id,
+              stocked_quantity: 5,
+            },
+          ])
+
+          const [pubKeyOne, pubKeyTwo] = await pubKeyService.createApiKeys([
+            { title: "pub key one", type: "publishable", created_by: "me" },
+            { title: "pub key two", type: "publishable", created_by: "me" },
+          ])
+
+          await linkService.create([
+            {
+              product: { product_id: product.id },
+              sales_channel: { sales_channel_id: channelOne.id },
+            },
+            {
+              product: { product_id: product.id },
+              sales_channel: { sales_channel_id: channelTwo.id },
+            },
+            {
+              product: { variant_id: variantOne.id },
+              inventory: { inventory_item_id: itemOne.id },
+            },
+            {
+              product: { variant_id: variantTwo.id },
+              inventory: { inventory_item_id: itemTwo.id },
+            },
+            {
+              product: { variant_id: variantTwo.id },
+              inventory: { inventory_item_id: itemThree.id },
+              data: { required_quantity: 2 },
+            },
+            {
+              sales_channel: { sales_channel_id: channelOne.id },
+              stock_location: { stock_location_id: locationOne.id },
+            },
+            {
+              sales_channel: { sales_channel_id: channelTwo.id },
+              stock_location: { stock_location_id: locationOne.id },
+            },
+            {
+              sales_channel: { sales_channel_id: channelTwo.id },
+              stock_location: { stock_location_id: locationTwo.id },
+            },
+            {
+              api_key: { publishable_key_id: pubKeyOne.id },
+              sales_channel: { sales_channel_id: channelOne.id },
+            },
+            {
+              api_key: { publishable_key_id: pubKeyTwo.id },
+              sales_channel: { sales_channel_id: channelTwo.id },
+            },
+          ])
+
+          let response = await api.get(
+            `/store/products?fields=+variants.inventory_quantity`,
+            { headers: { "x-publishable-api-key": pubKeyOne.token } }
+          )
+
+          expect(response.status).toEqual(200)
+          for (const variant of response.data.products
+            .map((p) => p.variants)
+            .flat()) {
+            if (variant.id === variantOne.id) {
+              expect(variant.inventory_quantity).toEqual(23)
+            } else if (variant.id === variantTwo.id) {
+              expect(variant.inventory_quantity).toEqual(0)
+            } else {
+              throw new Error("Unexpected variant")
+            }
+          }
+
+          response = await api.get(
+            `/store/products?fields=+variants.inventory_quantity`,
+            { headers: { "x-publishable-api-key": pubKeyTwo.token } }
+          )
+
+          expect(response.status).toEqual(200)
+          for (const variant of response.data.products
+            .map((p) => p.variants)
+            .flat()) {
+            if (variant.id === variantOne.id) {
+              expect(variant.inventory_quantity).toEqual(23)
+            } else if (variant.id === variantTwo.id) {
+              expect(variant.inventory_quantity).toEqual(2)
+            } else {
+              throw new Error("Unexpected variant")
+            }
+          }
         })
 
         it("should list all inventory items for a variant", async () => {
@@ -1639,7 +1949,7 @@ medusaIntegrationTestRunner({
                     variant_id: product.variants[0].id,
                   },
                 ],
-                rules: { customer_group_id: [customerGroup.id] },
+                rules: { "customer.groups.id": [customerGroup.id] },
               },
               adminHeaders
             )
@@ -1719,7 +2029,7 @@ medusaIntegrationTestRunner({
                     variant_id: product.variants[0].id,
                   },
                 ],
-                rules: { customer_group_id: [customerGroup.id] },
+                rules: { "customer.groups.id": [customerGroup.id] },
               },
               adminHeaders
             )

@@ -207,8 +207,8 @@ medusaIntegrationTestRunner({
             },
             {
               title: "Custom Item",
-              sku: "sku123",
-              barcode: "barcode123",
+              variant_sku: "sku123",
+              variant_barcode: "barcode123",
               unit_price: 2200,
               quantity: 1,
             },
@@ -254,6 +254,7 @@ medusaIntegrationTestRunner({
                   requires_shipping: true,
                   is_discountable: true,
                   is_tax_inclusive: true,
+                  is_custom_price: false,
                   raw_compare_at_unit_price: null,
                   raw_unit_price: expect.objectContaining({
                     value: "3000",
@@ -323,7 +324,8 @@ medusaIntegrationTestRunner({
                   title: "Custom Item",
                   variant_sku: "sku123",
                   variant_barcode: "barcode123",
-                  variant_title: "Custom Item",
+                  variant_title: null,
+                  is_custom_price: true,
                   raw_unit_price: expect.objectContaining({
                     value: "2200",
                   }),

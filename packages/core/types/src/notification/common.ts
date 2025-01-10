@@ -20,7 +20,7 @@ export interface Attachment {
    */
   content_type?: string
   /**
-   * The disposition of the attachment, e.g., "inline" or "attachment".
+   * The disposition of the attachment, For example, "inline" or "attachment".
    */
   disposition?: string
   /**

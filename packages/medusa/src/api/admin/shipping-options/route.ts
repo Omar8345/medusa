@@ -20,9 +20,9 @@ export const GET = async (
     entryPoint: "shipping_options",
     variables: {
       filters: req.filterableFields,
-      ...req.remoteQueryConfig.pagination,
+      ...req.queryConfig.pagination,
     },
-    fields: req.remoteQueryConfig.fields,
+    fields: req.queryConfig.fields,
   })
 
   const { rows: shipping_options, metadata } = await remoteQuery(queryObject)
@@ -50,7 +50,7 @@ export const POST = async (
   const shippingOption = await refetchShippingOption(
     result[0].id,
     req.scope,
-    req.remoteQueryConfig.fields
+    req.queryConfig.fields
   )
 
   res.status(200).json({ shipping_option: shippingOption })

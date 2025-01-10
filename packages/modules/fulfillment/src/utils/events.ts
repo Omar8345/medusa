@@ -7,7 +7,7 @@ import {
   ShippingOptionRule,
   ShippingOptionType,
 } from "@models"
-import { Context } from "@medusajs/framework/types"
+import { Context, InferEntityType } from "@medusajs/framework/types"
 import {
   CommonEvents,
   FulfillmentEvents,
@@ -172,7 +172,7 @@ export function buildCreatedFulfillmentEvents({
   fulfillments,
   sharedContext,
 }: {
-  fulfillments: Fulfillment[]
+  fulfillments: InferEntityType<typeof Fulfillment>[]
   sharedContext: Context
 }) {
   if (!fulfillments.length) {
@@ -210,7 +210,7 @@ export function buildCreatedShippingOptionEvents({
   shippingOptions,
   sharedContext,
 }: {
-  shippingOptions: ShippingOption[]
+  shippingOptions: InferEntityType<typeof ShippingOption>[]
   sharedContext: Context
 }) {
   if (!shippingOptions.length) {
@@ -218,8 +218,8 @@ export function buildCreatedShippingOptionEvents({
   }
 
   const options: { id: string }[] = []
-  const types: ShippingOptionType[] = []
-  const rules: ShippingOptionRule[] = []
+  const types: InferEntityType<typeof ShippingOptionType>[] = []
+  const rules: InferEntityType<typeof ShippingOptionRule>[] = []
 
   shippingOptions.forEach((shippingOption) => {
     options.push({ id: shippingOption.id })
@@ -242,14 +242,14 @@ export function buildCreatedFulfillmentSetEvents({
   fulfillmentSets,
   sharedContext,
 }: {
-  fulfillmentSets: FulfillmentSet[]
+  fulfillmentSets: InferEntityType<typeof FulfillmentSet>[]
   sharedContext: Context
 }): void {
   if (!fulfillmentSets.length) {
     return
   }
 
-  const serviceZones: ServiceZone[] = []
+  const serviceZones: InferEntityType<typeof ServiceZone>[] = []
 
   fulfillmentSets.forEach((fulfillmentSet) => {
     if (!fulfillmentSet.service_zones?.length) {
@@ -268,14 +268,14 @@ export function buildCreatedServiceZoneEvents({
   serviceZones,
   sharedContext,
 }: {
-  serviceZones: ServiceZone[]
+  serviceZones: InferEntityType<typeof ServiceZone>[]
   sharedContext: Context
 }): void {
   if (!serviceZones.length) {
     return
   }
 
-  const geoZones: GeoZone[] = []
+  const geoZones: InferEntityType<typeof GeoZone>[] = []
 
   serviceZones.forEach((serviceZone) => {
     if (!serviceZone.geo_zones.length) {

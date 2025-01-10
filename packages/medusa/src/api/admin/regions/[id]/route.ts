@@ -18,7 +18,7 @@ export const GET = async (
   const region = await refetchRegion(
     req.params.id,
     req.scope,
-    req.remoteQueryConfig.fields
+    req.queryConfig.fields
   )
 
   if (!region) {
@@ -53,7 +53,7 @@ export const POST = async (
   const region = await refetchRegion(
     result[0].id,
     req.scope,
-    req.remoteQueryConfig.fields
+    req.queryConfig.fields
   )
 
   res.status(200).json({ region })

@@ -15,10 +15,7 @@ export function applyDefaultFilters<TFilter extends object>(
         // Currently we only need it to delete filter keys from the request filter object, but this could
         // be used for other purposes. If we can't find other purposes, we can refactor to accept an array
         // of strings to delete after filters have been applied.
-        valueToApply = filterValue(
-          req.filterableFields,
-          req.remoteQueryConfig.fields
-        )
+        valueToApply = filterValue(req.filterableFields, req.queryConfig.fields)
       }
 
       // If the value to apply is an object, we add it to any existing filters thats already applied

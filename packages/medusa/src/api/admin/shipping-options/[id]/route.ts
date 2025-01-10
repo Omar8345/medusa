@@ -21,7 +21,7 @@ export const GET = async (
   const shippingOption = await refetchShippingOption(
     req.params.id,
     req.scope,
-    req.remoteQueryConfig.fields
+    req.queryConfig.fields
   )
 
   if (!shippingOption) {
@@ -55,7 +55,7 @@ export const POST = async (
   const shippingOption = await refetchShippingOption(
     result[0].id,
     req.scope,
-    req.remoteQueryConfig.fields
+    req.queryConfig.fields
   )
 
   res.status(200).json({ shipping_option: shippingOption })

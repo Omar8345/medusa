@@ -19,7 +19,7 @@ export const GET = async (
   const inventoryItem = await refetchInventoryItem(
     id,
     req.scope,
-    req.remoteQueryConfig.fields
+    req.queryConfig.fields
   )
   if (!inventoryItem) {
     throw new MedusaError(
@@ -49,7 +49,7 @@ export const POST = async (
   const inventoryItem = await refetchInventoryItem(
     id,
     req.scope,
-    req.remoteQueryConfig.fields
+    req.queryConfig.fields
   )
 
   res.status(200).json({

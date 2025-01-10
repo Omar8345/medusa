@@ -28,9 +28,17 @@ post:
         schema:
           type: object
           title: input
-          description: >-
-            The input data necessary for authentication. For example, for
-            email-pass authentication, pass `email` and `password` properties.
+          description: >
+            The input data necessary for authentication. 
+
+            For example, for email-pass authentication, pass `email` and
+            `password` properties. 
+
+            For the Google and GitHub authentication providers, you can pass
+            `callback_url` to indicate the URL in the frontend that the customer
+            should be redirected to after completing their authentication. This
+            will override the provider's `callbackUrl` configurations in
+            `medusa-config.ts`.
   x-codeSamples:
     - lang: Shell
       label: EmailPass Provider

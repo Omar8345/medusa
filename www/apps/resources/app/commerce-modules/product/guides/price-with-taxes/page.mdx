@@ -1,5 +1,11 @@
 ---
 sidebar_label: "Get Variant Price with Taxes"
+tags:
+  - product
+  - pricing
+  - query
+  - tax
+  - server
 ---
 
 export const metadata = {
@@ -14,7 +20,7 @@ In this document, you'll learn how to calculate a product variant's price with t
 
 You'll need the following resources for the taxes calculation:
 
-1. [Query](!docs!/advanced-development/module-links/query) to retrieve the product's variants' prices for a context. Learn more about that in [this guide](../price/page.mdx).
+1. [Query](!docs!/learn/fundamentals/module-links/query) to retrieve the product's variants' prices for a context. Learn more about that in [this guide](../price/page.mdx).
 2. The Tax Module's main service to get the tax lines for each product.
 
 ```ts
@@ -204,7 +210,7 @@ products.forEach((product) => {
 For each product variant, you:
 
 1. Retrieve its tax lines from the `taxLinesMap`.
-2. Calculate its prices with and without taxes using the `calculateAmountsWithTax` function imported from `@medusajs/framework/utils`.
+2. Calculate its prices with and without taxes using the `calculateAmountsWithTax` from the Medusa Framework.
 3. The `calculateAmountsWithTax` function returns an object having two properties:
     - `priceWithTax`: The variant's price with the taxes applied.
     - `priceWithoutTax`: The variant's price without taxes applied.

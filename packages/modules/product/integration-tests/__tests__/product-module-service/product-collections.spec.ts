@@ -7,11 +7,11 @@ import {
   ProductStatus,
   toMikroORMEntity,
 } from "@medusajs/framework/utils"
-import { Product, ProductCollection } from "@models"
 import {
   MockEventBusService,
   moduleIntegrationTestRunner,
 } from "@medusajs/test-utils"
+import { Product, ProductCollection } from "@models"
 import { createCollections } from "../../__fixtures__/product"
 
 jest.setTimeout(30000)
@@ -318,6 +318,7 @@ moduleIntegrationTestRunner<IProductModuleService>({
             {
               id: collectionId,
               title: "New Collection",
+              product_ids: ["product_id"],
             },
           ])
 

@@ -1,6 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { ArrowPath, Link, Trash } from "@medusajs/icons"
-import { InviteDTO } from "@medusajs/types"
+import { HttpTypes } from "@medusajs/types"
 import {
   Alert,
   Button,
@@ -70,7 +70,7 @@ export const InviteUserForm = () => {
   const columns = useColumns()
 
   const { table } = useDataTable({
-    data: (invites ?? []) as InviteDTO[],
+    data: invites ?? [],
     columns,
     count,
     enablePagination: true,
@@ -185,7 +185,7 @@ export const InviteUserForm = () => {
   )
 }
 
-const InviteActions = ({ invite }: { invite: InviteDTO }) => {
+const InviteActions = ({ invite }: { invite: HttpTypes.AdminInvite }) => {
   const { mutateAsync: revokeAsync } = useDeleteInvite(invite.id)
   const { mutateAsync: resendAsync } = useResendInvite(invite.id)
 
@@ -253,7 +253,7 @@ const InviteActions = ({ invite }: { invite: InviteDTO }) => {
   )
 }
 
-const columnHelper = createColumnHelper<InviteDTO>()
+const columnHelper = createColumnHelper<HttpTypes.AdminInvite>()
 
 const useColumns = () => {
   const { t } = useTranslation()

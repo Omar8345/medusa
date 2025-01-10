@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "dev:monorepo": "yarn dev -p 3002",
-    "build": "yarn copy-colors && next build",
+    "contentlayer:build": "contentlayer build",
+    "build": "yarn copy-colors && yarn contentlayer:build && next build",
     "start": "next start",
     "start:monorepo": "yarn start -p 3002",
     "lint": "next lint --fix",
@@ -24,7 +25,7 @@
     "date-fns": "^3.3.1",
     "docs-ui": "*",
     "mdast-util-toc": "^7.0.0",
-    "next": "15.0.1",
+    "next": "15.0.4",
     "next-contentlayer": "^0.3.4",
     "next-themes": "^0.2.1",
     "postcss": "8.4.27",

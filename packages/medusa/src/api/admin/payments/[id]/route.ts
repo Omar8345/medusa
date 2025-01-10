@@ -13,7 +13,7 @@ export const GET = async (
   const payment = await refetchPayment(
     req.params.id,
     req.scope,
-    req.remoteQueryConfig.fields
+    req.queryConfig.fields
   )
 
   res.status(200).json({ payment })

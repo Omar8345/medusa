@@ -30,7 +30,14 @@ export interface AdminShippingOptionRule {
 // TODO: This type is complete, but it's not clear what the `rules` field is supposed to return in all cases.
 export interface AdminShippingOptionPriceRule {
   id: string
-  value: string
+  value: string | number
+  operator: RuleOperatorType
+  attribute: string
+  price_id: string
+  priority: number
+  created_at: string
+  updated_at: string
+  deleted_at: string | null
 }
 
 export interface AdminShippingOptionPrice extends AdminPrice {

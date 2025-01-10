@@ -1,11 +1,14 @@
 ---
 slug: /references/medusa-workflows/linkCustomerGroupsToCustomerWorkflow
 sidebar_label: linkCustomerGroupsToCustomerWorkflow
+tags:
+  - customer
+  - workflow
 ---
 
 import { TypeList, WorkflowDiagram } from "docs-ui"
 
-# linkCustomerGroupsToCustomerWorkflow - Medusa Workflows API Reference
+# linkCustomerGroupsToCustomerWorkflow - Medusa Core Workflows Reference
 
 This documentation provides a reference to the `linkCustomerGroupsToCustomerWorkflow`. It belongs to the `@medusajs/medusa/core-flows` package.
 
@@ -13,8 +16,8 @@ This workflow creates one or more links between a customer and customer groups.
 
 ## Steps
 
-<WorkflowDiagram workflow={{"name":"linkCustomerGroupsToCustomerWorkflow","steps":[{"type":"step","name":"linkCustomerGroupsToCustomerStep","description":"This step creates one or more links between a customer and customer groups records.","link":"../../../../core_flows.Steps_Customer_Group/page.mdx#linkcustomergroupstocustomerstep","depth":1}]}} />
+<WorkflowDiagram workflow={{"name":"linkCustomerGroupsToCustomerWorkflow","steps":[{"type":"step","name":"linkCustomerGroupsToCustomerStep","description":"This step creates one or more links between a customer and customer groups records.\n\n","link":"../../../Steps_Customer_Group/functions/core_flows.Customer_Group.Steps_Customer_Group.linkCustomerGroupsToCustomerStep/page.mdx","depth":1}]}} />
 
 ## Input
 
-<TypeList types={[{"name":"LinkWorkflowInput","type":"[LinkWorkflowInput](../../../../../types/CommonTypes/types/types.CommonTypes.LinkWorkflowInput/page.mdx)","optional":false,"defaultValue":"","description":"","expandable":false,"children":[{"name":"id","type":"`string`","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]},{"name":"add","type":"`string`[]","description":"","optional":true,"defaultValue":"","expandable":false,"children":[]},{"name":"remove","type":"`string`[]","description":"","optional":true,"defaultValue":"","expandable":false,"children":[]}]}]} expandUrl="https://docs.medusajs.com/v2/advanced-development/data-models/manage-relationships#retrieve-records-of-relation" sectionTitle="linkCustomerGroupsToCustomerWorkflow"/>
+<TypeList types={[{"name":"LinkWorkflowInput","type":"[LinkWorkflowInput](../../../../../types/CommonTypes/types/types.CommonTypes.LinkWorkflowInput/page.mdx)","optional":false,"defaultValue":"","description":"","expandable":false,"children":[{"name":"id","type":"`string`","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]},{"name":"add","type":"`string`[]","description":"","optional":true,"defaultValue":"","expandable":false,"children":[]},{"name":"remove","type":"`string`[]","description":"","optional":true,"defaultValue":"","expandable":false,"children":[]}]}]} expandUrl="https://docs.medusajs.com/learn/fundamentals/data-models/manage-relationships#retrieve-records-of-relation" sectionTitle="linkCustomerGroupsToCustomerWorkflow"/>

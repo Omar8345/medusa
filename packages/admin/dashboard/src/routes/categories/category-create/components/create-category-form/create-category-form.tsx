@@ -10,6 +10,7 @@ import {
 } from "../../../../../components/modals"
 import { KeyboundForm } from "../../../../../components/utilities/keybound-form"
 import { useCreateProductCategory } from "../../../../../hooks/api/categories"
+import { transformNullableFormData } from "../../../../../lib/form-helpers"
 import { CreateCategoryDetails } from "./create-category-details"
 import { CreateCategoryNesting } from "./create-category-nesting"
 import { CreateCategoryDetailsSchema, CreateCategorySchema } from "./schema"
@@ -79,13 +80,15 @@ export const CreateCategoryForm = ({
   const { mutateAsync, isPending } = useCreateProductCategory()
 
   const handleSubmit = form.handleSubmit((data) => {
-    const { visibility, status, parent_category_id, rank, ...rest } = data
+    const { visibility, status, parent_category_id, rank, name, ...rest } = data
+    const parsedData = transformNullableFormData(rest, false)
 
     setShouldFreeze(true)
 
     mutateAsync(
       {
-        ...rest,
+        name: name,
+        ...parsedData,
         parent_category_id: parent_category_id ?? undefined,
         rank: rank ?? undefined,
         is_active: status === "active",

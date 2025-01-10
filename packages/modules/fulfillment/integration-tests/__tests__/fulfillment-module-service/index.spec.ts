@@ -42,6 +42,7 @@ async function list(
       "service_zones.shipping_options.provider",
       "service_zones.shipping_options.type",
       "service_zones.shipping_options.rules",
+      "service_zones.shipping_options.shipping_profile",
       "service_zones.shipping_options.fulfillments.labels",
       "service_zones.shipping_options.fulfillments.items",
       "service_zones.shipping_options.fulfillments.delivery_address",
@@ -112,20 +113,23 @@ moduleIntegrationTestRunner({
           service: FulfillmentModuleService,
         }).linkable
 
-        expect(Object.keys(linkable)).toEqual([
-          "fulfillmentAddress",
-          "fulfillmentItem",
-          "fulfillmentLabel",
-          "fulfillmentProvider",
-          "fulfillmentSet",
-          "fulfillment",
-          "geoZone",
-          "serviceZone",
-          "shippingOptionRule",
-          "shippingOptionType",
-          "shippingOption",
-          "shippingProfile",
-        ])
+        expect(Object.keys(linkable)).toHaveLength(12)
+        expect(Object.keys(linkable)).toEqual(
+          expect.arrayContaining([
+            "fulfillmentAddress",
+            "fulfillmentItem",
+            "fulfillmentLabel",
+            "fulfillmentProvider",
+            "fulfillmentSet",
+            "fulfillment",
+            "geoZone",
+            "serviceZone",
+            "shippingOptionRule",
+            "shippingOptionType",
+            "shippingOption",
+            "shippingProfile",
+          ])
+        )
 
         Object.keys(linkable).forEach((key) => {
           delete linkable[key].toJSON

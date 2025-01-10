@@ -37,7 +37,11 @@ export const MainNavVersion = () => {
 
   return (
     <>
-      <Link href={version.releaseUrl} target="_blank">
+      <Link
+        href={version.releaseUrl}
+        target="_blank"
+        className={clsx(version.hide && "hidden")}
+      >
         <Tooltip html="View the release notes<br/>on GitHub">
           <span
             className="relative text-compact-small-plus"
@@ -56,7 +60,9 @@ export const MainNavVersion = () => {
           </span>
         </Tooltip>
       </Link>
-      <span className="text-compact-small">&#183;</span>
+      <span className={clsx("text-compact-small", version.hide && "hidden")}>
+        &#183;
+      </span>
     </>
   )
 }

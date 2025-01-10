@@ -7,22 +7,15 @@ export const metadata = {
 
 # {metadata.title}
 
-This document provides an example of implementing the marketplace recipe for a restaurant-delivery platform, similar to Uber Eats.
+In this guide, you'll learn how to build a restaurant-delivery marketplace platform, similar to Uber Eats, with Medusa.
 
-<Note>
+When you install a Medusa application, you get a fully-fledged commerce platform with support for customizations. While Medusa doesn't provide marketeplace functionalities natively, it provides features that you can extend and a framework to support all your customization needs to build a marketplace.
 
-You can implement the marketplace as you see fit for your use case. This is only an example of one way to implement it.
+In this guide, you'll customize Medusa to build a restaurant-delivery platform with the following features:
 
-</Note>
-
-## Features
-
-By following this example, you’ll have a restaurant-delivery platform with the following features:
-
-1. Multiple restaurants with their own admin users and products.
-2. Drivers that handle the delivery of orders from restaurants to customers.
-3. Delivery handling, from the restaurant accepting the order to the driver delivering the order to the customer.
-4. Real-time tracking of the order’s delivery status.
+1. Manage restaurants, each having admin users and products.
+2. Manage drivers and allow them to handle the delivery of orders from restaurants to customers.
+3. Real-time delivery handling and tracking, from the restaurant accepting the order to the driver delivering the order to the customer.
 
 <CardList items={[
   {
@@ -47,23 +40,50 @@ This recipe is adapted from [Medusa Eats](https://github.com/medusajs/medusa-eat
 
 ---
 
-## Prerequisites
+## Step 1: Install a Medusa Application
 
 <Prerequisites items={[
   {
-    text: "A new Medusa application installed.",
-    link: "!docs!#get-started"
+    text: "Node.js v20+",
+    link: "https://nodejs.org/en/download"
   },
   {
-    text: "Publishable API key to send store requests. You can create it in the Medusa Admin or using the Admin API routes",
-    link: "/storefront-development/publishable-api-keys"
+    text: "Git CLI tool",
+    link: "https://git-scm.com/downloads"
   },
   {
-    text: "Recommended: Use the Redis Workflow Engine Module for improved tracking and storage of workflow executions."
+    text: "PostgreSQL",
+    link: "https://www.postgresql.org/download/"
   }
 ]} />
 
-## Step 1: Create a Restaurant Module
+Start by installing the Medusa application on your machine with the following command:
+
+```bash
+npx create-medusa-app@latest
+```
+
+You'll first be asked for the project's name. You can also optionally choose to install the [Next.js starter storefront](../../../../nextjs-starter/page.mdx).
+
+Afterwards, the installation process will start, which will install the Medusa application in a directory with your project's name. If you chose to install the Next.js starter, it'll be installed in a separate directory with the `{project-name}-storefront` name.
+
+<Note title="Why is the storefront installed separately?">
+
+The Medusa application is composed of a headless Node.js server and an admin dashboard. The storefront is installed or custom-built separately and connects to the Medusa application through its REST endpoints, called [API routes](!docs!/learn/fundamentals/api-routes). Learn more about Medusa's architecture in [this documentation](!docs!/learn/introduction/architecture).
+
+</Note>
+
+Once the installation finishes successfully, the Medusa Admin dashboard will open with a form to create a new user. Enter the user's credential and submit the form. Afterwards, you can login with the new user and explore the dashboard.
+
+<Note title="Ran to Errors?">
+
+Check out the [troubleshooting guides](../../../../troubleshooting/create-medusa-app-errors/page.mdx) for help.
+
+</Note>
+
+---
+
+## Step 2: Create a Restaurant Module
 
 Medusa creates commerce features in modules. For example, product features and data models are created in the Product Module.
 
@@ -140,7 +160,7 @@ class RestaurantModuleService extends MedusaService({
 export default RestaurantModuleService
 ```
 
-The service extends the [service factory](!docs!/learn/advanced-development/modules/service-factory), which provides basic data-management features.
+The service extends the [service factory](!docs!/learn/fundamentals/modules/service-factory), which provides basic data-management features.
 
 ### Create Restaurant Module Definition
 
@@ -174,12 +194,12 @@ module.exports = defineConfig({
 
 ### Further Reads
 
-- [How to Create a Module](!docs!/learn/basics/modules)
-- [How to Create a Data Model](!docs!/learn/basics/modules#1-create-data-model)
+- [How to Create a Module](!docs!/learn/fundamentals/modules)
+- [How to Create a Data Model](!docs!/learn/fundamentals/modules#1-create-data-model)
 
 ---
 
-## Step 2: Create a Delivery Module
+## Step 3: Create a Delivery Module
 
 In this step, you’ll create the Delivery Module that defines delivery-related data models.
 
@@ -284,7 +304,7 @@ class DeliveryModuleService extends MedusaService({
 export default DeliveryModuleService
 ```
 
-The service extends the [service factory](!docs!/learn/advanced-development/modules/service-factory), which provides basic data-management features.
+The service extends the [service factory](!docs!/learn/fundamentals/modules/service-factory), which provides basic data-management features.
 
 ### Create Delivery Module Definition
 
@@ -319,7 +339,7 @@ module.exports = defineConfig({
 
 ---
 
-## Step 3: Define Links
+## Step 4: Define Links
 
 Modules are isolated in Medusa, making them reusable, replaceable, and integrable in your application without side effects.
 
@@ -415,11 +435,11 @@ This defines a link between the Delivery Module’s `delivery` data model and th
 
 ### Further Reads
 
-- [How to Define Links](!docs!/learn/advanced-development/module-links)
+- [How to Define Links](!docs!/learn/fundamentals/module-links)
 
 ---
 
-## Step 4: Run Migrations and Sync Links
+## Step 5: Run Migrations and Sync Links
 
 To create tables for the above data models in the database, start by generating the migrations for the Restaurant and Delivery Modules with the following commands:
 
@@ -438,7 +458,7 @@ npx medusa db:migrate
 
 ---
 
-## Step 5: Create Restaurant API Route
+## Step 6: Create Restaurant API Route
 
 To expose custom commerce features to frontend applications, such as the Medusa Admin dashboard or a storefront, you expose an endpoint by creating an API route.
 
@@ -470,7 +490,7 @@ This adds a type used for inputs in creating a restaurant. It also adds a type f
 
 <Note title="Tip">
 
-Since the `Restaurant` data model is a variable, use the `InferTypeOf` utility imported from `@medusajs/framework/types` to infer its type.
+Since the `Restaurant` data model is a variable, use `InferTypeOf` to infer its type.
 
 </Note>
 
@@ -625,19 +645,19 @@ The API route creates a restaurant and returns it.
 
 <Note>
 
-If you’re calling this API route from a frontend client, make sure to set the [CORS middleware](!docs!/learn/advanced-development/api-routes/cors) on it since it’s not under the `/store` or `/admin` route prefixes.
+If you’re calling this API route from a frontend client, make sure to set the [CORS middleware](!docs!/learn/fundamentals/api-routes/cors) on it since it’s not under the `/store` or `/admin` route prefixes.
 
 </Note>
 
 ### Further Reads
 
-- [How to Create a Workflow](!docs!/learn/basics/workflows)
-- [What is a Compensation Function](!docs!/learn/advanced-development/workflows/compensation-function)
-- [How to Create an API route](!docs!/learn/basics/api-routes)
+- [How to Create a Workflow](!docs!/learn/fundamentals/workflows)
+- [What is a Compensation Function](!docs!/learn/fundamentals/workflows/compensation-function)
+- [How to Create an API route](!docs!/learn/fundamentals/api-routes)
 
 ---
 
-## Step 6: List Restaurants API Route
+## Step 7: List Restaurants API Route
 
 In this step, you’ll create the API routes that retrieves a list of restaurants.
 
@@ -704,12 +724,12 @@ This returns the list of restaurants in the response.
 
 ### Further Reads
 
-- [What is and how to use it](!docs!/learn/advanced-development/module-links/query)
+- [What is and how to use it](!docs!/learn/fundamentals/module-links/query)
 - [How to Retrieve Prices for Product Variants](../../../../commerce-modules/product/guides/price/page.mdx)
 
 ---
 
-## Step 7: Create User API Route
+## Step 8: Create User API Route
 
 In this step, you’ll create the API route that creates a driver or a restaurant admin user.
 
@@ -726,7 +746,7 @@ To implement and expose a feature that manipulates data, you create a workflow t
 So, you'll start by implementing the functionality to create a user in a workflow. The workflow has two steps:
 
 1. Create the user in the database.
-2. Set the actor type of the user’s authentication identity (created by the `/auth/{actor_type}/{provider}/register` API route). For this step, you’ll use the `setAuthAppMetadataStep` step imported from the `@medusajs/medusa/core-flows` package.
+2. Set the actor type of the user’s authentication identity (created by the `/auth/{actor_type}/{provider}/register` API route). For this step, you’ll use `setAuthAppMetadataStep` from Medusa's core workflows.
 
 To implement the first step, create the file `src/workflows/user/steps/create-user.ts` with the following content:
 
@@ -895,8 +915,8 @@ return new WorkflowResponse(user)
 In the workflow, you:
 
 1. Use the `createUserStep` to create the user.
-2. Use the `transform` utility function to create the input to be passed to the next step.
-3. Use the `setAuthAppMetadataStep` imported from `@medusajs/medusa/core-flows` to update the authentication identity and associate it with the new user.
+2. Use `transform` to create the input to be passed to the next step.
+3. Use `setAuthAppMetadataStep` from Medusa's core workflows to update the authentication identity and associate it with the new user.
 4. Return the created user.
 
 ### Create API Route
@@ -967,7 +987,7 @@ Create the file `src/api/middlewares.ts` with the following content:
 import { 
   authenticate, 
   defineMiddlewares,
-} from "@medusajs/medusa"
+} from "@medusajs/framework/http"
 
 export default defineMiddlewares({
   routes: [
@@ -984,7 +1004,7 @@ export default defineMiddlewares({
 })
 ```
 
-This applies the `authenticate` middleware imported from `@medusajs/medusa` on the `POST /users` API routes.
+This applies the `authenticate` middleware from the Medusa Framework on the `POST /users` API routes.
 
 ### Test it Out: Create Restaurant Admin
 
@@ -1058,7 +1078,7 @@ This returns the created driver user.
 
 ---
 
-## Step 8: Delete Restaurant Admin API Route
+## Step 9: Delete Restaurant Admin API Route
 
 In this step, you'll create a workflow that deletes the restaurant admin and its association to its auth identity, then use it in an API route.
 
@@ -1182,8 +1202,8 @@ return new WorkflowResponse(input.id)
 After deleting the restaurant admin, you:
 
 1. Retrieve its auth identity using Query. To do that, you filter its `app_metadata` property by checking that its `restaurant_id` property's value is the admin's ID. For drivers, you replace `restaurant_id` with `driver_id`.
-2. Check that the auth identity exists using the `transform` utility. Otherwise, throw an error.
-3. Unset the association between the auth identity and the restaurant admin using the `setAuthAppMetadataStep` imported from `@medusajs/medusa/core-flows`.
+2. Check that the auth identity exists using `transform`. Otherwise, throw an error.
+3. Unset the association between the auth identity and the restaurant admin using `setAuthAppMetadataStep` from Medusa's core workflows.
 
 ### Create API Route
 
@@ -1250,7 +1270,7 @@ Make sure to replace the first ID with the restaurant's ID, and the second ID wi
 
 ---
 
-## Step 9: Create Restaurant Product API Route
+## Step 10: Create Restaurant Product API Route
 
 In this step, you’ll create the API route that creates a product for a restaurant.
 
@@ -1258,8 +1278,8 @@ In this step, you’ll create the API route that creates a product for a restaur
 
 You’ll start by creating a workflow that creates the restaurant’s products. It has two steps:
 
-1. Create the product using Medusa’s `createProductsWorkflow` as a step. It’s imported from the `@medusajs/medusa/core-flows` package.
-2. Create a link between the restaurant and the products using the `createRemoateLinkStep` imported from the `@medusajs/medusa/core-flows` package.
+1. Create the product using Medusa’s `createProductsWorkflow` as a step. This workflow is available through Medusa's core workflows.
+2. Create a link between the restaurant and the products using `createRemoateLinkStep` from Medusa's core workflows.
 
 So, create the workflow in the file `src/workflows/restaurant/workflows/create-restaurant-products.ts` with the following content:
 
@@ -1320,7 +1340,7 @@ export const createRestaurantProductsWorkflow = createWorkflow(
 In the workflow, you:
 
 1. Execute the `createProductsWorkflow` as a step, passing the workflow’s input as the details of the product.
-2. Use the `transform` utility to create a `links` object used to specify the links to create in the next step.
+2. Use `transform` to create a `links` object used to specify the links to create in the next step.
 3. Use the `createRemoteLinkStep` to create the links between the restaurant and the products.
 4. Return the created products.
 
@@ -1402,7 +1422,7 @@ The request returns the created product in the response.
 
 ---
 
-## Step 10: Create Order Delivery Workflow
+## Step 11: Create Order Delivery Workflow
 
 In this step, you’ll create the workflow that creates a delivery. You’ll use it at a later step once a customer places their order.
 
@@ -1410,7 +1430,7 @@ The workflow to create a delivery has three steps:
 
 1. `validateRestaurantStep` that checks whether a restaurant with the specified ID exists.
 2. `createDeliveryStep` that creates the delivery.
-3. `createRemoteLinkStep` that creates links between the different data model records. This step is imported from `@medusajs/medusa/core-flows`.
+3. `createRemoteLinkStep` that creates links between the different data model records. This step is from Medusa's core workflows.
 
 ### Create validateRestaurantStep
 
@@ -1549,19 +1569,19 @@ In the workflow, you:
 
 1. Use the `validateRestaurantStep` to validate that the restaurant exists.
 2. Use the `createDeliveryStep` to create the delivery.
-3. Use the `transform` utility to specify the links to be created in the next step. You specify links between the delivery and cart, and between the restaurant and delivery.
+3. Use `transform` to specify the links to be created in the next step. You specify links between the delivery and cart, and between the restaurant and delivery.
 4. Use the `createRemoteLinkStep` to create the links.
 5. Return the created delivery.
 
 ---
 
-## Step 11: Handle Delivery Workflow
+## Step 12: Handle Delivery Workflow
 
 In this step, you’ll create the workflow that handles the different stages of the delivery. This workflow needs to run in the background to update the delivery when an action occurs.
 
 For example, when a restaurant finishes preparing the order’s items, this workflow creates a fulfillment for the order.
 
-This workflow will be a [long-running workflow](!docs!/learn/advanced-development/workflows/long-running-workflow) that runs asynchronously in the background. Its async steps only succeed once an outside action sets its status, allowing the workflow to move to the next step.
+This workflow will be a [long-running workflow](!docs!/learn/fundamentals/workflows/long-running-workflow) that runs asynchronously in the background. Its async steps only succeed once an outside action sets its status, allowing the workflow to move to the next step.
 
 API routes that perform actions related to the delivery, which you’ll create later, will trigger the workflow to move to the next step.
 
@@ -1607,7 +1627,7 @@ Steps that have a `*` next to their names are async steps.
       {
         type: "step",
         name: "createRemoteLinkStep",
-        description: "Creates the links returned by the previous step between the order and delivery. This is imported from `@medusajs/medusa/core-flows`.",
+        description: "Creates the links returned by the previous step between the order and delivery. This is from Medusa's core workflows.",
         link: "/references/helper-steps/createRemoteLinkStep"
       },
       {
@@ -2082,11 +2102,11 @@ In the next steps, you’ll execute the workflow and see it in action as you add
 
 ### Further Reads
 
-- [Long-Running Workflows](!docs!/learn/advanced-development/workflows/long-running-workflow)
+- [Long-Running Workflows](!docs!/learn/fundamentals/workflows/long-running-workflow)
 
 ---
 
-## Step 12: Create Order Delivery API Route
+## Step 13: Create Order Delivery API Route
 
 In this step, you’ll create the API route that executes the workflows created by the previous two steps. This API route is used when a customer places their order.
 
@@ -2269,7 +2289,7 @@ In the upcoming steps, you’ll add functionalities to update the delivery’s s
 
 ---
 
-## Step 13: Accept Delivery API Route
+## Step 14: Accept Delivery API Route
 
 In this step, you’ll create an API route that a restaurant admin uses to accept a delivery. This moves the `handleDeliveryWorkflow` execution from `notifyRestaurantStep` to the next step.
 
@@ -2296,7 +2316,7 @@ These types are useful in the upcoming implementation steps.
 
 <Note title="Tip">
 
-Since the `Delivery` data model is a variable, use the `InferTypeOf` utility imported from `@medusajs/framework/types` to infer its type.
+Since the `Delivery` data model is a variable, use `InferTypeOf` to infer its type.
 
 </Note>
 
@@ -2646,7 +2666,7 @@ Then, create the file `src/api/deliveries/[id]/middlewares.ts` with the followin
 import { 
   authenticate, 
   defineMiddlewares, 
-} from "@medusajs/medusa"
+} from "@medusajs/framework/http"
 import { isDeliveryRestaurant } from "../../utils/is-delivery-restaurant"
 
 export default defineMiddlewares({
@@ -2706,7 +2726,7 @@ Meaning that the `handleDeliveryWorkflow`'s execution has moved to the `awaitDri
 
 ---
 
-## Step 14: Claim Delivery API Route
+## Step 15: Claim Delivery API Route
 
 In this step, you’ll add the API route that allows a driver to claim a delivery.
 
@@ -2851,7 +2871,7 @@ This indicates that the `handleDeliveryWorkflow`'s execution continued past the 
 
 ---
 
-## Step 15: Prepare API Route
+## Step 16: Prepare API Route
 
 In this step, you’ll add the API route that restaurants use to indicate they’re preparing the order.
 
@@ -2941,7 +2961,7 @@ This message indicates that the `handleDeliveryWorkflow`'s execution has moved t
 
 ---
 
-## Step 16: Ready API Route
+## Step 17: Ready API Route
 
 In this step, you’ll create the API route that restaurants use to indicate that a delivery is ready for pick up.
 
@@ -3033,7 +3053,7 @@ This message indicates that the `handleDeliveryWorkflow`'s execution has moved t
 
 ---
 
-## Step 17: Pick Up Delivery API Route
+## Step 18: Pick Up Delivery API Route
 
 In this step, you’ll add the API route that the driver uses to indicate they’ve picked up the delivery.
 
@@ -3173,7 +3193,7 @@ This message indicates that the `handleDeliveryWorkflow`'s execution has moved t
 
 ---
 
-## Step 18: Complete Delivery API Route
+## Step 19: Complete Delivery API Route
 
 In this step, you’ll create the API route that the driver uses to indicate that they completed the delivery.
 
@@ -3263,9 +3283,11 @@ As the route sets the status of the `awaitDeliveryStep` to successful in the `ha
 
 ---
 
-## Step 19: Real-Time Tracking in the Storefront
+## Step 20: Real-Time Tracking in the Storefront
 
 In this step, you’ll learn how to implement real-time tracking of a delivery in a Next.js-based storefront.
+
+You can use a custom Next.js project, or use Medusa's Next.js Starter storefront. If you haven't installed the Next.js Starter storefront in the first step, refer to [this documentation](../../../../nextjs-starter/page.mdx#approach-2-install-separately) to learn how to install it.
 
 ### Subscribe Route
 
@@ -3478,7 +3500,7 @@ The next steps of this example depend on your use case. This section provides so
 
 ### Admin Development
 
-The Medusa Admin is extendable, allowing you to add widgets to existing pages or create new pages. Learn more about it in [this documentation](!docs!/learn/advanced-development/admin).
+The Medusa Admin is extendable, allowing you to add widgets to existing pages or create new pages. Learn more about it in [this documentation](!docs!/learn/fundamentals/admin).
 
 ### Storefront Development
 

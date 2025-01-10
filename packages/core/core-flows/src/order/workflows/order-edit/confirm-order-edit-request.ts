@@ -215,7 +215,7 @@ export const confirmOrderEditRequestWorkflow = createWorkflow(
     const formatedInventoryItems = transform(
       {
         input: {
-          sales_channel_id: (orderItems as any).order.sales_channel_id,
+          sales_channel_id: (orderItems as any).sales_channel_id,
           variants,
           items,
         },

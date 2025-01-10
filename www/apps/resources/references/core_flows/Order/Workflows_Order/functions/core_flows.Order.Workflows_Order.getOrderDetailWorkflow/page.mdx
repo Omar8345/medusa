@@ -1,11 +1,14 @@
 ---
 slug: /references/medusa-workflows/getOrderDetailWorkflow
 sidebar_label: getOrderDetailWorkflow
+tags:
+  - remote query
+  - workflow
 ---
 
 import { TypeList, WorkflowDiagram } from "docs-ui"
 
-# getOrderDetailWorkflow - Medusa Workflows API Reference
+# getOrderDetailWorkflow - Medusa Core Workflows Reference
 
 This documentation provides a reference to the `getOrderDetailWorkflow`. It belongs to the `@medusajs/medusa/core-flows` package.
 
@@ -13,12 +16,12 @@ This workflow retrieves an order's details.
 
 ## Steps
 
-<WorkflowDiagram workflow={{"name":"getOrderDetailWorkflow","steps":[{"type":"step","name":"useRemoteQueryStep","description":"This step fetches data across modules using the remote query.\n\nLearn more in the [Remote Query documentation](https://docs.medusajs.com/advanced-development/modules/remote-query).\n\n","link":"../../../../core_flows.Steps_Common/page.mdx#useremotequerystep","depth":1}]}} />
+<WorkflowDiagram workflow={{"name":"getOrderDetailWorkflow","steps":[{"type":"step","name":"useRemoteQueryStep","description":"This step fetches data across modules using the remote query.\n\nLearn more in the [Remote Query documentation](https://docs.medusajs.com/learn/fundamentals/module-links/query).\n\n:::note\n\nThis step is deprecated. Use [useQueryGraphStep](../../../../Common/Steps_Common/functions/core_flows.Common.Steps_Common.useQueryGraphStep/page.mdx) instead.\n\n:::\n\n","link":"../../../../Common/Steps_Common/functions/core_flows.Common.Steps_Common.useRemoteQueryStep/page.mdx","depth":1}]}} />
 
 ## Input
 
-<TypeList types={[{"name":"fields","type":"`string`[]","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]},{"name":"order_id","type":"`string`","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]},{"name":"version","type":"`number`","description":"","optional":true,"defaultValue":"","expandable":false,"children":[]}]} expandUrl="https://docs.medusajs.com/v2/advanced-development/data-models/manage-relationships#retrieve-records-of-relation" sectionTitle="getOrderDetailWorkflow"/>
+<TypeList types={[{"name":"fields","type":"`string`[]","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]},{"name":"order_id","type":"`string`","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]},{"name":"filters","type":"`object`","description":"","optional":true,"defaultValue":"","expandable":false,"children":[{"name":"is_draft_order","type":"`boolean`","description":"","optional":true,"defaultValue":"","expandable":false,"children":[]},{"name":"customer_id","type":"`string`","description":"","optional":true,"defaultValue":"","expandable":false,"children":[]}]},{"name":"version","type":"`number`","description":"","optional":true,"defaultValue":"","expandable":false,"children":[]}]} expandUrl="https://docs.medusajs.com/learn/fundamentals/data-models/manage-relationships#retrieve-records-of-relation" sectionTitle="getOrderDetailWorkflow"/>
 
 ## Output
 
-<TypeList types={[{"name":"OrderDetailDTO","type":"`OrderDetailDTO`","optional":false,"defaultValue":"","description":"","expandable":false,"children":[]}]} expandUrl="https://docs.medusajs.com/v2/advanced-development/data-models/manage-relationships#retrieve-records-of-relation" sectionTitle="getOrderDetailWorkflow"/>
+<TypeList types={[{"name":"OrderDetailDTO","type":"`OrderDetailDTO`","optional":false,"defaultValue":"","description":"","expandable":false,"children":[]}]} expandUrl="https://docs.medusajs.com/learn/fundamentals/data-models/manage-relationships#retrieve-records-of-relation" sectionTitle="getOrderDetailWorkflow"/>

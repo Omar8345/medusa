@@ -1,11 +1,15 @@
 ---
 slug: /references/medusa-workflows/deleteOrderPaymentCollections
 sidebar_label: deleteOrderPaymentCollections
+tags:
+  - remote query
+  - link
+  - workflow
 ---
 
 import { TypeList, WorkflowDiagram } from "docs-ui"
 
-# deleteOrderPaymentCollections - Medusa Workflows API Reference
+# deleteOrderPaymentCollections - Medusa Core Workflows Reference
 
 This documentation provides a reference to the `deleteOrderPaymentCollections`. It belongs to the `@medusajs/medusa/core-flows` package.
 
@@ -13,8 +17,8 @@ This workflow deletes one or more invites.
 
 ## Steps
 
-<WorkflowDiagram workflow={{"name":"deleteOrderPaymentCollections","steps":[{"type":"step","name":"useRemoteQueryStep","description":"This step fetches data across modules using the remote query.\n\nLearn more in the [Remote Query documentation](https://docs.medusajs.com/advanced-development/modules/remote-query).\n\n","link":"../../../../core_flows.Steps_Common/page.mdx#useremotequerystep","depth":1},{"type":"step","name":"throwUnlessStatusIsNotPaid","description":"This step validates that the order doesn't have an active payment collection.","link":"../../../../core_flows.Workflows_Order/page.mdx#throwunlessstatusisnotpaid","depth":2},{"type":"step","name":"removeRemoteLinkStep","description":"This step deletes linked records of a record.\n\nLearn more in the [Remote Link documentation](https://docs.medusajs.com/advanced-development/modules/remote-link#cascade-delete-linked-records)\n\n","link":"../../../../core_flows.Steps_Common/page.mdx#removeremotelinkstep","depth":3}]}} />
+<WorkflowDiagram workflow={{"name":"deleteOrderPaymentCollections","steps":[{"type":"step","name":"useRemoteQueryStep","description":"This step fetches data across modules using the remote query.\n\nLearn more in the [Remote Query documentation](https://docs.medusajs.com/learn/fundamentals/module-links/query).\n\n:::note\n\nThis step is deprecated. Use [useQueryGraphStep](../../../../Common/Steps_Common/functions/core_flows.Common.Steps_Common.useQueryGraphStep/page.mdx) instead.\n\n:::\n\n","link":"../../../../Common/Steps_Common/functions/core_flows.Common.Steps_Common.useRemoteQueryStep/page.mdx","depth":1},{"type":"step","name":"throwUnlessStatusIsNotPaid","description":"This step validates that the order doesn't have an active payment collection.\n\n","link":"../core_flows.Order.Workflows_Order.throwUnlessStatusIsNotPaid/page.mdx","depth":2},{"type":"step","name":"removeRemoteLinkStep","description":"This step deletes linked records of a record.\n\nLearn more in the [Remote Link documentation](https://docs.medusajs.com/learn/fundamentals/module-links/remote-link#cascade-delete-linked-records)\n\n","link":"../../../../Common/Steps_Common/functions/core_flows.Common.Steps_Common.removeRemoteLinkStep/page.mdx","depth":3}]}} />
 
 ## Input
 
-<TypeList types={[{"name":"id","type":"`string`","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]}]} expandUrl="https://docs.medusajs.com/v2/advanced-development/data-models/manage-relationships#retrieve-records-of-relation" sectionTitle="deleteOrderPaymentCollections"/>
+<TypeList types={[{"name":"id","type":"`string`","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]}]} expandUrl="https://docs.medusajs.com/learn/fundamentals/data-models/manage-relationships#retrieve-records-of-relation" sectionTitle="deleteOrderPaymentCollections"/>

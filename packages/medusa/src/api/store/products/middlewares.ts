@@ -6,7 +6,6 @@ import {
   clearFiltersByKey,
   maybeApplyLinkFilter,
   MiddlewareRoute,
-  setContext,
 } from "@medusajs/framework/http"
 import { isPresent, ProductStatus } from "@medusajs/framework/utils"
 import {
@@ -15,7 +14,6 @@ import {
   setPricingContext,
   setTaxContext,
 } from "../../utils/middlewares"
-import { maybeApplyStockLocationId } from "./helpers"
 import * as QueryConfig from "./query-config"
 import { StoreGetProductsParams } from "./validators"
 
@@ -32,9 +30,6 @@ export const storeProductRoutesMiddlewares: MiddlewareRoute[] = [
         QueryConfig.listProductQueryConfig
       ),
       filterByValidSalesChannels(),
-      setContext({
-        stock_location_id: maybeApplyStockLocationId,
-      }),
       maybeApplyLinkFilter({
         entryPoint: "product_sales_channel",
         resourceId: "product_id",
@@ -73,9 +68,6 @@ export const storeProductRoutesMiddlewares: MiddlewareRoute[] = [
       ),
       applyParamsAsFilters({ id: "id" }),
       filterByValidSalesChannels(),
-      setContext({
-        stock_location_id: maybeApplyStockLocationId,
-      }),
       maybeApplyLinkFilter({
         entryPoint: "product_sales_channel",
         resourceId: "product_id",

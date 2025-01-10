@@ -1,5 +1,17 @@
 # @medusajs/sales-channel
 
+## 2.2.0
+
+## 2.1.3
+
+## 2.1.2
+
+## 2.1.1
+
+### Patch Changes
+
+- [#10452](https://github.com/medusajs/medusa/pull/10452) [`be15240909c5da4c585f30a1c3b5f0212121f8f5`](https://github.com/medusajs/medusa/commit/be15240909c5da4c585f30a1c3b5f0212121f8f5) Thanks [@thetutlage](https://github.com/thetutlage)! - refactor: migrate sales-channel to DML
+
 ## 2.1.0
 
 ## 2.0.7

@@ -33,7 +33,7 @@ export const POST = async (
   const paymentCollection = await refetchPaymentCollection(
     collectionId,
     req.scope,
-    req.remoteQueryConfig.fields
+    req.queryConfig.fields
   )
 
   res.status(200).json({

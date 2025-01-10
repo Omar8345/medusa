@@ -1,11 +1,11 @@
-import * as Handlebars from "handlebars"
+import Handlebars from "handlebars"
 import {
   DeclarationReflection,
   ProjectReflection,
   ReflectionGroup,
   ReflectionKind,
 } from "typedoc"
-import { MarkdownTheme } from "../../theme"
+import { MarkdownTheme } from "../../theme.js"
 import { escapeChars } from "utils"
 
 export default function (theme: MarkdownTheme) {

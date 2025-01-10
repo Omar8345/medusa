@@ -502,6 +502,7 @@ medusaIntegrationTestRunner({
             provider_id: provider_id,
             data: null,
             metadata: null,
+            shipping_option_type_id: expect.any(String),
             type: expect.objectContaining({
               id: expect.any(String),
               code: shippingOptionData.type.code,

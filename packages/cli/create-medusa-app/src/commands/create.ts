@@ -44,17 +44,20 @@ export type CreateOptions = {
   verbose?: boolean
 }
 
-export default async ({
-  repoUrl = "",
-  seed,
-  skipDb,
-  dbUrl,
-  browser,
-  migrations,
-  directoryPath,
-  withNextjsStarter = false,
-  verbose = false,
-}: CreateOptions) => {
+export default async (
+  args: string[], 
+  {
+    repoUrl = "",
+    seed,
+    skipDb,
+    dbUrl,
+    browser,
+    migrations,
+    directoryPath,
+    withNextjsStarter = false,
+    verbose = false,
+  }: CreateOptions
+) => {
   const nodeVersion = getNodeVersion()
   if (nodeVersion < MIN_SUPPORTED_NODE_VERSION) {
     logMessage({
@@ -98,7 +101,20 @@ export default async ({
     return
   })
 
-  const projectName = await askForProjectName(directoryPath)
+  let askProjectName = args.length === 0
+  if (args.length > 0) {
+    // check if project directory already exists
+    const projectPath = getProjectPath(args[0], directoryPath)
+    if (fs.existsSync(projectPath) && fs.lstatSync(projectPath).isDirectory()) {
+      logMessage({
+        message: `A directory already exists with the name ${args[0]}. Please enter a different project name.`,
+        type: "warn",
+      })
+      askProjectName = true
+    }
+  }
+
+  const projectName = askProjectName ? await askForProjectName(directoryPath) : args[0]
   const projectPath = getProjectPath(projectName, directoryPath)
   const installNextjs = withNextjsStarter || (await askForNextjsStarter())
 

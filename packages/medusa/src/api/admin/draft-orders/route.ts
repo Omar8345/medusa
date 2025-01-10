@@ -30,9 +30,9 @@ export const GET = async (
         ...req.filterableFields,
         is_draft_order: true,
       },
-      ...req.remoteQueryConfig.pagination,
+      ...req.queryConfig.pagination,
     },
-    fields: req.remoteQueryConfig.fields,
+    fields: req.queryConfig.fields,
   })
 
   const { rows: draft_orders, metadata } = await remoteQuery(queryObject)
@@ -90,7 +90,7 @@ export const POST = async (
   const draftOrder = await refetchOrder(
     result.id,
     req.scope,
-    req.remoteQueryConfig.fields
+    req.queryConfig.fields
   )
 
   res.status(200).json({ draft_order: draftOrder })

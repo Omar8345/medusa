@@ -10,7 +10,7 @@ export const GET = async (
   const workflow = getOrderDetailWorkflow(req.scope)
   const { result } = await workflow.run({
     input: {
-      fields: req.remoteQueryConfig.fields,
+      fields: req.queryConfig.fields,
       order_id: req.params.id,
       filters: {
         is_draft_order: false,

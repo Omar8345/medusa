@@ -28,7 +28,7 @@ declare global {
       /**
        * An object containing fields and variables to be used with the remoteQuery
        */
-      remoteQueryConfig: {
+      queryConfig: {
         fields: string[]
         pagination: {
           order?: Record<string, string>
@@ -36,6 +36,12 @@ declare global {
           take?: number
         }
       }
+
+      /**
+       * @deprecated. Instead use "req.queryConfig"
+       */
+      remoteQueryConfig: Request["queryConfig"]
+
       /**
        * An object containing the fields that are filterable e.g `{ id: Any<String> }`
        */

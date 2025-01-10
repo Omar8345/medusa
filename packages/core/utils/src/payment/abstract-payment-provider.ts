@@ -12,6 +12,9 @@ import {
 export abstract class AbstractPaymentProvider<TConfig = Record<string, unknown>>
   implements IPaymentProvider
 {
+  /**
+   * @ignore
+   */
   protected readonly container: Record<string, unknown>
   /**
    * This method validates the options of the provider set in `medusa-config.ts`.
@@ -36,63 +39,58 @@ export abstract class AbstractPaymentProvider<TConfig = Record<string, unknown>>
   static validateOptions(options: Record<any, any>): void | never {}
 
   /**
-   * You can use the `constructor` of the provider's service to access resources in your module's container.
-   *
-   * You can also use the constructor to initialize your integration with the third-party provider. For example, if you use a client to connect to the third-party provider’s APIs,
-   * you can initialize it in the constructor and use it in other methods in the service.
-   *
-   * The provider can also access the module's options as a second parameter.
+   * The constructor allows you to access resources from the [module's container](https://docs.medusajs.com/learn/fundamentals/modules/container) 
+   * using the first parameter, and the module's options using the second parameter.
+   * 
+   * :::note
+   * 
+   * A module's options are passed when you register it in the Medusa application.
+   * 
+   * :::
    *
    * @param {Record<string, unknown>} cradle - The module's container cradle used to resolve resources.
-   * @param {Record<string, unknown>} config - The options passed to the payment module provider.
+   * @param {Record<string, unknown>} config - The options passed to the Payment Module provider.
+   * @typeParam TConfig - The type of the provider's options passed as a second parameter.
    *
    * @example
-   * ```ts
-   * import {
-   *   AbstractPaymentProvider
-   * } from "@medusajs/framework/utils"
+   * import { AbstractPaymentProvider } from "@medusajs/framework/utils"
    * import { Logger } from "@medusajs/framework/types"
-   *
-   * type InjectedDependencies = {
-   *   logger: Logger
-   * }
-   *
+   * 
    * type Options = {
    *   apiKey: string
    * }
-   *
-   * class MyPaymentProviderService extends AbstractPaymentProvider<
-   *   Options
-   * > {
-   *   static identifier = "my-payment"
+   * 
+   * type InjectedDependencies = {
+   *   logger: Logger
+   * }
+   * 
+   * class MyPaymentProviderService extends AbstractPaymentProvider<Options> {
    *   protected logger_: Logger
    *   protected options_: Options
-   *   // Assuming you're using a client to integrate
-   *   // with a third-party service
+   *   // assuming you're initializing a client
    *   protected client
-   *
+   * 
    *   constructor(
-   *     { logger }: InjectedDependencies,
+   *     container: InjectedDependencies,
    *     options: Options
    *   ) {
-   *     // @ts-ignore
-   *     super(...arguments)
-   *
-   *     this.logger_ = logger
+   *     super(container, options)
+   * 
+   *     this.logger_ = container.logger
    *     this.options_ = options
-   *
-   *     // Assuming you're initializing a client
-   *     this.client = new Client(options)
+   * 
+   *     // TODO initialize your client
    *   }
-   *
    *   // ...
    * }
-   *
+   * 
    * export default MyPaymentProviderService
-   * ```
    */
   protected constructor(
     cradle: Record<string, unknown>,
+    /**
+     * @ignore
+     */
     protected readonly config: TConfig = {} as TConfig // eslint-disable-next-line @typescript-eslint/no-empty-function
   ) {
     this.container = cradle
@@ -122,7 +120,6 @@ export abstract class AbstractPaymentProvider<TConfig = Record<string, unknown>>
    *   static identifier = "my-payment"
    *   // ...
    * }
-   * ```
    */
   public static identifier: string
 
@@ -170,6 +167,7 @@ export abstract class AbstractPaymentProvider<TConfig = Record<string, unknown>>
    *     const externalId = paymentData.id
    *
    *     try {
+   *       // assuming you have a client that captures the payment
    *       const newData = await this.client.capturePayment(externalId)
    *
    *       return {
@@ -232,6 +230,7 @@ export abstract class AbstractPaymentProvider<TConfig = Record<string, unknown>>
    *     const externalId = paymentSessionData.id
    *
    *     try {
+   *       // assuming you have a client that authorizes the payment
    *       const paymentData = await this.client.authorizePayment(externalId)
    *
    *       return {
@@ -294,6 +293,7 @@ export abstract class AbstractPaymentProvider<TConfig = Record<string, unknown>>
    *     const externalId = paymentData.id
    *
    *     try {
+   *       // assuming you have a client that cancels the payment
    *       const paymentData = await this.client.cancelPayment(externalId)
    *     } catch (e) {
    *       return {
@@ -340,6 +340,7 @@ export abstract class AbstractPaymentProvider<TConfig = Record<string, unknown>>
    *     } = context
    *
    *     try {
+   *       // assuming you have a client that initializes the payment
    *       const response = await this.client.init(
    *         amount, currency_code, customerDetails
    *       )
@@ -394,6 +395,7 @@ export abstract class AbstractPaymentProvider<TConfig = Record<string, unknown>>
    *     const externalId = paymentSessionData.id
    *
    *     try {
+   *       // assuming you have a client that cancels the payment
    *       await this.client.cancelPayment(externalId)
    *     } catch (e) {
    *       return {
@@ -434,6 +436,7 @@ export abstract class AbstractPaymentProvider<TConfig = Record<string, unknown>>
    *     const externalId = paymentSessionData.id
    *
    *     try {
+   *       // assuming you have a client that retrieves the payment status
    *       const status = await this.client.getStatus(externalId)
    *
    *       switch (status) {
@@ -486,6 +489,7 @@ export abstract class AbstractPaymentProvider<TConfig = Record<string, unknown>>
    *     const externalId = paymentData.id
    *
    *     try {
+   *       // assuming you have a client that refunds the payment
    *       const newData = await this.client.refund(
    *         externalId,
    *         refundAmount
@@ -538,6 +542,7 @@ export abstract class AbstractPaymentProvider<TConfig = Record<string, unknown>>
    *     const externalId = paymentSessionData.id
    *
    *     try {
+   *       // assuming you have a client that retrieves the payment
    *       return await this.client.retrieve(externalId)
    *     } catch (e) {
    *       return {
@@ -586,6 +591,7 @@ export abstract class AbstractPaymentProvider<TConfig = Record<string, unknown>>
    *     const externalId = data.id
    *
    *     try {
+   *       // assuming you have a client that updates the payment
    *       const response = await this.client.update(
    *         externalId,
    *         {

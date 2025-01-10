@@ -27,6 +27,7 @@ export const cancelPaymentStep = createStep(
       : [input.paymentIds]
 
     const promises: Promise<any>[] = []
+
     for (const id of paymentIds) {
       promises.push(
         paymentModule.cancelPayment(id).catch((e) => {
@@ -36,6 +37,7 @@ export const cancelPaymentStep = createStep(
         })
       )
     }
+
     await promiseAll(promises)
   }
 )

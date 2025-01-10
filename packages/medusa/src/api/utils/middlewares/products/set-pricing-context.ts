@@ -9,7 +9,7 @@ import { NextFunction } from "express"
 
 export function setPricingContext() {
   return async (req: AuthenticatedMedusaRequest, _, next: NextFunction) => {
-    const withCalculatedPrice = req.remoteQueryConfig.fields.some((field) =>
+    const withCalculatedPrice = req.queryConfig.fields.some((field) =>
       field.startsWith("variants.calculated_price")
     )
     if (!withCalculatedPrice) {
@@ -49,7 +49,10 @@ export function setPricingContext() {
         ["id"]
       )
 
-      pricingContext.customer_group_id = customerGroups.map((cg) => cg.id)
+      pricingContext.customer = { groups: [] }
+      customerGroups.map((cg) =>
+        pricingContext.customer?.groups?.push({ id: cg.id })
+      )
     }
 
     req.pricingContext = pricingContext

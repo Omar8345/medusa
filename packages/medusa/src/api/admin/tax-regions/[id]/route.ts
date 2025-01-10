@@ -24,7 +24,7 @@ export const GET = async (
     remoteQueryObjectFromString({
       entryPoint: "tax_region",
       variables: { filters },
-      fields: req.remoteQueryConfig.fields,
+      fields: req.queryConfig.fields,
     })
   )
 
@@ -54,7 +54,7 @@ export const POST = async (
   } = await query.graph(
     {
       entity: "tax_region",
-      fields: req.remoteQueryConfig.fields,
+      fields: req.queryConfig.fields,
       filters: { id },
     },
     { throwIfKeyNotFound: true }

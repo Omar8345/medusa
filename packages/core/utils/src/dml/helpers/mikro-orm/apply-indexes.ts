@@ -16,6 +16,7 @@ export function applyIndexes(
 ) {
   field.indexes.forEach((index) => {
     const providerEntityIdIndexStatement = createPsqlIndexStatementHelper({
+      name: index.name,
       tableName,
       columns: [field.fieldName],
       unique: index.type === "unique",
@@ -48,6 +49,7 @@ export function applyEntityIndexes(
       columns: index.on as string[],
       unique: index.unique,
       where: index.where,
+      type: index.type,
     })
 
     entityIndexStatement.MikroORMIndex()(MikroORMEntity)

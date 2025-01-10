@@ -19,7 +19,7 @@ export const GET = async (
   const customerGroup = await refetchCustomerGroup(
     req.params.id,
     req.scope,
-    req.remoteQueryConfig.fields
+    req.queryConfig.fields
   )
 
   if (!customerGroup) {
@@ -58,7 +58,7 @@ export const POST = async (
   const customerGroup = await refetchCustomerGroup(
     req.params.id,
     req.scope,
-    req.remoteQueryConfig.fields
+    req.queryConfig.fields
   )
   res.status(200).json({ customer_group: customerGroup })
 }

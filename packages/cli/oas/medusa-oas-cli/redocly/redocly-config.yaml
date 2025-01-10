@@ -115,8 +115,8 @@ decorators:
       AdminProductOption:
         - AdminProduct
         - AdminProductOptionValue
-      AdminPromotion:
-        - AdminApplicationMethod
+      AdminApplicationMethod:
+        - AdminPromotion
       BaseOrderItemDetail:
         - BaseOrderLineItem
       BaseOrderShippingDetail:
@@ -137,6 +137,8 @@ decorators:
         - AdminProduct
       Return:
         - OrderExchange
+      OrderCreditLine:
+        - Order
 theme:
   openapi:
     theme:

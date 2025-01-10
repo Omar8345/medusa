@@ -19,9 +19,9 @@ export const GET = async (
     entryPoint: "product_collection",
     variables: {
       filters: req.filterableFields,
-      ...req.remoteQueryConfig.pagination,
+      ...req.queryConfig.pagination,
     },
-    fields: req.remoteQueryConfig.fields,
+    fields: req.queryConfig.fields,
   })
 
   const { rows: collections, metadata } = await remoteQuery(query)

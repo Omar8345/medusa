@@ -26,7 +26,7 @@ export const POST = async (
   const taxRate = await refetchTaxRate(
     req.params.id,
     req.scope,
-    req.remoteQueryConfig.fields
+    req.queryConfig.fields
   )
   res.status(200).json({ tax_rate: taxRate })
 }

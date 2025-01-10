@@ -1,9 +1,10 @@
 import { FormattingOptionsType } from "types"
+import baseSectionsOptions from "../base-section-options.js"
 
 const fileOptions: FormattingOptionsType = {
   "^file/.*AbstractFileProviderService": {
     reflectionGroups: {
-      Properties: false,
+      Constructors: false,
     },
     reflectionDescription: `In this document, you’ll learn how to create a file provider module and the methods you must implement in its main service.`,
     frontmatterData: {
@@ -14,6 +15,12 @@ const fileOptions: FormattingOptionsType = {
     },
     shouldIncrementAfterStartSections: true,
     expandMembers: true,
+    expandProperties: true,
+    sections: {
+      ...baseSectionsOptions,
+      member_declaration_title: false,
+      reflection_typeParameters: false,
+    },
     startSections: [
       `## 1. Create Module Directory
 
@@ -61,10 +68,6 @@ The File Module accepts one provider only.
 </Note>
 
 \`\`\`ts title="medusa-config.ts"
-import { Modules } from "@medusajs/framework/utils"
-
-// ...
-
 module.exports = defineConfig({
   // ...
   modules: [
@@ -72,6 +75,11 @@ module.exports = defineConfig({
       resolve: "@medusajs/medusa/file",
       options: {
         providers: [
+          // default provider
+          {
+            resolve: "@medusajs/medusa/file-local",
+            id: "local",
+          },
           {
             resolve: "./src/modules/my-file",
             id: "my-file",

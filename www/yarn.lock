@@ -1795,34 +1795,43 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next/bundle-analyzer@npm:15.0.1":
-  version: 15.0.1
-  resolution: "@next/bundle-analyzer@npm:15.0.1"
+"@next/bundle-analyzer@npm:15.0.4":
+  version: 15.0.4
+  resolution: "@next/bundle-analyzer@npm:15.0.4"
   dependencies:
     webpack-bundle-analyzer: 4.10.1
-  checksum: 1d9681bd5b8915791fc92d6cff3f4161cc49a4bd06e25c1eeca17edbba387282579aac811fe78a39d9bd6eb29bd134d556ea1b57dcff6bb67e919072d98dd8ac
+  checksum: cbeddac527697faee19de87a84ff2b2a3a9986562ef4986b255c219d51eb78277350a63219472eaf6754183c2c9e8208139cbb2949d9c5aed7a37b07893554a2
   languageName: node
   linkType: hard
 
-"@next/env@npm:15.0.1":
-  version: 15.0.1
-  resolution: "@next/env@npm:15.0.1"
-  checksum: a5c9b24755232257b26893cbc123498b51449f24c0a88805fecb668b44651e72195176d996c8859d6bcceaadbe158d966b43a60095aa14a86f95b93cd5ef4521
+"@next/bundle-analyzer@npm:^15.1.1":
+  version: 15.1.1
+  resolution: "@next/bundle-analyzer@npm:15.1.1"
+  dependencies:
+    webpack-bundle-analyzer: 4.10.1
+  checksum: 2a85db96b1b37a6273d7ee81978ffd11181335b2017c636bcccfc6bca3fdd9a7f1b3c45fba35b4b51f5ca844da76f604d5e8568c894fbdae5a14ff27548cc0d6
   languageName: node
   linkType: hard
 
-"@next/eslint-plugin-next@npm:15.0.1":
-  version: 15.0.1
-  resolution: "@next/eslint-plugin-next@npm:15.0.1"
+"@next/env@npm:15.0.4":
+  version: 15.0.4
+  resolution: "@next/env@npm:15.0.4"
+  checksum: 114f5404798017ab9438ed9e90cb0057d8a42167995cf702ba938613e869e59869e55d7cebdbb19a5f5f89aa5d1899bc8849ea20e0902101196c66f63f5580fb
+  languageName: node
+  linkType: hard
+
+"@next/eslint-plugin-next@npm:15.0.4":
+  version: 15.0.4
+  resolution: "@next/eslint-plugin-next@npm:15.0.4"
   dependencies:
     fast-glob: 3.3.1
-  checksum: 4e7dda7279999425041b1832c13845d18bb3b22ebdbc7707b28bd6a27b8010a4dfb1e792a7f2bf210fc4117dfbfdf60509714035c4bcd40e30b55317d76c6fcc
+  checksum: ce55e4102712baac47d79f4b6ed8962b472d1a9aafe2ec0fcb7160e818fd2768d806c7a6cd95e122e1c32ac1897bc10cb39f70b6c53f7b36589269177f88f66f
   languageName: node
   linkType: hard
 
-"@next/mdx@npm:15.0.1":
-  version: 15.0.1
-  resolution: "@next/mdx@npm:15.0.1"
+"@next/mdx@npm:15.0.4":
+  version: 15.0.4
+  resolution: "@next/mdx@npm:15.0.4"
   dependencies:
     source-map: ^0.7.0
   peerDependencies:
@@ -1833,63 +1842,75 @@ __metadata:
       optional: true
     "@mdx-js/react":
       optional: true
-  checksum: 1d808c29bb6a2c3f3afd5398096e68246bc2e5fe258cd6cc939fddb3050c53622a9140887ab90c1d2455125dcd8945dad9915093ffdfb4a6c8f368f81fedf834
+  checksum: 74afd2108b006f476705057769813b9fd96d6ff3c7f1cffc810340846da68ac6ea07dbe8403bd479074ca4c0e7b02fc8a893b47d3a51152a161aa9e465b06d08
   languageName: node
   linkType: hard
 
-"@next/swc-darwin-arm64@npm:15.0.1":
-  version: 15.0.1
-  resolution: "@next/swc-darwin-arm64@npm:15.0.1"
+"@next/swc-darwin-arm64@npm:15.0.4":
+  version: 15.0.4
+  resolution: "@next/swc-darwin-arm64@npm:15.0.4"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"@next/swc-darwin-x64@npm:15.0.1":
-  version: 15.0.1
-  resolution: "@next/swc-darwin-x64@npm:15.0.1"
+"@next/swc-darwin-x64@npm:15.0.4":
+  version: 15.0.4
+  resolution: "@next/swc-darwin-x64@npm:15.0.4"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"@next/swc-linux-arm64-gnu@npm:15.0.1":
-  version: 15.0.1
-  resolution: "@next/swc-linux-arm64-gnu@npm:15.0.1"
+"@next/swc-linux-arm64-gnu@npm:15.0.4":
+  version: 15.0.4
+  resolution: "@next/swc-linux-arm64-gnu@npm:15.0.4"
   conditions: os=linux & cpu=arm64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@next/swc-linux-arm64-musl@npm:15.0.1":
-  version: 15.0.1
-  resolution: "@next/swc-linux-arm64-musl@npm:15.0.1"
+"@next/swc-linux-arm64-musl@npm:15.0.4":
+  version: 15.0.4
+  resolution: "@next/swc-linux-arm64-musl@npm:15.0.4"
   conditions: os=linux & cpu=arm64 & libc=musl
   languageName: node
   linkType: hard
 
-"@next/swc-linux-x64-gnu@npm:15.0.1":
-  version: 15.0.1
-  resolution: "@next/swc-linux-x64-gnu@npm:15.0.1"
+"@next/swc-linux-x64-gnu@npm:15.0.4":
+  version: 15.0.4
+  resolution: "@next/swc-linux-x64-gnu@npm:15.0.4"
   conditions: os=linux & cpu=x64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@next/swc-linux-x64-musl@npm:15.0.1":
-  version: 15.0.1
-  resolution: "@next/swc-linux-x64-musl@npm:15.0.1"
+"@next/swc-linux-x64-musl@npm:15.0.4":
+  version: 15.0.4
+  resolution: "@next/swc-linux-x64-musl@npm:15.0.4"
   conditions: os=linux & cpu=x64 & libc=musl
   languageName: node
   linkType: hard
 
-"@next/swc-win32-arm64-msvc@npm:15.0.1":
-  version: 15.0.1
-  resolution: "@next/swc-win32-arm64-msvc@npm:15.0.1"
+"@next/swc-win32-arm64-msvc@npm:15.0.4":
+  version: 15.0.4
+  resolution: "@next/swc-win32-arm64-msvc@npm:15.0.4"
   conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
 
-"@next/swc-win32-x64-msvc@npm:15.0.1":
-  version: 15.0.1
-  resolution: "@next/swc-win32-x64-msvc@npm:15.0.1"
+"@next/swc-win32-x64-msvc@npm:15.0.4":
+  version: 15.0.4
+  resolution: "@next/swc-win32-x64-msvc@npm:15.0.4"
   conditions: os=win32 & cpu=x64
+  languageName: node
+  linkType: hard
+
+"@next/third-parties@npm:15.0.4":
+  version: 15.0.4
+  resolution: "@next/third-parties@npm:15.0.4"
+  dependencies:
+    third-party-capital: 1.0.20
+  peerDependencies:
+    next: ^13.0.0 || ^14.0.0 || ^15.0.0
+    react: ^18.2.0 || 19.0.0-rc-66855b96-20241106 || ^19.0.0
+  checksum: 8d628efd45088b72fa0d635f7f517eb348acab17cddcbc0fd40178df93a0463671a4d432fbb6c6a22fb5278ae9c44de57c0048776a9c0217d10ff01ca868002a
   languageName: node
   linkType: hard
 
@@ -6770,8 +6791,8 @@ __metadata:
     "@mdx-js/react": ^3.1.0
     "@medusajs/icons": ^2.0.0
     "@medusajs/ui": ^3.0.0
-    "@next/bundle-analyzer": 15.0.1
-    "@next/mdx": 15.0.1
+    "@next/bundle-analyzer": 15.0.4
+    "@next/mdx": 15.0.4
     "@react-hook/resize-observer": ^2.0.2
     "@readme/openapi-parser": ^2.5.0
     "@types/jsdom": ^21.1.1
@@ -6791,7 +6812,7 @@ __metadata:
     jsdom: ^22.1.0
     json-schema: ^0.4.0
     json-stringify-pretty-compact: ^4.0.0
-    next: 15.0.1
+    next: 15.0.4
     next-mdx-remote: 5.0.0
     openapi-sampler: ^1.3.1
     openapi-types: ^12.1.3
@@ -6805,6 +6826,7 @@ __metadata:
     react-transition-group: ^4.4.5
     rehype-mdx-code-props: ^3.0.1
     rehype-slug: ^6.0.0
+    remark-rehype-plugins: "*"
     slugify: ^1.6.6
     swr: ^2.2.0
     tailwind: "*"
@@ -7110,7 +7132,7 @@ __metadata:
     "@mdx-js/loader": ^3.1.0
     "@mdx-js/react": ^3.1.0
     "@medusajs/icons": ^2.0.0
-    "@next/mdx": 15.0.1
+    "@next/mdx": 15.0.4
     "@types/mdx": ^2.0.13
     "@types/node": ^20
     "@types/react": "npm:types-react@rc"
@@ -7122,13 +7144,14 @@ __metadata:
     eslint: ^9.13.0
     eslint-plugin-prettier: ^5.2.1
     eslint-plugin-react-hooks: ^5.0.0
-    next: 15.0.1
+    next: 15.0.4
     postcss: ^8
     react: rc
     react-dom: rc
     rehype-mdx-code-props: ^2.0.0
     rehype-slug: ^6.0.0
     remark-rehype-plugins: "*"
+    tags: "*"
     tailwind: "*"
     tailwindcss: ^3.3.0
     tsconfig: "*"
@@ -7191,11 +7214,14 @@ __metadata:
   resolution: "build-scripts@workspace:packages/build-scripts"
   dependencies:
     "@types/node": ^20.11.20
-    remark-rehype-plugins: "*"
+    docs-utils: "*"
     rimraf: ^5.0.5
+    tags: "*"
     tsconfig: "*"
     types: "*"
     typescript: ^5.3.3
+  peerDependencies:
+    docs-utils: "*"
   languageName: unknown
   linkType: soft
 
@@ -8384,7 +8410,7 @@ __metadata:
     "@types/eslint__js": 8.42.3
     autoprefixer: 10.4.14
     eslint: ^9.13.0
-    eslint-config-next: 15.0.1
+    eslint-config-next: 15.0.4
     eslint-config-prettier: 9.1.0
     eslint-config-turbo: 2.2.3
     eslint-plugin-markdown: 5.1.0
@@ -8406,6 +8432,7 @@ __metadata:
     "@emotion/is-prop-valid": ^1.3.1
     "@medusajs/icons": ^2.0.0
     "@medusajs/ui": ^4.0.0
+    "@next/third-parties": 15.0.4
     "@octokit/request": ^8.1.1
     "@react-hook/resize-observer": ^1.2.6
     "@segment/analytics-next": ^1.75.0
@@ -8418,7 +8445,7 @@ __metadata:
     eslint: ^9.13.0
     framer-motion: ^11.11.9
     mermaid: ^10.9.0
-    next: 15.0.1
+    next: 15.0.4
     npm-to-yarn: ^2.1.0
     prism-react-renderer: 2.4.0
     react: rc
@@ -8443,6 +8470,24 @@ __metadata:
     next: "*"
     react: "*"
     react-dom: "*"
+  languageName: unknown
+  linkType: soft
+
+"docs-utils@*, docs-utils@workspace:packages/docs-utils":
+  version: 0.0.0-use.local
+  resolution: "docs-utils@workspace:packages/docs-utils"
+  dependencies:
+    "@types/node": ^20.11.20
+    remark-frontmatter: ^5.0.0
+    remark-parse: ^11.0.0
+    remark-stringify: ^11.0.0
+    rimraf: ^5.0.5
+    to-vfile: ^8.0.0
+    tsconfig: "*"
+    types: "*"
+    typescript: ^5.3.3
+    unified: ^11.0.4
+    vfile-matter: ^5.0.0
   languageName: unknown
   linkType: soft
 
@@ -9110,11 +9155,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-config-next@npm:15.0.1":
-  version: 15.0.1
-  resolution: "eslint-config-next@npm:15.0.1"
+"eslint-config-next@npm:15.0.4":
+  version: 15.0.4
+  resolution: "eslint-config-next@npm:15.0.4"
   dependencies:
-    "@next/eslint-plugin-next": 15.0.1
+    "@next/eslint-plugin-next": 15.0.4
     "@rushstack/eslint-patch": ^1.10.3
     "@typescript-eslint/eslint-plugin": ^5.4.2 || ^6.0.0 || ^7.0.0 || ^8.0.0
     "@typescript-eslint/parser": ^5.4.2 || ^6.0.0 || ^7.0.0 || ^8.0.0
@@ -9130,7 +9175,7 @@ __metadata:
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: ce3f2050b9bd2dfabdfb6688f1f77f8be7009c5cb74f7b548727db5839a262fd17072e462843c69ff9e36de34def9b0f547efbd9da143d02110cfae1b0ce1988
+  checksum: 2259c19da18f3376814bd344a6b07168345c97a376ebadef8cf6f82d69f88d87c8a5162b91e98fb928b9cc675b498ab6de3981d191be72891216733b3ebd94c2
   languageName: node
   linkType: hard
 
@@ -13119,19 +13164,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next@npm:15.0.1":
-  version: 15.0.1
-  resolution: "next@npm:15.0.1"
+"next@npm:15.0.4":
+  version: 15.0.4
+  resolution: "next@npm:15.0.4"
   dependencies:
-    "@next/env": 15.0.1
-    "@next/swc-darwin-arm64": 15.0.1
-    "@next/swc-darwin-x64": 15.0.1
-    "@next/swc-linux-arm64-gnu": 15.0.1
-    "@next/swc-linux-arm64-musl": 15.0.1
-    "@next/swc-linux-x64-gnu": 15.0.1
-    "@next/swc-linux-x64-musl": 15.0.1
-    "@next/swc-win32-arm64-msvc": 15.0.1
-    "@next/swc-win32-x64-msvc": 15.0.1
+    "@next/env": 15.0.4
+    "@next/swc-darwin-arm64": 15.0.4
+    "@next/swc-darwin-x64": 15.0.4
+    "@next/swc-linux-arm64-gnu": 15.0.4
+    "@next/swc-linux-arm64-musl": 15.0.4
+    "@next/swc-linux-x64-gnu": 15.0.4
+    "@next/swc-linux-x64-musl": 15.0.4
+    "@next/swc-win32-arm64-msvc": 15.0.4
+    "@next/swc-win32-x64-msvc": 15.0.4
     "@swc/counter": 0.1.3
     "@swc/helpers": 0.5.13
     busboy: 1.6.0
@@ -13143,8 +13188,8 @@ __metadata:
     "@opentelemetry/api": ^1.1.0
     "@playwright/test": ^1.41.2
     babel-plugin-react-compiler: "*"
-    react: ^18.2.0 || 19.0.0-rc-69d4b800-20241021
-    react-dom: ^18.2.0 || 19.0.0-rc-69d4b800-20241021
+    react: ^18.2.0 || 19.0.0-rc-66855b96-20241106 || ^19.0.0
+    react-dom: ^18.2.0 || 19.0.0-rc-66855b96-20241106 || ^19.0.0
     sass: ^1.3.0
   dependenciesMeta:
     "@next/swc-darwin-arm64":
@@ -13176,7 +13221,7 @@ __metadata:
       optional: true
   bin:
     next: dist/bin/next
-  checksum: d5d18f3013b985c42fc0f67032c50300c1433ee8a41560dec99db60bc4dbd04e54e4d4a4f385a42f15a5e8465f81b5c327d780b41065235638562cdd5fe80674
+  checksum: 80b2296f33d865bf4f30f5df3d6fa461de13ef383dd9e32f33f5c05f21c766eb7f7573431235b9f3d51a5f09614cf431f8fcf925272b9524faced802961ff37b
   languageName: node
   linkType: hard
 
@@ -14600,19 +14645,14 @@ __metadata:
   dependencies:
     "@cloudinary/url-gen": ^1.17.0
     "@types/node": ^20.11.20
-    docs-ui: "*"
-    remark-frontmatter: ^5.0.0
-    remark-parse: ^11.0.0
-    remark-stringify: ^11.0.0
+    docs-utils: "*"
     rimraf: ^5.0.5
-    to-vfile: ^8.0.0
     tsconfig: "*"
     types: "*"
     typescript: ^5.3.3
     unified: ^11.0.4
     unist-builder: 3.0.0
     unist-util-visit: 4.1.2
-    vfile-matter: ^5.0.0
   languageName: unknown
   linkType: soft
 
@@ -14783,7 +14823,8 @@ __metadata:
     "@mdx-js/loader": ^3.1.0
     "@mdx-js/react": ^3.1.0
     "@medusajs/icons": ^2.0.0
-    "@next/mdx": 15.0.1
+    "@next/bundle-analyzer": ^15.1.1
+    "@next/mdx": 15.0.4
     "@types/mdx": ^2.0.13
     "@types/node": ^20
     "@types/react": "npm:types-react@rc"
@@ -14792,10 +14833,11 @@ __metadata:
     build-scripts: "*"
     clsx: ^2.1.0
     docs-ui: "*"
+    docs-utils: "*"
     eslint: ^9.13.0
     eslint-plugin-prettier: ^5.2.1
     eslint-plugin-react-hooks: ^5.0.0
-    next: 15.0.1
+    next: 15.0.4
     postcss: ^8
     react: rc
     react-dom: rc
@@ -14803,6 +14845,7 @@ __metadata:
     remark-directive: ^3.0.0
     remark-frontmatter: ^5.0.0
     remark-rehype-plugins: "*"
+    tags: "*"
     tailwind: "*"
     tailwindcss: ^3.3.0
     ts-node: ^10.9.2
@@ -15635,6 +15678,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tags@*, tags@workspace:packages/tags":
+  version: 0.0.0-use.local
+  resolution: "tags@workspace:packages/tags"
+  dependencies:
+    "@types/node": ^20.11.20
+    docs-utils: "*"
+    rimraf: ^5.0.5
+    ts-node: ^10.9.1
+    tsconfig: "*"
+    types: "*"
+    typescript: ^5.3.3
+  languageName: unknown
+  linkType: soft
+
 "tailwind-merge@npm:^2.2.1":
   version: 2.2.1
   resolution: "tailwind-merge@npm:2.2.1"
@@ -15773,6 +15830,13 @@ __metadata:
   dependencies:
     any-promise: ^1.0.0
   checksum: f375aeb2b05c100a456a30bc3ed07ef03a39cbdefe02e0403fb714b8c7e57eeaad1a2f5c4ecfb9ce554ce3db9c2b024eba144843cd9e344566d9fcee73b04767
+  languageName: node
+  linkType: hard
+
+"third-party-capital@npm:1.0.20":
+  version: 1.0.20
+  resolution: "third-party-capital@npm:1.0.20"
+  checksum: 7f45ff156ec9d7e2957a5b39061be22b780ffbd2d93c127252d908e2bff6cdd09f827a95909d457c8096e036f155006a38e355a06ee11cb6d63c7f4b150bbfb0
   languageName: node
   linkType: hard
 
@@ -16301,7 +16365,7 @@ turbo@latest:
     eslint-plugin-prettier: ^5.2.1
     eslint-plugin-react-hooks: ^5.0.0
     mdast-util-toc: ^7.0.0
-    next: 15.0.1
+    next: 15.0.4
     next-contentlayer: ^0.3.4
     next-themes: ^0.2.1
     postcss: 8.4.27
@@ -16665,7 +16729,7 @@ turbo@latest:
     "@mdx-js/loader": ^3.1.0
     "@mdx-js/react": ^3.1.0
     "@medusajs/icons": ^2.0.0
-    "@next/mdx": 15.0.1
+    "@next/mdx": 15.0.4
     "@types/mdx": ^2.0.13
     "@types/node": ^20
     "@types/react": "npm:types-react@rc"
@@ -16677,7 +16741,7 @@ turbo@latest:
     eslint: ^9.13.0
     eslint-plugin-prettier: ^5.2.1
     eslint-plugin-react-hooks: ^5.0.0
-    next: 15.0.1
+    next: 15.0.4
     postcss: ^8
     react: rc
     react-dom: rc

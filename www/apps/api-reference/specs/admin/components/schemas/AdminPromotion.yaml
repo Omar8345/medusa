@@ -8,7 +8,7 @@ required:
   - deleted_at
 properties:
   application_method:
-    type: object
+    $ref: ./AdminApplicationMethod.yaml
   rules:
     type: array
     description: The promotion's rules.

@@ -25,7 +25,7 @@ interface PriceRegionId {
 
 export type SetShippingOptionsPricesStepInput = {
   id: string
-  prices?: FulfillmentWorkflow.UpdateShippingOptionsWorkflowInput["prices"]
+  prices?: FulfillmentWorkflow.UpdateShippingOptionPriceRecord[]
 }[]
 
 async function getCurrentShippingOptionPrices(

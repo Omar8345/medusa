@@ -1,5 +1,5 @@
 import { ITaxModuleService } from "@medusajs/framework/types"
-import { Module, Modules } from "@medusajs/framework/utils"
+import { Module, Modules, toMikroORMEntity } from "@medusajs/framework/utils"
 import { TaxModuleService } from "@services"
 import { moduleIntegrationTestRunner } from "@medusajs/test-utils"
 import { setupTaxStructure } from "../utils/setup-tax-structure"
@@ -11,7 +11,7 @@ moduleIntegrationTestRunner<ITaxModuleService>({
   testSuite: ({ service }) => {
     describe("TaxModuleService", function () {
       it(`should export the appropriate linkable configuration`, () => {
-        const linkable = Module(Modules.TAX, {
+        const linkable = Module(toMikroORMEntity(Modules.TAX), {
           service: TaxModuleService,
         }).linkable
 

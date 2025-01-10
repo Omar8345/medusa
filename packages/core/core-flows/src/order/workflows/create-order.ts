@@ -1,5 +1,5 @@
 import { AdditionalData, CreateOrderDTO } from "@medusajs/framework/types"
-import { MathBN, MedusaError, isPresent } from "@medusajs/framework/utils"
+import { MedusaError, isDefined, isPresent } from "@medusajs/framework/utils"
 import {
   WorkflowData,
   WorkflowResponse,
@@ -7,51 +7,44 @@ import {
   createWorkflow,
   parallelize,
   transform,
+  when,
 } from "@medusajs/framework/workflows-sdk"
 import { findOneOrAnyRegionStep } from "../../cart/steps/find-one-or-any-region"
 import { findOrCreateCustomerStep } from "../../cart/steps/find-or-create-customer"
 import { findSalesChannelStep } from "../../cart/steps/find-sales-channel"
-import { getVariantPriceSetsStep } from "../../cart/steps/get-variant-price-sets"
+import { validateLineItemPricesStep } from "../../cart/steps/validate-line-item-prices"
 import { validateVariantPricesStep } from "../../cart/steps/validate-variant-prices"
-import { prepareLineItemData } from "../../cart/utils/prepare-line-item-data"
+import {
+  PrepareLineItemDataInput,
+  prepareLineItemData,
+} from "../../cart/utils/prepare-line-item-data"
 import { confirmVariantInventoryWorkflow } from "../../cart/workflows/confirm-variant-inventory"
 import { useRemoteQueryStep } from "../../common"
 import { createOrdersStep } from "../steps"
 import { productVariantsFields } from "../utils/fields"
-import { prepareCustomLineItemData } from "../utils/prepare-custom-line-item-data"
 import { updateOrderTaxLinesWorkflow } from "./update-tax-lines"
 
 function prepareLineItems(data) {
   const items = (data.input.items ?? []).map((item) => {
     const variant = data.variants.find((v) => v.id === item.variant_id)!
 
-    if (!variant) {
-      return prepareCustomLineItemData({
-        variant: {
-          ...item,
-        },
-        unitPrice: MathBN.max(0, item.unit_price),
-        isTaxInclusive: item.is_tax_inclusive,
-        quantity: item.quantity as number,
-        metadata: item?.metadata ?? {},
-      })
-    }
-
-    return prepareLineItemData({
+    const input: PrepareLineItemDataInput = {
+      item,
       variant: variant,
-      unitPrice: MathBN.max(
-        0,
-        item.unit_price ??
-          data.priceSets[item.variant_id!]?.raw_calculated_amount
-      ),
+      unitPrice: item.unit_price ?? undefined,
       isTaxInclusive:
         item.is_tax_inclusive ??
-        data.priceSets[item.variant_id!]?.is_calculated_price_tax_inclusive,
-      quantity: item.quantity as number,
-      metadata: item?.metadata ?? {},
+        variant?.calculated_price?.is_calculated_price_tax_inclusive,
+      isCustomPrice: isDefined(item?.unit_price),
       taxLines: item.tax_lines || [],
       adjustments: item.adjustments || [],
-    })
+    }
+
+    if (variant && !input.unitPrice) {
+      input.unitPrice = variant.calculated_price?.calculated_amount
+    }
+
+    return prepareLineItemData(input)
   })
 
   return items
@@ -126,16 +119,19 @@ export const createOrderWorkflow = createWorkflow(
       }
     )
 
-    const variants = useRemoteQueryStep({
-      entry_point: "variants",
-      fields: productVariantsFields,
-      variables: {
-        id: variantIds,
-        calculated_price: {
-          context: pricingContext,
+    const variants = when({ variantIds }, ({ variantIds }) => {
+      return !!variantIds.length
+    }).then(() => {
+      return useRemoteQueryStep({
+        entry_point: "variants",
+        fields: productVariantsFields,
+        variables: {
+          id: variantIds,
+          calculated_price: {
+            context: pricingContext,
+          },
         },
-      },
-      throw_if_key_not_found: true,
+      })
     })
 
     validateVariantPricesStep({ variants })
@@ -148,20 +144,14 @@ export const createOrderWorkflow = createWorkflow(
       },
     })
 
-    const priceSets = getVariantPriceSetsStep({
-      variantIds,
-      context: pricingContext,
-    })
-
     const orderInput = transform(
       { input, region, customerData, salesChannel },
       getOrderInput
     )
 
-    const lineItems = transform(
-      { priceSets, input, variants },
-      prepareLineItems
-    )
+    const lineItems = transform({ input, variants }, prepareLineItems)
+
+    validateLineItemPricesStep({ items: lineItems })
 
     const orderToCreate = transform({ lineItems, orderInput }, (data) => {
       return {

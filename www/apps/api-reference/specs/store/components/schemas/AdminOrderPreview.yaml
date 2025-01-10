@@ -6,6 +6,7 @@ x-schemaName: AdminOrderPreview
 required:
   - return_requested_total
   - order_change
+  - status
   - currency_code
   - id
   - version
@@ -643,3 +644,7 @@ properties:
     $ref: ./AdminCustomer.yaml
   sales_channel:
     $ref: ./AdminSalesChannel.yaml
+  status:
+    type: string
+    title: status
+    description: The order's status.

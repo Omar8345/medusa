@@ -29,7 +29,7 @@ const step = createStep(
 /**
  * This step fetches data across modules using the Query.
  *
- * Learn more in the [Query documentation](https://docs.medusajs.com/learn/advanced-development/module-links/query).
+ * Learn more in the [Query documentation](https://docs.medusajs.com/learn/fundamentals/module-links/query).
  * 
  * @example
  * To retrieve a list of records of a data model:

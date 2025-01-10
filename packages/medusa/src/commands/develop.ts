@@ -75,8 +75,9 @@ export default async function ({ types, directory }) {
         this.childProcess.removeAllListeners()
         if (process.platform === "win32") {
           execSync(`taskkill /PID ${this.childProcess.pid} /F /T`)
+        } else {
+          this.childProcess.kill("SIGINT")
         }
-        this.childProcess.kill("SIGINT")
       }
       this.start()
     },

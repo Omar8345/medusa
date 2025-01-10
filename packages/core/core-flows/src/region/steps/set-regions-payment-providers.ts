@@ -1,4 +1,4 @@
-import { RemoteLink } from "@medusajs/framework/modules-sdk"
+import { Link } from "@medusajs/framework/modules-sdk"
 import {
   IPaymentModuleService,
   RemoteQueryFunction,
@@ -107,9 +107,7 @@ export const setRegionsPaymentProvidersStep = createStep(
     const paymentService = container.resolve<IPaymentModuleService>(
       Modules.PAYMENT
     )
-    const remoteLink = container.resolve<RemoteLink>(
-      ContainerRegistrationKeys.REMOTE_LINK
-    )
+    const remoteLink = container.resolve<Link>(ContainerRegistrationKeys.LINK)
     const remoteQuery = container.resolve<RemoteQueryFunction>(
       ContainerRegistrationKeys.REMOTE_QUERY
     )
@@ -199,9 +197,7 @@ export const setRegionsPaymentProvidersStep = createStep(
       return
     }
 
-    const remoteLink = container.resolve<RemoteLink>(
-      ContainerRegistrationKeys.REMOTE_LINK
-    )
+    const remoteLink = container.resolve<Link>(ContainerRegistrationKeys.LINK)
 
     const promises: Promise<unknown[]>[] = []
 

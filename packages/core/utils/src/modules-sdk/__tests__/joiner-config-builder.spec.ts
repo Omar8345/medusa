@@ -613,10 +613,15 @@ describe("joiner-config-builder", () => {
         }
       )
 
-      const linkConfig = buildLinkConfigFromModelObjects("myService", {
-        user,
-        car,
-      })
+      const linkableKeysFromDml = buildLinkableKeysFromDmlObjects([user, car])
+      const linkConfig = buildLinkConfigFromModelObjects(
+        "myService",
+        {
+          user,
+          car,
+        },
+        linkableKeysFromDml
+      )
 
       expectTypeOf(linkConfig).toMatchTypeOf<{
         user: {
@@ -668,8 +673,8 @@ describe("joiner-config-builder", () => {
         serviceName: "myService",
         field: "car",
         entity: "Car",
-        linkable: "car_number_plate",
-        primaryKey: "number_plate",
+        linkable: "car_id",
+        primaryKey: "id",
       })
       expect(linkConfig.user.toJSON()).toEqual({
         serviceName: "myService",

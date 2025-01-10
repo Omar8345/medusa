@@ -1,5 +1,21 @@
 # @medusajs/payment
 
+## 2.2.0
+
+## 2.1.3
+
+## 2.1.2
+
+### Patch Changes
+
+- [#10553](https://github.com/medusajs/medusa/pull/10553) [`0264294ab55fc34a728834b5d217e0c8a7bf5a90`](https://github.com/medusajs/medusa/commit/0264294ab55fc34a728834b5d217e0c8a7bf5a90) Thanks [@carlos-r-l-rodrigues](https://github.com/carlos-r-l-rodrigues)! - Payment module DML
+
+## 2.1.1
+
+### Patch Changes
+
+- [#10506](https://github.com/medusajs/medusa/pull/10506) [`a04238a7f1b77e6f6fe0e51951251286cd207115`](https://github.com/medusajs/medusa/commit/a04238a7f1b77e6f6fe0e51951251286cd207115) Thanks [@riqwan](https://github.com/riqwan)! - fix(payment): ensure that payment error is captured in logger
+
 ## 2.1.0
 
 ## 2.0.7

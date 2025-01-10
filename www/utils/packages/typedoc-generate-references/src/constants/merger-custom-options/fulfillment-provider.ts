@@ -1,9 +1,10 @@
 import { FormattingOptionsType } from "types"
+import baseSectionsOptions from "../base-section-options.js"
 
 const fulfillmentProviderOptions: FormattingOptionsType = {
   "^fulfillment_provider/.*AbstractFulfillmentProviderService": {
     reflectionGroups: {
-      Properties: false,
+      Constructors: false,
     },
     reflectionDescription: `In this document, you’ll learn how to create a fulfillment provider module and the methods you must implement in its main service.`,
     frontmatterData: {
@@ -14,6 +15,12 @@ const fulfillmentProviderOptions: FormattingOptionsType = {
     },
     shouldIncrementAfterStartSections: true,
     expandMembers: true,
+    expandProperties: true,
+    sections: {
+      ...baseSectionsOptions,
+      member_declaration_title: false,
+      reflection_typeParameters: false,
+    },
     startSections: [
       `## 1. Create Module Directory
 
@@ -55,10 +62,6 @@ This exports the module's definition, indicating that the \`MyFulfillmentProvide
 To use your Fulfillment Module Provider, add it to the \`providers\` array of the Fulfillment Module in \`medusa-config.ts\`:
 
 \`\`\`ts title="medusa-config.ts"
-import { Modules } from "@medusajs/framework/utils"
-
-// ...
-
 module.exports = defineConfig({
   // ...
   modules: [
@@ -66,6 +69,11 @@ module.exports = defineConfig({
       resolve: "@medusajs/medusa/fulfillment",
       options: {
         providers: [
+          // default provider
+          {
+            resolve: "@medusajs/medusa/fulfillment-manual",
+            id: "manual",
+          },
           {
             resolve: "./src/modules/my-fulfillment",
             id: "my-fulfillment",

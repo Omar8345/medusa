@@ -275,6 +275,8 @@ paths:
     $ref: paths/store_return-reasons_{id}.yaml
   /store/shipping-options:
     $ref: paths/store_shipping-options.yaml
+  /store/shipping-options/{id}/calculate:
+    $ref: paths/store_shipping-options_{id}_calculate.yaml
 components:
   securitySchemes:
     jwt_token:

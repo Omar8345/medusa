@@ -79,6 +79,7 @@ export const CreatePromotionForm = () => {
     defaultValues,
     resolver: zodResolver(CreatePromotionSchema),
   })
+  const { setValue, reset, getValues } = form
 
   const { mutateAsync: createPromotion } = useCreatePromotion()
 
@@ -150,7 +151,7 @@ export const CreatePromotionForm = () => {
               })
             )
 
-            handleSuccess()
+            handleSuccess(`/promotions/${promotion.id}`)
           },
           onError: (e) => {
             toast.error(e.message)
@@ -244,20 +245,20 @@ export const CreatePromotionForm = () => {
       return
     }
 
-    form.reset({ ...defaultValues, template_id: watchTemplateId })
+    reset({ ...defaultValues, template_id: watchTemplateId })
 
     for (const [key, value] of Object.entries(currentTemplate.defaults)) {
       if (typeof value === "object") {
         for (const [subKey, subValue] of Object.entries(value)) {
-          form.setValue(`application_method.${subKey}`, subValue)
+          setValue(`application_method.${subKey}`, subValue)
         }
       } else {
-        form.setValue(key, value)
+        setValue(key, value)
       }
     }
 
     return currentTemplate
-  }, [watchTemplateId])
+  }, [watchTemplateId, setValue, reset])
 
   const watchValueType = useWatch({
     control: form.control,
@@ -272,9 +273,9 @@ export const CreatePromotionForm = () => {
 
   useEffect(() => {
     if (watchAllocation === "across") {
-      form.setValue("application_method.max_quantity", null)
+      setValue("application_method.max_quantity", null)
     }
-  }, [watchAllocation])
+  }, [watchAllocation, setValue])
 
   const watchType = useWatch({
     control: form.control,
@@ -307,19 +308,19 @@ export const CreatePromotionForm = () => {
   })
 
   useEffect(() => {
-    const formData = form.getValues()
+    const formData = getValues()
 
     if (watchCampaignChoice !== "existing") {
-      form.setValue("campaign_id", undefined)
+      setValue("campaign_id", undefined)
     }
 
     if (watchCampaignChoice !== "new") {
-      form.setValue("campaign", undefined)
+      setValue("campaign", undefined)
     }
 
     if (watchCampaignChoice === "new") {
       if (!formData.campaign || !formData.campaign?.budget?.type) {
-        form.setValue("campaign", {
+        setValue("campaign", {
           ...DEFAULT_CAMPAIGN_VALUES,
           budget: {
             ...DEFAULT_CAMPAIGN_VALUES.budget,
@@ -328,7 +329,7 @@ export const CreatePromotionForm = () => {
         })
       }
     }
-  }, [watchCampaignChoice])
+  }, [watchCampaignChoice, getValues, setValue])
 
   const watchRules = useWatch({
     control: form.control,

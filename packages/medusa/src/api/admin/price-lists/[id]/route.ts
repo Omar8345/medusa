@@ -17,7 +17,7 @@ export const GET = async (
   const price_list = await fetchPriceList(
     req.params.id,
     req.scope,
-    req.remoteQueryConfig.fields
+    req.queryConfig.fields
   )
 
   res.status(200).json({ price_list })
@@ -34,11 +34,7 @@ export const POST = async (
     input: { price_lists_data: [{ ...req.validatedBody, id }] },
   })
 
-  const price_list = await fetchPriceList(
-    id,
-    req.scope,
-    req.remoteQueryConfig.fields
-  )
+  const price_list = await fetchPriceList(id, req.scope, req.queryConfig.fields)
 
   res.status(200).json({ price_list })
 }

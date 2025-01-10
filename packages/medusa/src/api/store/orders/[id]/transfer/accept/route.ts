@@ -20,7 +20,7 @@ export const POST = async (
 
   const { result } = await getOrderDetailWorkflow(req.scope).run({
     input: {
-      fields: req.remoteQueryConfig.fields,
+      fields: req.queryConfig.fields,
       order_id: req.params.id,
     },
   })

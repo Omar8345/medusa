@@ -120,3 +120,5 @@ export const MDXComponents: MDXComponentsType = {
     return <ZoomImg {...rest} />
   },
 }
+
+export const Hr = MDXComponents["hr"] as () => React.JSX.Element

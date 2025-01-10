@@ -21,9 +21,9 @@ export const GET = async (
     entryPoint: "customer_group",
     variables: {
       filters: req.filterableFields,
-      ...req.remoteQueryConfig.pagination,
+      ...req.queryConfig.pagination,
     },
-    fields: req.remoteQueryConfig.fields,
+    fields: req.queryConfig.fields,
   })
 
   const { rows: customer_groups, metadata } = await remoteQuery(query)
@@ -55,7 +55,7 @@ export const POST = async (
   const customerGroup = await refetchCustomerGroup(
     result[0].id,
     req.scope,
-    req.remoteQueryConfig.fields
+    req.queryConfig.fields
   )
 
   res.status(200).json({ customer_group: customerGroup })

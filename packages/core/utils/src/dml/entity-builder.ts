@@ -3,16 +3,11 @@ import {
   IDmlEntityConfig,
   RelationshipOptions,
 } from "@medusajs/types"
-import { DmlEntity } from "./entity"
-import {
-  createBigNumberProperties,
-  DMLSchemaWithBigNumber,
-} from "./helpers/entity-builder/create-big-number-properties"
-import {
-  createDefaultProperties,
-  DMLSchemaDefaults,
-} from "./helpers/entity-builder/create-default-properties"
+import { DmlEntity, DMLEntitySchemaBuilder } from "./entity"
+import { createBigNumberProperties } from "./helpers/entity-builder/create-big-number-properties"
+import { createDefaultProperties } from "./helpers/entity-builder/create-default-properties"
 import { ArrayProperty } from "./properties/array"
+import { AutoIncrementProperty } from "./properties/autoincrement"
 import { BigNumberProperty } from "./properties/big-number"
 import { BooleanProperty } from "./properties/boolean"
 import { DateTimeProperty } from "./properties/date-time"
@@ -24,8 +19,9 @@ import { TextProperty } from "./properties/text"
 import { BelongsTo } from "./relations/belongs-to"
 import { HasMany } from "./relations/has-many"
 import { HasOne } from "./relations/has-one"
-import { ManyToMany } from "./relations/many-to-many"
 import { HasOneWithForeignKey } from "./relations/has-one-fk"
+import { ManyToMany } from "./relations/many-to-many"
+import { FloatProperty } from "./properties"
 
 /**
  * The implicit properties added by EntityBuilder in every schema
@@ -60,11 +56,11 @@ export type ManyToManyOptions = RelationshipOptions &
         /**
          * The column name in the pivot table that for the current entity
          */
-        joinColumn?: string
+        joinColumn?: string | string[]
         /**
          * The column name in the pivot table for the opposite entity
          */
-        inverseJoinColumn?: string
+        inverseJoinColumn?: string | string[]
       }
     | {
         /**
@@ -77,6 +73,14 @@ export type ManyToManyOptions = RelationshipOptions &
          * database for this relationship.
          */
         pivotEntity?: () => DmlEntity<any, any>
+        /**
+         * The column name in the pivot table that for the current entity
+         */
+        joinColumn?: string | string[]
+        /**
+         * The column name in the pivot table for the opposite entity
+         */
+        inverseJoinColumn?: string | string[]
       }
   )
 
@@ -121,20 +125,14 @@ export class EntityBuilder {
   define<Schema extends DMLSchema, const TConfig extends IDmlEntityConfig>(
     nameOrConfig: TConfig,
     schema: Schema
-  ): DmlEntity<
-    Schema & DMLSchemaWithBigNumber<Schema> & DMLSchemaDefaults,
-    TConfig
-  > {
+  ): DmlEntity<DMLEntitySchemaBuilder<Schema>, TConfig> {
     this.#disallowImplicitProperties(schema)
 
     return new DmlEntity<Schema, TConfig>(nameOrConfig, {
       ...schema,
       ...createBigNumberProperties(schema),
       ...createDefaultProperties(),
-    }) as unknown as DmlEntity<
-      Schema & DMLSchemaWithBigNumber<Schema> & DMLSchemaDefaults,
-      TConfig
-    >
+    }) as unknown as DmlEntity<DMLEntitySchemaBuilder<Schema>, TConfig>
   }
 
   /**
@@ -238,6 +236,48 @@ export class EntityBuilder {
    */
   bigNumber() {
     return new BigNumberProperty()
+  }
+
+  /**
+   * This method defines a float property that allows for
+   * values with decimal places
+   *
+   * @version 2.1.2
+   *
+   * @example
+   * import { model } from "@medusajs/framework/utils"
+   *
+   * const MyCustom = model.define("tax", {
+   *   tax_rate: model.float(),
+   *   // ...
+   * })
+   *
+   * export default MyCustom
+   *
+   * @customNamespace Property Types
+   */
+  float() {
+    return new FloatProperty()
+  }
+
+  /**
+   * This method defines an autoincrement property.
+   *
+   * @example
+   * import { model } from "@medusajs/framework/utils"
+   *
+   * const MyCustom = model.define("my_custom", {
+   *   serial_id: model.autoincrement(),
+   *   // ...
+   * })
+   *
+   * export default MyCustom
+   *
+   * @customNamespace Property
+   */
+
+  autoincrement() {
+    return new AutoIncrementProperty()
   }
 
   /**
@@ -346,26 +386,31 @@ export class EntityBuilder {
    *
    * @customNamespace Relationship Methods
    */
-  hasOne<T>(
+  hasOne<T, const ForeignKeyName extends string | undefined = undefined>(
     entityBuilder: T,
     options: RelationshipOptions & {
       foreignKey: true
+      foreignKeyName?: ForeignKeyName
     }
-  ): HasOneWithForeignKey<T>
+  ): HasOneWithForeignKey<T, ForeignKeyName>
   hasOne<T>(
     entityBuilder: T,
     options?: RelationshipOptions & {
       foreignKey?: false
     }
   ): HasOne<T>
-  hasOne<T>(
+  hasOne<T, const ForeignKeyName extends string | undefined = undefined>(
     entityBuilder: T,
     options?: RelationshipOptions & {
       foreignKey?: boolean
+      foreignKeyName?: ForeignKeyName
     }
-  ): HasOneWithForeignKey<T> | HasOne<T> {
+  ): HasOneWithForeignKey<T, ForeignKeyName> | HasOne<T> {
     if (options?.foreignKey) {
-      return new HasOneWithForeignKey<T>(entityBuilder, options || {})
+      return new HasOneWithForeignKey<T, ForeignKeyName>(
+        entityBuilder,
+        options || {}
+      )
     }
     return new HasOne<T>(entityBuilder, options || {})
   }
@@ -393,8 +438,13 @@ export class EntityBuilder {
    *
    * @customNamespace Relationship Methods
    */
-  belongsTo<T>(entityBuilder: T, options?: RelationshipOptions) {
-    return new BelongsTo<T>(entityBuilder, options || {})
+  belongsTo<T, const ForeignKeyName extends string | undefined = undefined>(
+    entityBuilder: T,
+    options?: RelationshipOptions & {
+      foreignKeyName?: ForeignKeyName
+    }
+  ) {
+    return new BelongsTo<T, ForeignKeyName>(entityBuilder, options || {})
   }
 
   /**

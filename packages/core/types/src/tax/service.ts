@@ -667,7 +667,7 @@ export interface ITaxModuleService extends IModuleService {
   /**
    * This method retrieves tax lines for taxable items and shipping methods in a cart.
    *
-   * Learn more in [this guide](https://docs.medusajs.com/experimental/tax/tax-calculation-with-provider/).
+   * Learn more in [this guide](https://docs.medusajs.com/resources/commerce-modules/tax/tax-calculation-with-provider).
    *
    * @param {(TaxableItemDTO | TaxableShippingDTO)[]} items - The items and shipping methods to retrieve their tax lines.
    * @param {TaxCalculationContext} calculationContext - The context to pass to the underlying tax provider. It provides more

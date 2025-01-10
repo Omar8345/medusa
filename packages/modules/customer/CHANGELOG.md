@@ -1,5 +1,17 @@
 # @medusajs/customer
 
+## 2.2.0
+
+## 2.1.3
+
+## 2.1.2
+
+### Patch Changes
+
+- [#10499](https://github.com/medusajs/medusa/pull/10499) [`16d27ea6e4c2e4290820fe2328f08557534fcb8f`](https://github.com/medusajs/medusa/commit/16d27ea6e4c2e4290820fe2328f08557534fcb8f) Thanks [@thetutlage](https://github.com/thetutlage)! - Feat/customer dml
+
+## 2.1.1
+
 ## 2.1.0
 
 ## 2.0.7

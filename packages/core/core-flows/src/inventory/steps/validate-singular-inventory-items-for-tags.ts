@@ -18,7 +18,7 @@ export const validateInventoryItemsForCreate = createStep(
     }[],
     { container }
   ) => {
-    const remoteLink = container.resolve(ContainerRegistrationKeys.REMOTE_LINK)
+    const remoteLink = container.resolve(ContainerRegistrationKeys.LINK)
 
     const linkService = remoteLink.getLinkModule(
       Modules.PRODUCT,

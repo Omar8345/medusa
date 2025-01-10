@@ -12,7 +12,7 @@ In a module, you create data models and business logic to manage them. In the ne
 
 <Note>
 
-Learn more about modules in [this chapter](../../../basics/modules/page.mdx).
+Learn more about modules in [this chapter](../../../fundamentals/modules/page.mdx).
 
 </Note>
 
@@ -26,11 +26,11 @@ Modules are created in a sub-directory of `src/modules`. So, start by creating t
 
 ## 2. Create Data Model
 
-A data model represents a table in the database. You create data models using Medusa's data modeling utility, which is built to improve readability and provide an intuitive developer experience.
+A data model represents a table in the database. You create data models using Medusa's Data Model Language (DML). It simplifies defining a table's columns, relations, and indexes with straightforward methods and configurations.
 
 <Note>
 
-Learn more about data models in [this chapter](../../../basics/modules/page.mdx#1-create-data-model).
+Learn more about data models in [this chapter](../../../fundamentals/modules/page.mdx#1-create-data-model).
 
 </Note>
 
@@ -49,14 +49,14 @@ export const Brand = model.define("brand", {
 
 You create a `Brand` data model which has an `id` primary key property, and a `name` text property.
 
-You define the data model using the `define` method of the `model` utility imported from `@medusajs/framework/utils`. It accepts two parameters:
+You define the data model using the `define` method of the DML. It accepts two parameters:
 
 1. The first one is the name of the data model's table in the database. Use snake-case names.
 2. The second is an object, which is the data model's schema.
 
 <Note title="Tip">
 
-Learn about other property types in [this chapter](../../../advanced-development/data-models/property-types/page.mdx).
+Learn about other property types in [this chapter](../../../fundamentals/data-models/property-types/page.mdx).
 
 </Note>
 
@@ -70,7 +70,7 @@ In this step, you'll create the Brand Module's service that provides methods to 
 
 <Note>
 
-Learn more about services in [this chapter](../../../basics/modules/page.mdx#2-create-service).
+Learn more about services in [this chapter](../../../fundamentals/modules/page.mdx#2-create-service).
 
 </Note>
 
@@ -95,7 +95,7 @@ class BrandModuleService extends MedusaService({
 export default BrandModuleService
 ```
 
-The `BrandModuleService` extends a class returned by the `MedusaService` function imported from `@medusajs/framework/utils`. This function generates a class with data-management methods for your module's data models.
+The `BrandModuleService` extends a class returned by `MedusaService` from the Modules SDK. This function generates a class with data-management methods for your module's data models.
 
 The `MedusaService` function receives an object of the module's data models as a parameter, and generates methods to manage those data models. So, the `BrandModuleService` now has methods like `createBrands` and `retrieveBrand` to manage the `Brand` data model.
 
@@ -128,7 +128,7 @@ export default Module(BRAND_MODULE, {
 })
 ```
 
-You use the `Module` function imported from `@medusajs/framework/utils` to create the module's definition. It accepts two parameters:
+You use `Module` from the Modules SDK to create the module's definition. It accepts two parameters:
 
 1. The module's name (`brand`). You'll use this name when you use this module in other customizations.
 2. An object with a required property `service` indicating the module's main service.
@@ -168,7 +168,7 @@ A migration is a TypeScript or JavaScript file that defines database changes mad
 
 <Note>
 
-Learn more about migrations in [this chapter](../../../basics/modules/page.mdx#5-generate-migrations).
+Learn more about migrations in [this chapter](../../../fundamentals/modules/page.mdx#5-generate-migrations).
 
 </Note>
 

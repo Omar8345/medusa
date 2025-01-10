@@ -18,7 +18,7 @@ export interface AdminInvite {
   /**
    * The date the invite expires.
    */
-  expires_at?: Date
+  expires_at: string
   /**
    * Key-value pairs of custom data.
    */
@@ -26,9 +26,9 @@ export interface AdminInvite {
   /**
    * The date that the invite was created.
    */
-  created_at?: Date
+  created_at: string
   /**
    * The date that the invite was updated.
    */
-  updated_at?: Date
+  updated_at: string
 }

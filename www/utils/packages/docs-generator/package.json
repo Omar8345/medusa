@@ -19,6 +19,7 @@
   "dependencies": {
     "@faker-js/faker": "^8.4.0",
     "@octokit/core": "^5.0.2",
+    "chalk": "^5.4.1",
     "commander": "^11.1.0",
     "dotenv": "^16.3.1",
     "eslint": "8.56.0",

@@ -5,7 +5,7 @@ required:
   - id
 properties:
   promotion:
-    $ref: ./AdminPromotion.yaml
+    type: object
   target_rules:
     type: array
     description: The application method's target rules.

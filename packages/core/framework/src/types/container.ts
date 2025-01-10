@@ -1,4 +1,4 @@
-import { RemoteLink } from "@medusajs/modules-sdk"
+import { Link } from "@medusajs/modules-sdk"
 import {
   ConfigModule,
   IApiKeyModuleService,
@@ -35,7 +35,14 @@ import { AwilixContainer, ResolveOptions } from "awilix"
 
 declare module "@medusajs/types" {
   export interface ModuleImplementations {
-    [ContainerRegistrationKeys.REMOTE_LINK]: RemoteLink
+    /**
+     * @deprecated use {@link ContainerRegistrationKeys.LINK} instead.
+     */
+    [ContainerRegistrationKeys.REMOTE_LINK]: Link
+    /**
+     * @version 2.2.0
+     */
+    [ContainerRegistrationKeys.LINK]: Link
     [ContainerRegistrationKeys.CONFIG_MODULE]: ConfigModule
     [ContainerRegistrationKeys.PG_CONNECTION]: Knex<any>
     [ContainerRegistrationKeys.REMOTE_QUERY]: RemoteQueryFunction

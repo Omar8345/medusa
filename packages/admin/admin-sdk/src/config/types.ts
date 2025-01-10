@@ -4,6 +4,7 @@ import type {
   CustomFieldModelContainerMap,
   CustomFieldModelFormTabsMap,
   InjectionZone,
+  NestedRoutePosition,
 } from "@medusajs/admin-shared"
 import type { ComponentType } from "react"
 import { ZodFirstPartySchemaTypes } from "zod"
@@ -24,6 +25,11 @@ export interface RouteConfig {
    * An optional icon to display in the sidebar together with the label. If no label is provided, the icon will be ignored.
    */
   icon?: ComponentType
+
+  /**
+   * The nested route to display under existing route in the sidebar.
+   */
+  nested?: NestedRoutePosition
 }
 
 export type CustomFormField<

@@ -2,9 +2,9 @@ import { WebhookActionResult } from "@medusajs/types"
 import { PaymentActions } from "@medusajs/utils"
 import { createWorkflow, when } from "@medusajs/workflows-sdk"
 import { completeCartWorkflow } from "../../cart/workflows/complete-cart"
-import { useQueryStep } from "../../common/steps/use-query"
 import { authorizePaymentSessionStep } from "../steps"
 import { capturePaymentWorkflow } from "./capture-payment"
+import { useQueryGraphStep } from "../../common"
 
 interface ProcessPaymentWorkflowInput extends WebhookActionResult {}
 
@@ -12,7 +12,7 @@ export const processPaymentWorkflowId = "process-payment-workflow"
 export const processPaymentWorkflow = createWorkflow(
   processPaymentWorkflowId,
   (input: ProcessPaymentWorkflowInput) => {
-    const paymentData = useQueryStep({
+    const paymentData = useQueryGraphStep({
       entity: "payment",
       fields: ["id"],
       filters: { payment_session_id: input.data?.session_id },
@@ -20,7 +20,7 @@ export const processPaymentWorkflow = createWorkflow(
       name: "payment-query",
     })
 
-    const paymentSessionResult = useQueryStep({
+    const paymentSessionResult = useQueryGraphStep({
       entity: "payment_session",
       fields: ["payment_collection_id"],
       filters: { id: input.data?.session_id },
@@ -28,7 +28,7 @@ export const processPaymentWorkflow = createWorkflow(
       name: "payment-session-query",
     })
 
-    const cartPaymentCollection = useQueryStep({
+    const cartPaymentCollection = useQueryGraphStep({
       entity: "cart_payment_collection",
       fields: ["cart_id"],
       filters: {

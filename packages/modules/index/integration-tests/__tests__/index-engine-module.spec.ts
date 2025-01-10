@@ -10,11 +10,12 @@ import {
   ContainerRegistrationKeys,
   ModuleRegistrationName,
   Modules,
+  toMikroORMEntity,
 } from "@medusajs/framework/utils"
+import { initDb, TestDatabaseUtils } from "@medusajs/test-utils"
 import { EntityManager } from "@mikro-orm/postgresql"
 import { IndexData, IndexRelation } from "@models"
 import { asValue } from "awilix"
-import { initDb, TestDatabaseUtils } from "@medusajs/test-utils"
 import * as path from "path"
 import { EventBusServiceMock } from "../__fixtures__"
 import { dbName } from "../__fixtures__/medusa-config"
@@ -254,7 +255,10 @@ describe("IndexModuleService", function () {
        * Validate all index entries and index relation entries
        */
 
-      const indexEntries: IndexData[] = await manager.find(IndexData, {})
+      const indexEntries: IndexData[] = await manager.find(
+        toMikroORMEntity(IndexData),
+        {}
+      )
 
       const productIndexEntries = indexEntries.filter((entry) => {
         return entry.name === "Product"
@@ -412,7 +416,10 @@ describe("IndexModuleService", function () {
        * Validate all index entries and index relation entries
        */
 
-      const indexEntries: IndexData[] = await manager.find(IndexData, {})
+      const indexEntries: IndexData[] = await manager.find(
+        toMikroORMEntity(IndexData),
+        {}
+      )
 
       const productIndexEntries = indexEntries.filter((entry) => {
         return entry.name === "Product"
@@ -596,7 +603,10 @@ describe("IndexModuleService", function () {
     afterEach(afterEach_)
 
     it("should update the corresponding index entries", async () => {
-      const updatedIndexEntries = await manager.find(IndexData, {})
+      const updatedIndexEntries = await manager.find(
+        toMikroORMEntity(IndexData),
+        {}
+      )
 
       expect(updatedIndexEntries).toHaveLength(2)
 
@@ -710,8 +720,14 @@ describe("IndexModuleService", function () {
     afterEach(afterEach_)
 
     it("should consume all deleted events and delete the index entries", async () => {
-      const indexEntries = await manager.find(IndexData, {})
-      const indexRelationEntries = await manager.find(IndexRelation, {})
+      const indexEntries = await manager.find(toMikroORMEntity(IndexData), {})
+      const indexRelationEntries = await manager.find(
+        toMikroORMEntity(IndexRelation),
+        {},
+        {
+          populate: ["parent", "child"],
+        }
+      )
 
       expect(indexEntries).toHaveLength(3)
       expect(indexRelationEntries).toHaveLength(2)

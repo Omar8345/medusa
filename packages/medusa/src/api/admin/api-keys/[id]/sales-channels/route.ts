@@ -32,7 +32,7 @@ export const POST = async (
   const updatedApiKey = await refetchApiKey(
     req.params.id,
     req.scope,
-    req.remoteQueryConfig.fields
+    req.queryConfig.fields
   )
 
   res.status(200).json({ api_key: updatedApiKey })

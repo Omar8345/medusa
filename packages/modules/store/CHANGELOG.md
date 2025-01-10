@@ -1,5 +1,17 @@
 # @medusajs/store
 
+## 2.2.0
+
+## 2.1.3
+
+## 2.1.2
+
+## 2.1.1
+
+### Patch Changes
+
+- [#10467](https://github.com/medusajs/medusa/pull/10467) [`f3c91c908a1c8d38eb31c21dbd94d4ad6cea9688`](https://github.com/medusajs/medusa/commit/f3c91c908a1c8d38eb31c21dbd94d4ad6cea9688) Thanks [@thetutlage](https://github.com/thetutlage)! - refactor: migrate store module to DML
+
 ## 2.1.0
 
 ## 2.0.7

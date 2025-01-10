@@ -33,7 +33,7 @@ import {
   ModuleBootstrapOptions,
   RegisterModuleJoinerConfig,
 } from "./medusa-module"
-import { RemoteLink } from "./remote-link"
+import { Link } from "./link"
 import { createQuery, RemoteQuery } from "./remote-query"
 import { MODULE_SCOPE } from "./types"
 
@@ -106,7 +106,8 @@ export async function loadModules(args: {
     let declaration: any = {}
     let definition: Partial<ModuleDefinition> | undefined = undefined
 
-    if (mod === false) {
+    // TODO: We are keeping mod === false for backward compatibility for now
+    if (mod === false || (isObject(mod) && "disable" in mod && mod.disable)) {
       continue
     }
 
@@ -210,7 +211,7 @@ async function initializeLinks({
     )
 
     return {
-      remoteLink: new RemoteLink(),
+      remoteLink: new Link(),
       linkResolution,
       getMigrationPlanner,
     }
@@ -261,7 +262,7 @@ function registerCustomJoinerConfigs(servicesConfig: ModuleJoinerConfig[]) {
 
 export type MedusaAppOutput = {
   modules: Record<string, LoadedModule | LoadedModule[]>
-  link: RemoteLink | undefined
+  link: Link | undefined
   query: RemoteQueryFunction
   entitiesMap?: Record<string, any>
   gqlSchema?: GraphQLUtils.GraphQLSchema
@@ -332,8 +333,8 @@ async function MedusaApp_({
     modulesConfig ??
     (
       await dynamicImport(
-        await (modulesConfigPath ??
-          process.cwd() + (modulesConfigFileName ?? "/modules-config"))
+        modulesConfigPath ??
+          process.cwd() + (modulesConfigFileName ?? "/modules-config")
       )
     ).default
 

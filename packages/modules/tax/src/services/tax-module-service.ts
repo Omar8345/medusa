@@ -1,6 +1,7 @@
 import {
   Context,
   DAL,
+  InferEntityType,
   InternalModuleDeclaration,
   ITaxModuleService,
   ITaxProvider,
@@ -32,7 +33,7 @@ type InjectedDependencies = {
 const generateForModels = { TaxRate, TaxRegion, TaxRateRule, TaxProvider }
 
 type ItemWithRates = {
-  rates: TaxRate[]
+  rates: InferEntityType<typeof TaxRate>[]
   item: TaxTypes.TaxableItemDTO | TaxTypes.TaxableShippingDTO
 }
 
@@ -47,10 +48,18 @@ export default class TaxModuleService
 {
   protected readonly container_: InjectedDependencies
   protected baseRepository_: DAL.RepositoryService
-  protected taxRateService_: ModulesSdkTypes.IMedusaInternalService<TaxRate>
-  protected taxRegionService_: ModulesSdkTypes.IMedusaInternalService<TaxRegion>
-  protected taxRateRuleService_: ModulesSdkTypes.IMedusaInternalService<TaxRateRule>
-  protected taxProviderService_: ModulesSdkTypes.IMedusaInternalService<TaxProvider>
+  protected taxRateService_: ModulesSdkTypes.IMedusaInternalService<
+    InferEntityType<typeof TaxRate>
+  >
+  protected taxRegionService_: ModulesSdkTypes.IMedusaInternalService<
+    InferEntityType<typeof TaxRegion>
+  >
+  protected taxRateRuleService_: ModulesSdkTypes.IMedusaInternalService<
+    InferEntityType<typeof TaxRateRule>
+  >
+  protected taxProviderService_: ModulesSdkTypes.IMedusaInternalService<
+    InferEntityType<typeof TaxProvider>
+  >
 
   constructor(
     {
@@ -568,8 +577,8 @@ export default class TaxModuleService
 
   private async getTaxRatesForItem(
     item: TaxTypes.TaxableItemDTO | TaxTypes.TaxableShippingDTO,
-    rates: TaxRate[]
-  ): Promise<TaxRate[]> {
+    rates: InferEntityType<typeof TaxRate>[]
+  ): Promise<InferEntityType<typeof TaxRate>[]> {
     if (!rates.length) {
       return []
     }
@@ -630,7 +639,7 @@ export default class TaxModuleService
   }
 
   private checkRuleMatches(
-    rate: TaxRate,
+    rate: InferEntityType<typeof TaxRate>,
     item: TaxTypes.TaxableItemDTO | TaxTypes.TaxableShippingDTO
   ) {
     if (rate.rules.length === 0) {
@@ -670,7 +679,7 @@ export default class TaxModuleService
   }
 
   private prioritizeRates(
-    rates: TaxRate[],
+    rates: InferEntityType<typeof TaxRate>[],
     item: TaxTypes.TaxableItemDTO | TaxTypes.TaxableShippingDTO
   ) {
     const decoratedRates = rates.map((rate) => {
@@ -700,7 +709,7 @@ export default class TaxModuleService
       }
 
       return decoratedRate
-    }) as (TaxRate & {
+    }) as (InferEntityType<typeof TaxRate> & {
       priority_score: number
     })[]
 

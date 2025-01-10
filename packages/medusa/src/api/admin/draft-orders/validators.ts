@@ -37,23 +37,25 @@ const ShippingMethod = z.object({
   amount: BigNumberInput,
 })
 
-const Item = z
-  .object({
-    title: z.string().nullish(),
-    sku: z.string().nullish(),
-    barcode: z.string().nullish(),
-    variant_id: z.string().nullish(),
-    unit_price: BigNumberInput.nullish(),
-    quantity: z.number(),
-    metadata: z.record(z.unknown()).nullish(),
-  })
-  .refine((data) => {
-    if (!data.variant_id) {
-      return data.title && (data.sku || data.barcode)
-    }
-
-    return true
-  })
+const Item = z.object({
+  title: z.string().nullish(),
+  variant_sku: z.string().nullish(),
+  variant_barcode: z.string().nullish(),
+  /**
+   * Use variant_sku instead
+   * @deprecated
+   */
+  sku: z.string().nullish(),
+  /**
+   * Use variant_barcode instead
+   * @deprecated
+   */
+  barcode: z.string().nullish(),
+  variant_id: z.string().nullish(),
+  unit_price: BigNumberInput.nullish(),
+  quantity: z.number(),
+  metadata: z.record(z.unknown()).nullish(),
+})
 
 export type AdminCreateDraftOrderType = z.infer<typeof CreateDraftOrder>
 const CreateDraftOrder = z

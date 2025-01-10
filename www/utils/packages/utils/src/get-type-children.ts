@@ -1,6 +1,6 @@
 /* eslint-disable no-case-declarations */
 import { DeclarationReflection, ProjectReflection, SomeType } from "typedoc"
-import { getProjectChild } from "./get-project-child"
+import { getProjectChild } from "./get-project-child.js"
 
 type GetTypeChildrenOptions = {
   reflectionType: SomeType

@@ -4,6 +4,7 @@ import {
   CustomFieldFormZone,
   CustomFieldModel,
   InjectionZone,
+  NestedRoutePosition,
 } from "@medusajs/admin-shared"
 import { ComponentType } from "react"
 import { LoaderFunction } from "react-router-dom"
@@ -19,6 +20,7 @@ export type MenuItemExtension = {
   label: string
   path: string
   icon?: ComponentType
+  nested?: NestedRoutePosition
 }
 
 export type WidgetExtension = {

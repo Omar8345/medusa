@@ -208,14 +208,13 @@ export const useAddClaimInboundItems = (
   id: string,
   orderId: string,
   options?: UseMutationOptions<
-    HttpTypes.AdminClaimResponse,
+    HttpTypes.AdminClaimReturnPreviewResponse,
     FetchError,
     HttpTypes.AdminAddClaimInboundItems
   >
 ) => {
   return useMutation({
-    mutationFn: (payload: HttpTypes.AdminAddClaimInboundItems) =>
-      sdk.admin.claim.addInboundItems(id, payload),
+    mutationFn: (payload) => sdk.admin.claim.addInboundItems(id, payload),
     onSuccess: (data: any, variables: any, context: any) => {
       queryClient.invalidateQueries({
         queryKey: ordersQueryKeys.details(),

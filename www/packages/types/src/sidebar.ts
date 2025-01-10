@@ -12,10 +12,13 @@ export type SidebarItemCommon = {
   loaded?: boolean
   additionalElms?: React.ReactNode
   chapterTitle?: string
+  hideChildren?: boolean
+  // can be used to hold any description relevant when showing cards, etc...
+  description?: string
 }
 
 export type SidebarItemLink = SidebarItemCommon & {
-  type: "link"
+  type: "link" | "ref"
   path: string
   isPathHref?: boolean
   linkProps?: React.AllHTMLAttributes<HTMLAnchorElement>
@@ -57,9 +60,19 @@ export type SidebarSectionItems = {
 
 export type RawSidebarItem = SidebarItem & {
   autogenerate_path?: string
+  autogenerate_tags?: string
+  autogenerate_as_ref?: boolean
   custom_autogenerate?: string
   number?: string
-}
+} & (
+    | {
+        type: "category" | "sub-category" | "link" | "ref"
+        children?: RawSidebarItem[]
+      }
+    | {
+        type: "separator"
+      }
+  )
 
 export type PersistedSidebarCategoryState = {
   [k: string]: {

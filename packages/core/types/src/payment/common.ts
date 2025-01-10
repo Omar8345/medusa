@@ -645,6 +645,16 @@ export interface FilterableRefundReasonProps
    * The IDs to filter the refund reasons by.
    */
   id?: string | string[]
+
+  /**
+   * Filter by the description of the refund reason
+   */
+  description?: string | string[]
+
+  /**
+   * Filter by the refund reason label
+   */
+  label?: string | string[]
 }
 
 export interface RefundReasonDTO {

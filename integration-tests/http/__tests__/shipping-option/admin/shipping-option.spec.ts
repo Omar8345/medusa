@@ -152,12 +152,12 @@ medusaIntegrationTestRunner({
                 amount: 500,
                 rules: [
                   {
-                    attribute: "total",
+                    attribute: "item_total",
                     operator: "gte",
                     value: 100,
                   },
                   {
-                    attribute: "total",
+                    attribute: "item_total",
                     operator: "lte",
                     value: 200,
                   },
@@ -220,12 +220,12 @@ medusaIntegrationTestRunner({
                 rules_count: 2,
                 price_rules: expect.arrayContaining([
                   expect.objectContaining({
-                    attribute: "total",
+                    attribute: "item_total",
                     operator: "gte",
                     value: "100",
                   }),
                   expect.objectContaining({
-                    attribute: "total",
+                    attribute: "item_total",
                     operator: "lte",
                     value: "200",
                   }),
@@ -237,10 +237,10 @@ medusaIntegrationTestRunner({
               },
             ]),
             provider_id: "manual_test-provider",
-            provider: {
+            provider: expect.objectContaining({
               id: "manual_test-provider",
               is_enabled: true,
-            },
+            }),
             rules: [],
             service_zone_id: expect.any(String),
             service_zone: {
@@ -329,7 +329,7 @@ medusaIntegrationTestRunner({
                 amount: 500,
                 rules: [
                   {
-                    attribute: "total",
+                    attribute: "item_total",
                     operator: "gt",
                     value: 200,
                   },
@@ -380,7 +380,7 @@ medusaIntegrationTestRunner({
                   rules_count: 2,
                   price_rules: expect.arrayContaining([
                     expect.objectContaining({
-                      attribute: "total",
+                      attribute: "item_total",
                       operator: "gt",
                       value: "200",
                     }),
@@ -460,7 +460,7 @@ medusaIntegrationTestRunner({
                 amount: 500,
                 rules: [
                   {
-                    attribute: "total",
+                    attribute: "item_total",
                     operator: "not_whitelisted",
                     value: 100,
                   },
@@ -498,7 +498,7 @@ medusaIntegrationTestRunner({
                 amount: 500,
                 rules: [
                   {
-                    attribute: "total",
+                    attribute: "item_total",
                     operator: "gt",
                     value: "string",
                   },
@@ -628,7 +628,7 @@ medusaIntegrationTestRunner({
                 amount: 5,
                 rules: [
                   {
-                    attribute: "total",
+                    attribute: "item_total",
                     operator: "gt",
                     value: 200,
                   },
@@ -704,7 +704,7 @@ medusaIntegrationTestRunner({
                   amount: 5,
                   price_rules: [
                     expect.objectContaining({
-                      attribute: "total",
+                      attribute: "item_total",
                       operator: "gt",
                       value: "200",
                     }),

@@ -12,6 +12,7 @@ import {
   InjectTransactionManager,
   isDefined,
   MedusaContext,
+  toMikroORMEntity,
 } from "@medusajs/framework/utils"
 import { EntityManager, SqlEntityManager } from "@mikro-orm/postgresql"
 import { IndexData, IndexRelation } from "@models"
@@ -338,8 +339,10 @@ export class PostgresProvider implements IndexTypes.StorageProvider {
     const { transactionManager: em } = sharedContext as {
       transactionManager: SqlEntityManager
     }
-    const indexRepository = em.getRepository(IndexData)
-    const indexRelationRepository = em.getRepository(IndexRelation)
+    const indexRepository = em.getRepository(toMikroORMEntity(IndexData))
+    const indexRelationRepository = em.getRepository(
+      toMikroORMEntity(IndexRelation)
+    )
 
     const {
       data: data_,
@@ -432,7 +435,7 @@ export class PostgresProvider implements IndexTypes.StorageProvider {
     const { transactionManager: em } = sharedContext as {
       transactionManager: SqlEntityManager
     }
-    const indexRepository = em.getRepository(IndexData)
+    const indexRepository = em.getRepository(toMikroORMEntity(IndexData))
 
     const { data: data_, entityProperties } = PostgresProvider.parseData(
       data,
@@ -479,8 +482,10 @@ export class PostgresProvider implements IndexTypes.StorageProvider {
     const { transactionManager: em } = sharedContext as {
       transactionManager: SqlEntityManager
     }
-    const indexRepository = em.getRepository(IndexData)
-    const indexRelationRepository = em.getRepository(IndexRelation)
+    const indexRepository = em.getRepository(toMikroORMEntity(IndexData))
+    const indexRelationRepository = em.getRepository(
+      toMikroORMEntity(IndexRelation)
+    )
 
     const { data: data_ } = PostgresProvider.parseData(
       data,
@@ -533,8 +538,10 @@ export class PostgresProvider implements IndexTypes.StorageProvider {
     const { transactionManager: em } = sharedContext as {
       transactionManager: SqlEntityManager
     }
-    const indexRepository = em.getRepository(IndexData)
-    const indexRelationRepository = em.getRepository(IndexRelation)
+    const indexRepository = em.getRepository(toMikroORMEntity(IndexData))
+    const indexRelationRepository = em.getRepository(
+      toMikroORMEntity(IndexRelation)
+    )
 
     const { data: data_, entityProperties } = PostgresProvider.parseData(
       data,
@@ -654,8 +661,10 @@ export class PostgresProvider implements IndexTypes.StorageProvider {
     const { transactionManager: em } = sharedContext as {
       transactionManager: SqlEntityManager
     }
-    const indexRepository = em.getRepository(IndexData)
-    const indexRelationRepository = em.getRepository(IndexRelation)
+    const indexRepository = em.getRepository(toMikroORMEntity(IndexData))
+    const indexRelationRepository = em.getRepository(
+      toMikroORMEntity(IndexRelation)
+    )
 
     const { data: data_ } = PostgresProvider.parseData(
       data,

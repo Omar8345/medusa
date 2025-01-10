@@ -19,7 +19,7 @@ export const GET = async (
   const collection = await refetchCollection(
     req.params.id,
     req.scope,
-    req.remoteQueryConfig.fields
+    req.queryConfig.fields
   )
 
   res.status(200).json({ collection })
@@ -49,7 +49,7 @@ export const POST = async (
   const collection = await refetchCollection(
     req.params.id,
     req.scope,
-    req.remoteQueryConfig.fields
+    req.queryConfig.fields
   )
 
   res.status(200).json({ collection })

@@ -1,5 +1,65 @@
 # @medusajs/dashboard
 
+## 2.2.0
+
+### Patch Changes
+
+- [#10667](https://github.com/medusajs/medusa/pull/10667) [`47594192b79fbc798cfaf21821b60673745d1374`](https://github.com/medusajs/medusa/commit/47594192b79fbc798cfaf21821b60673745d1374) Thanks [@riqwan](https://github.com/riqwan)! - feat(dashboard,core-flows,types,utils,medusa,order): Order cancelations will refund payments
+
+- Updated dependencies [[`13ddf27c68fc2831b3661940bc5f27bab23ce8c0`](https://github.com/medusajs/medusa/commit/13ddf27c68fc2831b3661940bc5f27bab23ce8c0), [`f7aaf2c8bb243c8478a943285628ba8eb331feb6`](https://github.com/medusajs/medusa/commit/f7aaf2c8bb243c8478a943285628ba8eb331feb6), [`3253e19b3603adacd913b8cbb3e88c9beb0c931a`](https://github.com/medusajs/medusa/commit/3253e19b3603adacd913b8cbb3e88c9beb0c931a)]:
+  - @medusajs/js-sdk@2.2.0
+  - @medusajs/icons@2.2.0
+  - @medusajs/ui@4.0.3
+  - @medusajs/admin-shared@2.2.0
+
+## 2.1.3
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @medusajs/admin-shared@2.1.3
+  - @medusajs/js-sdk@2.1.3
+  - @medusajs/icons@2.1.3
+
+## 2.1.2
+
+### Patch Changes
+
+- [#10579](https://github.com/medusajs/medusa/pull/10579) [`6367bccde88158d524dfa01e5a8123ffa3461c10`](https://github.com/medusajs/medusa/commit/6367bccde88158d524dfa01e5a8123ffa3461c10) Thanks [@riqwan](https://github.com/riqwan)! - feat(medusa, pricing): Cart workflows handle pricing context accurately
+
+- [#10547](https://github.com/medusajs/medusa/pull/10547) [`dc5e73af4d2fe4eed8239660d74af6cd2a0994cd`](https://github.com/medusajs/medusa/commit/dc5e73af4d2fe4eed8239660d74af6cd2a0994cd) Thanks [@kasperkristensen](https://github.com/kasperkristensen)! - fix(dashboard): Prevent fulfillment provider modal from rerendering before form submission is complete
+
+- Updated dependencies []:
+  - @medusajs/admin-shared@2.1.2
+  - @medusajs/js-sdk@2.1.2
+  - @medusajs/icons@2.1.2
+
+## 2.1.1
+
+### Patch Changes
+
+- [#10386](https://github.com/medusajs/medusa/pull/10386) [`a1a1e0e789424546443ce195b95f652d081d7b3b`](https://github.com/medusajs/medusa/commit/a1a1e0e789424546443ce195b95f652d081d7b3b) Thanks [@kasperkristensen](https://github.com/kasperkristensen)! - feat(dashboard,types): Add UI to manage conditional SO prices
+
+- [#10449](https://github.com/medusajs/medusa/pull/10449) [`16663ec8132e99bac7fbfe2adda542a5294d2384`](https://github.com/medusajs/medusa/commit/16663ec8132e99bac7fbfe2adda542a5294d2384) Thanks [@kasperkristensen](https://github.com/kasperkristensen)! - fix(dashboard,types): Add missing Metadata form for Region domain and fix types
+
+- [#10473](https://github.com/medusajs/medusa/pull/10473) [`7e04091b492c1680fdf5321f512e43b90ba09e12`](https://github.com/medusajs/medusa/commit/7e04091b492c1680fdf5321f512e43b90ba09e12) Thanks [@kasperkristensen](https://github.com/kasperkristensen)! - fix(dashboard): Prevent sending off empty string as handle for product category
+
+- [#10193](https://github.com/medusajs/medusa/pull/10193) [`559fc6587aa02cd4f8fbc9e97ff1f1ba094a4b1a`](https://github.com/medusajs/medusa/commit/559fc6587aa02cd4f8fbc9e97ff1f1ba094a4b1a) Thanks [@adrien2p](https://github.com/adrien2p)! - fix(): Deleted default sales channel should be prevented
+
+- [#10481](https://github.com/medusajs/medusa/pull/10481) [`c9a66b19afcfcc626f9e2e4531771dc36f66a65e`](https://github.com/medusajs/medusa/commit/c9a66b19afcfcc626f9e2e4531771dc36f66a65e) Thanks [@kasperkristensen](https://github.com/kasperkristensen)! - fix(dashboard,ui): Bring ConditionBlock in line with design
+
+- [#10523](https://github.com/medusajs/medusa/pull/10523) [`de811879299b2acdb069a195979ac116b890b406`](https://github.com/medusajs/medusa/commit/de811879299b2acdb069a195979ac116b890b406) Thanks [@kasperkristensen](https://github.com/kasperkristensen)! - fix(dashboard): Add FE validation for conditional prices
+
+- [#10454](https://github.com/medusajs/medusa/pull/10454) [`2b455b15a65030492b188a8d510ab72748e6c0ee`](https://github.com/medusajs/medusa/commit/2b455b15a65030492b188a8d510ab72748e6c0ee) Thanks [@kasperkristensen](https://github.com/kasperkristensen)! - fix(dashboard): Cleanup unsafe accesses to possibly undefined values in order timeline
+
+- [#10457](https://github.com/medusajs/medusa/pull/10457) [`864f53011b892e1ed0abee2e241b662eccef7e6d`](https://github.com/medusajs/medusa/commit/864f53011b892e1ed0abee2e241b662eccef7e6d) Thanks [@kasperkristensen](https://github.com/kasperkristensen)! - fix(dashboard,types): Fix TS errors
+
+- Updated dependencies [[`c9a66b19afcfcc626f9e2e4531771dc36f66a65e`](https://github.com/medusajs/medusa/commit/c9a66b19afcfcc626f9e2e4531771dc36f66a65e)]:
+  - @medusajs/ui@4.0.2
+  - @medusajs/admin-shared@2.1.1
+  - @medusajs/js-sdk@2.1.1
+  - @medusajs/icons@2.1.1
+
 ## 2.1.0
 
 ### Patch Changes

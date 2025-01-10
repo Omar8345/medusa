@@ -1,0 +1,23 @@
+---
+slug: /references/medusa-workflows/steps/calculateShippingOptionsPricesStep
+sidebar_label: calculateShippingOptionsPricesStep
+tags:
+  - fulfillment
+  - step
+---
+
+import { TypeList, WorkflowDiagram } from "docs-ui"
+
+# calculateShippingOptionsPricesStep - Medusa Core Workflows Reference
+
+This documentation provides a reference to the `calculateShippingOptionsPricesStep`. It belongs to the `@medusajs/medusa/core-flows` package.
+
+This step calculates the prices for one or more shipping options.
+
+## Input
+
+<TypeList types={[{"name":"CalculateShippingOptionPriceDTO[]","type":"[CalculateShippingOptionPriceDTO](../../../../../fulfillment/interfaces/fulfillment.CalculateShippingOptionPriceDTO/page.mdx)[]","optional":false,"defaultValue":"","description":"","expandable":false,"children":[{"name":"CalculateShippingOptionPriceDTO","type":"[CalculateShippingOptionPriceDTO](../../../../../fulfillment/interfaces/fulfillment.CalculateShippingOptionPriceDTO/page.mdx)","optional":false,"defaultValue":"","description":"The data needed for the associated fulfillment provider to calculate the price of a shipping option.","expandable":false,"children":[{"name":"id","type":"`string`","description":"The ID of the shipping option.","optional":false,"defaultValue":"","expandable":false,"children":[]},{"name":"provider_id","type":"`string`","description":"The ID of the fulfillment provider.","optional":false,"defaultValue":"","expandable":false,"children":[]},{"name":"optionData","type":"`Record<string, unknown>`","description":"The `data` property of the shipping option.","optional":false,"defaultValue":"","expandable":false,"children":[]},{"name":"data","type":"`Record<string, unknown>`","description":"The shipping method's `data` property with custom data passed from the frontend.","optional":false,"defaultValue":"","expandable":false,"children":[]},{"name":"context","type":"[CartPropsForFulfillment](../../../../../fulfillment/types/fulfillment.CartPropsForFulfillment/page.mdx) & `object`","description":"The calculation context needed for the associated fulfillment provider to calculate the price of a shipping option.","optional":false,"defaultValue":"","expandable":false,"children":[{"name":"id","type":"[CartDTO](../../../../../fulfillment/interfaces/fulfillment.CartDTO/page.mdx)[`\"id\"`]","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]},{"name":"shipping_address","type":"[CartDTO](../../../../../fulfillment/interfaces/fulfillment.CartDTO/page.mdx)[`\"shipping_address\"`]","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]},{"name":"items","type":"[CartDTO](../../../../../fulfillment/interfaces/fulfillment.CartDTO/page.mdx)[`\"items\"`] & `object`","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]},{"name":"from_location","type":"[StockLocationDTO](../../../../../fulfillment/types/fulfillment.StockLocationDTO/page.mdx)","description":"The location that the items will be shipped from.","optional":true,"defaultValue":"","expandable":false,"children":[]}]}]}]}]} expandUrl="https://docs.medusajs.com/learn/fundamentals/data-models/manage-relationships#retrieve-records-of-relation" sectionTitle="calculateShippingOptionsPricesStep"/>
+
+## Output
+
+<TypeList types={[{"name":"CalculatedShippingOptionPrice[]","type":"[CalculatedShippingOptionPrice](../../../../../fulfillment/types/fulfillment.CalculatedShippingOptionPrice/page.mdx)[]","optional":false,"defaultValue":"","description":"","expandable":false,"children":[{"name":"CalculatedShippingOptionPrice","type":"[CalculatedShippingOptionPrice](../../../../../fulfillment/types/fulfillment.CalculatedShippingOptionPrice/page.mdx)","optional":false,"defaultValue":"","description":"","expandable":false,"children":[{"name":"calculated_amount","type":"`number`","description":"The calculated price.","optional":false,"defaultValue":"","expandable":false,"children":[]},{"name":"is_calculated_price_tax_inclusive","type":"`boolean`","description":"Whether the calculated price includes taxes. If enabled, Medusa will\ninfer the taxes from the calculated price. If false, Medusa will\nadd taxes to the calculated price.","optional":false,"defaultValue":"","expandable":false,"children":[]}]}]}]} expandUrl="https://docs.medusajs.com/learn/fundamentals/data-models/manage-relationships#retrieve-records-of-relation" sectionTitle="calculateShippingOptionsPricesStep"/>

@@ -1,17 +1,26 @@
 ---
 slug: /references/medusa-workflows/steps/useRemoteQueryStep
 sidebar_label: useRemoteQueryStep
+tags:
+  - remote query
+  - step
 ---
 
 import { TypeList, WorkflowDiagram } from "docs-ui"
 
-# useRemoteQueryStep - Medusa Workflows API Reference
+# useRemoteQueryStep - Medusa Core Workflows Reference
 
 This documentation provides a reference to the `useRemoteQueryStep`. It belongs to the `@medusajs/medusa/core-flows` package.
 
 This step fetches data across modules using the remote query.
 
-Learn more in the [Remote Query documentation](https://docs.medusajs.com/advanced-development/modules/remote-query).
+Learn more in the [Remote Query documentation](https://docs.medusajs.com/learn/fundamentals/module-links/query).
+
+:::note
+
+This step is deprecated. Use [useQueryGraphStep](../core_flows.Common.Steps_Common.useQueryGraphStep/page.mdx) instead.
+
+:::
 
 ## Example
 
@@ -102,4 +111,4 @@ const helloWorldWorkflow = createWorkflow(
 
 ## Input
 
-<TypeList types={[{"name":"EntryStepInput \\| ServiceStepInput","type":"[EntryStepInput](../../../../interfaces/core_flows.EntryStepInput/page.mdx) \\| [ServiceStepInput](../../../../interfaces/core_flows.ServiceStepInput/page.mdx)","optional":false,"defaultValue":"","description":"","expandable":false,"children":[{"name":"EntryStepInput \\| ServiceStepInput","type":"[EntryStepInput](../../../../interfaces/core_flows.EntryStepInput/page.mdx) \\| [ServiceStepInput](../../../../interfaces/core_flows.ServiceStepInput/page.mdx)","optional":false,"defaultValue":"","description":"","expandable":false,"children":[]}]}]} expandUrl="https://docs.medusajs.com/v2/advanced-development/data-models/manage-relationships#retrieve-records-of-relation" sectionTitle="useRemoteQueryStep"/>
+<TypeList types={[{"name":"EntryStepInput \\| ServiceStepInput","type":"[EntryStepInput](../../../../interfaces/core_flows.EntryStepInput/page.mdx) \\| [ServiceStepInput](../../../../interfaces/core_flows.ServiceStepInput/page.mdx)","optional":false,"defaultValue":"","description":"","expandable":false,"children":[{"name":"EntryStepInput \\| ServiceStepInput","type":"[EntryStepInput](../../../../interfaces/core_flows.EntryStepInput/page.mdx) \\| [ServiceStepInput](../../../../interfaces/core_flows.ServiceStepInput/page.mdx)","optional":false,"defaultValue":"","description":"","expandable":false,"children":[]}]}]} expandUrl="https://docs.medusajs.com/learn/fundamentals/data-models/manage-relationships#retrieve-records-of-relation" sectionTitle="useRemoteQueryStep"/>

@@ -57,6 +57,7 @@ export interface DataGridRootProps<
   state: UseFormReturn<TFieldValues>
   getSubRows?: (row: TData) => TData[] | undefined
   onEditingChange?: (isEditing: boolean) => void
+  disableInteractions?: boolean
 }
 
 const ROW_HEIGHT = 40
@@ -102,6 +103,7 @@ export const DataGridRoot = <
   state,
   getSubRows,
   onEditingChange,
+  disableInteractions,
 }: DataGridRootProps<TData, TFieldValues>) => {
   const containerRef = useRef<HTMLDivElement>(null)
 
@@ -114,7 +116,9 @@ export const DataGridRoot = <
     formState: { errors },
   } = state
 
-  const [trapActive, setTrapActive] = useState(true)
+  const [internalTrapActive, setTrapActive] = useState(true)
+
+  const trapActive = !disableInteractions && internalTrapActive
 
   const [anchor, setAnchor] = useState<DataGridCoordinates | null>(null)
   const [rangeEnd, setRangeEnd] = useState<DataGridCoordinates | null>(null)
@@ -533,7 +537,7 @@ export const DataGridRoot = <
         queryTool?.getContainer(anchor)?.focus()
       })
     }
-  }, [anchor, trapActive, queryTool])
+  }, [anchor, trapActive, setSingleRange, scrollToCoordinates, queryTool])
 
   return (
     <DataGridContext.Provider value={values}>

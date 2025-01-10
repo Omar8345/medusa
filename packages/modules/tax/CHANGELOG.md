@@ -1,5 +1,17 @@
 # @medusajs/tax
 
+## 2.2.0
+
+## 2.1.3
+
+## 2.1.2
+
+### Patch Changes
+
+- [#10525](https://github.com/medusajs/medusa/pull/10525) [`e021c9258cd3bf7b92213b0bd2d529f72200142e`](https://github.com/medusajs/medusa/commit/e021c9258cd3bf7b92213b0bd2d529f72200142e) Thanks [@thetutlage](https://github.com/thetutlage)! - Feat/tax dml
+
+## 2.1.1
+
 ## 2.1.0
 
 ## 2.0.7

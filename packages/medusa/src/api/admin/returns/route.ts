@@ -24,9 +24,9 @@ export const GET = async (
       filters: {
         ...req.filterableFields,
       },
-      ...req.remoteQueryConfig.pagination,
+      ...req.queryConfig.pagination,
     },
-    fields: req.remoteQueryConfig.fields,
+    fields: req.queryConfig.fields,
   })
 
   const { rows: returns, metadata } = await remoteQuery(queryObject)
@@ -64,7 +64,7 @@ export const POST = async (
         ...req.filterableFields,
       },
     },
-    fields: req.remoteQueryConfig.fields,
+    fields: req.queryConfig.fields,
   })
 
   const [order, orderReturn] = await promiseAll([

@@ -11,7 +11,7 @@ export const refetchEntities = async (
   idOrFilter: string | object,
   scope: MedusaContainer,
   fields: string[],
-  pagination?: MedusaRequest["remoteQueryConfig"]["pagination"]
+  pagination?: MedusaRequest["queryConfig"]["pagination"]
 ) => {
   const remoteQuery = scope.resolve(ContainerRegistrationKeys.REMOTE_QUERY)
   const filters = isString(idOrFilter) ? { id: idOrFilter } : idOrFilter

@@ -51,9 +51,6 @@ export class Migration20241205095237 extends Migration {
     )
 
     this.addSql(
-      'alter table if exists "cart_line_item_tax_line" alter column "rate" type integer using ("rate"::integer);'
-    )
-    this.addSql(
       'alter table if exists "cart_line_item_tax_line" add constraint "cart_line_item_tax_line_item_id_foreign" foreign key ("item_id") references "cart_line_item" ("id") on update cascade on delete cascade;'
     )
     this.addSql(
@@ -69,10 +66,6 @@ export class Migration20241205095237 extends Migration {
 
     this.addSql(
       'CREATE INDEX IF NOT EXISTS "IDX_cart_shipping_method_adjustment_shipping_method_id" ON "cart_shipping_method_adjustment" (shipping_method_id) WHERE deleted_at IS NULL;'
-    )
-
-    this.addSql(
-      'alter table if exists "cart_shipping_method_tax_line" alter column "rate" type integer using ("rate"::integer);'
     )
     this.addSql(
       'CREATE INDEX IF NOT EXISTS "IDX_cart_shipping_method_tax_line_shipping_method_id" ON "cart_shipping_method_tax_line" (shipping_method_id) WHERE deleted_at IS NULL;'
@@ -112,9 +105,6 @@ export class Migration20241205095237 extends Migration {
       'alter table if exists "cart_line_item_adjustment" add constraint "cart_line_item_adjustment_item_id_foreign" foreign key ("item_id") references "cart_line_item" ("id") on update cascade;'
     )
 
-    this.addSql(
-      'alter table if exists "cart_line_item_tax_line" alter column "rate" type numeric using ("rate"::numeric);'
-    )
     this.addSql('drop index if exists "IDX_cart_line_item_tax_line_item_id";')
     this.addSql(
       'alter table if exists "cart_line_item_tax_line" add constraint "cart_line_item_tax_line_item_id_foreign" foreign key ("item_id") references "cart_line_item" ("id") on update cascade;'
@@ -129,9 +119,6 @@ export class Migration20241205095237 extends Migration {
       'drop index if exists "IDX_cart_shipping_method_adjustment_shipping_method_id";'
     )
 
-    this.addSql(
-      'alter table if exists "cart_shipping_method_tax_line" alter column "rate" type numeric using ("rate"::numeric);'
-    )
     this.addSql(
       'drop index if exists "IDX_cart_shipping_method_tax_line_shipping_method_id";'
     )

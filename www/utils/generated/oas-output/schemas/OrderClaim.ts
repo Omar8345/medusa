@@ -42,19 +42,8 @@
  *     title: no_notification
  *     description: Whether the customer should be notified about changes in the claim.
  *   refund_amount:
- *     oneOf:
- *       - type: string
- *         title: refund_amount
- *         description: The claim's refund amount.
- *       - type: number
- *         title: refund_amount
- *         description: The claim's refund amount.
- *       - type: string
- *         title: refund_amount
- *         description: The claim's refund amount.
- *       - type: number
- *         title: refund_amount
- *         description: The claim's refund amount.
+ *     type: number
+ *     title: refund_amount
  *     description: The amount to be refunded.
  *   display_id:
  *     type: number

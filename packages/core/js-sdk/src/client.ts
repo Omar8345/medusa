@@ -58,17 +58,20 @@ const normalizeRequest = (
     body = JSON.stringify(body)
   }
 
+  // "credentials" is not supported in some environments (eg. on the backend), and it might throw an exception if the field is set.
   const isFetchCredentialsSupported = "credentials" in Request.prototype
+
+  // Oftentimes the server will be on a different origin, so we want to default to include
+  // Note that the cookie's SameSite attribute takes precedence over this setting.
+  const credentials =
+    config.auth?.type === "session"
+      ? config.auth?.fetchCredentials || "include"
+      : "omit"
 
   return {
     ...init,
     headers,
-    // TODO: Setting this to "include" poses some security risks, as it will send cookies to any domain. We should consider making this configurable.
-    credentials: isFetchCredentialsSupported
-      ? config.auth?.type === "session"
-        ? "include"
-        : "omit"
-      : undefined,
+    credentials: isFetchCredentialsSupported ? credentials : undefined,
     ...(body ? { body: body as RequestInit["body"] } : {}),
   } as RequestInit
 }
@@ -231,7 +234,9 @@ export class Client {
       let normalizedInput: RequestInfo | URL = input
       if (input instanceof URL || typeof input === "string") {
         const baseUrl = new URL(this.config.baseUrl)
-        const fullPath = `${baseUrl.pathname.replace(/\/$/, '')}/${input.toString().replace(/^\//, '')}`
+        const fullPath = `${baseUrl.pathname.replace(/\/$/, "")}/${input
+          .toString()
+          .replace(/^\//, "")}`
         normalizedInput = new URL(fullPath, baseUrl.origin)
         if (init?.query) {
           const params = Object.fromEntries(

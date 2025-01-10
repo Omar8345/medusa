@@ -16,9 +16,9 @@ moduleIntegrationTestRunner<ICustomerModuleService>({
 
         expect(Object.keys(linkable)).toEqual([
           "customerAddress",
-          "customerGroupCustomer",
-          "customerGroup",
           "customer",
+          "customerGroup",
+          "customerGroupCustomer",
         ])
 
         Object.keys(linkable).forEach((key) => {

@@ -30,7 +30,7 @@ export const POST = async (
   const batchResults = await refetchBatchRules(
     result,
     req.scope,
-    req.remoteQueryConfig.fields
+    req.queryConfig.fields
   )
 
   res

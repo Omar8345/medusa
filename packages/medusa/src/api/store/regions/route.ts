@@ -15,9 +15,9 @@ export const GET = async (
     entryPoint: "region",
     variables: {
       filters: req.filterableFields,
-      ...req.remoteQueryConfig.pagination,
+      ...req.queryConfig.pagination,
     },
-    fields: req.remoteQueryConfig.fields,
+    fields: req.queryConfig.fields,
   })
 
   const { rows: regions, metadata } = await remoteQuery(queryObject)

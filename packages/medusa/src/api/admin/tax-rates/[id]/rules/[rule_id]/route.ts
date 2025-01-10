@@ -17,7 +17,7 @@ export const DELETE = async (
   const taxRate = await refetchTaxRate(
     req.params.id,
     req.scope,
-    req.remoteQueryConfig.fields
+    req.queryConfig.fields
   )
 
   res.status(200).json({

@@ -84,7 +84,11 @@ export const SidebarItemLink = ({
   }, [active, isMobile])
 
   const hasChildren = useMemo(() => {
-    return !item.isChildSidebar && (item.children?.length || 0) > 0
+    return (
+      !item.isChildSidebar &&
+      !item.hideChildren &&
+      (item.children?.length || 0) > 0
+    )
   }, [item.children])
 
   const isTitleOneWord = useMemo(

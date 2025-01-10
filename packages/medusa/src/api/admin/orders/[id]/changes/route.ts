@@ -23,7 +23,7 @@ export const GET = async (
         order_id: id,
       },
     },
-    fields: req.remoteQueryConfig.fields,
+    fields: req.queryConfig.fields,
   })
 
   const order_changes = await remoteQuery(queryObject)

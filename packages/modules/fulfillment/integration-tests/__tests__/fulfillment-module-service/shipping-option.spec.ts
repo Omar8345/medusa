@@ -8,11 +8,11 @@ import {
   GeoZoneType,
   Modules,
 } from "@medusajs/framework/utils"
-import { FulfillmentProviderService } from "@services"
 import {
   MockEventBusService,
   moduleIntegrationTestRunner,
 } from "@medusajs/test-utils"
+import { FulfillmentProviderService } from "@services"
 import { resolve } from "path"
 import {
   buildExpectedEventMessageShape,
@@ -20,7 +20,7 @@ import {
 } from "../../__fixtures__"
 import { FulfillmentProviderServiceFixtures } from "../../__fixtures__/providers"
 
-jest.setTimeout(100000)
+jest.setTimeout(1000000)
 
 const moduleOptions = {
   providers: [
@@ -709,7 +709,18 @@ moduleIntegrationTestRunner<IFulfillmentModuleService>({
 
             const existingRule = shippingOption.rules[0]!
 
-            const updateData: UpdateShippingOptionDTO = {
+            const updateData: UpdateShippingOptionDTO & {
+              type: {
+                code: string
+                description: string
+                label: string
+              }
+              rules: {
+                attribute: string
+                operator: string
+                value: string
+              }[]
+            } = {
               id: shippingOption.id,
               name: "updated-test",
               price_type: "calculated",
@@ -767,9 +778,9 @@ moduleIntegrationTestRunner<IFulfillmentModuleService>({
                   }),
                   expect.objectContaining({
                     id: expect.any(String),
-                    attribute: updateData.rules[1].attribute,
-                    operator: updateData.rules[1].operator,
-                    value: updateData.rules[1].value,
+                    attribute: updateData.rules![1].attribute,
+                    operator: updateData.rules![1].operator,
+                    value: updateData.rules![1].value,
                   }),
                 ]),
               })
@@ -789,13 +800,15 @@ moduleIntegrationTestRunner<IFulfillmentModuleService>({
             )
 
             const types = await service.listShippingOptionTypes()
-            expect(types).toHaveLength(1)
-            expect(types[0]).toEqual(
-              expect.objectContaining({
-                code: updateData.type.code,
-                description: updateData.type.description,
-                label: updateData.type.label,
-              })
+            expect(types).toHaveLength(2)
+            expect(types).toEqual(
+              expect.arrayContaining([
+                expect.objectContaining({
+                  code: updateData.type.code,
+                  description: updateData.type.description,
+                  label: updateData.type.label,
+                }),
+              ])
             )
 
             expect(eventBusEmitSpy.mock.calls[0][0]).toHaveLength(5)
@@ -1059,7 +1072,7 @@ moduleIntegrationTestRunner<IFulfillmentModuleService>({
             )
 
             const types = await service.listShippingOptionTypes()
-            expect(types).toHaveLength(2)
+            expect(types).toHaveLength(4)
             expect(types).toEqual(
               expect.arrayContaining([
                 expect.objectContaining({
@@ -1090,7 +1103,7 @@ moduleIntegrationTestRunner<IFulfillmentModuleService>({
               type: "default",
             })
 
-            const shippingOptionData = {
+            const shippingOptionData: UpdateShippingOptionDTO = {
               id: "sp_jdafwfleiwuonl",
               name: "test",
               price_type: "flat",

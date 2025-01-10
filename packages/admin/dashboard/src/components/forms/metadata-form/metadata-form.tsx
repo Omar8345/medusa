@@ -18,7 +18,7 @@ import {
   Trash,
 } from "@medusajs/icons"
 import { FetchError } from "@medusajs/js-sdk"
-import { ComponentPropsWithoutRef, forwardRef, useRef } from "react"
+import { ComponentPropsWithoutRef, forwardRef } from "react"
 import { ConditionalTooltip } from "../../common/conditional-tooltip"
 import { Form } from "../../common/form"
 import { InlineTip } from "../../common/inline-tip"
@@ -78,7 +78,6 @@ const InnerForm = <TRes,>({
   const { t } = useTranslation()
   const { handleSuccess } = useRouteModal()
 
-  const deletedOriginalRows = useRef<string[]>([])
   const hasUneditableRows = getHasUneditableRows(metadata)
 
   const form = useForm<z.infer<typeof MetadataSchema>>({

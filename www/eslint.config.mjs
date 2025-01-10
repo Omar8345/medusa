@@ -29,6 +29,7 @@ export default [
         "**/public",
         "**/.eslintrc.js",
         "**/generated",
+        "packages/tags/src/tags"
     ],
 }, ...compat.extends(
     "eslint:recommended",

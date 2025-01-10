@@ -14,6 +14,7 @@ export type Config = {
     type?: "jwt" | "session"
     jwtTokenStorageKey?: string
     jwtTokenStorageMethod?: "local" | "session" | "memory" | "nostore"
+    fetchCredentials?: "include" | "omit" | "same-origin"
   }
   logger?: Logger
   debug?: boolean

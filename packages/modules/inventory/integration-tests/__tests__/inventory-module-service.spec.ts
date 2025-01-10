@@ -229,6 +229,29 @@ moduleIntegrationTestRunner<IInventoryService>({
           expect(inventoryLevel).toEqual(
             expect.objectContaining({ id: expect.any(String), ...data })
           )
+
+          const getItems = await service.listInventoryItems(
+            {},
+            {
+              select: [
+                "id",
+                "sku",
+                "origin_country",
+                "reserved_quantity",
+                "stocked_quantity",
+              ],
+            }
+          )
+
+          expect(getItems).toEqual([
+            {
+              id: inventoryItem.id,
+              sku: "test-sku",
+              origin_country: "test-country",
+              reserved_quantity: 0,
+              stocked_quantity: 2,
+            },
+          ])
         })
 
         it("should create inventoryLevels from array", async () => {

@@ -1,11 +1,14 @@
 ---
 slug: /references/medusa-workflows/deletePromotionRulesWorkflow
 sidebar_label: deletePromotionRulesWorkflow
+tags:
+  - promotion
+  - workflow
 ---
 
 import { TypeList, WorkflowDiagram } from "docs-ui"
 
-# deletePromotionRulesWorkflow - Medusa Workflows API Reference
+# deletePromotionRulesWorkflow - Medusa Core Workflows Reference
 
 This documentation provides a reference to the `deletePromotionRulesWorkflow`. It belongs to the `@medusajs/medusa/core-flows` package.
 
@@ -13,8 +16,8 @@ This workflow deletes one or more promotion rules.
 
 ## Steps
 
-<WorkflowDiagram workflow={{"name":"deletePromotionRulesWorkflow","steps":[{"type":"step","name":"removeRulesFromPromotionsStep","description":"This step removes rules from a promotion.","link":"../../../../core_flows.Steps_Promotion/page.mdx#removerulesfrompromotionsstep","depth":1}]}} />
+<WorkflowDiagram workflow={{"name":"deletePromotionRulesWorkflow","steps":[{"type":"step","name":"removeRulesFromPromotionsStep","description":"This step removes rules from a promotion.\n\n","link":"../../../Steps_Promotion/functions/core_flows.Promotion.Steps_Promotion.removeRulesFromPromotionsStep/page.mdx","depth":1}]}} />
 
 ## Input
 
-<TypeList types={[{"name":"RemovePromotionRulesWorkflowDTO","type":"[RemovePromotionRulesWorkflowDTO](../../../../../types/types/types.RemovePromotionRulesWorkflowDTO/page.mdx)","optional":false,"defaultValue":"","description":"","expandable":false,"children":[{"name":"rule_type","type":"`PromotionRuleTypes`","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]},{"name":"data","type":"`object`","description":"","optional":false,"defaultValue":"","expandable":false,"children":[{"name":"id","type":"`string`","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]},{"name":"rule_ids","type":"`string`[]","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]}]}]}]} expandUrl="https://docs.medusajs.com/v2/advanced-development/data-models/manage-relationships#retrieve-records-of-relation" sectionTitle="deletePromotionRulesWorkflow"/>
+<TypeList types={[{"name":"RemovePromotionRulesWorkflowDTO","type":"[RemovePromotionRulesWorkflowDTO](../../../../../types/types/types.RemovePromotionRulesWorkflowDTO/page.mdx)","optional":false,"defaultValue":"","description":"","expandable":false,"children":[{"name":"rule_type","type":"`PromotionRuleTypes`","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]},{"name":"data","type":"`object`","description":"","optional":false,"defaultValue":"","expandable":false,"children":[{"name":"id","type":"`string`","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]},{"name":"rule_ids","type":"`string`[]","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]}]}]}]} expandUrl="https://docs.medusajs.com/learn/fundamentals/data-models/manage-relationships#retrieve-records-of-relation" sectionTitle="deletePromotionRulesWorkflow"/>

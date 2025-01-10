@@ -1,5 +1,9 @@
 import { ArrowDownRightMini, DocumentText, XCircle } from "@medusajs/icons"
-import { AdminPaymentCollection, HttpTypes } from "@medusajs/types"
+import {
+  AdminPayment,
+  AdminPaymentCollection,
+  HttpTypes,
+} from "@medusajs/types"
 import {
   Badge,
   Button,
@@ -14,6 +18,7 @@ import {
 import { format } from "date-fns"
 import { Trans, useTranslation } from "react-i18next"
 import { ActionMenu } from "../../../../../components/common/action-menu"
+import DisplayId from "../../../../../components/common/display-id/display-id"
 import { useCapturePayment } from "../../../../../hooks/api"
 import { formatCurrency } from "../../../../../lib/format-currency"
 import {
@@ -22,7 +27,6 @@ import {
 } from "../../../../../lib/money-amount-helpers"
 import { getOrderPaymentStatus } from "../../../../../lib/order-helpers"
 import { getTotalCaptured, getTotalPending } from "../../../../../lib/payment"
-import DisplayId from "../../../../../components/common/display-id/display-id"
 
 type OrderPaymentSectionProps = {
   order: HttpTypes.AdminOrder
@@ -173,9 +177,20 @@ const Payment = ({
     )
   }
 
-  const [status, color] = (
-    payment.captured_at ? ["Captured", "green"] : ["Pending", "orange"]
-  ) as [string, "green" | "orange"]
+  const getPaymentStatusAttributes = (payment: AdminPayment) => {
+    if (payment.canceled_at) {
+      return ["Canceled", "red"]
+    } else if (payment.captured_at) {
+      return ["Captured", "green"]
+    } else {
+      return ["Pending", "orange"]
+    }
+  }
+
+  const [status, color] = getPaymentStatusAttributes(payment) as [
+    string,
+    "green" | "orange" | "red",
+  ]
 
   const showCapture =
     payment.captured_at === null && payment.canceled_at === null

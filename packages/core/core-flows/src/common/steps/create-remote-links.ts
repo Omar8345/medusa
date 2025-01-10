@@ -1,4 +1,4 @@
-import { RemoteLink } from "@medusajs/framework/modules-sdk"
+import { Link } from "@medusajs/framework/modules-sdk"
 import { LinkDefinition } from "@medusajs/framework/types"
 import { ContainerRegistrationKeys } from "@medusajs/framework/utils"
 import { createStep, StepResponse } from "@medusajs/framework/workflows-sdk"
@@ -7,7 +7,7 @@ export const createLinksStepId = "create-remote-links"
 /**
  * This step creates remote links between two records of linked data models.
  *
- * Learn more in the [Remote Link documentation.](https://docs.medusajs.com/advanced-development/modules/remote-link#create-link).
+ * Learn more in the [Remote Link documentation.](https://docs.medusajs.com/learn/fundamentals/module-links/remote-link#create-link).
  *
  * @example
  * import {
@@ -37,9 +37,7 @@ export const createLinksStepId = "create-remote-links"
 export const createRemoteLinkStep = createStep(
   createLinksStepId,
   async (data: LinkDefinition[], { container }) => {
-    const link = container.resolve<RemoteLink>(
-      ContainerRegistrationKeys.REMOTE_LINK
-    )
+    const link = container.resolve<Link>(ContainerRegistrationKeys.LINK)
 
     if (!data.length) {
       return new StepResponse([], [])
@@ -54,9 +52,7 @@ export const createRemoteLinkStep = createStep(
       return
     }
 
-    const link = container.resolve<RemoteLink>(
-      ContainerRegistrationKeys.REMOTE_LINK
-    )
+    const link = container.resolve<Link>(ContainerRegistrationKeys.LINK)
     await link.dismiss(createdLinks)
   }
 )

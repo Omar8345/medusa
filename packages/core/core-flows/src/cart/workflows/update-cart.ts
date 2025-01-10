@@ -16,7 +16,12 @@ import {
   WorkflowData,
   WorkflowResponse,
 } from "@medusajs/framework/workflows-sdk"
-import { emitEventStep, useRemoteQueryStep } from "../../common"
+import {
+  emitEventStep,
+  useQueryGraphStep,
+  useRemoteQueryStep,
+} from "../../common"
+import { deleteLineItemsStep } from "../../line-item"
 import {
   findOrCreateCustomerStep,
   findSalesChannelStep,
@@ -167,11 +172,18 @@ export const updateCartWorkflow = createWorkflow(
     })
     */
 
-    when({ input, cartToUpdate }, ({ input, cartToUpdate }) => {
-      return (
-        isDefined(input.region_id) &&
-        input.region_id !== cartToUpdate?.region?.id
-      )
+    const regionUpdated = transform(
+      { input, cartToUpdate },
+      ({ input, cartToUpdate }) => {
+        return (
+          isDefined(input.region_id) &&
+          input.region_id !== cartToUpdate?.region?.id
+        )
+      }
+    )
+
+    when({ regionUpdated }, ({ regionUpdated }) => {
+      return !!regionUpdated
     }).then(() => {
       emitEventStep({
         eventName: CartWorkflowEvents.REGION_UPDATED,
@@ -186,6 +198,27 @@ export const updateCartWorkflow = createWorkflow(
         data: { id: input.id },
       })
     )
+
+    // In case the region is updated, we might have a new currency OR tax inclusivity setting
+    // Therefore, we need to delete line items with a custom price for good measure
+    when({ regionUpdated }, ({ regionUpdated }) => {
+      return !!regionUpdated
+    }).then(() => {
+      const lineItems = useQueryGraphStep({
+        entity: "line_items",
+        filters: {
+          cart_id: input.id,
+          is_custom_price: true,
+        },
+        fields: ["id"],
+      })
+
+      const lineItemIds = transform({ lineItems }, ({ lineItems }) => {
+        return lineItems.data.map((i) => i.id)
+      })
+
+      deleteLineItemsStep(lineItemIds)
+    })
 
     const cart = refreshCartItemsWorkflow.runAsStep({
       input: { cart_id: cartInput.id, promo_codes: input.promo_codes },

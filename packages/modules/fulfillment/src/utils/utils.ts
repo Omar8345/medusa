@@ -16,7 +16,7 @@ import {
 
 export type Rule = {
   attribute: string
-  operator: Lowercase<keyof typeof RuleOperator>
+  operator: Lowercase<keyof typeof RuleOperator> | (string & {})
   value: string | string[] | null
 }
 

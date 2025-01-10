@@ -32,7 +32,7 @@ describe("hasOne - belongTo", () => {
     const team = model.define("team", {
       id: model.id().primaryKey(),
       name: model.text(),
-      user: model.belongsTo(() => user, { mappedBy: "team" }),
+      user: model.belongsTo(() => user, { mappedBy: "team" }).nullable(),
     })
 
     const user = model.define("user", {

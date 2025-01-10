@@ -14,9 +14,10 @@ import {
 } from "../steps"
 import { validateCartStep } from "../steps/validate-cart"
 import { validateAndReturnShippingMethodsDataStep } from "../steps/validate-shipping-methods-data"
+import { validateCartShippingOptionsPriceStep } from "../steps/validate-shipping-options-price"
 import { cartFieldsForRefreshSteps } from "../utils/fields"
-import { updateCartPromotionsWorkflow } from "./update-cart-promotions"
-import { updateTaxLinesWorkflow } from "./update-tax-lines"
+import { listShippingOptionsForCartWithPricingWorkflow } from "./list-shipping-options-for-cart-with-pricing"
+import { refreshCartItemsWorkflow } from "./refresh-cart-items"
 
 export interface AddShippingMethodToCartWorkflowInput {
   cart_id: string
@@ -54,47 +55,49 @@ export const addShippingMethodToCartWorkflow = createWorkflow(
       shippingOptionsContext: { is_return: "false", enabled_in_store: "true" },
     })
 
-    const shippingOptions = useRemoteQueryStep({
-      entry_point: "shipping_option",
-      fields: [
-        "id",
-        "name",
-        "calculated_price.calculated_amount",
-        "calculated_price.is_calculated_price_tax_inclusive",
-        "provider_id",
-      ],
-      variables: {
-        id: optionIds,
-        calculated_price: {
-          context: { currency_code: cart.currency_code },
+    const shippingOptions =
+      listShippingOptionsForCartWithPricingWorkflow.runAsStep({
+        input: {
+          options: input.options,
+          cart_id: cart.id,
+          is_return: false,
         },
-      },
-    }).config({ name: "fetch-shipping-option" })
+      })
+
+    validateCartShippingOptionsPriceStep({ shippingOptions })
 
     const validateShippingMethodsDataInput = transform(
-      { input, shippingOptions },
-      (data) => {
-        return data.input.options.map((inputOption) => {
-          const shippingOption = data.shippingOptions.find(
+      { input, shippingOptions, cart },
+      ({ input, shippingOptions, cart }) => {
+        return input.options.map((inputOption) => {
+          const shippingOption = shippingOptions.find(
             (so) => so.id === inputOption.id
           )
+
           return {
             id: inputOption.id,
             provider_id: shippingOption?.provider_id,
             option_data: shippingOption?.data ?? {},
             method_data: inputOption.data ?? {},
+            context: {
+              ...cart,
+              from_location: shippingOption?.stock_location ?? {},
+            },
           }
         })
       }
     )
 
-    const validatedMethodData = validateAndReturnShippingMethodsDataStep({
-      options_to_validate: validateShippingMethodsDataInput,
-      context: {}, // TODO: Add cart, when we have a better idea about what's appropriate to pass
-    })
+    const validatedMethodData = validateAndReturnShippingMethodsDataStep(
+      validateShippingMethodsDataInput
+    )
 
     const shippingMethodInput = transform(
-      { input, shippingOptions, validatedMethodData },
+      {
+        input,
+        shippingOptions,
+        validatedMethodData,
+      },
       (data) => {
         const options = (data.input.options ?? []).map((option) => {
           const shippingOption = data.shippingOptions.find(
@@ -128,9 +131,9 @@ export const addShippingMethodToCartWorkflow = createWorkflow(
       }
     )
 
-    const currentShippingMethods = transform({ cart }, ({ cart }) => {
-      return cart.shipping_methods.map((sm) => sm.id)
-    })
+    const currentShippingMethods = transform({ cart }, ({ cart }) =>
+      cart.shipping_methods.map((sm) => sm.id)
+    )
 
     parallelize(
       removeShippingMethodFromCartStep({
@@ -145,16 +148,8 @@ export const addShippingMethodToCartWorkflow = createWorkflow(
       })
     )
 
-    updateTaxLinesWorkflow.runAsStep({
-      input: {
-        cart_id: input.cart_id,
-      },
-    })
-
-    updateCartPromotionsWorkflow.runAsStep({
-      input: {
-        cart_id: input.cart_id,
-      },
+    refreshCartItemsWorkflow.runAsStep({
+      input: { cart_id: cart.id },
     })
   }
 )

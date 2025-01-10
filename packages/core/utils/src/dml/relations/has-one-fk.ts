@@ -11,13 +11,17 @@ import { RelationNullableModifier } from "./nullable"
  * You may use the "BelongsTo" relationship to define the inverse
  * of the "HasOne" relationship
  */
-export class HasOneWithForeignKey<T> extends BaseRelationship<T> {
+export class HasOneWithForeignKey<
+  T,
+  const OptionalForeignKeyName extends string | undefined = undefined
+> extends BaseRelationship<T> {
   type = "hasOneWithFK" as const
   declare $foreignKey: true
+  declare $foreignKeyName: OptionalForeignKeyName
 
   static isHasOneWithForeignKey<T>(
     relationship: any
-  ): relationship is HasOneWithForeignKey<T> {
+  ): relationship is HasOneWithForeignKey<T, any> {
     return relationship?.type === "hasOneWithFK"
   }
 
@@ -25,6 +29,10 @@ export class HasOneWithForeignKey<T> extends BaseRelationship<T> {
    * Apply nullable modifier on the schema
    */
   nullable() {
-    return new RelationNullableModifier<T, HasOneWithForeignKey<T>, true>(this)
+    return new RelationNullableModifier<
+      T,
+      HasOneWithForeignKey<T, OptionalForeignKeyName>,
+      true
+    >(this)
   }
 }

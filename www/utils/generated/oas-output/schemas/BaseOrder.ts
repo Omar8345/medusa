@@ -11,6 +11,7 @@
  *   - sales_channel_id
  *   - email
  *   - currency_code
+ *   - status
  *   - items
  *   - shipping_methods
  *   - payment_status
@@ -232,6 +233,10 @@
  *     type: number
  *     title: original_shipping_tax_total
  *     description: The tax total of the order's shipping excluding promotions.
+ *   status:
+ *     type: string
+ *     title: status
+ *     description: The order's status.
  * 
 */
 

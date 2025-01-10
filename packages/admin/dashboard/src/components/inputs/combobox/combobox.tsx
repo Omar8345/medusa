@@ -9,6 +9,7 @@ import {
   Separator as PrimitiveSeparator,
 } from "@ariakit/react"
 import {
+  CheckMini,
   EllipseMiniSolid,
   PlusMini,
   TrianglesMini,
@@ -290,7 +291,7 @@ const ComboboxImpl = <T extends Value = string>(
             ref={comboboxRef}
             onFocus={() => setOpen(true)}
             className={clx(
-              "txt-compact-small text-ui-fg-base placeholder:text-ui-fg-subtle transition-fg size-full cursor-pointer bg-transparent pl-2 pr-8 outline-none focus:cursor-text",
+              "txt-compact-small text-ui-fg-base !placeholder:text-ui-fg-muted transition-fg size-full cursor-pointer bg-transparent pl-2 pr-8 outline-none focus:cursor-text",
               "hover:bg-ui-bg-field-hover",
               {
                 "opacity-0": hideInput,
@@ -349,7 +350,7 @@ const ComboboxImpl = <T extends Value = string>(
             )}
           >
             <PrimitiveComboboxItemCheck className="flex !size-5 items-center justify-center">
-              <EllipseMiniSolid />
+              {isArrayValue ? <CheckMini /> : <EllipseMiniSolid />}
             </PrimitiveComboboxItemCheck>
             <PrimitiveComboboxItemValue className="txt-compact-small">
               {label}

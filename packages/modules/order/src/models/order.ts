@@ -20,6 +20,7 @@ import {
   Rel,
 } from "@mikro-orm/core"
 import OrderAddress from "./address"
+import OrderCreditLine from "./credit-line"
 import OrderItem from "./order-item"
 import OrderShipping from "./order-shipping-method"
 import OrderSummary from "./order-summary"
@@ -179,6 +180,11 @@ export default class Order {
     cascade: [Cascade.PERSIST],
   })
   items = new Collection<Rel<OrderItem>>(this)
+
+  @OneToMany(() => OrderCreditLine, (creditLine) => creditLine.order, {
+    cascade: [Cascade.PERSIST],
+  })
+  credit_lines = new Collection<Rel<OrderCreditLine>>(this)
 
   @OneToMany(() => OrderShipping, (shippingMethod) => shippingMethod.order, {
     cascade: [Cascade.PERSIST],

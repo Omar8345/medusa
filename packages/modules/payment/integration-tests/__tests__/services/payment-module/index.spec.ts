@@ -1,7 +1,7 @@
 import { IPaymentModuleService } from "@medusajs/framework/types"
 import { Module, Modules, promiseAll } from "@medusajs/framework/utils"
-import { PaymentModuleService } from "@services"
 import { moduleIntegrationTestRunner } from "@medusajs/test-utils"
+import { PaymentModuleService } from "@services"
 import {
   createPaymentCollections,
   createPayments,
@@ -23,12 +23,13 @@ moduleIntegrationTestRunner<IPaymentModuleService>({
           service: PaymentModuleService,
         }).linkable
 
+        expect(Object.keys(linkable)).toHaveLength(5)
         expect(Object.keys(linkable)).toEqual([
-          "payment",
           "paymentCollection",
-          "paymentProvider",
           "paymentSession",
+          "payment",
           "refundReason",
+          "paymentProvider",
         ])
 
         Object.keys(linkable).forEach((key) => {
@@ -54,15 +55,6 @@ moduleIntegrationTestRunner<IPaymentModuleService>({
               field: "paymentCollection",
             },
           },
-          paymentProvider: {
-            id: {
-              linkable: "payment_provider_id",
-              entity: "PaymentProvider",
-              primaryKey: "id",
-              serviceName: "payment",
-              field: "paymentProvider",
-            },
-          },
           paymentSession: {
             id: {
               field: "paymentSession",
@@ -79,6 +71,15 @@ moduleIntegrationTestRunner<IPaymentModuleService>({
               primaryKey: "id",
               serviceName: "payment",
               field: "refundReason",
+            },
+          },
+          paymentProvider: {
+            id: {
+              linkable: "payment_provider_id",
+              entity: "PaymentProvider",
+              primaryKey: "id",
+              serviceName: "payment",
+              field: "paymentProvider",
             },
           },
         })

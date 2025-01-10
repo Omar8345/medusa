@@ -28,9 +28,11 @@
   ],
   "scripts": {
     "build": "yarn clean && tsc",
-    "clean": "rimraf dist"
+    "clean": "rimraf dist",
+    "watch": "tsc --watch"
   },
   "devDependencies": {
+    "@medusajs/icons": "^2.0.0",
     "@types/node": "^20.11.20",
     "rimraf": "^5.0.5",
     "tsconfig": "*",
@@ -38,8 +40,5 @@
   },
   "engines": {
     "node": ">=18.17.0"
-  },
-  "dependencies": {
-    "@medusajs/icons": "^2.0.0"
   }
 }

@@ -1,12 +1,16 @@
 import { Prerequisites } from "docs-ui"
 
 export const metadata = {
-  title: `${pageNumber} Next.js Starter`,
+  title: `${pageNumber} Next.js Starter Storefront`,
 }
 
 # {metadata.title}
 
-In this chapter, you’ll learn how to install and use the Next.js Starter storefront.
+The Medusa application is made up of a Node.js server and an admin dashboard. The storefront is installed and hosted separately from the Medusa application, giving you the flexibility to choose the frontend tech stack that you and your team are proficient in, and implement unique design systems and user experience.
+
+The Next.js Starter storefront provides rich commerce features and a sleek design. Developers and businesses can use it as-is or build on top of it to tailor it for the business's unique use case, design, and customer experience.
+
+In this chapter, you’ll learn how to install the Next.js Starter storefront separately from the Medusa application. You can also install it while installing the Medusa application as explained in [the installation chapter](../../installation/page.mdx).
 
 ## Install Next.js Starter
 
@@ -16,17 +20,23 @@ In this chapter, you’ll learn how to install and use the Next.js Starter store
     link: "https://nodejs.org/en/download"
   },
   {
+    text: "Git CLI tool",
+    link: "https://git-scm.com/downloads"
+  },
+  {
     text: "At least one region in the Medusa application.",
   },
 ]} />
 
-1. Clone the `v2` branch of the [Next.js Starter](https://github.com/medusajs/nextjs-starter-medusa):
+If you already have a Medusa application installed with at least one region, you can install the Next.js Starter storefront with the following steps:
+
+1. Clone the [Next.js Starter](https://github.com/medusajs/nextjs-starter-medusa):
 
 ```bash
 git clone https://github.com/medusajs/nextjs-starter-medusa my-medusa-storefront
 ```
 
-2. Change to the `my-medusa-storefront` directory, install the dependencies, and rename the template environment variable:
+2. Change to the `my-medusa-storefront` directory, install the dependencies, and rename the template environment variable file:
 
 ```bash npm2yarn
 cd my-medusa-storefront
@@ -34,13 +44,19 @@ npm install
 mv .env.template .env.local
 ```
 
-3. While the Medusa application is running, start the Next.js storefront:
+3. Set the Medusa application's publishable API key in the `NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY` environment variable. You can retrieve the publishable API key in on the Medusa Admin dashboard by going to Settings -> Publishable API Keys
+
+```bash
+NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY=pk_123...
+```
+
+4. While the Medusa application is running, start the Next.js Starter storefront:
 
 ```bash npm2yarn
 npm run dev
 ```
 
-Your Next.js Starter Storefront is now running at `localhost:8000`.
+Your Next.js Starter storefront is now running at `http://localhost:8000`.
 
 ---
 

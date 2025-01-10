@@ -20,4 +20,9 @@ export const adminFulfillmentProvidersRoutesMiddlewares: MiddlewareRoute[] = [
       }),
     ],
   },
+  {
+    method: ["GET"],
+    matcher: "/admin/fulfillment-providers/:id/options",
+    middlewares: [],
+  },
 ]

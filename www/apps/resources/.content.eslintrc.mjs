@@ -22,7 +22,8 @@ export default [
     ignores: [
       "**/references/**/*",
       "**/events-reference/**/*",
-      "**/_events-table/**/*",
+      "**/events/_content/**/*",
+      "**/events/_content.mdx",
     ],
   },
   {

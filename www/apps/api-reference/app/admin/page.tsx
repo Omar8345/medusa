@@ -3,10 +3,8 @@ import AreaProvider from "@/providers/area"
 import AdminContent from "@/markdown/admin.mdx"
 import Tags from "@/components/Tags"
 import PageTitleProvider from "@/providers/page-title"
-import { H1 } from "docs-ui"
 import { getBaseSpecs } from "../../lib"
 import BaseSpecsProvider from "../../providers/base-specs"
-import clsx from "clsx"
 import React from "react"
 
 const AdminPage = async () => {
@@ -16,15 +14,6 @@ const AdminPage = async () => {
     <BaseSpecsProvider baseSpecs={data}>
       <AreaProvider area={"admin"}>
         <PageTitleProvider>
-          <H1
-            className={clsx(
-              "!h2-docs lg:pl-4",
-              "scroll-m-[184px] lg:scroll-m-[264px]"
-            )}
-            id="introduction"
-          >
-            Medusa V2 Admin API Reference
-          </H1>
           {/* @ts-ignore React v19 doesn't see MDX as valid component */}
           <AdminContent />
           <Tags tags={data?.tags} />

@@ -3871,6 +3871,9 @@
         "cancelWarning": {
           "type": "string"
         },
+        "orderCanceled": {
+          "type": "string"
+        },
         "onDateFromSalesChannel": {
           "type": "string"
         },
@@ -3883,6 +3886,42 @@
           },
           "required": [
             "noRecordsMessage"
+          ],
+          "additionalProperties": false
+        },
+        "status": {
+          "type": "object",
+          "properties": {
+            "not_paid": {
+              "type": "string"
+            },
+            "pending": {
+              "type": "string"
+            },
+            "completed": {
+              "type": "string"
+            },
+            "draft": {
+              "type": "string"
+            },
+            "archived": {
+              "type": "string"
+            },
+            "canceled": {
+              "type": "string"
+            },
+            "requires_action": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "not_paid",
+            "pending",
+            "completed",
+            "draft",
+            "archived",
+            "canceled",
+            "requires_action"
           ],
           "additionalProperties": false
         },
@@ -5588,8 +5627,10 @@
         "exchange",
         "return",
         "cancelWarning",
+        "orderCanceled",
         "onDateFromSalesChannel",
         "list",
+        "status",
         "summary",
         "transfer",
         "payment",
@@ -6154,6 +6195,152 @@
               ],
               "additionalProperties": false
             },
+            "conditionalPrices": {
+              "type": "object",
+              "properties": {
+                "header": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "attributes": {
+                  "type": "object",
+                  "properties": {
+                    "cartItemTotal": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "cartItemTotal"
+                  ],
+                  "additionalProperties": false
+                },
+                "summaries": {
+                  "type": "object",
+                  "properties": {
+                    "range": {
+                      "type": "string"
+                    },
+                    "greaterThan": {
+                      "type": "string"
+                    },
+                    "lessThan": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "range",
+                    "greaterThan",
+                    "lessThan"
+                  ],
+                  "additionalProperties": false
+                },
+                "actions": {
+                  "type": "object",
+                  "properties": {
+                    "addPrice": {
+                      "type": "string"
+                    },
+                    "manageConditionalPrices": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "addPrice",
+                    "manageConditionalPrices"
+                  ],
+                  "additionalProperties": false
+                },
+                "rules": {
+                  "type": "object",
+                  "properties": {
+                    "amount": {
+                      "type": "string"
+                    },
+                    "gte": {
+                      "type": "string"
+                    },
+                    "lte": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "amount",
+                    "gte",
+                    "lte"
+                  ],
+                  "additionalProperties": false
+                },
+                "customRules": {
+                  "type": "object",
+                  "properties": {
+                    "label": {
+                      "type": "string"
+                    },
+                    "tooltip": {
+                      "type": "string"
+                    },
+                    "eq": {
+                      "type": "string"
+                    },
+                    "gt": {
+                      "type": "string"
+                    },
+                    "lt": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "label",
+                    "tooltip",
+                    "eq",
+                    "gt",
+                    "lt"
+                  ],
+                  "additionalProperties": false
+                },
+                "errors": {
+                  "type": "object",
+                  "properties": {
+                    "amountRequired": {
+                      "type": "string"
+                    },
+                    "minOrMaxRequired": {
+                      "type": "string"
+                    },
+                    "minGreaterThanMax": {
+                      "type": "string"
+                    },
+                    "duplicateAmount": {
+                      "type": "string"
+                    },
+                    "overlappingConditions": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "amountRequired",
+                    "minOrMaxRequired",
+                    "minGreaterThanMax",
+                    "duplicateAmount",
+                    "overlappingConditions"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "header",
+                "description",
+                "attributes",
+                "summaries",
+                "actions",
+                "rules",
+                "customRules",
+                "errors"
+              ],
+              "additionalProperties": false
+            },
             "fields": {
               "type": "object",
               "properties": {
@@ -6257,6 +6444,9 @@
                 },
                 "profile": {
                   "type": "string"
+                },
+                "fulfillmentOption": {
+                  "type": "string"
                 }
               },
               "required": [
@@ -6264,7 +6454,8 @@
                 "priceType",
                 "enableInStore",
                 "provider",
-                "profile"
+                "profile",
+                "fulfillmentOption"
               ],
               "additionalProperties": false
             }
@@ -6274,6 +6465,7 @@
             "delete",
             "edit",
             "pricing",
+            "conditionalPrices",
             "fields"
           ],
           "additionalProperties": false
@@ -9820,6 +10012,18 @@
           ],
           "additionalProperties": false
         },
+        "tooltip": {
+          "type": "object",
+          "properties": {
+            "cannotDeleteDefault": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "cannotDeleteDefault"
+          ],
+          "additionalProperties": false
+        },
         "products": {
           "type": "object",
           "properties": {
@@ -9877,6 +10081,7 @@
         "productAlreadyAdded",
         "deleteSalesChannelWarning",
         "toast",
+        "tooltip",
         "products"
       ],
       "additionalProperties": false

@@ -4,6 +4,7 @@ import {
   CustomFieldFormZone,
   CustomFieldModel,
   InjectionZone,
+  NESTED_ROUTE_POSITIONS,
 } from "@medusajs/admin-shared"
 import * as React from "react"
 import { INavItem } from "../../components/layout/nav-item"
@@ -112,11 +113,31 @@ export class DashboardExtensionManager {
         return // Skip this item entirely
       }
 
+      // Find the parent item if it exists
+      const parentItem = menuItems.find(
+        (menuItem) => menuItem.path === parentPath
+      )
+
+      // Check if parent item is a nested route under existing route
+      if (
+        parentItem?.nested &&
+        NESTED_ROUTE_POSITIONS.includes(parentItem?.nested) &&
+        pathParts.length > 1
+      ) {
+        if (process.env.NODE_ENV === "development") {
+          console.warn(
+            `[@medusajs/dashboard] Nested menu item "${item.path}" can't be added to the sidebar as it is nested under "${parentItem.nested}".`
+          )
+        }
+        return
+      }
+
       const navItem: INavItem = {
         label: item.label,
         to: item.path,
         icon: item.icon ? <item.icon /> : undefined,
         items: [],
+        nested: item.nested,
       }
 
       if (parentPath !== "/" && tempRegistry[parentPath]) {

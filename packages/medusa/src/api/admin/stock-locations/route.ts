@@ -23,7 +23,7 @@ export const POST = async (
   const stockLocation = await refetchStockLocation(
     result[0].id,
     req.scope,
-    req.remoteQueryConfig.fields
+    req.queryConfig.fields
   )
 
   res.status(200).json({ stock_location: stockLocation })
@@ -40,9 +40,9 @@ export const GET = async (
       entryPoint: "stock_locations",
       variables: {
         filters: req.filterableFields,
-        ...req.remoteQueryConfig.pagination,
+        ...req.queryConfig.pagination,
       },
-      fields: req.remoteQueryConfig.fields,
+      fields: req.queryConfig.fields,
     })
   )
 

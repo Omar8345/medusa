@@ -190,6 +190,31 @@ The `Medusa` initializer accepts as a parameter an object with the following pro
     <Table.Row>
       <Table.Cell>
 
+      `auth.fetchCredentials`
+
+      </Table.Cell>
+      <Table.Cell>
+
+      By default, if `auth.type` is `session`, the `credentials: include` option is passed in [fetch requests](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch#including_credentials) under the hood. However, some platforms or environments may not support passing this option.
+
+      This option accepts a string to configure the value of `credentials` when the authentication type is `session`. It accepts one of the following values:
+
+      - `include`: (default) to pass the `credentials: include` option.
+      - `omit`: to pass the `credentials: omit` option.
+      - `same-origin`: to pass the `credentials: same-origin` option.
+
+      This option is only available after [Medusa v2.1.1](https://github.com/medusajs/medusa/releases/tag/v2.1.1).
+
+      </Table.Cell>
+      <Table.Cell>
+
+      `local`
+
+      </Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell>
+
       `globalHeaders`
 
       </Table.Cell>
@@ -262,6 +287,60 @@ The `Medusa` initializer accepts as a parameter an object with the following pro
     </Table.Row>
   </Table.Body>
 </Table>
+
+---
+
+## Send Requests to Custom Routes
+
+The sidebar shows the different methods that you can use to send requests to Medusa's API routes.
+
+To send requests to custom routes, the JS SDK has a `client.fetch` method that wraps the [JavaScript Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) that you can use. The method automatically appends configurations and headers, such as authentication headers, to your request.
+
+For example, to send a request to a custom route at `http://localhost:9000/custom`:
+
+<CodeTabs group="request-type">
+  <CodeTab label="GET" value="get">
+
+  ```ts
+  sdk.client.fetch(`/custom`)
+  .then((data) => {
+    console.log(data)
+  })
+  ```
+  
+  </CodeTab>
+  <CodeTab label="POST" value="post">
+
+  ```ts
+  sdk.client.fetch(`/custom`, {
+    method: "post",
+    body: {
+      id: "123",
+    },
+  }).then((data) => {
+    console.log(data)
+  })
+  ```
+
+  </CodeTab>
+  <CodeTab label="DELETE" value="delete">
+
+  ```ts
+  sdk.client.fetch(`/custom`, {
+    method: "delete",
+  }).then(() => {
+    console.log("success")
+  })
+  ```
+
+  </CodeTab>
+</CodeTabs>
+
+The `fetch` method accepts as a first parameter the route's path relative to the `baseUrl` configuration you passed when you initialized the SDK.
+
+In the second parameter, you can pass an object of [request configurations](https://developer.mozilla.org/en-US/docs/Web/API/RequestInit). You don't need to configure the content-type to be JSON, or stringify the `body` or `query` value, as that's handled by the method.
+
+The method returns a Promise that, when resolved, has the data returned by the request. If the request returns a JSON object, it'll be automatically parsed to a JavaScript object and returned.
 
 ---
 

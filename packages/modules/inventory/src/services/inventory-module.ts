@@ -3,6 +3,7 @@ import {
   Context,
   DAL,
   IInventoryService,
+  InferEntityType,
   InternalModuleDeclaration,
   InventoryTypes,
   ModuleJoinerConfig,
@@ -29,6 +30,7 @@ import {
 } from "@medusajs/framework/utils"
 import { InventoryItem, InventoryLevel, ReservationItem } from "@models"
 import { joinerConfig } from "../joiner-config"
+import { applyEntityHooks } from "../utils/apply-decorators"
 import InventoryLevelService from "./inventory-level"
 
 type InjectedDependencies = {
@@ -45,6 +47,8 @@ type InventoryItemCheckLevel = {
   quantity?: BigNumberInput
   allow_backorder?: boolean
 }
+
+applyEntityHooks()
 
 export default class InventoryModuleService
   extends MedusaService<{
@@ -66,8 +70,12 @@ export default class InventoryModuleService
 {
   protected baseRepository_: DAL.RepositoryService
 
-  protected readonly inventoryItemService_: ModulesSdkTypes.IMedusaInternalService<InventoryItem>
-  protected readonly reservationItemService_: ModulesSdkTypes.IMedusaInternalService<ReservationItem>
+  protected readonly inventoryItemService_: ModulesSdkTypes.IMedusaInternalService<
+    typeof InventoryItem
+  >
+  protected readonly reservationItemService_: ModulesSdkTypes.IMedusaInternalService<
+    typeof ReservationItem
+  >
   protected readonly inventoryLevelService_: InventoryLevelService
 
   constructor(
@@ -263,7 +271,7 @@ export default class InventoryModuleService
   async createReservationItems_(
     input: InventoryTypes.CreateReservationItemInput[],
     @MedusaContext() context: Context = {}
-  ): Promise<ReservationItem[]> {
+  ): Promise<InferEntityType<typeof ReservationItem>[]> {
     const inventoryLevels = await this.ensureInventoryLevels(
       input.map(
         ({ location_id, inventory_item_id, quantity, allow_backorder }) => ({
@@ -417,7 +425,7 @@ export default class InventoryModuleService
   async createInventoryLevels_(
     input: InventoryTypes.CreateInventoryLevelInput[],
     @MedusaContext() context: Context = {}
-  ): Promise<InventoryLevel[]> {
+  ): Promise<InferEntityType<typeof InventoryLevel>[]> {
     return await this.inventoryLevelService_.create(input, context)
   }
 
@@ -473,7 +481,7 @@ export default class InventoryModuleService
       id: string
     })[],
     @MedusaContext() context: Context = {}
-  ): Promise<InventoryItem[]> {
+  ): Promise<InferEntityType<typeof InventoryItem>[]> {
     return await this.inventoryItemService_.update(input, context)
   }
 
@@ -670,7 +678,7 @@ export default class InventoryModuleService
   async updateReservationItems_(
     input: (InventoryTypes.UpdateReservationItemInput & { id: string })[],
     @MedusaContext() context: Context = {}
-  ): Promise<ReservationItem[]> {
+  ): Promise<InferEntityType<typeof ReservationItem>[]> {
     const ids = input.map((u) => u.id)
     const reservationItems = await this.listReservationItems(
       { id: ids },
@@ -989,7 +997,7 @@ export default class InventoryModuleService
       ]
     }
 
-    const results: InventoryLevel[] = []
+    const results: InferEntityType<typeof InventoryLevel>[] = []
 
     for (const data of all) {
       const result = await this.adjustInventory_(
@@ -1024,7 +1032,7 @@ export default class InventoryModuleService
     locationId: string,
     adjustment: BigNumberInput,
     @MedusaContext() context: Context = {}
-  ): Promise<InventoryLevel> {
+  ): Promise<InferEntityType<typeof InventoryLevel>> {
     const inventoryLevel = await this.retrieveInventoryLevelByItemAndLocation(
       inventoryItemId,
       locationId,

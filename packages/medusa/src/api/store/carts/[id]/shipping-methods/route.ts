@@ -20,7 +20,7 @@ export const POST = async (
   const cart = await refetchCart(
     req.params.id,
     req.scope,
-    req.remoteQueryConfig.fields
+    req.queryConfig.fields
   )
 
   res.status(200).json({ cart })

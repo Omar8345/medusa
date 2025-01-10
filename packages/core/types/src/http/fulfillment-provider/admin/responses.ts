@@ -1,5 +1,8 @@
 import { PaginatedResponse } from "../../common"
-import { AdminFulfillmentProvider } from "./entities"
+import {
+  AdminFulfillmentProvider,
+  AdminFulfillmentProviderOption,
+} from "./entities"
 
 export interface AdminFulfillmentProviderListResponse
   extends PaginatedResponse<{
@@ -7,4 +10,9 @@ export interface AdminFulfillmentProviderListResponse
      * The list of fulfillment providers.
      */
     fulfillment_providers: AdminFulfillmentProvider[]
+  }> {}
+
+export interface AdminFulfillmentProviderOptionsListResponse
+  extends PaginatedResponse<{
+    fulfillment_options: AdminFulfillmentProviderOption[]
   }> {}

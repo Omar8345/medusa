@@ -23,7 +23,7 @@ export default async function cloneRepo({
 }: CloneRepoOptions) {
   await execute(
     [
-      `git clone ${repoUrl || DEFAULT_REPO} -b ${BRANCH} ${directoryName}`,
+      `git clone ${repoUrl || DEFAULT_REPO} -b ${BRANCH} ${directoryName} --depth 1`,
       {
         signal: abortController?.signal,
       },

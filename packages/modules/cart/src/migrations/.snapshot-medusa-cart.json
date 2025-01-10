@@ -617,6 +617,16 @@
           "default": "false",
           "mappedType": "boolean"
         },
+        "is_custom_price": {
+          "name": "is_custom_price",
+          "type": "boolean",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "default": "false",
+          "mappedType": "boolean"
+        },
         "compare_at_unit_price": {
           "name": "compare_at_unit_price",
           "type": "numeric",
@@ -997,12 +1007,12 @@
         },
         "rate": {
           "name": "rate",
-          "type": "integer",
+          "type": "real",
           "unsigned": false,
           "autoincrement": false,
           "primary": false,
           "nullable": false,
-          "mappedType": "integer"
+          "mappedType": "float"
         },
         "provider_id": {
           "name": "provider_id",
@@ -1537,12 +1547,12 @@
         },
         "rate": {
           "name": "rate",
-          "type": "integer",
+          "type": "real",
           "unsigned": false,
           "autoincrement": false,
           "primary": false,
           "nullable": false,
-          "mappedType": "integer"
+          "mappedType": "float"
         },
         "provider_id": {
           "name": "provider_id",

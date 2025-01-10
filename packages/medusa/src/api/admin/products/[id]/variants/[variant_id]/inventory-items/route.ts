@@ -29,7 +29,7 @@ export const POST = async (
   const variant = await refetchVariant(
     variantId,
     req.scope,
-    req.remoteQueryConfig.fields
+    req.queryConfig.fields
   )
 
   res.status(200).json({ variant })

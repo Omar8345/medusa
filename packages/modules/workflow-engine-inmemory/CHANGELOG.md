@@ -1,5 +1,17 @@
 # @medusajs/workflow-engine-inmemory
 
+## 2.2.0
+
+## 2.1.3
+
+## 2.1.2
+
+## 2.1.1
+
+### Patch Changes
+
+- [#10477](https://github.com/medusajs/medusa/pull/10477) [`0a077d48e14976bafcf19705fc48e66756362fd6`](https://github.com/medusajs/medusa/commit/0a077d48e14976bafcf19705fc48e66756362fd6) Thanks [@adrien2p](https://github.com/adrien2p)! - chore(workflow-engine): Migrate to DML
+
 ## 2.1.0
 
 ## 2.0.7

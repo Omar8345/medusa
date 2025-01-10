@@ -1,11 +1,15 @@
 ---
 slug: /references/medusa-workflows/deleteRegionsWorkflow
 sidebar_label: deleteRegionsWorkflow
+tags:
+  - region
+  - event bus
+  - workflow
 ---
 
 import { TypeList, WorkflowDiagram } from "docs-ui"
 
-# deleteRegionsWorkflow - Medusa Workflows API Reference
+# deleteRegionsWorkflow - Medusa Core Workflows Reference
 
 This documentation provides a reference to the `deleteRegionsWorkflow`. It belongs to the `@medusajs/medusa/core-flows` package.
 
@@ -13,8 +17,8 @@ This workflow deletes one or more regions.
 
 ## Steps
 
-<WorkflowDiagram workflow={{"name":"deleteRegionsWorkflow","steps":[{"type":"step","name":"deleteRegionsStep","description":"This step deletes one or more regions.","link":"../../../../core_flows.Steps_Region/page.mdx#deleteregionsstep","depth":1},{"type":"step","name":"emitEventStep","description":"Emit an event.\n\n","link":"../../../../core_flows.Steps_Common/page.mdx#emiteventstep","depth":2}]}} />
+<WorkflowDiagram workflow={{"name":"deleteRegionsWorkflow","steps":[{"type":"step","name":"deleteRegionsStep","description":"This step deletes one or more regions.\n\n","link":"../../../Steps_Region/functions/core_flows.Region.Steps_Region.deleteRegionsStep/page.mdx","depth":1},{"type":"step","name":"emitEventStep","description":"Emit an event.\n\n","link":"../../../../Common/Steps_Common/functions/core_flows.Common.Steps_Common.emitEventStep/page.mdx","depth":2}]}} />
 
 ## Input
 
-<TypeList types={[{"name":"DeleteRegionsWorkflowInput","type":"[DeleteRegionsWorkflowInput](../../../../types/core_flows.DeleteRegionsWorkflowInput/page.mdx)","optional":false,"defaultValue":"","description":"","expandable":false,"children":[{"name":"ids","type":"`string`[]","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]}]}]} expandUrl="https://docs.medusajs.com/v2/advanced-development/data-models/manage-relationships#retrieve-records-of-relation" sectionTitle="deleteRegionsWorkflow"/>
+<TypeList types={[{"name":"DeleteRegionsWorkflowInput","type":"[DeleteRegionsWorkflowInput](../../../../types/core_flows.DeleteRegionsWorkflowInput/page.mdx)","optional":false,"defaultValue":"","description":"","expandable":false,"children":[{"name":"ids","type":"`string`[]","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]}]}]} expandUrl="https://docs.medusajs.com/learn/fundamentals/data-models/manage-relationships#retrieve-records-of-relation" sectionTitle="deleteRegionsWorkflow"/>

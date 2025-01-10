@@ -9,14 +9,16 @@
   },
   "scripts": {
     "build": "turbo run build",
-    "build:docs": "turbo run build --filter=docs-v2",
+    "build:docs": "turbo run build --filter=book",
     "build:resources": "turbo run build --filter=resources",
     "build:user-guide": "turbo run build --filter=user-guide",
     "build:packages": "turbo run build --filter='./packages/*'",
     "start": "turbo run start:monorepo",
     "dev": "turbo run dev:monorepo",
     "lint": "turbo run lint",
-    "lint:content": "turbo run lint:content"
+    "lint:content": "turbo run lint:content",
+    "watch": "turbo run watch",
+    "prep": "turbo run prep"
   },
   "dependencies": {
     "autoprefixer": "10.4.14",
@@ -31,7 +33,7 @@
     "@babel/eslint-parser": "^7.25.9",
     "@eslint/js": "9.13.0",
     "@types/eslint__js": "8.42.3",
-    "eslint-config-next": "15.0.1",
+    "eslint-config-next": "15.0.4",
     "eslint-config-prettier": "9.1.0",
     "eslint-config-turbo": "2.2.3",
     "eslint-plugin-markdown": "5.1.0",

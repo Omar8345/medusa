@@ -4,7 +4,7 @@ import {
   AuthenticatedMedusaRequest,
   MedusaResponse,
 } from "@medusajs/framework/http"
-import { wrapVariantsWithInventoryQuantity } from "../../../../utils/middlewares"
+import { wrapVariantsWithTotalInventoryQuantity } from "../../../../utils/middlewares"
 import { refetchEntities, refetchEntity } from "@medusajs/framework/http"
 import {
   remapKeysForProduct,
@@ -19,12 +19,12 @@ export const GET = async (
 ) => {
   const productId = req.params.id
 
-  const withInventoryQuantity = req.remoteQueryConfig.fields.some((field) =>
+  const withInventoryQuantity = req.queryConfig.fields.some((field) =>
     field.includes("inventory_quantity")
   )
 
   if (withInventoryQuantity) {
-    req.remoteQueryConfig.fields = req.remoteQueryConfig.fields.filter(
+    req.queryConfig.fields = req.queryConfig.fields.filter(
       (field) => !field.includes("inventory_quantity")
     )
   }
@@ -33,12 +33,12 @@ export const GET = async (
     "variant",
     { ...req.filterableFields, product_id: productId },
     req.scope,
-    remapKeysForVariant(req.remoteQueryConfig.fields ?? []),
-    req.remoteQueryConfig.pagination
+    remapKeysForVariant(req.queryConfig.fields ?? []),
+    req.queryConfig.pagination
   )
 
   if (withInventoryQuantity) {
-    await wrapVariantsWithInventoryQuantity(req, variants || [])
+    await wrapVariantsWithTotalInventoryQuantity(req, variants || [])
   }
 
   res.json({
@@ -73,7 +73,7 @@ export const POST = async (
     "product",
     productId,
     req.scope,
-    remapKeysForProduct(req.remoteQueryConfig.fields ?? [])
+    remapKeysForProduct(req.queryConfig.fields ?? [])
   )
 
   res.status(200).json({ product: remapProductResponse(product) })

@@ -1,18 +1,28 @@
-import { isDefined, PromotionActions } from "@medusajs/framework/utils"
+import {
+  filterObjectByKeys,
+  isDefined,
+  PromotionActions,
+} from "@medusajs/framework/utils"
 import {
   createWorkflow,
   transform,
+  when,
   WorkflowData,
   WorkflowResponse,
 } from "@medusajs/framework/workflows-sdk"
 import { useRemoteQueryStep } from "../../common/steps/use-remote-query"
-import { refreshCartShippingMethodsStep, updateLineItemsStep } from "../steps"
+import { updateLineItemsStep } from "../steps"
 import { validateVariantPricesStep } from "../steps/validate-variant-prices"
 import {
+  cartFieldsForPricingContext,
   cartFieldsForRefreshSteps,
   productVariantsFields,
 } from "../utils/fields"
-import { prepareLineItemData } from "../utils/prepare-line-item-data"
+import {
+  prepareLineItemData,
+  PrepareLineItemDataInput,
+} from "../utils/prepare-line-item-data"
+import { refreshCartShippingMethodsWorkflow } from "./refresh-cart-shipping-methods"
 import { refreshPaymentCollectionForCartWorkflow } from "./refresh-payment-collection"
 import { updateCartPromotionsWorkflow } from "./update-cart-promotions"
 import { updateTaxLinesWorkflow } from "./update-tax-lines"
@@ -37,47 +47,49 @@ export const refreshCartItemsWorkflow = createWorkflow(
     })
 
     const variantIds = transform({ cart }, (data) => {
-      return (data.cart.items ?? []).map((i) => i.variant_id)
+      return (data.cart.items ?? []).map((i) => i.variant_id).filter(Boolean)
     })
 
-    const pricingContext = transform(
-      { cart },
-      ({ cart: { currency_code, region_id, customer_id } }) => {
-        return {
-          currency_code,
-          region_id,
-          customer_id,
-        }
-      }
-    )
+    const cartPricingContext = transform({ cart }, ({ cart }) => {
+      return filterObjectByKeys(cart, cartFieldsForPricingContext)
+    })
 
-    const variants = useRemoteQueryStep({
-      entry_point: "variants",
-      fields: productVariantsFields,
-      variables: {
-        id: variantIds,
-        calculated_price: {
-          context: pricingContext,
+    const variants = when({ variantIds }, ({ variantIds }) => {
+      return !!variantIds.length
+    }).then(() => {
+      return useRemoteQueryStep({
+        entry_point: "variants",
+        fields: productVariantsFields,
+        variables: {
+          id: variantIds,
+          calculated_price: {
+            context: cartPricingContext,
+          },
         },
-      },
-      throw_if_key_not_found: true,
-    }).config({ name: "fetch-variants" })
+      }).config({ name: "fetch-variants" })
+    })
 
     validateVariantPricesStep({ variants })
 
     const lineItems = transform({ cart, variants }, ({ cart, variants }) => {
       const items = cart.items.map((item) => {
-        const variant = variants.find((v) => v.id === item.variant_id)!
+        const variant = (variants ?? []).find((v) => v.id === item.variant_id)!
 
-        const preparedItem = prepareLineItemData({
+        const input: PrepareLineItemDataInput = {
+          item,
           variant: variant,
-          unitPrice: variant.calculated_price.calculated_amount,
-          isTaxInclusive:
-            variant.calculated_price.is_calculated_price_tax_inclusive,
-          quantity: item.quantity,
-          metadata: item.metadata,
           cartId: cart.id,
-        })
+          unitPrice: item.unit_price,
+          isTaxInclusive: item.is_tax_inclusive,
+        }
+
+        if (variant && !item.is_custom_price) {
+          input.unitPrice = variant.calculated_price?.calculated_amount
+          input.isTaxInclusive =
+            variant.calculated_price?.is_calculated_price_tax_inclusive
+        }
+
+        const preparedItem = prepareLineItemData(input)
 
         return {
           selector: { id: item.id },
@@ -100,19 +112,24 @@ export const refreshCartItemsWorkflow = createWorkflow(
       list: false,
     }).config({ name: "refetch–cart" })
 
-    refreshCartShippingMethodsStep({ cart: refetchedCart })
+    refreshCartShippingMethodsWorkflow.runAsStep({
+      input: { cart_id: cart.id },
+    })
 
     updateTaxLinesWorkflow.runAsStep({
       input: { cart_id: cart.id },
     })
 
-    const cartPromoCodes = transform({ cart, input }, ({ cart, input }) => {
-      if (isDefined(input.promo_codes)) {
-        return input.promo_codes
-      } else {
-        return cart.promotions.map((p) => p.code)
+    const cartPromoCodes = transform(
+      { refetchedCart, input },
+      ({ refetchedCart, input }) => {
+        if (isDefined(input.promo_codes)) {
+          return input.promo_codes
+        } else {
+          return refetchedCart.promotions.map((p) => p?.code).filter(Boolean)
+        }
       }
-    })
+    )
 
     updateCartPromotionsWorkflow.runAsStep({
       input: {

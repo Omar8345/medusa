@@ -20,7 +20,7 @@ export const associateProductsWithSalesChannelsStep = createStep(
       return new StepResponse([], [])
     }
 
-    const remoteLink = container.resolve(ContainerRegistrationKeys.REMOTE_LINK)
+    const remoteLink = container.resolve(ContainerRegistrationKeys.LINK)
     const links = input.links.map((link) => {
       return {
         [Modules.PRODUCT]: {
@@ -40,7 +40,7 @@ export const associateProductsWithSalesChannelsStep = createStep(
       return
     }
 
-    const remoteLink = container.resolve(ContainerRegistrationKeys.REMOTE_LINK)
+    const remoteLink = container.resolve(ContainerRegistrationKeys.LINK)
 
     await remoteLink.dismiss(links)
   }

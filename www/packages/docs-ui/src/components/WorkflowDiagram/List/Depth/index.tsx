@@ -17,8 +17,8 @@ export const WorkflowDiagramListDepth = ({
     <div className="flex items-start">
       <WorkflowDiagramLine step={cluster} />
       <div className="flex flex-col justify-center gap-y-docs_0.5">
-        {cluster.map((step) => (
-          <WorkflowDiagramStepNode key={step.name} step={step} />
+        {cluster.map((step, index) => (
+          <WorkflowDiagramStepNode key={`${step.name}-${index}`} step={step} />
         ))}
       </div>
     </div>

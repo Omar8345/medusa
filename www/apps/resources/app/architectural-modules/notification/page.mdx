@@ -1,4 +1,4 @@
-import { ChildDocs } from "docs-ui"
+import { CardList } from "docs-ui"
 
 export const metadata = {
   title: `Notification Module Providers`,
@@ -6,21 +6,38 @@ export const metadata = {
 
 # {metadata.title}
 
-A Notification Module exposes the functionalities to send a notification to a customer or user. For example, sending an order confirmation email.
+## What is a Notification Module Provider?
+
+The Notification Module exposes the functionalities to send a notification to a customer or user. For example, sending an order confirmation email.
 
 You can resolve the Notification Module and send notifications in API routes, subscribers, or other resources.
 
----
-
-## What is a Notification Module Provider?
-
-A notification module provider implements the logic of sending the notification. It either integrates a third-party service or uses custom logic to send the notification.
+A notification module provider implements the underlying logic of sending notification. It either integrates a third-party service or uses custom logic to send the notification.
 
 By default, Medusa uses the Local Notification Module which only simulates sending the notification by logging a message in the terminal.
 
 Medusa provides other Notification Modules that actually send notifications, such as the SendGrid Notification Module Provider.
 
-<ChildDocs type="item" hideItems={["Guides"]} onlyTopLevel={true} />
+<CardList
+  items={[
+    {
+      title: "Local",
+      href: "/architectural-modules/notification/local",
+      badge: {
+        variant: "neutral",
+        children: "For Development"
+      }
+    },
+    {
+      title: "SendGrid",
+      href: "/architectural-modules/notification/sendgrid",
+      badge: {
+        variant: "green",
+        children: "For Production"
+      }
+    }
+  ]}
+/>
 
 ---
 

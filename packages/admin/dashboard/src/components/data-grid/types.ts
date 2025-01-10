@@ -96,6 +96,7 @@ export interface DataGridCellContainerProps extends PropsWithChildren<{}> {
   isDragSelected: boolean
   placeholder?: ReactNode
   showOverlay: boolean
+  outerComponent?: ReactNode
 }
 
 export type DataGridCellSnapshot<

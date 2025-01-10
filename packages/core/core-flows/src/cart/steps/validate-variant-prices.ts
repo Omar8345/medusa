@@ -18,6 +18,10 @@ export const validateVariantPricesStepId = "validate-variant-prices"
 export const validateVariantPricesStep = createStep(
   validateVariantPricesStepId,
   async (data: ValidateVariantPricesStepInput, { container }) => {
+    if (!data.variants?.length) {
+      return
+    }
+
     const priceNotFound: string[] = []
     for (const variant of data.variants) {
       if (!isPresent(variant?.calculated_price?.calculated_amount)) {

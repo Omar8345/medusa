@@ -15,7 +15,7 @@ export const createVariantPricingLinkStepId = "create-variant-pricing-link"
 export const createVariantPricingLinkStep = createStep(
   createVariantPricingLinkStepId,
   async (data: CreateVariantPricingLinkStepInput, { container }) => {
-    const remoteLink = container.resolve(ContainerRegistrationKeys.REMOTE_LINK)
+    const remoteLink = container.resolve(ContainerRegistrationKeys.LINK)
     await remoteLink.create(
       data.links.map((entry) => ({
         [Modules.PRODUCT]: {
@@ -34,7 +34,7 @@ export const createVariantPricingLinkStep = createStep(
       return
     }
 
-    const remoteLink = container.resolve(ContainerRegistrationKeys.REMOTE_LINK)
+    const remoteLink = container.resolve(ContainerRegistrationKeys.LINK)
     const links = data.links.map((entry) => ({
       [Modules.PRODUCT]: {
         variant_id: entry.variant_id,

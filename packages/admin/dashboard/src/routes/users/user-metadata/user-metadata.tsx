@@ -7,8 +7,8 @@ import { useUpdateUser, useUser } from "../../../hooks/api"
 export const UserMetadata = () => {
   const { id } = useParams()
 
-  const { user, isPending, isError, error } = useUser(id)
-  const { mutateAsync, isPending: isMutating } = useUpdateUser(id)
+  const { user, isPending, isError, error } = useUser(id!)
+  const { mutateAsync, isPending: isMutating } = useUpdateUser(id!)
 
   if (isError) {
     throw error

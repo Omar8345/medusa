@@ -20,6 +20,7 @@ erDiagram
 	OrderClaim ||--|| OrderTransaction : transactions
 	OrderClaimItem ||--|| OrderClaimItemImage : images
 	OrderClaimItem }|--|{ OrderLineItem : item
+	OrderCreditLine }|--|{ Order : order
 	OrderExchange }|--|{ Order : order
 	OrderExchange ||--|| Return : return
 	OrderExchange ||--|| OrderExchangeItem : additional_items
@@ -65,6 +66,7 @@ erDiagram
 - [OrderClaim](../../order_models/classes/order_models.OrderClaim/page.mdx)
 - [OrderClaimItem](../../order_models/classes/order_models.OrderClaimItem/page.mdx)
 - [OrderClaimItemImage](../../order_models/classes/order_models.OrderClaimItemImage/page.mdx)
+- [OrderCreditLine](../../order_models/classes/order_models.OrderCreditLine/page.mdx)
 - [OrderExchange](../../order_models/classes/order_models.OrderExchange/page.mdx)
 - [OrderExchangeItem](../../order_models/classes/order_models.OrderExchangeItem/page.mdx)
 - [OrderItem](../../order_models/classes/order_models.OrderItem/page.mdx)

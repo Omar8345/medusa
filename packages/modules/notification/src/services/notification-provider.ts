@@ -54,11 +54,16 @@ export default class NotificationProviderService extends ModulesSdkUtils.MedusaI
         `${NotificationProviderRegistrationPrefix}${providerId}`
       ]
     } catch (err) {
-      const errMessage = `
-      Unable to retrieve the notification provider with id: ${providerId}
-      Please make sure that the provider is registered in the container and it is configured correctly in your project configuration file.
-      `
+      if (err.name === "AwilixResolutionError") {
+        const errMessage = `
+Unable to retrieve the notification provider with id: ${providerId}
+Please make sure that the provider is registered in the container and it is configured correctly in your project configuration file.`
+        throw new Error(errMessage)
+      }
+
+      const errMessage = `Unable to retrieve the notification provider with id: ${providerId}, the following error occurred: ${err.message}`
       this.#logger.error(errMessage)
+
       throw new Error(errMessage)
     }
   }
@@ -68,7 +73,9 @@ export default class NotificationProviderService extends ModulesSdkUtils.MedusaI
     TOutput = TChannel extends string[] ? Provider[] : Provider | undefined
   >(channels: TChannel): Promise<TOutput> {
     if (!this.providersCache) {
-      const providers = await this.notificationProviderRepository_.find()
+      const providers = await this.notificationProviderRepository_.find({
+        where: { is_enabled: true },
+      })
 
       this.providersCache = new Map(
         providers.flatMap((provider) =>

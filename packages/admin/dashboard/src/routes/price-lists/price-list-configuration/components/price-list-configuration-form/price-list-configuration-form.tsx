@@ -95,9 +95,9 @@ export const PriceListConfigurationForm = ({
     const rules = { ...priceList.rules } // preserve other rules set on the PL
 
     if (groupIds.length) {
-      rules["customer_group_id"] = groupIds
+      rules["customer.groups.id"] = groupIds
     } else {
-      delete rules["customer_group_id"]
+      delete rules["customer.groups.id"]
     }
 
     await mutateAsync(

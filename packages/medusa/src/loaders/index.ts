@@ -1,11 +1,13 @@
 import {
   ConfigModule,
+  LoadedModule,
   MedusaContainer,
   PluginDetails,
 } from "@medusajs/framework/types"
 import {
   ContainerRegistrationKeys,
   GraphQLSchema,
+  mergePluginModules,
   promiseAll,
 } from "@medusajs/framework/utils"
 import { asValue } from "awilix"
@@ -136,6 +138,7 @@ export default async ({
 }: Options): Promise<{
   container: MedusaContainer
   app: Express
+  modules: Record<string, LoadedModule | LoadedModule[]>
   shutdown: () => Promise<void>
   gqlSchema?: GraphQLSchema
 }> => {
@@ -144,7 +147,9 @@ export default async ({
     ContainerRegistrationKeys.CONFIG_MODULE
   )
 
-  const plugins = getResolvedPlugins(rootDirectory, configModule, true) || []
+  const plugins = await getResolvedPlugins(rootDirectory, configModule, true)
+  mergePluginModules(configModule, plugins)
+
   const linksSourcePaths = plugins.map((plugin) =>
     join(plugin.resolve, "links")
   )
@@ -154,6 +159,7 @@ export default async ({
     onApplicationStart,
     onApplicationShutdown,
     onApplicationPrepareShutdown,
+    modules,
     gqlSchema,
   } = await new MedusaAppLoader().load()
 
@@ -192,6 +198,7 @@ export default async ({
     container,
     app: expressApp,
     shutdown,
+    modules,
     gqlSchema,
   }
 }

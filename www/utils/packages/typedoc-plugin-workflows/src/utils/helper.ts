@@ -4,8 +4,10 @@ import {
   ProjectReflection,
 } from "typedoc"
 import ts from "typescript"
-import { StepModifier, StepType } from "../types"
-import { capitalize } from "utils"
+import { StepModifier, StepType } from "../types.js"
+import { capitalize, findReflectionInNamespaces } from "utils"
+
+export const WORKFLOW_AS_STEP_SUFFIX = `-as-step`
 
 /**
  * A class of helper methods.
@@ -126,7 +128,7 @@ export default class Helper {
       stepId = this._getStepOrWorkflowIdFromArrowFunction(initializer, type)
     }
 
-    return isWorkflowStep ? `${stepId}-as-step` : stepId
+    return isWorkflowStep ? `${stepId}${WORKFLOW_AS_STEP_SUFFIX}` : stepId
   }
 
   private _getStepOrWorkflowIdFromArrowFunction(
@@ -173,7 +175,9 @@ export default class Helper {
     project: ProjectReflection
   ): string | undefined {
     // load it from the project
-    const idVarReflection = project.getChildByName(refName)
+    const idVarReflection =
+      project.getChildByName(refName) ||
+      findReflectionInNamespaces(project, refName)
 
     if (
       !idVarReflection ||

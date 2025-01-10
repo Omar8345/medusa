@@ -1,6 +1,7 @@
 import {
   Context,
   DAL,
+  InferEntityType,
   InternalModuleDeclaration,
   ModulesSdkTypes,
   WorkflowsSdkTypes,
@@ -25,9 +26,11 @@ type InjectedDependencies = {
 }
 
 export class WorkflowsModuleService<
-  TWorkflowExecution extends WorkflowExecution = WorkflowExecution
+  TWorkflowExecution extends InferEntityType<
+    typeof WorkflowExecution
+  > = InferEntityType<typeof WorkflowExecution>
 > extends ModulesSdkUtils.MedusaService<{
-  WorkflowExecution: { dto: WorkflowExecution }
+  WorkflowExecution: { dto: InferEntityType<typeof WorkflowExecution> }
 }>({ WorkflowExecution }) {
   protected baseRepository_: DAL.RepositoryService
   protected workflowExecutionService_: ModulesSdkTypes.IMedusaInternalService<TWorkflowExecution>

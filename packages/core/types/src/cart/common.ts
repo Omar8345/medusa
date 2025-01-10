@@ -664,6 +664,11 @@ export interface CartLineItemDTO extends CartLineItemTotalsDTO {
   is_tax_inclusive: boolean
 
   /**
+   * Whether the line item price is a custom price.
+   */
+  is_custom_price: boolean
+
+  /**
    * The calculated price of the line item.
    */
   compare_at_unit_price?: BigNumberValue

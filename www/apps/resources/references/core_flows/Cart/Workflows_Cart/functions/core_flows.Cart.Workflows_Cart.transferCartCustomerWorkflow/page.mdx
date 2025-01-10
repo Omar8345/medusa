@@ -1,0 +1,24 @@
+---
+slug: /references/medusa-workflows/transferCartCustomerWorkflow
+sidebar_label: transferCartCustomerWorkflow
+tags:
+  - query
+  - cart
+  - workflow
+---
+
+import { TypeList, WorkflowDiagram } from "docs-ui"
+
+# transferCartCustomerWorkflow - Medusa Core Workflows Reference
+
+This documentation provides a reference to the `transferCartCustomerWorkflow`. It belongs to the `@medusajs/medusa/core-flows` package.
+
+This workflow transfers cart's customer.
+
+## Steps
+
+<WorkflowDiagram workflow={{"name":"transferCartCustomerWorkflow","steps":[{"type":"step","name":"useQueryGraphStep","description":"This step fetches data across modules using the Query.\n\nLearn more in the [Query documentation](https://docs.medusajs.com/learn/fundamentals/module-links/query).\n\n","link":"../../../../Common/Steps_Common/functions/core_flows.Common.Steps_Common.useQueryGraphStep/page.mdx","depth":1},{"type":"step","name":"useQueryGraphStep","description":"This step fetches data across modules using the Query.\n\nLearn more in the [Query documentation](https://docs.medusajs.com/learn/fundamentals/module-links/query).\n\n","link":"../../../../Common/Steps_Common/functions/core_flows.Common.Steps_Common.useQueryGraphStep/page.mdx","depth":2},{"type":"when","condition":"shouldTransfer","depth":"3","steps":[{"type":"step","name":"updateCartsStep","description":"This step updates a cart.\n\n","link":"../../../Steps_Cart/functions/core_flows.Cart.Steps_Cart.updateCartsStep/page.mdx","depth":3}]}]}} />
+
+## Input
+
+<TypeList types={[{"name":"id","type":"`string`","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]},{"name":"customer_id","type":"`string`","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]}]} expandUrl="https://docs.medusajs.com/learn/fundamentals/data-models/manage-relationships#retrieve-records-of-relation" sectionTitle="transferCartCustomerWorkflow"/>

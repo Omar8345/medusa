@@ -2,6 +2,7 @@ import { HttpTypes } from "@medusajs/types"
 import { Button, Input, RadioGroup, toast } from "@medusajs/ui"
 import { useForm } from "react-hook-form"
 import { useTranslation } from "react-i18next"
+import { zodResolver } from "@hookform/resolvers/zod"
 import * as zod from "zod"
 
 import { Divider } from "../../../../../components/common/divider"
@@ -14,7 +15,6 @@ import { useUpdateShippingOptions } from "../../../../../hooks/api/shipping-opti
 import { useComboboxData } from "../../../../../hooks/use-combobox-data"
 import { sdk } from "../../../../../lib/client"
 import { pick } from "../../../../../lib/common"
-import { formatProvider } from "../../../../../lib/format-provider"
 import { isOptionEnabledInStore } from "../../../../../lib/shipping-options"
 import { ShippingOptionPriceType } from "../../../common/constants"
 
@@ -28,7 +28,6 @@ const EditShippingOptionSchema = zod.object({
   price_type: zod.nativeEnum(ShippingOptionPriceType),
   enabled_in_store: zod.boolean().optional(),
   shipping_profile_id: zod.string(),
-  provider_id: zod.string(),
 })
 
 export const EditShippingOptionForm = ({
@@ -49,29 +48,14 @@ export const EditShippingOptionForm = ({
     defaultValue: shippingOption.shipping_profile_id,
   })
 
-  const fulfillmentProviders = useComboboxData({
-    queryFn: (params) =>
-      sdk.admin.fulfillmentProvider.list({
-        ...params,
-        stock_location_id: locationId,
-      }),
-    queryKey: ["fulfillment_providers"],
-    getOptions: (data) =>
-      data.fulfillment_providers.map((provider) => ({
-        label: formatProvider(provider.id),
-        value: provider.id,
-      })),
-    defaultValue: shippingOption.provider_id,
-  })
-
   const form = useForm<zod.infer<typeof EditShippingOptionSchema>>({
     defaultValues: {
       name: shippingOption.name,
       price_type: shippingOption.price_type as ShippingOptionPriceType,
       enabled_in_store: isOptionEnabledInStore(shippingOption),
       shipping_profile_id: shippingOption.shipping_profile_id,
-      provider_id: shippingOption.provider_id,
     },
+    resolver: zodResolver(EditShippingOptionSchema),
   })
 
   const { mutateAsync, isPending: isLoading } = useUpdateShippingOptions(
@@ -101,7 +85,6 @@ export const EditShippingOptionForm = ({
         name: values.name,
         price_type: values.price_type,
         shipping_profile_id: values.shipping_profile_id,
-        provider_id: values.provider_id,
         rules,
       },
       {
@@ -202,35 +185,6 @@ export const EditShippingOptionForm = ({
                               shippingProfiles.onSearchValueChange
                             }
                             disabled={shippingProfiles.disabled}
-                          />
-                        </Form.Control>
-                        <Form.ErrorMessage />
-                      </Form.Item>
-                    )
-                  }}
-                />
-                <Form.Field
-                  control={form.control}
-                  name="provider_id"
-                  render={({ field }) => {
-                    return (
-                      <Form.Item>
-                        <Form.Label
-                          tooltip={t(
-                            "stockLocations.fulfillmentProviders.shippingOptionsTooltip"
-                          )}
-                        >
-                          {t("stockLocations.shippingOptions.fields.provider")}
-                        </Form.Label>
-                        <Form.Control>
-                          <Combobox
-                            {...field}
-                            options={fulfillmentProviders.options}
-                            searchValue={fulfillmentProviders.searchValue}
-                            onSearchValueChange={
-                              fulfillmentProviders.onSearchValueChange
-                            }
-                            disabled={fulfillmentProviders.disabled}
                           />
                         </Form.Control>
                         <Form.ErrorMessage />

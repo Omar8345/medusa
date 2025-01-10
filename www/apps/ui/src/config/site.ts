@@ -29,4 +29,8 @@ export const siteConfig: SiteConfig = {
     showCategories: true,
   },
   logo: `${process.env.NEXT_PUBLIC_BASE_PATH}/images/logo.png`,
+  version: {
+    ...globalConfig.version,
+    hide: true,
+  },
 }

@@ -10,11 +10,17 @@ describe("Pluralize", () => {
     expectTypeOf<Pluralize<"series">>().toEqualTypeOf<"series">()
     expectTypeOf<Pluralize<"species">>().toEqualTypeOf<"species">()
     expectTypeOf<Pluralize<"deer">>().toEqualTypeOf<"deer">()
+    expectTypeOf<Pluralize<"info">>().toEqualTypeOf<"info">()
   })
 
   test("pluralize words ending with fe", () => {
     expectTypeOf<Pluralize<"wife">>().toEqualTypeOf<"wives">()
     expectTypeOf<Pluralize<"knife">>().toEqualTypeOf<"knives">()
+  })
+
+  test("pluralize words ending with ch", () => {
+    expectTypeOf<Pluralize<"church">>().toEqualTypeOf<"churches">()
+    expectTypeOf<Pluralize<"arch">>().toEqualTypeOf<"arches">()
   })
 
   test("pluralize words ending with o", () => {
@@ -29,8 +35,20 @@ describe("Pluralize", () => {
     expectTypeOf<Pluralize<"fiz">>().toEqualTypeOf<"fizes">()
   })
 
-  test("pluralize words ending with y", () => {
+  test("pluralize words ending with y, in which y follows a constant", () => {
     expectTypeOf<Pluralize<"puppy">>().toEqualTypeOf<"puppies">()
+    expectTypeOf<Pluralize<"twenty">>().toEqualTypeOf<"twenties">()
+    expectTypeOf<Pluralize<"copy">>().toEqualTypeOf<"copies">()
+  })
+
+  test("pluralize words ending with y, in which y follow a vowel", () => {
+    expectTypeOf<Pluralize<"play">>().toEqualTypeOf<"plays">()
+    expectTypeOf<Pluralize<"relay">>().toEqualTypeOf<"relays">()
+    expectTypeOf<Pluralize<"alley">>().toEqualTypeOf<"alleys">()
+    expectTypeOf<Pluralize<"alley">>().toEqualTypeOf<"alleys">()
+    expectTypeOf<Pluralize<"boy">>().toEqualTypeOf<"boys">()
+    expectTypeOf<Pluralize<"enjoy">>().toEqualTypeOf<"enjoys">()
+    expectTypeOf<Pluralize<"buy">>().toEqualTypeOf<"buys">()
   })
 
   test("pluralize words with special rules", () => {

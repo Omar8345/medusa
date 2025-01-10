@@ -42,7 +42,7 @@ export const Table = ({
   setCurrentPage,
 }: TableProps) => {
   const pageCount = useMemo(() => {
-    return Math.ceil(data.length / pageSize)
+    return Math.ceil(count / pageSize)
   }, [data, pageSize])
 
   const canNextPage = useMemo(() => {
@@ -243,3 +243,114 @@ export default ProductWidget
 ```
 
 This widget also uses the [Container](../container.mdx) custom component.
+
+---
+
+## Example With Data Fetching
+
+This section shows you how to use the `Table` component when fetching data from the Medusa application's API routes.
+
+Assuming you've set up the JS SDK as explained in [this guide](../../../js-sdk/page.mdx), create the UI route `src/admin/routes/custom/page.tsx` with the following content:
+
+export const tableExampleHighlights = [
+  ["12", "currentPage", "The table's current page."],
+  ["13", "limit", "The maximum number of items per page."],
+  ["14", "offset", "The number of items to skip before retrieving the current page's items."],
+  ["18", "data", "The response fields."],
+  ["18", "useQuery", "Fetch products from the Medusa application."]
+]
+
+```tsx title="src/admin/routes/custom/page.tsx" collapsibleLines="1-10" expandButtonLabel="Show Imports" highlights={tableExampleHighlights}
+import { defineRouteConfig } from "@medusajs/admin-sdk"
+import { ChatBubbleLeftRight } from "@medusajs/icons"
+import { useQuery } from "@tanstack/react-query"
+import { SingleColumnLayout } from "../../layouts/single-column"
+import { Table } from "../../components/table"
+import { sdk } from "../../lib/config"
+import { useMemo, useState } from "react"
+import { Container } from "../../components/container"
+import { Header } from "../../components/header"
+
+const CustomPage = () => {
+  const [currentPage, setCurrentPage] = useState(0)
+  const limit = 15
+  const offset = useMemo(() => {
+    return currentPage * limit
+  }, [currentPage])
+
+  const { data } = useQuery({
+    queryFn: () => sdk.admin.product.list({
+      limit,
+      offset,
+    }),
+    queryKey: [["products", limit, offset]],
+  })
+
+  // TODO display table
+}
+
+export const config = defineRouteConfig({
+  label: "Custom",
+  icon: ChatBubbleLeftRight,
+})
+
+export default CustomPage
+```
+
+In the `CustomPage` component, you define:
+
+- A state variable `currentPage` that stores the current page of the table. 
+- A `limit` variable, indicating how many items to retrieve per page
+- An `offset` memoized variable indicating how many items to skip before the retrieved items. It's calculated as a multiplication of `currentPage` and `limit`.
+
+Then, you use `useQuery` from [Tanstack Query](https://tanstack.com/query/latest) to retrieve products using the JS SDK. You pass `limit` and `offset` as query parameters, and you set the `queryKey`, which is used for caching and revalidation, to be based on the key `products`, along with the current limit and offset. So, whenever the `offset` variable changes, the request is sent again to retrieve the products of the current page.
+
+<Note title="Tip">
+
+You can change the query to send a request to a custom API route as explained in [this guide](../../../js-sdk/page.mdx#send-requests-to-custom-routes).
+
+</Note>
+
+`useQuery` returns an object containing `data`, which holds the response fields including the products and pagination fields.
+
+Then, to display the table, replace the `TODO` with the following:
+
+```tsx
+return (
+  <SingleColumnLayout>
+    <Container>
+      <Header title="Products" />
+      {data && (
+        <Table
+          columns={[
+            {
+              key: "id",
+              label: "ID",
+            },
+            {
+              key: "title",
+              label: "Title",
+            },
+          ]}
+          data={data.products as any}
+          pageSize={data.limit}
+          count={data.count}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
+      )}
+    </Container>
+  </SingleColumnLayout>
+)
+```
+
+Aside from the `Table` component, this UI route also uses the [SingleColumnLayout](../../layouts/single-column/page.mdx), [Container](../container/page.mdx), and [Header](../header/page.mdx) custom component.
+
+If `data` isn't `undefined`, you display the `Table` component passing it the following props:
+
+- `columns`: The columns to show. You only show the product's ID and title.
+- `data`: The rows of the table. You pass it the `products` property of `data`.
+- `pageSize`: The maximum number of items per page. You pass it the `count` property of `data`.
+- `currentPage` and `setCurrentPage`: The current page and the function to change it.
+
+To test it out, log into the Medusa Admin and open `http://localhost:9000/app/custom`. You'll find a table of products with pagination.

@@ -1,11 +1,16 @@
 ---
 slug: /references/medusa-workflows/markOrderFulfillmentAsDeliveredWorkflow
 sidebar_label: markOrderFulfillmentAsDeliveredWorkflow
+tags:
+  - remote query
+  - event bus
+  - workflow
+  - fulfillment
 ---
 
 import { TypeList, WorkflowDiagram } from "docs-ui"
 
-# markOrderFulfillmentAsDeliveredWorkflow - Medusa Workflows API Reference
+# markOrderFulfillmentAsDeliveredWorkflow - Medusa Core Workflows Reference
 
 This documentation provides a reference to the `markOrderFulfillmentAsDeliveredWorkflow`. It belongs to the `@medusajs/medusa/core-flows` package.
 
@@ -13,12 +18,12 @@ This workflow marks a fulfillment in an order as delivered.
 
 ## Steps
 
-<WorkflowDiagram workflow={{"name":"markOrderFulfillmentAsDeliveredWorkflow","steps":[{"type":"step","name":"useRemoteQueryStep","description":"This step fetches data across modules using the remote query.\n\nLearn more in the [Remote Query documentation](https://docs.medusajs.com/advanced-development/modules/remote-query).\n\n","link":"../../../../core_flows.Steps_Common/page.mdx#useremotequerystep","depth":1},{"type":"step","name":"useRemoteQueryStep","description":"This step fetches data across modules using the remote query.\n\nLearn more in the [Remote Query documentation](https://docs.medusajs.com/advanced-development/modules/remote-query).\n\n","link":"../../../../core_flows.Steps_Common/page.mdx#useremotequerystep","depth":2},{"type":"step","name":"orderFulfillmentDeliverablilityValidationStep","description":"This step validates that order & fulfillment are valid","link":"../../../../core_flows.Workflows_Order/page.mdx#orderfulfillmentdeliverablilityvalidationstep","depth":3},{"type":"workflow","name":"markFulfillmentAsDeliveredWorkflow","description":"This workflow marks fulfillment as delivered.","link":"../../../../core_flows.Workflows_Fulfillment/page.mdx#markfulfillmentasdeliveredworkflow","depth":4},{"type":"step","name":"emitEventStep","description":"Emit an event.\n\n","link":"../../../../core_flows.Steps_Common/page.mdx#emiteventstep","depth":5}]}} />
+<WorkflowDiagram workflow={{"name":"markOrderFulfillmentAsDeliveredWorkflow","steps":[{"type":"step","name":"useRemoteQueryStep","description":"This step fetches data across modules using the remote query.\n\nLearn more in the [Remote Query documentation](https://docs.medusajs.com/learn/fundamentals/module-links/query).\n\n:::note\n\nThis step is deprecated. Use [useQueryGraphStep](../../../../Common/Steps_Common/functions/core_flows.Common.Steps_Common.useQueryGraphStep/page.mdx) instead.\n\n:::\n\n","link":"../../../../Common/Steps_Common/functions/core_flows.Common.Steps_Common.useRemoteQueryStep/page.mdx","depth":1},{"type":"step","name":"useRemoteQueryStep","description":"This step fetches data across modules using the remote query.\n\nLearn more in the [Remote Query documentation](https://docs.medusajs.com/learn/fundamentals/module-links/query).\n\n:::note\n\nThis step is deprecated. Use [useQueryGraphStep](../../../../Common/Steps_Common/functions/core_flows.Common.Steps_Common.useQueryGraphStep/page.mdx) instead.\n\n:::\n\n","link":"../../../../Common/Steps_Common/functions/core_flows.Common.Steps_Common.useRemoteQueryStep/page.mdx","depth":2},{"type":"step","name":"orderFulfillmentDeliverablilityValidationStep","description":"This step validates that order & fulfillment are valid\n\n","link":"../core_flows.Order.Workflows_Order.orderFulfillmentDeliverablilityValidationStep/page.mdx","depth":3},{"type":"workflow","name":"markFulfillmentAsDeliveredWorkflow","description":"This workflow marks fulfillment as delivered.\n\n","link":"../../../../Fulfillment/Workflows_Fulfillment/functions/core_flows.Fulfillment.Workflows_Fulfillment.markFulfillmentAsDeliveredWorkflow/page.mdx","depth":4},{"type":"step","name":"emitEventStep","description":"Emit an event.\n\n","link":"../../../../Common/Steps_Common/functions/core_flows.Common.Steps_Common.emitEventStep/page.mdx","depth":5}]}} />
 
 ## Input
 
-<TypeList types={[{"name":"orderId","type":"`string`","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]},{"name":"fulfillmentId","type":"`string`","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]}]} expandUrl="https://docs.medusajs.com/v2/advanced-development/data-models/manage-relationships#retrieve-records-of-relation" sectionTitle="markOrderFulfillmentAsDeliveredWorkflow"/>
+<TypeList types={[{"name":"orderId","type":"`string`","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]},{"name":"fulfillmentId","type":"`string`","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]}]} expandUrl="https://docs.medusajs.com/learn/fundamentals/data-models/manage-relationships#retrieve-records-of-relation" sectionTitle="markOrderFulfillmentAsDeliveredWorkflow"/>
 
 ## Output
 
-<TypeList types={[{"name":"undefined","type":"`undefined`","optional":false,"defaultValue":"","description":"","expandable":false,"children":[{"name":"undefined","type":"`undefined`","optional":false,"defaultValue":"","description":"","expandable":false,"children":[]}]}]} expandUrl="https://docs.medusajs.com/v2/advanced-development/data-models/manage-relationships#retrieve-records-of-relation" sectionTitle="markOrderFulfillmentAsDeliveredWorkflow"/>
+<TypeList types={[{"name":"undefined","type":"`undefined`","optional":false,"defaultValue":"","description":"","expandable":false,"children":[{"name":"undefined","type":"`undefined`","optional":false,"defaultValue":"","description":"","expandable":false,"children":[]}]}]} expandUrl="https://docs.medusajs.com/learn/fundamentals/data-models/manage-relationships#retrieve-records-of-relation" sectionTitle="markOrderFulfillmentAsDeliveredWorkflow"/>

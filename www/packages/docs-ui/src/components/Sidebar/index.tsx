@@ -1,7 +1,7 @@
 "use client"
 
 import React, { Suspense, useMemo, useRef } from "react"
-import { useSidebar } from "@/providers"
+import { isSidebarItemLink, useSidebar } from "@/providers"
 import clsx from "clsx"
 import { Loading } from "@/components"
 import { SidebarItem } from "./Item"
@@ -139,7 +139,7 @@ export const Sidebar = ({
                     const itemKey =
                       item.type === "separator"
                         ? index
-                        : item.type === "link"
+                        : isSidebarItemLink(item)
                           ? `${item.path}-${index}`
                           : `${item.title}-${index}`
                     return (

@@ -50,6 +50,14 @@ export type FormattingOptionsType = {
   [k: string]: FormattingOptionType
 }
 
+export type FrontmatterData = {
+  slug?: string
+  sidebar_label?: string
+  displayed_sidebar?: string
+  tags?: string[]
+  [k: string]: unknown
+}
+
 export type FormattingOptionType = {
   sections?: Sections
   reflectionGroups?: {
@@ -74,7 +82,7 @@ export type FormattingOptionType = {
   showCommentsAsHeader?: boolean
   showCommentsAsDetails?: boolean
   parameterStyle?: ParameterStyle
-  frontmatterData?: Record<string, unknown>
+  frontmatterData?: FrontmatterData
   parameterComponent?: string
   parameterComponentExtraProps?: Record<string, unknown>
   mdxImports?: string[]

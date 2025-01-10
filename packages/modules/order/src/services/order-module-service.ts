@@ -47,6 +47,7 @@ import {
   OrderClaim,
   OrderClaimItem,
   OrderClaimItemImage,
+  OrderCreditLine,
   OrderExchange,
   OrderExchangeItem,
   OrderItem,
@@ -132,6 +133,7 @@ const generateMethodForModels = {
   OrderClaimItemImage,
   OrderExchange,
   OrderExchangeItem,
+  OrderCreditLine,
 }
 
 // TODO: rm template args here, keep it for later to not collide with carlos work at least as little as possible
@@ -157,7 +159,8 @@ export default class OrderModuleService<
     TClaimItem extends OrderClaimItem = OrderClaimItem,
     TClaimItemImage extends OrderClaimItemImage = OrderClaimItemImage,
     TExchange extends OrderExchange = OrderExchange,
-    TExchangeItem extends OrderExchangeItem = OrderExchangeItem
+    TExchangeItem extends OrderExchangeItem = OrderExchangeItem,
+    TCreditLine extends OrderCreditLine = OrderCreditLine
   >
   extends ModulesSdkUtils.MedusaService<{
     Order: { dto: OrderTypes.OrderDTO }
@@ -186,6 +189,7 @@ export default class OrderModuleService<
     OrderClaimItemImage: { dto: OrderTypes.OrderClaimItemImageDTO }
     OrderExchange: { dto: OrderTypes.OrderExchangeDTO }
     OrderExchangeItem: { dto: OrderTypes.OrderExchangeItemDTO }
+    OrderCreditLine: { dto: OrderTypes.OrderCreditLineDTO }
   }>(generateMethodForModels)
   implements IOrderModuleService
 {
@@ -3055,6 +3059,7 @@ export default class OrderModuleService<
       transformPropertiesToBigNumber(trxs)
 
       const op = isRemoved ? MathBN.sub : MathBN.add
+
       for (const trx of trxs) {
         if (MathBN.gt(trx.amount, 0)) {
           summary.totals.paid_total = new BigNumber(

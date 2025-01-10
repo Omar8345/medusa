@@ -31,7 +31,7 @@ export const POST = async (
   const batchResults = await refetchBatchVariants(
     result,
     req.scope,
-    req.remoteQueryConfig.fields
+    req.queryConfig.fields
   )
 
   res.status(200).json({

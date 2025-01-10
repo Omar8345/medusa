@@ -6,9 +6,9 @@ import {
   ReflectionKind,
   ReflectionType,
 } from "typedoc"
-import * as Handlebars from "handlebars"
-import { stripCode } from "../utils"
-import { Parameter, ParameterStyle, ReflectionParameterType } from "../types"
+import Handlebars from "handlebars"
+import { stripCode } from "../utils.js"
+import { Parameter, ParameterStyle, ReflectionParameterType } from "../types.js"
 import {
   getDmlRelationProperties,
   getReflectionType,
@@ -17,7 +17,7 @@ import {
   isDmlRelation,
   stripLineBreaks,
 } from "utils"
-import { MarkdownTheme } from "../theme"
+import { MarkdownTheme } from "../theme.js"
 import { getDmlProperties, isDmlEntity } from "utils"
 
 const ALLOWED_KINDS: ReflectionKind[] = [

@@ -41,6 +41,8 @@ export type KnownDataTypes =
   | "enum"
   | "number"
   | "bigNumber"
+  | "float"
+  | "serial"
   | "dateTime"
   | "array"
   | "json"
@@ -70,6 +72,7 @@ export type PropertyMetadata = {
   fieldName: string
   defaultValue?: any
   nullable: boolean
+  computed: boolean
   dataType: {
     name: KnownDataTypes
     options?: Record<string, any>
@@ -144,7 +147,9 @@ export interface EntityConstructor<Props> extends Function {
  */
 export type InferForeignKeys<Schema extends DMLSchema> = {
   [K in keyof Schema as Schema[K] extends { $foreignKey: true }
-    ? `${K & string}_id`
+    ? Schema[K] extends { $foreignKeyName: `${infer FkName}` }
+      ? `${FkName & string}`
+      : `${K & string}_id`
     : never]: Schema[K] extends { $foreignKey: true }
     ? null extends Schema[K]["$dataType"]
       ? string | null
@@ -241,12 +246,13 @@ export type Infer<T> = T extends IDmlEntity<infer Schema, any>
  * The actions to cascade from a given entity to its
  * relationship.
  */
-export type EntityCascades<Relationships> = {
+export type EntityCascades<DeletableRelationships, DetachableRelationships> = {
   /**
    * The related models to delete when a record of this data model
    * is deleted.
    */
-  delete?: Relationships
+  delete?: DeletableRelationships
+  detach?: DetachableRelationships
 }
 
 /**
@@ -310,6 +316,11 @@ export type EntityIndex<
    * Conditions to restrict which records are indexed.
    */
   where?: Where
+
+  /**
+   * The type of the index. (e.g: GIN)
+   */
+  type?: string
 }
 
 export type SimpleQueryValue = string | number | boolean | null

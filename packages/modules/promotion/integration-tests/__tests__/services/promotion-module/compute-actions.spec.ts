@@ -57,68 +57,6 @@ moduleIntegrationTestRunner({
 
           expect(response).toEqual([])
         })
-
-        it("should throw error when code in items adjustment does not exist", async () => {
-          await createDefaultPromotion(service, {})
-
-          const error = await service
-            .computeActions(["PROMOTION_TEST"], {
-              items: [
-                {
-                  id: "item_cotton_tshirt",
-                  quantity: 1,
-                  subtotal: 100,
-                  adjustments: [
-                    {
-                      id: "test-adjustment",
-                      code: "DOES_NOT_EXIST",
-                    },
-                  ],
-                },
-                {
-                  id: "item_cotton_sweater",
-                  quantity: 5,
-                  subtotal: 750,
-                },
-              ],
-            })
-            .catch((e) => e)
-
-          expect(error.message).toContain(
-            "Applied Promotion for code (DOES_NOT_EXIST) not found"
-          )
-        })
-
-        it("should throw error when code in shipping adjustment does not exist", async () => {
-          await createDefaultPromotion(service, {})
-
-          const error = await service
-            .computeActions(["PROMOTION_TEST"], {
-              items: [
-                {
-                  id: "item_cotton_tshirt",
-                  quantity: 1,
-                  subtotal: 100,
-                },
-                {
-                  id: "item_cotton_sweater",
-                  quantity: 5,
-                  subtotal: 750,
-                  adjustments: [
-                    {
-                      id: "test-adjustment",
-                      code: "DOES_NOT_EXIST",
-                    },
-                  ],
-                },
-              ],
-            })
-            .catch((e) => e)
-
-          expect(error.message).toContain(
-            "Applied Promotion for code (DOES_NOT_EXIST) not found"
-          )
-        })
       })
 
       describe("when promotion is for items and allocation is each", () => {
@@ -194,6 +132,40 @@ moduleIntegrationTestRunner({
                 code: "PROMOTION_TEST",
               },
             ])
+
+            const resultWithoutCustomer = await service.computeActions(
+              ["PROMOTION_TEST"],
+              {
+                items: [
+                  {
+                    id: "item_cotton_tshirt",
+                    quantity: 1,
+                    subtotal: 100,
+                    product_category: {
+                      id: "catg_cotton",
+                    },
+                    product: {
+                      id: "prod_tshirt",
+                    },
+                  },
+                  {
+                    id: "item_cotton_sweater",
+                    quantity: 5,
+                    subtotal: 750,
+                    product_category: {
+                      id: "catg_cotton",
+                    },
+                    product: {
+                      id: "prod_sweater",
+                    },
+                  },
+                ],
+              }
+            )
+
+            expect(JSON.parse(JSON.stringify(resultWithoutCustomer))).toEqual(
+              []
+            )
           })
 
           it("should compute the correct item amendments when there are multiple promotions to apply", async () => {

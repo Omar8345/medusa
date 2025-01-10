@@ -5,12 +5,14 @@ import {
   TypeList,
   WorkflowDiagram,
 } from "docs-ui"
+import { CommerceModuleSections } from "../CommerceModuleSections"
 
 const MDXComponents: MDXComponentsType = {
   ...UiMdxComponents,
   a: Link,
   TypeList,
   WorkflowDiagram,
+  CommerceModuleSections,
 }
 
 export default MDXComponents

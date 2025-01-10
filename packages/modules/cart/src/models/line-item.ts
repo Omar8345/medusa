@@ -1,7 +1,7 @@
 import { model } from "@medusajs/framework/utils"
 import Cart from "./cart"
-import LineItemTaxLine from "./line-item-tax-line"
 import LineItemAdjustment from "./line-item-adjustment"
+import LineItemTaxLine from "./line-item-tax-line"
 
 const LineItem = model
   .define(
@@ -28,6 +28,7 @@ const LineItem = model
       requires_shipping: model.boolean().default(true),
       is_discountable: model.boolean().default(true),
       is_tax_inclusive: model.boolean().default(false),
+      is_custom_price: model.boolean().default(false),
       compare_at_unit_price: model.bigNumber().nullable(),
       unit_price: model.bigNumber(),
       metadata: model.json().nullable(),

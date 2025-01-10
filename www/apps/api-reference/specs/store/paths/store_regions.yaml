@@ -9,6 +9,14 @@ get:
     url: https://docs.medusajs.com/v2/resources/storefront-development/regions/list
     description: 'Storefront guide: How to retrieve a list of regions.'
   parameters:
+    - name: x-publishable-api-key
+      in: header
+      description: Publishable API Key created in the Medusa Admin.
+      required: true
+      schema:
+        type: string
+        externalDocs:
+          url: https://docs.medusajs.com/api/store#publishable-api-key
     - name: fields
       in: query
       description: >-

@@ -35,8 +35,31 @@ The `create-medusa-app` CLI tool simplifies the process of creating a new Medusa
 ## Usage
 
 ```bash
-npx create-medusa-app@latest
+npx create-medusa-app@latest [project-name]
 ```
+
+### Arguments
+
+<Table>
+  <Table.Header>
+    <Table.Row>
+      <Table.HeaderCell>Option</Table.HeaderCell>
+      <Table.HeaderCell>Description</Table.HeaderCell>
+    </Table.Row>
+  </Table.Header>
+  <Table.Body>
+    <Table.Row>
+      <Table.Cell>
+
+        `project-name`
+
+      </Table.Cell>
+      <Table.Cell>
+        The name of the project's directory and PostgreSQL database to be created. For example, `my-medusa-store`. If not provided, you'll be prompted to enter a project name.
+      </Table.Cell>
+    </Table.Row>
+  </Table.Body>
+</Table>
 
 ### Command Options
 

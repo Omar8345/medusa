@@ -18,8 +18,8 @@ export const GET = async (
     "product_option",
     { ...req.filterableFields, product_id: productId },
     req.scope,
-    req.remoteQueryConfig.fields,
-    req.remoteQueryConfig.pagination
+    req.queryConfig.fields,
+    req.queryConfig.pagination
   )
 
   res.json({
@@ -55,7 +55,7 @@ export const POST = async (
     "product",
     productId,
     req.scope,
-    remapKeysForProduct(req.remoteQueryConfig.fields ?? [])
+    remapKeysForProduct(req.queryConfig.fields ?? [])
   )
   res.status(200).json({ product: remapProductResponse(product) })
 }

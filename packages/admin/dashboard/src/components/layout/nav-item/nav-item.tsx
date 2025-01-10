@@ -26,6 +26,7 @@ export type INavItem = {
   items?: NestedItemProps[]
   type?: ItemType
   from?: string
+  nested?: string
 }
 
 const BASE_NAV_LINK_CLASSES =

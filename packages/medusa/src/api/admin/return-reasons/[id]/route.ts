@@ -22,7 +22,7 @@ export const GET = async (
     "return_reason",
     req.params.id,
     req.scope,
-    req.remoteQueryConfig.fields
+    req.queryConfig.fields
   )
 
   if (!return_reason) {
@@ -54,7 +54,7 @@ export const POST = async (
   const queryObject = remoteQueryObjectFromString({
     entryPoint: "return_reason",
     variables,
-    fields: req.remoteQueryConfig.fields,
+    fields: req.queryConfig.fields,
   })
 
   const remoteQuery = req.scope.resolve(ContainerRegistrationKeys.REMOTE_QUERY)
