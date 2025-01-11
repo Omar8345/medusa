@@ -11,10 +11,10 @@ import {
   ModuleRegistrationName,
   Modules,
 } from "@medusajs/framework/utils"
+import { initDb, TestDatabaseUtils } from "@medusajs/test-utils"
 import { EntityManager } from "@mikro-orm/postgresql"
 import { IndexData, IndexRelation } from "@models"
 import { asValue } from "awilix"
-import { initDb, TestDatabaseUtils } from "@medusajs/test-utils"
 import path from "path"
 import { EventBusServiceMock } from "../__fixtures__"
 import { dbName } from "../__fixtures__/medusa-config"
@@ -328,6 +328,116 @@ describe("IndexModuleService query", function () {
             ],
           },
 
+          {
+            id: "var_1",
+            sku: "aaa test aaa",
+            prices: [
+              {
+                id: "money_amount_1",
+                amount: 100,
+              },
+            ],
+          },
+        ],
+      },
+    ])
+  })
+
+  it("should query all products ordered by price", async () => {
+    const { data } = await module.query({
+      fields: ["product.*", "product.variants.*", "product.variants.prices.*"],
+      pagination: {
+        order: {
+          product: {
+            variants: {
+              prices: {
+                amount: "DESC",
+              },
+            },
+          },
+        },
+      },
+    })
+
+    expect(data).toEqual([
+      {
+        id: "prod_1",
+        variants: [
+          {
+            id: "var_1",
+            sku: "aaa test aaa",
+            prices: [
+              {
+                id: "money_amount_1",
+                amount: 100,
+              },
+            ],
+          },
+          {
+            id: "var_2",
+            sku: "sku 123",
+            prices: [
+              {
+                id: "money_amount_2",
+                amount: 10,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        id: "prod_2",
+        title: "Product 2 title",
+        deep: {
+          a: 1,
+          obj: {
+            b: 15,
+          },
+        },
+        variants: [],
+      },
+    ])
+
+    const { data: dataAsc } = await module.query({
+      fields: ["product.*", "product.variants.*", "product.variants.prices.*"],
+      pagination: {
+        order: {
+          product: {
+            variants: {
+              prices: {
+                amount: "ASC",
+              },
+            },
+          },
+        },
+      },
+    })
+
+    expect(dataAsc).toEqual([
+      {
+        id: "prod_2",
+        title: "Product 2 title",
+        deep: {
+          a: 1,
+          obj: {
+            b: 15,
+          },
+        },
+        variants: [],
+      },
+      {
+        id: "prod_1",
+        variants: [
+          {
+            id: "var_2",
+            sku: "sku 123",
+            prices: [
+              {
+                id: "money_amount_2",
+                amount: 10,
+              },
+            ],
+          },
           {
             id: "var_1",
             sku: "aaa test aaa",

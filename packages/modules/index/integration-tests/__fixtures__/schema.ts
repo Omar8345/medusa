@@ -23,6 +23,6 @@ export const schema = `
   }
   
   type Price @Listeners(values: ["price.created", "price.updated", "price.deleted"]) {
-    amount: Int
+    amount: Float
   }
 `
