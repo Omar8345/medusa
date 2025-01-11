@@ -3,7 +3,7 @@
 import { Text } from "@medusajs/ui"
 import clsx from "clsx"
 import Link from "next/link"
-import React, { useMemo } from "react"
+import React, { useEffect, useMemo, useRef, useState } from "react"
 import { WorkflowStepUi } from "types"
 import { InlineCode, MarkdownContent, Tooltip } from "../../.."
 import { Bolt, InformationCircle } from "@medusajs/icons"
@@ -14,10 +14,33 @@ export type WorkflowDiagramNodeProps = {
 
 export const WorkflowDiagramStepNode = ({ step }: WorkflowDiagramNodeProps) => {
   const stepId = step.name.split(".").pop()
+  const [offset, setOffset] = useState<number | undefined>(undefined)
+  const ref = useRef<HTMLSpanElement>(null)
 
   const description = useMemo(() => {
     return step.description?.replaceAll(/:::[a-z]*/g, "") || ""
   }, [step.description])
+
+  useEffect(() => {
+    if (!ref.current) {
+      return
+    }
+
+    // find parent
+    const diagramParent = ref.current.closest(".workflow-list-diagram")
+    const nodeParent = ref.current.closest(".workflow-node-group")
+
+    if (!diagramParent || !nodeParent) {
+      return
+    }
+
+    const nodeBoundingRect = nodeParent.getBoundingClientRect()
+    const diagramBoundingRect = diagramParent.getBoundingClientRect()
+
+    setOffset(
+      Math.max(diagramBoundingRect.width - nodeBoundingRect.width + 10, 10)
+    )
+  }, [ref.current])
 
   return (
     <Tooltip
@@ -43,6 +66,8 @@ export const WorkflowDiagramStepNode = ({ step }: WorkflowDiagramNodeProps) => {
       }
       clickable={true}
       place="right"
+      offset={offset}
+      ref={ref}
     >
       <Link
         href={step.link || `#${step.name}`}

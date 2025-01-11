@@ -1,5 +1,9 @@
 export const product = [
   {
+    "title": "Inventory Kits",
+    "path": "/commerce-modules/inventory/inventory-kit"
+  },
+  {
     "title": "Get Variant Prices",
     "path": "/commerce-modules/product/guides/price"
   },

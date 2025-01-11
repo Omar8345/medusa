@@ -116,6 +116,10 @@ export const step = [
     "path": "/references/medusa-workflows/steps/updateLineItemsStep"
   },
   {
+    "title": "validateCartPaymentsStep",
+    "path": "/references/medusa-workflows/steps/validateCartPaymentsStep"
+  },
+  {
     "title": "validateCartShippingOptionsStep",
     "path": "/references/medusa-workflows/steps/validateCartShippingOptionsStep"
   },
@@ -796,6 +800,14 @@ export const step = [
     "path": "/references/medusa-workflows/steps/refundPaymentStep"
   },
   {
+    "title": "refundPaymentsStep",
+    "path": "/references/medusa-workflows/steps/refundPaymentsStep"
+  },
+  {
+    "title": "validatePaymentsRefundStep",
+    "path": "/references/medusa-workflows/validatePaymentsRefundStep"
+  },
+  {
     "title": "validateRefundStep",
     "path": "/references/medusa-workflows/validateRefundStep"
   },
@@ -1178,6 +1190,10 @@ export const step = [
   {
     "title": "updateTaxRatesStep",
     "path": "/references/medusa-workflows/steps/updateTaxRatesStep"
+  },
+  {
+    "title": "updateTaxRegionsStep",
+    "path": "/references/medusa-workflows/steps/updateTaxRegionsStep"
   },
   {
     "title": "createUsersStep",

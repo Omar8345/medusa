@@ -100,6 +100,10 @@ export const cart = [
     "path": "/references/medusa-workflows/addToCartWorkflow"
   },
   {
+    "title": "completeCartWorkflow",
+    "path": "/references/medusa-workflows/completeCartWorkflow"
+  },
+  {
     "title": "createCartWorkflow",
     "path": "/references/medusa-workflows/createCartWorkflow"
   },

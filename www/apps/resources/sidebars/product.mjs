@@ -17,6 +17,8 @@ export const productSidebar = [
         type: "category",
         title: "Concepts",
         initialOpen: false,
+        autogenerate_tags: "concept+product",
+        autogenerate_as_ref: true,
         children: [
           {
             type: "link",
@@ -80,46 +82,55 @@ export const productSidebar = [
       },
       {
         type: "category",
-        title: "Workflows",
-        autogenerate_tags: "workflow+product",
-        initialOpen: false,
-        autogenerate_as_ref: true,
-      },
-      {
-        type: "category",
-        title: "Steps",
-        autogenerate_tags: "step+product",
-        initialOpen: false,
-        autogenerate_as_ref: true,
-      },
-      {
-        type: "category",
-        title: "JS SDK",
-        initialOpen: false,
-        description:
-          "The [JS SDK](/js-sdk) allows you to send requests to the Medusa server application from your client applications, such as a storefront or the Medusa Admin dashboard.",
-        children: [
-          {
-            type: "sub-category",
-            title: "Store",
-            autogenerate_tags: "jsSdk+storefront+product",
-            autogenerate_as_ref: true,
-          },
-          {
-            type: "sub-category",
-            title: "Admin",
-            autogenerate_tags: "jsSdk+admin+product",
-            autogenerate_as_ref: true,
-          },
-        ],
-      },
-      {
-        type: "category",
         title: "References",
         initialOpen: false,
         description:
-          "Find references for data models, methods, and more. These are useful for your customizations.",
+          "Find references for tools and resources related to the Product Module, such as data models, methods, and more. These are useful for your customizations.",
         children: [
+          {
+            type: "link",
+            path: "/commerce-modules/product/workflows",
+            title: "Workflows",
+            hideChildren: true,
+            children: [
+              {
+                type: "category",
+                title: "Workflows",
+                autogenerate_tags: "workflow+product",
+                autogenerate_as_ref: true,
+              },
+              {
+                type: "category",
+                title: "Steps",
+                autogenerate_tags: "step+product",
+                autogenerate_as_ref: true,
+              },
+            ],
+          },
+          {
+            type: "link",
+            path: "/commerce-modules/product/js-sdk",
+            title: "JS SDK",
+            hideChildren: true,
+            children: [
+              {
+                type: "sub-category",
+                title: "Store",
+                autogenerate_tags: "jsSdk+storefront+product",
+                description:
+                  "The following methods or properties are used to send requests to Store API Routes related to the Product Module.",
+                autogenerate_as_ref: true,
+              },
+              {
+                type: "sub-category",
+                title: "Admin",
+                autogenerate_tags: "jsSdk+admin+product",
+                description:
+                  "The following methods or properties are used to send requests to Admin API Routes related to the Product Module.",
+                autogenerate_as_ref: true,
+              },
+            ],
+          },
           {
             type: "link",
             path: "/commerce-modules/product/events",

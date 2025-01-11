@@ -100,20 +100,6 @@ export const authSidebar = [
       },
       {
         type: "category",
-        title: "Workflows",
-        autogenerate_tags: "workflow+auth",
-        initialOpen: false,
-        autogenerate_as_ref: true,
-      },
-      {
-        type: "category",
-        title: "Steps",
-        autogenerate_tags: "step+auth",
-        initialOpen: false,
-        autogenerate_as_ref: true,
-      },
-      {
-        type: "category",
         title: "Providers",
         initialOpen: false,
         children: [
@@ -136,20 +122,39 @@ export const authSidebar = [
       },
       {
         type: "category",
-        title: "JS SDK",
-        initialOpen: false,
-        autogenerate_tags: "jsSdk+auth",
-        autogenerate_as_ref: true,
-        description:
-          "The [JS SDK](/js-sdk) allows you to send requests to the Medusa server application from your client applications, such as a storefront or the Medusa Admin dashboard.",
-      },
-      {
-        type: "category",
         title: "References",
         initialOpen: false,
         description:
-          "Find references for data models, methods, and more. These are useful for your customizations.",
+          "Find references for tools and resources related to the Auth Module, such as data models, methods, and more. These are useful for your customizations.",
         children: [
+          {
+            type: "link",
+            path: "/commerce-modules/auth/workflows",
+            title: "Workflows",
+            hideChildren: true,
+            children: [
+              {
+                type: "category",
+                title: "Workflows",
+                autogenerate_tags: "workflow+auth",
+                autogenerate_as_ref: true,
+              },
+              {
+                type: "category",
+                title: "Steps",
+                autogenerate_tags: "step+auth",
+                autogenerate_as_ref: true,
+              },
+            ],
+          },
+          {
+            type: "link",
+            path: "/commerce-modules/auth/js-sdk",
+            title: "JS SDK",
+            hideChildren: true,
+            autogenerate_tags: "jsSdk+auth",
+            autogenerate_as_ref: true,
+          },
           {
             type: "link",
             path: "/commerce-modules/auth/events",

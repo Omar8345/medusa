@@ -106,7 +106,8 @@ export async function loadModules(args: {
     let declaration: any = {}
     let definition: Partial<ModuleDefinition> | undefined = undefined
 
-    if (mod === false) {
+    // TODO: We are keeping mod === false for backward compatibility for now
+    if (mod === false || (isObject(mod) && "disable" in mod && mod.disable)) {
       continue
     }
 

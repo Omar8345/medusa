@@ -30,6 +30,11 @@ export const inventorySidebar = [
           },
           {
             type: "link",
+            path: "/commerce-modules/inventory/inventory-kit",
+            title: "Inventory Kit",
+          },
+          {
+            type: "link",
             path: "/commerce-modules/inventory/links-to-other-modules",
             title: "Links to Modules",
           },
@@ -73,46 +78,55 @@ export const inventorySidebar = [
       },
       {
         type: "category",
-        title: "Workflows",
-        autogenerate_tags: "workflow+inventory",
-        initialOpen: false,
-        autogenerate_as_ref: true,
-      },
-      {
-        type: "category",
-        title: "Steps",
-        autogenerate_tags: "step+inventory",
-        initialOpen: false,
-        autogenerate_as_ref: true,
-      },
-      {
-        type: "category",
-        title: "JS SDK",
-        initialOpen: false,
-        description:
-          "The [JS SDK](/js-sdk) allows you to send requests to the Medusa server application from your client applications, such as a storefront or the Medusa Admin dashboard.",
-        children: [
-          {
-            type: "sub-category",
-            title: "Store",
-            autogenerate_tags: "jsSdk+storefront+inventory",
-            autogenerate_as_ref: true,
-          },
-          {
-            type: "sub-category",
-            title: "Admin",
-            autogenerate_tags: "jsSdk+admin+inventory",
-            autogenerate_as_ref: true,
-          },
-        ],
-      },
-      {
-        type: "category",
         title: "References",
         initialOpen: false,
         description:
-          "Find references for data models, methods, and more. These are useful for your customizations.",
+          "Find references for tools and resources related to the Inventory Module, such as data models, methods, and more. These are useful for your customizations.",
         children: [
+          {
+            type: "link",
+            path: "/commerce-modules/inventory/workflows",
+            title: "Workflows",
+            hideChildren: true,
+            children: [
+              {
+                type: "category",
+                title: "Workflows",
+                autogenerate_tags: "workflow+inventory",
+                autogenerate_as_ref: true,
+              },
+              {
+                type: "category",
+                title: "Steps",
+                autogenerate_tags: "step+inventory",
+                autogenerate_as_ref: true,
+              },
+            ],
+          },
+          {
+            type: "link",
+            path: "/commerce-modules/inventory/js-sdk",
+            title: "JS SDK",
+            hideChildren: true,
+            children: [
+              {
+                type: "sub-category",
+                title: "Store",
+                autogenerate_tags: "jsSdk+storefront+inventory",
+                description:
+                  "The following methods or properties are used to send requests to Store API Routes related to the Inventory Module.",
+                autogenerate_as_ref: true,
+              },
+              {
+                type: "sub-category",
+                title: "Admin",
+                autogenerate_tags: "jsSdk+admin+inventory",
+                description:
+                  "The following methods or properties are used to send requests to Admin API Routes related to the Inventory Module.",
+                autogenerate_as_ref: true,
+              },
+            ],
+          },
           {
             type: "link",
             path: "/commerce-modules/inventory/admin-widget-zones",

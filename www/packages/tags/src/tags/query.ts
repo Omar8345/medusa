@@ -60,6 +60,10 @@ export const query = [
     "path": "/references/medusa-workflows/cancelOrderTransferRequestWorkflow"
   },
   {
+    "title": "cancelOrderWorkflow",
+    "path": "/references/medusa-workflows/cancelOrderWorkflow"
+  },
+  {
     "title": "declineOrderTransferRequestWorkflow",
     "path": "/references/medusa-workflows/declineOrderTransferRequestWorkflow"
   },
@@ -70,6 +74,10 @@ export const query = [
   {
     "title": "processPaymentWorkflow",
     "path": "/references/medusa-workflows/processPaymentWorkflow"
+  },
+  {
+    "title": "refundPaymentsWorkflow",
+    "path": "/references/medusa-workflows/refundPaymentsWorkflow"
   },
   {
     "title": "batchProductVariantsWorkflow",
@@ -86,5 +94,9 @@ export const query = [
   {
     "title": "deleteProductsWorkflow",
     "path": "/references/medusa-workflows/deleteProductsWorkflow"
+  },
+  {
+    "title": "updateStockLocationsWorkflow",
+    "path": "/references/medusa-workflows/updateStockLocationsWorkflow"
   }
 ]

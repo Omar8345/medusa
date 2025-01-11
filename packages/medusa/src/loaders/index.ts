@@ -7,6 +7,7 @@ import {
 import {
   ContainerRegistrationKeys,
   GraphQLSchema,
+  mergePluginModules,
   promiseAll,
 } from "@medusajs/framework/utils"
 import { asValue } from "awilix"
@@ -147,6 +148,8 @@ export default async ({
   )
 
   const plugins = await getResolvedPlugins(rootDirectory, configModule, true)
+  mergePluginModules(configModule, plugins)
+
   const linksSourcePaths = plugins.map((plugin) =>
     join(plugin.resolve, "links")
   )

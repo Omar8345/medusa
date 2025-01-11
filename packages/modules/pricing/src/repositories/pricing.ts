@@ -107,6 +107,7 @@ export class PricingRepository
         min_quantity: "price.min_quantity",
         max_quantity: "price.max_quantity",
         currency_code: "price.currency_code",
+        deleted_at: "price.deleted_at",
         price_set_id: "price.price_set_id",
         rules_count: "price.rules_count",
         price_list_id: "price.price_list_id",
@@ -268,7 +269,7 @@ export class PricingRepository
       .join(priceSubQueryKnex.as("price"), "price.price_set_id", "ps.id")
       .whereIn("ps.id", pricingFilters.id)
       .andWhere("price.currency_code", "=", currencyCode)
-
+      .whereNull("price.deleted_at")
       .orderBy([
         { column: "price.has_price_list", order: "asc" },
         { column: "all_rules_count", order: "desc" },

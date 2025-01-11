@@ -2,6 +2,7 @@ import { join } from "path"
 import {
   ContainerRegistrationKeys,
   MedusaError,
+  mergePluginModules,
 } from "@medusajs/framework/utils"
 import { LinkLoader } from "@medusajs/framework/links"
 import { logger } from "@medusajs/framework/logger"
@@ -27,6 +28,8 @@ const main = async function ({ directory, modules }) {
     )
 
     const plugins = await getResolvedPlugins(directory, configModule, true)
+    mergePluginModules(configModule, plugins)
+
     const linksSourcePaths = plugins.map((plugin) =>
       join(plugin.resolve, "links")
     )

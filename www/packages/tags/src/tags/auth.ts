@@ -16,7 +16,7 @@ export const auth = [
     "path": "/storefront-development/customers/reset-password"
   },
   {
-    "title": "Retrieve Customer in Storefront",
+    "title": "Retrieve Logged-In Customer in Storefront",
     "path": "/storefront-development/customers/retrieve"
   },
   {

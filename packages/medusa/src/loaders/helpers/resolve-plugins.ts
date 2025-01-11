@@ -4,6 +4,7 @@ import { isString, readDir } from "@medusajs/framework/utils"
 import { ConfigModule, PluginDetails } from "@medusajs/framework/types"
 
 const MEDUSA_APP_SOURCE_PATH = "src"
+const MEDUSA_PLUGIN_SOURCE_PATH = ".medusa/server/src"
 export const MEDUSA_PROJECT_NAME = "project-plugin"
 
 function createPluginId(name: string): string {
@@ -57,11 +58,8 @@ async function resolvePlugin(
   const resolvedPath = path.dirname(pkgJSON.path)
 
   const name = pkgJSON.contents.name || pluginPath
-  const srcDir = pkgJSON.contents.main
-    ? path.dirname(pkgJSON.contents.main)
-    : "build"
 
-  const resolve = path.join(resolvedPath, srcDir)
+  const resolve = path.join(resolvedPath, MEDUSA_PLUGIN_SOURCE_PATH)
   const modules = await readDir(path.join(resolve, "modules"), {
     ignoreMissing: true,
   })
@@ -75,7 +73,7 @@ async function resolvePlugin(
     version: pkgJSON.contents.version || "0.0.0",
     modules: modules.map((mod) => {
       return {
-        resolve: `${pluginPath}/${srcDir}/modules/${mod.name}`,
+        resolve: `${pluginPath}/${MEDUSA_PLUGIN_SOURCE_PATH}/modules/${mod.name}`,
         options: pluginOptions,
       }
     }),

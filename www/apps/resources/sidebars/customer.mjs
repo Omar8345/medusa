@@ -75,46 +75,55 @@ export const customerSidebar = [
       },
       {
         type: "category",
-        title: "Workflows",
-        autogenerate_tags: "workflow+customer",
-        initialOpen: false,
-        autogenerate_as_ref: true,
-      },
-      {
-        type: "category",
-        title: "Steps",
-        autogenerate_tags: "step+customer",
-        initialOpen: false,
-        autogenerate_as_ref: true,
-      },
-      {
-        type: "category",
-        title: "JS SDK",
-        initialOpen: false,
-        description:
-          "The [JS SDK](/js-sdk) allows you to send requests to the Medusa server application from your client applications, such as a storefront or the Medusa Admin dashboard.",
-        children: [
-          {
-            type: "sub-category",
-            title: "Store",
-            autogenerate_tags: "jsSdk+storefront+customer",
-            autogenerate_as_ref: true,
-          },
-          {
-            type: "sub-category",
-            title: "Admin",
-            autogenerate_tags: "jsSdk+admin+customer",
-            autogenerate_as_ref: true,
-          },
-        ],
-      },
-      {
-        type: "category",
         title: "References",
         initialOpen: false,
         description:
-          "Find references for data models, methods, and more. These are useful for your customizations.",
+          "Find references for tools and resources related to the Customer Module, such as data models, methods, and more. These are useful for your customizations.",
         children: [
+          {
+            type: "link",
+            path: "/commerce-modules/customer/workflows",
+            title: "Workflows",
+            hideChildren: true,
+            children: [
+              {
+                type: "category",
+                title: "Workflows",
+                autogenerate_tags: "workflow+customer",
+                autogenerate_as_ref: true,
+              },
+              {
+                type: "category",
+                title: "Steps",
+                autogenerate_tags: "step+customer",
+                autogenerate_as_ref: true,
+              },
+            ],
+          },
+          {
+            type: "link",
+            path: "/commerce-modules/customer/js-sdk",
+            title: "JS SDK",
+            hideChildren: true,
+            children: [
+              {
+                type: "sub-category",
+                title: "Store",
+                autogenerate_tags: "jsSdk+storefront+customer",
+                description:
+                  "The following methods or properties are used to send requests to Store API Routes related to the Customer Module.",
+                autogenerate_as_ref: true,
+              },
+              {
+                type: "sub-category",
+                title: "Admin",
+                autogenerate_tags: "jsSdk+admin+customer",
+                description:
+                  "The following methods or properties are used to send requests to Admin API Routes related to the Customer Module.",
+                autogenerate_as_ref: true,
+              },
+            ],
+          },
           {
             type: "link",
             path: "/commerce-modules/customer/events",

@@ -41,6 +41,7 @@ const TypeListItem = ({
   elementKey,
   sectionTitle,
   referenceType = "method",
+  openedLevel = 0,
 }: TypeListItemProps) => {
   const { isBrowser } = useIsBrowser()
   const pathname = usePathname()
@@ -249,6 +250,7 @@ const TypeListItem = ({
           className={clsx(getItemClassNames())}
           heightAnimation={true}
           id={typeId ? typeId : ""}
+          openInitial={openedLevel >= level}
         >
           {typeItem.children && (
             <TypeListItems

@@ -1,5 +1,9 @@
 export const logger = [
   {
+    "title": "completeCartWorkflow",
+    "path": "/references/medusa-workflows/completeCartWorkflow"
+  },
+  {
     "title": "createCartWorkflow",
     "path": "/references/medusa-workflows/createCartWorkflow"
   },
@@ -24,8 +28,16 @@ export const logger = [
     "path": "/references/medusa-workflows/steps/cancelPaymentStep"
   },
   {
+    "title": "refundPaymentsStep",
+    "path": "/references/medusa-workflows/steps/refundPaymentsStep"
+  },
+  {
     "title": "processPaymentWorkflow",
     "path": "/references/medusa-workflows/processPaymentWorkflow"
+  },
+  {
+    "title": "refundPaymentsWorkflow",
+    "path": "/references/medusa-workflows/refundPaymentsWorkflow"
   },
   {
     "title": "deletePaymentSessionsStep",

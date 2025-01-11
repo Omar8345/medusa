@@ -15,6 +15,7 @@ import {
 import { InteractiveSidebarItem, SidebarItem, SidebarItemLink } from "types"
 import slugify from "slugify"
 import { MDXComponents } from "../.."
+import { ChevronDoubleRight } from "@medusajs/icons"
 
 type HeadingComponent = (
   props: React.HTMLAttributes<HTMLHeadingElement>
@@ -30,6 +31,7 @@ export type UseChildDocsProps = {
   titleLevel?: number
   childLevel?: number
   itemsPerRow?: number
+  defaultItemsPerRow?: number
 }
 
 export const useChildDocs = ({
@@ -42,6 +44,7 @@ export const useChildDocs = ({
   titleLevel = 2,
   childLevel = 1,
   itemsPerRow,
+  defaultItemsPerRow,
 }: UseChildDocsProps) => {
   const { currentItems, activeItem } = useSidebar()
   const TitleHeaderComponent = useCallback(
@@ -178,10 +181,13 @@ export const useChildDocs = ({
             return {
               title: childItem.title,
               href,
+              rightIcon:
+                childItem.type === "ref" ? ChevronDoubleRight : undefined,
             }
           }) || []
         }
         itemsPerRow={itemsPerRow}
+        defaultItemsPerRow={defaultItemsPerRow}
       />
     )
   }
@@ -227,16 +233,26 @@ export const useChildDocs = ({
                       title: childItem.title,
                       href: isSidebarItemLink(childItem) ? childItem.path : "",
                       text: childItem.description,
+                      rightIcon:
+                        childItem.type === "ref"
+                          ? ChevronDoubleRight
+                          : undefined,
                     })) || []
                   }
                   itemsPerRow={itemsPerRow}
+                  defaultItemsPerRow={defaultItemsPerRow}
                 />
               )}
               {key !== filteredItems.length - 1 && headerLevel === 2 && <Hr />}
             </>
           )}
           {!HeadingComponent && isSidebarItemLink(item) && (
-            <Card title={item.title} href={item.path} text={item.description} />
+            <Card
+              title={item.title}
+              href={item.path}
+              text={item.description}
+              rightIcon={item.type === "ref" ? ChevronDoubleRight : undefined}
+            />
           )}
         </React.Fragment>
       )

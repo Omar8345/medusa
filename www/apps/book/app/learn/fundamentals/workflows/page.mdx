@@ -154,14 +154,14 @@ To execute the workflow, invoke it passing the [Medusa container](../medusa-cont
   </CodeTab>
   <CodeTab label="Subscriber" value="subscriber">
     
-    ```ts title="src/subscribers/customer-created.ts" highlights={[["11"], ["12"], ["13"], ["14"], ["15"], ["16"]]} collapsibleLines="1-6" expandButtonLabel="Show Imports"
+    ```ts title="src/subscribers/order-placed.ts" highlights={[["11"], ["12"], ["13"], ["14"], ["15"], ["16"]]} collapsibleLines="1-6" expandButtonLabel="Show Imports"
     import {
       type SubscriberConfig,
       type SubscriberArgs,
     } from "@medusajs/framework"
     import myWorkflow from "../workflows/hello-world"
 
-    export default async function handleCustomerCreate({
+    export default async function handleOrderPlaced({
       event: { data },
       container,
     }: SubscriberArgs<{ id: string }>) {

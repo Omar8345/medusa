@@ -16,6 +16,10 @@ export const remoteQuery = [
     "path": "/references/medusa-workflows/addToCartWorkflow"
   },
   {
+    "title": "completeCartWorkflow",
+    "path": "/references/medusa-workflows/completeCartWorkflow"
+  },
+  {
     "title": "createCartWorkflow",
     "path": "/references/medusa-workflows/createCartWorkflow"
   },
@@ -146,10 +150,6 @@ export const remoteQuery = [
   {
     "title": "cancelOrderFulfillmentWorkflow",
     "path": "/references/medusa-workflows/cancelOrderFulfillmentWorkflow"
-  },
-  {
-    "title": "cancelOrderWorkflow",
-    "path": "/references/medusa-workflows/cancelOrderWorkflow"
   },
   {
     "title": "cancelReturnReceiveWorkflow",

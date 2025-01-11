@@ -16,6 +16,7 @@ export const CardDefaultLayout = ({
   iconClassName,
   children,
   badge,
+  rightIcon: RightIconComponent,
 }: CardProps) => {
   const isExternal = useIsExternalLink({ href })
 
@@ -61,7 +62,9 @@ export const CardDefaultLayout = ({
       </div>
       {badge && <Badge {...badge} />}
       <span className="text-medusa-fg-subtle">
-        {isExternal ? <ArrowUpRightOnBox /> : <TriangleRightMini />}
+        {RightIconComponent && <RightIconComponent />}
+        {!RightIconComponent && isExternal && <ArrowUpRightOnBox />}
+        {!RightIconComponent && !isExternal && <TriangleRightMini />}
       </span>
 
       {href && (

@@ -88,6 +88,10 @@ export const tax = [
     "path": "/references/medusa-workflows/steps/updateTaxRatesStep"
   },
   {
+    "title": "updateTaxRegionsStep",
+    "path": "/references/medusa-workflows/steps/updateTaxRegionsStep"
+  },
+  {
     "title": "createTaxRateRulesWorkflow",
     "path": "/references/medusa-workflows/createTaxRateRulesWorkflow"
   },
@@ -118,6 +122,10 @@ export const tax = [
   {
     "title": "updateTaxRatesWorkflow",
     "path": "/references/medusa-workflows/updateTaxRatesWorkflow"
+  },
+  {
+    "title": "updateTaxRegionsWorkflow",
+    "path": "/references/medusa-workflows/updateTaxRegionsWorkflow"
   },
   {
     "title": "taxRate",

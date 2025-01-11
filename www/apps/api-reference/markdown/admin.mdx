@@ -200,7 +200,7 @@ When using the JS SDK, you only need to specify the API key token in the [config
 ```js
 fetch(`{backend_url}/admin/products`, {
   headers: {
-    Authorization: `Basic ${window.btoa(`:${api_key_token}`)}`,
+    Authorization: `Basic ${window.btoa(`${api_key_token}:`)}`,
   },
 })
 ```
@@ -212,7 +212,7 @@ fetch(`{backend_url}/admin/products`, {
 fetch(`{backend_url}/admin/products`, {
   headers: {
     Authorization: `Basic ${
-      Buffer.from(`:${api_key_token}`).toString("base64")
+      Buffer.from(`${api_key_token}:`).toString("base64")
     }`,
   },
 })

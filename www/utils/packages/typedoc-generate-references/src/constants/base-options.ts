@@ -14,7 +14,6 @@ export const baseOptions: Partial<TypeDocOptions> = {
   excludeInternal: true,
   excludeExternals: true,
   excludeReferences: true,
-  disableSources: true,
   sort: ["source-order"],
   validation: {
     notExported: false,

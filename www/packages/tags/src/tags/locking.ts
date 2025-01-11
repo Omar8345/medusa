@@ -4,6 +4,10 @@ export const locking = [
     "path": "/references/medusa-workflows/steps/reserveInventoryStep"
   },
   {
+    "title": "completeCartWorkflow",
+    "path": "/references/medusa-workflows/completeCartWorkflow"
+  },
+  {
     "title": "confirmClaimRequestWorkflow",
     "path": "/references/medusa-workflows/confirmClaimRequestWorkflow"
   },

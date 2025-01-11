@@ -945,15 +945,20 @@ type ExternalModuleDeclarationOverride = ExternalModuleDeclaration & {
 }
 
 /**
+ * Modules accepted by the defineConfig function
+ */
+export type InputConfigModules = Partial<
+  InternalModuleDeclarationOverride | ExternalModuleDeclarationOverride
+>[]
+
+/**
  * The configuration accepted by the "defineConfig" helper
  */
 export type InputConfig = Partial<
   Omit<ConfigModule, "admin" | "modules"> & {
     admin: Partial<ConfigModule["admin"]>
     modules:
-      | Partial<
-          InternalModuleDeclarationOverride | ExternalModuleDeclarationOverride
-        >[]
+      | InputConfigModules
       /**
        * @deprecated use the array instead
        */
@@ -967,5 +972,5 @@ export type PluginDetails = {
   id: string
   options: Record<string, unknown>
   version: string
-  modules?: InputConfig["modules"]
+  modules?: InputConfigModules
 }

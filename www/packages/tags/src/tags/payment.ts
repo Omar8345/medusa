@@ -20,6 +20,10 @@ export const payment = [
     "path": "/references/medusa-workflows/steps/createPaymentCollectionsStep"
   },
   {
+    "title": "completeCartWorkflow",
+    "path": "/references/medusa-workflows/completeCartWorkflow"
+  },
+  {
     "title": "createCartWorkflow",
     "path": "/references/medusa-workflows/createCartWorkflow"
   },
@@ -60,6 +64,10 @@ export const payment = [
     "path": "/references/medusa-workflows/steps/refundPaymentStep"
   },
   {
+    "title": "refundPaymentsStep",
+    "path": "/references/medusa-workflows/steps/refundPaymentsStep"
+  },
+  {
     "title": "capturePaymentWorkflow",
     "path": "/references/medusa-workflows/capturePaymentWorkflow"
   },
@@ -70,6 +78,10 @@ export const payment = [
   {
     "title": "refundPaymentWorkflow",
     "path": "/references/medusa-workflows/refundPaymentWorkflow"
+  },
+  {
+    "title": "refundPaymentsWorkflow",
+    "path": "/references/medusa-workflows/refundPaymentsWorkflow"
   },
   {
     "title": "createPaymentSessionStep",

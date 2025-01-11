@@ -1,6 +1,7 @@
 import {
   ConfigModule,
   InputConfig,
+  InputConfigModules,
   InternalModuleDeclaration,
 } from "@medusajs/types"
 import {
@@ -108,14 +109,79 @@ export function defineConfig(config: InputConfig = {}): ConfigModule {
 }
 
 /**
- * The user API allow to use array of modules configuration. This method manage the loading of the user modules
- * along side the default modules and re map them to an object.
+ * Transforms an array of modules into an object. The last module will
+ * take precedence in case of duplicate modules
+ */
+export function transformModules(
+  modules: InputConfigModules
+): Exclude<ConfigModule["modules"], undefined> {
+  const remappedModules = modules.reduce((acc, moduleConfig) => {
+    if (moduleConfig.scope === "external" && !moduleConfig.key) {
+      throw new Error(
+        "External modules configuration must have a 'key'. Please provide a key for the module."
+      )
+    }
+
+    if ("disable" in moduleConfig && "key" in moduleConfig) {
+      acc[moduleConfig.key!] = moduleConfig
+    }
+
+    // TODO: handle external modules later
+    let serviceName: string =
+      "key" in moduleConfig && moduleConfig.key ? moduleConfig.key : ""
+    delete moduleConfig.key
+
+    if (!serviceName && "resolve" in moduleConfig) {
+      if (
+        isString(moduleConfig.resolve!) &&
+        REVERSED_MODULE_PACKAGE_NAMES[moduleConfig.resolve!]
+      ) {
+        serviceName = REVERSED_MODULE_PACKAGE_NAMES[moduleConfig.resolve!]
+        acc[serviceName] = moduleConfig
+        return acc
+      }
+
+      let resolution = isString(moduleConfig.resolve!)
+        ? normalizeImportPathWithSource(moduleConfig.resolve as string)
+        : moduleConfig.resolve
+
+      const moduleExport = isString(resolution)
+        ? require(resolution)
+        : resolution
+
+      const defaultExport = resolveExports(moduleExport).default
+
+      const joinerConfig =
+        typeof defaultExport.service.prototype.__joinerConfig === "function"
+          ? defaultExport.service.prototype.__joinerConfig() ?? {}
+          : defaultExport.service.prototype.__joinerConfig ?? {}
+
+      serviceName = joinerConfig.serviceName
+
+      if (!serviceName) {
+        throw new Error(
+          `Module ${moduleConfig.resolve} doesn't have a serviceName. Please provide a 'key' for the module or check the service joiner config.`
+        )
+      }
+    }
+
+    acc[serviceName] = moduleConfig
+
+    return acc
+  }, {})
+
+  return remappedModules as Exclude<ConfigModule["modules"], undefined>
+}
+
+/**
+ * The user API allow to use array of modules configuration. This method manage the loading of the
+ * user modules along side the default modules and re map them to an object.
  *
  * @param configModules
  */
 function resolveModules(
   configModules: InputConfig["modules"]
-): ConfigModule["modules"] {
+): Exclude<ConfigModule["modules"], undefined> {
   /**
    * The default set of modules to always use. The end user can swap
    * the modules by providing an alternate implementation via their
@@ -225,67 +291,5 @@ function resolveModules(
     }
   }
 
-  const remappedModules = modules.reduce((acc, moduleConfig) => {
-    if (moduleConfig.scope === "external" && !moduleConfig.key) {
-      throw new Error(
-        "External modules configuration must have a 'key'. Please provide a key for the module."
-      )
-    }
-
-    if ("disable" in moduleConfig && "key" in moduleConfig) {
-      acc[moduleConfig.key!] = moduleConfig
-    }
-
-    // TODO: handle external modules later
-    let serviceName: string =
-      "key" in moduleConfig && moduleConfig.key ? moduleConfig.key : ""
-    delete moduleConfig.key
-
-    if (!serviceName && "resolve" in moduleConfig) {
-      if (
-        isString(moduleConfig.resolve!) &&
-        REVERSED_MODULE_PACKAGE_NAMES[moduleConfig.resolve!]
-      ) {
-        serviceName = REVERSED_MODULE_PACKAGE_NAMES[moduleConfig.resolve!]
-        acc[serviceName] = moduleConfig
-        return acc
-      }
-
-      let resolution = isString(moduleConfig.resolve!)
-        ? normalizeImportPathWithSource(moduleConfig.resolve as string)
-        : moduleConfig.resolve
-
-      const moduleExport = isString(resolution)
-        ? require(resolution)
-        : resolution
-
-      const defaultExport = resolveExports(moduleExport).default
-
-      const joinerConfig =
-        typeof defaultExport.service.prototype.__joinerConfig === "function"
-          ? defaultExport.service.prototype.__joinerConfig() ?? {}
-          : defaultExport.service.prototype.__joinerConfig ?? {}
-
-      serviceName = joinerConfig.serviceName
-
-      if (!serviceName) {
-        throw new Error(
-          `Module ${moduleConfig.resolve} doesn't have a serviceName. Please provide a 'key' for the module or check the service joiner config.`
-        )
-      }
-    }
-
-    acc[serviceName] = moduleConfig
-
-    return acc
-  }, {})
-
-  // Remove any modules set to false
-  Object.keys(remappedModules).forEach((key) => {
-    if (remappedModules[key].disable) {
-      delete remappedModules[key]
-    }
-  })
-
-  return remappedModules as ConfigModule["modules"]
+  return transformModules(modules)
 }

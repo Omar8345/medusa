@@ -1,5 +1,9 @@
 export const stockLocation = [
   {
+    "title": "Inventory Kits",
+    "path": "/commerce-modules/inventory/inventory-kit"
+  },
+  {
     "title": "createStockLocations",
     "path": "/references/medusa-workflows/steps/createStockLocations"
   },

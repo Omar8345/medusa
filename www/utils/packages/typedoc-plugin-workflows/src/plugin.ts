@@ -24,6 +24,7 @@ import {
   getUniqueStrArray,
 } from "utils"
 import { StepType } from "./types.js"
+import Examples from "./utils/examples.js"
 
 type ParsedStep = {
   stepReflection: DeclarationReflection
@@ -38,6 +39,7 @@ type ParsedStep = {
 class WorkflowsPlugin {
   protected app: Application
   protected helper: Helper
+  protected examplesHelper: Examples
   protected workflowsTagsMap: Map<string, string[]>
   protected addTagsAfterParsing: {
     [k: string]: {
@@ -49,6 +51,7 @@ class WorkflowsPlugin {
   constructor(app: Application) {
     this.app = app
     this.helper = new Helper()
+    this.examplesHelper = new Examples()
     this.workflowsTagsMap = new Map()
     this.addTagsAfterParsing = {}
 
@@ -511,6 +514,7 @@ class WorkflowsPlugin {
 
     if (parameter.type.name === "__object") {
       parameter.type.name = "object"
+      parameter.type.qualifiedName = "object"
     }
 
     signatureReflection.parameters = []
@@ -525,7 +529,7 @@ class WorkflowsPlugin {
       new CommentTag(`@example`, [
         {
           kind: "code",
-          text: this.helper.generateHookExample({
+          text: this.examplesHelper.generateHookExample({
             hookName: stepId,
             workflowName,
             parameter,

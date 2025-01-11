@@ -34,7 +34,10 @@ export default function (theme: MarkdownTheme) {
       const formattedComponent = formatParameterComponent({
         parameterComponent,
         componentItems: input,
-        extraProps: parameterComponentExtraProps,
+        extraProps: {
+          ...parameterComponentExtraProps,
+          openedLevel: 1,
+        },
         sectionTitle: options.hash.sectionTitle,
       })
 

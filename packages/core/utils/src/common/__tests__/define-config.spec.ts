@@ -800,7 +800,7 @@ describe("defineConfig", function () {
     `)
   })
 
-  it("should not include disabled modules", function () {
+  it("should include disabled modules", function () {
     expect(
       defineConfig({
         projectConfig: {
@@ -836,6 +836,9 @@ describe("defineConfig", function () {
           },
           "cache": {
             "resolve": "@medusajs/medusa/cache-inmemory",
+          },
+          "cart": {
+            "disable": true,
           },
           "currency": {
             "resolve": "@medusajs/medusa/currency",

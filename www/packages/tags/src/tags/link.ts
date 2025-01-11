@@ -1,4 +1,4 @@
-export const remoteLink = [
+export const link = [
   {
     "title": "linkSalesChannelsToApiKeyStep",
     "path": "/references/medusa-workflows/steps/linkSalesChannelsToApiKeyStep"
@@ -14,6 +14,10 @@ export const remoteLink = [
   {
     "title": "updateCartPromotionsStep",
     "path": "/references/medusa-workflows/steps/updateCartPromotionsStep"
+  },
+  {
+    "title": "completeCartWorkflow",
+    "path": "/references/medusa-workflows/completeCartWorkflow"
   },
   {
     "title": "createCartWorkflow",

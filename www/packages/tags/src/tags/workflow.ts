@@ -628,6 +628,10 @@ export const workflow = [
     "path": "/references/medusa-workflows/refundPaymentWorkflow"
   },
   {
+    "title": "refundPaymentsWorkflow",
+    "path": "/references/medusa-workflows/refundPaymentsWorkflow"
+  },
+  {
     "title": "createPaymentSessionsWorkflow",
     "path": "/references/medusa-workflows/createPaymentSessionsWorkflow"
   },

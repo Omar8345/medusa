@@ -33,7 +33,7 @@ describe("getResolvedPlugins | relative paths", () => {
 
     expect(plugins).toEqual([
       {
-        resolve: path.join(fs.basePath, "./plugins/dummy/build"),
+        resolve: path.join(fs.basePath, "./plugins/dummy/.medusa/server/src"),
         name: "my-dummy-plugin",
         id: "my-dummy-plugin",
         options: { apiKey: "asecret" },
@@ -48,7 +48,10 @@ describe("getResolvedPlugins | relative paths", () => {
       name: "my-dummy-plugin",
       version: "1.0.0",
     })
-    await fs.create("plugins/dummy/build/modules/blog/index.js", ``)
+    await fs.create(
+      "plugins/dummy/.medusa/server/src/modules/blog/index.js",
+      ``
+    )
 
     const plugins = await getResolvedPlugins(
       fs.basePath,
@@ -67,7 +70,7 @@ describe("getResolvedPlugins | relative paths", () => {
 
     expect(plugins).toEqual([
       {
-        resolve: path.join(fs.basePath, "./plugins/dummy/build"),
+        resolve: path.join(fs.basePath, "./plugins/dummy/.medusa/server/src"),
         name: "my-dummy-plugin",
         id: "my-dummy-plugin",
         options: { apiKey: "asecret" },
@@ -77,7 +80,7 @@ describe("getResolvedPlugins | relative paths", () => {
             options: {
               apiKey: "asecret",
             },
-            resolve: "./plugins/dummy/build/modules/blog",
+            resolve: "./plugins/dummy/.medusa/server/src/modules/blog",
           },
         ],
       },
@@ -132,7 +135,10 @@ describe("getResolvedPlugins | package reference", () => {
 
     expect(plugins).toEqual([
       {
-        resolve: path.join(fs.basePath, "node_modules/@plugins/dummy/build"),
+        resolve: path.join(
+          fs.basePath,
+          "node_modules/@plugins/dummy/.medusa/server/src"
+        ),
         name: "my-dummy-plugin",
         id: "my-dummy-plugin",
         options: { apiKey: "asecret" },
@@ -149,7 +155,7 @@ describe("getResolvedPlugins | package reference", () => {
       version: "1.0.0",
     })
     await fs.create(
-      "node_modules/@plugins/dummy/build/modules/blog/index.js",
+      "node_modules/@plugins/dummy/.medusa/server/src/modules/blog/index.js",
       ``
     )
 
@@ -170,7 +176,10 @@ describe("getResolvedPlugins | package reference", () => {
 
     expect(plugins).toEqual([
       {
-        resolve: path.join(fs.basePath, "node_modules/@plugins/dummy/build"),
+        resolve: path.join(
+          fs.basePath,
+          "node_modules/@plugins/dummy/.medusa/server/src"
+        ),
         name: "my-dummy-plugin",
         id: "my-dummy-plugin",
         options: { apiKey: "asecret" },
@@ -180,7 +189,7 @@ describe("getResolvedPlugins | package reference", () => {
             options: {
               apiKey: "asecret",
             },
-            resolve: "@plugins/dummy/build/modules/blog",
+            resolve: "@plugins/dummy/.medusa/server/src/modules/blog",
           },
         ],
       },
