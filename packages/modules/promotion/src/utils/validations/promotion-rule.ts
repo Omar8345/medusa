@@ -5,6 +5,7 @@ import {
 } from "@medusajs/framework/types"
 import {
   ApplicationMethodTargetType,
+  MathBN,
   MedusaError,
   PromotionRuleOperator,
   isPresent,
@@ -109,7 +110,7 @@ function fetchRuleAttributeForContext(
 export function evaluateRuleValueCondition(
   ruleValues: string[],
   operator: string,
-  ruleValuesToCheck: string[] | string
+  ruleValuesToCheck: (string | number)[] | (string | number)
 ) {
   if (!Array.isArray(ruleValuesToCheck)) {
     ruleValuesToCheck = [ruleValuesToCheck]
@@ -119,29 +120,37 @@ export function evaluateRuleValueCondition(
     return false
   }
 
-  return ruleValuesToCheck.every((ruleValueToCheck: string) => {
+  return ruleValuesToCheck.every((ruleValueToCheck: string | number) => {
     if (operator === "in" || operator === "eq") {
-      return ruleValues.some((ruleValue) => ruleValue === ruleValueToCheck)
+      return ruleValues.some((ruleValue) => ruleValue === `${ruleValueToCheck}`)
     }
 
     if (operator === "ne") {
-      return ruleValues.some((ruleValue) => ruleValue !== ruleValueToCheck)
+      return ruleValues.some((ruleValue) => ruleValue !== `${ruleValueToCheck}`)
     }
 
     if (operator === "gt") {
-      return ruleValues.some((ruleValue) => ruleValue > ruleValueToCheck)
+      return ruleValues.some((ruleValue) =>
+        MathBN.convert(ruleValueToCheck).gt(MathBN.convert(ruleValue))
+      )
     }
 
     if (operator === "gte") {
-      return ruleValues.some((ruleValue) => ruleValue >= ruleValueToCheck)
+      return ruleValues.some((ruleValue) =>
+        MathBN.convert(ruleValueToCheck).gte(MathBN.convert(ruleValue))
+      )
     }
 
     if (operator === "lt") {
-      return ruleValues.some((ruleValue) => ruleValue < ruleValueToCheck)
+      return ruleValues.some((ruleValue) =>
+        MathBN.convert(ruleValueToCheck).lt(MathBN.convert(ruleValue))
+      )
     }
 
     if (operator === "lte") {
-      return ruleValues.some((ruleValue) => ruleValue <= ruleValueToCheck)
+      return ruleValues.some((ruleValue) =>
+        MathBN.convert(ruleValueToCheck).lte(MathBN.convert(ruleValue))
+      )
     }
 
     return false

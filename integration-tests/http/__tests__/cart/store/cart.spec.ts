@@ -3,7 +3,6 @@ import {
   Modules,
   PriceListStatus,
   PriceListType,
-  ProductStatus,
   PromotionRuleOperator,
   PromotionType,
 } from "@medusajs/utils"
@@ -14,6 +13,7 @@ import {
 } from "../../../../helpers/create-admin-user"
 import { setupTaxStructure } from "../../../../modules/__tests__/fixtures"
 import { createAuthenticatedCustomer } from "../../../../modules/helpers/create-authenticated-customer"
+import { medusaTshirtProduct } from "../../../__fixtures__/product"
 
 jest.setTimeout(100000)
 
@@ -27,70 +27,6 @@ const shippingAddressData = {
   country_code: "US",
   province: "CA",
   postal_code: "94016",
-}
-
-const productData = {
-  title: "Medusa T-Shirt",
-  handle: "t-shirt",
-  status: ProductStatus.PUBLISHED,
-  options: [
-    {
-      title: "Size",
-      values: ["S"],
-    },
-    {
-      title: "Color",
-      values: ["Black", "White"],
-    },
-  ],
-  variants: [
-    {
-      title: "S / Black",
-      sku: "SHIRT-S-BLACK",
-      options: {
-        Size: "S",
-        Color: "Black",
-      },
-      manage_inventory: false,
-      prices: [
-        {
-          amount: 1500,
-          currency_code: "usd",
-        },
-        {
-          amount: 1500,
-          currency_code: "eur",
-        },
-        {
-          amount: 1300,
-          currency_code: "dkk",
-        },
-      ],
-    },
-    {
-      title: "S / White",
-      sku: "SHIRT-S-WHITE",
-      options: {
-        Size: "S",
-        Color: "White",
-      },
-      manage_inventory: false,
-      prices: [
-        {
-          amount: 1500,
-          currency_code: "usd",
-        },
-        {
-          amount: 1500,
-          currency_code: "eur",
-        },
-        {
-          amount: 1300,
-          currency_code: "dkk",
-        },
-      ],
-    },
-  ],
 }
 
 medusaIntegrationTestRunner({
@@ -149,8 +85,9 @@ medusaIntegrationTestRunner({
           )
         ).data.region
 
-        product = (await api.post("/admin/products", productData, adminHeaders))
-          .data.product
+        product = (
+          await api.post("/admin/products", medusaTshirtProduct, adminHeaders)
+        ).data.product
 
         salesChannel = (
           await api.post(
