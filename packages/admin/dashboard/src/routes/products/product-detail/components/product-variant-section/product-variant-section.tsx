@@ -38,12 +38,20 @@ export const ProductVariantSection = ({
 }: ProductVariantSectionProps) => {
   const { t } = useTranslation()
 
-  const { q, order, offset, created_at, updated_at } = useQueryParams([
-    "offset",
+  const {
+    q,
+    order,
+    offset,
+    allow_backorder,
+    manage_inventory,
+    created_at,
+    updated_at,
+  } = useQueryParams([
     "q",
+    "order",
+    "offset",
     "manage_inventory",
     "allow_backorder",
-    "order",
     "created_at",
     "updated_at",
   ])
@@ -59,6 +67,12 @@ export const ProductVariantSection = ({
       order,
       offset: offset ? parseInt(offset) : undefined,
       limit: PAGE_SIZE,
+      allow_backorder: allow_backorder
+        ? JSON.parse(allow_backorder)
+        : undefined,
+      manage_inventory: manage_inventory
+        ? JSON.parse(manage_inventory)
+        : undefined,
       created_at: created_at ? JSON.parse(created_at) : undefined,
       updated_at: updated_at ? JSON.parse(updated_at) : undefined,
       fields: "*inventory_items.inventory.location_levels,+inventory_quantity",
@@ -83,7 +97,17 @@ export const ProductVariantSection = ({
         rowHref={(row) => `/products/${product.id}/variants/${row.id}`}
         pageSize={PAGE_SIZE}
         isLoading={isPending}
-        heading={t("products.variants")}
+        heading={t("products.variants.header")}
+        emptyState={{
+          empty: {
+            heading: t("products.variants.empty.heading"),
+            description: t("products.variants.empty.description"),
+          },
+          filtered: {
+            heading: t("products.variants.filtered.heading"),
+            description: t("products.variants.filtered.description"),
+          },
+        }}
         action={{
           label: t("actions.create"),
           to: `variants/create`,
@@ -97,15 +121,6 @@ export const ProductVariantSection = ({
                   to: `prices`,
                   icon: <PencilSquare />,
                 },
-                {
-                  label: t("inventory.stock.action"),
-                  to: `stock`,
-                  icon: <Buildings />,
-                },
-              ],
-            },
-            {
-              actions: [
                 {
                   label: t("inventory.stock.action"),
                   to: `stock`,
@@ -245,6 +260,8 @@ const useColumns = (product: HttpTypes.AdminProduct) => {
         }
       }
 
+      console.log([mainActions, secondaryActions])
+
       return [mainActions, secondaryActions]
     },
     [handleDelete, navigate, t]
@@ -325,7 +342,11 @@ const useColumns = (product: HttpTypes.AdminProduct) => {
         },
       }),
       columnHelper.action({
-        actions: getActions,
+        actions: (ctx) => {
+          const [mainActions, secondaryActions] = getActions(ctx)
+
+          return [mainActions, secondaryActions]
+        },
       }),
     ]
   }, [t, optionColumns, getActions, getInventory])
@@ -341,6 +362,22 @@ const useFilters = () => {
 
   return useMemo(() => {
     return [
+      filterHelper.accessor("allow_backorder", {
+        type: "radio",
+        label: t("fields.allowBackorder"),
+        options: [
+          { label: t("filters.radio.yes"), value: "true" },
+          { label: t("filters.radio.no"), value: "false" },
+        ],
+      }),
+      filterHelper.accessor("manage_inventory", {
+        type: "radio",
+        label: t("fields.manageInventory"),
+        options: [
+          { label: t("filters.radio.yes"), value: "true" },
+          { label: t("filters.radio.no"), value: "false" },
+        ],
+      }),
       filterHelper.accessor("created_at", {
         type: "date",
         label: t("fields.createdAt"),

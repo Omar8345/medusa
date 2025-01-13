@@ -316,6 +316,12 @@
       "greaterThanLabel": "มากกว่า {{value}}",
       "andLabel": "และ"
     },
+    "radio": {
+      "yes": "ใช่",
+      "no": "ไม่",
+      "true": "จริง",
+      "false": "เท็จ"
+    },
     "addFilter": "เพิ่มตัวกรอง"
   },
   "errorBoundary": {
@@ -467,7 +473,17 @@
       }
     },
     "deleteWarning": "คุณกำลังจะลบสินค้า {{title}} การดำเนินการนี้ไม่สามารถยกเลิกได้",
-    "variants": "ตัวเลือก",
+    "variants": {
+      "header": "ตัวเลือก",
+      "empty": {
+        "heading": "ไม่มีตัวเลือก",
+        "description": "ไม่มีตัวเลือกที่จะแสดง"
+      },
+      "filtered": {
+        "heading": "ไม่มีผลลัพธ์",
+        "description": "ไม่มีตัวเลือกที่ตรงกับเกณฑ์การกรองปัจจุบัน"
+      }
+    },
     "attributes": "แอตทริบิวต์",
     "editAttributes": "แก้ไขแอตทริบิวต์",
     "editOptions": "แก้ไขตัวเลือก",

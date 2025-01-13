@@ -243,8 +243,19 @@ const columns = [
     sortDescLabel: "Z-A",
   }),
   columnHelper.action({
-    actions: [
-      [
+    actions: (ctx) => {
+      const actions = [
+        [
+          {
+          label: "Edit",
+          onClick: () => {},
+          icon: <PencilSquare />,
+        },
+        {
+          label: "Edit",
+          onClick: () => {},
+          icon: <PencilSquare />,
+        },
         {
           label: "Edit",
           onClick: () => {},
@@ -258,7 +269,10 @@ const columns = [
           icon: <Trash />,
         },
       ],
-    ],
+    ]
+
+      return actions
+    },
   }),
 ]
 

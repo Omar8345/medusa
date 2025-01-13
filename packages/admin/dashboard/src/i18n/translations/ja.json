@@ -317,6 +317,12 @@
       "greaterThanLabel": "{{value}}以上",
       "andLabel": "かつ"
     },
+    "radio": {
+      "yes": "はい",
+      "no": "いいえ",
+      "true": "真",
+      "false": "偽"
+    },
     "addFilter": "フィルター追加"
   },
   "errorBoundary": {
@@ -468,7 +474,17 @@
       }
     },
     "deleteWarning": "商品「{{title}}」を削除しようとしています。この操作は元に戻せません。",
-    "variants": "バリエーション",
+    "variants": {
+      "header": "バリエーション",
+      "empty": {
+        "heading": "バリエーションはありません",
+        "description": "表示するバリエーションはありません。"
+      },
+      "filtered": {
+        "heading": "結果はありません",
+        "description": "現在のフィルター条件に一致するバリエーションはありません。"
+      }
+    },
     "attributes": "属性",
     "editAttributes": "属性を編集",
     "editOptions": "オプションを編集",

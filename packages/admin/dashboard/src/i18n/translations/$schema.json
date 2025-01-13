@@ -1337,6 +1337,30 @@
           ],
           "additionalProperties": false
         },
+        "radio": {
+          "type": "object",
+          "properties": {
+            "yes": {
+              "type": "string"
+            },
+            "no": {
+              "type": "string"
+            },
+            "true": {
+              "type": "string"
+            },
+            "false": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "yes",
+            "no",
+            "true",
+            "false"
+          ],
+          "additionalProperties": false
+        },
         "addFilter": {
           "type": "string"
         }
@@ -1348,6 +1372,7 @@
         "date",
         "compare",
         "sorting",
+        "radio",
         "addFilter"
       ],
       "additionalProperties": false
@@ -1966,7 +1991,50 @@
           "type": "string"
         },
         "variants": {
-          "type": "string"
+          "type": "object",
+          "properties": {
+            "header": {
+              "type": "string"
+            },
+            "empty": {
+              "type": "object",
+              "properties": {
+                "heading": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "heading",
+                "description"
+              ],
+              "additionalProperties": false
+            },
+            "filtered": {
+              "type": "object",
+              "properties": {
+                "heading": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "heading",
+                "description"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "header",
+            "empty",
+            "filtered"
+          ],
+          "additionalProperties": false
         },
         "attributes": {
           "type": "string"
@@ -2716,11 +2784,19 @@
                   "type": "string"
                 }
               },
-              "required": ["alreadyManaged", "alreadyManagedWithSku"],
+              "required": [
+                "alreadyManaged",
+                "alreadyManagedWithSku"
+              ],
               "additionalProperties": false
             }
           },
-          "required": ["heading", "description", "loading", "tooltips"],
+          "required": [
+            "heading",
+            "description",
+            "loading",
+            "tooltips"
+          ],
           "additionalProperties": false
         },
         "toasts": {

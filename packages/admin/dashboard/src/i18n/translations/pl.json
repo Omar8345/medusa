@@ -316,6 +316,12 @@
       "greaterThanLabel": "więcej niż {{value}}",
       "andLabel": "i"
     },
+    "radio": {
+      "yes": "Tak",
+      "no": "Nie",
+      "true": "Prawda",
+      "false": "Fałsz"
+    },
     "addFilter": "Dodaj filtr"
   },
   "errorBoundary": {
@@ -467,7 +473,17 @@
       }
     },
     "deleteWarning": "Zamierzasz usunąć produkt {{title}}. Ta akcja nie może zostać cofnięta.",
-    "variants": "Warianty",
+    "variants": {
+      "header": "Warianty",
+      "empty": {
+        "heading": "Brak wariantów",
+        "description": "Nie ma wariantów do wyświetlenia."
+      },
+      "filtered": {
+        "heading": "Brak wariantów",
+        "description": "Nie ma wariantów, które pasują do aktualnych kryteriów filtrów."
+      }
+    },
     "attributes": "Atrybuty",
     "editAttributes": "Edytuj atrybuty",
     "editOptions": "Edytuj opcje",

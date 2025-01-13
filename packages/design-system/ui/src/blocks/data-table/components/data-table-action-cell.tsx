@@ -24,11 +24,7 @@ const DataTableActionCell = <TData,>({
     return null
   }
 
-  let resolvedActions = actions
-
-  if (typeof actions === "function") {
-    resolvedActions = actions(ctx)
-  }
+  const resolvedActions = typeof actions === "function" ? actions(ctx) : actions
 
   if (!Array.isArray(resolvedActions)) {
     return null
@@ -44,7 +40,7 @@ const DataTableActionCell = <TData,>({
       <DropdownMenu.Content side="bottom">
         {resolvedActions.map((actionOrGroup, idx) => {
           const isArray = Array.isArray(actionOrGroup)
-          const isLast = idx === actions.length - 1
+          const isLast = idx === resolvedActions.length - 1
 
           return isArray ? (
             <React.Fragment key={idx}>

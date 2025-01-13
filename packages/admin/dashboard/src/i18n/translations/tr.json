@@ -316,6 +316,12 @@
       "greaterThanLabel": "{{value}}'den büyük",
       "andLabel": "ve"
     },
+    "radio": {
+      "yes": "Evet",
+      "no": "Hayır",
+      "true": "Doğru",
+      "false": "Yanlış"
+    },
     "addFilter": "Filtre Ekle"
   },
   "errorBoundary": {
@@ -467,7 +473,17 @@
       }
     },
     "deleteWarning": "Ürün {{title}}'i silmek üzeresiniz. Bu işlem geri alınamaz.",
-    "variants": "Varyantlar",
+    "variants": {
+      "header": "Varyantlar",
+      "empty": {
+        "heading": "Varyant yok",
+        "description": "Görüntülenecek varyant yok."
+      },
+      "filtered": {
+        "heading": "Sonuç yok",
+        "description": "Varyantlar mevcut filtrelerle eşleşmiyor."
+      }
+    },
     "attributes": "Öznitelikler",
     "editAttributes": "Öznitelikleri Düzenle",
     "editOptions": "Seçenekleri Düzenle",

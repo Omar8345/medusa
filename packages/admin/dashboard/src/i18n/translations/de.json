@@ -316,6 +316,12 @@
       "greaterThanLabel": "größer als {{value}}",
       "andLabel": "Und"
     },
+    "radio": {
+      "yes": "Ja",
+      "no": "Nein",
+      "true": "Wahr",
+      "false": "Falsch"
+    },
     "addFilter": "Filter hinzufügen"
   },
   "errorBoundary": {
@@ -467,7 +473,17 @@
       }
     },
     "deleteWarning": "Sie sind dabei, das Produkt {{title}} zu löschen. Diese Aktion kann nicht rückgängig gemacht werden.",
-    "variants": "Varianten",
+    "variants": {
+      "header": "Varianten",
+      "empty": {
+        "heading": "Keine Varianten",
+        "description": "Es gibt keine Varianten, um angezeigt zu werden."
+      },
+      "filtered": {
+        "heading": "Keine Ergebnisse",
+        "description": "Keine Varianten stimmen mit den aktuellen Filterkriterien überein."
+      }
+    },
     "attributes": "Attribute",
     "editAttributes": "Attribute bearbeiten",
     "editOptions": "Optionen bearbeiten",

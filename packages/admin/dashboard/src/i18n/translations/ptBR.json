@@ -316,6 +316,12 @@
       "greaterThanLabel": "maior que {{value}}",
       "andLabel": "e"
     },
+    "radio": {
+      "yes": "Sim",
+      "no": "Não",
+      "true": "Verdadeiro",
+      "false": "Falso"
+    },
     "addFilter": "Adicionar filtro"
   },
   "errorBoundary": {
@@ -467,7 +473,17 @@
       }
     },
     "deleteWarning": "Você está prestes a excluir o produto {{title}}. Esta ação não pode ser desfeita.",
-    "variants": "Variantes",
+    "variants": {
+      "header": "Variantes",
+      "empty": {
+        "heading": "Nenhuma variante",
+        "description": "Não há variantes para exibir."
+      },
+      "filtered": {
+        "heading": "Nenhuma variante",
+        "description": "Nenhuma variante corresponde aos critérios de filtro atuais."
+      }
+    },
     "attributes": "Atributos",
     "editAttributes": "Editar atributos",
     "editOptions": "Editar opções",
