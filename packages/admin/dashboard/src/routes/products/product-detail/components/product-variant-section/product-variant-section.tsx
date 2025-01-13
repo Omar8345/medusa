@@ -260,8 +260,6 @@ const useColumns = (product: HttpTypes.AdminProduct) => {
         }
       }
 
-      console.log([mainActions, secondaryActions])
-
       return [mainActions, secondaryActions]
     },
     [handleDelete, navigate, t]
@@ -342,11 +340,7 @@ const useColumns = (product: HttpTypes.AdminProduct) => {
         },
       }),
       columnHelper.action({
-        actions: (ctx) => {
-          const [mainActions, secondaryActions] = getActions(ctx)
-
-          return [mainActions, secondaryActions]
-        },
+        actions: getActions,
       }),
     ]
   }, [t, optionColumns, getActions, getInventory])
