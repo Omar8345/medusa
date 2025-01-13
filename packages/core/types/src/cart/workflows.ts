@@ -11,35 +11,124 @@ import {
   UpdateLineItemDTO,
 } from "./mutations"
 
+/**
+ * The details of the line item to create.
+ */
 export interface CreateCartCreateLineItemDTO {
+  /**
+   * The quantity of the line item.
+   */
   quantity: BigNumberInput
+
+  /**
+   * The ID of the variant to be added to the cart.
+   */
   variant_id?: string
+
+  /**
+   * The title of the line item.
+   */
   title?: string
 
+  /**
+   * The subtitle of the line item.
+   */
   subtitle?: string
+
+  /**
+   * The thumbnail URL of the line item.
+   */
   thumbnail?: string
 
+  /**
+   * The ID of the product whose variant is being added to the cart.
+   */
   product_id?: string
+
+  /**
+   * The title of the associated product.
+   */
   product_title?: string
+
+  /**
+   * The description of the associated product.
+   */
   product_description?: string
+
+  /**
+   * The subtitle of the associated product.
+   */
   product_subtitle?: string
+
+  /**
+   * The ID of the associated product's type.
+   */
   product_type?: string
+
+  /**
+   * The ID of the associated product's collection.
+   */
   product_collection?: string
+
+  /**
+   * The handle of the associated product.
+   */
   product_handle?: string
 
+  /**
+   * The SKU of the associated variant.
+   */
   variant_sku?: string
+
+  /**
+   * The barcode of the associated variant.
+   */
   variant_barcode?: string
+
+  /**
+   * The title of the associated variant.
+   */
   variant_title?: string
+
+  /**
+   * The associated variant's values for the product's options.
+   */
   variant_option_values?: Record<string, unknown>
 
+  /**
+   * Whether the line item requires shipping.
+   */
   requires_shipping?: boolean
+
+  /**
+   * Whether the line item is discountable.
+   */
   is_discountable?: boolean
+
+  /**
+   * Whether the line item's price is tax inclusive. Learn more in 
+   * [this documentation](https://docs.medusajs.com/resources/commerce-modules/pricing/tax-inclusive-pricing)
+   */
   is_tax_inclusive?: boolean
+
+  /**
+   * Whether the line item is a gift card.
+   */
   is_giftcard?: boolean
 
+  /**
+   * The original price of the item before a promotion or sale.
+   */
   compare_at_unit_price?: BigNumberInput
+
+  /**
+   * The price of a single quantity of the item.
+   */
   unit_price?: BigNumberInput
 
+  /**
+   * Custom key-value pairs related to the item.
+   */
   metadata?: Record<string, unknown> | null
 }
 
@@ -49,33 +138,132 @@ export interface UpdateLineItemInCartWorkflowInputDTO {
   update: Partial<UpdateLineItemDTO>
 }
 
+/**
+ * The details of the address to create.
+ */
 export interface CreateCartAddressDTO {
+  /**
+   * The first name of the customer associated with the address.
+   */
   first_name?: string
+  
+  /**
+   * The last name of the customer associated with the address.
+   */
   last_name?: string
+  
+  /**
+   * The address's phone number
+   */
   phone?: string
+  
+  /**
+   * The address's company name.
+   */
   company?: string
+  
+  /**
+   * The primary address line.
+   */
   address_1?: string
+  
+  /**
+   * The secondary address line.
+   */
   address_2?: string
+  
+  /**
+   * The city of the address.
+   */
   city?: string
+  
+  /**
+   * The country code of the address.
+   * 
+   * @example us
+   */
   country_code?: string
+  
+  /**
+   * The province or state of the address.
+   */
   province?: string
+  
+  /**
+   * The postal code of the address.
+   */
   postal_code?: string
+  
+  /**
+   * Custom key-value pairs related to the address.
+   */
   metadata?: Record<string, unknown>
 }
 
+/**
+ * The details of a cart to create.
+ */
 export interface CreateCartWorkflowInputDTO {
+  /**
+   * The ID of the region that the cart belongs to.
+   */
   region_id?: string
+
+  /**
+   * The ID of the customer associated with the cart.
+   */
   customer_id?: string
+
+  /**
+   * The ID of the sales channel through which the cart is created.
+   */
   sales_channel_id?: string
+
+  /**
+   * The email address of the cart's customer.
+   */
   email?: string
+
+  /**
+   * The currency code of the cart. This defaults to the region's currency code.
+   * 
+   * @example usd
+   */
   currency_code?: string
+
+  /**
+   * The ID of the associated shipping address.
+   */
   shipping_address_id?: string
+
+  /**
+   * The ID of the associated billing address.
+   */
   billing_address_id?: string
+
+  /**
+   * The ID of an existing shipping address, or the details of a shipping address to create.
+   */
   shipping_address?: CreateCartAddressDTO | string
+
+  /**
+   * The ID of an existing billing address, or the details of a billing address to create.
+   */
   billing_address?: CreateCartAddressDTO | string
+
+  /**
+   * Custom key-value pairs related to the cart.
+   */
   metadata?: Record<string, unknown>
 
+  /**
+   * The items to be added to the cart.
+   */
   items?: CreateCartCreateLineItemDTO[]
+
+  /**
+   * The promotional codes applied on the cart.
+   */
   promo_codes?: string[]
 }
 

@@ -7,7 +7,7 @@ import { useFieldArray, useForm } from "react-hook-form"
 import { useTranslation } from "react-i18next"
 import { z } from "zod"
 import { RouteDrawer, useRouteModal } from "../../../../../../components/modals"
-import { useBatchUpdateInventoryLevels } from "../../../../../../hooks/api/inventory"
+import { useBatchInventoryItemLocationLevels } from "../../../../../../hooks/api/inventory"
 
 import { useEffect, useMemo } from "react"
 import { KeyboundForm } from "../../../../../../components/utilities/keybound-form"
@@ -70,7 +70,7 @@ export const ManageLocationsForm = ({
     )
   }, [existingLocationLevels, locations])
 
-  const { mutateAsync } = useBatchUpdateInventoryLevels(item.id)
+  const { mutateAsync } = useBatchInventoryItemLocationLevels(item.id)
 
   const handleSubmit = form.handleSubmit(async ({ locations }) => {
     // Changes in selected locations

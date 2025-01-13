@@ -60,6 +60,9 @@ export default function (theme: MarkdownTheme) {
             hash: {
               sectionTitle: hook.name,
             },
+          },
+          {
+            openedLevel: 1,
           }
         )
       })

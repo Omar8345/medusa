@@ -195,8 +195,9 @@ Then, in a new page in your storefront that will be used as the callback / redir
   
 export const sendCallbackFetchHighlights = [
   ["6", "code", "The code received from Google as a query parameter."],
-  ["9", "fetch", "Send a request to the Validate Authentication Callback API route"],
-  ["17", "!token", "If the token isn't returned, the authentication has failed."],
+  ["7", "state", "The state received from Google as a query parameter."],
+  ["10", "fetch", "Send a request to the Validate Authentication Callback API route"],
+  ["18", "!token", "If the token isn't returned, the authentication has failed."],
 ]
 
 ```ts highlights={sendCallbackFetchHighlights}
@@ -206,10 +207,11 @@ import { decodeToken } from "react-jwt"
 
 const queryParams = new URLSearchParams(window.location.search)
 const code = queryParams.get("code")
+const state = queryParams.get("state")
 
 const sendCallback = async () => {
   const { token } = await fetch(
-    `http://localhost:9000/auth/customer/google/callback?code=${code}`, 
+    `http://localhost:9000/auth/customer/google/callback?code=${code}&state=${state}`, 
     {
       credentials: "include",
       method: "POST",
@@ -232,8 +234,9 @@ const sendCallback = async () => {
   
 export const sendCallbackReactHighlights = [
   ["11", "code", "The code received from Google as a query parameter."],
-  ["18", "fetch", "Send a request to the Validate Authentication Callback API route"],
-  ["26", "!token", "If the token isn't returned, the authentication has failed."],
+  ["11", "state", "The state received from Google as a query parameter."],
+  ["20", "fetch", "Send a request to the Validate Authentication Callback API route"],
+  ["28", "!token", "If the token isn't returned, the authentication has failed."],
 ]
 
 ```tsx highlights={sendCallbackReactHighlights}
@@ -247,15 +250,17 @@ export default function GoogleCallback() {
   const [loading, setLoading] = useState(true)
   const [customer, setCustomer] = useState<HttpTypes.StoreCustomer>()
   // for other than Next.js
-  const code = useMemo(() => {
-    const queryParams = new URLSearchParams(window.location.search)
-
-    return queryParams.get("code")
-  }, [])
+  const { code, state } = useMemo(() => {
+    const queryParams = new URLSearchParams(window.location.search);
+    return {
+      code: queryParams.get("code"),
+      state: queryParams.get("state"),
+    };
+  }, []);
 
   const sendCallback = async () => {
     const { token } = await fetch(
-      `http://localhost:9000/auth/customer/google/callback?code=${code}`, 
+      `http://localhost:9000/auth/customer/google/callback?code=${code}&state=${state}`, 
       {
         credentials: "include",
         method: "POST",
@@ -467,11 +472,12 @@ import { decodeToken } from "react-jwt"
 
 const queryParams = new URLSearchParams(window.location.search)
 const code = queryParams.get("code")
+const state = queryParams.get("state")
 
 
 const sendCallback = async () => {
   const { token } = await fetch(
-    `http://localhost:9000/auth/customer/google/callback?code=${code}`, 
+    `http://localhost:9000/auth/customer/google/callback?code=${code}&state=${state}`, 
     {
       credentials: "include",
       method: "POST",
@@ -559,15 +565,17 @@ export default function GoogleCallback() {
   const [loading, setLoading] = useState(true)
   const [customer, setCustomer] = useState<HttpTypes.StoreCustomer>()
   // for other than Next.js
-  const code = useMemo(() => {
-    const queryParams = new URLSearchParams(window.location.search)
-
-    return queryParams.get("code")
-  }, [])
+  const { code, state } = useMemo(() => {
+    const queryParams = new URLSearchParams(window.location.search);
+    return {
+      code: queryParams.get("code"),
+      state: queryParams.get("state"),
+    };
+  }, []);
 
   const sendCallback = async () => {
     const { token } = await fetch(
-      `http://localhost:9000/auth/customer/google/callback?code=${code}`, 
+      `http://localhost:9000/auth/customer/google/callback?code=${code}&state=${state}`, 
       {
         credentials: "include",
         method: "POST",

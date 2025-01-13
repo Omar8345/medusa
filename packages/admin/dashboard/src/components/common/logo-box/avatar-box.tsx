@@ -1,4 +1,4 @@
-import { motion } from "framer-motion"
+import { motion } from "motion/react"
 
 import { IconAvatar } from "../icon-avatar"
 
@@ -6,7 +6,7 @@ export default function AvatarBox({ checked }: { checked?: boolean }) {
   return (
     <IconAvatar
       size="xlarge"
-      className="bg-ui-button-neutral shadow-buttons-neutral after:button-neutral-gradient relative mb-4 flex items-center justify-center rounded-xl after:inset-0 after:content-[''] w-[52px] h-[52px]"
+      className="bg-ui-button-neutral shadow-buttons-neutral after:button-neutral-gradient relative mb-4 flex h-[52px] w-[52px] items-center justify-center rounded-xl after:inset-0 after:content-['']"
     >
       {checked && (
         <motion.div

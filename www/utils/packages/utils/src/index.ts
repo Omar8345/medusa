@@ -1,4 +1,5 @@
 export * from "./dml-utils.js"
+export * from "./examples-utils.js"
 export * from "./general-utils.js"
 export * from "./get-type-children.js"
 export * from "./get-project-child.js"

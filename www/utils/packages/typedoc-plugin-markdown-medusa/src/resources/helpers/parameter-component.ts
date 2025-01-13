@@ -10,7 +10,8 @@ export default function (theme: MarkdownTheme) {
     "parameterComponent",
     function (
       this: ReflectionParameterType[],
-      options: Handlebars.HelperOptions
+      options: Handlebars.HelperOptions,
+      extraProps?: Record<string, unknown>
     ) {
       const { parameterComponent, maxLevel, parameterComponentExtraProps } =
         theme.getFormattingOptionsForLocation()
@@ -34,7 +35,10 @@ export default function (theme: MarkdownTheme) {
       return formatParameterComponent({
         parameterComponent,
         componentItems: parameters,
-        extraProps: parameterComponentExtraProps,
+        extraProps: {
+          ...parameterComponentExtraProps,
+          ...extraProps,
+        },
         sectionTitle: options.hash.sectionTitle,
       })
     }

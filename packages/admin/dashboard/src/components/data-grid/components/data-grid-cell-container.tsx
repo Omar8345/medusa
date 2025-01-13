@@ -64,7 +64,7 @@ export const DataGridCellContainer = ({
           <div
             {...overlayProps}
             data-cell-overlay="true"
-            className="absolute inset-0"
+            className="absolute inset-0 z-[2]"
           />
         )}
       </div>

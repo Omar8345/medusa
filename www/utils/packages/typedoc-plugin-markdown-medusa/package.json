@@ -22,6 +22,7 @@
     "typedoc": "0.27.x"
   },
   "devDependencies": {
+    "@types/js-beautify": "^1.14.3",
     "@types/node": "^20.12.10",
     "copyfiles": "^2.4.1",
     "typedoc": "^0.27.5",
@@ -36,6 +37,7 @@
   ],
   "dependencies": {
     "handlebars": "^4.7.8",
+    "js-beautify": "^1.15.1",
     "utils": "*"
   }
 }

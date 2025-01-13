@@ -5,6 +5,7 @@ import {
   clx,
   Container,
   createDataTableColumnHelper,
+  createDataTableCommandHelper,
   createDataTableFilterHelper,
   DataTableAction,
   Tooltip,
@@ -24,6 +25,7 @@ import {
 import { useDateFilterOptions } from "../../../../../hooks/filters/use-date-filter-options"
 import { useDate } from "../../../../../hooks/use-date"
 import { useQueryParams } from "../../../../../hooks/use-query-params"
+import { PRODUCT_VARIANT_IDS_KEY } from "../../../common/constants"
 
 type ProductVariantSectionProps = {
   product: HttpTypes.AdminProduct
@@ -48,6 +50,7 @@ export const ProductVariantSection = ({
 
   const columns = useColumns(product)
   const filters = useFilters()
+  const commands = useCommands()
 
   const { variants, count, isPending, isError, error } = useProductVariants(
     product.id,
@@ -94,10 +97,25 @@ export const ProductVariantSection = ({
                   to: `prices`,
                   icon: <PencilSquare />,
                 },
+                {
+                  label: t("inventory.stock.action"),
+                  to: `stock`,
+                  icon: <Buildings />,
+                },
+              ],
+            },
+            {
+              actions: [
+                {
+                  label: t("inventory.stock.action"),
+                  to: `stock`,
+                  icon: <Buildings />,
+                },
               ],
             },
           ],
         }}
+        commands={commands}
       />
     </Container>
   )
@@ -345,4 +363,23 @@ const useFilters = () => {
       }),
     ]
   }, [t, dateFilterOptions, getFullDate])
+}
+
+const commandHelper = createDataTableCommandHelper()
+
+const useCommands = () => {
+  const { t } = useTranslation()
+  const navigate = useNavigate()
+
+  return [
+    commandHelper.command({
+      label: t("inventory.stock.action"),
+      shortcut: "i",
+      action: async (selection) => {
+        navigate(
+          `stock?${PRODUCT_VARIANT_IDS_KEY}=${Object.keys(selection).join(",")}`
+        )
+      },
+    }),
+  ]
 }
