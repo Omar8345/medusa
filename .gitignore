@@ -27,3 +27,6 @@ dist/**
 .vscode
 
 **/tsconfig.tsbuildinfo
+
+# Cache File
+/packages/**/.cache

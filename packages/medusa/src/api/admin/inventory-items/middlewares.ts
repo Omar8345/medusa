@@ -4,9 +4,10 @@ import {
 } from "@medusajs/framework"
 import { MiddlewareRoute, unlessPath } from "@medusajs/framework/http"
 import { DEFAULT_BATCH_ENDPOINTS_SIZE_LIMIT } from "../../../utils/middlewares"
-import { createBatchBody } from "../../utils/validators"
 import * as QueryConfig from "./query-config"
 import {
+  AdminBatchInventoryItemLevels,
+  AdminBatchInventoryItemLocationsLevel,
   AdminCreateInventoryItem,
   AdminCreateInventoryLocationLevel,
   AdminGetInventoryItemParams,
@@ -51,6 +52,22 @@ export const adminInventoryRoutesMiddlewares: MiddlewareRoute[] = [
   },
   {
     method: ["POST"],
+    matcher: "/admin/inventory-items/batch",
+    bodyParser: {
+      sizeLimit: DEFAULT_BATCH_ENDPOINTS_SIZE_LIMIT,
+    },
+    middlewares: [validateAndTransformBody(AdminBatchInventoryItemLevels)],
+  },
+  {
+    method: ["POST"],
+    matcher: "/admin/inventory-items/location-levels/batch",
+    bodyParser: {
+      sizeLimit: DEFAULT_BATCH_ENDPOINTS_SIZE_LIMIT,
+    },
+    middlewares: [validateAndTransformBody(AdminBatchInventoryItemLevels)],
+  },
+  {
+    method: ["POST"],
     matcher: "/admin/inventory-items/:id",
     middlewares: [
       validateAndTransformBody(AdminUpdateInventoryItem),
@@ -88,12 +105,7 @@ export const adminInventoryRoutesMiddlewares: MiddlewareRoute[] = [
       sizeLimit: DEFAULT_BATCH_ENDPOINTS_SIZE_LIMIT,
     },
     middlewares: [
-      validateAndTransformBody(
-        createBatchBody(
-          AdminCreateInventoryLocationLevel,
-          AdminUpdateInventoryLocationLevel
-        )
-      ),
+      validateAndTransformBody(AdminBatchInventoryItemLocationsLevel),
       validateAndTransformQuery(
         AdminGetInventoryLocationLevelParams,
         QueryConfig.retrieveLocationLevelsTransformQueryConfig

@@ -207,6 +207,7 @@ class WorkflowsPlugin {
           workflow,
           workflowVarName: parentReflection.name,
           workflowReflection,
+          workflowComments: parentReflection.comment?.blockTags,
         })
 
         if (!steps.length) {
@@ -246,12 +247,14 @@ class WorkflowsPlugin {
     workflow,
     workflowVarName,
     workflowReflection,
+    workflowComments = [],
   }: {
     initializer: ts.CallExpression
     context: Context
     workflow?: WorkflowDefinition
     workflowVarName: string
     workflowReflection: SignatureReflection
+    workflowComments?: CommentTag[]
   }): ParsedStep[] {
     const steps: ParsedStep[] = []
     const initializerName = this.helper.normalizeName(
@@ -292,6 +295,7 @@ class WorkflowsPlugin {
           context,
           inputSymbol: initializer.arguments[1].symbol as ts.Symbol,
           workflowName: workflowVarName,
+          workflowComments,
         })
       } else {
         const initializerReflection = findReflectionInNamespaces(
@@ -478,11 +482,13 @@ class WorkflowsPlugin {
     context,
     inputSymbol,
     workflowName,
+    workflowComments,
   }: {
     stepId: string
     context: Context
     inputSymbol: ts.Symbol
     workflowName: string
+    workflowComments?: CommentTag[]
   }): DeclarationReflection {
     const declarationReflection = context.createDeclarationReflection(
       ReflectionKind.Function,
@@ -492,7 +498,12 @@ class WorkflowsPlugin {
     )
 
     declarationReflection.comment = new Comment()
-    declarationReflection.comment.summary = [
+
+    const hookComment = workflowComments?.find(
+      (tag) => tag.tag === `@property` && tag.name === `hooks.${stepId}`
+    )
+
+    declarationReflection.comment.summary = hookComment?.content || [
       {
         kind: "text",
         text: "This step is a hook that you can inject custom functionality into.",
@@ -515,6 +526,16 @@ class WorkflowsPlugin {
     if (parameter.type.name === "__object") {
       parameter.type.name = "object"
       parameter.type.qualifiedName = "object"
+
+      if (!parameter.comment?.summary) {
+        parameter.comment = new Comment()
+        parameter.comment.summary = [
+          {
+            kind: "text",
+            text: "The input data for the hook.",
+          },
+        ]
+      }
     }
 
     signatureReflection.parameters = []

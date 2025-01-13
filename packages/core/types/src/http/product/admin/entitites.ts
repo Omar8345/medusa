@@ -1,4 +1,5 @@
 import { AdminCollection } from "../../collection"
+import { AdminInventoryItem } from "../../inventory"
 import { AdminPrice } from "../../pricing"
 import { AdminProductCategory } from "../../product-category"
 import { AdminProductTag } from "../../product-tag"
@@ -13,6 +14,29 @@ import {
   ProductStatus,
 } from "../common"
 
+export interface AdminProductVariantInventoryItemLink {
+  /**
+   * The ID of the pivot record.
+   */
+  id: string
+  /**
+   * The ID of the variant.
+   */
+  variant_id: string
+  /**
+   * The variant that the inventory item is linked to.
+   */
+  variant?: AdminProductVariant
+  /**
+   * The ID of the inventory item.
+   */
+  inventory_item_id: string
+  /**
+   * The inventory item that is linked to the variant.
+   */
+  inventory?: AdminInventoryItem
+}
+
 export interface AdminProductVariant extends BaseProductVariant {
   /**
    * The product variant's prices.
@@ -26,6 +50,10 @@ export interface AdminProductVariant extends BaseProductVariant {
    * The product that this variant belongs to.
    */
   product?: AdminProduct | null
+  /**
+   * The variant's inventory items.
+   */
+  inventory_items?: AdminProductVariantInventoryItemLink[] | null
 }
 export interface AdminProductOption extends BaseProductOption {
   /**

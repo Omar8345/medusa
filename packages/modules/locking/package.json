@@ -6,7 +6,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/medusajs/medusa",
-    "directory": "packages/locking"
+    "directory": "packages/modules/locking"
   },
   "files": [
     "dist",

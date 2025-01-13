@@ -130,6 +130,11 @@ export const RouteMap: RouteObject[] = [
                           ),
                       },
                       {
+                        path: "stock",
+                        lazy: () =>
+                          import("../../routes/products/product-stock"),
+                      },
+                      {
                         path: "metadata/edit",
                         lazy: () =>
                           import("../../routes/products/product-metadata"),
@@ -763,6 +768,11 @@ export const RouteMap: RouteObject[] = [
                     path: "create",
                     lazy: () =>
                       import("../../routes/inventory/inventory-create"),
+                  },
+                  {
+                    path: "stock",
+                    lazy: () =>
+                      import("../../routes/inventory/inventory-stock"),
                   },
                 ],
               },

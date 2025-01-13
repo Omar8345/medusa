@@ -110,9 +110,14 @@ export const useProductVariant = (
 
 export const useProductVariants = (
   productId: string,
-  query?: Record<string, any>,
+  query?: HttpTypes.AdminProductVariantParams,
   options?: Omit<
-    UseQueryOptions<any, FetchError, any, QueryKey>,
+    UseQueryOptions<
+      HttpTypes.AdminProductVariantListResponse,
+      FetchError,
+      HttpTypes.AdminProductVariantListResponse,
+      QueryKey
+    >,
     "queryFn" | "queryKey"
   >
 ) => {

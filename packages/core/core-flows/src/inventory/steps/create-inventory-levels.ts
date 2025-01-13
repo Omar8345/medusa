@@ -11,7 +11,6 @@ export const createInventoryLevelsStep = createStep(
   createInventoryLevelsStepId,
   async (data: InventoryTypes.CreateInventoryLevelInput[], { container }) => {
     const service = container.resolve<IInventoryService>(Modules.INVENTORY)
-
     const inventoryLevels = await service.createInventoryLevels(data)
     return new StepResponse(
       inventoryLevels,

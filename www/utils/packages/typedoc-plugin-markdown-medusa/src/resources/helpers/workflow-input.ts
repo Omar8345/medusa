@@ -25,6 +25,7 @@ export default function (theme: MarkdownTheme) {
         project: this.project || options.data.theme.project,
         maxLevel,
         wrapObject: true,
+        isReturn: false,
       })
 
       if (!input.length) {

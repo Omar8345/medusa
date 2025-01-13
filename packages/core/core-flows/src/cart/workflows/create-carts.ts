@@ -36,13 +36,42 @@ import { refreshPaymentCollectionForCartWorkflow } from "./refresh-payment-colle
 import { updateCartPromotionsWorkflow } from "./update-cart-promotions"
 import { updateTaxLinesWorkflow } from "./update-tax-lines"
 
+/**
+ * The data to create the cart, along with custom data that's later passed to the cart's hooks.
+ */
+export type CreateCartWorkflowInput = CreateCartWorkflowInputDTO & AdditionalData
+
 export const createCartWorkflowId = "create-cart"
 /**
- * This workflow creates a cart.
+ * This workflow creates and returns a cart. You can set the cart's items, region, customer, and other details. This workflow is executed by the 
+ * [Create Cart Store API Route](https://docs.medusajs.com/api/store#carts_postcarts).
+ * 
+ * This workflow has a hook that allows you to perform custom actions on the created cart. You can see an example in [this guide](https://docs.medusajs.com/resources/commerce-modules/cart/extend#step-4-consume-cartcreated-workflow-hook).
+ * 
+ * You can also use this workflow within your own custom workflows, allowing you to wrap custom logic around cart creation.
+ * 
+ * @example
+ * const { result } = await createCartWorkflow(container)
+ *   .run({
+ *     input: {
+ *       region_id: "reg_123",
+ *       items: [
+ *         {
+ *           variant_id: "var_123",
+ *           quantity: 1,
+ *         }
+ *       ],
+ *       customer_id: "cus_123"
+ *     }
+ *   })
+ * 
+ * @summary
+ * 
+ * Create a cart specifying region, items, and more.
  */
 export const createCartWorkflow = createWorkflow(
   createCartWorkflowId,
-  (input: WorkflowData<CreateCartWorkflowInputDTO & AdditionalData>) => {
+  (input: WorkflowData<CreateCartWorkflowInput>) => {
     const variantIds = transform({ input }, (data) => {
       return (data.input.items ?? []).map((i) => i.variant_id).filter(Boolean)
     })
@@ -200,6 +229,10 @@ export const createCartWorkflow = createWorkflow(
       })
     )
 
+    /**
+     * This hook is executed after a cart is created. You can consume this hook to perform
+     * custom actions on the created cart.
+     */
     const cartCreated = createHook("cartCreated", {
       cart,
       additional_data: input.additional_data,

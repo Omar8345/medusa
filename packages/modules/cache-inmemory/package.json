@@ -6,7 +6,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/medusajs/medusa",
-    "directory": "packages/cache-inmemory"
+    "directory": "packages/modules/cache-inmemory"
   },
   "engines": {
     "node": ">=20"

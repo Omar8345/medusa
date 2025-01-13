@@ -23,15 +23,26 @@ import type { AdminOptions, ConfigModule, Logger } from "@medusajs/types"
 export class Compiler {
   #logger: Logger
   #projectRoot: string
+  #tsConfigPath: string
   #adminSourceFolder: string
+  #pluginsDistFolder: string
+  #backendIgnoreFiles: string[]
   #adminOnlyDistFolder: string
   #tsCompiler?: typeof tsStatic
 
   constructor(projectRoot: string, logger: Logger) {
     this.#projectRoot = projectRoot
     this.#logger = logger
+    this.#tsConfigPath = path.join(this.#projectRoot, "tsconfig.json")
     this.#adminSourceFolder = path.join(this.#projectRoot, "src/admin")
     this.#adminOnlyDistFolder = path.join(this.#projectRoot, ".medusa/admin")
+    this.#pluginsDistFolder = path.join(this.#projectRoot, ".medusa/server")
+    this.#backendIgnoreFiles = [
+      "integration-tests",
+      "test",
+      "unit-tests",
+      "src/admin",
+    ]
   }
 
   /**
@@ -142,6 +153,20 @@ export class Compiler {
   }
 
   /**
+   * Prints typescript diagnostic messages
+   */
+  #printDiagnostics(ts: typeof tsStatic, diagnostics: tsStatic.Diagnostic[]) {
+    if (diagnostics.length) {
+      console.error(
+        ts.formatDiagnosticsWithColorAndContext(
+          diagnostics,
+          ts.createCompilerHost({})
+        )
+      )
+    }
+  }
+
+  /**
    * Given a tsconfig file, this method will write the compiled
    * output to the specified destination
    */
@@ -177,14 +202,7 @@ export class Compiler {
     /**
      * Log errors (if any)
      */
-    if (diagnostics.length) {
-      console.error(
-        ts.formatDiagnosticsWithColorAndContext(
-          diagnostics,
-          ts.createCompilerHost({})
-        )
-      )
-    }
+    this.#printDiagnostics(ts, diagnostics)
 
     return { emitResult, diagnostics }
   }
@@ -198,7 +216,7 @@ export class Compiler {
     let tsConfigErrors: tsStatic.Diagnostic[] = []
 
     const tsConfig = ts.getParsedCommandLineOfConfigFile(
-      path.join(this.#projectRoot, "tsconfig.json"),
+      this.#tsConfigPath,
       {
         inlineSourceMap: true,
         excludes: [],
@@ -223,18 +241,17 @@ export class Compiler {
     /**
      * Display all config errors using the diagnostics reporter
      */
+    this.#printDiagnostics(ts, tsConfigErrors)
+
+    /**
+     * Return undefined when there are errors in parsing the config
+     * file
+     */
     if (tsConfigErrors.length) {
-      const compilerHost = ts.createCompilerHost({})
-      this.#logger.error(
-        ts.formatDiagnosticsWithColorAndContext(tsConfigErrors, compilerHost)
-      )
       return
     }
 
-    /**
-     * If there are no errors, the `tsConfig` object will always exist.
-     */
-    return tsConfig!
+    return tsConfig
   }
 
   /**
@@ -262,7 +279,7 @@ export class Compiler {
      */
     const { emitResult, diagnostics } = await this.#emitBuildOutput(
       tsConfig,
-      ["integration-tests", "test", "unit-tests", "src/admin"],
+      this.#backendIgnoreFiles,
       dist
     )
 
@@ -366,8 +383,107 @@ export class Compiler {
   }
 
   /**
-   * @todo. To be implemented
+   * Compiles the plugin source code to JavaScript using the
+   * TypeScript's official compiler
    */
-  buildPluginBackend() {}
-  developPluginBacked() {}
+  async buildPluginBackend(tsConfig: tsStatic.ParsedCommandLine) {
+    const tracker = this.#trackDuration()
+    const dist = ".medusa/server"
+    this.#logger.info("Compiling plugin source...")
+
+    /**
+     * Step 1: Cleanup existing build output
+     */
+    this.#logger.info(
+      `Removing existing "${path.relative(this.#projectRoot, dist)}" folder`
+    )
+    await this.#clean(dist)
+
+    /**
+     * Step 2: Compile TypeScript source code
+     */
+    const { emitResult, diagnostics } = await this.#emitBuildOutput(
+      tsConfig,
+      ["integration-tests", "test", "unit-tests", "src/admin"],
+      dist
+    )
+
+    /**
+     * Exit early if no output is written to the disk
+     */
+    if (emitResult.emitSkipped) {
+      this.#logger.warn("Plugin build completed without emitting any output")
+      return false
+    }
+
+    /**
+     * Notify about the state of build
+     */
+    if (diagnostics.length) {
+      this.#logger.warn(
+        `Plugin build completed with errors (${tracker.getSeconds()}s)`
+      )
+    } else {
+      this.#logger.info(
+        `Plugin build completed successfully (${tracker.getSeconds()}s)`
+      )
+    }
+
+    return true
+  }
+
+  /**
+   * Compiles the backend source code of a plugin project in watch
+   * mode. Type-checking is disabled to keep compilation fast.
+   *
+   * The "onFileChange" argument can be used to get notified when
+   * a file has changed.
+   */
+  async developPluginBackend(onFileChange?: () => void) {
+    const ts = await this.#loadTSCompiler()
+
+    /**
+     * Format host is needed to print diagnostic messages
+     */
+    const formatHost: tsStatic.FormatDiagnosticsHost = {
+      getCanonicalFileName: (path) => path,
+      getCurrentDirectory: ts.sys.getCurrentDirectory,
+      getNewLine: () => ts.sys.newLine,
+    }
+
+    /**
+     * Creating a watcher compiler host to watch files and recompile
+     * them as they are changed
+     */
+    const host = ts.createWatchCompilerHost(
+      this.#tsConfigPath,
+      {
+        outDir: this.#pluginsDistFolder,
+        noCheck: true,
+      },
+      ts.sys,
+      ts.createEmitAndSemanticDiagnosticsBuilderProgram,
+      (diagnostic) => this.#printDiagnostics(ts, [diagnostic]),
+      (diagnostic) => {
+        if (typeof diagnostic.messageText === "string") {
+          this.#logger.info(diagnostic.messageText)
+        } else {
+          this.#logger.info(
+            ts.formatDiagnosticsWithColorAndContext([diagnostic], formatHost)
+          )
+        }
+      },
+      {
+        excludeDirectories: this.#backendIgnoreFiles,
+      }
+    )
+
+    const origPostProgramCreate = host.afterProgramCreate
+    host.afterProgramCreate = (program) => {
+      origPostProgramCreate!(program)
+      onFileChange?.()
+    }
+
+    ts.createWatchProgram(host)
+  }
 }

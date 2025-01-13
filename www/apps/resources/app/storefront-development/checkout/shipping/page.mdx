@@ -72,8 +72,8 @@ export const fetchHighlights = [
               cart_id: cart.id,
               data: {
                 // pass any data useful for calculation with third-party provider.
-              }
-            })
+              },
+            }),
           })
           .then((res) => res.json())
         )
@@ -160,7 +160,7 @@ export const highlights = [
   import { useCart } from "../../../providers/cart"
   import { HttpTypes } from "@medusajs/types"
 
-  export default function CheckoutShippingStep () {
+  export default function CheckoutShippingStep() {
     const { cart, setCart } = useCart()
     const [loading, setLoading] = useState(false)
     const [shippingOptions, setShippingOptions] = useState<
@@ -171,7 +171,7 @@ export const highlights = [
     >({})
     const [
       selectedShippingOption, 
-      setSelectedShippingOption
+      setSelectedShippingOption,
     ] = useState<string | undefined>()
 
     useEffect(() => {
@@ -211,8 +211,8 @@ export const highlights = [
                 cart_id: cart.id,
                 data: {
                   // pass any data useful for calculation with third-party provider.
-                }
-              })
+                },
+              }),
             })
             .then((res) => res.json())
           )
@@ -253,8 +253,8 @@ export const highlights = [
           data: {
             // TODO add any data necessary for
             // fulfillment provider
-          }
-        })
+          },
+        }),
       })
       .then((res) => res.json())
       .then(({ cart: updatedCart }) => {

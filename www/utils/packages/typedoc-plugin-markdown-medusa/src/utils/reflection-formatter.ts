@@ -19,6 +19,7 @@ import {
 } from "utils"
 import { MarkdownTheme } from "../theme.js"
 import { getDmlProperties, isDmlEntity } from "utils"
+import { loadComment } from "./reflection-type-parameters.js"
 
 const ALLOWED_KINDS: ReflectionKind[] = [
   ReflectionKind.EnumMember,
@@ -336,6 +337,18 @@ export function getComments(
       parameter.type?.declaration?.signatures[0]?.comment
     ) {
       return parameter.type?.declaration?.signatures[0]?.comment
+    }
+  }
+  if (!parameter.comment && parameter.type?.type === "reference") {
+    // try to load comment
+    const commentContent = loadComment(parameter.type.name, parameter.project)
+    if (commentContent) {
+      return new Comment([
+        {
+          kind: "text",
+          text: commentContent,
+        },
+      ])
     }
   }
   return parameter.comment

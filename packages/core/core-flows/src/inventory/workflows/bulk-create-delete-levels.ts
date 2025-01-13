@@ -1,3 +1,5 @@
+// TODO: Remove this workflow in a future release.
+
 import { InventoryLevelDTO, InventoryTypes } from "@medusajs/framework/types"
 import {
   createWorkflow,
@@ -17,6 +19,8 @@ export const bulkCreateDeleteLevelsWorkflowId =
   "bulk-create-delete-levels-workflow"
 /**
  * This workflow creates and deletes inventory levels.
+ *
+ * @deprecated Use `batchInventoryItemLevels` instead.
  */
 export const bulkCreateDeleteLevelsWorkflow = createWorkflow(
   bulkCreateDeleteLevelsWorkflowId,

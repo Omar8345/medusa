@@ -1,6 +1,6 @@
 import { Buildings, Component, PencilSquare, Trash } from "@medusajs/icons"
 import { HttpTypes, InventoryItemDTO } from "@medusajs/types"
-import { Badge, clx, usePrompt } from "@medusajs/ui"
+import { Badge, Checkbox, clx, usePrompt } from "@medusajs/ui"
 import { createColumnHelper } from "@tanstack/react-table"
 import { useMemo } from "react"
 import { useTranslation } from "react-i18next"
@@ -73,11 +73,6 @@ const VariantActions = ({
               to: `edit-variant?variant_id=${variant.id}`,
               icon: <PencilSquare />,
             },
-            {
-              label: t("actions.delete"),
-              onClick: handleDelete,
-              icon: <Trash />,
-            },
             hasInventoryItem
               ? {
                   label: t("products.variant.inventory.actions.inventoryItems"),
@@ -93,6 +88,15 @@ const VariantActions = ({
                 }
               : false,
           ].filter(Boolean) as Action[],
+        },
+        {
+          actions: [
+            {
+              label: t("actions.delete"),
+              onClick: handleDelete,
+              icon: <Trash />,
+            },
+          ],
         },
       ]}
     />
@@ -145,6 +149,34 @@ export const useProductVariantTableColumns = (
 
   return useMemo(
     () => [
+      columnHelper.display({
+        id: "select",
+        header: ({ table }) => {
+          return (
+            <Checkbox
+              checked={
+                table.getIsSomePageRowsSelected()
+                  ? "indeterminate"
+                  : table.getIsAllPageRowsSelected()
+              }
+              onCheckedChange={(value) =>
+                table.toggleAllPageRowsSelected(!!value)
+              }
+            />
+          )
+        },
+        cell: ({ row }) => {
+          return (
+            <Checkbox
+              checked={row.getIsSelected()}
+              onCheckedChange={(value) => row.toggleSelected(!!value)}
+              onClick={(e) => {
+                e.stopPropagation()
+              }}
+            />
+          )
+        },
+      }),
       columnHelper.accessor("title", {
         header: () => (
           <div className="flex h-full w-full items-center">

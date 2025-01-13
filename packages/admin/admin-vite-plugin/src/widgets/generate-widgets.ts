@@ -6,18 +6,13 @@ import {
   isArrayExpression,
   isStringLiteral,
   isTemplateLiteral,
-  ObjectProperty,
+  Node,
   parse,
   ParseResult,
   traverse,
 } from "../babel"
 import { logger } from "../logger"
-import {
-  getConfigObjectProperties,
-  getParserOptions,
-  hasDefaultExport,
-  normalizePath,
-} from "../utils"
+import { getParserOptions, hasDefaultExport, normalizePath } from "../utils"
 import { getWidgetFilesFromSources } from "./helpers"
 
 type WidgetConfig = {
@@ -155,51 +150,106 @@ async function getWidgetZone(
 ): Promise<InjectionZone[] | null> {
   const zones: string[] = []
 
+  /**
+   * We need to keep track of whether we have found a zone in the file.
+   * This is to avoid processing the same config both using the `ExportNamedDeclaration`
+   * and `VariableDeclarator` paths, which would be the case for the unbundled files.
+   */
+  let zoneFound = false
+
   traverse(ast, {
-    ExportNamedDeclaration(path) {
-      const properties = getConfigObjectProperties(path)
-      if (!properties) {
+    /**
+     * In case we are processing a bundled file, the `config` will most likely
+     * not be a named export. Instead we look for a `VariableDeclaration` named
+     * `config` and extract the `zone` property from it.
+     */
+    VariableDeclarator(path) {
+      if (zoneFound) {
         return
       }
 
-      const zoneProperty = properties.find(
-        (p) =>
-          p.type === "ObjectProperty" &&
-          p.key.type === "Identifier" &&
-          p.key.name === "zone"
-      ) as ObjectProperty | undefined
-
-      if (!zoneProperty) {
-        logger.warn(`'zone' property is missing from the widget config.`, {
-          file,
-        })
-        return
-      }
-
-      if (isTemplateLiteral(zoneProperty.value)) {
-        logger.warn(
-          `'zone' property cannot be a template literal (e.g. \`product.details.after\`).`,
-          { file }
-        )
-        return
-      }
-
-      if (isStringLiteral(zoneProperty.value)) {
-        zones.push(zoneProperty.value.value)
-      } else if (isArrayExpression(zoneProperty.value)) {
-        const values: string[] = []
-
-        for (const element of zoneProperty.value.elements) {
-          if (isStringLiteral(element)) {
-            values.push(element.value)
+      if (
+        path.node.id.type === "Identifier" &&
+        path.node.id.name === "config" &&
+        path.node.init?.type === "CallExpression"
+      ) {
+        const arg = path.node.init.arguments[0]
+        if (arg?.type === "ObjectExpression") {
+          const zoneProperty = arg.properties.find(
+            (p: any) => p.type === "ObjectProperty" && p.key.name === "zone"
+          )
+          if (zoneProperty?.type === "ObjectProperty") {
+            extractZoneValues(zoneProperty.value, zones, file)
+            zoneFound = true
           }
         }
+      }
+    },
+    /**
+     * For unbundled files, the `config` will always be a named export.
+     */
+    ExportNamedDeclaration(path) {
+      if (zoneFound) {
+        return
+      }
 
-        zones.push(...values)
+      const declaration = path.node.declaration
+      if (
+        declaration?.type === "VariableDeclaration" &&
+        declaration.declarations[0]?.type === "VariableDeclarator" &&
+        declaration.declarations[0].id.type === "Identifier" &&
+        declaration.declarations[0].id.name === "config" &&
+        declaration.declarations[0].init?.type === "CallExpression"
+      ) {
+        const arg = declaration.declarations[0].init.arguments[0]
+        if (arg?.type === "ObjectExpression") {
+          const zoneProperty = arg.properties.find(
+            (p: any) => p.type === "ObjectProperty" && p.key.name === "zone"
+          )
+          if (zoneProperty?.type === "ObjectProperty") {
+            extractZoneValues(zoneProperty.value, zones, file)
+            zoneFound = true
+          }
+        }
       }
     },
   })
 
+  if (!zoneFound) {
+    logger.warn(`'zone' property is missing from the widget config.`, { file })
+    return null
+  }
+
   const validatedZones = zones.filter(isValidInjectionZone)
-  return validatedZones.length > 0 ? validatedZones : null
+
+  if (validatedZones.length === 0) {
+    logger.warn(`'zone' property is not a valid injection zone.`, {
+      file,
+    })
+    return null
+  }
+
+  return validatedZones
+}
+
+function extractZoneValues(value: Node, zones: string[], file: string) {
+  if (isTemplateLiteral(value)) {
+    logger.warn(
+      `'zone' property cannot be a template literal (e.g. \`product.details.after\`).`,
+      { file }
+    )
+    return
+  }
+
+  if (isStringLiteral(value)) {
+    zones.push(value.value)
+  } else if (isArrayExpression(value)) {
+    const values = value.elements
+      .filter((e) => isStringLiteral(e))
+      .map((e) => e.value)
+    zones.push(...values)
+  } else {
+    logger.warn(`'zone' property is not a string or array.`, { file })
+    return
+  }
 }

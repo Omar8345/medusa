@@ -1,9 +1,7 @@
 import Handlebars from "handlebars"
-import pkg from "js-beautify"
 import { DeclarationReflection, SignatureReflection } from "typedoc"
 import { getReflectionTypeFakeValueStr, getWorkflowInputType } from "utils"
-
-const { js_beautify } = pkg
+import beautifyCode from "../../utils/beautify-code.js"
 
 export default function () {
   Handlebars.registerHelper(
@@ -54,18 +52,12 @@ function getExecutionCodeTabs({
   workflowName: string
 }): string {
   exampleCode = exampleCode.replace("```ts\n", "").replace("\n```", "")
-  const beautifyOptions: pkg.JSBeautifyOptions = {
-    indent_size: 2,
-    brace_style: "preserve-inline",
-    wrap_line_length: 80,
-  }
 
   return `<CodeTabs group="workflow-exection">
     <CodeTab label="Another Workflow" value="another-workflow">
     
 \`\`\`ts title="src/workflows/my-workflow.ts"
-${js_beautify(
-  `import { createWorkflow } from "@medusajs/framework/workflows-sdk"
+${beautifyCode(`import { createWorkflow } from "@medusajs/framework/workflows-sdk"
 import { ${workflowName} } from "@medusajs/medusa/core-flows"
 
 const myWorkflow = createWorkflow(
@@ -74,19 +66,17 @@ const myWorkflow = createWorkflow(
     ${exampleCode
       .replace(`{ result }`, "result")
       .replace(`await `, "")
-      .replace(`(container)\n\t.run(`, ".runAsStep(")}
+      .replace(`(container)`, "")
+      .replace(".run(", ".runAsStep(")}
   }
-)`,
-  beautifyOptions
-)}
+)`)}
 \`\`\`
 
     </CodeTab>
     <CodeTab label="API Route" value="api-route">
     
 \`\`\`ts title="src/api/workflow/route.ts"
-${js_beautify(
-  `import type {
+${beautifyCode(`import type {
   MedusaRequest,
   MedusaResponse,
 } from "@medusajs/framework/http"
@@ -100,17 +90,14 @@ export async function POST(
 
   res.send(result)
 }
-`,
-  beautifyOptions
-)}
+`)}
 \`\`\`
 
     </CodeTab>
     <CodeTab label="Subscriber" value="subscriber">
     
 \`\`\`ts title="src/subscribers/order-placed.ts"
-${js_beautify(
-  `import {
+${beautifyCode(`import {
   type SubscriberConfig,
   type SubscriberArgs,
 } from "@medusajs/framework"
@@ -127,17 +114,14 @@ export default async function handleOrderPlaced({
 
 export const config: SubscriberConfig = {
   event: "order.placed",
-}`,
-  beautifyOptions
-)}
+}`)}
 \`\`\`
 
     </CodeTab>
     <CodeTab label="Scheduled Job" value="scheduled-job">
     
 \`\`\`ts title="src/jobs/message-daily.ts"
-${js_beautify(
-  `import { MedusaContainer } from "@medusajs/framework/types"
+${beautifyCode(`import { MedusaContainer } from "@medusajs/framework/types"
 import { ${workflowName} } from "@medusajs/medusa/core-flows"
 
 export default async function myCustomJob(
@@ -151,9 +135,7 @@ export default async function myCustomJob(
 export const config = {
   name: "run-once-a-day",
   schedule: "0 0 * * *",
-}`,
-  beautifyOptions
-)}
+}`)}
 \`\`\`
 
     </CodeTab>

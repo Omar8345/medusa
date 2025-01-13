@@ -273,7 +273,7 @@ import { defineLink } from "@medusajs/framework/utils"
 export default defineLink(
   {
     linkable: DigitalProductModule.linkable.digitalProduct,
-    deleteCascade: true
+    deleteCascade: true,
   },
   ProductModule.linkable.productVariant
 )
@@ -1534,17 +1534,17 @@ export const retrieveDigitalProductsToDeleteStep = createStep(
     const query = container.resolve("query")
 
     const productVariants = await productService.listProductVariants({
-      product_id: product_id
+      product_id: product_id,
     }, {
-      withDeleted: true
+      withDeleted: true,
     })
 
     const { data } = await query.graph({
       entity: DigitalProductVariantLink.entryPoint,
       fields: ["digital_product.*"],
       filters: {
-        product_variant_id: productVariants.map((v) => v.id)
-      }
+        product_variant_id: productVariants.map((v) => v.id),
+      },
     })
 
     const digitalProductIds = data.map((d) => d.digital_product.id)
@@ -1612,9 +1612,9 @@ You can now create the workflow that executes those steps.
 Create the file `src/workflows/delete-product-digital-products/index.ts` with the following content:
 
 ```ts title="src/workflows/delete-product-digital-products/index.ts"
-import { createWorkflow, WorkflowResponse } from "@medusajs/framework/workflows-sdk";
-import { deleteDigitalProductsSteps } from "./steps/delete-digital-products";
-import { retrieveDigitalProductsToDeleteStep } from "./steps/retrieve-digital-products-to-delete";
+import { createWorkflow, WorkflowResponse } from "@medusajs/framework/workflows-sdk"
+import { deleteDigitalProductsSteps } from "./steps/delete-digital-products"
+import { retrieveDigitalProductsToDeleteStep } from "./steps/retrieve-digital-products-to-delete"
 
 type DeleteProductDigitalProductsInput = {
   id: string
@@ -1624,11 +1624,11 @@ export const deleteProductDigitalProductsWorkflow = createWorkflow(
   "delete-product-digital-products",
   (input: DeleteProductDigitalProductsInput) => {
     const digitalProductsToDelete = retrieveDigitalProductsToDeleteStep({
-      product_id: input.id
+      product_id: input.id,
     })
 
     deleteDigitalProductsSteps({
-      ids: digitalProductsToDelete
+      ids: digitalProductsToDelete,
     })
 
     return new WorkflowResponse({})
@@ -1656,10 +1656,10 @@ So, you'll listen to the `product.deleted` event in a subscriber, and execute th
 Create the file `src/subscribers/handle-product-deleted.ts` with the following content:
 
 ```ts title="src/subscribers/handle-product-deleted.ts"
-import { SubscriberArgs, SubscriberConfig } from "@medusajs/framework";
+import { SubscriberArgs, SubscriberConfig } from "@medusajs/framework"
 import { 
-  deleteProductDigitalProductsWorkflow
-} from "../workflows/delete-product-digital-products";
+  deleteProductDigitalProductsWorkflow,
+} from "../workflows/delete-product-digital-products"
 
 export default async function handleProductDeleted({
   event: { data },
@@ -1711,7 +1711,7 @@ import {
   FulfillmentDTO, 
   FulfillmentItemDTO, 
   FulfillmentOption, 
-  FulfillmentOrderDTO
+  FulfillmentOrderDTO,
 } from "@medusajs/framework/types"
 
 class DigitalProductFulfillmentService extends AbstractFulfillmentProviderService {
@@ -1750,7 +1750,7 @@ class DigitalProductFulfillmentService extends AbstractFulfillmentProviderServic
     // No data is being sent anywhere
     return {
       data,
-      labels: []
+      labels: [],
     }
   }
 
@@ -2606,7 +2606,7 @@ In `src/types/global.ts`, add the following types that you’ll use in your cust
 ```ts title="src/types/global.ts"
 import { 
   // other imports...
-  StoreProductVariant
+  StoreProductVariant,
 } from "@medusajs/types"
 
 // ...
@@ -2668,7 +2668,7 @@ export const listProducts = async ({
         query: {
           // ...
           fields: "*variants.calculated_price,+variants.inventory_quantity,+metadata,+tags,*variants.calculated_price,*variants.digital_product",
-        }
+        },
       }
     )
     // ...
@@ -2707,7 +2707,7 @@ export const getDigitalProductPreview = async function ({
     {
       headers,
       next,
-      cache: "force-cache"
+      cache: "force-cache",
     }
   )
 

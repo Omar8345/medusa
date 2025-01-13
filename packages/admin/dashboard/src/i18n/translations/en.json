@@ -645,6 +645,15 @@
         }
       }
     },
+    "stock": {
+      "heading": "Manage product stock levels and locations",
+      "description": "Update the stocked inventory levels for all of the product's variants.",
+      "loading": "Hang on this may take a moment...",
+      "tooltips": {
+        "alreadyManaged": "This inventory item is already editable under {{title}}.",
+        "alreadyManagedWithSku": "This inventory item is already editable under {{title}} ({{sku}})."
+      }
+    },
     "toasts": {
       "delete": {
         "success": {
@@ -799,6 +808,16 @@
       "updateLocations": "Locations updated successfully.",
       "updateLevel": "Inventory level updated successfully.",
       "updateItem": "Inventory item updated successfully."
+    },
+    "stock": {
+      "title": "Update inventory levels",
+      "description": "Update the stocked inventory levels for the selected inventory items.",
+      "action": "Edit stock levels",
+      "placeholder": "Not enabled",
+      "disablePrompt_one": "You are about to disable {{count}} location level. This action cannot be undone.",
+      "disablePrompt_other": "You are about to disable {{count}} location levels. This action cannot be undone.",
+      "disabledToggleTooltip": "Cannot disable: clear incoming and/or reserved quantity before disabling.",
+      "successToast": "Inventory levels updated successfully."
     }
   },
   "giftCards": {

@@ -54,7 +54,7 @@ export const multiPartsHighlights1 = [
 ```ts highlights={multiPartsHighlights1}
 import { 
   createInventoryItemsWorkflow, 
-  useQueryGraphStep
+  useQueryGraphStep,
 } from "@medusajs/medusa/core-flows"
 import { createWorkflow } from "@medusajs/framework/workflows-sdk"
 
@@ -66,8 +66,8 @@ export const createMultiPartProductsWorkflow = createWorkflow(
       entity: "stock_location",
       fields: ["*"],
       filters: {
-        name: "European Warehouse"
-      }
+        name: "European Warehouse",
+      },
     })
 
     const inventoryItems = createInventoryItemsWorkflow.runAsStep({
@@ -79,9 +79,9 @@ export const createMultiPartProductsWorkflow = createWorkflow(
             location_levels: [
               {
                 stocked_quantity: 100,
-                location_id: stockLocations[0].id
-              }
-            ]
+                location_id: stockLocations[0].id,
+              },
+            ],
           },
           {
             sku: "WHEEL",
@@ -89,9 +89,9 @@ export const createMultiPartProductsWorkflow = createWorkflow(
             location_levels: [
               {
                 stocked_quantity: 100,
-                location_id: stockLocations[0].id
-              }
-            ]
+                location_id: stockLocations[0].id,
+              },
+            ],
           },
           {
             sku: "SEAT",
@@ -99,12 +99,12 @@ export const createMultiPartProductsWorkflow = createWorkflow(
             location_levels: [
               {
                 stocked_quantity: 100,
-                location_id: stockLocations[0].id
-              }
-            ]
-          }
-        ]
-      }
+                location_id: stockLocations[0].id,
+              },
+            ],
+          },
+        ],
+      },
     })
 
     // TODO create the product
@@ -127,11 +127,11 @@ export const multiPartHighlights2 = [
 ```ts highlights={multiPartHighlights2}
 import { 
   // ...
-  transform
+  transform,
 } from "@medusajs/framework/workflows-sdk"
 import { 
   // ...
-  createProductsWorkflow
+  createProductsWorkflow,
 } from "@medusajs/medusa/core-flows"
 
 export const createMultiPartProductsWorkflow = createWorkflow(
@@ -140,7 +140,7 @@ export const createMultiPartProductsWorkflow = createWorkflow(
     // ...
 
     const inventoryItemIds = transform({
-      inventoryItems
+      inventoryItems,
     }, (data) => {
       return data.inventoryItems.map((inventoryItem) => {
         return {
@@ -161,24 +161,24 @@ export const createMultiPartProductsWorkflow = createWorkflow(
                 prices: [
                   {
                     amount: 100,
-                    currency_code: "usd"
-                  }
+                    currency_code: "usd",
+                  },
                 ],
                 options: {
-                  "Default Option": "Default Variant"
+                  "Default Option": "Default Variant",
                 },
-                inventory_items: inventoryItemIds
-              }
+                inventory_items: inventoryItemIds,
+              },
             ],
             options: [
               {
                 title: "Default Option",
-                values: ["Default Variant"]
-              }
-            ]
-          }
-        ]
-      }
+                values: ["Default Variant"],
+              },
+            ],
+          },
+        ],
+      },
     })
   }
 )
@@ -235,21 +235,21 @@ export const createBundledProducts = createWorkflow(
                 prices: [
                   {
                     amount: 10,
-                    currency_code: "usd"
-                  }
+                    currency_code: "usd",
+                  },
                 ],
                 options: {
-                  "Default Option": "Default Variant"
+                  "Default Option": "Default Variant",
                 },
-                manage_inventory: true
-              }
+                manage_inventory: true,
+              },
             ],
             options: [
               {
                 title: "Default Option",
-                values: ["Default Variant"]
-              }
-            ]
+                values: ["Default Variant"],
+              },
+            ],
           },
           {
             title: "Pants",
@@ -259,21 +259,21 @@ export const createBundledProducts = createWorkflow(
                 prices: [
                   {
                     amount: 10,
-                    currency_code: "usd"
-                  }
+                    currency_code: "usd",
+                  },
                 ],
                 options: {
-                  "Default Option": "Default Variant"
+                  "Default Option": "Default Variant",
                 },
-                manage_inventory: true
-              }
+                manage_inventory: true,
+              },
             ],
             options: [
               {
                 title: "Default Option",
-                values: ["Default Variant"]
-              }
-            ]
+                values: ["Default Variant"],
+              },
+            ],
           },
           {
             title: "Shoes",
@@ -283,24 +283,24 @@ export const createBundledProducts = createWorkflow(
                 prices: [
                   {
                     amount: 10,
-                    currency_code: "usd"
-                  }
+                    currency_code: "usd",
+                  },
                 ],
                 options: {
-                  "Default Option": "Default Variant"
+                  "Default Option": "Default Variant",
                 },
-                manage_inventory: true
-              }
+                manage_inventory: true,
+              },
             ],
             options: [
               {
                 title: "Default Option",
-                values: ["Default Variant"]
-              }
-            ]
-          }
-        ]
-      }
+                values: ["Default Variant"],
+              },
+            ],
+          },
+        ],
+      },
     })
 
     // TODO re-retrieve with inventory
@@ -321,10 +321,10 @@ export const bundledHighlights2 = [
 ```ts highlights={bundledHighlights2}
 import { 
   // ...
-  transform
+  transform,
 } from "@medusajs/framework/workflows-sdk"
 import { 
-  useQueryGraphStep
+  useQueryGraphStep,
 } from "@medusajs/medusa/core-flows"
 
 export const createBundledProducts = createWorkflow(
@@ -332,7 +332,7 @@ export const createBundledProducts = createWorkflow(
   () => {
     // ...
     const productIds = transform({
-      products
+      products,
     }, (data) => data.products.map((product) => product.id))
 
     // @ts-ignore
@@ -340,19 +340,19 @@ export const createBundledProducts = createWorkflow(
       entity: "product",
       fields: [
         "variants.*",
-        "variants.inventory_items.*"
+        "variants.inventory_items.*",
       ],
       filters: {
-        id: productIds
-      }
+        id: productIds,
+      },
     })
 
     const inventoryItemIds = transform({
-      productsWithInventory
+      productsWithInventory,
     }, (data) => {
       return data.productsWithInventory.map((product) => {
         return {
-          inventory_item_id: product.variants[0].inventory_items?.[0]?.inventory_item_id
+          inventory_item_id: product.variants[0].inventory_items?.[0]?.inventory_item_id,
         }
       })
     })
@@ -387,24 +387,24 @@ export const createBundledProducts = createWorkflow(
                 prices: [
                   {
                     amount: 30,
-                    currency_code: "usd"
-                  }
+                    currency_code: "usd",
+                  },
                 ],
                 options: {
-                  "Default Option": "Default Variant"
+                  "Default Option": "Default Variant",
                 },
                 inventory_items: inventoryItemIds,
-              }
+              },
             ],
             options: [
               {
                 title: "Default Option",
-                values: ["Default Variant"]
-              }
-            ]
-          }
-        ]
-      }
+                values: ["Default Variant"],
+              },
+            ],
+          },
+        ],
+      },
     }).config({ name: "create-bundled-product" })
   }
 )

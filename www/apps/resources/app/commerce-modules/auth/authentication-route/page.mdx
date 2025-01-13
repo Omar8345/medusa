@@ -59,7 +59,7 @@ It requires the following steps:
 1. Authenticate the user with the [Auth Route](#login-route).
 2. The auth route returns a URL to authenticate with third-party service, such as login with Google. The frontend (such as a storefront), when it receives a `location` property in the response, must redirect to the returned location.
 3. Once the authentication with the third-party service finishes, it redirects back to the frontend with a `code` query parameter. So, make sure your third-party service is configured to redirect to your frontend page after successful authentication.
-4. The frontend sends a request to the [Callback Route](#callback-route) passing the `code` query parameter.
+4. The frontend sends a request to the [Validate Callback Route](#validate-callback-route) passing it the query parameters received from the third-party service, such as the `code` and `state` query parameters.
 5. If the callback validation is successful, the frontend receives the authentication token.
 6. Decode the received token in the frontend using tools like [react-jwt](https://www.npmjs.com/package/react-jwt).
     - If the decoded data has an `actor_id` property, then the user is already registered. So, use this token for subsequent authenticated requests.
@@ -221,7 +221,7 @@ Redirect to that URL in the frontend to continue the authentication process with
 The Medusa application defines an API route at `/auth/{actor_type}/{provider}/callback` that's useful for validating the authentication callback or redirect from third-party services like Google.
 
 ```bash
-curl -X POST http://localhost:9000/auth/{actor_type}/{providers}/callback?code=123
+curl -X POST http://localhost:9000/auth/{actor_type}/{providers}/callback?code=123&state=456
 ```
 
 <Note title="Tip">
@@ -239,7 +239,7 @@ Its path parameters are:
 
 ### Query Parameters
 
-This route accepts a `code` query parameter, which is the code received from the third-party provider.
+This route accepts all the query parameters that the third-party service sends to the frontend after the user completes the authentication process, such as the `code` and `state` query parameters.
 
 ### Response Fields
 

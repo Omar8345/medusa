@@ -13,11 +13,11 @@ import {
   ReservationItemDTO,
 } from "./common"
 import {
-  BulkUpdateInventoryLevelInput,
   CreateInventoryItemInput,
   CreateInventoryLevelInput,
   CreateReservationItemInput,
   UpdateInventoryItemInput,
+  UpdateInventoryLevelInput,
   UpdateReservationItemInput,
 } from "./mutations"
 
@@ -610,7 +610,7 @@ export interface IInventoryService extends IModuleService {
   /**
    * This method updates existing inventory levels.
    *
-   * @param {BulkUpdateInventoryLevelInput[]} updates - The list of The attributes to update in an inventory level. The inventory level is identified by the IDs of its associated inventory item and location.
+   * @param {UpdateInventoryLevelInput[]} updates - The list of The attributes to update in an inventory level. The inventory level is identified by the IDs of its associated inventory item and location.
    * @param {Context} context - A context used to share resources, such as transaction manager, between the application and the module.
    * @returns {Promise<InventoryLevelDTO[]>} The updated inventory levels.
    *
@@ -626,14 +626,14 @@ export interface IInventoryService extends IModuleService {
    *   ])
    */
   updateInventoryLevels(
-    updates: BulkUpdateInventoryLevelInput[],
+    updates: UpdateInventoryLevelInput[],
     context?: Context
   ): Promise<InventoryLevelDTO[]>
 
   /**
    * This method updates an existing inventory level.
    *
-   * @param {BulkUpdateInventoryLevelInput} updates - The attributes to update in an inventory level. The inventory level is identified by the IDs of its associated inventory item and location.
+   * @param {UpdateInventoryLevelInput} updates - The attributes to update in an inventory level. The inventory level is identified by the IDs of its associated inventory item and location.
    * @param {Context} context - A context used to share resources, such as transaction manager, between the application and the module.
    * @returns {Promise<InventoryLevelDTO>} The updated inventory level.
    *
@@ -646,7 +646,7 @@ export interface IInventoryService extends IModuleService {
    *   })
    */
   updateInventoryLevels(
-    updates: BulkUpdateInventoryLevelInput,
+    updates: UpdateInventoryLevelInput,
     context?: Context
   ): Promise<InventoryLevelDTO>
 
@@ -1058,7 +1058,7 @@ export interface IInventoryService extends IModuleService {
   ): Promise<InventoryLevelDTO[]>
 
   /**
-   * 
+   *
    * @param {string} inventoryItemId - The inventory item's ID.
    * @param {string} locationId - The location's ID.
    * @param {number} adjustment - the adjustment to make to the quantity.

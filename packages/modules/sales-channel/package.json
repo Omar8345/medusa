@@ -16,7 +16,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/medusajs/medusa",
-    "directory": "packages/sales-channel"
+    "directory": "packages/modules/sales-channel"
   },
   "publishConfig": {
     "access": "public"

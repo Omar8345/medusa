@@ -8,7 +8,7 @@ import {
 import { updateInventoryLevelsStep } from "../steps/update-inventory-levels"
 
 export interface UpdateInventoryLevelsWorkflowInput {
-  updates: InventoryTypes.BulkUpdateInventoryLevelInput[]
+  updates: InventoryTypes.UpdateInventoryLevelInput[]
 }
 export const updateInventoryLevelsWorkflowId =
   "update-inventory-levels-workflow"

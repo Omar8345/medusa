@@ -144,7 +144,7 @@ const { success, authIdentity, location } = await authModuleService.authenticate
   // passed to auth provider
   {
     // ...
-    callback_url: "example.com"
+    callback_url: "example.com",
   }
 )
 ```
@@ -175,6 +175,12 @@ if (success) {
   // authentication succeeded
 }
 ```
+
+<Note title="Tip">
+
+For providers like Google, the `query` object contains the query parameters from the original callback URL, such as the `code` and `state` parameters.
+
+</Note>
 
 If the returned `success` property is `true`, the authentication with the third-party provider was successful.
 

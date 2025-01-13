@@ -75,6 +75,30 @@ export const AdminCreateInventoryLocationLevel = z
   })
   .strict()
 
+export type AdminUpdateInventoryLocationLevelBatchType = z.infer<
+  typeof AdminUpdateInventoryLocationLevelBatch
+>
+
+export const AdminUpdateInventoryLocationLevelBatch = z
+  .object({
+    id: z.string().optional(),
+    location_id: z.string(),
+    stocked_quantity: z.number().min(0).optional(),
+    incoming_quantity: z.number().min(0).optional(),
+  })
+  .strict()
+
+export type AdminBatchInventoryItemLocationsLevelType = z.infer<
+  typeof AdminBatchInventoryItemLocationsLevel
+>
+
+export const AdminBatchInventoryItemLocationsLevel = z.object({
+  create: z.array(AdminCreateInventoryLocationLevel).optional(),
+  update: z.array(AdminUpdateInventoryLocationLevelBatch).optional(),
+  delete: z.array(z.string()).optional(),
+  force: z.boolean().optional(),
+})
+
 export type AdminUpdateInventoryLocationLevelType = z.infer<
   typeof AdminUpdateInventoryLocationLevel
 >
@@ -129,3 +153,23 @@ export const AdminUpdateInventoryItem = z
     metadata: z.record(z.unknown()).nullish(),
   })
   .strict()
+
+const AdminBatchInventoryLocationLevel = z.object({
+  inventory_item_id: z.string(),
+  location_id: z.string(),
+  stocked_quantity: z.number().min(0).optional(),
+  incoming_quantity: z.number().min(0).optional(),
+})
+
+export const AdminBatchInventoryItemLevels = z
+  .object({
+    create: z.array(AdminBatchInventoryLocationLevel).optional(),
+    update: z.array(AdminBatchInventoryLocationLevel).optional(),
+    delete: z.array(z.string()).optional(),
+    force: z.boolean().optional(),
+  })
+  .strict()
+
+export type AdminBatchInventoryItemLevelsType = z.infer<
+  typeof AdminBatchInventoryItemLevels
+>
