@@ -23,7 +23,6 @@ type RouteResult = {
 export async function generateRoutes(sources: Set<string>) {
   const files = await getFilesFromSources(sources)
   const results = await getRouteResults(files)
-
   const imports = results.map((result) => result.imports).flat()
   const code = generateCode(results)
 

@@ -17,11 +17,13 @@ import {
   isTemplateLiteral,
   isVariableDeclaration,
   isVariableDeclarator,
+  Node,
   ObjectExpression,
   ObjectMethod,
   ObjectProperty,
   SpreadElement,
   StringLiteral,
+  VariableDeclarator,
 } from "@babel/types"
 
 /**
@@ -58,6 +60,7 @@ export type {
   ExportDefaultDeclaration,
   ExportNamedDeclaration,
   File,
+  Node,
   NodePath,
   ObjectExpression,
   ObjectMethod,
@@ -66,4 +69,5 @@ export type {
   ParserOptions,
   SpreadElement,
   StringLiteral,
+  VariableDeclarator,
 }
