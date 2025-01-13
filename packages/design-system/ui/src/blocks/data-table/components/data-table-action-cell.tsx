@@ -24,15 +24,25 @@ const DataTableActionCell = <TData,>({
     return null
   }
 
+  let resolvedActions = actions
+
+  if (typeof actions === "function") {
+    resolvedActions = actions(ctx)
+  }
+
+  if (!Array.isArray(resolvedActions)) {
+    return null
+  }
+
   return (
     <DropdownMenu>
-      <DropdownMenu.Trigger asChild>
+      <DropdownMenu.Trigger asChild className="ml-1">
         <IconButton size="small" variant="transparent">
           <EllipsisHorizontal />
         </IconButton>
       </DropdownMenu.Trigger>
       <DropdownMenu.Content side="bottom">
-        {actions.map((actionOrGroup, idx) => {
+        {resolvedActions.map((actionOrGroup, idx) => {
           const isArray = Array.isArray(actionOrGroup)
           const isLast = idx === actions.length - 1
 
@@ -74,3 +84,4 @@ const DataTableActionCell = <TData,>({
 
 export { DataTableActionCell }
 export type { DataTableActionCellProps }
+

@@ -110,9 +110,14 @@ export const useProductVariant = (
 
 export const useProductVariants = (
   productId: string,
-  query?: Record<string, any>,
+  query?: HttpTypes.AdminProductVariantParams,
   options?: Omit<
-    UseQueryOptions<any, FetchError, any, QueryKey>,
+    UseQueryOptions<
+      HttpTypes.AdminProductVariantListResponse,
+      FetchError,
+      HttpTypes.AdminProductVariantListResponse,
+      QueryKey
+    >,
     "queryFn" | "queryKey"
   >
 ) => {
@@ -225,6 +230,32 @@ export const useDeleteVariant = (
       queryClient.invalidateQueries({ queryKey: variantsQueryKeys.lists() })
       queryClient.invalidateQueries({
         queryKey: variantsQueryKeys.detail(variantId),
+      })
+      queryClient.invalidateQueries({
+        queryKey: productsQueryKeys.detail(productId),
+      })
+
+      options?.onSuccess?.(data, variables, context)
+    },
+    ...options,
+  })
+}
+
+export const useDeleteVariantLazy = (
+  productId: string,
+  options?: UseMutationOptions<
+    HttpTypes.AdminProductVariantDeleteResponse,
+    FetchError,
+    { variantId: string }
+  >
+) => {
+  return useMutation({
+    mutationFn: ({ variantId }) =>
+      sdk.admin.product.deleteVariant(productId, variantId),
+    onSuccess: (data, variables, context) => {
+      queryClient.invalidateQueries({ queryKey: variantsQueryKeys.lists() })
+      queryClient.invalidateQueries({
+        queryKey: variantsQueryKeys.detail(variables.variantId),
       })
       queryClient.invalidateQueries({
         queryKey: productsQueryKeys.detail(productId),

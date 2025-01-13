@@ -1,6 +1,11 @@
 import { Buildings, Component, PencilSquare, Trash } from "@medusajs/icons"
 import { HttpTypes, InventoryItemDTO } from "@medusajs/types"
-import { Badge, clx, usePrompt } from "@medusajs/ui"
+import {
+  Badge,
+  clx,
+  createDataTableColumnHelper,
+  usePrompt,
+} from "@medusajs/ui"
 import { createColumnHelper } from "@tanstack/react-table"
 import { useMemo } from "react"
 import { useTranslation } from "react-i18next"
@@ -245,4 +250,108 @@ export const useProductVariantTableColumns = (
     ],
     [t, optionColumns]
   )
+}
+
+const dataTableColumnHelper =
+  createDataTableColumnHelper<HttpTypes.AdminProductVariant>()
+
+export const useColumns = (product?: HttpTypes.AdminProduct) => {
+  const { t } = useTranslation()
+
+  const optionColumns = useMemo(() => {
+    if (!product?.options) {
+      return []
+    }
+
+    return product.options.map((option) => {
+      return dataTableColumnHelper.display({
+        id: option.id,
+        header: option.title,
+        cell: ({ row }) => {
+          const variantOpt = row.original.options?.find(
+            (opt) => opt.option_id === option.id
+          )
+
+          if (!variantOpt) {
+            return <span className="text-ui-fg-muted">-</span>
+          }
+
+          return (
+            <div className="flex items-center">
+              <Badge
+                size="2xsmall"
+                title={variantOpt.value}
+                className="inline-flex min-w-[20px] max-w-[140px] items-center justify-center overflow-hidden truncate"
+              >
+                {variantOpt.value}
+              </Badge>
+            </div>
+          )
+        },
+      })
+    })
+  }, [product])
+
+  return [
+    dataTableColumnHelper.accessor("title", {
+      header: t("fields.title"),
+      enableSorting: true,
+      sortAscLabel: t("filters.sorting.alphabeticallyAsc"),
+      sortDescLabel: t("filters.sorting.alphabeticallyDesc"),
+    }),
+    dataTableColumnHelper.accessor("sku", {
+      header: t("fields.sku"),
+      enableSorting: true,
+      sortAscLabel: t("filters.sorting.alphabeticallyAsc"),
+      sortDescLabel: t("filters.sorting.alphabeticallyDesc"),
+    }),
+    ...optionColumns,
+    dataTableColumnHelper.display({
+      id: "inventory",
+      header: t("fields.inventory"),
+      cell: ({ row }) => {
+        const variant = row.original as HttpTypes.AdminProductVariant & {
+          inventory_items: { inventory: HttpTypes.AdminInventoryItem }[]
+        }
+
+        const inventoryItems = variant.inventory_items.map((i) => i.inventory)
+
+        const hasInventoryKit = inventoryItems.length > 1
+
+        const locations: Record<string, boolean> = {}
+
+        inventoryItems.forEach((i) => {
+          i.location_levels?.forEach((l) => {
+            locations[l.id] = true
+          })
+        })
+
+        const locationCount = Object.keys(locations).length
+
+        const text = hasInventoryKit
+          ? t("products.variant.tableItemAvailable", {
+              availableCount: variant.inventory_quantity,
+            })
+          : t("products.variant.tableItem", {
+              availableCount: variant.inventory_quantity,
+              locationCount,
+              count: locationCount,
+            })
+
+        return (
+          <div className="flex h-full w-full items-center gap-2 overflow-hidden">
+            {hasInventoryKit && <Component style={{ marginTop: 1 }} />}
+            <span
+              className={clx("truncate", {
+                "text-ui-fg-error": !variant.inventory_quantity,
+              })}
+              title={text}
+            >
+              {text}
+            </span>
+          </div>
+        )
+      },
+    }),
+  ]
 }

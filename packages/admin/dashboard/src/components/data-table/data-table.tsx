@@ -54,7 +54,7 @@ type DataTableActionMenuProps = {
 
 interface DataTableProps<TData> {
   data?: TData[]
-  columns: ColumnDef<TData>[]
+  columns: ColumnDef<TData, any>[]
   filters?: DataTableFilter[]
   commands?: DataTableCommand[]
   action?: DataTableActionProps

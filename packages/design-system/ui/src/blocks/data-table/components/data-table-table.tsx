@@ -132,7 +132,7 @@ const DataTableTable = ({ emptyState }: DataTableTableProps) => {
                         className={clx("whitespace-nowrap", {
                           "w-[calc(20px+24px+24px)] min-w-[calc(20px+24px+24px)] max-w-[calc(20px+24px+24px)]":
                             isSelectHeader,
-                          "w-[calc(28px+24px)] min-w-[calc(28px+24px)] max-w-[calc(28px+24px)]":
+                          "w-[calc(28px+24px+4px)] min-w-[calc(28px+24px+4px)] max-w-[calc(28px+24px+4px)]":
                             isActionHeader,
                           "after:absolute after:inset-y-0 after:right-0 after:h-full after:w-px after:bg-transparent after:content-['']":
                             isFirstColumn,
@@ -206,7 +206,7 @@ const DataTableTable = ({ emptyState }: DataTableTableProps) => {
                             {
                               "w-[calc(20px+24px+24px)] min-w-[calc(20px+24px+24px)] max-w-[calc(20px+24px+24px)]":
                                 isSelectCell,
-                              "w-[calc(28px+24px)] min-w-[calc(28px+24px)] max-w-[calc(28px+24px)]":
+                              "w-[calc(28px+24px+4px)] min-w-[calc(28px+24px+4px)] max-w-[calc(28px+24px+4px)]":
                                 isActionCell,
                               "bg-ui-bg-base group-hover/row:bg-ui-bg-base-hover transition-fg sticky h-full":
                                 isFirstColumn || isSelectCell,
@@ -325,3 +325,4 @@ function getIsEditableElementFocused() {
 
 export { DataTableTable }
 export type { DataTableEmptyStateProps, DataTableTableProps }
+

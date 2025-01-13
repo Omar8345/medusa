@@ -9,10 +9,10 @@ import type {
   DisplayColumnDef,
   IdentifiedColumnDef,
   PaginationState,
-  RowSelectionState
+  RowSelectionState,
 } from "@tanstack/react-table"
 
-type DataTableAction<TData> = {
+export type DataTableAction<TData> = {
   label: string
   onClick: (ctx: CellContext<TData, unknown>) => void
   icon?: React.ReactNode
@@ -20,7 +20,12 @@ type DataTableAction<TData> = {
 
 export interface DataTableActionColumnDef<TData>
   extends Pick<DisplayColumnDef<TData>, "meta"> {
-  actions: DataTableAction<TData>[] |  DataTableAction<TData>[][]
+  actions:
+    | DataTableAction<TData>[]
+    | DataTableAction<TData>[][]
+    | ((
+        ctx: CellContext<TData, unknown>
+      ) => DataTableAction<TData>[] | DataTableAction<TData>[][])
 }
 
 export interface DataTableSelectColumnDef<TData>
@@ -37,7 +42,10 @@ export type SortableColumnDefMeta = {
 }
 
 export type ActionColumnDefMeta<TData> = {
-  ___actions?: DataTableAction<TData>[] | DataTableAction<TData>[][]
+  ___actions?:
+    | DataTableAction<TData>[]
+    | DataTableAction<TData>[][]
+    | ((ctx: CellContext<TData, unknown>) => DataTableAction<TData>[])
 }
 
 export type DataTableColumnSizing = {
@@ -77,29 +85,40 @@ export interface DataTableColumnHelper<TData> {
   >(
     accessor: TAccessor,
     column: TAccessor extends AccessorFn<TData>
-      ? Pick<DisplayColumnDef<TData, TValue>, "meta" | "header" | "cell"> & DataTableColumnDef & SortableColumnDef
-      : Pick<IdentifiedColumnDef<TData, TValue>, "id" | "meta" | "header" | "cell"> & DataTableColumnDef & SortableColumnDef
+      ? Pick<DisplayColumnDef<TData, TValue>, "meta" | "header" | "cell"> &
+          DataTableColumnDef &
+          SortableColumnDef
+      : Pick<
+          IdentifiedColumnDef<TData, TValue>,
+          "id" | "meta" | "header" | "cell"
+        > &
+          DataTableColumnDef &
+          SortableColumnDef
   ) => TAccessor extends AccessorFn<TData>
     ? AccessorFnColumnDef<TData, TValue>
     : AccessorKeyColumnDef<TData, TValue>
-  display: (column: Pick<DisplayColumnDef<TData>, "meta" | "header" | "cell"> & DataTableDisplayColumnDef) => DisplayColumnDef<TData, unknown>
-  action: (props: DataTableActionColumnDef<TData>) => DisplayColumnDef<TData, unknown>
-  select: (props?: DataTableSelectColumnDef<TData>) => DisplayColumnDef<TData, unknown>
+  display: (
+    column: Pick<DisplayColumnDef<TData>, "meta" | "header" | "cell"> &
+      DataTableDisplayColumnDef
+  ) => DisplayColumnDef<TData, unknown>
+  action: (
+    props: DataTableActionColumnDef<TData>
+  ) => DisplayColumnDef<TData, unknown>
+  select: (
+    props?: DataTableSelectColumnDef<TData>
+  ) => DisplayColumnDef<TData, unknown>
 }
-
-
-
-
-
 
 export interface DataTableSortingState extends ColumnSort {}
 export interface DataTableRowSelectionState extends RowSelectionState {}
 export interface DataTablePaginationState extends PaginationState {}
-export type DataTableFilteringState<T extends Record<string, unknown> = Record<string, unknown>> = {
+export type DataTableFilteringState<
+  T extends Record<string, unknown> = Record<string, unknown>
+> = {
   [K in keyof T]: T[K]
 }
 
-export type FilterType =  "radio" | "select" | "date"
+export type FilterType = "radio" | "select" | "date"
 export type FilterOption<T = string> = {
   label: string
   value: T
@@ -135,9 +154,14 @@ export interface DateFilterProps extends BaseFilterProps {
   options: FilterOption<DataTableDateComparisonOperator>[]
 }
 
-export type DataTableFilterProps = RadioFilterProps | SelectFilterProps | DateFilterProps
+export type DataTableFilterProps =
+  | RadioFilterProps
+  | SelectFilterProps
+  | DateFilterProps
 
-export type DataTableFilter<T extends DataTableFilterProps = DataTableFilterProps> = T & {
+export type DataTableFilter<
+  T extends DataTableFilterProps = DataTableFilterProps
+> = T & {
   id: string
 }
 
@@ -166,7 +190,9 @@ export type DataTableDateComparisonOperator = {
   $gt?: string
 }
 
-type CommandAction = (selection: DataTableRowSelectionState) => void | Promise<void>
+type CommandAction = (
+  selection: DataTableRowSelectionState
+) => void | Promise<void>
 
 export interface DataTableCommand {
   label: string
