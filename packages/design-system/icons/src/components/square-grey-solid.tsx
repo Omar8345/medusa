@@ -13,13 +13,14 @@ const SquareGreySolid = React.forwardRef<SVGSVGElement, IconProps>(
       >
         <rect width={8} height={8} x={3.5} y={3.5} fill="#A1A1AA" rx={2} />
         <rect
-          width={7}
-          height={7}
-          x={4}
-          y={4}
+          width={7.5}
+          height={7.5}
+          x={3.75}
+          y={3.75}
           stroke={color}
-          strokeOpacity={0.12}
-          rx={1.5}
+          strokeOpacity={0.24}
+          strokeWidth={0.5}
+          rx={1.75}
         />
       </svg>
     )

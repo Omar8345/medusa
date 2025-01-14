@@ -4,7 +4,7 @@ import {
   DotsSix,
   FolderIllustration,
   FolderOpenIllustration,
-  Swatch,
+  TagIllustration,
   TriangleRightMini,
 } from "@medusajs/icons"
 import { Badge, clx, IconButton } from "@medusajs/ui"
@@ -136,7 +136,7 @@ const Icon = ({ childrenCount, collapsed, clone }: IconProps) => {
           <FolderIllustration />
         )
       ) : (
-        <Swatch className="text-ui-fg-muted" />
+        <TagIllustration />
       )}
     </div>
   )
