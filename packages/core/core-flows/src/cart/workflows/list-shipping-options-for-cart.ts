@@ -7,7 +7,7 @@ import {
 import { useQueryGraphStep, validatePresenceOfStep } from "../../common"
 import { useRemoteQueryStep } from "../../common/steps/use-remote-query"
 import { cartFieldsForPricingContext } from "../utils/fields"
-import { ListShippingOptionsForCartWorkflowInput, ListShippingOptionsForCartWorkflowOutput } from "@medusajs/types"
+import { ListShippingOptionsForCartWorkflowInput } from "@medusajs/types"
 
 export const listShippingOptionsForCartWorkflowId =
   "list-shipping-options-for-cart"
@@ -42,7 +42,7 @@ export const listShippingOptionsForCartWorkflow = createWorkflow(
   listShippingOptionsForCartWorkflowId,
   (
     input: WorkflowData<ListShippingOptionsForCartWorkflowInput>
-  ): WorkflowResponse<ListShippingOptionsForCartWorkflowOutput> => {
+  ) => {
     const cartQuery = useQueryGraphStep({
       entity: "cart",
       filters: { id: input.cart_id },

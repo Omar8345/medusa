@@ -8,8 +8,7 @@ import {
 } from "@medusajs/framework/workflows-sdk"
 import { 
   CalculateShippingOptionPriceDTO, 
-  ListShippingOptionsForCartWithPricingWorkflowInput, 
-  ListShippingOptionsForCartWithPricingWorkflowOutput
+  ListShippingOptionsForCartWithPricingWorkflowInput,
 } from "@medusajs/types"
 
 import { useQueryGraphStep, validatePresenceOfStep } from "../../common"
@@ -76,7 +75,7 @@ export const listShippingOptionsForCartWithPricingWorkflow = createWorkflow(
   listShippingOptionsForCartWithPricingWorkflowId,
   (
     input: WorkflowData<ListShippingOptionsForCartWithPricingWorkflowInput>
-  ): WorkflowResponse<ListShippingOptionsForCartWithPricingWorkflowOutput> => {
+  ) => {
     const optionIds = transform({ input }, ({ input }) =>
       (input.options ?? []).map(({ id }) => id)
     )
@@ -303,7 +302,7 @@ export const listShippingOptionsForCartWithPricingWorkflow = createWorkflow(
                 ],
             }
           }),
-        ] as ListShippingOptionsForCartWithPricingWorkflowOutput
+        ]
       }
     )
 

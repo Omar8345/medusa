@@ -119,7 +119,7 @@ export const addShippingMethodToCartWorkflow = createWorkflow(
 
           return {
             id: inputOption.id,
-            provider_id: shippingOption?.provider_id || "",
+            provider_id: shippingOption?.provider_id,
             option_data: shippingOption?.data ?? {},
             method_data: inputOption.data ?? {},
             context: {
