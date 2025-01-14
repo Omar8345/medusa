@@ -1,6 +1,8 @@
 import { MathBN, isPresent } from "@medusajs/framework/utils"
 import {
   WorkflowData,
+  WorkflowResponse,
+  createHook,
   createWorkflow,
   parallelize,
   transform,
@@ -21,9 +23,7 @@ export const refreshPaymentCollectionForCartWorkflowId =
  */
 export const refreshPaymentCollectionForCartWorkflow = createWorkflow(
   refreshPaymentCollectionForCartWorkflowId,
-  (
-    input: WorkflowData<RefreshPaymentCollectionForCartWorklowInput>
-  ): WorkflowData<void> => {
+  (input: WorkflowData<RefreshPaymentCollectionForCartWorklowInput>) => {
     const cart = useRemoteQueryStep({
       entry_point: "cart",
       fields: [
@@ -41,6 +41,11 @@ export const refreshPaymentCollectionForCartWorkflow = createWorkflow(
       variables: { id: input.cart_id },
       throw_if_key_not_found: true,
       list: false,
+    })
+
+    const validate = createHook("validate", {
+      input,
+      cart,
     })
 
     when({ cart }, ({ cart }) => {
@@ -88,6 +93,10 @@ export const refreshPaymentCollectionForCartWorkflow = createWorkflow(
         }),
         updatePaymentCollectionStep(updatePaymentCollectionInput)
       )
+    })
+
+    return new WorkflowResponse(void 0, {
+      hooks: [validate],
     })
   }
 )

@@ -1,9 +1,11 @@
 import { PromotionActions } from "@medusajs/framework/utils"
 import {
+  createHook,
   createWorkflow,
   parallelize,
   transform,
   WorkflowData,
+  WorkflowResponse,
 } from "@medusajs/framework/workflows-sdk"
 import { useRemoteQueryStep } from "../../common"
 import {
@@ -33,14 +35,17 @@ export const updateCartPromotionsWorkflowId = "update-cart-promotions"
  */
 export const updateCartPromotionsWorkflow = createWorkflow(
   updateCartPromotionsWorkflowId,
-  (
-    input: WorkflowData<UpdateCartPromotionsWorkflowInput>
-  ): WorkflowData<void> => {
+  (input: WorkflowData<UpdateCartPromotionsWorkflowInput>) => {
     const cart = useRemoteQueryStep({
       entry_point: "cart",
       fields: cartFieldsForRefreshSteps,
       variables: { id: input.cart_id },
       list: false,
+    })
+
+    const validate = createHook("validate", {
+      input,
+      cart,
     })
 
     const promo_codes = transform({ input }, (data) => {
@@ -85,5 +90,9 @@ export const updateCartPromotionsWorkflow = createWorkflow(
         action: PromotionActions.REPLACE,
       })
     )
+
+    return new WorkflowResponse(void 0, {
+      hooks: [validate],
+    })
   }
 )

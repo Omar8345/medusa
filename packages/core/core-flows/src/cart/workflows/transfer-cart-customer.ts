@@ -1,8 +1,10 @@
 import {
+  createHook,
   createWorkflow,
   transform,
   when,
   WorkflowData,
+  WorkflowResponse,
 } from "@medusajs/framework/workflows-sdk"
 import { useQueryGraphStep } from "../../common"
 import { updateCartsStep } from "../steps"
@@ -31,6 +33,11 @@ export const transferCartCustomerWorkflow = createWorkflow(
     }).config({ name: "get-cart" })
 
     const cart = transform({ cartQuery }, ({ cartQuery }) => cartQuery.data[0])
+
+    const validate = createHook("validate", {
+      input,
+      cart,
+    })
 
     const customerQuery = useQueryGraphStep({
       entity: "customer",
@@ -72,5 +79,9 @@ export const transferCartCustomerWorkflow = createWorkflow(
         })
       }
     )
+
+    return new WorkflowResponse(void 0, {
+      hooks: [validate],
+    })
   }
 )

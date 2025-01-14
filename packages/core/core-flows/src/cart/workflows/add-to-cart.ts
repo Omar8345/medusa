@@ -1,11 +1,13 @@
 import { AddToCartWorkflowInputDTO } from "@medusajs/framework/types"
 import { CartWorkflowEvents, isDefined } from "@medusajs/framework/utils"
 import {
+  createHook,
   createWorkflow,
   parallelize,
   transform,
   when,
   WorkflowData,
+  WorkflowResponse,
 } from "@medusajs/framework/workflows-sdk"
 import { useQueryGraphStep } from "../../common"
 import { emitEventStep } from "../../common/steps/emit-event"
@@ -50,6 +52,10 @@ export const addToCartWorkflow = createWorkflow(
     })
 
     validateCartStep({ cart })
+    const validate = createHook("validate", {
+      input,
+      cart,
+    })
 
     const variantIds = transform({ input }, (data) => {
       return (data.input.items ?? []).map((i) => i.variant_id).filter(Boolean)
@@ -133,6 +139,10 @@ export const addToCartWorkflow = createWorkflow(
     emitEventStep({
       eventName: CartWorkflowEvents.UPDATED,
       data: { id: cart.id },
+    })
+
+    return new WorkflowResponse(void 0, {
+      hooks: [validate],
     })
   }
 )

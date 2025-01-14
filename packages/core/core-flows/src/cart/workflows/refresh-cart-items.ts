@@ -4,6 +4,7 @@ import {
   PromotionActions,
 } from "@medusajs/framework/utils"
 import {
+  createHook,
   createWorkflow,
   transform,
   when,
@@ -70,6 +71,11 @@ export const refreshCartItemsWorkflow = createWorkflow(
     })
 
     validateVariantPricesStep({ variants })
+
+    const validate = createHook("validate", {
+      input,
+      cart,
+    })
 
     const lineItems = transform({ cart, variants }, ({ cart, variants }) => {
       const items = cart.items.map((item) => {
@@ -143,6 +149,8 @@ export const refreshCartItemsWorkflow = createWorkflow(
       input: { cart_id: cart.id },
     })
 
-    return new WorkflowResponse(refetchedCart)
+    return new WorkflowResponse(refetchedCart, {
+      hooks: [validate],
+    })
   }
 )

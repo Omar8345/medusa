@@ -32,24 +32,25 @@ import { refreshCartItemsWorkflow } from "./refresh-cart-items"
 /**
  * The data to update the cart, along with custom data that's passed to the workflow's hooks.
  */
-export type UpdateCartWorkflowInput = UpdateCartWorkflowInputDTO & AdditionalData
+export type UpdateCartWorkflowInput = UpdateCartWorkflowInputDTO &
+  AdditionalData
 
 export const updateCartWorkflowId = "update-cart"
 /**
- * This workflow updates a cart and returns it. You can update the cart's region, address, and more. This workflow is executed by the 
+ * This workflow updates a cart and returns it. You can update the cart's region, address, and more. This workflow is executed by the
  * [Update Cart Store API Route](https://docs.medusajs.com/api/store#carts_postcartsid).
- * 
+ *
  * :::note
- * 
+ *
  * This workflow doesn't allow updating a cart's line items. Instead, use {@link addToCartWorkflow} and {@link updateLineItemInCartWorkflow}.
- * 
+ *
  * :::
- * 
- * This workflow has a hook that allows you to perform custom actions on the updated cart. For example, you can pass custom data under the `additional_data` property of the Update Cart API route, 
+ *
+ * This workflow has a hook that allows you to perform custom actions on the updated cart. For example, you can pass custom data under the `additional_data` property of the Update Cart API route,
  * then update any associated details related to the cart in the workflow's hook.
- * 
+ *
  * You can also use this workflow within your own custom workflows, allowing you to wrap custom logic around updating a cart.
- * 
+ *
  * @example
  * const { result } = await updateCartWorkflow(container)
  * .run({
@@ -70,11 +71,12 @@ export const updateCartWorkflowId = "update-cart"
  *     }
  *   }
  * })
- * 
+ *
  * @summary
- * 
+ *
  * Update a cart's details, such as region, address, and more.
- * 
+ *
+ * @property hooks.validate - This hook is executed before all operations. You can consume this hook to perform any custom validation.
  * @property hooks.cartUpdated - This hook is executed after a cart is update. You can consume this hook to perform custom actions on the updated cart.
  */
 export const updateCartWorkflow = createWorkflow(
@@ -205,6 +207,11 @@ export const updateCartWorkflow = createWorkflow(
       }
     )
 
+    const validate = createHook("validate", {
+      input: cartInput,
+      cart: cartToUpdate,
+    })
+
     /*
     when({ cartInput }, ({ cartInput }) => {
       return isDefined(cartInput.customer_id) || isDefined(cartInput.email)
@@ -274,7 +281,7 @@ export const updateCartWorkflow = createWorkflow(
     })
 
     return new WorkflowResponse(void 0, {
-      hooks: [cartUpdated],
+      hooks: [validate, cartUpdated],
     })
   }
 )
