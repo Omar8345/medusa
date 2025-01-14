@@ -1,6 +1,7 @@
 import { AdditionalData, CreateOrderDTO } from "@medusajs/framework/types"
 import { MedusaError, isDefined, isPresent } from "@medusajs/framework/utils"
 import {
+  WorkflowData,
   WorkflowResponse,
   createHook,
   createWorkflow,
@@ -76,6 +77,9 @@ function getOrderInput(data) {
   return data_
 }
 
+/**
+ * The data to create an order, along with custom data that's passed to the workflow's hooks.
+ */
 export type CreateOrderWorkflowInput = CreateOrderDTO & AdditionalData
 
 export const createOrdersWorkflowId = "create-orders"
@@ -126,7 +130,7 @@ export const createOrdersWorkflowId = "create-orders"
  */
 export const createOrderWorkflow = createWorkflow(
   createOrdersWorkflowId,
-  (input: CreateOrderWorkflowInput) => {
+  (input: WorkflowData<CreateOrderWorkflowInput>) => {
     const variantIds = transform({ input }, (data) => {
       return (data.input.items ?? [])
         .map((item) => item.variant_id)

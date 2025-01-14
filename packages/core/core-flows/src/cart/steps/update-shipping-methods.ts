@@ -8,13 +8,26 @@ import {
 } from "@medusajs/framework/utils"
 import { StepResponse, createStep } from "@medusajs/framework/workflows-sdk"
 
+/**
+ * The details of the shipping methods to update.
+ */
+export type UpdateShippingMethodsStepInput = UpdateShippingMethodDTO[]
+
 export const updateShippingMethodsStepId = "update-shipping-methods-step"
 /**
  * This step updates a cart's shipping methods.
+ * 
+ * @example
+ * const data = updateOrderShippingMethodsStep([
+ *   {
+ *     id: "sm_123",
+ *     amount: 10
+ *   }
+ * ])
  */
 export const updateShippingMethodsStep = createStep(
   updateShippingMethodsStepId,
-  async (data: UpdateShippingMethodDTO[], { container }) => {
+  async (data: UpdateShippingMethodsStepInput, { container }) => {
     if (!data?.length) {
       return new StepResponse([], [])
     }

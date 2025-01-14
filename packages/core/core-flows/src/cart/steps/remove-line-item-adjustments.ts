@@ -2,7 +2,13 @@ import { ICartModuleService } from "@medusajs/framework/types"
 import { Modules } from "@medusajs/framework/utils"
 import { StepResponse, createStep } from "@medusajs/framework/workflows-sdk"
 
+/**
+ * The details of the line item adjustments to remove.
+ */
 export interface RemoveLineItemAdjustmentsStepInput {
+  /**
+   * The IDs of the line item adjustments to remove.
+   */
   lineItemAdjustmentIdsToRemove: string[]
 }
 

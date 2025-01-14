@@ -6,14 +6,33 @@ import {
 } from "@medusajs/framework/utils"
 import { createStep, StepResponse } from "@medusajs/framework/workflows-sdk"
 
+/**
+ * The cart's details.
+ */
 export interface ValidateCartPaymentsStepInput {
+  /**
+   * The cart to validate payment sessions for.
+   */
   cart: CartWorkflowDTO
 }
 
 export const validateCartPaymentsStepId = "validate-cart-payments"
 /**
  * This step validates a cart's payment sessions. Their status must
- * be `pending` or `requires_more`.
+ * be `pending` or `requires_more`. If not valid, the step throws an error.
+ * 
+ * :::tip
+ * 
+ * You can use the {@link retrieveCartStep} to retrieve a cart's details.
+ * 
+ * :::
+ * 
+ * @example
+ * const data = validateCartPaymentsStep({
+ *   // retrieve the details of the cart from another workflow
+ *   // or in another step using the Cart Module's service
+ *   cart
+ * })
  */
 export const validateCartPaymentsStep = createStep(
   validateCartPaymentsStepId,

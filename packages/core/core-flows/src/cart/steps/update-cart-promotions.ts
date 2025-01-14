@@ -6,9 +6,21 @@ import {
 } from "@medusajs/framework/utils"
 import { StepResponse, createStep } from "@medusajs/framework/workflows-sdk"
 
+/**
+ * The details of the promotion codes to apply on a cart.
+ */
 export interface UpdateCartPromotionStepInput {
+  /**
+   * The ID of the cart to update promotions for.
+   */
   id: string
+  /**
+   * The promotion codes to apply on the cart.
+   */
   promo_codes?: string[]
+  /**
+   * Whether to add, remove, or replace promotion codes.
+   */
   action?:
     | PromotionActions.ADD
     | PromotionActions.REMOVE

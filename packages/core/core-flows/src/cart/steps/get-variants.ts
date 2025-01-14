@@ -7,6 +7,9 @@ import {
 import { Modules } from "@medusajs/framework/utils"
 import { StepResponse, createStep } from "@medusajs/framework/workflows-sdk"
 
+/**
+ * The details of the variants to retrieve.
+ */
 export interface GetVariantsStepInput {
   filter?: FilterableProductVariantProps
   config?: FindConfig<ProductVariantDTO>
@@ -15,6 +18,13 @@ export interface GetVariantsStepInput {
 export const getVariantsStepId = "get-variants"
 /**
  * This step retrieves variants matching the specified filters.
+ * 
+ * @example
+ * const data = getVariantsStep({
+ *   filter: {
+ *     id: "variant_123"
+ *   }
+ * })
  */
 export const getVariantsStep = createStep(
   getVariantsStepId,

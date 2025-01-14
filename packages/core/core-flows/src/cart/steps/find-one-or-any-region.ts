@@ -5,13 +5,23 @@ import {
 import { MedusaError, Modules } from "@medusajs/framework/utils"
 import { StepResponse, createStep } from "@medusajs/framework/workflows-sdk"
 
+/**
+ * The details of the region to find.
+ */
+export type FindOneOrAnyRegionStepInput = {
+  /**
+   * The ID of the region to find.
+   */
+  regionId?: string
+}
+
 export const findOneOrAnyRegionStepId = "find-one-or-any-region"
 /**
  * This step retrieves a region either by the provided ID or the first region in the first store.
  */
 export const findOneOrAnyRegionStep = createStep(
   findOneOrAnyRegionStepId,
-  async (data: { regionId?: string }, { container }) => {
+  async (data: FindOneOrAnyRegionStepInput, { container }) => {
     const service = container.resolve<IRegionModuleService>(Modules.REGION)
 
     const storeModule = container.resolve<IStoreModuleService>(Modules.STORE)

@@ -18,9 +18,22 @@ import {
 import { updateCartPromotionsStep } from "../steps/update-cart-promotions"
 import { cartFieldsForRefreshSteps } from "../utils/fields"
 
+/**
+ * The details of the promotion updates on a cart.
+ */
 export type UpdateCartPromotionsWorkflowInput = {
+  /**
+   * The cart's ID.
+   */
   cart_id: string
+  /**
+   * The promotion codes to add to the cart, remove from the cart,
+   * or replace all existing promotions in the cart.
+   */
   promo_codes?: string[]
+  /**
+   * The action to perform with the specified promotion codes.
+   */
   action?:
     | PromotionActions.ADD
     | PromotionActions.REMOVE
@@ -29,7 +42,26 @@ export type UpdateCartPromotionsWorkflowInput = {
 
 export const updateCartPromotionsWorkflowId = "update-cart-promotions"
 /**
- * This workflow updates a cart's promotions.
+ * This workflow updates a cart's promotions, applying or removing promotion codes from the cart. It also computes the adjustments
+ * that need to be applied to the cart's line items and shipping methods based on the promotions applied. This workflow is used by
+ * [Add Promotions Store API Route](https://docs.medusajs.com/api/store#carts_postcartsidpromotions).
+ * 
+ * You can use this workflow within your own custom workflows, allowing you to update a cart's promotions within your custom flows.
+ * 
+ * @example
+ * const { result } = await updateCartPromotionsWorkflow(container)
+ * .run({
+ *   input: {
+ *     cart_id: "cart_123",
+ *     promo_codes: ["10OFF"],
+ *     // imported from @medusajs/framework/utils
+ *     action: PromotionActions.ADD,
+ *   }
+ * })
+ * 
+ * @summary
+ * 
+ * Update a cart's applied promotions to add, replace, or remove them.
  */
 export const updateCartPromotionsWorkflow = createWorkflow(
   updateCartPromotionsWorkflowId,

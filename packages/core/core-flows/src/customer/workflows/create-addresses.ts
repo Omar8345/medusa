@@ -3,6 +3,7 @@ import {
   CreateCustomerAddressDTO,
 } from "@medusajs/framework/types"
 import {
+  WorkflowData,
   WorkflowResponse,
   createHook,
   createWorkflow,
@@ -73,7 +74,7 @@ export const createCustomerAddressesWorkflowId = "create-customer-addresses"
  */
 export const createCustomerAddressesWorkflow = createWorkflow(
   createCustomerAddressesWorkflowId,
-  (input: CreateCustomerAddressesWorkflowInput) => {
+  (input: WorkflowData<CreateCustomerAddressesWorkflowInput>) => {
     const unsetInput = transform(input, (data) => ({
       create: data.addresses,
     }))

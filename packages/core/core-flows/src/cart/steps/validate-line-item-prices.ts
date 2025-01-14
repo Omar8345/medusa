@@ -1,9 +1,21 @@
 import { MedusaError, isPresent } from "@medusajs/framework/utils"
 import { createStep } from "@medusajs/framework/workflows-sdk"
 
+/**
+ * The details of the line items to validate.
+ */
 export interface ValidateLineItemPricesStepInput {
+  /**
+   * The line items to validate.
+   */
   items: {
+    /**
+     * The price of the line item.
+     */
     unit_price?: number | null
+    /**
+     * The title of the line item.
+     */
     title: string
   }[]
 }
@@ -11,6 +23,20 @@ export interface ValidateLineItemPricesStepInput {
 export const validateLineItemPricesStepId = "validate-line-item-prices"
 /**
  * This step validates the specified line item objects to ensure they have prices.
+ * If an item doesn't have a price, the step throws an error.
+ * 
+ * @example
+ * const data = validateLineItemPricesStep({
+ *   items: [
+ *     {
+ *       unit_price: 10,
+ *       title: "Shirt"
+ *     },
+ *     {
+ *       title: "Pants"
+ *     }
+ *   ]
+ * })
  */
 export const validateLineItemPricesStep = createStep(
   validateLineItemPricesStepId,

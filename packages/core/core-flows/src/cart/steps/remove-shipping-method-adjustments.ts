@@ -2,7 +2,13 @@ import { ICartModuleService } from "@medusajs/framework/types"
 import { Modules } from "@medusajs/framework/utils"
 import { StepResponse, createStep } from "@medusajs/framework/workflows-sdk"
 
+/**
+ * The details of the shipping method adjustments to remove.
+ */
 export interface RemoveShippingMethodAdjustmentsStepInput {
+  /**
+   * The IDs of the shipping method adjustments to remove.
+   */
   shippingMethodAdjustmentIdsToRemove: string[]
 }
 

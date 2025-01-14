@@ -35,7 +35,13 @@ import {
   prepareTaxLinesData,
 } from "../utils/prepare-line-item-data"
 
+/**
+ * The data to complete a cart and place an order.
+ */
 export type CompleteCartWorkflowInput = {
+  /**
+   * The ID of the cart to complete.
+   */
   id: string
 }
 
@@ -43,7 +49,24 @@ export const THREE_DAYS = 60 * 60 * 24 * 3
 
 export const completeCartWorkflowId = "complete-cart"
 /**
- * This workflow completes a cart.
+ * This workflow completes a cart and places an order for the customer. It's executed by the 
+ * [Complete Cart Store API Route](https://docs.medusajs.com/api/store#carts_postcartsidcomplete).
+ * 
+ * You can use this workflow within your own custom workflows, allowing you to wrap custom logic around completing a cart.
+ * For example, in the [Subscriptions recipe](https://docs.medusajs.com/resources/recipes/subscriptions/examples/standard#create-workflow), 
+ * this workflow is used within another workflow that creates a subscription order.
+ * 
+ * @example
+ * const { result } = await completeCartWorkflow(container)
+ * .run({
+ *   input: {
+ *     id: "cart_123"
+ *   }
+ * })
+ * 
+ * @summary
+ * 
+ * Complete a cart and place an order.
  */
 export const completeCartWorkflow = createWorkflow(
   {
@@ -54,7 +77,12 @@ export const completeCartWorkflow = createWorkflow(
   },
   (
     input: WorkflowData<CompleteCartWorkflowInput>
-  ): WorkflowResponse<{ id: string }> => {
+  ): WorkflowResponse<{ 
+    /**
+     * The ID of the created order.
+     */
+    id: string 
+  }> => {
     const orderCart = useQueryGraphStep({
       entity: "order_cart",
       fields: ["cart_id", "order_id"],

@@ -4,6 +4,7 @@ import {
   AdditionalData,
 } from "@medusajs/framework/types"
 import {
+  WorkflowData,
   WorkflowResponse,
   createHook,
   createWorkflow,
@@ -64,7 +65,7 @@ export const updateCustomerAddressesWorkflowId = "update-customer-addresses"
  */
 export const updateCustomerAddressesWorkflow = createWorkflow(
   updateCustomerAddressesWorkflowId,
-  (input: UpdateCustomerAddressesWorkflowInput) => {
+  (input: WorkflowData<UpdateCustomerAddressesWorkflowInput>) => {
     const unsetInput = transform(input, (data) => ({
       update: data,
     }))

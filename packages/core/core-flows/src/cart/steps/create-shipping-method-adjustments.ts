@@ -5,7 +5,13 @@ import {
 import { Modules } from "@medusajs/framework/utils"
 import { StepResponse, createStep } from "@medusajs/framework/workflows-sdk"
 
+/**
+ * The details of the shipping method adjustments to create.
+ */
 export interface CreateShippingMethodAdjustmentsStepInput {
+  /**
+   * The shipping method adjustments to create.
+   */
   shippingMethodAdjustmentsToCreate: CreateShippingMethodAdjustmentDTO[]
 }
 
@@ -13,6 +19,15 @@ export const createShippingMethodAdjustmentsStepId =
   "create-shipping-method-adjustments"
 /**
  * This step creates shipping method adjustments for a cart.
+ * 
+ * @example
+ * const data = createShippingMethodAdjustmentsStep({
+ *   "shippingMethodAdjustmentsToCreate": [{
+ *     "shipping_method_id": "sm_123",
+ *     "code": "10OFF",
+ *     "amount": 10
+ *   }]
+ * })
  */
 export const createShippingMethodAdjustmentsStep = createStep(
   createShippingMethodAdjustmentsStepId,

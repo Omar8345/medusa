@@ -39,6 +39,9 @@ export type CalculatedShippingOptionPrice = {
   is_calculated_price_tax_inclusive: boolean
 }
 
+/**
+ * The context for validating fulfillment data.
+ */
 export type ValidateFulfillmentDataContext = CartPropsForFulfillment & {
   /**
    * Details about the location that items are being shipped from.

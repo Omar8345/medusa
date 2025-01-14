@@ -6,7 +6,13 @@ import {
 import { MedusaError, Modules, isDefined } from "@medusajs/framework/utils"
 import { StepResponse, createStep } from "@medusajs/framework/workflows-sdk"
 
+/**
+ * The details of the sales channel to find.
+ */
 export interface FindSalesChannelStepInput {
+  /**
+   * The ID of the sales channel to find.
+   */
   salesChannelId?: string | null
 }
 

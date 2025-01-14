@@ -5,13 +5,30 @@ import {
 import { Modules } from "@medusajs/framework/utils"
 import { StepResponse, createStep } from "@medusajs/framework/workflows-sdk"
 
+/**
+ * The details of the shipping methods to add.
+ */
 export interface AddShippingMethodToCartStepInput {
+  /**
+   * The shipping methods to add.
+   */
   shipping_methods: CreateShippingMethodDTO[]
 }
 
 export const addShippingMethodToCartStepId = "add-shipping-method-to-cart-step"
 /**
  * This step adds shipping methods to a cart.
+ * 
+ * @example
+ * const data = addShippingMethodToCartStep({
+ *   shipping_methods: [
+ *     {
+ *       name: "Standard Shipping",
+ *       cart_id: "cart_123",
+ *       amount: 10,
+ *     }
+ *   ]
+ * })
  */
 export const addShippingMethodToCartStep = createStep(
   addShippingMethodToCartStepId,

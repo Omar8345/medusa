@@ -1,6 +1,7 @@
 import { AdditionalData, CreateCustomerDTO } from "@medusajs/framework/types"
 import { CustomerWorkflowEvents } from "@medusajs/framework/utils"
 import {
+  WorkflowData,
   WorkflowResponse,
   createHook,
   createWorkflow,
@@ -52,7 +53,7 @@ export const createCustomersWorkflowId = "create-customers"
  */
 export const createCustomersWorkflow = createWorkflow(
   createCustomersWorkflowId,
-  (input: CreateCustomersWorkflowInput) => {
+  (input: WorkflowData<CreateCustomersWorkflowInput>) => {
     const createdCustomers = createCustomersStep(input.customersData)
     const customersCreated = createHook("customersCreated", {
       customers: createdCustomers,

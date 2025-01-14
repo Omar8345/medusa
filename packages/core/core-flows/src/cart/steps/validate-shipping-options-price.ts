@@ -1,14 +1,41 @@
 import { isDefined, MedusaError } from "@medusajs/framework/utils"
 import { createStep, StepResponse } from "@medusajs/framework/workflows-sdk"
 
-export const validateCartShippingOptionsStepId =
+/**
+ * The details of the shipping options to validate.
+ */
+export type ValidateCartShippingOptionsPriceInput = {
+  /**
+   * The shipping option's details. Should have a `calculated_price.calculated_amount`
+   * to be considered valid.
+   */
+  shippingOptions: any[]
+}
+
+export const validateCartShippingOptionsPriceStepId =
   "validate-cart-shipping-options"
 /**
  * This step validates shipping options to ensure they have a price.
+ * If not valid, the step throws an error.
+ * 
+ * @example
+ * const data = validateCartShippingOptionsPriceStep({
+ *   shippingOptions: [
+ *     {
+ *       id: "so_123",
+ *     },
+ *     {
+ *       id: "so_321",
+ *       calculated_price: {
+ *         calculated_amount: 10,
+ *       }
+ *     }
+ *   ]
+ * })
  */
 export const validateCartShippingOptionsPriceStep = createStep(
   "validate-cart-shipping-options-price",
-  async (data: { shippingOptions: any[] }, { container }) => {
+  async (data: ValidateCartShippingOptionsPriceInput, { container }) => {
     const { shippingOptions = [] } = data
     const optionsMissingPrices: string[] = []
 

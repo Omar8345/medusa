@@ -132,9 +132,21 @@ export interface CreateCartCreateLineItemDTO {
   metadata?: Record<string, unknown> | null
 }
 
+/**
+ * The details of the line item to update.
+ */
 export interface UpdateLineItemInCartWorkflowInputDTO {
+  /**
+   * The ID of the cart that the line item belongs to.
+   */
   cart_id: string
+  /**
+   * The ID of the line item to update.
+   */
   item_id: string
+  /**
+   * The details to update in the line item.
+   */
   update: Partial<UpdateLineItemDTO>
 }
 
@@ -267,8 +279,17 @@ export interface CreateCartWorkflowInputDTO {
   promo_codes?: string[]
 }
 
+/**
+ * The details of adding items to the cart.
+ */
 export interface AddToCartWorkflowInputDTO {
+  /**
+   * The ID of the cart to add items to.
+   */
   cart_id: string
+  /**
+   * The items to add to the cart.
+   */
   items: CreateCartCreateLineItemDTO[]
 }
 
@@ -329,14 +350,36 @@ export interface UpdateCartWorkflowInputDTO {
   billing_address?: CreateAddressDTO | UpdateAddressDTO | null
 }
 
+/**
+ * The details to create the payment collection.
+ */
 export interface CreatePaymentCollectionForCartWorkflowInputDTO {
+  /**
+   * The ID of the cart to create a payment collection for.
+   */
   cart_id: string
+
+  /**
+   * Custom key-value pairs to store in the payment collection.
+   */
   metadata?: Record<string, unknown>
 }
 
+/**
+ * A cart's details.
+ */
 export interface CartWorkflowDTO extends CartDTO {
+  /**
+   * The cart's customer.
+   */
   customer?: CustomerDTO
+  /**
+   * The cart's product to be added.
+   */
   product?: ProductDTO
+  /**
+   * The cart's region.
+   */
   region?: RegionDTO
 }
 
@@ -361,20 +404,67 @@ export interface CompleteCartWorkflowInputDTO {
   id: string
 }
 
+/**
+ * The details necessary to check whether the variant has sufficient inventory.
+ */
 export interface ConfirmVariantInventoryWorkflowInputDTO {
+  /**
+   * The ID of the sales channel to check the inventory availability in.
+   */
   sales_channel_id: string
+  /**
+   * The variants to confirm they have sufficient in-stock quantity.
+   */
   variants: {
+    /**
+     * The variant's ID.
+     */
     id: string
+    /**
+     * Whether Medusa manages the inventory of the variant. If disabled, the
+     * variant is always considered in stock.
+     */
     manage_inventory: boolean
+    /**
+     * The variant's inventory items, if {@link manage_inventory} is enabled.
+     */
     inventory_items: {
+      /**
+       * The ID of the inventory item.
+       */
       inventory_item_id: string
+      /**
+       * The ID of the variant.
+       */
       variant_id: string
+      /**
+       * The number of units a single quantity is equivalent to. For example, if a customer orders one quantity of the variant, Medusa checks the availability of the quantity multiplied by the
+       * value set for `required_quantity`. When the customer orders the quantity, Medusa reserves the ordered quantity multiplied by the value set for `required_quantity`.
+       */
       required_quantity: BigNumberInput
+      /**
+       * The inventory details.
+       */
       inventory: {
+        /**
+         * The inventory details at specified stock locations.
+         */
         location_levels: {
+          /**
+           * The stock location's details.
+           */
           stock_locations: {
+            /**
+             * The stock location's ID.
+             */
             id: string
+            /**
+             * The associated sales channel's details.
+             */
             sales_channels: {
+              /**
+               * The sales channel's ID.
+               */
               id: string
             }[]
           }[]
@@ -382,14 +472,39 @@ export interface ConfirmVariantInventoryWorkflowInputDTO {
       }[]
     }[]
   }[]
+  /**
+   * The items in the cart, or to be added.
+   */
   items: {
+    /**
+     * The ID of the associated variant.
+     */
     variant_id?: string | null
+    /**
+     * The quantity in the cart.
+     */
     quantity: BigNumberInput
+    /**
+     * The ID of the line item if it's already in the cart.
+     */
     id?: string
   }[]
+  /**
+   * The new quantity of the variant to be added to the cart.
+   * This is useful when updating a variant's quantity in the cart.
+   */
   itemsToUpdate?: {
+    /**
+     * The item update's details.
+     */
     data: {
+      /**
+       * The ID of the associated variant.
+       */
       variant_id?: string
+      /**
+       * The variant's quantity.
+       */
       quantity?: BigNumberInput
     }
   }[]

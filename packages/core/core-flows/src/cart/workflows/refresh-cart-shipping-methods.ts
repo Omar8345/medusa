@@ -11,14 +11,39 @@ import { removeShippingMethodFromCartStep } from "../steps"
 import { updateShippingMethodsStep } from "../steps/update-shipping-methods"
 import { listShippingOptionsForCartWithPricingWorkflow } from "./list-shipping-options-for-cart-with-pricing"
 
+/**
+ * The details of the cart to refresh.
+ */
+export type RefreshCartShippingMethodsWorkflowInput = { 
+  /**
+   * The cart's ID.
+   */
+  cart_id: string
+}
+
 export const refreshCartShippingMethodsWorkflowId =
   "refresh-cart-shipping-methods"
 /**
- * This workflow refreshes a cart's shipping methods
+ * This workflow refreshes a cart's shipping methods, ensuring that their associated shipping options can still be used on the cart,
+ * and retrieve their correct pricing after a cart update. This workflow is used by the {@link refreshCartItemsWorkflow}.
+ * 
+ * You can use this workflow within your own custom workflows, allowing you to refresh the cart's shipping method after making updates to the cart.
+ * 
+ * @example
+ * const { result } = await refreshCartShippingMethodsWorkflow(container)
+ * .run({
+ *   input: {
+ *     cart_id: "cart_123",
+ *   }
+ * })
+ * 
+ * @summary
+ * 
+ * Refresh a cart's shipping methods after an update.
  */
 export const refreshCartShippingMethodsWorkflow = createWorkflow(
   refreshCartShippingMethodsWorkflowId,
-  (input: WorkflowData<{ cart_id: string }>) => {
+  (input: WorkflowData<RefreshCartShippingMethodsWorkflowInput>) => {
     const cartQuery = useQueryGraphStep({
       entity: "cart",
       filters: { id: input.cart_id },

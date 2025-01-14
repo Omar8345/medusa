@@ -14,6 +14,7 @@ import {
   OrderWorkflowEvents,
 } from "@medusajs/framework/utils"
 import {
+  WorkflowData,
   WorkflowResponse,
   createHook,
   createStep,
@@ -275,7 +276,7 @@ export const createOrderFulfillmentWorkflowId = "create-order-fulfillment"
 export const createOrderFulfillmentWorkflow = createWorkflow(
   createOrderFulfillmentWorkflowId,
   (
-    input: CreateOrderFulfillmentWorkflowInput
+    input: WorkflowData<CreateOrderFulfillmentWorkflowInput>
   ) => {
     const order: OrderDTO = useRemoteQueryStep({
       entry_point: "orders",

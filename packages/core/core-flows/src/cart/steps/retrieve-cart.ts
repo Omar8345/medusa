@@ -6,7 +6,13 @@ import {
 import { Modules } from "@medusajs/framework/utils"
 import { StepResponse, createStep } from "@medusajs/framework/workflows-sdk"
 
+/**
+ * The details of the cart to retrieve.
+ */
 export interface RetrieveCartStepInput {
+  /**
+   * The ID of the cart to retrieve.
+   */
   id: string
   config?: FindConfig<CartDTO>
 }

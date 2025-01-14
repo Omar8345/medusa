@@ -2,13 +2,32 @@ import { CustomerDTO, ICustomerModuleService } from "@medusajs/framework/types"
 import { isDefined, Modules, validateEmail } from "@medusajs/framework/utils"
 import { createStep, StepResponse } from "@medusajs/framework/workflows-sdk"
 
+/**
+ * The details of the customer to find or create.
+ */
 export interface FindOrCreateCustomerStepInput {
+  /**
+   * The ID of the customer to find.
+   */
   customerId?: string | null
+  /**
+   * If the `customerId` isn't specified,
+   * find a customer with this email or create a new customer having this email.
+   */
   email?: string | null
 }
 
+/**
+ * The details of the customer found or created.
+ */
 export interface FindOrCreateCustomerOutputStepOutput {
+  /**
+   * The customer found or created, if any.
+   */
   customer?: CustomerDTO | null
+  /**
+   * The email of the customer found or created, if any.
+   */
   email?: string | null
 }
 

@@ -33,7 +33,34 @@ const cartFields = ["completed_at"].concat(cartFieldsForPricingContext)
 
 export const addToCartWorkflowId = "add-to-cart"
 /**
- * This workflow adds items to a cart.
+ * This workflow adds a product variant to a cart as a line item. It's executed by the 
+ * [Add Line Item Store API Route](https://docs.medusajs.com/api/store#carts_postcartsidlineitems).
+ * 
+ * You can use this workflow within your own custom workflows, allowing you to wrap custom logic around adding an item to the cart.
+ * For example, you can use this workflow to add a line item to the cart with a custom price.
+ * 
+ * @example
+ * const { result } = await addToCartWorkflow(container)
+ * .run({
+ *   input: {
+ *     cart_id: "cart_123",
+ *     items: [
+ *       {
+ *         variant_id: "variant_123",
+ *         quantity: 1,
+ *       },
+ *       {
+ *         variant_id: "variant_456",
+ *         quantity: 1,
+ *         unit_price: 20
+ *       }
+ *     ]
+ *   }
+ * })
+ * 
+ * @summary
+ * 
+ * Add a line item to a cart.
  */
 export const addToCartWorkflow = createWorkflow(
   addToCartWorkflowId,
