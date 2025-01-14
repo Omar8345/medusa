@@ -259,12 +259,11 @@ export const useMarkOrderFulfillmentAsDelivered = (
   options?: UseMutationOptions<
     { order: HttpTypes.AdminOrder },
     FetchError,
-    HttpTypes.AdminMarkOrderFulfillmentAsDelivered
+    void
   >
 ) => {
   return useMutation({
-    mutationFn: (payload: HttpTypes.AdminMarkOrderFulfillmentAsDelivered) =>
-      sdk.admin.order.markAsDelivered(orderId, fulfillmentId, payload),
+    mutationFn: () => sdk.admin.order.markAsDelivered(orderId, fulfillmentId),
     onSuccess: (data: any, variables: any, context: any) => {
       queryClient.invalidateQueries({
         queryKey: ordersQueryKeys.all,
