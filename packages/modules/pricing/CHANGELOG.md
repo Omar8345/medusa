@@ -1,5 +1,13 @@
 # @medusajs/pricing
 
+## 2.2.1
+
+### Patch Changes
+
+- [#10896](https://github.com/medusajs/medusa/pull/10896) [`3fec01ab494dcd91ee5b2f17597e24e653ddc801`](https://github.com/medusajs/medusa/commit/3fec01ab494dcd91ee5b2f17597e24e653ddc801) Thanks [@riqwan](https://github.com/riqwan)! - fix(pricing): add null conditions for deleted at during price calculations
+
+- [#10882](https://github.com/medusajs/medusa/pull/10882) [`a625bce7b022c28a256f81777b7ebab15ab1d930`](https://github.com/medusajs/medusa/commit/a625bce7b022c28a256f81777b7ebab15ab1d930) Thanks [@kasperkristensen](https://github.com/kasperkristensen)! - fix(pricing): PriceLists of type Sale no longer override default prices when the price list price is higher than the default price.
+
 ## 2.2.0
 
 ### Patch Changes

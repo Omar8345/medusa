@@ -1,5 +1,14 @@
 # @medusajs/admin-vite-plugin
 
+## 2.2.1
+
+### Patch Changes
+
+- [#10869](https://github.com/medusajs/medusa/pull/10869) [`1ba2fadf22a30de9f94aee4f195163ef5e9e84d2`](https://github.com/medusajs/medusa/commit/1ba2fadf22a30de9f94aee4f195163ef5e9e84d2) Thanks [@kasperkristensen](https://github.com/kasperkristensen)! - feat(admin-bundler,admin-vite-plugin): Support loading loading admin extensions from plugins.
+
+- Updated dependencies []:
+  - @medusajs/admin-shared@2.2.1
+
 ## 2.2.0
 
 ### Patch Changes

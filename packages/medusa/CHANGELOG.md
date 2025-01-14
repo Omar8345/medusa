@@ -1,5 +1,74 @@
 # Change Log
 
+## 2.2.1
+
+### Patch Changes
+
+- [#10935](https://github.com/medusajs/medusa/pull/10935) [`b0f581cc7cb9f173666502d9ed2ea2c128b517be`](https://github.com/medusajs/medusa/commit/b0f581cc7cb9f173666502d9ed2ea2c128b517be) Thanks [@thetutlage](https://github.com/thetutlage)! - feat: add plugin build command
+
+- [#10941](https://github.com/medusajs/medusa/pull/10941) [`4bc3f5b845f832959bed3d5f2bd320b55a8fb50f`](https://github.com/medusajs/medusa/commit/4bc3f5b845f832959bed3d5f2bd320b55a8fb50f) Thanks [@kasperkristensen](https://github.com/kasperkristensen)! - feat(medusa,admin-bundler,cli,framework): Integrate admin extensions into plugin build
+
+- [#10926](https://github.com/medusajs/medusa/pull/10926) [`69e2a6d6951c133295947d00fa1f99547da467d2`](https://github.com/medusajs/medusa/commit/69e2a6d6951c133295947d00fa1f99547da467d2) Thanks [@thetutlage](https://github.com/thetutlage)! - Feat/plugin develop
+
+- [#10938](https://github.com/medusajs/medusa/pull/10938) [`b7a37598249a60c91ce70c999ff8b0dfa6246e49`](https://github.com/medusajs/medusa/commit/b7a37598249a60c91ce70c999ff8b0dfa6246e49) Thanks [@adrien2p](https://github.com/adrien2p)! - feat(cli): Add plugin:publish and plugin:add commands support
+
+- [#10835](https://github.com/medusajs/medusa/pull/10835) [`899b1fba4afeed61c343aa0ff5d171bfe6dc5ca8`](https://github.com/medusajs/medusa/commit/899b1fba4afeed61c343aa0ff5d171bfe6dc5ca8) Thanks [@adrien2p](https://github.com/adrien2p)! - chore(medusa): Add handler path to the http tracing to be able to group by
+
+- [#10869](https://github.com/medusajs/medusa/pull/10869) [`1ba2fadf22a30de9f94aee4f195163ef5e9e84d2`](https://github.com/medusajs/medusa/commit/1ba2fadf22a30de9f94aee4f195163ef5e9e84d2) Thanks [@kasperkristensen](https://github.com/kasperkristensen)! - feat(admin-bundler,admin-vite-plugin): Support loading loading admin extensions from plugins.
+
+- [#10895](https://github.com/medusajs/medusa/pull/10895) [`c1930bd6568043d145e34d8360015e7207e18e4a`](https://github.com/medusajs/medusa/commit/c1930bd6568043d145e34d8360015e7207e18e4a) Thanks [@thetutlage](https://github.com/thetutlage)! - Feat/merge plugin modules
+
+- [#10874](https://github.com/medusajs/medusa/pull/10874) [`28febfc6438351fddb5b214b86f96aff89db688e`](https://github.com/medusajs/medusa/commit/28febfc6438351fddb5b214b86f96aff89db688e) Thanks [@thetutlage](https://github.com/thetutlage)! - feat: remove dead code and refactor the logic of resolving plugins
+
+- [#10630](https://github.com/medusajs/medusa/pull/10630) [`bc22b81cdf9591912744f448c74d45bcb0f11e0c`](https://github.com/medusajs/medusa/commit/bc22b81cdf9591912744f448c74d45bcb0f11e0c) Thanks [@kasperkristensen](https://github.com/kasperkristensen)! - feat(inventory,dashboard,core-flows,js-sdk,types,medusa): Improve inventory management UX
+
+- [#10904](https://github.com/medusajs/medusa/pull/10904) [`428fce53134bd0b224f636a9a15d369d1f03cde8`](https://github.com/medusajs/medusa/commit/428fce53134bd0b224f636a9a15d369d1f03cde8) Thanks [@thetutlage](https://github.com/thetutlage)! - chore: move build utilities to Compiler class
+
+- Updated dependencies [[`4bc3f5b845f832959bed3d5f2bd320b55a8fb50f`](https://github.com/medusajs/medusa/commit/4bc3f5b845f832959bed3d5f2bd320b55a8fb50f), [`1758bfb8d042fa9fc82f23c36ccd61e4a439448e`](https://github.com/medusajs/medusa/commit/1758bfb8d042fa9fc82f23c36ccd61e4a439448e), [`3fec01ab494dcd91ee5b2f17597e24e653ddc801`](https://github.com/medusajs/medusa/commit/3fec01ab494dcd91ee5b2f17597e24e653ddc801), [`a625bce7b022c28a256f81777b7ebab15ab1d930`](https://github.com/medusajs/medusa/commit/a625bce7b022c28a256f81777b7ebab15ab1d930), [`7232a8a93053adedd964659c1f370aa9fddc0e44`](https://github.com/medusajs/medusa/commit/7232a8a93053adedd964659c1f370aa9fddc0e44), [`1ba2fadf22a30de9f94aee4f195163ef5e9e84d2`](https://github.com/medusajs/medusa/commit/1ba2fadf22a30de9f94aee4f195163ef5e9e84d2), [`bc22b81cdf9591912744f448c74d45bcb0f11e0c`](https://github.com/medusajs/medusa/commit/bc22b81cdf9591912744f448c74d45bcb0f11e0c)]:
+  - @medusajs/admin-bundler@2.2.1
+  - @medusajs/core-flows@2.2.1
+  - @medusajs/pricing@2.2.1
+  - @medusajs/inventory@2.2.1
+  - @medusajs/telemetry@2.2.1
+  - @medusajs/api-key@2.2.1
+  - @medusajs/auth@2.2.1
+  - @medusajs/cache-inmemory@2.2.1
+  - @medusajs/cache-redis@2.2.1
+  - @medusajs/cart@2.2.1
+  - @medusajs/currency@2.2.1
+  - @medusajs/customer@2.2.1
+  - @medusajs/event-bus-local@2.2.1
+  - @medusajs/event-bus-redis@2.2.1
+  - @medusajs/file@2.2.1
+  - @medusajs/fulfillment@2.2.1
+  - @medusajs/index@2.2.1
+  - @medusajs/link-modules@2.2.1
+  - @medusajs/locking@2.2.1
+  - @medusajs/notification@2.2.1
+  - @medusajs/order@2.2.1
+  - @medusajs/payment@2.2.1
+  - @medusajs/product@2.2.1
+  - @medusajs/promotion@2.2.1
+  - @medusajs/auth-emailpass@2.2.1
+  - @medusajs/auth-github@2.2.1
+  - @medusajs/auth-google@2.2.1
+  - @medusajs/file-local@2.2.1
+  - @medusajs/file-s3@2.2.1
+  - @medusajs/fulfillment-manual@2.2.1
+  - @medusajs/locking-postgres@2.2.1
+  - @medusajs/locking-redis@2.2.1
+  - @medusajs/notification-local@2.2.1
+  - @medusajs/notification-sendgrid@2.2.1
+  - @medusajs/payment-stripe@2.2.1
+  - @medusajs/region@2.2.1
+  - @medusajs/sales-channel@2.2.1
+  - @medusajs/stock-location@2.2.1
+  - @medusajs/store@2.2.1
+  - @medusajs/tax@2.2.1
+  - @medusajs/user@2.2.1
+  - @medusajs/workflow-engine-inmemory@2.2.1
+  - @medusajs/workflow-engine-redis@2.2.1
+
 ## 2.2.0
 
 ### Patch Changes
