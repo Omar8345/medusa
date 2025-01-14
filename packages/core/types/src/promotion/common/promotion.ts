@@ -205,7 +205,7 @@ export interface FilterablePromotionProps
   type?: PromotionTypeValues[]
 
   /**
-   * Filter promotions by their type.
+   * Filter promotions by their status.
    */
   status?: PromotionStatusValues[]
 
