@@ -2,6 +2,7 @@ import { IPromotionModuleService } from "@medusajs/framework/types"
 import {
   ApplicationMethodType,
   Modules,
+  PromotionStatus,
   PromotionType,
 } from "@medusajs/framework/utils"
 import { moduleIntegrationTestRunner, SuiteOptions } from "@medusajs/test-utils"
@@ -17,12 +18,22 @@ moduleIntegrationTestRunner({
     service,
   }: SuiteOptions<IPromotionModuleService>) => {
     describe("Promotion Service: computeActions", () => {
+      beforeAll(() => {
+        jest.useFakeTimers()
+        jest.setSystemTime(new Date("02/02/2023"))
+      })
+
+      afterAll(() => {
+        jest.useRealTimers()
+      })
+
       beforeEach(async () => {
         await createCampaigns(MikroOrmWrapper.forkManager())
       })
 
-      it.only("should return empty array when promotion is not active (draft or inactive)", async () => {
+      it("should return empty array when promotion is not active (draft or inactive)", async () => {
         const promotion = await createDefaultPromotion(service, {
+          status: PromotionStatus.DRAFT,
           rules: [
             {
               attribute: "customer.customer_group.id",
@@ -322,19 +333,7 @@ moduleIntegrationTestRunner({
               {
                 action: "addItemAdjustment",
                 item_id: "item_cotton_tshirt",
-                amount: 30,
-                code: "PROMOTION_TEST",
-              },
-              {
-                action: "addItemAdjustment",
-                item_id: "item_cotton_sweater",
-                amount: 30,
-                code: "PROMOTION_TEST",
-              },
-              {
-                action: "addItemAdjustment",
-                item_id: "item_cotton_tshirt",
-                amount: 20,
+                amount: 50,
                 code: "PROMOTION_TEST_2",
               },
               {
@@ -342,6 +341,12 @@ moduleIntegrationTestRunner({
                 item_id: "item_cotton_sweater",
                 amount: 50,
                 code: "PROMOTION_TEST_2",
+              },
+              {
+                action: "addItemAdjustment",
+                item_id: "item_cotton_sweater",
+                amount: 30,
+                code: "PROMOTION_TEST",
               },
             ])
           })
@@ -1205,18 +1210,6 @@ moduleIntegrationTestRunner({
               {
                 action: "addItemAdjustment",
                 item_id: "item_cotton_tshirt",
-                amount: 7.5,
-                code: "PROMOTION_TEST",
-              },
-              {
-                action: "addItemAdjustment",
-                item_id: "item_cotton_sweater",
-                amount: 22.5,
-                code: "PROMOTION_TEST",
-              },
-              {
-                action: "addItemAdjustment",
-                item_id: "item_cotton_tshirt",
                 amount: 12.5,
                 code: "PROMOTION_TEST_2",
               },
@@ -1225,6 +1218,18 @@ moduleIntegrationTestRunner({
                 item_id: "item_cotton_sweater",
                 amount: 37.5,
                 code: "PROMOTION_TEST_2",
+              },
+              {
+                action: "addItemAdjustment",
+                item_id: "item_cotton_tshirt",
+                amount: 7.5,
+                code: "PROMOTION_TEST",
+              },
+              {
+                action: "addItemAdjustment",
+                item_id: "item_cotton_sweater",
+                amount: 22.5,
+                code: "PROMOTION_TEST",
               },
             ])
           })
@@ -4065,6 +4070,7 @@ moduleIntegrationTestRunner({
           const result = await service.computeActions(
             ["PROMOTION_TEST", "PROMOTION_TEST_2"],
             {
+              currency_code: "usd",
               customer: {
                 customer_group: {
                   id: "VIP",
@@ -4101,18 +4107,6 @@ moduleIntegrationTestRunner({
             {
               action: "addItemAdjustment",
               item_id: "item_cotton_tshirt",
-              amount: 7.5,
-              code: "PROMOTION_TEST",
-            },
-            {
-              action: "addItemAdjustment",
-              item_id: "item_cotton_sweater",
-              amount: 22.5,
-              code: "PROMOTION_TEST",
-            },
-            {
-              action: "addItemAdjustment",
-              item_id: "item_cotton_tshirt",
               amount: 12.5,
               code: "PROMOTION_TEST_2",
             },
@@ -4121,6 +4115,18 @@ moduleIntegrationTestRunner({
               item_id: "item_cotton_sweater",
               amount: 37.5,
               code: "PROMOTION_TEST_2",
+            },
+            {
+              action: "addItemAdjustment",
+              item_id: "item_cotton_tshirt",
+              amount: 7.5,
+              code: "PROMOTION_TEST",
+            },
+            {
+              action: "addItemAdjustment",
+              item_id: "item_cotton_sweater",
+              amount: 22.5,
+              code: "PROMOTION_TEST",
             },
           ])
         })
@@ -4164,6 +4170,7 @@ moduleIntegrationTestRunner({
           const result = await service.computeActions(
             ["PROMOTION_TEST", "PROMOTION_TEST_2"],
             {
+              currency_code: "usd",
               customer: {
                 customer_group: {
                   id: "VIP",

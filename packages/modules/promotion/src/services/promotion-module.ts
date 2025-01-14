@@ -446,6 +446,7 @@ export default class PromotionModuleService
       },
       {
         take: null,
+        order: { application_method: { value: "DESC" } },
         relations: [
           "application_method",
           "application_method.target_rules",
