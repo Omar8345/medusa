@@ -21,6 +21,67 @@ moduleIntegrationTestRunner({
         await createCampaigns(MikroOrmWrapper.forkManager())
       })
 
+      it.only("should return empty array when promotion is not active (draft or inactive)", async () => {
+        const promotion = await createDefaultPromotion(service, {
+          rules: [
+            {
+              attribute: "customer.customer_group.id",
+              operator: "in",
+              values: ["VIP", "top100"],
+            },
+          ],
+          application_method: {
+            type: "fixed",
+            target_type: "items",
+            allocation: "each",
+            value: 200,
+            max_quantity: 1,
+            target_rules: [
+              {
+                attribute: "product_category.id",
+                operator: "eq",
+                values: ["catg_cotton"],
+              },
+            ],
+          },
+        })
+
+        const result = await service.computeActions([promotion.code!], {
+          currency_code: "usd",
+          customer: {
+            customer_group: {
+              id: "VIP",
+            },
+          },
+          items: [
+            {
+              id: "item_cotton_tshirt",
+              quantity: 1,
+              subtotal: 100,
+              product_category: {
+                id: "catg_cotton",
+              },
+              product: {
+                id: "prod_tshirt",
+              },
+            },
+            {
+              id: "item_cotton_sweater",
+              quantity: 5,
+              subtotal: 750,
+              product_category: {
+                id: "catg_cotton",
+              },
+              product: {
+                id: "prod_sweater",
+              },
+            },
+          ],
+        })
+
+        expect(result).toEqual([])
+      })
+
       describe("when code is not present in database", () => {
         it("should return empty array when promotion does not exist", async () => {
           const response = await service.computeActions(["DOES_NOT_EXIST"], {

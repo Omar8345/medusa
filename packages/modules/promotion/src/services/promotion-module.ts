@@ -2,10 +2,13 @@ import {
   CampaignBudgetTypeValues,
   Context,
   DAL,
+  FilterablePromotionProps,
+  FindConfig,
   InferEntityType,
   InternalModuleDeclaration,
   ModuleJoinerConfig,
   ModulesSdkTypes,
+  PromotionDTO,
   PromotionTypes,
 } from "@medusajs/framework/types"
 import {
@@ -136,6 +139,40 @@ export default class PromotionModuleService
   }
 
   @InjectManager()
+  listActivePromotions(
+    filters?: FilterablePromotionProps,
+    config?: FindConfig<PromotionDTO>,
+    sharedContext?: Context
+  ): Promise<PromotionDTO[]> {
+    const activeFilters = {
+      $or: [
+        {
+          status: PromotionStatus.ACTIVE,
+          campaign_id: null,
+          ...filters,
+        },
+        {
+          status: PromotionStatus.ACTIVE,
+          ...filters,
+          campaign: {
+            ...filters?.campaign,
+            $and: [
+              {
+                $or: [{ starts_at: null }, { starts_at: { $lte: new Date() } }],
+              },
+              {
+                $or: [{ ends_at: null }, { ends_at: { $gt: new Date() } }],
+              },
+            ],
+          },
+        },
+      ],
+    }
+
+    return this.listPromotions(activeFilters, config, sharedContext)
+  }
+
+  @InjectManager()
   async registerUsage(
     computedActions: PromotionTypes.UsageComputedActions[],
     @MedusaContext()
@@ -149,11 +186,9 @@ export default class PromotionModuleService
     const campaignBudgetMap = new Map<string, UpdateCampaignBudgetDTO>()
     const promotionCodeUsageMap = new Map<string, boolean>()
 
-    const existingPromotions = await this.listPromotions(
-      { code: promotionCodes, status: PromotionStatus.ACTIVE },
-      {
-        relations: ["campaign", "campaign.budget"],
-      },
+    const existingPromotions = await this.listActivePromotions(
+      { code: promotionCodes },
+      { relations: ["campaign", "campaign.budget"] },
       sharedContext
     )
 
@@ -251,16 +286,13 @@ export default class PromotionModuleService
     const promotionCodeUsageMap = new Map<string, boolean>()
     const campaignBudgetMap = new Map<string, UpdateCampaignBudgetDTO>()
 
-    const existingPromotions = await this.listPromotions(
+    const existingPromotions = await this.listActivePromotions(
       {
-        status: PromotionStatus.ACTIVE,
         code: computedActions
           .map((computedAction) => computedAction.code)
           .filter(Boolean),
       },
-      {
-        relations: ["campaign", "campaign.budget"],
-      },
+      { relations: ["campaign", "campaign.budget"] },
       sharedContext
     )
 
@@ -364,8 +396,8 @@ export default class PromotionModuleService
     >()
     const automaticPromotions = preventAutoPromotions
       ? []
-      : await this.listPromotions(
-          { $or: [{ is_automatic: true, status: PromotionStatus.ACTIVE }] },
+      : await this.listActivePromotions(
+          { is_automatic: true },
           { select: ["code"] },
           sharedContext
         )
@@ -404,9 +436,8 @@ export default class PromotionModuleService
       })
     })
 
-    const promotions = await this.listPromotions(
+    const promotions = await this.listActivePromotions(
       {
-        status: PromotionStatus.ACTIVE,
         code: [
           ...promotionCodesToApply,
           ...appliedItemCodes,

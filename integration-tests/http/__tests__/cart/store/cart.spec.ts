@@ -5,6 +5,7 @@ import {
   PriceListType,
   ProductStatus,
   PromotionRuleOperator,
+  PromotionStatus,
   PromotionType,
 } from "@medusajs/utils"
 import {
@@ -176,6 +177,7 @@ medusaIntegrationTestRunner({
             {
               code: "PROMOTION_APPLIED",
               type: PromotionType.STANDARD,
+              status: PromotionStatus.ACTIVE,
               application_method: {
                 type: "fixed",
                 target_type: "items",
@@ -1205,6 +1207,7 @@ medusaIntegrationTestRunner({
               {
                 code: "PROMOTION_TEST",
                 type: PromotionType.STANDARD,
+                status: PromotionStatus.ACTIVE,
                 application_method: {
                   type: "fixed",
                   target_type: "items",

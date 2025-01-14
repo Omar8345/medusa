@@ -1,5 +1,9 @@
-import { CampaignBudgetType, PromotionType } from "@medusajs/utils"
 import { medusaIntegrationTestRunner } from "@medusajs/test-utils"
+import {
+  CampaignBudgetType,
+  PromotionStatus,
+  PromotionType,
+} from "@medusajs/utils"
 import { createAdminUser } from "../../../../helpers/create-admin-user"
 
 jest.setTimeout(50000)
@@ -46,6 +50,7 @@ export const campaignsData = [
 const promotionData = {
   code: "TEST",
   type: PromotionType.STANDARD,
+  status: PromotionStatus.ACTIVE,
   is_automatic: true,
   application_method: {
     target_type: "items",
@@ -108,6 +113,7 @@ medusaIntegrationTestRunner({
         return {
           code,
           type: PromotionType.STANDARD,
+          status: PromotionStatus.ACTIVE,
           is_automatic: true,
           application_method: {
             target_type: "items",

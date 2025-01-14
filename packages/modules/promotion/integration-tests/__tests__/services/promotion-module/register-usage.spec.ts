@@ -1,8 +1,8 @@
 import { IPromotionModuleService } from "@medusajs/framework/types"
+import { Modules } from "@medusajs/framework/utils"
 import { moduleIntegrationTestRunner, SuiteOptions } from "@medusajs/test-utils"
 import { createCampaigns } from "../../../__fixtures__/campaigns"
 import { createDefaultPromotion } from "../../../__fixtures__/promotion"
-import { Modules } from "@medusajs/framework/utils"
 
 jest.setTimeout(30000)
 
@@ -13,6 +13,15 @@ moduleIntegrationTestRunner({
     service,
   }: SuiteOptions<IPromotionModuleService>) => {
     describe("Promotion Service: campaign usage", () => {
+      beforeAll(() => {
+        jest.useFakeTimers()
+        jest.setSystemTime(new Date("02/02/2023"))
+      })
+
+      afterAll(() => {
+        jest.useRealTimers()
+      })
+
       beforeEach(async () => {
         await createCampaigns(MikroOrmWrapper.forkManager())
       })

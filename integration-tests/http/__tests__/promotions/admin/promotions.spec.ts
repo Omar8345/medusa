@@ -1,5 +1,5 @@
-import { PromotionType } from "@medusajs/utils"
 import { medusaIntegrationTestRunner } from "@medusajs/test-utils"
+import { PromotionStatus, PromotionType } from "@medusajs/utils"
 import { createAdminUser } from "../../../../helpers/create-admin-user"
 
 jest.setTimeout(50000)
@@ -34,6 +34,7 @@ medusaIntegrationTestRunner({
             {
               code: "TEST_ACROSS",
               type: PromotionType.STANDARD,
+              status: PromotionStatus.ACTIVE,
               application_method: {
                 type: "fixed",
                 allocation: "across",
@@ -120,6 +121,7 @@ medusaIntegrationTestRunner({
             {
               code: "first",
               type: PromotionType.STANDARD,
+              status: PromotionStatus.ACTIVE,
               application_method: {
                 type: "fixed",
                 target_type: "order",
@@ -186,6 +188,7 @@ medusaIntegrationTestRunner({
             {
               code: "TEST",
               type: PromotionType.STANDARD,
+              status: PromotionStatus.ACTIVE,
               is_automatic: true,
               campaign: {
                 name: "test",
@@ -275,6 +278,7 @@ medusaIntegrationTestRunner({
               {
                 code: "TEST",
                 type: PromotionType.BUYGET,
+                status: PromotionStatus.ACTIVE,
                 is_automatic: true,
                 application_method: {
                   target_type: "items",
@@ -316,6 +320,7 @@ medusaIntegrationTestRunner({
               {
                 code: "TEST",
                 type: PromotionType.BUYGET,
+                status: PromotionStatus.ACTIVE,
                 is_automatic: true,
                 application_method: {
                   target_type: "items",
@@ -356,6 +361,7 @@ medusaIntegrationTestRunner({
             {
               code: "TEST",
               type: PromotionType.BUYGET,
+              status: PromotionStatus.ACTIVE,
               is_automatic: true,
               campaign: {
                 name: "test",

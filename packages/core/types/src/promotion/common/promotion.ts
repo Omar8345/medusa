@@ -5,7 +5,7 @@ import {
   CreateApplicationMethodDTO,
   UpdateApplicationMethodDTO,
 } from "./application-method"
-import { CampaignDTO } from "./campaign"
+import { CampaignDTO, FilterableCampaignProps } from "./campaign"
 import { CreatePromotionRuleDTO, PromotionRuleDTO } from "./promotion-rule"
 
 /**
@@ -208,4 +208,9 @@ export interface FilterablePromotionProps
    * Filter promotions by their type.
    */
   status?: PromotionStatusValues[]
+
+  /**
+   * Filter promotions by their campaign
+   */
+  campaign?: FilterableCampaignProps
 }
