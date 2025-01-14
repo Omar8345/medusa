@@ -1,6 +1,23 @@
 import { RemoteQueryFunction } from "@medusajs/types"
 
 /**
+ * The computed inventory availability for variants in a given sales channel.
+ * The object's keys are the variant IDs.
+ */
+export type VariantAvailabilityResult = {
+  [variant_id: string]: {
+    /**
+     * The available inventory quantity for the variant in the sales channel.
+     */
+    availability: number
+    /**
+     * The ID of the sales channel for which the availability was computed.
+     */
+    sales_channel_id: string
+  }
+}
+
+/**
  * Computes the varaint availability for a list of variants in a given sales channel
  *
  * The availability algorithm works as follows:
@@ -23,12 +40,7 @@ import { RemoteQueryFunction } from "@medusajs/types"
 export async function getVariantAvailability(
   query: Omit<RemoteQueryFunction, symbol>,
   data: VariantAvailabilityData
-): Promise<{
-  [variant_id: string]: {
-    availability: number
-    sales_channel_id: string
-  }
-}> {
+): Promise<VariantAvailabilityResult> {
   const { variantInventoriesMap, locationIds } = await getDataForComputation(
     query,
     data

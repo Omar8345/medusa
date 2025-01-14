@@ -22,13 +22,51 @@ import { associateProductsWithSalesChannelsStep } from "../../sales-channel"
 import { createProductsStep } from "../steps/create-products"
 import { createProductVariantsWorkflow } from "./create-product-variants"
 
-interface ValidateProductInputStepInput {
+/**
+ * The product's data to validate.
+ */
+export interface ValidateProductInputStepInput {
+  /**
+   * The products to validate.
+   */
   products: CreateProductWorkflowInputDTO[]
 }
 
 const validateProductInputStepId = "validate-product-input"
 /**
- * This step validates a product data before creation.
+ * This step validates that all provided products have options.
+ * If a product is missing options, an error is thrown.
+ * 
+ * @example
+ * const data = validateProductInputStep({
+ *   products: [
+ *     {
+ *       title: "Shirt",
+ *       options: [
+ *         {
+ *           title: "Size",
+ *           values: ["S", "M", "L"]
+ *         }
+ *       ],
+ *       variants: [
+ *         {
+ *           title: "Small Shirt",
+ *           sku: "SMALLSHIRT",
+ *           options: {
+ *             Size: "S"
+ *           },
+ *           prices: [
+ *             {
+ *               amount: 10,
+ *               currency_code: "usd"
+ *             }
+ *           ],
+ *           manage_inventory: true,
+ *         },
+ *       ]
+ *     }
+ *   ]
+ * })
  */
 export const validateProductInputStep = createStep(
   validateProductInputStepId,

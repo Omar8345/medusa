@@ -8,7 +8,14 @@ import { createStep, StepResponse } from "@medusajs/framework/workflows-sdk"
 export const batchLinkProductsToCategoryStepId =
   "batch-link-products-to-category"
 /**
- * This step creates links between product and category records.
+ * This step manages the links between a category and products.
+ * 
+ * @example
+ * const data = batchLinkProductsToCategoryStep({
+ *   id: "pcat_123",
+ *   add: ["product_123"],
+ *   remove: ["product_321"]
+ * })
  */
 export const batchLinkProductsToCategoryStep = createStep(
   batchLinkProductsToCategoryStepId,

@@ -5,6 +5,15 @@ import { StepResponse, createStep } from "@medusajs/framework/workflows-sdk"
 export const createProductVariantsStepId = "create-product-variants"
 /**
  * This step creates one or more product variants.
+ * 
+ * @example
+ * const data = createProductVariantsStep([{
+ *   title: "Small Shirt",
+ *   options: {
+ *     Size: "S",
+ *   },
+ *   product_id: "prod_123",
+ * }])
  */
 export const createProductVariantsStep = createStep(
   createProductVariantsStepId,

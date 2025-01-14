@@ -58,13 +58,42 @@ const csvSortFunction = (a: string, b: string) => {
   return a.localeCompare(b)
 }
 
+/**
+ * The products to export.
+ */
+export type GenerateProductCsvStepInput = HttpTypes.AdminProduct[]
+
+/**
+ * The export's details.
+ */
+export type GenerateProductCsvStepOutput = {
+  /**
+   * The ID of the generated file as returned by the [File Module Provider](https://docs.medusajs.com/resources/architectural-modules/file).
+   */
+  id: string
+  /**
+   * The name of the generated file as returned by the [File Module Provider](https://docs.medusajs.com/resources/architectural-modules/file).
+   */
+  filename: string
+}
+
 export const generateProductCsvStepId = "generate-product-csv"
 /**
- * This step generates a CSV file to be exported.
+ * This step generates a CSV file that exports products. The CSV
+ * file is created and stored using the registered [File Module Provider](https://docs.medusajs.com/resources/architectural-modules/file).
+ * 
+ * @example
+ * const { data: products } = useQueryGraphStep({
+ *   entity: "product",
+ *   fields: ["*", "variants.*", "collection.*", "categories.*"]
+ * })
+ * 
+ * // @ts-ignore
+ * const data = generateProductCsvStep(products)
  */
 export const generateProductCsvStep = createStep(
   generateProductCsvStepId,
-  async (products: HttpTypes.AdminProduct[], { container }) => {
+  async (products: GenerateProductCsvStepInput, { container }) => {
     const regionService = container.resolve<IRegionModuleService>(
       Modules.REGION
     )
@@ -88,7 +117,10 @@ export const generateProductCsvStep = createStep(
       content: csvContent,
     })
 
-    return new StepResponse({ id: file.id, filename }, file.id)
+    return new StepResponse(
+      { id: file.id, filename } as GenerateProductCsvStepOutput, 
+      file.id
+    )
   },
   async (fileId, { container }) => {
     if (!fileId) {

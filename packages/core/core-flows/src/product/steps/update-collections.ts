@@ -5,14 +5,33 @@ import {
 } from "@medusajs/framework/utils"
 import { StepResponse, createStep } from "@medusajs/framework/workflows-sdk"
 
+/**
+ * The data to identify and update the product collections.
+ */
 export type UpdateCollectionsStepInput = {
+  /**
+   * The filters to select the collections to update.
+   */
   selector: ProductTypes.FilterableProductCollectionProps
+  /**
+   * The data to update the collections with.
+   */
   update: ProductTypes.UpdateProductCollectionDTO
 }
 
 export const updateCollectionsStepId = "update-collections"
 /**
  * This step updates collections matching the specified filters.
+ * 
+ * @example
+ * const data = updateCollectionsStep({
+ *   selector: {
+ *     id: "collection_123"
+ *   },
+ *   update: {
+ *     title: "Summer Collection"
+ *   }
+ * })
  */
 export const updateCollectionsStep = createStep(
   updateCollectionsStepId,

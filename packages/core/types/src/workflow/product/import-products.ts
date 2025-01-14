@@ -1,5 +1,14 @@
+/**
+ * The configurations to import products.
+ */
 export interface ImportProductsDTO {
+  /**
+   * The content of the CSV file.
+   */
   fileContent: string
+  /**
+   * The name of the CSV file.
+   */
   filename: string
 }
 

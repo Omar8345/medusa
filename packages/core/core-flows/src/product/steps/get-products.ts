@@ -2,13 +2,19 @@ import { IProductModuleService } from "@medusajs/framework/types"
 import { Modules } from "@medusajs/framework/utils"
 import { createStep, StepResponse } from "@medusajs/framework/workflows-sdk"
 
+/**
+ * Configurations to retrieve products.
+ */
 export type GetProductsStepInput = {
+  /**
+   * The IDs of the products to retrieve.
+   */
   ids?: string[]
 }
 
 export const getProductsStepId = "get-products"
 /**
- * This step retrieves products.
+ * This step retrieves products, with ability to filter by product IDs.
  */
 export const getProductsStep = createStep(
   getProductsStepId,

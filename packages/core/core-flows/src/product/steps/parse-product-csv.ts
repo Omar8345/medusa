@@ -9,13 +9,22 @@ import { normalizeForImport } from "../helpers/normalize-for-import"
 import { normalizeV1Products } from "../helpers/normalize-v1-import"
 import { convertCsvToJson } from "../utlils"
 
+/**
+ * The CSV file content to parse.
+ */
+export type ParseProductCsvStepInput = string
+
 export const parseProductCsvStepId = "parse-product-csv"
 /**
- * This step parses a CSV file holding products to import.
+ * This step parses a CSV file holding products to import, returning the products as 
+ * objects that can be imported.
+ * 
+ * @example
+ * const data = parseProductCsvStep("products.csv")
  */
 export const parseProductCsvStep = createStep(
   parseProductCsvStepId,
-  async (fileContent: string, { container }) => {
+  async (fileContent: ParseProductCsvStepInput, { container }) => {
     const regionService = container.resolve<IRegionModuleService>(
       Modules.REGION
     )

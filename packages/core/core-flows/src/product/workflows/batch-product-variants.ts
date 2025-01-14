@@ -16,20 +16,61 @@ import { createProductVariantsWorkflow } from "./create-product-variants"
 import { updateProductVariantsWorkflow } from "./update-product-variants"
 import { deleteProductVariantsWorkflow } from "./delete-product-variants"
 
+/**
+ * The product variants to manage.
+ */
+export type BatchProductVariantsWorkflowInput = BatchWorkflowInput<
+  CreateProductVariantWorkflowInputDTO,
+  UpdateProductVariantWorkflowInputDTO
+>
+
+/**
+ * The result of managing the product variants.
+ */
+export type BatchProductVariantsWorkflowOutput = BatchWorkflowOutput<ProductTypes.ProductVariantDTO>
+
 export const batchProductVariantsWorkflowId = "batch-product-variants"
 /**
- * This workflow creates, updates, and deletes product variants.
+ * This workflow creates, updates, and deletes product variants. It's used by the 
+ * [Manage Variants in a Product Admin API Route](https://docs.medusajs.com/api/admin#products_postproductsidvariantsbatch).
+ * 
+ * You can use this workflow within your own custom workflows to manage the variants of a product. You can also
+ * use this within a [seed script](https://docs.medusajs.com/learn/fundamentals/custom-cli-scripts/seed-data) or in a custom import script.
+ * 
+ * @example
+ * const { result } = await batchProductVariantsWorkflow(container)
+ * .run({
+ *   input: {
+ *     create: [
+ *       {
+ *         title: "Small Shirt",
+ *         product_id: "prod_123",
+ *         options: {
+ *           Size: "S"
+ *         },
+ *         prices: [
+ *           {
+ *             amount: 10,
+ *             currency_code: "usd"
+ *           }
+ *         ]
+ *       }
+ *     ],
+ *     update: [
+ *       {
+ *         id: "variant_123",
+ *         title: "Red Pants"
+ *       }
+ *     ],
+ *     delete: ["variant_321"]
+ *   }
+ * })
  */
 export const batchProductVariantsWorkflow = createWorkflow(
   batchProductVariantsWorkflowId,
   (
-    input: WorkflowData<
-      BatchWorkflowInput<
-        CreateProductVariantWorkflowInputDTO,
-        UpdateProductVariantWorkflowInputDTO
-      >
-    >
-  ): WorkflowResponse<BatchWorkflowOutput<ProductTypes.ProductVariantDTO>> => {
+    input: WorkflowData<BatchProductVariantsWorkflowInput>
+  ): WorkflowResponse<BatchProductVariantsWorkflowOutput> => {
     const normalizedInput = transform({ input }, (data) => {
       return {
         create: data.input.create ?? [],

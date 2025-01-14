@@ -8,7 +8,14 @@ import { createStep, StepResponse } from "@medusajs/framework/workflows-sdk"
 export const batchLinkProductsToCollectionStepId =
   "batch-link-products-to-collection"
 /**
- * This step creates links between product and collection records.
+ * This step manages the links between a collection and products.
+ * 
+ * @example
+ * const data = batchLinkProductsToCollectionStep({
+ *   id: "collection_123",
+ *   add: ["product_123"],
+ *   remove: ["product_321"]
+ * })
  */
 export const batchLinkProductsToCollectionStep = createStep(
   batchLinkProductsToCollectionStepId,

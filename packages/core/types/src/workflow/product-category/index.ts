@@ -13,5 +13,8 @@ export interface UpdateProductCategoriesWorkflowInput {
   update: UpdateProductCategoryDTO
 }
 
+/**
+ * The products to manage of a category.
+ */
 export interface BatchUpdateProductsOnCategoryWorkflowInput
   extends LinkWorkflowInput {}

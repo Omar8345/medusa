@@ -9,11 +9,39 @@ import {
 import { emitEventStep } from "../../common/steps/emit-event"
 import { deleteProductOptionsStep } from "../steps"
 
-export type DeleteProductOptionsWorkflowInput = { ids: string[] }
+/**
+ * The data to delete one or more product options.
+ */
+export type DeleteProductOptionsWorkflowInput = { 
+  /**
+   * The IDs of the options to delete.
+   */
+  ids: string[]
+}
 
 export const deleteProductOptionsWorkflowId = "delete-product-options"
 /**
- * This workflow deletes one or more product options.
+ * This workflow deletes one or more product options. It's used by the 
+ * [Delete Product Option Admin API Route](https://docs.medusajs.com/api/admin#products_deleteproductsidoptionsoption_id).
+ * 
+ * This workflow has a hook that allows you to perform custom actions after the product options are deleted. For example, 
+ * you can delete custom records linked to the product colleciton.
+ * 
+ * You can also use this workflow within your own custom workflows, allowing you to wrap custom logic around product-option deletion.
+ * 
+ * @example
+ * const { result } = await deleteProductOptionsWorkflow(container)
+ * .run({
+ *   input: {
+ *     ids: ["poption_123"],
+ *   }
+ * })
+ * 
+ * @summary
+ * 
+ * Delete one or more product option.
+ * 
+ * @property hooks.productOptionsDeleted - This hook is executed after the options are deleted. You can consume this hook to perform custom actions on the deleted options.
  */
 export const deleteProductOptionsWorkflow = createWorkflow(
   deleteProductOptionsWorkflowId,

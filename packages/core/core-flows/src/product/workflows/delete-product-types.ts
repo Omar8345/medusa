@@ -9,11 +9,39 @@ import {
 import { emitEventStep } from "../../common/steps/emit-event"
 import { deleteProductTypesStep } from "../steps"
 
-export type DeleteProductTypesWorkflowInput = { ids: string[] }
+/**
+ * The data to delete one or more product types.
+ */
+export type DeleteProductTypesWorkflowInput = { 
+  /**
+   * The IDs of the types to delete.
+   */
+  ids: string[]
+}
 
 export const deleteProductTypesWorkflowId = "delete-product-types"
 /**
- * This workflow deletes one or more product types.
+ * This workflow deletes one or more product types. It's used by the 
+ * [Delete Product Types Admin API Route](https://docs.medusajs.com/api/admin#product-types_deleteproducttypesid).
+ * 
+ * This workflow has a hook that allows you to perform custom actions after the product types are deleted. For example, 
+ * you can delete custom records linked to the product types.
+ * 
+ * You can also use this workflow within your own custom workflows, allowing you to wrap custom logic around product-type deletion.
+ * 
+ * @example
+ * const { result } = await deleteProductTypesWorkflow(container)
+ * .run({
+ *   input: {
+ *     ids: ["ptyp_123"],
+ *   }
+ * })
+ * 
+ * @summary
+ * 
+ * Delete one or more product types.
+ * 
+ * @property hooks.productTypesDeleted - This hook is executed after the types are deleted. You can consume this hook to perform custom actions on the deleted types.
  */
 export const deleteProductTypesWorkflow = createWorkflow(
   deleteProductTypesWorkflowId,

@@ -10,13 +10,46 @@ import {
 import { emitEventStep } from "../../common"
 import { createCollectionsStep } from "../steps"
 
+/**
+ * The details of the collection to create, along with custom data that's passed to the workflow's hooks.
+ */
 export type CreateCollectionsWorkflowInput = {
+  /**
+   * The collections to create.
+   */
   collections: ProductTypes.CreateProductCollectionDTO[]
 } & AdditionalData
 
 export const createCollectionsWorkflowId = "create-collections"
 /**
- * This workflow creates one or more collections.
+ * This workflow creates one or more collections. It's used by the 
+ * [Create Collection Admin API Route](https://docs.medusajs.com/api/admin#collections_postcollections).
+ * 
+ * This workflow has a hook that allows you to perform custom actions on the created collections. For example, you can pass under `additional_data` custom data that 
+ * allows you to create custom data models linked to the product collections.
+ * 
+ * You can also use this workflow within your own custom workflows, allowing you to wrap custom logic around product-collection creation.
+ * 
+ * @example
+ * const { result } = await createCollectionsWorkflow(container)
+ * .run({
+ *   input: {
+ *     collections: [
+ *       {
+ *         title: "Summer Clothing"
+ *       }
+ *     ],
+ *     additional_data: {
+ *       erp_id: "123"
+ *     }
+ *   }
+ * })
+ * 
+ * @summary
+ * 
+ * Create one or more product collections.
+ * 
+ * @property hooks.collectionsCreated - This hook is executed after the collections are created. You can consume this hook to perform custom actions on the created collections.
  */
 export const createCollectionsWorkflow = createWorkflow(
   createCollectionsWorkflowId,
