@@ -129,10 +129,9 @@ export const refreshCartShippingMethodsWorkflow = createWorkflow(
               return {
                 id: shippingMethod.id,
                 shipping_option_id: shippingOption.id,
-                amount: shippingOption.calculated_price.calculated_amount,
+                amount: shippingOption.calculated_price?.calculated_amount,
                 is_tax_inclusive:
-                  shippingOption.calculated_price
-                    .is_calculated_price_tax_inclusive,
+                  shippingOption.calculated_price?.is_calculated_price_tax_inclusive,
               }
             }
           )
