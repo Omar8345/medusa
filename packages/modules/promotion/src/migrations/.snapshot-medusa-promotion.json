@@ -345,6 +345,21 @@
           ],
           "mappedType": "enum"
         },
+        "status": {
+          "name": "status",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "default": "'draft'",
+          "enumItems": [
+            "draft",
+            "active",
+            "inactive"
+          ],
+          "mappedType": "enum"
+        },
         "campaign_id": {
           "name": "campaign_id",
           "type": "text",
@@ -413,6 +428,14 @@
           "primary": false,
           "unique": false,
           "expression": "CREATE INDEX IF NOT EXISTS \"IDX_promotion_type\" ON \"promotion\" (type) WHERE deleted_at IS NULL"
+        },
+        {
+          "keyName": "IDX_promotion_status",
+          "columnNames": [],
+          "composite": false,
+          "primary": false,
+          "unique": false,
+          "expression": "CREATE INDEX IF NOT EXISTS \"IDX_promotion_status\" ON \"promotion\" (status) WHERE deleted_at IS NULL"
         },
         {
           "keyName": "IDX_promotion_campaign_id",

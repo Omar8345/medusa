@@ -51,6 +51,7 @@ export async function createDefaultPromotion(
   return await service.createPromotions({
     code: "PROMOTION_TEST",
     type: "standard",
+    status: "active",
     campaign_id: "campaign-id-1",
     ...promotion,
     application_method: {

@@ -1,5 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod"
-import { PromotionDTO } from "@medusajs/types"
+import { AdminPromotion } from "@medusajs/types"
 import { Button, CurrencyInput, Input, RadioGroup, Text } from "@medusajs/ui"
 import { useForm, useWatch } from "react-hook-form"
 import { Trans, useTranslation } from "react-i18next"
@@ -13,12 +13,13 @@ import { useUpdatePromotion } from "../../../../../hooks/api/promotions"
 import { getCurrencySymbol } from "../../../../../lib/data/currencies"
 
 type EditPromotionFormProps = {
-  promotion: PromotionDTO
+  promotion: AdminPromotion
 }
 
 const EditPromotionSchema = zod.object({
   is_automatic: zod.string().toLowerCase(),
   code: zod.string().min(1),
+  status: zod.enum(["active", "inactive", "draft"]),
   value_type: zod.enum(["fixed", "percentage"]),
   value: zod.number(),
   allocation: zod.enum(["each", "across"]),
@@ -34,6 +35,7 @@ export const EditPromotionDetailsForm = ({
     defaultValues: {
       is_automatic: promotion.is_automatic!.toString(),
       code: promotion.code,
+      status: promotion.status,
       value: promotion.application_method!.value,
       allocation: promotion.application_method!.allocation,
       value_type: promotion.application_method!.type,
@@ -55,6 +57,7 @@ export const EditPromotionDetailsForm = ({
       {
         is_automatic: data.is_automatic === "true",
         code: data.code,
+        status: data.status,
         application_method: {
           value: data.value,
           type: data.value_type as any,
@@ -77,6 +80,51 @@ export const EditPromotionDetailsForm = ({
       >
         <RouteDrawer.Body className="flex flex-1 flex-col gap-y-8 overflow-y-auto">
           <div className="flex flex-col gap-y-8">
+            <Form.Field
+              control={form.control}
+              name="status"
+              render={({ field }) => {
+                return (
+                  <Form.Item>
+                    <Form.Label>{t("promotions.form.status.label")}</Form.Label>
+                    <Form.Control>
+                      <RadioGroup
+                        className="flex-col gap-y-3"
+                        {...field}
+                        value={field.value}
+                        onValueChange={field.onChange}
+                      >
+                        <RadioGroup.ChoiceBox
+                          value={"draft"}
+                          label={t("promotions.form.status.draft.title")}
+                          description={t(
+                            "promotions.form.status.draft.description"
+                          )}
+                        />
+
+                        <RadioGroup.ChoiceBox
+                          value={"active"}
+                          label={t("promotions.form.status.active.title")}
+                          description={t(
+                            "promotions.form.status.active.description"
+                          )}
+                        />
+
+                        <RadioGroup.ChoiceBox
+                          value={"inactive"}
+                          label={t("promotions.form.status.inactive.title")}
+                          description={t(
+                            "promotions.form.status.inactive.description"
+                          )}
+                        />
+                      </RadioGroup>
+                    </Form.Control>
+                    <Form.ErrorMessage />
+                  </Form.Item>
+                )
+              }}
+            />
+
             <Form.Field
               control={form.control}
               name="is_automatic"

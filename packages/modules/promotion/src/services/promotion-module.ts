@@ -24,6 +24,7 @@ import {
   MedusaContext,
   MedusaError,
   MedusaService,
+  PromotionStatus,
   PromotionType,
   toMikroORMEntity,
   transformPropertiesToBigNumber,
@@ -149,7 +150,7 @@ export default class PromotionModuleService
     const promotionCodeUsageMap = new Map<string, boolean>()
 
     const existingPromotions = await this.listPromotions(
-      { code: promotionCodes },
+      { code: promotionCodes, status: PromotionStatus.ACTIVE },
       {
         relations: ["campaign", "campaign.budget"],
       },
@@ -252,6 +253,7 @@ export default class PromotionModuleService
 
     const existingPromotions = await this.listPromotions(
       {
+        status: PromotionStatus.ACTIVE,
         code: computedActions
           .map((computedAction) => computedAction.code)
           .filter(Boolean),
@@ -363,7 +365,7 @@ export default class PromotionModuleService
     const automaticPromotions = preventAutoPromotions
       ? []
       : await this.listPromotions(
-          { is_automatic: true },
+          { $or: [{ is_automatic: true, status: PromotionStatus.ACTIVE }] },
           { select: ["code"] },
           sharedContext
         )
@@ -404,6 +406,7 @@ export default class PromotionModuleService
 
     const promotions = await this.listPromotions(
       {
+        status: PromotionStatus.ACTIVE,
         code: [
           ...promotionCodesToApply,
           ...appliedItemCodes,

@@ -6,8 +6,8 @@ import {
   Modules,
   PromotionType,
 } from "@medusajs/framework/utils"
-import { PromotionModuleService } from "@services"
 import { SuiteOptions, moduleIntegrationTestRunner } from "@medusajs/test-utils"
+import { PromotionModuleService } from "@services"
 import { createCampaigns } from "../../../__fixtures__/campaigns"
 import {
   createDefaultPromotion,
@@ -809,30 +809,32 @@ moduleIntegrationTestRunner({
 
           expect(count).toEqual(2)
           expect(promotions).toEqual([
-            {
+            expect.objectContaining({
               id: "promotion-id-1",
               code: "PROMOTION_1",
               campaign_id: null,
               campaign: null,
+              status: "draft",
               is_automatic: false,
               type: "standard",
               application_method: expect.any(Object),
               created_at: expect.any(Date),
               updated_at: expect.any(Date),
               deleted_at: null,
-            },
-            {
+            }),
+            expect.objectContaining({
               id: "promotion-id-2",
               code: "PROMOTION_2",
               campaign_id: null,
               campaign: null,
+              status: "draft",
               is_automatic: false,
               type: "standard",
               application_method: null,
               created_at: expect.any(Date),
               updated_at: expect.any(Date),
               deleted_at: null,
-            },
+            }),
           ])
         })
 

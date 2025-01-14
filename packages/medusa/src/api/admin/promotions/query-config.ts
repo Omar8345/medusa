@@ -3,6 +3,7 @@ export const defaultAdminPromotionFields = [
   "code",
   "is_automatic",
   "type",
+  "status",
   "created_at",
   "updated_at",
   "deleted_at",

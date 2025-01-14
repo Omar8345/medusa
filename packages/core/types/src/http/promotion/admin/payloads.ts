@@ -3,6 +3,7 @@ import {
   ApplicationMethodTargetTypeValues,
   ApplicationMethodTypeValues,
   PromotionRuleOperatorValues,
+  PromotionStatusValues,
   PromotionTypeValues,
 } from "../../../promotion"
 import { AdminCreateCampaign } from "../../campaign"
@@ -64,6 +65,7 @@ export interface AdminUpdatePromotion {
   code?: string
   is_automatic?: boolean
   type?: PromotionTypeValues
+  status?: PromotionStatusValues
   campaign_id?: string | null
   campaign?: AdminCreateCampaign
   application_method?: AdminUpdateApplicationMethod

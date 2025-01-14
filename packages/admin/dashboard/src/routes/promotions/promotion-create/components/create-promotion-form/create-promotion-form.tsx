@@ -1,5 +1,13 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import {
+  ApplicationMethodAllocationValues,
+  ApplicationMethodTargetTypeValues,
+  ApplicationMethodTypeValues,
+  PromotionRuleOperatorValues,
+  PromotionStatusValues,
+  PromotionTypeValues,
+} from "@medusajs/types"
+import {
   Alert,
   Badge,
   Button,
@@ -17,14 +25,6 @@ import { useEffect, useMemo, useState } from "react"
 import { useForm, useWatch } from "react-hook-form"
 import { Trans, useTranslation } from "react-i18next"
 import { z } from "zod"
-
-import {
-  ApplicationMethodAllocationValues,
-  ApplicationMethodTargetTypeValues,
-  ApplicationMethodTypeValues,
-  PromotionRuleOperatorValues,
-  PromotionTypeValues,
-} from "@medusajs/types"
 import { Divider } from "../../../../../components/common/divider"
 import { Form } from "../../../../../components/common/form"
 import { DeprecatedPercentageInput } from "../../../../../components/inputs/percentage-input"
@@ -50,6 +50,7 @@ const defaultValues = {
   is_automatic: "false",
   code: "",
   type: "standard" as PromotionTypeValues,
+  status: "draft" as PromotionStatusValues,
   rules: [],
   application_method: {
     allocation: "each" as ApplicationMethodAllocationValues,
@@ -497,6 +498,48 @@ export const CreatePromotionForm = () => {
                                 )}
                                 description={t(
                                   "promotions.form.method.automatic.description"
+                                )}
+                                className={clx("basis-1/2")}
+                              />
+                            </RadioGroup>
+                          </Form.Control>
+                          <Form.ErrorMessage />
+                        </Form.Item>
+                      )
+                    }}
+                  />
+
+                  <Form.Field
+                    control={form.control}
+                    name="status"
+                    render={({ field }) => {
+                      return (
+                        <Form.Item>
+                          <Form.Label>
+                            {t("promotions.form.status.label")}
+                          </Form.Label>
+
+                          <Form.Control>
+                            <RadioGroup
+                              className="flex gap-y-3"
+                              {...field}
+                              value={field.value}
+                              onValueChange={field.onChange}
+                            >
+                              <RadioGroup.ChoiceBox
+                                value={"draft"}
+                                label={t("promotions.form.status.draft.title")}
+                                description={t(
+                                  "promotions.form.status.draft.description"
+                                )}
+                                className={clx("basis-1/2")}
+                              />
+
+                              <RadioGroup.ChoiceBox
+                                value={"active"}
+                                label={t("promotions.form.status.active.title")}
+                                description={t(
+                                  "promotions.form.status.active.description"
                                 )}
                                 className={clx("basis-1/2")}
                               />

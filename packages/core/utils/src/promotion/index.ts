@@ -3,6 +3,12 @@ export enum PromotionType {
   BUYGET = "buyget",
 }
 
+export enum PromotionStatus {
+  DRAFT = "draft",
+  ACTIVE = "active",
+  INACTIVE = "inactive",
+}
+
 export enum ApplicationMethodType {
   FIXED = "fixed",
   PERCENTAGE = "percentage",

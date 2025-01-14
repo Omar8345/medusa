@@ -3,9 +3,11 @@ import {
   ApplicationMethodTargetType,
   ApplicationMethodType,
   PromotionRuleOperator,
+  PromotionStatus,
   PromotionType,
 } from "@medusajs/framework/utils"
 import { z } from "zod"
+import { applyAndAndOrOperators } from "../../utils/common-validators"
 import {
   createFindParams,
   createOperatorMap,
@@ -13,7 +15,6 @@ import {
   WithAdditionalData,
 } from "../../utils/validators"
 import { CreateCampaign } from "../campaigns/validators"
-import { applyAndAndOrOperators } from "../../utils/common-validators"
 
 export type AdminGetPromotionParamsType = z.infer<
   typeof AdminGetPromotionParams
@@ -160,6 +161,7 @@ export const CreatePromotion = z
     code: z.string(),
     is_automatic: z.boolean().optional(),
     type: z.nativeEnum(PromotionType),
+    status: z.nativeEnum(PromotionStatus).default(PromotionStatus.DRAFT),
     campaign_id: z.string().nullish(),
     campaign: CreateCampaign.optional(),
     application_method: AdminCreateApplicationMethod,
@@ -183,6 +185,7 @@ export const UpdatePromotion = z
     code: z.string().optional(),
     is_automatic: z.boolean().optional(),
     type: z.nativeEnum(PromotionType).optional(),
+    status: z.nativeEnum(PromotionStatus).optional(),
     campaign_id: z.string().nullish(),
     application_method: AdminUpdateApplicationMethod.optional(),
   })

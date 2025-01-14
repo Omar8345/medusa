@@ -25,6 +25,7 @@ export const CreatePromotionSchema = z
     is_automatic: z.string().toLowerCase(),
     code: z.string().min(1),
     type: z.enum(["buyget", "standard"]),
+    status: z.enum(["draft", "active", "inactive"]),
     rules: RuleSchema,
     application_method: z.object({
       allocation: z.enum(["each", "across"]),

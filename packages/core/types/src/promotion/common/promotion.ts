@@ -14,6 +14,11 @@ import { CreatePromotionRuleDTO, PromotionRuleDTO } from "./promotion-rule"
 export type PromotionTypeValues = "standard" | "buyget"
 
 /**
+ * The promotion's possible types.
+ */
+export type PromotionStatusValues = "draft" | "active" | "inactive"
+
+/**
  * The promotion's possible rule types.
  */
 export type RuleTypeValues = "rules" | "buy-rules" | "target-rules"
@@ -86,6 +91,15 @@ export interface CreatePromotionDTO {
   type: PromotionTypeValues
 
   /**
+   * The status of the promotion:
+   *
+   * - `draft` indicates that a promotion is currently being prepared
+   * - `active` indicates that a promotion is active
+   * - `inactive` indicates that a promotion is no longer active
+   */
+  status: PromotionStatusValues
+
+  /**
    * Whether the promotion is applied automatically.
    */
   is_automatic?: boolean
@@ -136,6 +150,15 @@ export interface UpdatePromotionDTO {
   type?: PromotionTypeValues
 
   /**
+   * The status of the promotion:
+   *
+   * - `draft` indicates that a promotion is currently being prepared
+   * - `active` indicates that a promotion is active
+   * - `inactive` indicates that a promotion is no longer active
+   */
+  status?: PromotionStatusValues
+
+  /**
    * The associated application method.
    */
   application_method?: Omit<UpdateApplicationMethodDTO, "id">
@@ -180,4 +203,9 @@ export interface FilterablePromotionProps
    * Filter promotions by their type.
    */
   type?: PromotionTypeValues[]
+
+  /**
+   * Filter promotions by their type.
+   */
+  status?: PromotionStatusValues[]
 }

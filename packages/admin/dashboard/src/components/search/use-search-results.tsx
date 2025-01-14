@@ -202,7 +202,7 @@ const useDynamicSearchResults = (
     {
       q: debouncedSearch,
       limit,
-      fields: "id,code",
+      fields: "id,code,status",
     },
     {
       enabled: isAreaEnabled(currentArea, "promotion"),

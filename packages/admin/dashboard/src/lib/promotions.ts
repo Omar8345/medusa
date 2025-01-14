@@ -4,7 +4,8 @@ export enum PromotionStatus {
   SCHEDULED = "SCHEDULED",
   EXPIRED = "EXPIRED",
   ACTIVE = "ACTIVE",
-  DISABLED = "DISABLED",
+  INACTIVE = "INACTIVE",
+  DRAFT = "DRAFT",
 }
 
 export const getPromotionStatus = (promotion: HttpTypes.AdminPromotion) => {

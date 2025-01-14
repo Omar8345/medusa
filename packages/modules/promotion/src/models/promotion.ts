@@ -13,6 +13,10 @@ const Promotion = model
       .index("IDX_promotion_code"),
     is_automatic: model.boolean().default(false),
     type: model.enum(PromotionUtils.PromotionType).index("IDX_promotion_type"),
+    status: model
+      .enum(PromotionUtils.PromotionStatus)
+      .index("IDX_promotion_status")
+      .default(PromotionUtils.PromotionStatus.DRAFT),
     campaign: model
       .belongsTo(() => Campaign, {
         mappedBy: "promotions",
