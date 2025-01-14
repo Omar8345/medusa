@@ -1190,6 +1190,11 @@ export const slugChanges = [
     "filePath": "/www/apps/resources/references/core_flows/Inventory/Steps_Inventory/functions/core_flows.Inventory.Steps_Inventory.validateInventoryLocationsStep/page.mdx"
   },
   {
+    "origSlug": "/references/core_flows/Inventory/Workflows_Inventory/functions/core_flows.Inventory.Workflows_Inventory.batchInventoryItemLevelsWorkflow",
+    "newSlug": "/references/medusa-workflows/batchInventoryItemLevelsWorkflow",
+    "filePath": "/www/apps/resources/references/core_flows/Inventory/Workflows_Inventory/functions/core_flows.Inventory.Workflows_Inventory.batchInventoryItemLevelsWorkflow/page.mdx"
+  },
+  {
     "origSlug": "/references/core_flows/Inventory/Workflows_Inventory/functions/core_flows.Inventory.Workflows_Inventory.bulkCreateDeleteLevelsWorkflow",
     "newSlug": "/references/medusa-workflows/bulkCreateDeleteLevelsWorkflow",
     "filePath": "/www/apps/resources/references/core_flows/Inventory/Workflows_Inventory/functions/core_flows.Inventory.Workflows_Inventory.bulkCreateDeleteLevelsWorkflow/page.mdx"
@@ -2743,6 +2748,11 @@ export const slugChanges = [
     "origSlug": "/references/core_flows/Product/Workflows_Product/functions/core_flows.Product.Workflows_Product.upsertVariantPricesWorkflow",
     "newSlug": "/references/medusa-workflows/upsertVariantPricesWorkflow",
     "filePath": "/www/apps/resources/references/core_flows/Product/Workflows_Product/functions/core_flows.Product.Workflows_Product.upsertVariantPricesWorkflow/page.mdx"
+  },
+  {
+    "origSlug": "/references/core_flows/Product/Workflows_Product/functions/core_flows.Product.Workflows_Product.validateProductInputStep",
+    "newSlug": "/references/medusa-workflows/validateProductInputStep",
+    "filePath": "/www/apps/resources/references/core_flows/Product/Workflows_Product/functions/core_flows.Product.Workflows_Product.validateProductInputStep/page.mdx"
   },
   {
     "origSlug": "/references/core_flows/Product_Category/Steps_Product_Category/functions/core_flows.Product_Category.Steps_Product_Category.createProductCategoriesStep",

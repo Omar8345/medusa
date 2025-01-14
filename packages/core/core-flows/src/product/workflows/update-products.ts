@@ -27,21 +27,51 @@ import {
 } from "../../common"
 import { upsertVariantPricesWorkflow } from "./upsert-variant-prices"
 
+/**
+ * Update products that match a specified selector, along with custom data that's passed to the workflow's hooks.
+ */
 export type UpdateProductsWorkflowInputSelector = {
+  /**
+   * The filters to find products to update.
+   */
   selector: ProductTypes.FilterableProductProps
+  /**
+   * The data to update the products with.
+   */
   update: Omit<ProductTypes.UpdateProductDTO, "variants"> & {
+    /**
+     * The sales channels that the products are available in.
+     */
     sales_channels?: { id: string }[]
+    /**
+     * The variants to update.
+     */
     variants?: UpdateProductVariantWorkflowInputDTO[]
   }
 } & AdditionalData
 
+/**
+ * Update one or more products, along with custom data that's passed to the workflow's hooks.
+ */
 export type UpdateProductsWorkflowInputProducts = {
+  /**
+   * The products to update.
+   */
   products: (Omit<ProductTypes.UpsertProductDTO, "variants"> & {
+    /**
+     * The sales channels that the products are available in.
+     */
     sales_channels?: { id: string }[]
+    /**
+     * The variants to update.
+     */
     variants?: UpdateProductVariantWorkflowInputDTO[]
   })[]
 } & AdditionalData
 
+/**
+ * The data to update one or more products, along with custom data that's passed to the workflow's hooks.
+ */
 export type UpdateProductWorkflowInput =
   | UpdateProductsWorkflowInputSelector
   | UpdateProductsWorkflowInputProducts
@@ -215,7 +245,68 @@ function prepareToDeleteSalesChannelLinks({
 
 export const updateProductsWorkflowId = "update-products"
 /**
- * This workflow updates one or more products.
+ * This workflow updates one or more products. It's used by the [Update Product Admin API Route](https://docs.medusajs.com/api/admin#products_postproductsid).
+ * 
+ * This workflow has a hook that allows you to perform custom actions on the updated products. For example, you can pass under `additional_data` custom data that 
+ * allows you to update custom data models linked to the products.
+ * 
+ * You can also use this workflow within your own custom workflows, allowing you to wrap custom logic around product update.
+ * 
+ * @example
+ * To update products by their IDs:
+ * 
+ * ```ts
+ * const { result } = await updateProductsWorkflow(container)
+ * .run({
+ *   input: {
+ *     products: [
+ *       {
+ *         id: "prod_123",
+ *         title: "Shirts"
+ *       },
+ *       {
+ *         id: "prod_321",
+ *         variants: [
+ *           {
+ *             id: "variant_123",
+ *             options: {
+ *               Size: "S"
+ *             }
+ *           }
+ *         ]
+ *       }
+ *     ],
+ *     additional_data: {
+ *       erp_id: "erp_123"
+ *     }
+ *   }
+ * })
+ * ```
+ * 
+ * You can also update products by a selector:
+ * 
+ * ```ts
+ * const { result } = await updateProductsWorkflow(container)
+ * .run({
+ *   input: {
+ *     selector: {
+ *       type_id: ["ptyp_123"]
+ *     },
+ *     update: {
+ *       description: "This is a shirt product"
+ *     },
+ *     additional_data: {
+ *       erp_id: "erp_123"
+ *     }
+ *   }
+ * })
+ * ```
+ * 
+ * @summary
+ * 
+ * Update one or more products with options and variants.
+ * 
+ * @property hooks.productsUpdated - This hook is executed after the products are updated. You can consume this hook to perform custom actions on the updated products.
  */
 export const updateProductsWorkflow = createWorkflow(
   updateProductsWorkflowId,

@@ -3464,6 +3464,10 @@ export const filesMap = [
     "pathname": "/references/core_flows/Inventory/Steps_Inventory/variables/core_flows.Inventory.Steps_Inventory.validateVariantInventoryStepId"
   },
   {
+    "filePath": "/www/apps/resources/references/core_flows/Inventory/Workflows_Inventory/functions/core_flows.Inventory.Workflows_Inventory.batchInventoryItemLevelsWorkflow/page.mdx",
+    "pathname": "/references/core_flows/Inventory/Workflows_Inventory/functions/core_flows.Inventory.Workflows_Inventory.batchInventoryItemLevelsWorkflow"
+  },
+  {
     "filePath": "/www/apps/resources/references/core_flows/Inventory/Workflows_Inventory/functions/core_flows.Inventory.Workflows_Inventory.bulkCreateDeleteLevelsWorkflow/page.mdx",
     "pathname": "/references/core_flows/Inventory/Workflows_Inventory/functions/core_flows.Inventory.Workflows_Inventory.bulkCreateDeleteLevelsWorkflow"
   },
@@ -3494,6 +3498,10 @@ export const filesMap = [
   {
     "filePath": "/www/apps/resources/references/core_flows/Inventory/Workflows_Inventory/functions/core_flows.Inventory.Workflows_Inventory.validateInventoryLevelsDelete/page.mdx",
     "pathname": "/references/core_flows/Inventory/Workflows_Inventory/functions/core_flows.Inventory.Workflows_Inventory.validateInventoryLevelsDelete"
+  },
+  {
+    "filePath": "/www/apps/resources/references/core_flows/Inventory/Workflows_Inventory/variables/core_flows.Inventory.Workflows_Inventory.batchInventoryItemLevelsWorkflowId/page.mdx",
+    "pathname": "/references/core_flows/Inventory/Workflows_Inventory/variables/core_flows.Inventory.Workflows_Inventory.batchInventoryItemLevelsWorkflowId"
   },
   {
     "filePath": "/www/apps/resources/references/core_flows/Inventory/Workflows_Inventory/variables/core_flows.Inventory.Workflows_Inventory.bulkCreateDeleteLevelsWorkflowId/page.mdx",
@@ -5616,6 +5624,10 @@ export const filesMap = [
     "pathname": "/references/core_flows/Product/Workflows_Product/functions/core_flows.Product.Workflows_Product.upsertVariantPricesWorkflow"
   },
   {
+    "filePath": "/www/apps/resources/references/core_flows/Product/Workflows_Product/functions/core_flows.Product.Workflows_Product.validateProductInputStep/page.mdx",
+    "pathname": "/references/core_flows/Product/Workflows_Product/functions/core_flows.Product.Workflows_Product.validateProductInputStep"
+  },
+  {
     "filePath": "/www/apps/resources/references/core_flows/Product/Workflows_Product/variables/core_flows.Product.Workflows_Product.batchLinkProductsToCategoryWorkflowId/page.mdx",
     "pathname": "/references/core_flows/Product/Workflows_Product/variables/core_flows.Product.Workflows_Product.batchLinkProductsToCategoryWorkflowId"
   },
@@ -6808,6 +6820,10 @@ export const filesMap = [
     "pathname": "/references/core_flows/interfaces/core_flows.AssociateProductsWithSalesChannelsStepInput"
   },
   {
+    "filePath": "/www/apps/resources/references/core_flows/interfaces/core_flows.BatchInventoryItemLevelsWorkflowInput/page.mdx",
+    "pathname": "/references/core_flows/interfaces/core_flows.BatchInventoryItemLevelsWorkflowInput"
+  },
+  {
     "filePath": "/www/apps/resources/references/core_flows/interfaces/core_flows.BulkCreateDeleteLevelsWorkflowInput/page.mdx",
     "pathname": "/references/core_flows/interfaces/core_flows.BulkCreateDeleteLevelsWorkflowInput"
   },
@@ -6862,6 +6878,10 @@ export const filesMap = [
   {
     "filePath": "/www/apps/resources/references/core_flows/interfaces/core_flows.CreateStockLocationsWorkflowInput/page.mdx",
     "pathname": "/references/core_flows/interfaces/core_flows.CreateStockLocationsWorkflowInput"
+  },
+  {
+    "filePath": "/www/apps/resources/references/core_flows/interfaces/core_flows.DeleteInventoryLevelsWorkflowInput/page.mdx",
+    "pathname": "/references/core_flows/interfaces/core_flows.DeleteInventoryLevelsWorkflowInput"
   },
   {
     "filePath": "/www/apps/resources/references/core_flows/interfaces/core_flows.DeleteOrderLineItemsStepInput/page.mdx",
@@ -7060,6 +7080,10 @@ export const filesMap = [
     "pathname": "/references/core_flows/types/core_flows.CancelBeginOrderExchangeWorkflowInput"
   },
   {
+    "filePath": "/www/apps/resources/references/core_flows/types/core_flows.CancelOrderFulfillmentWorkflowInput/page.mdx",
+    "pathname": "/references/core_flows/types/core_flows.CancelOrderFulfillmentWorkflowInput"
+  },
+  {
     "filePath": "/www/apps/resources/references/core_flows/types/core_flows.CancelOrdersStepInput/page.mdx",
     "pathname": "/references/core_flows/types/core_flows.CancelOrdersStepInput"
   },
@@ -7120,6 +7144,10 @@ export const filesMap = [
     "pathname": "/references/core_flows/types/core_flows.CreateCampaignsWorkflowInput"
   },
   {
+    "filePath": "/www/apps/resources/references/core_flows/types/core_flows.CreateCartWorkflowInput/page.mdx",
+    "pathname": "/references/core_flows/types/core_flows.CreateCartWorkflowInput"
+  },
+  {
     "filePath": "/www/apps/resources/references/core_flows/types/core_flows.CreateCollectionsWorkflowInput/page.mdx",
     "pathname": "/references/core_flows/types/core_flows.CreateCollectionsWorkflowInput"
   },
@@ -7146,6 +7174,18 @@ export const filesMap = [
   {
     "filePath": "/www/apps/resources/references/core_flows/types/core_flows.CreateOrderExchangeItemsFromActionsInput/page.mdx",
     "pathname": "/references/core_flows/types/core_flows.CreateOrderExchangeItemsFromActionsInput"
+  },
+  {
+    "filePath": "/www/apps/resources/references/core_flows/types/core_flows.CreateOrderFulfillmentWorkflowInput/page.mdx",
+    "pathname": "/references/core_flows/types/core_flows.CreateOrderFulfillmentWorkflowInput"
+  },
+  {
+    "filePath": "/www/apps/resources/references/core_flows/types/core_flows.CreateOrderShipmentWorkflowInput/page.mdx",
+    "pathname": "/references/core_flows/types/core_flows.CreateOrderShipmentWorkflowInput"
+  },
+  {
+    "filePath": "/www/apps/resources/references/core_flows/types/core_flows.CreateOrderWorkflowInput/page.mdx",
+    "pathname": "/references/core_flows/types/core_flows.CreateOrderWorkflowInput"
   },
   {
     "filePath": "/www/apps/resources/references/core_flows/types/core_flows.CreatePaymentCollectionCartStepInput/page.mdx",
@@ -7386,6 +7426,10 @@ export const filesMap = [
   {
     "filePath": "/www/apps/resources/references/core_flows/types/core_flows.UpdateCartPromotionsWorkflowInput/page.mdx",
     "pathname": "/references/core_flows/types/core_flows.UpdateCartPromotionsWorkflowInput"
+  },
+  {
+    "filePath": "/www/apps/resources/references/core_flows/types/core_flows.UpdateCartWorkflowInput/page.mdx",
+    "pathname": "/references/core_flows/types/core_flows.UpdateCartWorkflowInput"
   },
   {
     "filePath": "/www/apps/resources/references/core_flows/types/core_flows.UpdateCollectionsStepInput/page.mdx",
@@ -16464,6 +16508,14 @@ export const filesMap = [
     "pathname": "/references/types/CommonTypes/types/types.CommonTypes.FindConfigOrder"
   },
   {
+    "filePath": "/www/apps/resources/references/types/CommonTypes/types/types.CommonTypes.InputConfig/page.mdx",
+    "pathname": "/references/types/CommonTypes/types/types.CommonTypes.InputConfig"
+  },
+  {
+    "filePath": "/www/apps/resources/references/types/CommonTypes/types/types.CommonTypes.InputConfigModules/page.mdx",
+    "pathname": "/references/types/CommonTypes/types/types.CommonTypes.InputConfigModules"
+  },
+  {
     "filePath": "/www/apps/resources/references/types/CommonTypes/types/types.CommonTypes.KebabCase/page.mdx",
     "pathname": "/references/types/CommonTypes/types/types.CommonTypes.KebabCase"
   },
@@ -16836,6 +16888,30 @@ export const filesMap = [
     "pathname": "/references/types/HttpTypes/interfaces/types.HttpTypes.AdminApplicationMethod"
   },
   {
+    "filePath": "/www/apps/resources/references/types/HttpTypes/interfaces/types.HttpTypes.AdminBatchCreateInventoryItemLocationLevels/page.mdx",
+    "pathname": "/references/types/HttpTypes/interfaces/types.HttpTypes.AdminBatchCreateInventoryItemLocationLevels"
+  },
+  {
+    "filePath": "/www/apps/resources/references/types/HttpTypes/interfaces/types.HttpTypes.AdminBatchCreateInventoryItemsLocationLevels/page.mdx",
+    "pathname": "/references/types/HttpTypes/interfaces/types.HttpTypes.AdminBatchCreateInventoryItemsLocationLevels"
+  },
+  {
+    "filePath": "/www/apps/resources/references/types/HttpTypes/interfaces/types.HttpTypes.AdminBatchInventoryItemLocationLevels/page.mdx",
+    "pathname": "/references/types/HttpTypes/interfaces/types.HttpTypes.AdminBatchInventoryItemLocationLevels"
+  },
+  {
+    "filePath": "/www/apps/resources/references/types/HttpTypes/interfaces/types.HttpTypes.AdminBatchInventoryItemLocationLevelsResponse/page.mdx",
+    "pathname": "/references/types/HttpTypes/interfaces/types.HttpTypes.AdminBatchInventoryItemLocationLevelsResponse"
+  },
+  {
+    "filePath": "/www/apps/resources/references/types/HttpTypes/interfaces/types.HttpTypes.AdminBatchInventoryItemsLocationLevels/page.mdx",
+    "pathname": "/references/types/HttpTypes/interfaces/types.HttpTypes.AdminBatchInventoryItemsLocationLevels"
+  },
+  {
+    "filePath": "/www/apps/resources/references/types/HttpTypes/interfaces/types.HttpTypes.AdminBatchInventoryItemsLocationLevelsResponse/page.mdx",
+    "pathname": "/references/types/HttpTypes/interfaces/types.HttpTypes.AdminBatchInventoryItemsLocationLevelsResponse"
+  },
+  {
     "filePath": "/www/apps/resources/references/types/HttpTypes/interfaces/types.HttpTypes.AdminBatchLink/page.mdx",
     "pathname": "/references/types/HttpTypes/interfaces/types.HttpTypes.AdminBatchLink"
   },
@@ -16868,8 +16944,12 @@ export const filesMap = [
     "pathname": "/references/types/HttpTypes/interfaces/types.HttpTypes.AdminBatchProductVariantResponse"
   },
   {
-    "filePath": "/www/apps/resources/references/types/HttpTypes/interfaces/types.HttpTypes.AdminBatchUpdateInventoryLevelLocation/page.mdx",
-    "pathname": "/references/types/HttpTypes/interfaces/types.HttpTypes.AdminBatchUpdateInventoryLevelLocation"
+    "filePath": "/www/apps/resources/references/types/HttpTypes/interfaces/types.HttpTypes.AdminBatchUpdateInventoryItemLocationLevels/page.mdx",
+    "pathname": "/references/types/HttpTypes/interfaces/types.HttpTypes.AdminBatchUpdateInventoryItemLocationLevels"
+  },
+  {
+    "filePath": "/www/apps/resources/references/types/HttpTypes/interfaces/types.HttpTypes.AdminBatchUpdateInventoryItemsLocationLevels/page.mdx",
+    "pathname": "/references/types/HttpTypes/interfaces/types.HttpTypes.AdminBatchUpdateInventoryItemsLocationLevels"
   },
   {
     "filePath": "/www/apps/resources/references/types/HttpTypes/interfaces/types.HttpTypes.AdminBatchUpdateProductVariant/page.mdx",
@@ -17038,10 +17118,6 @@ export const filesMap = [
   {
     "filePath": "/www/apps/resources/references/types/HttpTypes/interfaces/types.HttpTypes.AdminCreateInventoryItem/page.mdx",
     "pathname": "/references/types/HttpTypes/interfaces/types.HttpTypes.AdminCreateInventoryItem"
-  },
-  {
-    "filePath": "/www/apps/resources/references/types/HttpTypes/interfaces/types.HttpTypes.AdminCreateInventoryLevel/page.mdx",
-    "pathname": "/references/types/HttpTypes/interfaces/types.HttpTypes.AdminCreateInventoryLevel"
   },
   {
     "filePath": "/www/apps/resources/references/types/HttpTypes/interfaces/types.HttpTypes.AdminCreateOrderFulfillment/page.mdx",
@@ -17806,6 +17882,10 @@ export const filesMap = [
   {
     "filePath": "/www/apps/resources/references/types/HttpTypes/interfaces/types.HttpTypes.AdminProductVariantInventoryBatchResponse/page.mdx",
     "pathname": "/references/types/HttpTypes/interfaces/types.HttpTypes.AdminProductVariantInventoryBatchResponse"
+  },
+  {
+    "filePath": "/www/apps/resources/references/types/HttpTypes/interfaces/types.HttpTypes.AdminProductVariantInventoryItemLink/page.mdx",
+    "pathname": "/references/types/HttpTypes/interfaces/types.HttpTypes.AdminProductVariantInventoryItemLink"
   },
   {
     "filePath": "/www/apps/resources/references/types/HttpTypes/interfaces/types.HttpTypes.AdminProductVariantInventoryLink/page.mdx",
@@ -19190,10 +19270,6 @@ export const filesMap = [
   {
     "filePath": "/www/apps/resources/references/types/IndexTypes/types/types.IndexTypes.SchemaPropertiesMap/page.mdx",
     "pathname": "/references/types/IndexTypes/types/types.IndexTypes.SchemaPropertiesMap"
-  },
-  {
-    "filePath": "/www/apps/resources/references/types/InventoryTypes/interfaces/types.InventoryTypes.BulkUpdateInventoryLevelInput/page.mdx",
-    "pathname": "/references/types/InventoryTypes/interfaces/types.InventoryTypes.BulkUpdateInventoryLevelInput"
   },
   {
     "filePath": "/www/apps/resources/references/types/InventoryTypes/interfaces/types.InventoryTypes.CreateInventoryItemInput/page.mdx",
@@ -21044,6 +21120,10 @@ export const filesMap = [
     "pathname": "/references/types/types/types.ExpandScalar"
   },
   {
+    "filePath": "/www/apps/resources/references/types/types/types.ExternalModuleDeclarationOverride/page.mdx",
+    "pathname": "/references/types/types/types.ExternalModuleDeclarationOverride"
+  },
+  {
     "filePath": "/www/apps/resources/references/types/types/types.ExtractFiltersOperators/page.mdx",
     "pathname": "/references/types/types/types.ExtractFiltersOperators"
   },
@@ -21082,6 +21162,10 @@ export const filesMap = [
   {
     "filePath": "/www/apps/resources/references/types/types/types.InternalJoinerServiceConfig/page.mdx",
     "pathname": "/references/types/types/types.InternalJoinerServiceConfig"
+  },
+  {
+    "filePath": "/www/apps/resources/references/types/types/types.InternalModuleDeclarationOverride/page.mdx",
+    "pathname": "/references/types/types/types.InternalModuleDeclarationOverride"
   },
   {
     "filePath": "/www/apps/resources/references/types/types/types.IsCamelCase/page.mdx",

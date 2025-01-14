@@ -20,7 +20,7 @@ import { createOrderChangeActionsWorkflow } from "../create-order-change-actions
  * This step validates that an order refund credit line can be issued
  */
 export const validateOrderRefundCreditLinesStep = createStep(
-  "begin-order-edit-validation",
+  "validate-order-refund-credit-lines",
   async function ({ order }: { order: OrderDTO }) {
     throwIfOrderIsCancelled({ order })
   }

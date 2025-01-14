@@ -14,10 +14,25 @@ This documentation provides a reference to the `getPromotionCodesToApply`. It be
 
 This step retrieves the promotion codes to apply on a cart.
 
+```ts title="src/workflows/my-workflow.ts"
+import { createWorkflow } from "@medusajs/framework/workflows-sdk"
+import { getPromotionCodesToApply } from "@medusajs/medusa/core-flows"
+
+const myWorkflow = createWorkflow(
+  "my-workflow",
+  () => {
+    const data = getPromotionCodesToApply({
+      "cart": {}
+    })
+  }
+)
+```
+  
+
 ## Input
 
-<TypeList types={[{"name":"GetPromotionCodesToApplyStepInput","type":"[GetPromotionCodesToApplyStepInput](../../../../interfaces/core_flows.GetPromotionCodesToApplyStepInput/page.mdx)","optional":false,"defaultValue":"","description":"","expandable":false,"children":[{"name":"cart","type":"`object`","description":"","optional":false,"defaultValue":"","expandable":false,"children":[{"name":"items","type":"`object`[]","description":"","optional":true,"defaultValue":"","expandable":false,"children":[{"name":"adjustments","type":"`object`[]","description":"","optional":true,"defaultValue":"","expandable":false,"children":[]}]},{"name":"shipping_methods","type":"`object`[]","description":"","optional":true,"defaultValue":"","expandable":false,"children":[{"name":"adjustments","type":"`object`[]","description":"","optional":true,"defaultValue":"","expandable":false,"children":[]}]}]},{"name":"promo_codes","type":"`string`[]","description":"","optional":true,"defaultValue":"","expandable":false,"children":[]},{"name":"action","type":"[ADD](../../../../../utils/PromotionUtils/enums/utils.PromotionUtils.PromotionActions/page.mdx#add) \\| [REMOVE](../../../../../utils/PromotionUtils/enums/utils.PromotionUtils.PromotionActions/page.mdx#remove) \\| [REPLACE](../../../../../utils/PromotionUtils/enums/utils.PromotionUtils.PromotionActions/page.mdx#replace)","description":"","optional":true,"defaultValue":"","expandable":false,"children":[]}]}]} expandUrl="https://docs.medusajs.com/learn/fundamentals/data-models/manage-relationships#retrieve-records-of-relation" sectionTitle="getPromotionCodesToApply"/>
+<TypeList types={[{"name":"GetPromotionCodesToApplyStepInput","type":"[GetPromotionCodesToApplyStepInput](../../../../interfaces/core_flows.GetPromotionCodesToApplyStepInput/page.mdx)","optional":false,"defaultValue":"","description":"","expandable":false,"children":[{"name":"cart","type":"`object`","description":"","optional":false,"defaultValue":"","expandable":false,"children":[{"name":"items","type":"`object`[]","description":"","optional":true,"defaultValue":"","expandable":false,"children":[{"name":"adjustments","type":"`object`[]","description":"","optional":true,"defaultValue":"","expandable":false,"children":[]}]},{"name":"shipping_methods","type":"`object`[]","description":"","optional":true,"defaultValue":"","expandable":false,"children":[{"name":"adjustments","type":"`object`[]","description":"","optional":true,"defaultValue":"","expandable":false,"children":[]}]}]},{"name":"promo_codes","type":"`string`[]","description":"","optional":true,"defaultValue":"","expandable":false,"children":[]},{"name":"action","type":"[ADD](../../../../../utils/PromotionUtils/enums/utils.PromotionUtils.PromotionActions/page.mdx#add) \\| [REMOVE](../../../../../utils/PromotionUtils/enums/utils.PromotionUtils.PromotionActions/page.mdx#remove) \\| [REPLACE](../../../../../utils/PromotionUtils/enums/utils.PromotionUtils.PromotionActions/page.mdx#replace)","description":"","optional":true,"defaultValue":"","expandable":false,"children":[]}]}]} expandUrl="https://docs.medusajs.com/learn/fundamentals/data-models/manage-relationships#retrieve-records-of-relation" openedLevel={1} sectionTitle="getPromotionCodesToApply"/>
 
 ## Output
 
-<TypeList types={[{"name":"string[]","type":"`string`[]","optional":false,"defaultValue":"","description":"","expandable":false,"children":[{"name":"string","type":"`string`","optional":false,"defaultValue":"","description":"","expandable":false,"children":[]}]}]} expandUrl="https://docs.medusajs.com/learn/fundamentals/data-models/manage-relationships#retrieve-records-of-relation" sectionTitle="getPromotionCodesToApply"/>
+<TypeList types={[{"name":"string[]","type":"`string`[]","optional":false,"defaultValue":"","description":"","expandable":false,"children":[{"name":"string","type":"`string`","optional":false,"defaultValue":"","description":"","expandable":false,"children":[]}]}]} expandUrl="https://docs.medusajs.com/learn/fundamentals/data-models/manage-relationships#retrieve-records-of-relation" openedLevel={1} sectionTitle="getPromotionCodesToApply"/>

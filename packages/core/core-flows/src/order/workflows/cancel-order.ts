@@ -140,9 +140,8 @@ export const cancelOrderWorkflow = createWorkflow(
       deleteReservationsByLineItemsStep(lineItemIds),
       cancelPaymentStep({ paymentIds: uncapturedPaymentIds }),
       refundCapturedPaymentsWorkflow.runAsStep({
-        input: { order_id: order.id },
+        input: { order_id: order.id, created_by: input.canceled_by },
       }),
-      cancelOrdersStep({ orderIds: [order.id] }),
       emitEventStep({
         eventName: OrderWorkflowEvents.CANCELED,
         data: { id: order.id },
@@ -161,6 +160,8 @@ export const cancelOrderWorkflow = createWorkflow(
         update: { status: PaymentCollectionStatus.CANCELED },
       })
     })
+
+    cancelOrdersStep({ orderIds: [order.id] })
 
     const orderCanceled = createHook("orderCanceled", {
       order,

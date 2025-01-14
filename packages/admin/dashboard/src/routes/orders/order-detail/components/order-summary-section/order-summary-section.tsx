@@ -20,6 +20,7 @@ import {
   AdminOrderPreview,
   AdminRegion,
   AdminReturn,
+  AdminPaymentCollection,
 } from "@medusajs/types"
 import {
   Badge,
@@ -36,7 +37,6 @@ import {
 } from "@medusajs/ui"
 
 import { AdminReservation } from "@medusajs/types/src/http"
-import { AdminPaymentCollection } from "../../../../../../../../core/types/dist/http/payment/admin/entities"
 import { ActionMenu } from "../../../../../components/common/action-menu"
 import { Thumbnail } from "../../../../../components/common/thumbnail"
 import { useClaims } from "../../../../../hooks/api/claims"
@@ -309,6 +309,7 @@ const Header = ({
                 to: `/orders/${order.id}/edits`,
                 icon: <PencilSquare />,
                 disabled:
+                  order.status === "canceled" ||
                   (orderPreview?.order_change &&
                     orderPreview?.order_change?.change_type !== "edit") ||
                   (orderPreview?.order_change?.change_type === "edit" &&

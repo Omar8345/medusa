@@ -5252,7 +5252,7 @@ __metadata:
     compression: ^1.7.4
     copyfiles: ^2.4.1
     express: ^4.21.0
-    glob: ^11.0.0
+    glob: ^10.3.10
     postcss: ^8.4.32
     tailwindcss: ^3.3.6
     tsup: ^8.0.1
@@ -5486,7 +5486,7 @@ __metadata:
     express: ^4.21.0
     fs-exists-cached: ^1.0.0
     fs-extra: ^10.0.0
-    glob: ^7.1.6
+    glob: ^10.3.10
     hosted-git-info: ^4.0.2
     inquirer: ^8.0.0
     is-valid-path: ^0.1.1

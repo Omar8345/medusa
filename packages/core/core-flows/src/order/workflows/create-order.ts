@@ -1,7 +1,6 @@
 import { AdditionalData, CreateOrderDTO } from "@medusajs/framework/types"
 import { MedusaError, isDefined, isPresent } from "@medusajs/framework/utils"
 import {
-  WorkflowData,
   WorkflowResponse,
   createHook,
   createWorkflow,
@@ -77,13 +76,57 @@ function getOrderInput(data) {
   return data_
 }
 
+export type CreateOrderWorkflowInput = CreateOrderDTO & AdditionalData
+
 export const createOrdersWorkflowId = "create-orders"
 /**
- * This workflow creates an order.
+ * This workflow creates an order. It's used by the [Create Draft Order Admin API Route](https://docs.medusajs.com/api/admin#draft-orders_postdraftorders), but
+ * you can also use it to create any order.
+ * 
+ * This workflow has a hook that allows you to perform custom actions on the created order. For example, you can pass under `additional_data` custom data that 
+ * allows you to create custom data models linked to the order.
+ * 
+ * You can also use this workflow within your own custom workflows, allowing you to wrap custom logic around creating an order. For example,
+ * you can create a workflow that imports orders from an external system, then uses this workflow to create the orders in Medusa.
+ * 
+ * @example
+ * const { result } = await createOrderWorkflow(container)
+ * .run({
+ *   input: {
+ *     region_id: "reg_123",
+ *     items: [
+ *       {
+ *         variant_id: "variant_123",
+ *         quantity: 1,
+ *         title: "Shirt",
+ *         unit_price: 10
+ *       }
+ *     ],
+ *     sales_channel_id: "sc_123",
+ *     status: "pending",
+ *     shipping_address: {
+ *       first_name: "John",
+ *       last_name: "Doe",
+ *       address_1: "123 Main St",
+ *       city: "Los Angeles",
+ *       country_code: "us",
+ *       postal_code: "90001"
+ *     },
+ *     additional_data: {
+ *       sync_oms: true
+ *     }
+ *   }
+ * })
+ * 
+ * @summary
+ * 
+ * Create an order.
+ * 
+ * @property hooks.orderCreated - This hook is executed after the order is created. You can consume this hook to perform custom actions on the created order.
  */
 export const createOrderWorkflow = createWorkflow(
   createOrdersWorkflowId,
-  (input: WorkflowData<CreateOrderDTO & AdditionalData>) => {
+  (input: CreateOrderWorkflowInput) => {
     const variantIds = transform({ input }, (data) => {
       return (data.input.items ?? [])
         .map((item) => item.variant_id)

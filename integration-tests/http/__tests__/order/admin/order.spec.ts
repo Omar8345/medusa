@@ -443,11 +443,12 @@ medusaIntegrationTestRunner({
                 amount: 106,
                 payments: [
                   expect.objectContaining({
-                    // canceled_at: expect.any(String),
+                    canceled_at: null,
                     refunds: [
                       expect.objectContaining({
                         id: expect.any(String),
                         amount: 106,
+                        created_by: expect.any(String),
                       }),
                     ],
                     captures: [
@@ -488,11 +489,9 @@ medusaIntegrationTestRunner({
           })
         )
 
-        const response = await api.post(
-          `/admin/orders/${order.id}/cancel`,
-          {},
-          adminHeaders
-        )
+        const response = await api
+          .post(`/admin/orders/${order.id}/cancel`, {}, adminHeaders)
+          .catch((e) => e)
 
         expect(response.status).toBe(200)
         expect(response.data.order).toEqual(
@@ -514,11 +513,11 @@ medusaIntegrationTestRunner({
                 amount: 106,
                 payments: [
                   expect.objectContaining({
-                    // canceled_at: expect.any(String),
                     refunds: [
                       expect.objectContaining({
                         id: expect.any(String),
                         amount: 50,
+                        created_by: expect.any(String),
                       }),
                     ],
                     captures: [

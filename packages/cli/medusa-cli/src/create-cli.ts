@@ -277,6 +277,35 @@ function buildLocalCommands(cli, isLocalProject) {
       ),
     })
     .command({
+      command: "plugin:publish",
+      desc: "Publish the plugin to the local packages registry",
+      handler: handlerP(
+        getCommandHandler("plugin/publish", (args, cmd) => {
+          process.env.NODE_ENV = process.env.NODE_ENV || `development`
+          cmd(args)
+          return new Promise(() => {})
+        })
+      ),
+    })
+    .command({
+      command: "plugin:add [plugin_names...]",
+      desc: "Add the specified plugin to the project from the local packages registry",
+      builder: {
+        plugin_names: {
+          type: "array",
+          description: "The name of the plugins to add",
+          demand: true,
+        },
+      },
+      handler: handlerP(
+        getCommandHandler("plugin/add", (args, cmd) => {
+          process.env.NODE_ENV = process.env.NODE_ENV || `development`
+          cmd(args)
+          return new Promise(() => {})
+        })
+      ),
+    })
+    .command({
       command: `telemetry`,
       describe: `Enable or disable collection of anonymous usage data.`,
       builder: (yargs) =>

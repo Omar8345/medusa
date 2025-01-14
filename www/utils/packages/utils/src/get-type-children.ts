@@ -36,14 +36,13 @@ export function getTypeChildren({
       break
     case "union":
       reflectionType.types.forEach((childItem) => {
-        // TODO this should ensure that the items are unique.
         children.push(
           ...getTypeChildren({
             reflectionType: childItem,
             project,
             level: level + 1,
             maxLevel,
-          })
+          }).filter((child) => !children.some((c) => c.name === child.name))
         )
       })
       break

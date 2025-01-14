@@ -538,6 +538,23 @@ class WorkflowsPlugin {
       }
     }
 
+    if (parameter.type.reflection instanceof DeclarationReflection) {
+      const additionalDataChild = parameter.type.reflection.children?.find(
+        (child) => child.name === "additional_data"
+      )
+
+      if (additionalDataChild) {
+        additionalDataChild.comment =
+          additionalDataChild.comment || new Comment()
+        additionalDataChild.comment.summary = [
+          {
+            kind: "text",
+            text: "Additional data that can be passed through the `additional_data` property in HTTP requests.\nLearn more in [this documentation](https://docs.medusajs.com/learn/fundamentals/api-routes/additional-data).",
+          },
+        ]
+      }
+    }
+
     signatureReflection.parameters = []
 
     signatureReflection.parameters.push(parameter)

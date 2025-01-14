@@ -3,8 +3,9 @@ import { program } from "commander"
 import create from "./commands/create.js"
 
 program
-  .description("Create a new Medusa project")
+  .description("Create a new Medusa project or plugin")
   .argument("[project-name]", "Name of the project to create.")
+  .option("--plugin", "Create a plugin instead of a project.")
   .option("--repo-url <url>", "URL of repository to use to setup project.")
   .option("--seed", "Seed the created database with demo data.")
   .option(

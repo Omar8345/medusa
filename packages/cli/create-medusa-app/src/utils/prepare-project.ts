@@ -9,18 +9,29 @@ import type { Client } from "pg"
 
 const ADMIN_EMAIL = "admin@medusa-test.com"
 let STORE_CORS = "http://localhost:8000"
-let ADMIN_CORS =
-  "http://localhost:5173,http://localhost:9000"
+let ADMIN_CORS = "http://localhost:5173,http://localhost:9000"
 const DOCS_CORS = "https://docs.medusajs.com"
 const AUTH_CORS = [ADMIN_CORS, STORE_CORS, DOCS_CORS].join(",")
 STORE_CORS += `,${DOCS_CORS}`
 ADMIN_CORS += `,${DOCS_CORS}`
 const DEFAULT_REDIS_URL = "redis://localhost:6379"
 
-type PrepareOptions = {
+type PreparePluginOptions = {
+  isPlugin: true
+  directory: string
+  projectName: string
+  spinner: Ora
+  processManager: ProcessManager
+  abortController?: AbortController
+  verbose?: boolean
+}
+
+type PrepareProjectOptions = {
+  isPlugin: false
   directory: string
   dbName?: string
   dbConnectionString: string
+  projectName: string
   seed?: boolean
   spinner: Ora
   processManager: ProcessManager
@@ -33,8 +44,86 @@ type PrepareOptions = {
   verbose?: boolean
 }
 
-export default async ({
+type PrepareOptions = PreparePluginOptions | PrepareProjectOptions
+
+export default async <
+  T extends PrepareOptions,
+  Output = T extends { isPlugin: true } ? void : string | undefined
+>(
+  prepareOptions: T
+): Promise<Output> => {
+  if (prepareOptions.isPlugin) {
+    return preparePlugin(prepareOptions) as Output
+  }
+
+  return prepareProject(prepareOptions) as Output
+}
+
+async function preparePlugin({
   directory,
+  projectName,
+  spinner,
+  processManager,
+  abortController,
+  verbose = false,
+}: PreparePluginOptions) {
+  // initialize execution options
+  const execOptions = {
+    cwd: directory,
+    signal: abortController?.signal,
+  }
+
+  const factBoxOptions: FactBoxOptions = {
+    interval: null,
+    spinner,
+    processManager,
+    message: "",
+    title: "",
+    verbose,
+  }
+
+  // Update package.json
+  const packageJsonPath = path.join(directory, "package.json")
+  const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, "utf-8"))
+
+  // Update name
+  packageJson.name = projectName
+
+  fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2))
+
+  factBoxOptions.interval = displayFactBox({
+    ...factBoxOptions,
+    spinner,
+    title: "Installing dependencies...",
+    processManager,
+  })
+
+  await processManager.runProcess({
+    process: async () => {
+      try {
+        await execute([`yarn`, execOptions], { verbose })
+      } catch (e) {
+        // yarn isn't available
+        // use npm
+        await execute([`npm install --legacy-peer-deps`, execOptions], {
+          verbose,
+        })
+      }
+    },
+    ignoreERESOLVE: true,
+  })
+
+  factBoxOptions.interval = displayFactBox({
+    ...factBoxOptions,
+    message: "Installed Dependencies",
+  })
+
+  displayFactBox({ ...factBoxOptions, message: "Finished Preparation" })
+}
+
+async function prepareProject({
+  directory,
+  projectName,
   dbName,
   dbConnectionString,
   seed,
@@ -47,7 +136,7 @@ export default async ({
   nextjsDirectory = "",
   client,
   verbose = false,
-}: PrepareOptions) => {
+}: PrepareProjectOptions) {
   // initialize execution options
   const execOptions = {
     cwd: directory,
@@ -71,6 +160,15 @@ export default async ({
     verbose,
   }
 
+  // Update package.json
+  const packageJsonPath = path.join(directory, "package.json")
+  const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, "utf-8"))
+
+  // Update name
+  packageJson.name = projectName
+
+  fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2))
+
   // initialize the invite token to return
   let inviteToken: string | undefined = undefined
 
@@ -80,7 +178,7 @@ export default async ({
   if (!skipDb) {
     if (dbName) {
       env += `${EOL}DB_NAME=${dbName}`
-      dbConnectionString = dbConnectionString.replace(dbName, "$DB_NAME")
+      dbConnectionString = dbConnectionString!.replace(dbName, "$DB_NAME")
     }
     env += `${EOL}DATABASE_URL=${dbConnectionString}`
   }
@@ -118,26 +216,6 @@ export default async ({
     message: "Installed Dependencies",
   })
 
-  factBoxOptions.interval = displayFactBox({
-    ...factBoxOptions,
-    title: "Building Project...",
-  })
-
-  await processManager.runProcess({
-    process: async () => {
-      try {
-        await execute([`yarn build`, execOptions], { verbose })
-      } catch (e) {
-        // yarn isn't available
-        // use npm
-        await execute([`npm run build`, execOptions], { verbose })
-      }
-    },
-    ignoreERESOLVE: true,
-  })
-
-  displayFactBox({ ...factBoxOptions, message: "Project Built" })
-
   if (!skipDb && migrations) {
     factBoxOptions.interval = displayFactBox({
       ...factBoxOptions,
@@ -147,10 +225,10 @@ export default async ({
     // run migrations
     await processManager.runProcess({
       process: async () => {
-        const proc = await execute(
-          ["npx medusa db:migrate", npxOptions],
-          { verbose, needOutput: true }
-        )
+        const proc = await execute(["npx medusa db:migrate", npxOptions], {
+          verbose,
+          needOutput: true,
+        })
 
         if (client) {
           // check the migrations table is in the database

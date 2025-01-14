@@ -55,7 +55,10 @@ export const getLastPaymentStatus = (order: OrderDetailDTO) => {
   }
 
   if (paymentStatus[PaymentStatus.REFUNDED] > 0) {
-    if (paymentStatus[PaymentStatus.REFUNDED] === totalPaymentExceptCanceled) {
+    if (
+      paymentStatus[PaymentStatus.REFUNDED] ===
+      paymentStatus[PaymentStatus.CAPTURED]
+    ) {
       return PaymentStatus.REFUNDED
     }
 

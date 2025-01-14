@@ -14,7 +14,6 @@ import {
   OrderWorkflowEvents,
 } from "@medusajs/framework/utils"
 import {
-  WorkflowData,
   WorkflowResponse,
   createHook,
   createStep,
@@ -236,16 +235,47 @@ function prepareInventoryUpdate({
   }
 }
 
+/**
+ * The details of the fulfillment to create, along with custom data that's passed to the workflow's hooks.
+ */
+export type CreateOrderFulfillmentWorkflowInput = OrderWorkflow.CreateOrderFulfillmentWorkflowInput & AdditionalData
+
 export const createOrderFulfillmentWorkflowId = "create-order-fulfillment"
 /**
- * This creates a fulfillment for an order.
+ * This workflow creates a fulfillment for an order. It's used by the [Create Order Fulfillment Admin API Route](https://docs.medusajs.com/api/admin#orders_postordersidfulfillments).
+ * 
+ * This workflow has a hook that allows you to perform custom actions on the created fulfillment. For example, you can pass under `additional_data` custom data that 
+ * allows you to create custom data models linked to the fulfillment.
+ * 
+ * You can also use this workflow within your own custom workflows, allowing you to wrap custom logic around creating a fulfillment.
+ * 
+ * @example
+ * const { result } = await createOrderFulfillmentWorkflow(container)
+ * .run({
+ *   input: {
+ *     order_id: "order_123",
+ *     items: [
+ *       {
+ *         id: "orli_123",
+ *         quantity: 1,
+ *       }
+ *     ],
+ *     additional_data: {
+ *       send_oms: true
+ *     }
+ *   }
+ * })
+ * 
+ * @summary
+ * 
+ * Creates a fulfillment for an order.
+ * 
+ * @property hooks.fulfillmentCreated - This hook is executed after the fulfillment is created. You can consume this hook to perform custom actions on the created fulfillment.
  */
 export const createOrderFulfillmentWorkflow = createWorkflow(
   createOrderFulfillmentWorkflowId,
   (
-    input: WorkflowData<
-      OrderWorkflow.CreateOrderFulfillmentWorkflowInput & AdditionalData
-    >
+    input: CreateOrderFulfillmentWorkflowInput
   ) => {
     const order: OrderDTO = useRemoteQueryStep({
       entry_point: "orders",

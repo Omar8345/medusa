@@ -1,8 +1,8 @@
-import path from "path"
-import type tsStatic from "typescript"
+import type { AdminOptions, ConfigModule, Logger } from "@medusajs/types"
 import { getConfigFile } from "@medusajs/utils"
 import { access, constants, copyFile, rm } from "fs/promises"
-import type { AdminOptions, ConfigModule, Logger } from "@medusajs/types"
+import path from "path"
+import type tsStatic from "typescript"
 
 /**
  * The compiler exposes the opinionated APIs for compiling Medusa
@@ -485,5 +485,26 @@ export class Compiler {
     }
 
     ts.createWatchProgram(host)
+  }
+
+  async buildPluginAdminExtensions(bundler: {
+    plugin: (options: { root: string; outDir: string }) => Promise<void>
+  }) {
+    const tracker = this.#trackDuration()
+    this.#logger.info("Compiling plugin admin extensions...")
+
+    try {
+      await bundler.plugin({
+        root: this.#projectRoot,
+        outDir: this.#pluginsDistFolder,
+      })
+      this.#logger.info(
+        `Plugin admin extensions build completed successfully (${tracker.getSeconds()}s)`
+      )
+      return true
+    } catch (error) {
+      this.#logger.error(`Plugin admin extensions build failed`, error)
+      return false
+    }
   }
 }

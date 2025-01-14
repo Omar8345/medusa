@@ -1,9 +1,5 @@
 import { ArrowDownRightMini, DocumentText, XCircle } from "@medusajs/icons"
-import {
-  AdminPayment,
-  AdminPaymentCollection,
-  HttpTypes,
-} from "@medusajs/types"
+import { AdminOrder, AdminPayment, HttpTypes } from "@medusajs/types"
 import {
   Badge,
   Button,
@@ -58,10 +54,7 @@ export const OrderPaymentSection = ({ order }: OrderPaymentSectionProps) => {
         currencyCode={order.currency_code}
       />
 
-      <Total
-        paymentCollections={order.payment_collections}
-        currencyCode={order.currency_code}
-      />
+      <Total order={order} />
     </Container>
   )
 }
@@ -195,6 +188,11 @@ const Payment = ({
   const showCapture =
     payment.captured_at === null && payment.canceled_at === null
 
+  const totalRefunded = payment.refunds.reduce(
+    (acc, next) => next.amount + acc,
+    0
+  )
+
   return (
     <div className="divide-y divide-dashed">
       <div className="text-ui-fg-subtle grid grid-cols-[1fr_1fr_1fr_20px] items-center gap-x-4 px-6 py-4 sm:grid-cols-[1fr_1fr_1fr_1fr_20px]">
@@ -237,7 +235,10 @@ const Payment = ({
                   label: t("orders.payment.refund"),
                   icon: <XCircle />,
                   to: `/orders/${order.id}/refund?paymentId=${payment.id}`,
-                  disabled: !payment.captured_at,
+                  disabled:
+                    !payment.captured_at ||
+                    !!payment.canceled_at ||
+                    totalRefunded >= payment.amount,
                 },
               ],
             },
@@ -341,15 +342,9 @@ const PaymentBreakdown = ({
   )
 }
 
-const Total = ({
-  paymentCollections,
-  currencyCode,
-}: {
-  paymentCollections: AdminPaymentCollection[]
-  currencyCode: string
-}) => {
+const Total = ({ order }: { order: AdminOrder }) => {
   const { t } = useTranslation()
-  const totalPending = getTotalPending(paymentCollections)
+  const totalPending = getTotalPending(order.payment_collections)
 
   return (
     <div>
@@ -360,20 +355,20 @@ const Total = ({
 
         <Text size="small" weight="plus" leading="compact">
           {getStylizedAmount(
-            getTotalCaptured(paymentCollections),
-            currencyCode
+            getTotalCaptured(order.payment_collections),
+            order.currency_code
           )}
         </Text>
       </div>
 
-      {totalPending > 0 && (
+      {order.status !== "canceled" && totalPending > 0 && (
         <div className="flex items-center justify-between px-6 py-4">
           <Text size="small" weight="plus" leading="compact">
             Total pending
           </Text>
 
           <Text size="small" weight="plus" leading="compact">
-            {getStylizedAmount(totalPending, currencyCode)}
+            {getStylizedAmount(totalPending, order.currency_code)}
           </Text>
         </div>
       )}

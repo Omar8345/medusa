@@ -272,16 +272,60 @@ export interface AddToCartWorkflowInputDTO {
   items: CreateCartCreateLineItemDTO[]
 }
 
+/**
+ * The details to update in a cart.
+ */
 export interface UpdateCartWorkflowInputDTO {
+  /**
+   * The ID of the cart to update.
+   */
   id: string
+
+  /**
+   * An array of promotional codes applied on the cart.
+   */
   promo_codes?: string[]
+
+  /**
+   * The ID of the cart's region.
+   */
   region_id?: string
+
+  /**
+   * The ID of the cart's customer.
+   */
   customer_id?: string | null
+
+  /**
+   * The ID of the cart's sales channel.
+   */
   sales_channel_id?: string | null
+
+  /**
+   * The email address of the cart's customer.
+   */
   email?: string | null
+
+  /**
+   * The currency code for the cart.
+   * 
+   * @example usd
+   */
   currency_code?: string
+
+  /**
+   * Custom key-value pairs of data related to the cart.
+   */
   metadata?: Record<string, unknown> | null
+
+  /**
+   * The cart's shipping address. You can either update the cart's existing shipping address, or create a new one.
+   */
   shipping_address?: CreateAddressDTO | UpdateAddressDTO | null
+
+  /**
+   * The cart's billing address. You can either update the cart's existing billing address, or create a new one.
+   */
   billing_address?: CreateAddressDTO | UpdateAddressDTO | null
 }
 

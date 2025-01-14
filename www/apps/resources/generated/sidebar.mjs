@@ -18036,6 +18036,14 @@ export const generatedSidebar = [
                     "loaded": true,
                     "isPathHref": true,
                     "type": "link",
+                    "path": "/references/medusa-workflows/batchInventoryItemLevelsWorkflow",
+                    "title": "batchInventoryItemLevelsWorkflow",
+                    "children": []
+                  },
+                  {
+                    "loaded": true,
+                    "isPathHref": true,
+                    "type": "link",
                     "path": "/references/medusa-workflows/bulkCreateDeleteLevelsWorkflow",
                     "title": "bulkCreateDeleteLevelsWorkflow",
                     "children": []
@@ -20789,6 +20797,14 @@ export const generatedSidebar = [
                     "type": "link",
                     "path": "/references/medusa-workflows/steps/waitConfirmationProductImportStep",
                     "title": "waitConfirmationProductImportStep",
+                    "children": []
+                  },
+                  {
+                    "loaded": true,
+                    "isPathHref": true,
+                    "type": "link",
+                    "path": "/references/medusa-workflows/validateProductInputStep",
+                    "title": "validateProductInputStep",
                     "children": []
                   }
                 ],

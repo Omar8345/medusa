@@ -37,7 +37,7 @@ import { updateCartPromotionsWorkflow } from "./update-cart-promotions"
 import { updateTaxLinesWorkflow } from "./update-tax-lines"
 
 /**
- * The data to create the cart, along with custom data that's later passed to the cart's hooks.
+ * The data to create the cart, along with custom data that's passed to the workflow's hooks.
  */
 export type CreateCartWorkflowInput = CreateCartWorkflowInputDTO & AdditionalData
 
@@ -61,13 +61,18 @@ export const createCartWorkflowId = "create-cart"
  *           quantity: 1,
  *         }
  *       ],
- *       customer_id: "cus_123"
+ *       customer_id: "cus_123",
+ *       additional_data: {
+ *         external_id: "123"
+ *       }
  *     }
  *   })
  * 
  * @summary
  * 
  * Create a cart specifying region, items, and more.
+ * 
+ * @property hooks.cartCreated - This hook is executed after a cart is created. You can consume this hook to perform custom actions on the created cart.
  */
 export const createCartWorkflow = createWorkflow(
   createCartWorkflowId,
@@ -229,10 +234,6 @@ export const createCartWorkflow = createWorkflow(
       })
     )
 
-    /**
-     * This hook is executed after a cart is created. You can consume this hook to perform
-     * custom actions on the created cart.
-     */
     const cartCreated = createHook("cartCreated", {
       cart,
       additional_data: input.additional_data,
