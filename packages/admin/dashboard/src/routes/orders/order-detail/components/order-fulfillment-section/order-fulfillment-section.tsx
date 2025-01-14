@@ -265,17 +265,14 @@ const Fulfillment = ({
     })
 
     if (res) {
-      await markAsDelivered(
-        {},
-        {
-          onSuccess: () => {
-            toast.success(t("orders.fulfillment.toast.fulfillmentDelivered"))
-          },
-          onError: (e) => {
-            toast.error(e.message)
-          },
-        }
-      )
+      await markAsDelivered(undefined, {
+        onSuccess: () => {
+          toast.success(t("orders.fulfillment.toast.fulfillmentDelivered"))
+        },
+        onError: (e) => {
+          toast.error(e.message)
+        },
+      })
     }
   }
 
