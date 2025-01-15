@@ -8,6 +8,43 @@ const adminHeaders = {
   headers: { "x-medusa-access-token": "test_token" },
 }
 
+const standardPromotionPayload = {
+  code: "TEST",
+  type: PromotionType.STANDARD,
+  status: PromotionStatus.ACTIVE,
+  is_automatic: true,
+  campaign: {
+    name: "test",
+    campaign_identifier: "test-1",
+    budget: {
+      type: "usage",
+      limit: 100,
+    },
+  },
+  application_method: {
+    target_type: "items",
+    type: "fixed",
+    allocation: "each",
+    currency_code: "USD",
+    value: 100,
+    max_quantity: 100,
+    target_rules: [
+      {
+        attribute: "test.test",
+        operator: "eq",
+        values: ["test1", "test2"],
+      },
+    ],
+  },
+  rules: [
+    {
+      attribute: "test.test",
+      operator: "eq",
+      values: ["test1", "test2"],
+    },
+  ],
+}
+
 medusaIntegrationTestRunner({
   testSuite: ({ dbConnection, getContainer, api }) => {
     describe("Admin Promotions API", () => {
@@ -185,42 +222,7 @@ medusaIntegrationTestRunner({
         it("should create a standard promotion successfully", async () => {
           const response = await api.post(
             `/admin/promotions`,
-            {
-              code: "TEST",
-              type: PromotionType.STANDARD,
-              status: PromotionStatus.ACTIVE,
-              is_automatic: true,
-              campaign: {
-                name: "test",
-                campaign_identifier: "test-1",
-                budget: {
-                  type: "usage",
-                  limit: 100,
-                },
-              },
-              application_method: {
-                target_type: "items",
-                type: "fixed",
-                allocation: "each",
-                currency_code: "USD",
-                value: 100,
-                max_quantity: 100,
-                target_rules: [
-                  {
-                    attribute: "test.test",
-                    operator: "eq",
-                    values: ["test1", "test2"],
-                  },
-                ],
-              },
-              rules: [
-                {
-                  attribute: "test.test",
-                  operator: "eq",
-                  values: ["test1", "test2"],
-                },
-              ],
-            },
+            standardPromotionPayload,
             adminHeaders
           )
 
@@ -462,6 +464,23 @@ medusaIntegrationTestRunner({
               ],
             })
           )
+        })
+
+        it("should throw error when an incorrect status is passed", async () => {
+          const { response } = await api
+            .post(
+              `/admin/promotions`,
+              { ...standardPromotionPayload, status: "does-not-exist" },
+              adminHeaders
+            )
+            .catch((e) => e)
+
+          expect(response.status).toEqual(400)
+          expect(response.data).toEqual({
+            type: "invalid_data",
+            message:
+              "Invalid request: Expected: 'draft, active, inactive' for field 'status', but got: 'does-not-exist'",
+          })
         })
       })
 
