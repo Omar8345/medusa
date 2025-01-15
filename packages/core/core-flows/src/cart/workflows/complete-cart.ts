@@ -34,6 +34,7 @@ import {
   PrepareLineItemDataInput,
   prepareTaxLinesData,
 } from "../utils/prepare-line-item-data"
+import { validateShippingStep } from "../steps/validate-shipping"
 
 export type CompleteCartWorkflowInput = {
   id: string
@@ -75,6 +76,8 @@ export const completeCartWorkflow = createWorkflow(
         variables: { id: input.id },
         list: false,
       })
+
+      validateShippingStep({ cart })
 
       const paymentSessions = validateCartPaymentsStep({ cart })
 

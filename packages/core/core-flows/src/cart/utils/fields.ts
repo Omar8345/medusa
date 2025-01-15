@@ -98,6 +98,7 @@ export const completeCartFields = [
   "payment_collection.payment_sessions.*",
   "items.variant.id",
   "items.variant.product.id",
+  "items.variant.product.shipping_profile.id",
   "items.variant.manage_inventory",
   "items.variant.allow_backorder",
   "items.variant.inventory_items.inventory_item_id",
