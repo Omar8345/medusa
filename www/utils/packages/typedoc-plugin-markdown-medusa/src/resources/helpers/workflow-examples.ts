@@ -24,7 +24,10 @@ export default function () {
       } else {
         exampleTags.forEach((exampleTag) => {
           exampleTag.content.forEach((part) => {
-            if (part.kind !== "code") {
+            if (
+              part.kind !== "code" ||
+              part.text.startsWith("```ts workflow={false}")
+            ) {
               exampleStr.push(part.text)
               return
             }
