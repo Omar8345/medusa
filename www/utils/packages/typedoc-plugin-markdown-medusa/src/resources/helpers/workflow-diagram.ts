@@ -101,9 +101,11 @@ function getStep({
   return {
     type,
     name: document.name,
-    description: associatedReflection?.comment
-      ? Handlebars.helpers.comments(associatedReflection.comment, true)
-      : "",
+    description: associatedReflection?.comment?.summary
+      ? Handlebars.helpers.comment(associatedReflection.comment.summary)
+      : associatedReflection?.comment
+        ? Handlebars.helpers.comments(associatedReflection.comment, true)
+        : "",
     link:
       type === "hook" || !associatedReflection?.url
         ? `#${document.name}`
