@@ -47,6 +47,15 @@ export interface PromotionDTO {
   type?: PromotionTypeValues
 
   /**
+   * The status of the promotion:
+   *
+   * - `active` promotion is available for user to consume
+   * - `inactive` promotion is no longer available to the user
+   * - `draft` promotion is currently being prepared
+   */
+  status?: PromotionStatusValues
+
+  /**
    * Whether the promotion is applied automatically.
    */
   is_automatic?: boolean

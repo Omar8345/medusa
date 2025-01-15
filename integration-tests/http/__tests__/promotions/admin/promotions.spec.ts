@@ -516,7 +516,7 @@ medusaIntegrationTestRunner({
 
           expect(response.status).toEqual(404)
           expect(response.data.message).toEqual(
-            `Promotion with id "does-not-exist" not found`
+            `Promotion id not found: does-not-exist`
           )
         })
 
