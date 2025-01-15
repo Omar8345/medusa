@@ -36,6 +36,8 @@ export const defaultStoreCustomerAddressFields = [
   "country_code",
   "phone",
   "metadata",
+  "is_default_shipping",
+  "is_default_billing",
   "created_at",
   "updated_at",
 ]
