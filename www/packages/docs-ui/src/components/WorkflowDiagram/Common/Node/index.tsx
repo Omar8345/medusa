@@ -7,6 +7,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react"
 import { WorkflowStepUi } from "types"
 import { InlineCode, MarkdownContent, Tooltip } from "../../.."
 import { Bolt, InformationCircle } from "@medusajs/icons"
+import { getBrowser } from "../../../../utils"
 
 export type WorkflowDiagramNodeProps = {
   step: WorkflowStepUi
@@ -34,12 +35,22 @@ export const WorkflowDiagramStepNode = ({ step }: WorkflowDiagramNodeProps) => {
       return
     }
 
+    const firstChild = nodeParent.firstChild as HTMLElement
+
     const nodeBoundingRect = nodeParent.getBoundingClientRect()
     const diagramBoundingRect = diagramParent.getBoundingClientRect()
+    const browser = getBrowser()
 
-    setOffset(
-      Math.max(diagramBoundingRect.width - nodeBoundingRect.width + 10, 10)
-    )
+    if (browser === "Safari") {
+      // React Tooltip has a bug in Safari where the offset is not calculated correctly
+      // when place is set.
+      const firstChildBoundingRect = firstChild.getBoundingClientRect()
+      setOffset(diagramBoundingRect.width - firstChildBoundingRect.width + 20)
+    } else {
+      setOffset(
+        Math.max(diagramBoundingRect.width - nodeBoundingRect.width + 10, 10)
+      )
+    }
   }, [ref.current])
 
   return (

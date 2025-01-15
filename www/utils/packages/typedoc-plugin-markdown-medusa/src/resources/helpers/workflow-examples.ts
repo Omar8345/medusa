@@ -24,7 +24,10 @@ export default function () {
       } else {
         exampleTags.forEach((exampleTag) => {
           exampleTag.content.forEach((part) => {
-            if (part.kind !== "code") {
+            if (
+              part.kind !== "code" ||
+              part.text.startsWith("```ts workflow={false}")
+            ) {
               exampleStr.push(part.text)
               return
             }
@@ -39,7 +42,9 @@ export default function () {
         })
       }
 
-      return exampleStr.join("\n")
+      return `${Handlebars.helpers.titleLevel()} Examples\n\n${exampleStr.join(
+        "\n"
+      )}`
     }
   )
 }
@@ -54,25 +59,6 @@ function getExecutionCodeTabs({
   exampleCode = exampleCode.replace("```ts\n", "").replace("\n```", "")
 
   return `<CodeTabs group="workflow-exection">
-    <CodeTab label="Another Workflow" value="another-workflow">
-    
-\`\`\`ts title="src/workflows/my-workflow.ts"
-${beautifyCode(`import { createWorkflow } from "@medusajs/framework/workflows-sdk"
-import { ${workflowName} } from "@medusajs/medusa/core-flows"
-
-const myWorkflow = createWorkflow(
-  "my-workflow",
-  () => {
-    ${exampleCode
-      .replace(`{ result }`, "result")
-      .replace(`await `, "")
-      .replace(`(container)`, "")
-      .replace(".run(", ".runAsStep(")}
-  }
-)`)}
-\`\`\`
-
-    </CodeTab>
     <CodeTab label="API Route" value="api-route">
     
 \`\`\`ts title="src/api/workflow/route.ts"
@@ -136,6 +122,25 @@ export const config = {
   name: "run-once-a-day",
   schedule: "0 0 * * *",
 }`)}
+\`\`\`
+
+    </CodeTab>
+    <CodeTab label="Another Workflow" value="another-workflow">
+    
+\`\`\`ts title="src/workflows/my-workflow.ts"
+${beautifyCode(`import { createWorkflow } from "@medusajs/framework/workflows-sdk"
+import { ${workflowName} } from "@medusajs/medusa/core-flows"
+
+const myWorkflow = createWorkflow(
+  "my-workflow",
+  () => {
+    ${exampleCode
+      .replace(`{ result }`, "result")
+      .replace(`await `, "")
+      .replace(`(container)`, "")
+      .replace(".run(", ".runAsStep(")}
+  }
+)`)}
 \`\`\`
 
     </CodeTab>

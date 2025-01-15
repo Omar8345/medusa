@@ -17,31 +17,9 @@ This workflow update item's quantity of an order.
 
 <SourceCodeLink link="https://github.com/medusajs/medusa/blob/1b86c17b7293f3b810c062d78ec6ef563f968366/packages/core/core-flows/src/order/workflows/order-edit/order-edit-update-item-quantity.ts#L50" />
 
+## Examples
+
 <CodeTabs group="workflow-exection">
-    <CodeTab label="Another Workflow" value="another-workflow">
-    
-```ts title="src/workflows/my-workflow.ts"
-import { createWorkflow } from "@medusajs/framework/workflows-sdk"
-import { orderEditUpdateItemQuantityWorkflow } from "@medusajs/medusa/core-flows"
-
-const myWorkflow = createWorkflow(
-  "my-workflow",
-  () => {
-    const result = orderEditUpdateItemQuantityWorkflow
-      .runAsStep({
-        input: {
-          "order_id": "{value}",
-          "items": [{
-            "id": "id_rbcdbOnUqObpz",
-            "quantity": 20
-          }]
-        }
-      })
-  }
-)
-```
-
-    </CodeTab>
     <CodeTab label="API Route" value="api-route">
     
 ```ts title="src/api/workflow/route.ts"
@@ -60,8 +38,8 @@ export async function POST(
       input: {
         "order_id": "{value}",
         "items": [{
-          "id": "id_rbcdbOnUqObpz",
-          "quantity": 20
+          "id": "id_wT8SpG3WXB3ofu",
+          "quantity": 41
         }]
       }
     })
@@ -89,8 +67,8 @@ export default async function handleOrderPlaced({
       input: {
         "order_id": "{value}",
         "items": [{
-          "id": "id_rbcdbOnUqObpz",
-          "quantity": 20
+          "id": "id_wT8SpG3WXB3ofu",
+          "quantity": 41
         }]
       }
     })
@@ -118,8 +96,8 @@ export default async function myCustomJob(
       input: {
         "order_id": "{value}",
         "items": [{
-          "id": "id_rbcdbOnUqObpz",
-          "quantity": 20
+          "id": "id_wT8SpG3WXB3ofu",
+          "quantity": 41
         }]
       }
     })
@@ -131,6 +109,30 @@ export const config = {
   name: "run-once-a-day",
   schedule: "0 0 * * *",
 }
+```
+
+    </CodeTab>
+    <CodeTab label="Another Workflow" value="another-workflow">
+    
+```ts title="src/workflows/my-workflow.ts"
+import { createWorkflow } from "@medusajs/framework/workflows-sdk"
+import { orderEditUpdateItemQuantityWorkflow } from "@medusajs/medusa/core-flows"
+
+const myWorkflow = createWorkflow(
+  "my-workflow",
+  () => {
+    const result = orderEditUpdateItemQuantityWorkflow
+      .runAsStep({
+        input: {
+          "order_id": "{value}",
+          "items": [{
+            "id": "id_wT8SpG3WXB3ofu",
+            "quantity": 41
+          }]
+        }
+      })
+  }
+)
 ```
 
     </CodeTab>

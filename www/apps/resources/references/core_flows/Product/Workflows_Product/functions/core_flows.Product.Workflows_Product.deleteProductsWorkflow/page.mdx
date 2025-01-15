@@ -20,29 +20,9 @@ This workflow deletes one or more products.
 
 <SourceCodeLink link="https://github.com/medusajs/medusa/blob/1b86c17b7293f3b810c062d78ec6ef563f968366/packages/core/core-flows/src/product/workflows/delete-products.ts#L25" />
 
+## Examples
+
 <CodeTabs group="workflow-exection">
-    <CodeTab label="Another Workflow" value="another-workflow">
-    
-```ts title="src/workflows/my-workflow.ts"
-import { createWorkflow } from "@medusajs/framework/workflows-sdk"
-import { deleteProductsWorkflow } from "@medusajs/medusa/core-flows"
-
-const myWorkflow = createWorkflow(
-  "my-workflow",
-  () => {
-    const result = deleteProductsWorkflow
-      .runAsStep({
-        input: {
-          "ids": [
-            "id_a8saXSjVRMITNL"
-          ]
-        }
-      })
-  }
-)
-```
-
-    </CodeTab>
     <CodeTab label="API Route" value="api-route">
     
 ```ts title="src/api/workflow/route.ts"
@@ -60,7 +40,7 @@ export async function POST(
     .run({
       input: {
         "ids": [
-          "id_a8saXSjVRMITNL"
+          "id_A2atzFKRf7tCmQ4C"
         ]
       }
     })
@@ -87,7 +67,7 @@ export default async function handleOrderPlaced({
     .run({
       input: {
         "ids": [
-          "id_a8saXSjVRMITNL"
+          "id_A2atzFKRf7tCmQ4C"
         ]
       }
     })
@@ -114,7 +94,7 @@ export default async function myCustomJob(
     .run({
       input: {
         "ids": [
-          "id_a8saXSjVRMITNL"
+          "id_A2atzFKRf7tCmQ4C"
         ]
       }
     })
@@ -126,6 +106,28 @@ export const config = {
   name: "run-once-a-day",
   schedule: "0 0 * * *",
 }
+```
+
+    </CodeTab>
+    <CodeTab label="Another Workflow" value="another-workflow">
+    
+```ts title="src/workflows/my-workflow.ts"
+import { createWorkflow } from "@medusajs/framework/workflows-sdk"
+import { deleteProductsWorkflow } from "@medusajs/medusa/core-flows"
+
+const myWorkflow = createWorkflow(
+  "my-workflow",
+  () => {
+    const result = deleteProductsWorkflow
+      .runAsStep({
+        input: {
+          "ids": [
+            "id_A2atzFKRf7tCmQ4C"
+          ]
+        }
+      })
+  }
+)
 ```
 
     </CodeTab>

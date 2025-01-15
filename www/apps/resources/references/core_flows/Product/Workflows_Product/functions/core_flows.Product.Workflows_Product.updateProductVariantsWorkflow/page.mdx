@@ -23,9 +23,133 @@ You can also use this workflow within your own custom workflows, allowing you to
 
 <SourceCodeLink link="https://github.com/medusajs/medusa/blob/1b86c17b7293f3b810c062d78ec6ef563f968366/packages/core/core-flows/src/product/workflows/update-product-variants.ts#L118" />
 
+## Examples
+
 To update product variants by their IDs:
 
 <CodeTabs group="workflow-exection">
+    <CodeTab label="API Route" value="api-route">
+    
+```ts title="src/api/workflow/route.ts"
+import type {
+  MedusaRequest,
+  MedusaResponse,
+} from "@medusajs/framework/http"
+import { updateProductVariantsWorkflow } from "@medusajs/medusa/core-flows"
+
+export async function POST(
+  req: MedusaRequest,
+  res: MedusaResponse
+) {
+  const { result } = await updateProductVariantsWorkflow(req.scope)
+    .run({
+      input: {
+        product_variants: [{
+            id: "variant_123",
+            prices: [{
+              amount: 10,
+              currency_code: "usd",
+            }]
+          },
+          {
+            id: "variant_321",
+            title: "Small Shirt",
+          },
+        ],
+        additional_data: {
+          erp_id: "123"
+        }
+      }
+    })
+
+  res.send(result)
+}
+```
+
+    </CodeTab>
+    <CodeTab label="Subscriber" value="subscriber">
+    
+```ts title="src/subscribers/order-placed.ts"
+import {
+  type SubscriberConfig,
+  type SubscriberArgs,
+} from "@medusajs/framework"
+import { updateProductVariantsWorkflow } from "@medusajs/medusa/core-flows"
+
+export default async function handleOrderPlaced({
+  event: { data },
+  container,
+}: SubscriberArgs < { id: string } > ) {
+  const { result } = await updateProductVariantsWorkflow(container)
+    .run({
+      input: {
+        product_variants: [{
+            id: "variant_123",
+            prices: [{
+              amount: 10,
+              currency_code: "usd",
+            }]
+          },
+          {
+            id: "variant_321",
+            title: "Small Shirt",
+          },
+        ],
+        additional_data: {
+          erp_id: "123"
+        }
+      }
+    })
+
+  console.log(result)
+}
+
+export const config: SubscriberConfig = {
+  event: "order.placed",
+}
+```
+
+    </CodeTab>
+    <CodeTab label="Scheduled Job" value="scheduled-job">
+    
+```ts title="src/jobs/message-daily.ts"
+import { MedusaContainer } from "@medusajs/framework/types"
+import { updateProductVariantsWorkflow } from "@medusajs/medusa/core-flows"
+
+export default async function myCustomJob(
+  container: MedusaContainer
+) {
+  const { result } = await updateProductVariantsWorkflow(container)
+    .run({
+      input: {
+        product_variants: [{
+            id: "variant_123",
+            prices: [{
+              amount: 10,
+              currency_code: "usd",
+            }]
+          },
+          {
+            id: "variant_321",
+            title: "Small Shirt",
+          },
+        ],
+        additional_data: {
+          erp_id: "123"
+        }
+      }
+    })
+
+  console.log(result)
+}
+
+export const config = {
+  name: "run-once-a-day",
+  schedule: "0 0 * * *",
+}
+```
+
+    </CodeTab>
     <CodeTab label="Another Workflow" value="another-workflow">
     
 ```ts title="src/workflows/my-workflow.ts"
@@ -60,6 +184,11 @@ const myWorkflow = createWorkflow(
 ```
 
     </CodeTab>
+  </CodeTabs>
+
+You can also update product variants by a selector:
+
+<CodeTabs group="workflow-exection">
     <CodeTab label="API Route" value="api-route">
     
 ```ts title="src/api/workflow/route.ts"
@@ -76,18 +205,15 @@ export async function POST(
   const { result } = await updateProductVariantsWorkflow(req.scope)
     .run({
       input: {
-        product_variants: [{
-            id: "variant_123",
-            prices: [{
-              amount: 10,
-              currency_code: "usd",
-            }]
-          },
-          {
-            id: "variant_321",
-            title: "Small Shirt",
-          },
-        ],
+        selector: {
+          product_id: "prod_123"
+        },
+        update: {
+          prices: [{
+            amount: 10,
+            currency_code: "usd"
+          }]
+        },
         additional_data: {
           erp_id: "123"
         }
@@ -115,18 +241,15 @@ export default async function handleOrderPlaced({
   const { result } = await updateProductVariantsWorkflow(container)
     .run({
       input: {
-        product_variants: [{
-            id: "variant_123",
-            prices: [{
-              amount: 10,
-              currency_code: "usd",
-            }]
-          },
-          {
-            id: "variant_321",
-            title: "Small Shirt",
-          },
-        ],
+        selector: {
+          product_id: "prod_123"
+        },
+        update: {
+          prices: [{
+            amount: 10,
+            currency_code: "usd"
+          }]
+        },
         additional_data: {
           erp_id: "123"
         }
@@ -154,18 +277,15 @@ export default async function myCustomJob(
   const { result } = await updateProductVariantsWorkflow(container)
     .run({
       input: {
-        product_variants: [{
-            id: "variant_123",
-            prices: [{
-              amount: 10,
-              currency_code: "usd",
-            }]
-          },
-          {
-            id: "variant_321",
-            title: "Small Shirt",
-          },
-        ],
+        selector: {
+          product_id: "prod_123"
+        },
+        update: {
+          prices: [{
+            amount: 10,
+            currency_code: "usd"
+          }]
+        },
         additional_data: {
           erp_id: "123"
         }
@@ -182,11 +302,6 @@ export const config = {
 ```
 
     </CodeTab>
-  </CodeTabs>
-
-You can also update product variants by a selector:
-
-<CodeTabs group="workflow-exection">
     <CodeTab label="Another Workflow" value="another-workflow">
     
 ```ts title="src/workflows/my-workflow.ts"
@@ -215,119 +330,6 @@ const myWorkflow = createWorkflow(
       })
   }
 )
-```
-
-    </CodeTab>
-    <CodeTab label="API Route" value="api-route">
-    
-```ts title="src/api/workflow/route.ts"
-import type {
-  MedusaRequest,
-  MedusaResponse,
-} from "@medusajs/framework/http"
-import { updateProductVariantsWorkflow } from "@medusajs/medusa/core-flows"
-
-export async function POST(
-  req: MedusaRequest,
-  res: MedusaResponse
-) {
-  const { result } = await updateProductVariantsWorkflow(req.scope)
-    .run({
-      input: {
-        selector: {
-          product_id: "prod_123"
-        },
-        update: {
-          prices: [{
-            amount: 10,
-            currency_code: "usd"
-          }]
-        },
-        additional_data: {
-          erp_id: "123"
-        }
-      }
-    })
-
-  res.send(result)
-}
-```
-
-    </CodeTab>
-    <CodeTab label="Subscriber" value="subscriber">
-    
-```ts title="src/subscribers/order-placed.ts"
-import {
-  type SubscriberConfig,
-  type SubscriberArgs,
-} from "@medusajs/framework"
-import { updateProductVariantsWorkflow } from "@medusajs/medusa/core-flows"
-
-export default async function handleOrderPlaced({
-  event: { data },
-  container,
-}: SubscriberArgs < { id: string } > ) {
-  const { result } = await updateProductVariantsWorkflow(container)
-    .run({
-      input: {
-        selector: {
-          product_id: "prod_123"
-        },
-        update: {
-          prices: [{
-            amount: 10,
-            currency_code: "usd"
-          }]
-        },
-        additional_data: {
-          erp_id: "123"
-        }
-      }
-    })
-
-  console.log(result)
-}
-
-export const config: SubscriberConfig = {
-  event: "order.placed",
-}
-```
-
-    </CodeTab>
-    <CodeTab label="Scheduled Job" value="scheduled-job">
-    
-```ts title="src/jobs/message-daily.ts"
-import { MedusaContainer } from "@medusajs/framework/types"
-import { updateProductVariantsWorkflow } from "@medusajs/medusa/core-flows"
-
-export default async function myCustomJob(
-  container: MedusaContainer
-) {
-  const { result } = await updateProductVariantsWorkflow(container)
-    .run({
-      input: {
-        selector: {
-          product_id: "prod_123"
-        },
-        update: {
-          prices: [{
-            amount: 10,
-            currency_code: "usd"
-          }]
-        },
-        additional_data: {
-          erp_id: "123"
-        }
-      }
-    })
-
-  console.log(result)
-}
-
-export const config = {
-  name: "run-once-a-day",
-  schedule: "0 0 * * *",
-}
 ```
 
     </CodeTab>
